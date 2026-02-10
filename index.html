@@ -273,6 +273,8 @@ let S={
   editId:null,
   // Weight unit
   weightUnit:"kg",distUnit:"km",
+  // Backup
+  showBackupModal:false,
 };
 
 // Storage
@@ -370,6 +372,7 @@ function endSession(){
   save();
   S.sessionActive=false;S.sessionStart=null;S.sessionExercises=[];
   S.currentEx="";S.currentSets=[];
+  S.showBackupModal=true;
   render();
 }
 
@@ -481,6 +484,43 @@ function exportExcel(){
   XLSX.writeFile(wb,`journal-sport-${new Date().toISOString().slice(0,10)}.xlsx`);
 }
 
+// Backup / Restore
+function backupJSON(){
+  const data={version:1,date:new Date().toISOString(),entries:S.entries,routines:S.routines};
+  const json=JSON.stringify(data,null,2);
+  const blob=new Blob([json],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download=`workout-backup-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  S.showBackupModal=false;render();
+}
+function triggerRestore(){
+  const inp=document.createElement("input");
+  inp.type="file";inp.accept=".json";
+  inp.onchange=e=>{
+    const file=e.target.files[0];if(!file)return;
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      try{
+        const data=JSON.parse(ev.target.result);
+        if(data.entries&&Array.isArray(data.entries)){
+          const count=data.entries.length;
+          const rcount=data.routines?.length||0;
+          if(confirm(`Restaurer ${count} entrées et ${rcount} routines ?\n(Date du backup : ${data.date?new Date(data.date).toLocaleDateString("fr-FR"):"inconnue"})\n\nCela remplacera toutes les données actuelles.`)){
+            S.entries=data.entries;
+            S.routines=data.routines||[];
+            save();saveR();render();
+          }
+        }else{alert("Fichier invalide — pas de données d'entraînement trouvées.");}
+      }catch{alert("Erreur de lecture du fichier.");}
+    };
+    reader.readAsText(file);
+  };
+  inp.click();
+}
+
 // Session elapsed
 function sessionElapsed(){
   if(!S.sessionStart)return"0:00";
@@ -527,6 +567,9 @@ function render(){
       h+=`<div class="field"><label>Ressenti</label></div><div class="feel-row">${FL.map(f=>`<button class="feel ${S.form.feeling===f.v?"on":""}" onclick="S.form.feeling=${f.v};render()"><div class="em">${f.e}</div><div class="lb">${f.l}</div></button>`).join("")}</div>`;
       h+=`<div class="field" style="margin-bottom:10px"><label>Notes</label><textarea rows="2" placeholder="Notes…" oninput="S.form.notes=this.value">${esc(S.form.notes)}</textarea></div>`;
       h+=`<button class="btn-main" onclick="addEntry()" ${!S.form.exercise.trim()?"disabled":""}>${S.editId?"✅ Modifier":"＋ Ajouter"}</button></div>`;
+
+      // Backup / Restore
+      h+=`<div class="cd" style="padding:12px 14px"><div style="display:flex;align-items:center;justify-content:space-between"><div class="ct" style="margin:0">📦 Données</div></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn-sm" style="flex:1;background:var(--s2);border:1px solid var(--b);color:var(--t2)" onclick="backupJSON()">⬇ Backup</button><button class="btn-sm" style="flex:1;background:var(--s2);border:1px solid var(--b);color:var(--t2)" onclick="triggerRestore()">⬆ Restaurer</button></div><div style="font-size:10px;color:var(--t3);margin-top:8px">${S.entries.length} entrées · ${S.routines.length} routines</div></div>`;
 
     } else {
       // ====== ACTIVE SESSION ======
@@ -717,6 +760,9 @@ function render(){
   }
   if(S.showRoutineModal){
     h+=`<div class="modal-bg" onclick="S.showRoutineModal=false;render()"><div class="modal" onclick="event.stopPropagation()"><h2>💾 Sauver routine</h2><div class="field" style="margin-bottom:12px"><label>Nom</label><input type="text" placeholder="Push day, Full body…" value="${esc(S.routineName)}" oninput="S.routineName=this.value"></div><button class="btn-main" onclick="saveRoutine()">Sauvegarder</button></div></div>`;
+  }
+  if(S.showBackupModal){
+    h+=`<div class="modal-bg" onclick="S.showBackupModal=false;render()"><div class="modal" onclick="event.stopPropagation()"><h2>✅ Séance enregistrée !</h2><p style="font-size:13px;color:var(--t2);margin-bottom:16px">Sauvegarder un backup dans tes fichiers ?<br><span style="font-size:11px;color:var(--t3)">Tes données seront en sécurité même si Safari est réinitialisé.</span></p><button class="btn-main" onclick="backupJSON()" style="margin-bottom:8px">📦 Sauvegarder un backup</button><button class="btn-cancel" onclick="S.showBackupModal=false;render()" style="display:block;width:100%;text-align:center;padding:10px">Pas maintenant</button></div></div>`;
   }
 
   a.innerHTML=h;
