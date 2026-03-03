@@ -1,0 +1,712 @@
+{
+  "meta": {
+    "version": "1.1.0",
+    "date": "2026-03-03",
+    "eating_window": "8h00–18h30 (~10h30)",
+    "target_kcal": 2900,
+    "target_protein_g": 172,
+    "target_carb_g": 340,
+    "target_fat_g": 90,
+    "protein_per_kg": 2.0,
+    "carb_per_kg": 4.0,
+    "fat_per_kg": 1.06,
+    "weight_kg": 85,
+    "leucine_thresholds_per_day": 3,
+    "leucine_threshold_g": 2.5,
+    "notes": "Cibles basées sur TDEE ~2700-2800 + surplus modeste 100-200 kcal pour recomposition. Protéines initialement à 1.6g/kg (136g) mais l'architecture actuelle fournit ~172g (2g/kg) — dans le corridor optimal 1.6-2.2g/kg (Stokes et al. 2018). Déficit calorique identifié principalement sur les glucides."
+  },
+  "changelog": [
+    {
+      "date": "2026-03-03",
+      "version": "1.1.0",
+      "changes": [
+        "Flocons fermentés R1 : 100g → 130g (+105 kcal, +17g glucides)",
+        "Pain petit épeautre R2 : 80g → 120g (+105 kcal, +20g glucides)",
+        "Dîner : patate douce 250g → 200g + PdT vapeur cuites-refroidies 150g (amidon résistant RS3, prébiotique sans inuline)",
+        "Dîner : +10ml huile d'olive (vinaigrette légumes) pour atteindre cible lipides",
+        "Banane écartée (polyphénol oxydase détruit les flavanols — Ottaviani et al. 2023)",
+        "Inuline chicorée écartée (risque FODMAP sur profil digestif sensible)",
+        "Prébiotiques couverts par l'alimentation : bêta-glucanes (flocons), RS3 (PdT refroidies), arabinoxylanes (petit épeautre), FOS saisonniers (topinambours, poireaux, oignons)",
+        "Pending adjustments supprimés — tous les ajustements sont maintenant confirmés"
+      ]
+    },
+    {
+      "date": "2026-03-03",
+      "version": "1.0.0",
+      "changes": [
+        "Création du fichier — source de vérité unique pour la routine alimentaire",
+        "Architecture basée sur l'optimisation de mars 2026 : 4 repas + 1 prise inter-repas",
+        "R2 passé à 2 œufs (au lieu de 3) pour réduire l'excès protéique",
+        "Ajout germe de blé 15g au R1 (spermidine + zinc + réduction phytates via co-fermentation)",
+        "Flocons avoine passés à 100g (depuis 80g)",
+        "Omega-3 répartis en 2 prises (3 gél. R2 + 3 gél. dîner)",
+        "Pending : 3 ajustements pour atteindre ~2900 kcal (flocons 120g, banane R1, patate douce 300g)"
+      ]
+    }
+  ],
+  "pending_adjustments": {
+    "status": "Aucun. Tous les ajustements ont été confirmés et intégrés en v1.1.0.",
+    "items": []
+  },
+  "meals": [
+    {
+      "id": "R1",
+      "name": "Repas 1",
+      "time": "8h00",
+      "context": "Premier repas de la journée. Pris après la routine matinale (réveil 7h15, jus de légumes, ménage 30 min). Jours standard uniquement — décalé à ~9h30 les jours 4×4 (mardi/jeudi).",
+      "items": [
+        {
+          "name": "Greenwhey (protéine végétale)",
+          "qty": 30,
+          "unit": "g poudre",
+          "protein_g": 21,
+          "carb_g": 1,
+          "fat_g": 1,
+          "leucine_g": 2.0,
+          "kcal": 97,
+          "cost_eur_per_kg": 27.78,
+          "cost_eur_per_day": 0.83,
+          "notes": "Pois + fèves + courge, pré-germée bio-fermentée. PDCAAS 0.8-1.0. PAS de la whey."
+        },
+        {
+          "name": "Flocons avoine/épeautre fermentés",
+          "qty": 130,
+          "unit": "g poids sec",
+          "protein_g": 16,
+          "carb_g": 75,
+          "fat_g": 9,
+          "leucine_g": 1.2,
+          "kcal": 430,
+          "cost_eur_per_kg": 4.5,
+          "cost_eur_per_day": 0.59,
+          "notes": "Mélange avoine + petit épeautre + farine de seigle (10-20%). Fermentés 24-48h à 20-25°C dans la Brod & Taylor. 24h = 50-70% réduction phytates. Bêta-glucanes intacts."
+        },
+        {
+          "name": "Germe de blé",
+          "qty": 15,
+          "unit": "g",
+          "protein_g": 4,
+          "carb_g": 7,
+          "fat_g": 1.5,
+          "leucine_g": 0.3,
+          "kcal": 55,
+          "cost_eur_per_kg": 8,
+          "cost_eur_per_day": 0.12,
+          "notes": "Source principale de spermidine (~24 mg/100g). Co-fermenté avec les flocons — les phytases du seigle réduisent aussi les phytates du germe de blé. Apporte zinc, magnésium, vitamines B, vitamine E."
+        },
+        {
+          "name": "Myrtilles sauvages bio surgelées",
+          "qty": 75,
+          "unit": "g",
+          "protein_g": 0.5,
+          "carb_g": 9,
+          "fat_g": 0.3,
+          "leucine_g": 0,
+          "kcal": 40,
+          "cost_eur_per_kg": 20,
+          "cost_eur_per_day": 1.5,
+          "notes": "Picard. Source principale d'anthocyanines. Attention : inhibe absorption Fe/Zn non-héminique — pas un problème ici (R1 pas la fenêtre d'absorption minérale prioritaire)."
+        },
+        {
+          "name": "Flavochino (1ère prise)",
+          "qty": 15,
+          "unit": "g",
+          "protein_g": 2,
+          "carb_g": 6,
+          "fat_g": 3,
+          "leucine_g": 0,
+          "kcal": 60,
+          "cost_eur_per_kg": 50,
+          "cost_eur_per_day": 0.75,
+          "notes": "Dr. Jacob's. ~255 mg flavanols de cacao, ~546 mg polyphénols totaux par 15g. Mélangé dans le bol. Contient caféine (~15-20mg) + théobromine (~80-100mg)."
+        }
+      ],
+      "juice": {
+        "name": "Jus de légumes #1 (matin, à jeun avant repas)",
+        "volume_ml": 300,
+        "ingredients": [
+          "Betterave (~150g)",
+          "Chou rouge (~100g)",
+          "Céleri (~100g)",
+          "Concombre (~150g)",
+          "Gingembre (2 cm)"
+        ],
+        "optional": [
+          "Curcuma (2 cm) + poivre noir"
+        ],
+        "protein_g": 2,
+        "carb_g": 12,
+        "fat_g": 0,
+        "kcal": 55,
+        "rationale": "Nitrates (betterave → NO, vasodilatation + performance), anthocyanines (chou rouge → cyanidin + glucosinolates → Nrf2), hépatoprotection (gingembre via NF-κB), alcalinisation urinaire (concombre — réduit cristallisation ténofovir)."
+      },
+      "totals": {
+        "protein_g": 45.5,
+        "carb_g": 110,
+        "fat_g": 14.8,
+        "kcal": 737,
+        "leucine_g": 3.5
+      },
+      "leucine_threshold": true,
+      "digestion_estimate": {
+        "gastric_emptying_50pct": "1h30-1h40",
+        "gastric_emptying_90pct": "2h30-3h",
+        "full_absorption": "4h",
+        "profile": "Semi-liquide, faible en lipides (15g). Vidange rapide. Flocons 130g pré-digérés par fermentation. Volume du bol ~410g — confortable pour MS1 à 9h30."
+      }
+    },
+    {
+      "id": "flavochino_2",
+      "name": "Flavochino 2e prise (inter-repas)",
+      "time": "11h30",
+      "context": "Pris ~1h avant le R2. Décalé du repas pour libérer l'absorption Fe/Zn au R2 et optimiser l'absorption des flavanols (Schroeter et al. 2006 : meilleure absorption à jeun).",
+      "items": [
+        {
+          "name": "Flavochino",
+          "qty": 15,
+          "unit": "g",
+          "protein_g": 2,
+          "carb_g": 6,
+          "fat_g": 3,
+          "leucine_g": 0,
+          "kcal": 60,
+          "cost_eur_per_day": 0.75,
+          "notes": "Dans eau chaude ou lait d'avoine maison. Toujours avant 14h30 (caféine + théobromine, demi-vie 6-10h)."
+        }
+      ],
+      "totals": {
+        "protein_g": 2,
+        "carb_g": 6,
+        "fat_g": 3,
+        "kcal": 60,
+        "leucine_g": 0
+      },
+      "leucine_threshold": false
+    },
+    {
+      "id": "R2",
+      "name": "Repas 2",
+      "time": "12h30",
+      "context": "Repas le plus dense de la journée. Pris avec le jus #2 (caroténoïdes liposolubles + lipides). Citron systématique sur le tempeh (enhancer Fe non-héminique). Omega-3 : 3 gélules ici.",
+      "items": [
+        {
+          "name": "Tempeh maison",
+          "qty": 150,
+          "unit": "g",
+          "protein_g": 28,
+          "carb_g": 14,
+          "fat_g": 15,
+          "leucine_g": 2.1,
+          "kcal": 300,
+          "cost_eur_per_kg": 10,
+          "cost_eur_per_day": 1.5,
+          "notes": "Production maison (soja bio + Rhizopus). Source de spermidine (fermenté). Coût = matières premières uniquement."
+        },
+        {
+          "name": "Œufs bio XL",
+          "qty": 2,
+          "unit": "pièces (130g comestible)",
+          "protein_g": 12.6,
+          "carb_g": 0.7,
+          "fat_g": 10,
+          "leucine_g": 1.1,
+          "kcal": 143,
+          "cost_eur_per_unit": 0.53,
+          "cost_eur_per_day": 1.07,
+          "notes": "Calibre XL (75g avec coquille, ~65g comestible). Bio prioritaire pour les œufs entiers (contaminants lipophiles concentrés dans le jaune)."
+        },
+        {
+          "name": "Ténébrions poudre",
+          "qty": 15,
+          "unit": "g",
+          "protein_g": 8,
+          "carb_g": 1,
+          "fat_g": 4,
+          "leucine_g": 0.6,
+          "kcal": 70,
+          "cost_eur_per_kg": 50,
+          "cost_eur_per_day": 0.75,
+          "notes": "En POUDRE uniquement (pas entiers — chitine + fibres insolubles causent intolérance). ~530g/mois."
+        },
+        {
+          "name": "Légumes cuits",
+          "qty": 200,
+          "unit": "g",
+          "protein_g": 3,
+          "carb_g": 10,
+          "fat_g": 0.5,
+          "leucine_g": 0,
+          "kcal": 55,
+          "cost_eur_per_day": 1.5,
+          "notes": "Légumes de saison, marché bio. Cuits vapeur ou au four."
+        },
+        {
+          "name": "Pain petit épeautre au levain",
+          "qty": 120,
+          "unit": "g (~3 tranches)",
+          "protein_g": 12,
+          "carb_g": 60,
+          "fat_g": 3,
+          "leucine_g": 0.6,
+          "kcal": 315,
+          "cost_eur_per_kg": 12,
+          "cost_eur_per_day": 1.44,
+          "notes": "Boulangerie. IG modéré grâce au levain + petit épeautre."
+        },
+        {
+          "name": "Huile d'olive extra vierge bio",
+          "qty": 15,
+          "unit": "ml",
+          "protein_g": 0,
+          "carb_g": 0,
+          "fat_g": 14,
+          "leucine_g": 0,
+          "kcal": 120,
+          "cost_eur_per_day": 0.27,
+          "notes": "Vinaigrette. Nécessaire pour absorption caroténoïdes du jus #2."
+        },
+        {
+          "name": "Citron (filet)",
+          "qty": 15,
+          "unit": "ml",
+          "protein_g": 0,
+          "carb_g": 1,
+          "fat_g": 0,
+          "leucine_g": 0,
+          "kcal": 4,
+          "cost_eur_per_day": 0.1,
+          "notes": "Systématique sur le tempeh. ~15mg vit C + acide citrique. Enhancer absorption Fe non-héminique par 2 mécanismes (réduction Fe³⁺→Fe²⁺ + chélation). Siegenberg et al. 1991."
+        },
+        {
+          "name": "Oméga-3 EPAX (3 gélules)",
+          "qty": 3,
+          "unit": "gélules",
+          "protein_g": 0,
+          "carb_g": 0,
+          "fat_g": 3,
+          "leucine_g": 0,
+          "kcal": 27,
+          "cost_eur_per_day": 0.29,
+          "notes": "Nutripure. 3 gél = 1260mg EPA + 900mg DHA. Pris avec le repas le plus riche en lipides pour absorption maximale."
+        }
+      ],
+      "juice": {
+        "name": "Jus de légumes #2 (midi, avec le repas)",
+        "volume_ml": 250,
+        "ingredients": [
+          "Carotte (~150g)",
+          "Épinards (30-40g)",
+          "Gingembre (1 cm)"
+        ],
+        "seasonal_rotation": {
+          "oct_mars": "Kale cru (~120mg vit C/100g)",
+          "oct_avril": "Brocoli cru (sulforaphane + vit C)",
+          "juin_oct": "Poivron rouge cru (~128mg vit C/100g + capsanthine)"
+        },
+        "protein_g": 2,
+        "carb_g": 10,
+        "fat_g": 0,
+        "kcal": 50,
+        "rationale": "Caroténoïdes liposolubles absorbés avec les lipides du repas. Vitamine K1 (épinards). Vitamine C de l'ingrédient saisonnier = enhancer supplémentaire absorption Fe. PAS de chou rouge ici (anthocyanines = inhibiteur Fe/Zn, déjà couvert au jus matin).",
+        "preparation_note": "Préparable le matin avec le jus #1, réfrigérer. Perte vit C 10-20% sur 6h acceptable ; polyphénols/caroténoïdes stables."
+      },
+      "totals": {
+        "protein_g": 65.6,
+        "carb_g": 96.7,
+        "fat_g": 49.5,
+        "kcal": 1084,
+        "leucine_g": 4.4
+      },
+      "leucine_threshold": true,
+      "digestion_estimate": {
+        "gastric_emptying_50pct": "3h-3h30",
+        "gastric_emptying_90pct": "5h-6h",
+        "full_absorption": "6h-7h",
+        "profile": "Repas le plus lourd. Charge calorique élevée + 48g lipides + texture solide. Implications pour MS2 lundi (14h = 1h30 post-R2, positions verticales uniquement)."
+      }
+    },
+    {
+      "id": "collation",
+      "name": "Collation",
+      "time": "16h00",
+      "context": "~3h30 après R2. Profil digestif rapide (semi-liquide, faible en lipides). Seuil leucine atteint via combinaison skyr (caséine riche en leucine) + Greenwhey.",
+      "items": [
+        {
+          "name": "Skyr",
+          "qty": 200,
+          "unit": "g",
+          "protein_g": 22,
+          "carb_g": 8,
+          "fat_g": 0.4,
+          "leucine_g": 2.0,
+          "kcal": 125,
+          "cost_eur_per_day": 1.25,
+          "notes": "Exploration A1 (Holstein, moins cher) vs A2 (jersiaise) vs brebis (A2 exclusif). Différence clinique probablement marginale à 200g/jour."
+        },
+        {
+          "name": "Greenwhey (demi-dose)",
+          "qty": 15,
+          "unit": "g poudre",
+          "protein_g": 10.5,
+          "carb_g": 0.5,
+          "fat_g": 0.5,
+          "leucine_g": 1.0,
+          "kcal": 48,
+          "cost_eur_per_day": 0.42,
+          "notes": "Demi-dose suffisante pour compléter le seuil leucine avec le skyr."
+        },
+        {
+          "name": "Cacao cru",
+          "qty": 10,
+          "unit": "g",
+          "protein_g": 2,
+          "carb_g": 3,
+          "fat_g": 2.5,
+          "leucine_g": 0,
+          "kcal": 40,
+          "cost_eur_per_day": 0.2,
+          "notes": "Polyphénols supplémentaires. Attention : inhibe Fe/Zn mais ce repas n'est pas la fenêtre d'absorption minérale."
+        },
+        {
+          "name": "Myrtilles sauvages bio surgelées",
+          "qty": 75,
+          "unit": "g",
+          "protein_g": 0.5,
+          "carb_g": 9,
+          "fat_g": 0.3,
+          "leucine_g": 0,
+          "kcal": 40,
+          "cost_eur_per_day": 1.5,
+          "notes": "2e portion quotidienne (75g R1 + 75g collation = 150g/jour total)."
+        }
+      ],
+      "totals": {
+        "protein_g": 35,
+        "carb_g": 20.5,
+        "fat_g": 3.7,
+        "kcal": 253,
+        "leucine_g": 3.0
+      },
+      "leucine_threshold": true,
+      "digestion_estimate": {
+        "gastric_emptying_50pct": "45min-1h",
+        "gastric_emptying_90pct": "1h30-2h",
+        "full_absorption": "3h",
+        "profile": "Quasi-liquide, très faible en lipides (4g). Profil digestif le plus rapide de la journée."
+      }
+    },
+    {
+      "id": "diner",
+      "name": "Dîner",
+      "time": "18h00-18h30",
+      "context": "Dernier repas. Pas d'exigence de seuil leucine (3 stimulations déjà atteintes). Contribution au total protéique. Glucides lents pour stabilité glycémique nocturne (voie tryptophane → sérotonine → mélatonine). Protéines limitées ~28-30g (charge osmotique rénale nocturne). Omega-3 : 3 gélules ici.",
+      "protein_source_rotation": [
+        {
+          "name": "Sardines bio",
+          "frequency": "2×/semaine",
+          "qty": 120,
+          "unit": "g (1 boîte)",
+          "protein_g": 25,
+          "carb_g": 0,
+          "fat_g": 11,
+          "leucine_g": 1.8,
+          "kcal": 200,
+          "cost_eur_per_day": 3.0,
+          "notes": "Fer héminique (insensible aux polyphénols) dans la fenêtre sans inhibiteurs. Portugal/Bretagne, huile olive EV, boîte sans BPA. Mercure très faible (0.01-0.04 ppm). Ne pas augmenter >2×/sem (histamine + régime riche en fermentés)."
+        },
+        {
+          "name": "Œufs bio XL",
+          "frequency": "2-3×/semaine",
+          "qty": "2-3 pièces",
+          "unit": "pièces",
+          "protein_g": 19,
+          "carb_g": 1,
+          "fat_g": 15,
+          "leucine_g": 1.6,
+          "kcal": 215,
+          "cost_eur_per_day": 1.6,
+          "notes": "Option par défaut. Jaunes = choline + vitamines liposolubles. Impact lipidique sur vidange gastrique nocturne à surveiller (reflux/chant)."
+        },
+        {
+          "name": "Tempeh maison",
+          "frequency": "1-2×/semaine",
+          "qty": 100,
+          "unit": "g",
+          "protein_g": 19,
+          "carb_g": 9,
+          "fat_g": 10,
+          "leucine_g": 1.4,
+          "kcal": 200,
+          "cost_eur_per_day": 1.0,
+          "notes": "Alternative végétale. Apport spermidine additionnel."
+        },
+        {
+          "name": "Protéine blanc d'œuf bio (poudre)",
+          "frequency": "En évaluation",
+          "qty": 40,
+          "unit": "g poudre",
+          "protein_g": 33,
+          "carb_g": 0,
+          "fat_g": 0,
+          "leucine_g": 2.7,
+          "kcal": 132,
+          "cost_eur_per_day": "TBD",
+          "notes": "Nutrielement/Nutrimuscle. Découplage protéines/lipides → vidange gastrique rapide, reflux minimisé (pertinent chant). Non encore intégrée."
+        }
+      ],
+      "fixed_items": [
+        {
+          "name": "Légumes cuits",
+          "qty": 200,
+          "unit": "g",
+          "protein_g": 3,
+          "carb_g": 10,
+          "fat_g": 0.5,
+          "leucine_g": 0,
+          "kcal": 55,
+          "cost_eur_per_day": 1.5,
+          "notes": "Légumes de saison, vapeur."
+        },
+        {
+          "name": "Patate douce",
+          "qty": 200,
+          "unit": "g cuit",
+          "protein_g": 2.5,
+          "carb_g": 40,
+          "fat_g": 0.2,
+          "leucine_g": 0,
+          "kcal": 172,
+          "cost_eur_per_day": 0.4,
+          "notes": "Voie tryptophane → sérotonine → mélatonine. Rotation saisonnière."
+        },
+        {
+          "name": "Pommes de terre vapeur (cuites-refroidies)",
+          "qty": 150,
+          "unit": "g cuit",
+          "protein_g": 3,
+          "carb_g": 26,
+          "fat_g": 0.1,
+          "leucine_g": 0,
+          "kcal": 115,
+          "cost_eur_per_day": 0.25,
+          "notes": "CUITES PUIS REFROIDIES (≥4h au frigo). L'amidon résistant RS3 (Englyst & Cummings 1987) survit au réchauffage. Prébiotique : fermenté lentement dans le côlon distal → butyrate. Mieux toléré que l'inuline. Batch cooking : cuire 2-3 jours d'avance, réchauffer vapeur ou poêle. Source de potassium (équilibre hydro-électrolytique)."
+        },
+        {
+          "name": "Pain petit épeautre au levain",
+          "qty": 40,
+          "unit": "g (~1 tranche)",
+          "protein_g": 4,
+          "carb_g": 20,
+          "fat_g": 1,
+          "leucine_g": 0.2,
+          "kcal": 105,
+          "cost_eur_per_day": 0.48,
+          "notes": "Complément glucidique."
+        },
+        {
+          "name": "Psyllium",
+          "qty": 5,
+          "unit": "g (1 cc)",
+          "protein_g": 0,
+          "carb_g": 0,
+          "fat_g": 0,
+          "leucine_g": 0,
+          "kcal": 5,
+          "cost_eur_per_day": 0.05,
+          "notes": "Structure les selles. Supérieur au lin/chia (pas de phytates/oxalates ajoutés). Gel visqueux qui lisse la glycémie postprandiale."
+        },
+        {
+          "name": "Oméga-3 EPAX (3 gélules)",
+          "qty": 3,
+          "unit": "gélules",
+          "protein_g": 0,
+          "carb_g": 0,
+          "fat_g": 3,
+          "leucine_g": 0,
+          "kcal": 27,
+          "cost_eur_per_day": 0.29,
+          "notes": "2e prise. Total journalier : 6 gél = 2520mg EPA + 1800mg DHA."
+        },
+        {
+          "name": "Huile d'olive (vinaigrette légumes)",
+          "qty": 10,
+          "unit": "ml",
+          "protein_g": 0,
+          "carb_g": 0,
+          "fat_g": 9,
+          "leucine_g": 0,
+          "kcal": 90,
+          "cost_eur_per_day": 0.18,
+          "notes": "Ajout pour atteindre la cible lipides (~90g/jour). Vinaigrette sur les légumes cuits."
+        }
+      ],
+      "totals_average": {
+        "protein_g": 34,
+        "carb_g": 99,
+        "fat_g": 26,
+        "kcal": 774,
+        "leucine_g": 1.6,
+        "note": "Moyenne simple des 3 sources protéiques actives (sardines, œufs, tempeh). Inclut huile olive 10ml vinaigrette."
+      },
+      "leucine_threshold": false,
+      "digestion_estimate": {
+        "gastric_emptying_50pct": "2h-2h30",
+        "gastric_emptying_90pct": "3h30-4h30",
+        "full_absorption": "5h-6h",
+        "profile": "Modéré en calories, lipides légèrement augmentés (+10ml huile olive). PdT cuites-refroidies : texture dense, vidange standard. Timing compatible coucher (dîner 18h30, coucher 22h-23h = 4-5h)."
+      }
+    }
+  ],
+  "daily_totals": {
+    "confirmed": {
+      "protein_g": 182,
+      "carb_g": 332,
+      "fat_g": 97,
+      "kcal": 2908,
+      "leucine_stimulations": 3,
+      "note": "Totaux v1.1.0 confirmés. Cibles atteintes. Prébiotiques couverts par 3 sources alimentaires (bêta-glucanes, RS3, arabinoxylanes) + FOS saisonniers."
+    }
+  },
+  "variants": {
+    "training_4x4": {
+      "applies_to": [
+        "mardi",
+        "jeudi"
+      ],
+      "description": "Jours Norwegian 4×4. Greenwhey pré-effort, R1 décalé post-cardio+mobilité.",
+      "changes": [
+        {
+          "time": "7h30",
+          "action": "Greenwhey 30g dans eau, 30-45 min avant le 4×4",
+          "rationale": "Amino acides circulants pour réduire le catabolisme pendant l'effort intense"
+        },
+        {
+          "time": "~9h30-10h",
+          "action": "R1 décalé post-cardio + mobilité. Compensé : +1 œuf OU +50g tempeh",
+          "rationale": "Pas de musculation à jeun les jours 4×4. Le 4×4 est nourri."
+        }
+      ]
+    },
+    "extended_window": {
+      "applies_to": [
+        "mardi",
+        "mercredi",
+        "vendredi"
+      ],
+      "description": "Fenêtre alimentaire étendue (dîner tardif : ~20h-21h). Contrainte cours (mar/mer) ou compagnon (ven).",
+      "changes": [
+        {
+          "action": "Dîner léger : protéines modérées + glucides lents + psyllium. Éviter charge lipidique élevée.",
+          "rationale": "Limiter le reflux et la disruption glycémique nocturne avec un dîner tardif."
+        }
+      ]
+    }
+  },
+  "supplements": [
+    {
+      "name": "Créatine Creapure",
+      "brand": "Nutrimuscle",
+      "dose": "5-6g/jour",
+      "timing": "Indifférent (saturation chronique)",
+      "cost_eur_month": 10.04,
+      "notes": "Élève la créatinine sérique indépendamment de la fonction rénale. Demander cystatine C pour DFG fiable."
+    },
+    {
+      "name": "Oméga-3 EPAX",
+      "brand": "Nutripure (grand format 3×540)",
+      "dose": "6 gélules/jour",
+      "timing": "3 gél. R2 + 3 gél. dîner",
+      "cost_eur_month": 31.78,
+      "notes": "2520mg EPA + 1800mg DHA/jour. Répartition en 2 prises pour meilleure absorption (capacité micellisation saturée à ~2-3g lipides/prise)."
+    },
+    {
+      "name": "Safran extrait gélules",
+      "brand": "Extrait standardisé bio",
+      "dose": "1 gélule/jour",
+      "timing": "Non spécifié",
+      "cost_eur_month": 20.99,
+      "notes": "≥3,5% lépticrosalides. Remplace les gummies Naali (dosage plus fiable)."
+    },
+    {
+      "name": "Ashwagandha KSM-66",
+      "brand": "Onatera",
+      "dose": "1 comprimé le soir",
+      "timing": "Soir",
+      "cost_eur_month": 7.47,
+      "notes": "Grand bocal 240 comprimés = meilleur rapport."
+    },
+    {
+      "name": "Multivitamines",
+      "brand": "Nutrimuscle",
+      "dose": "1 gélule/jour (demi-dose fabricant)",
+      "timing": "Non spécifié",
+      "cost_eur_month": 9.71,
+      "notes": "Contient 2,5µg B12. Couvre le RNP mais pas l'optimum. Ajouter B12 sérique + homocystéine au bilan sanguin."
+    },
+    {
+      "name": "Magnésium bisglycinate",
+      "brand": "Poudre",
+      "dose": "~2 gélules le soir",
+      "timing": "Soir",
+      "cost_eur_month": 15.0,
+      "notes": "Forme bisglycinate = bonne biodisponibilité, moins d'effets digestifs."
+    },
+    {
+      "name": "Vitamine D3+K2",
+      "brand": "Nutripure",
+      "dose": "3 gouttes = 3000 UI/jour",
+      "timing": "Avec un repas contenant des lipides",
+      "cost_eur_month": 3.61,
+      "notes": "20ml = ~200 jours. Très économique."
+    }
+  ],
+  "hydration": {
+    "standard_day": "≥3L",
+    "sauna_day": "3.5-4L",
+    "4x4_plus_sauna": "4-4.5L",
+    "notes": "Double charge rénale (créatine + régime hyperprotéiné). Non négociable. Test proposé pour réveils nocturnes : 300-400ml eau + 1g sel entre 19h et 20h30."
+  },
+  "key_interactions": [
+    "Flavanols cacao + sommeil : toute prise de Flavochino après 14h30 risque d'interférer (caféine + théobromine demi-vie 6-10h). Théobromine = diurétique léger → aggravation miction nocturne possible.",
+    "Chitine + fibres insolubles : ténébrions POUDRE uniquement (pas entiers + crudités).",
+    "Charge osmotique rénale nocturne : cumul urée (protéines dîner) + créatinine (créatine) + ténofovir éventuel (PrEP). Protéines dîner limitées ~28-30g.",
+    "Caroténoïdes liposolubles : jus #2 AVEC le R2 (lipides), pas à jeun.",
+    "Œufs entiers > blancs pour MPS (Van Vliet et al. 2017, food matrix effect). Découplage jaune/blanc reste pertinent au dîner (digestion, sommeil).",
+    "Polyphénols + Fe/Zn : charge élevée R1 et collation inhibe absorption. R2 optimisé (Flavochino décalé, chou rouge retiré jus midi, citron ajouté). Dîner = seule fenêtre sans inhibiteurs → sardines 2×/sem.",
+    "Repas 2 dense + MS2 lundi : R2 ~950 kcal, ~48g lip, vidange 5-6h. MS2 lundi (14h) = positions verticales/suspendues uniquement. Hinge/row en MS3 (17h30).",
+    "Germe de blé co-fermenté : la fermentation réduit les phytates du germe ET pourrait augmenter la teneur en spermidine (polyamine stable en conditions LAB, production par L. plantarum via décarboxylation ornithine).",
+    "Pommes de terre cuites-refroidies (RS3) : cuire puis réfrigérer ≥4h. Le RS3 survit au réchauffage (Englyst & Cummings 1987). Prébiotique mieux toléré que l'inuline (fermentation lente, côlon distal). Batch cooking 2-3 jours.",
+    "Banane exclue de tout repas contenant des flavanols (cacao, myrtilles, Flavochino). La polyphénol oxydase (PPO) détruit jusqu'à 84% des flavanols par conversion en quinones (Ottaviani et al. 2023, Food & Function, UC Davis)."
+  ],
+  "principles": {
+    "stable": [
+      "Fenêtre alimentaire ~10h30, alignée chronobiologie (Rhonda Patrick)",
+      "3 stimulations seuil leucine (≥2,5g) par jour (R1, R2, collation)",
+      "Glucides lents au dîner (tryptophane → sérotonine → mélatonine)",
+      "Protéines dîner ≤28-30g (charge osmotique rénale nocturne)",
+      "Flavochino : 1ère prise dans le bol R1, 2ème à 11h30 inter-repas. Toujours avant 14h30",
+      "Citron systématique au R2 (enhancer Fe non-héminique)",
+      "Jus midi sans chou rouge (inhibiteur Fe/Zn, couvert au matin)",
+      "Sardines 2×/semaine au dîner (fer héminique, fenêtre sans inhibiteurs)",
+      "Hydratation modulée par type de jour",
+      "Dimanche : récupération systémique",
+      "Pas d'écran avant la première session d'entraînement",
+      "Jus #2 préparable le matin, réfrigérer"
+    ],
+    "vigilance_points": [
+      "Charge polyphénolique élevée R1 et collation → surveiller ferritine + saturation transferrine + zinc sérique",
+      "B12 : 2,5µg/jour (multivitamines) + sources alimentaires = probablement suffisant mais vérifier au bilan (B12 sérique + homocystéine)",
+      "Protéine blanc d'œuf poudre au dîner : en évaluation (découplage lipides/protéines pour reflux/chant)",
+      "Banane : ne jamais combiner avec aliments riches en flavanols (PPO — Ottaviani et al. 2023)"
+    ]
+  },
+  "monthly_cost_estimate": {
+    "supplements": 98.61,
+    "protein_powders": 87.94,
+    "food": 516.19,
+    "care": 15.22,
+    "total": 717.96,
+    "source": "budget_mensuel_alimentation.xlsx (19/02/2026). Ordre de grandeur, pas suivi comptable exact.",
+    "note": "Ajustements depuis le budget initial : œufs réduits à ~5/jour (2 R2 + rotation dîner) vs 6/jour budgeté, ténébrions réduits à 15g/jour vs 50g budgeté. Le budget réel est probablement inférieur."
+  }
+}
