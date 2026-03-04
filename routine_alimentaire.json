@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.0",
+    "version": "1.1.1",
     "date": "2026-03-03",
     "eating_window": "8h00–18h30 (~10h30)",
     "target_kcal": 2900,
@@ -16,6 +16,16 @@
     "notes": "Cibles basées sur TDEE ~2700-2800 + surplus modeste 100-200 kcal pour recomposition. Protéines initialement à 1.6g/kg (136g) mais l'architecture actuelle fournit ~172g (2g/kg) — dans le corridor optimal 1.6-2.2g/kg (Stokes et al. 2018). Déficit calorique identifié principalement sur les glucides."
   },
   "changelog": [
+    {
+      "date": "2026-03-04",
+      "version": "1.1.1",
+      "changes": [
+        "Greenwhey corrigée selon étiquette réelle : 117 kcal (pas 97), 3g glucides (pas 1), 2.2g lipides (pas 1), 1.8g leucine (pas 2.0)",
+        "Greenwhey demi-dose collation ajustée proportionnellement",
+        "Sardines corrigées : 95g égouttées par boîte (pas 120g)",
+        "Ingrédients Greenwhey mis à jour : pois + haricots mungo + courge + cacao maigre Fair Trade + stévia"
+      ]
+    },
     {
       "date": "2026-03-03",
       "version": "1.1.0",
@@ -60,13 +70,13 @@
           "qty": 30,
           "unit": "g poudre",
           "protein_g": 21,
-          "carb_g": 1,
-          "fat_g": 1,
-          "leucine_g": 2.0,
-          "kcal": 97,
+          "carb_g": 3,
+          "fat_g": 2.2,
+          "leucine_g": 1.8,
+          "kcal": 117,
           "cost_eur_per_kg": 27.78,
           "cost_eur_per_day": 0.83,
-          "notes": "Pois + fèves + courge, pré-germée bio-fermentée. PDCAAS 0.8-1.0. PAS de la whey."
+          "notes": "Pois + haricots mungo + courge, cacao maigre Fair Trade, stévia. Bio, vegan, sans gluten. 30g = 21g protéines, 1.8g leucine. PDCAAS 0.8-1.0. PAS de la whey."
         },
         {
           "name": "Flocons avoine/épeautre fermentés",
@@ -142,10 +152,10 @@
       },
       "totals": {
         "protein_g": 45.5,
-        "carb_g": 110,
-        "fat_g": 14.8,
-        "kcal": 737,
-        "leucine_g": 3.5
+        "carb_g": 112,
+        "fat_g": 16.0,
+        "kcal": 757,
+        "leucine_g": 3.3
       },
       "leucine_threshold": true,
       "digestion_estimate": {
@@ -348,10 +358,10 @@
           "qty": 15,
           "unit": "g poudre",
           "protein_g": 10.5,
-          "carb_g": 0.5,
-          "fat_g": 0.5,
-          "leucine_g": 1.0,
-          "kcal": 48,
+          "carb_g": 1.5,
+          "fat_g": 1.1,
+          "leucine_g": 0.9,
+          "kcal": 59,
           "cost_eur_per_day": 0.42,
           "notes": "Demi-dose suffisante pour compléter le seuil leucine avec le skyr."
         },
@@ -381,11 +391,11 @@
         }
       ],
       "totals": {
-        "protein_g": 35,
-        "carb_g": 20.5,
-        "fat_g": 3.7,
-        "kcal": 253,
-        "leucine_g": 3.0
+        "protein_g": 35.0,
+        "carb_g": 21.5,
+        "fat_g": 4.3,
+        "kcal": 264,
+        "leucine_g": 2.9
       },
       "leucine_threshold": true,
       "digestion_estimate": {
@@ -404,15 +414,15 @@
         {
           "name": "Sardines bio",
           "frequency": "2×/semaine",
-          "qty": 120,
-          "unit": "g (1 boîte)",
-          "protein_g": 25,
+          "qty": 95,
+          "unit": "g (1 boîte égouttée)",
+          "protein_g": 23,
           "carb_g": 0,
           "fat_g": 11,
-          "leucine_g": 1.8,
-          "kcal": 200,
+          "leucine_g": 1.7,
+          "kcal": 190,
           "cost_eur_per_day": 3.0,
-          "notes": "Fer héminique (insensible aux polyphénols) dans la fenêtre sans inhibiteurs. Portugal/Bretagne, huile olive EV, boîte sans BPA. Mercure très faible (0.01-0.04 ppm). Ne pas augmenter >2×/sem (histamine + régime riche en fermentés)."
+          "notes": "Qualité : Portugal/Bretagne, huile olive EV, boîte sans BPA. Mercure très faible (0.01-0.04 ppm). 95g = poids net égoutté d'une boîte standard. Fer héminique dans la fenêtre sans inhibiteurs polyphénoliques."
         },
         {
           "name": "Œufs bio XL",
@@ -541,12 +551,12 @@
         }
       ],
       "totals_average": {
-        "protein_g": 34,
+        "protein_g": 33,
         "carb_g": 99,
         "fat_g": 26,
-        "kcal": 774,
-        "leucine_g": 1.6,
-        "note": "Moyenne simple des 3 sources protéiques actives (sardines, œufs, tempeh). Inclut huile olive 10ml vinaigrette."
+        "kcal": 771,
+        "leucine_g": 1.5,
+        "note": "Moyenne simple des 3 sources protéiques actives. Sardines corrigées à 95g (1 boîte égouttée)."
       },
       "leucine_threshold": false,
       "digestion_estimate": {
@@ -559,12 +569,12 @@
   ],
   "daily_totals": {
     "confirmed": {
-      "protein_g": 182,
-      "carb_g": 332,
-      "fat_g": 97,
-      "kcal": 2908,
+      "protein_g": 181,
+      "carb_g": 335,
+      "fat_g": 99,
+      "kcal": 2936,
       "leucine_stimulations": 3,
-      "note": "Totaux v1.1.0 confirmés. Cibles atteintes. Prébiotiques couverts par 3 sources alimentaires (bêta-glucanes, RS3, arabinoxylanes) + FOS saisonniers."
+      "note": "Totaux v1.1.1. Greenwhey corrigée selon étiquette réelle (117kcal/30g, 1.8g leucine). Sardines corrigées à 95g/boîte égouttée."
     }
   },
   "variants": {
