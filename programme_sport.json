@@ -1,0 +1,1153 @@
+{
+  "meta": {
+    "version": "2.0.0",
+    "date_creation": "2026-03-04",
+    "description": "Master d'orchestration du programme sport. Référence les exercices via libraryId → exercise_library.json. Ne jamais éditer programme_complet.json directement — modifier ce fichier puis lancer build.py.",
+    "phase_active": "phase2",
+    "note_refactor": "Extrait de phase2_tracker.html (mars 2026). Architecture découplée : programme_sport.json (planning) + exercise_library.json (exécution) → build.py → programme_complet.json."
+  },
+  "profil_biomecanique": {
+    "ilmi_mm": 13,
+    "cote_court": "droit",
+    "compensations": [
+      "bascule pelvienne droite",
+      "scoliose fonctionnelle (convexité droite probable)",
+      "dyskinésie scapulaire droite",
+      "rib flare droit",
+      "atrophie relative pectoral droit",
+      "pieds plats + duck-walking pattern"
+    ],
+    "muscles_deficitaires": [
+      "trapèze inférieur droit",
+      "serratus anterior droit",
+      "moyen fessier droit",
+      "oblique externe droit"
+    ],
+    "mouvements_en_pause": [
+      "overhead press"
+    ],
+    "signaux_alerte_hanche_droite": "Légère sensation articulaire lors des exercices de poussée sur jambe droite — ne pas forcer, attendre évaluation kiné.",
+    "scanographie_eos": "à programmer",
+    "consultation_kine": "à venir"
+  },
+  "regles_globales": {
+    "modele": "micro-sessions 30min distribuées sur la journée (~3-4h entre sessions). Exploite la re-sensibilisation mTOR inter-sessions et la faible fatigue centrale par session.",
+    "gradient_fatigue_semaine": {
+      "lundi_mercredi": "composés lourds bilatéraux autorisés, RIR 1-2, tension mécanique dominante",
+      "vendredi": "composés autorisés, RIR 2-3 modulé par ressenti",
+      "jeudi_mardi": "monoarticulaires/machines/câbles uniquement, RIR 3-4 systématique, biais concentrique, stress métabolique dominant"
+    },
+    "techniques_intensification": "drop sets, rest-pause, tempo excentrique lent, myoreps, séries mécaniques — réservées lundi et mercredi uniquement",
+    "digestion_ms_lundi": "MS2 lundi (14h, ~1h30 post-R2) : positions verticales/suspendues uniquement. Pas de flexion de hanche ni au sol avant MS3 (17h30, estomac vidé).",
+    "signaux_reduire_volume_jeudi": [
+      "sommeil dégradé nuit précédente",
+      "première série vendredi matin RPE +2 vs normale",
+      "fatigue générale persistante au réveil vendredi",
+      "reps en baisse >15% sur exercice de référence le vendredi"
+    ],
+    "cardio": "Norwegian 4×4 (4×4min à 85-95% FCmax) sur assault bike + Zone 2 (20min, 60-70% FCmax), 2×/semaine (mardi, jeudi)",
+    "sauna": "4 sessions/semaine (lundi, mercredi, jeudi, vendredi)",
+    "contraintes_horaires": {
+      "mardi": "cours 15h-20h",
+      "mercredi": "cours 13h-18h (réévaluer fin avril)",
+      "vendredi_matin": "marché ~2h"
+    }
+  },
+  "phases": {
+    "phase1": {
+      "status": "terminée",
+      "dates": {
+        "debut": null,
+        "fin": "2026-02"
+      },
+      "description": "Construction de la base — moteurs fondamentaux, activation des chaînes correctrices, établissement des habitudes de micro-sessions.",
+      "objectifs": [
+        "établir les patterns de mouvement",
+        "activer moyen fessier et trapèze inférieur droit",
+        "initier mobilité FitnessFAQ P1"
+      ]
+    },
+    "phase2": {
+      "status": "active",
+      "dates": {
+        "debut": "2026-02",
+        "fin": null
+      },
+      "description": "Hypertrophie progressive — surcharge des moteurs principaux, renforcement correctif continu, progression mobilité P2.",
+      "objectifs": [
+        "hypertrophie lower body (split squat, RDL, hip thrust)",
+        "force vertical pull (pull-ups, chin-ups)",
+        "push horizontal (bench, ring push-ups)",
+        "correctif scapulaire (prone Y, floor slides, wall slides)",
+        "progression mobilité vers phase 2 (overhead wall lunge, bar thoracic hold)"
+      ],
+      "progression_mobilite": "P1 maîtrisés, introduction P2 (Overhead Wall Lunge, Jefferson Curl, Cossack Squat)",
+      "note_contrainte": "Mercredi réduit à 2 MS (cours 13h-18h) jusqu'à fin avril"
+    },
+    "phase3": {
+      "status": "future",
+      "dates": {
+        "debut": null,
+        "fin": null
+      },
+      "description": "À définir après réévaluation fin avril (fin contrainte mercredi) et consultation kiné."
+    }
+  },
+  "semaine": {
+    "lundi": {
+      "theme": "Force distribuée + Salle soir (RIR 1-2)",
+      "dominante": "mécanique",
+      "rir_cible": "1-2",
+      "blocs": [
+        {
+          "id": "tva",
+          "nom": "Activation TVA",
+          "heure": "~7h15",
+          "duree_min": 3,
+          "type": "activation",
+          "exercises": [
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "TVA Pull Squeeze",
+              "params": "1×15-20 reps",
+              "cue": "Expirer et tirer le nombril vers la colonne"
+            },
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "Vacuum",
+              "params": "3×max hold",
+              "cue": "Expirer tout l'air, aspirer le nombril sous les côtes. Varier : couché → 4 pattes → debout"
+            }
+          ]
+        },
+        {
+          "id": "bfs-lun",
+          "nom": "Barefoot Strength: Glute Re-Education L1",
+          "heure": "08h00",
+          "duree_min": 15,
+          "type": "bfs",
+          "bfsWorkoutId": "glute-reeduc-l1",
+          "note": "Mini-bande légère. RÈGLE ABSOLUE : main posée sur le fessier travaillé à CHAQUE exercice.",
+          "exercises": [
+            {
+              "libraryId": "kneeling-hip-circles",
+              "params": "2×10/côté (5/dir)"
+            },
+            {
+              "libraryId": "hip-hinge-avec-baton-2a-sagittal",
+              "label": "Hip Hinge — mains bas du dos",
+              "params": "2×10"
+            },
+            {
+              "libraryId": "hip-hinge-avec-baton-2a-sagittal",
+              "label": "Hip Hinge — mains sur fessiers",
+              "params": "2×10"
+            },
+            {
+              "libraryId": "clam-shells",
+              "label": "Clam Shells (sans bande)",
+              "params": "2×10 tempo/côté"
+            },
+            {
+              "libraryId": "hip-bridges-bande",
+              "label": "Hip Bridges (bande légère)",
+              "params": "2×10 + 5s hold"
+            }
+          ]
+        },
+        {
+          "id": "mob-lun",
+          "nom": "Mobilité Pré-force A",
+          "heure": "08h15",
+          "duree_min": 30,
+          "type": "mobilite",
+          "sessionId": "pre-force-A",
+          "exercises": [
+            {
+              "libraryId": "scapula-push-ups",
+              "params": "1×20"
+            },
+            {
+              "libraryId": "floor-slides",
+              "params": "1×8 tempo lent"
+            },
+            {
+              "libraryId": "prone-y-raise-banc-incline",
+              "label": "Prone Y Raise",
+              "params": "2×10 (0 puis 1-2 kg)"
+            },
+            {
+              "libraryId": "hanging-cobra",
+              "params": "3×5×5s iso"
+            },
+            {
+              "libraryId": "thoracic-rotation-band",
+              "label": "Thoracic Rotation — Band",
+              "params": "3×8/côté"
+            },
+            {
+              "libraryId": "dislocate",
+              "params": "3×10"
+            },
+            {
+              "libraryId": "sleeper-crac",
+              "params": "2×75s/côté"
+            },
+            {
+              "libraryId": "lat-stretch",
+              "params": "3×45s/côté"
+            },
+            {
+              "libraryId": "reverse-nordic",
+              "label": "Reverse Nordic amplitude complète",
+              "params": "3×8-12"
+            },
+            {
+              "libraryId": "fire-hydrant-closed",
+              "params": "3×5-8/côté"
+            },
+            {
+              "libraryId": "band-hamstring-stretch",
+              "params": "2×45s/côté"
+            }
+          ]
+        },
+        {
+          "id": "ms1-lun",
+          "nom": "MS1: Lower Body — Quad/Glute dominant",
+          "heure": "09h30",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "1-2",
+          "exercises": [
+            {
+              "libraryId": "side-plank-hip-thrusts",
+              "params": "1×8/côté"
+            },
+            {
+              "libraryId": "split-squat-bande",
+              "params": "4×8/côté"
+            },
+            {
+              "libraryId": "rolling-side-plank",
+              "params": "3×5/côté"
+            },
+            {
+              "libraryId": "reverse-nordic",
+              "label": "Nordic Curl partiel",
+              "params": "3×6-8"
+            },
+            {
+              "libraryId": "single-leg-calf-raise-au-poids-de-corps",
+              "label": "Single Leg Calf Raise lesté",
+              "params": "2×10/côté"
+            }
+          ]
+        },
+        {
+          "id": "ms2-lun",
+          "nom": "MS2: Upper Body — Pull + Hinge",
+          "heure": "14h00",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "1-2",
+          "note": "Positions verticales/suspendues uniquement (~1h30 post-R2, digestion active). Pas de flexion de hanche ni au sol.",
+          "exercises": [
+            {
+              "libraryId": "kickstand-rdl",
+              "params": "3×8/côté"
+            },
+            {
+              "libraryId": "db-row-unilateral-1-bras",
+              "label": "DB Row unilatéral",
+              "params": "3×10/côté"
+            },
+            {
+              "libraryId": "db-half-kneeling-single-arm-press",
+              "params": "3×10/côté"
+            },
+            {
+              "libraryId": "dead-bug",
+              "label": "Pro Bird Dog",
+              "params": "3×8/côté"
+            }
+          ]
+        },
+        {
+          "id": "ms3-lun",
+          "nom": "MS3: Push + Vertical Pull + Core obliques",
+          "heure": "17h30",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "1-2",
+          "exercises": [
+            {
+              "libraryId": "pull-ups-prise-neutre",
+              "params": "4×8-10"
+            },
+            {
+              "libraryId": "ring-push-ups-bande",
+              "params": "4×10-12"
+            },
+            {
+              "libraryId": "suitcase-carry",
+              "label": "Lever Side Bend",
+              "params": "3×10-12/côté"
+            },
+            {
+              "libraryId": "suitcase-carry",
+              "params": "2×30s/côté"
+            }
+          ]
+        },
+        {
+          "id": "salle-lun",
+          "nom": "Salle machines",
+          "heure": "~20h00",
+          "duree_min": 30,
+          "type": "salle",
+          "exercises": [
+            {
+              "libraryId": "hip-thrust-machine",
+              "params": "3×10-12"
+            },
+            {
+              "libraryId": "hip-adduction-machine",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "hip-abduction-machine",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "leg-press-machine",
+              "params": "3×10-12"
+            }
+          ]
+        },
+        {
+          "id": "sauna-lun",
+          "nom": "Sauna",
+          "heure": "~20h30",
+          "type": "sauna"
+        }
+      ]
+    },
+    "mardi": {
+      "theme": "Cardio + Mobilité + Force allégée (bloc unique)",
+      "dominante": "metabolique",
+      "rir_cible": "3-4",
+      "blocs": [
+        {
+          "id": "tva-mar",
+          "nom": "Activation TVA",
+          "heure": "~7h15",
+          "duree_min": 3,
+          "type": "activation",
+          "exercises": [
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "TVA Pull Squeeze",
+              "params": "1×15-20 reps"
+            },
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "Vacuum",
+              "params": "3×max hold"
+            }
+          ]
+        },
+        {
+          "id": "bfs-mar",
+          "nom": "Barefoot Strength: Anti-Pronation L1",
+          "heure": "07h45",
+          "duree_min": 15,
+          "type": "bfs",
+          "bfsWorkoutId": "anti-pronation-l1",
+          "exercises": [
+            {
+              "libraryId": "five-finger-toe-stretch",
+              "params": "1 min/pied"
+            },
+            {
+              "libraryId": "heel-raised-walks",
+              "params": "2 min continues"
+            },
+            {
+              "libraryId": "heel-elevated-lunges-emom",
+              "label": "Heel Elevated Lunges (EMOM)",
+              "params": "Min 1,3,5,7,9 : 10 reps"
+            },
+            {
+              "libraryId": "grounded-hops-emom",
+              "label": "Grounded Hops (EMOM)",
+              "params": "Min 2,4,6,8,10 : 30s/30s"
+            }
+          ]
+        },
+        {
+          "id": "cardio-mar",
+          "nom": "4×4 + Zone 2",
+          "heure": "08h00",
+          "duree_min": 45,
+          "type": "cardio",
+          "exercises": [
+            {
+              "libraryId": "norwegian-4x4",
+              "label": "Norwegian 4×4 Assault Bike",
+              "params": "25 min"
+            },
+            {
+              "libraryId": "zone-2",
+              "label": "Zone 2 Assault Bike",
+              "params": "20 min"
+            }
+          ]
+        },
+        {
+          "id": "mob-mar",
+          "nom": "Mobilité Post-cardio D",
+          "heure": "08h55",
+          "duree_min": 23,
+          "type": "mobilite",
+          "sessionId": "post-cardio-D",
+          "exercises": [
+            {
+              "libraryId": "thoracic-rotation-bw",
+              "label": "Thoracic Rotation — Bodyweight",
+              "params": "3×8/côté"
+            },
+            {
+              "libraryId": "sleeper-crac",
+              "params": "2×75s/côté"
+            },
+            {
+              "libraryId": "lat-stretch",
+              "params": "3×50s/côté"
+            },
+            {
+              "libraryId": "wall-lunge",
+              "label": "Overhead Wall Lunge",
+              "params": "3×60s/côté"
+            },
+            {
+              "libraryId": "pigeon-stretch",
+              "params": "2×60-90s/côté"
+            },
+            {
+              "libraryId": "band-hamstring-stretch",
+              "params": "2×45-60s/côté"
+            }
+          ]
+        },
+        {
+          "id": "ms1-mar",
+          "nom": "MS1: Full Body métabolique",
+          "heure": "11h00",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "3-4",
+          "exercises": [
+            {
+              "libraryId": "bent-knee-side-plank-hip-abduction",
+              "params": "2×20s/côté"
+            },
+            {
+              "libraryId": "incline-db-fly-bande",
+              "params": "3×10-12"
+            },
+            {
+              "libraryId": "reverse-fly-cable-unitree",
+              "label": "Reverse Fly (câble Unitree)",
+              "params": "3×15-20"
+            },
+            {
+              "libraryId": "sissy-squat",
+              "label": "Sissy Squat lesté",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "bayesian-curl-cable-unitree",
+              "label": "Bayesian Curl (câble Unitree)",
+              "params": "2×10-12"
+            },
+            {
+              "libraryId": "overhead-tricep-extension-unitree",
+              "params": "2×12-15"
+            }
+          ]
+        },
+        {
+          "id": "core-mar",
+          "nom": "Bloc Core: sets discrets + Circuit Brieuc",
+          "heure": "~11h30",
+          "duree_min": 20,
+          "type": "core",
+          "exercises": [
+            {
+              "libraryId": "dead-bug",
+              "label": "Pro Bird Dog",
+              "params": "2×8/côté"
+            },
+            {
+              "libraryId": "3-month-heel-taps",
+              "label": "In-and-Out",
+              "params": "2×12 contrôlées"
+            },
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "Circuit Brieuc follow-along",
+              "params": ""
+            }
+          ]
+        }
+      ]
+    },
+    "mercredi": {
+      "theme": "Force distribuée (2 sessions) + Salle soir — contrainte cours 13h-18h",
+      "dominante": "mécanique",
+      "rir_cible": "1-2",
+      "contrainte": "cours 13h-18h jusqu'à fin avril — réévaluer à ce moment",
+      "blocs": [
+        {
+          "id": "tva-mer",
+          "nom": "Activation TVA",
+          "heure": "~7h15",
+          "duree_min": 3,
+          "type": "activation",
+          "exercises": [
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "TVA Pull Squeeze",
+              "params": "1×15-20 reps"
+            },
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "Vacuum",
+              "params": "3×max hold"
+            }
+          ]
+        },
+        {
+          "id": "bfs-mer",
+          "nom": "Barefoot Strength: Glute Re-Education L1",
+          "heure": "08h00",
+          "duree_min": 15,
+          "type": "bfs",
+          "bfsWorkoutId": "glute-reeduc-l1",
+          "exercises": [
+            {
+              "libraryId": "kneeling-hip-circles",
+              "params": "2×10/côté (5/dir)"
+            },
+            {
+              "libraryId": "hip-hinge-avec-baton-2a-sagittal",
+              "label": "Hip Hinge — mains bas du dos",
+              "params": "2×10"
+            },
+            {
+              "libraryId": "hip-hinge-avec-baton-2a-sagittal",
+              "label": "Hip Hinge — mains sur fessiers",
+              "params": "2×10"
+            },
+            {
+              "libraryId": "clam-shells",
+              "label": "Clam Shells (sans bande)",
+              "params": "2×10 tempo/côté"
+            },
+            {
+              "libraryId": "hip-bridges-bande",
+              "label": "Hip Bridges (bande légère)",
+              "params": "2×10 + 5s hold"
+            }
+          ]
+        },
+        {
+          "id": "mob-mer",
+          "nom": "Mobilité Pré-force B",
+          "heure": "08h15",
+          "duree_min": 30,
+          "type": "mobilite",
+          "sessionId": "pre-force-B",
+          "exercises": [
+            {
+              "libraryId": "scapula-push-ups",
+              "params": "1×20"
+            },
+            {
+              "libraryId": "wall-slides",
+              "params": "1×8 tempo lent"
+            },
+            {
+              "libraryId": "prone-y-raise-banc-incline",
+              "label": "Prone Y Raise",
+              "params": "2×10 (0 puis 1-2 kg)"
+            },
+            {
+              "libraryId": "hanging-cobra",
+              "params": "3×5×5s iso"
+            },
+            {
+              "libraryId": "thoracic-rotation-band",
+              "label": "Thoracic Rotation — Band",
+              "params": "3×8/côté"
+            },
+            {
+              "libraryId": "butchers-block",
+              "params": "3×45-60s"
+            },
+            {
+              "libraryId": "bodyweight-pullover",
+              "label": "BW Pullover amplitude complète",
+              "params": "3×8-10"
+            },
+            {
+              "libraryId": "wall-lunge",
+              "label": "Overhead Wall Lunge",
+              "params": "3×45-60s/côté"
+            },
+            {
+              "libraryId": "jefferson-curl",
+              "label": "Jefferson Curl 10-15 kg",
+              "params": "3×5-8"
+            },
+            {
+              "libraryId": "pigeon-stretch",
+              "params": "2×60-90s/côté"
+            }
+          ]
+        },
+        {
+          "id": "ms1-mer",
+          "nom": "MS1: Lower Body Heavy + Core correctif",
+          "heure": "09h30",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "1-2",
+          "exercises": [
+            {
+              "libraryId": "hip-airplane",
+              "params": "1×8/côté"
+            },
+            {
+              "libraryId": "barbell-db-rdl-bilateral",
+              "label": "Barbell/DB RDL (chauffe)",
+              "params": "1×6"
+            },
+            {
+              "libraryId": "barbell-db-rdl-bilateral",
+              "label": "Barbell/DB RDL",
+              "params": "4×8-10"
+            },
+            {
+              "libraryId": "3-month-heel-taps",
+              "params": "3×5"
+            },
+            {
+              "libraryId": "single-leg-calf-raise-au-poids-de-corps",
+              "label": "Single Leg Calf Raise lesté",
+              "params": "2×10/côté"
+            }
+          ]
+        },
+        {
+          "id": "ms2-mer",
+          "nom": "MS2: Upper Body Heavy",
+          "heure": "18h30",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "1-2",
+          "exercises": [
+            {
+              "libraryId": "wide-grip-seated-row",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "dumbbell-bench-press-paus-3-month",
+              "label": "DB Bench Press pausé",
+              "params": "4×8-10"
+            },
+            {
+              "libraryId": "chin-ups",
+              "params": "4×8-10"
+            }
+          ]
+        },
+        {
+          "id": "salle-mer",
+          "nom": "Salle machines + Core suspendu",
+          "heure": "~19h00",
+          "duree_min": 30,
+          "type": "salle",
+          "exercises": [
+            {
+              "libraryId": "hip-thrust-machine",
+              "params": "3×10-12"
+            },
+            {
+              "libraryId": "hip-adduction-machine",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "hip-abduction-machine",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "l-sit",
+              "label": "Hanging Leg Raise 1.5 reps",
+              "params": "3×8-10"
+            }
+          ]
+        },
+        {
+          "id": "sauna-mer",
+          "nom": "Sauna",
+          "heure": "~19h30",
+          "type": "sauna"
+        }
+      ]
+    },
+    "jeudi": {
+      "theme": "Cardio + Mobilité + Force allégée distribuée + Sauna",
+      "dominante": "metabolique",
+      "rir_cible": "3-4",
+      "blocs": [
+        {
+          "id": "tva-jeu",
+          "nom": "Activation TVA",
+          "heure": "~7h15",
+          "duree_min": 3,
+          "type": "activation",
+          "exercises": [
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "TVA Pull Squeeze",
+              "params": "1×15-20 reps"
+            },
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "Vacuum",
+              "params": "3×max hold"
+            }
+          ]
+        },
+        {
+          "id": "bfs-jeu",
+          "nom": "Barefoot Strength: Anti-Pronation L1",
+          "heure": "07h45",
+          "duree_min": 15,
+          "type": "bfs",
+          "bfsWorkoutId": "anti-pronation-l1",
+          "exercises": [
+            {
+              "libraryId": "five-finger-toe-stretch",
+              "params": "1 min/pied"
+            },
+            {
+              "libraryId": "heel-raised-walks",
+              "params": "2 min continues"
+            },
+            {
+              "libraryId": "heel-elevated-lunges-emom",
+              "label": "Heel Elevated Lunges (EMOM)",
+              "params": "Min 1,3,5,7,9 : 10 reps"
+            },
+            {
+              "libraryId": "grounded-hops-emom",
+              "label": "Grounded Hops (EMOM)",
+              "params": "Min 2,4,6,8,10 : 30s/30s"
+            }
+          ]
+        },
+        {
+          "id": "cardio-jeu",
+          "nom": "4×4 + Zone 2",
+          "heure": "08h00",
+          "duree_min": 45,
+          "type": "cardio",
+          "exercises": [
+            {
+              "libraryId": "norwegian-4x4",
+              "label": "Norwegian 4×4 Assault Bike",
+              "params": "25 min"
+            },
+            {
+              "libraryId": "zone-2",
+              "label": "Zone 2 Assault Bike",
+              "params": "20 min"
+            }
+          ]
+        },
+        {
+          "id": "mob-jeu",
+          "nom": "Mobilité Post-cardio E",
+          "heure": "08h55",
+          "duree_min": 23,
+          "type": "mobilite",
+          "sessionId": "post-cardio-E",
+          "exercises": [
+            {
+              "libraryId": "thoracic-rotation-bw",
+              "label": "Thoracic Rotation — Bodyweight",
+              "params": "3×8/côté"
+            },
+            {
+              "libraryId": "dislocate",
+              "params": "2×10"
+            },
+            {
+              "libraryId": "butchers-block",
+              "params": "3×45s"
+            },
+            {
+              "libraryId": "bodyweight-pullover",
+              "label": "BW Pullover amplitude complète",
+              "params": "3×8-10"
+            },
+            {
+              "libraryId": "long-lunge",
+              "label": "Long Lunge",
+              "params": "3×60-90s/côté"
+            },
+            {
+              "libraryId": "pigeon-stretch",
+              "params": "2×60-90s/côté"
+            },
+            {
+              "libraryId": "jefferson-curl",
+              "params": "3×5-8"
+            },
+            {
+              "libraryId": "cossack-squat",
+              "params": "3×8/côté + 10s iso"
+            }
+          ]
+        },
+        {
+          "id": "ms1-jeu",
+          "nom": "MS1: Upper Body métabolique + Core",
+          "heure": "11h00",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "3-4",
+          "exercises": [
+            {
+              "libraryId": "tirage-horizontal-unitree",
+              "label": "Tirage horizontal Unitree + Swissies V2",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "bench-press-unitree-trakhandle",
+              "label": "Bench Press Unitree + Trakhandle",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "face-pulls-bande-ou-cable",
+              "label": "Face Pulls (bande)",
+              "params": "3×15-20"
+            },
+            {
+              "libraryId": "pallof-press",
+              "label": "Pallof Press / Kneeling Core Rotation",
+              "params": "2-3×10/côté"
+            }
+          ]
+        },
+        {
+          "id": "ms2-jeu",
+          "nom": "MS2: Lower Body métabolique + Core",
+          "heure": "15h00",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "3-4",
+          "exercises": [
+            {
+              "libraryId": "bent-knee-side-plank-hip-abduction",
+              "params": "2×20s/côté"
+            },
+            {
+              "libraryId": "hip-thrust-machine",
+              "label": "DB Hip Thrust unilatéral",
+              "params": "3×12-15/côté"
+            },
+            {
+              "libraryId": "sissy-squat",
+              "label": "Sissy Squat lesté",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "calf-raise-bilateral",
+              "label": "Calf Raise bilatéral lesté",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "3-month-heel-taps",
+              "label": "Reverse Crunch 1.5 reps",
+              "params": "3×10-15"
+            }
+          ]
+        },
+        {
+          "id": "ms3-jeu",
+          "nom": "MS3: Isolation + correctif",
+          "heure": "18h30",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "3-4",
+          "exercises": [
+            {
+              "libraryId": "face-pulls-bande-ou-cable",
+              "label": "Face Pulls (bande, angle différent)",
+              "params": "2×15-20"
+            },
+            {
+              "libraryId": "kelso-shrug-banc-incline-db-legers",
+              "label": "Kelso Shrug",
+              "params": "2×AMRAP"
+            },
+            {
+              "libraryId": "db-lateral-raise",
+              "params": "3×12-15"
+            },
+            {
+              "libraryId": "tall-kneeling-hammer-curls",
+              "params": "2×12"
+            },
+            {
+              "libraryId": "tricep-pushdowns-bande",
+              "params": "2×12-15"
+            }
+          ]
+        },
+        {
+          "id": "salle-jeu",
+          "nom": "Back Extension + Sauna",
+          "heure": "~19h00",
+          "type": "salle",
+          "exercises": [
+            {
+              "libraryId": "back-extension",
+              "params": "3×10-12"
+            }
+          ]
+        },
+        {
+          "id": "sauna-jeu",
+          "nom": "Sauna",
+          "heure": "~19h30",
+          "type": "sauna"
+        }
+      ]
+    },
+    "vendredi": {
+      "theme": "Mobilité + Force + Marché + Sauna",
+      "dominante": "mécanique",
+      "rir_cible": "2-3",
+      "blocs": [
+        {
+          "id": "tva-ven",
+          "nom": "Activation TVA",
+          "heure": "~7h15",
+          "duree_min": 3,
+          "type": "activation",
+          "exercises": [
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "TVA Pull Squeeze",
+              "params": "1×15-20 reps"
+            },
+            {
+              "libraryId": "vacuum-hollow-hold",
+              "label": "Vacuum",
+              "params": "3×max hold"
+            }
+          ]
+        },
+        {
+          "id": "bfs-ven",
+          "nom": "Barefoot Strength: Hip Mobility Reset L1",
+          "heure": "08h00",
+          "duree_min": 15,
+          "type": "bfs",
+          "bfsWorkoutId": "hip-mobility-reset-l1",
+          "exercises": [
+            {
+              "libraryId": "kneeling-hip-extension",
+              "label": "Kneeling Hip Extension",
+              "params": "4×1 min (alterner)"
+            },
+            {
+              "libraryId": "kneeling-hip-extension",
+              "label": "Kneeling Hip Extension Circles",
+              "params": "4×1 min (alterner)"
+            },
+            {
+              "libraryId": "deep-lunge",
+              "label": "Deep Lunge",
+              "params": "4×1 min (alterner)"
+            },
+            {
+              "libraryId": "kneeling-half-splits",
+              "label": "Kneeling Half Splits",
+              "params": "4×1 min (alterner)"
+            },
+            {
+              "libraryId": "single-leg-hip-hinge",
+              "label": "Single-Leg Hip Hinge",
+              "params": "4×10 reps/côté"
+            }
+          ]
+        },
+        {
+          "id": "mob-ven",
+          "nom": "Mobilité Pré-force C",
+          "heure": "08h15",
+          "duree_min": 30,
+          "type": "mobilite",
+          "sessionId": "pre-force-C",
+          "exercises": [
+            {
+              "libraryId": "prone-y-raise-banc-incline",
+              "label": "Prone Y Raise",
+              "params": "2×10 (0 puis 1-2 kg)"
+            },
+            {
+              "libraryId": "scapula-push-ups",
+              "params": "1×15"
+            },
+            {
+              "libraryId": "hanging-cobra",
+              "params": "3×5×5s iso"
+            },
+            {
+              "libraryId": "thoracic-rotation-band",
+              "label": "Thoracic Rotation — Band",
+              "params": "3×8/côté"
+            },
+            {
+              "libraryId": "lat-stretch",
+              "params": "3×45s/côté"
+            },
+            {
+              "libraryId": "wall-lunge",
+              "label": "Overhead Wall Lunge",
+              "params": "3×45-60s/côté"
+            },
+            {
+              "libraryId": "reverse-nordic",
+              "label": "Reverse Nordic amplitude complète",
+              "params": "3×8-12"
+            },
+            {
+              "libraryId": "cossack-squat",
+              "label": "Cossack Squat sans support + 10s iso",
+              "params": "3×8/côté"
+            },
+            {
+              "libraryId": "fire-hydrant-open-overcoming-isometric",
+              "label": "Fire Hydrant Open — Overcoming Iso + Flex/Ext",
+              "params": "3×5×5s/côté + 5 BW + 5 Flex/Ext"
+            }
+          ]
+        },
+        {
+          "id": "ms1-ven",
+          "nom": "MS1: Full Body composé + Core correctif",
+          "heure": "08h45",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "2-3",
+          "exercises": [
+            {
+              "libraryId": "goblet-squat",
+              "label": "Goblet Squat pausé",
+              "params": "3×10"
+            },
+            {
+              "libraryId": "lat-pulldown-neutral-grip-unitree",
+              "label": "Lat Pulldown Neutral Grip (Unitree)",
+              "params": "3×10-12"
+            },
+            {
+              "libraryId": "dead-bug",
+              "label": "Dead Bugs",
+              "params": "3×8/côté"
+            },
+            {
+              "libraryId": "single-leg-calf-raise-au-poids-de-corps",
+              "label": "Single Leg Calf Raise lesté",
+              "params": "2×10/côté"
+            }
+          ]
+        },
+        {
+          "id": "marche-ven",
+          "nom": "Marché",
+          "heure": "09h30",
+          "duree_min": 120,
+          "type": "rucking"
+        },
+        {
+          "id": "ms2-ven",
+          "nom": "MS2: Upper Body + Fentes + Skills",
+          "heure": "12h00",
+          "duree_min": 30,
+          "type": "force",
+          "rir": "2-3",
+          "exercises": [
+            {
+              "libraryId": "fentes-lestees-sac-de-rucking",
+              "label": "Fentes lestées (sac de rucking)",
+              "params": "3×8/côté"
+            },
+            {
+              "libraryId": "incline-db-press",
+              "params": "3×10-12"
+            },
+            {
+              "libraryId": "l-sit",
+              "label": "L-sit practice",
+              "params": "3×15-20s"
+            }
+          ]
+        },
+        {
+          "id": "sauna-ven",
+          "nom": "Sauna + mobilité post-sauna longue",
+          "heure": "fin AP-midi",
+          "type": "sauna"
+        }
+      ]
+    },
+    "samedi": {
+      "theme": "Récupération complète",
+      "blocs": []
+    },
+    "dimanche": {
+      "theme": "Récupération complète",
+      "blocs": []
+    }
+  },
+  "historique_routines": [
+    {
+      "version": "1.0",
+      "phase": "phase1",
+      "dates": {
+        "debut": null,
+        "fin": "2026-02"
+      },
+      "motif_changement": "Passage phase 1 → phase 2 : surcharge progressive, introduction composés lourds bilatéraux, progression mobilité P2.",
+      "status": "archivée"
+    },
+    {
+      "version": "2.0",
+      "phase": "phase2",
+      "dates": {
+        "debut": "2026-02",
+        "fin": null
+      },
+      "motif_changement": "Routine active. Inversion MS2/MS3 lundi pour compatibilité digestive (repas 2 dense + vidange gastrique). Décalage MS2 lundi 13h30→14h.",
+      "status": "active"
+    }
+  ]
+}

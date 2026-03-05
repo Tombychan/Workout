@@ -1,0 +1,541 @@
+{
+  "meta": {
+    "program": "Barefoot Strength",
+    "driveFolder": "https://drive.google.com/drive/folders/1TfWGEMDb_ap89tggUnitfGVdPh5UxNWD",
+    "totalVideos": 47,
+    "lastUpdated": "2026-02-25",
+    "notes": "All video IDs resolved from Google Drive via Apps Script.",
+    "refactored": "2026-03-04",
+    "note_refactor": "Fichier de programmation pure. Infos exécution (position, movement, muscles, cues) → exercise_library.json via libraryId."
+  },
+  "phase1": {
+    "schedule": {
+      "lundi": "glute-reeduc-l1",
+      "mardi": "anti-pronation-l1",
+      "mercredi": "glute-reeduc-l1",
+      "jeudi": "anti-pronation-l1",
+      "vendredi": "hip-mobility-l1"
+    },
+    "passageCriteria": {
+      "glute-reeduc-l1": [
+        "Clam shells ressentis dans le fessier (pas TFL)",
+        "Hip bridges stables bilatéralement",
+        "Asymétrie D/G documentée"
+      ],
+      "anti-pronation-l1": [
+        "EMOM 10 min complété sans pause",
+        "Landing silencieux (grounded hops)",
+        "Pas de valgus du genou (lunges)"
+      ],
+      "hip-mobility-l1": [
+        "5 exercices sans douleur",
+        "Half splits confortables",
+        "Single-leg hip hinge stable des deux côtés"
+      ]
+    }
+  },
+  "workouts": [
+    {
+      "id": "glute-reeduc-l1",
+      "name": "Glute Re-Education L1",
+      "category": "fessiers",
+      "level": 1,
+      "duration": 15,
+      "equipment": [],
+      "video": {
+        "filename": "Glute Re-Education Level 1-3.mp4",
+        "driveFileId": "1lEwZTkh2z9ifAnb1VGUqr0SmrJd5ro3W",
+        "driveUrl": "https://drive.google.com/file/d/1lEwZTkh2z9ifAnb1VGUqr0SmrJd5ro3W/view",
+        "sharedAcrossLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "exercises": [
+        {
+          "num": 1,
+          "name": "Kneeling Hip Circles",
+          "sets": "2×10/côté (5 par direction)",
+          "tempo": "3s par cercle",
+          "rest": "Alterner côtés",
+          "libraryId": "kneeling-hip-circles"
+        },
+        {
+          "num": 2,
+          "name": "Hip Hinge avec bâton (2a: sagittal)",
+          "sets": "2×10",
+          "tempo": "3s descente / 1s pause / 2s remontée",
+          "rest": "30-60s",
+          "libraryId": "hip-hinge-avec-baton-2a-sagittal"
+        },
+        {
+          "num": 3,
+          "name": "Hip Hinge avec bâton (2b: rotation)",
+          "sets": "2×5/côté",
+          "tempo": "3s rotation / 2s tenue / 3s retour",
+          "rest": "Alterner côtés",
+          "libraryId": "hip-hinge-avec-baton-2b-rotation"
+        },
+        {
+          "num": 4,
+          "name": "Clam Shells",
+          "sets": "2×15/côté",
+          "tempo": "2s ouverture / 1s tenue / 2s fermeture",
+          "rest": "Alterner côtés",
+          "asymmetryTracking": true,
+          "libraryId": "clam-shells"
+        },
+        {
+          "num": 5,
+          "name": "Hip Bridges",
+          "sets": "2×12",
+          "tempo": "2s montée / 3s tenue / 3s descente",
+          "rest": "60s",
+          "asymmetryTracking": true,
+          "libraryId": "hip-bridges"
+        }
+      ]
+    },
+    {
+      "id": "anti-pronation-l1",
+      "name": "Anti-Pronation L1",
+      "category": "pieds",
+      "level": 1,
+      "duration": 15,
+      "equipment": [],
+      "video": {
+        "filename": "Anti-Pronation Level 1.mp4",
+        "driveFileId": "14kMz6lwaRSDhWmm5nyXpXbfe2Gte5U10",
+        "driveUrl": "https://drive.google.com/file/d/14kMz6lwaRSDhWmm5nyXpXbfe2Gte5U10/view",
+        "sharedAcrossLevels": [
+          1
+        ]
+      },
+      "exercises": [
+        {
+          "num": 0,
+          "name": "Five-Finger Toe Stretch (warm-up)",
+          "sets": "1×60s/pied",
+          "tempo": "Statique",
+          "rest": "Enchaîner",
+          "libraryId": "five-finger-toe-stretch-warm-up"
+        },
+        {
+          "num": 0.5,
+          "name": "Heel Raised Walks (warm-up)",
+          "sets": "2×30s",
+          "tempo": "Lent et contrôlé",
+          "rest": "Enchaîner avec workout",
+          "libraryId": "heel-raised-walks-warm-up"
+        },
+        {
+          "num": 1,
+          "name": "Heel Elevated Lunges (EMOM)",
+          "sets": "EMOM 10 min: 5 reps/côté par minute",
+          "tempo": "2s descente / 1s pause bas / 2s remontée",
+          "rest": "Temps restant dans la minute",
+          "libraryId": "heel-elevated-lunges-emom"
+        },
+        {
+          "num": 2,
+          "name": "Grounded Hops (EMOM)",
+          "sets": "EMOM 10 min: 10 reps par minute (alternance avec exercice 1)",
+          "tempo": "Rythme régulier, ~1 hop/seconde",
+          "rest": "Temps restant dans la minute",
+          "libraryId": "grounded-hops-emom"
+        }
+      ]
+    },
+    {
+      "id": "hip-mobility-l1",
+      "name": "Hip Mobility Reset L1",
+      "category": "hanches",
+      "level": 1,
+      "duration": 15,
+      "equipment": [],
+      "video": {
+        "filename": "Hip Mobility Reset - Beginner.mp4",
+        "driveFileId": "15lxDmPtg7GW5tSa3hQGLtHyQXxOmQzHc",
+        "driveUrl": "https://drive.google.com/file/d/15lxDmPtg7GW5tSa3hQGLtHyQXxOmQzHc/view",
+        "sharedAcrossLevels": [
+          1
+        ]
+      },
+      "exercises": [
+        {
+          "num": 1,
+          "name": "Kneeling Hip Extension",
+          "sets": "2×60s/côté",
+          "tempo": "Statique — contraction soutenue",
+          "rest": "Alterner côtés",
+          "libraryId": "kneeling-hip-extension"
+        },
+        {
+          "num": 2,
+          "name": "Kneeling Hip Circles",
+          "sets": "2×8/côté (4 par direction)",
+          "tempo": "5s par cercle",
+          "rest": "Alterner côtés",
+          "libraryId": "kneeling-hip-circles"
+        },
+        {
+          "num": 3,
+          "name": "Deep Lunge Hold",
+          "sets": "2×60s/côté",
+          "tempo": "Statique — la GRAVITÉ fait le travail",
+          "rest": "Alterner côtés",
+          "libraryId": "deep-lunge-hold"
+        },
+        {
+          "num": 4,
+          "name": "Half Splits",
+          "sets": "2×60s/côté",
+          "tempo": "Statique",
+          "rest": "Alterner côtés",
+          "libraryId": "half-splits"
+        },
+        {
+          "num": 5,
+          "name": "Single-Leg Hip Hinge",
+          "sets": "2×8/côté",
+          "tempo": "3s descente / 1s pause / 3s remontée",
+          "rest": "Alterner côtés",
+          "asymmetryTracking": true,
+          "libraryId": "single-leg-hip-hinge"
+        }
+      ]
+    }
+  ],
+  "videoCatalogue": [
+    {
+      "filename": "15-Minute Squat Test.mp4",
+      "workoutId": null,
+      "category": "test",
+      "driveFileId": "1e_tYru4qCsmlVBxgX3o5lZ97BliGinyU",
+      "driveUrl": "https://drive.google.com/file/d/1e_tYru4qCsmlVBxgX3o5lZ97BliGinyU/view"
+    },
+    {
+      "filename": "360 Core Stability.mp4",
+      "workoutId": "360-core-l1",
+      "category": "core",
+      "driveFileId": "1ZcpiANx20fhQQFB0xXNHu8NPr_Zroa2v",
+      "driveUrl": "https://drive.google.com/file/d/1ZcpiANx20fhQQFB0xXNHu8NPr_Zroa2v/view"
+    },
+    {
+      "filename": "Ankle Mobility for Running Level 1 2.mp4",
+      "workoutId": "ankle-running-l1",
+      "category": "chevilles",
+      "driveFileId": "1Tz6Hvu2ErthkNswGNxucU8UipJHgrh_6",
+      "driveUrl": "https://drive.google.com/file/d/1Tz6Hvu2ErthkNswGNxucU8UipJHgrh_6/view"
+    },
+    {
+      "filename": "Ankle Mobility for Squatting Level 3.mp4",
+      "workoutId": "ankle-squatting-l3",
+      "category": "chevilles",
+      "driveFileId": "1RZJNGzhVYgLr3_jCOcmrOMelVWlIV5yb",
+      "driveUrl": "https://drive.google.com/file/d/1RZJNGzhVYgLr3_jCOcmrOMelVWlIV5yb/view"
+    },
+    {
+      "filename": "Ankle Mobility for Squatting.mp4",
+      "workoutId": "ankle-squatting-l1",
+      "category": "chevilles",
+      "driveFileId": "1hR3ffSi2v6BCOPadxstSXjHvWuIEVEn7",
+      "driveUrl": "https://drive.google.com/file/d/1hR3ffSi2v6BCOPadxstSXjHvWuIEVEn7/view"
+    },
+    {
+      "filename": "Anti-Pronation Level 1.mp4",
+      "workoutId": "anti-pronation-l1",
+      "category": "pieds",
+      "driveFileId": "14kMz6lwaRSDhWmm5nyXpXbfe2Gte5U10",
+      "driveUrl": "https://drive.google.com/file/d/14kMz6lwaRSDhWmm5nyXpXbfe2Gte5U10/view"
+    },
+    {
+      "filename": "Anti-Pronation Level 2 and 3.mp4",
+      "workoutId": "anti-pronation-l2",
+      "category": "pieds",
+      "driveFileId": "1WcKR2X_YI-a5ijCFF7qh9L4LLW03KxTY",
+      "driveUrl": "https://drive.google.com/file/d/1WcKR2X_YI-a5ijCFF7qh9L4LLW03KxTY/view"
+    },
+    {
+      "filename": "Anti-Pronation Level 3 and 4.mp4",
+      "workoutId": "anti-pronation-l3",
+      "category": "pieds",
+      "driveFileId": "1sgnUVJZd9O6qWO8XeNvfeJrQX_fTQzaP",
+      "driveUrl": "https://drive.google.com/file/d/1sgnUVJZd9O6qWO8XeNvfeJrQX_fTQzaP/view"
+    },
+    {
+      "filename": "Anti-Pronation Squat Challenge – Level 1-3 Bring Sally Up Challenge - Squats.mp4",
+      "workoutId": "anti-pronation-squat",
+      "category": "pieds",
+      "driveFileId": "1c4eFmW7gUggio-vWFt7riWP0tOGTHKO9",
+      "driveUrl": "https://drive.google.com/file/d/1c4eFmW7gUggio-vWFt7riWP0tOGTHKO9/view"
+    },
+    {
+      "filename": "Big 3 Core Stability Level 1.mp4",
+      "workoutId": "big3-core-l1",
+      "category": "core",
+      "driveFileId": "1onPQExOHdVgY_jlsx3N7tQtRIlHLe4SP",
+      "driveUrl": "https://drive.google.com/file/d/1onPQExOHdVgY_jlsx3N7tQtRIlHLe4SP/view"
+    },
+    {
+      "filename": "Big 3 Core Stability Level 2.mp4",
+      "workoutId": "big3-core-l2",
+      "category": "core",
+      "driveFileId": "11d57sz0Gn-BNsWexvSyRCTJ8wVVBEKwG",
+      "driveUrl": "https://drive.google.com/file/d/11d57sz0Gn-BNsWexvSyRCTJ8wVVBEKwG/view"
+    },
+    {
+      "filename": "Big 3 Core Stability Level 3.mp4",
+      "workoutId": "big3-core-l3",
+      "category": "core",
+      "driveFileId": "125FznZU0T5hCZW5Z1YPTblL048rlangZ",
+      "driveUrl": "https://drive.google.com/file/d/125FznZU0T5hCZW5Z1YPTblL048rlangZ/view"
+    },
+    {
+      "filename": "Core endurance Level 1-3.mp4",
+      "workoutId": "core-endurance-l1",
+      "category": "core",
+      "driveFileId": "1qcEGXFJVPw1wVvG93LStjY_ovCD35HVR",
+      "driveUrl": "https://drive.google.com/file/d/1qcEGXFJVPw1wVvG93LStjY_ovCD35HVR/view"
+    },
+    {
+      "filename": "Core Endurance vs Strength.mp4",
+      "workoutId": null,
+      "category": "education",
+      "driveFileId": "1aKdqC6XWWWeIt1sRR4XmnDG8iS3J8Wr8",
+      "driveUrl": "https://drive.google.com/file/d/1aKdqC6XWWWeIt1sRR4XmnDG8iS3J8Wr8/view"
+    },
+    {
+      "filename": "Daily hanging protocol.mp4",
+      "workoutId": null,
+      "category": "suspension",
+      "driveFileId": "1WfvM9MQIV0-A5yFRGcwFchwppkuVj4pb",
+      "driveUrl": "https://drive.google.com/file/d/1WfvM9MQIV0-A5yFRGcwFchwppkuVj4pb/view"
+    },
+    {
+      "filename": "Daily Mobility Maintenance v2 Level 1-3 Barefoot Strength.mp4",
+      "workoutId": "daily-mobility-v2",
+      "category": "mobilite",
+      "driveFileId": "1vjW7VdCsLDSq8fJPz4CCh342yIhlHKZV",
+      "driveUrl": "https://drive.google.com/file/d/1vjW7VdCsLDSq8fJPz4CCh342yIhlHKZV/view"
+    },
+    {
+      "filename": "Daily Mobility Maintenance v3 Level 1-3 Barefoot Strength.mp4",
+      "workoutId": "daily-mobility-v3",
+      "category": "mobilite",
+      "driveFileId": "1PlxzLn4M7I4sZyGi5zIBODLBMTxbEZdR",
+      "driveUrl": "https://drive.google.com/file/d/1PlxzLn4M7I4sZyGi5zIBODLBMTxbEZdR/view"
+    },
+    {
+      "filename": "Foundational Running Warm Up - Beginner.mp4",
+      "workoutId": null,
+      "category": "course",
+      "driveFileId": "1oIv5C78VlpDCXyj1HV_Go0KtrGJgqtBF",
+      "driveUrl": "https://drive.google.com/file/d/1oIv5C78VlpDCXyj1HV_Go0KtrGJgqtBF/view"
+    },
+    {
+      "filename": "Foundational Running Warm Up - Intermediate.mp4",
+      "workoutId": null,
+      "category": "course",
+      "driveFileId": "1kq5MX3vcxYz7XLVwl-EqknKeTQ1is8Qf",
+      "driveUrl": "https://drive.google.com/file/d/1kq5MX3vcxYz7XLVwl-EqknKeTQ1is8Qf/view"
+    },
+    {
+      "filename": "Glute Activation Warm-up Beginner.mp4",
+      "workoutId": "glute-activation-l1",
+      "category": "fessiers",
+      "driveFileId": "1pyoVCO7YPRSxgh85ad4op3FvmXMbmgeZ",
+      "driveUrl": "https://drive.google.com/file/d/1pyoVCO7YPRSxgh85ad4op3FvmXMbmgeZ/view"
+    },
+    {
+      "filename": "Glute Activation Warm-up Intermediate.mp4",
+      "workoutId": "glute-activation-l2",
+      "category": "fessiers",
+      "driveFileId": "1yXT2J_I47ujJb_oeJE1Q7bQvLjY0-VGZ",
+      "driveUrl": "https://drive.google.com/file/d/1yXT2J_I47ujJb_oeJE1Q7bQvLjY0-VGZ/view"
+    },
+    {
+      "filename": "Glute Buster Level 12 3.mp4",
+      "workoutId": null,
+      "category": "fessiers",
+      "driveFileId": "1RdOFh-1YOavSMjZ7UpWi-cU7t7QTeT_j",
+      "driveUrl": "https://drive.google.com/file/d/1RdOFh-1YOavSMjZ7UpWi-cU7t7QTeT_j/view"
+    },
+    {
+      "filename": "Glute Re-Education Level 1-3.mp4",
+      "workoutId": "glute-reeduc-l1",
+      "category": "fessiers",
+      "driveFileId": "1lEwZTkh2z9ifAnb1VGUqr0SmrJd5ro3W",
+      "driveUrl": "https://drive.google.com/file/d/1lEwZTkh2z9ifAnb1VGUqr0SmrJd5ro3W/view"
+    },
+    {
+      "filename": "Glute Step-Up Level 1 2 3.mp4",
+      "workoutId": "glute-stepup",
+      "category": "fessiers",
+      "driveFileId": "1KwRK9kqX3WE9xSbwMVned4t1ttCsbZIq",
+      "driveUrl": "https://drive.google.com/file/d/1KwRK9kqX3WE9xSbwMVned4t1ttCsbZIq/view"
+    },
+    {
+      "filename": "Heel Elevated Lunges Bring Sally Up Challenge Level 1-3.mp4",
+      "workoutId": "heel-lunges-challenge",
+      "category": "pieds",
+      "driveFileId": "1tsFENtQ2hlVLfyHgQOOe8CS05N7cJJvs",
+      "driveUrl": "https://drive.google.com/file/d/1tsFENtQ2hlVLfyHgQOOe8CS05N7cJJvs/view"
+    },
+    {
+      "filename": "Hip Internal Rotator.mp4",
+      "workoutId": null,
+      "category": "hanches",
+      "driveFileId": "18tZjOisnG66_D2A0zGtzxGzT8nKWgmeX",
+      "driveUrl": "https://drive.google.com/file/d/18tZjOisnG66_D2A0zGtzxGzT8nKWgmeX/view"
+    },
+    {
+      "filename": "Hip Mobility Reset - Advanced.mp4",
+      "workoutId": "hip-mobility-l3",
+      "category": "hanches",
+      "driveFileId": "1_97Xpa2sOQqW7uIGWouVIgPgR1xqErUC",
+      "driveUrl": "https://drive.google.com/file/d/1_97Xpa2sOQqW7uIGWouVIgPgR1xqErUC/view"
+    },
+    {
+      "filename": "Hip Mobility Reset - Beginner.mp4",
+      "workoutId": "hip-mobility-l1",
+      "category": "hanches",
+      "driveFileId": "15lxDmPtg7GW5tSa3hQGLtHyQXxOmQzHc",
+      "driveUrl": "https://drive.google.com/file/d/15lxDmPtg7GW5tSa3hQGLtHyQXxOmQzHc/view"
+    },
+    {
+      "filename": "Hip Mobility Reset - Intermediate.mp4",
+      "workoutId": "hip-mobility-l2",
+      "category": "hanches",
+      "driveFileId": "1ezFT0wYOTiPEIxT2EyAh6bWYjovCvWoY",
+      "driveUrl": "https://drive.google.com/file/d/1ezFT0wYOTiPEIxT2EyAh6bWYjovCvWoY/view"
+    },
+    {
+      "filename": "How to Scale The Hanging Exercise Grip Options.mp4",
+      "workoutId": null,
+      "category": "suspension",
+      "driveFileId": "1BMIVDA2pCdAs8GNFnXpplBUSV54MAl31",
+      "driveUrl": "https://drive.google.com/file/d/1BMIVDA2pCdAs8GNFnXpplBUSV54MAl31/view"
+    },
+    {
+      "filename": "Mobilization 1 Hanging On a Bar Dead Hangs.mp4",
+      "workoutId": null,
+      "category": "suspension",
+      "driveFileId": "1jpgyq-f88wUo1h-nulVvACxOU98IQKZL",
+      "driveUrl": "https://drive.google.com/file/d/1jpgyq-f88wUo1h-nulVvACxOU98IQKZL/view"
+    },
+    {
+      "filename": "Shoulder and T-Spine Mobility Reset final.mp4",
+      "workoutId": "shoulder-routine",
+      "category": "epaules",
+      "driveFileId": "1E1zzecn7QSRcJjA0AsZMwkrseMjj3_2g",
+      "driveUrl": "https://drive.google.com/file/d/1E1zzecn7QSRcJjA0AsZMwkrseMjj3_2g/view"
+    },
+    {
+      "filename": "Shoulder and T-Spine Mobility Reset Lvl 1-2.mp4",
+      "workoutId": "shoulder-routine",
+      "category": "epaules",
+      "driveFileId": "1YZNyR_deGW1eJltMoC9bNHok-OvCTMUz",
+      "driveUrl": "https://drive.google.com/file/d/1YZNyR_deGW1eJltMoC9bNHok-OvCTMUz/view"
+    },
+    {
+      "filename": "Shoulder External Rotator Level 1-3 Barefoot Strength.mp4",
+      "workoutId": null,
+      "category": "epaules",
+      "driveFileId": "1pQ03v3x_MiipoYaqgA3rvePuvXGLNiNj",
+      "driveUrl": "https://drive.google.com/file/d/1pQ03v3x_MiipoYaqgA3rvePuvXGLNiNj/view"
+    },
+    {
+      "filename": "Single Leg Balancer Level 1 Barefoot Strength.mp4",
+      "workoutId": null,
+      "category": "equilibre",
+      "driveFileId": "1-nbXRrbAhkBz2SBbNNW7BU7_BuYqoAr9",
+      "driveUrl": "https://drive.google.com/file/d/1-nbXRrbAhkBz2SBbNNW7BU7_BuYqoAr9/view"
+    },
+    {
+      "filename": "Single Leg Balancer Level 3 challenge Barefoot Strength.mp4",
+      "workoutId": null,
+      "category": "equilibre",
+      "driveFileId": "1A9ORnPKkSbReoiV1OG5J72twWtCCJsSl",
+      "driveUrl": "https://drive.google.com/file/d/1A9ORnPKkSbReoiV1OG5J72twWtCCJsSl/view"
+    },
+    {
+      "filename": "Single Leg Balancer Level 3.mp4",
+      "workoutId": null,
+      "category": "equilibre",
+      "driveFileId": "1h8UxEFo1lyR4DT1M6hQWMhP-TplzIiLz",
+      "driveUrl": "https://drive.google.com/file/d/1h8UxEFo1lyR4DT1M6hQWMhP-TplzIiLz/view"
+    },
+    {
+      "filename": "Single leg Dorsiflexion Modification.mp4",
+      "workoutId": null,
+      "category": "chevilles",
+      "driveFileId": "1wPav6zJBM-6vaXyYn33S9i00LehxCjQR",
+      "driveUrl": "https://drive.google.com/file/d/1wPav6zJBM-6vaXyYn33S9i00LehxCjQR/view"
+    },
+    {
+      "filename": "Single Leg Supination Balancer Level 1-3.mp4",
+      "workoutId": null,
+      "category": "equilibre",
+      "driveFileId": "1r8erVe2R4S_539fFb1wdITtUpu7fP1Ag",
+      "driveUrl": "https://drive.google.com/file/d/1r8erVe2R4S_539fFb1wdITtUpu7fP1Ag/view"
+    },
+    {
+      "filename": "Single Leg Toe Splay Challenge.mp4",
+      "workoutId": null,
+      "category": "orteils",
+      "driveFileId": "1CyQunbZRvB3CAyfA5guteynM0Nd49Xaz",
+      "driveUrl": "https://drive.google.com/file/d/1CyQunbZRvB3CAyfA5guteynM0Nd49Xaz/view"
+    },
+    {
+      "filename": "Single-Leg Balancer Level 2 Barefoot Strength.mp4",
+      "workoutId": null,
+      "category": "equilibre",
+      "driveFileId": "16gLZ8mw-_3XpefU-9G226dnmkT-NXin3",
+      "driveUrl": "https://drive.google.com/file/d/16gLZ8mw-_3XpefU-9G226dnmkT-NXin3/view"
+    },
+    {
+      "filename": "Squat Practice Level 1 2.mp4",
+      "workoutId": null,
+      "category": "squat",
+      "driveFileId": "1YJ8TJLd0Nz5KTO5lVg_hod9FRpkrSbHJ",
+      "driveUrl": "https://drive.google.com/file/d/1YJ8TJLd0Nz5KTO5lVg_hod9FRpkrSbHJ/view"
+    },
+    {
+      "filename": "Supination Strength Level 1 2.mp4",
+      "workoutId": null,
+      "category": "pieds",
+      "driveFileId": "1cO3Urn6CgGcp9G2hqbDZgPK37zKru-d7",
+      "driveUrl": "https://drive.google.com/file/d/1cO3Urn6CgGcp9G2hqbDZgPK37zKru-d7/view"
+    },
+    {
+      "filename": "Supination Strength Level 3.mp4",
+      "workoutId": null,
+      "category": "pieds",
+      "driveFileId": "1yobqIm0tx-F8PzZ5s3I_sdot-5v7y4vk",
+      "driveUrl": "https://drive.google.com/file/d/1yobqIm0tx-F8PzZ5s3I_sdot-5v7y4vk/view"
+    },
+    {
+      "filename": "The Glutes Rotator.mp4",
+      "workoutId": null,
+      "category": "fessiers",
+      "driveFileId": "1Y_-weN4Op5hsoGqRj-76Xi-NdoAlCLHv",
+      "driveUrl": "https://drive.google.com/file/d/1Y_-weN4Op5hsoGqRj-76Xi-NdoAlCLHv/view"
+    },
+    {
+      "filename": "Toe Splay Primer - Beginner.mp4",
+      "workoutId": null,
+      "category": "orteils",
+      "driveFileId": "1ce3NRFRjr5CVjAB0S9DuqwsV3t7_V45g",
+      "driveUrl": "https://drive.google.com/file/d/1ce3NRFRjr5CVjAB0S9DuqwsV3t7_V45g/view"
+    },
+    {
+      "filename": "Toe Splay Primer - Intermediate.mp4",
+      "workoutId": null,
+      "category": "orteils",
+      "driveFileId": "1IXdh0tqZoV4ifDz7cBr3sAz4t851lrZP",
+      "driveUrl": "https://drive.google.com/file/d/1IXdh0tqZoV4ifDz7cBr3sAz4t851lrZP/view"
+    }
+  ]
+}

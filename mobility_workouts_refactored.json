@@ -1,0 +1,1101 @@
+{
+  "meta": {
+    "program": "FitnessFAQ Mobilité",
+    "sources": [
+      {
+        "name": "Back_Bridge_Pro",
+        "driveFolder": "https://drive.google.com/drive/folders/1plsCogSLxDljXurTCst8SNhUbSBf7KXN",
+        "driveFolderId": "1plsCogSLxDljXurTCst8SNhUbSBf7KXN"
+      },
+      {
+        "name": "Sidesplit Pro",
+        "driveFolder": "https://drive.google.com/drive/folders/1sn-kqU7pEZR600NSqbDsYf5UDEf8aJdL",
+        "driveFolderId": "1sn-kqU7pEZR600NSqbDsYf5UDEf8aJdL"
+      }
+    ],
+    "totalVideos": 49,
+    "lastUpdated": "2026-02-26",
+    "notes": "All video IDs resolved from Google Drive via Apps Script. Exercises mapped to 5 weekly mobility sessions (3 pré-force + 2 post-cardio). Some exercises (Jefferson Curl, Band Hamstring Stretch, Pigeon Stretch, Rebuild Pro warm-ups) are 'Isolé FitnessFAQ' or from Rebuild Pro — no dedicated video in these folders.",
+    "exercisesWithoutVideo": 3,
+    "exercisesWithoutVideoList": [
+      "horse-stance",
+      "tailor-pose",
+      "side-split"
+    ],
+    "youtubeVideoCount": 7,
+    "updateNote": "Ajout de 7 vidéos YouTube pour exercices sans vidéo Drive (Jefferson Curl, Band Hamstring Stretch, Pigeon Stretch, Scapula Push-ups, Floor Slides, Wall Slides, Prone Y Raise)",
+    "refactored": "2026-03-04",
+    "note_refactor": "Fichier de programmation pure. La video Drive est la référence principale (pas de texte exécution pour FitnessFAQ). Enrichissement texte → exercise_library.json."
+  },
+  "sessions": {
+    "pre-force-A": {
+      "day": "Lundi",
+      "duration": 30,
+      "context": "Après Barefoot Strength, avant MS1 force",
+      "dominante": "Active/dynamique (= échauffement)",
+      "emphasis": "thoracique + épaules (rotateurs) + chaîne postérieure",
+      "exercises": [
+        "scapula-pushups",
+        "floor-slides",
+        "prone-y-raise",
+        "floor-cobra",
+        "thoracic-rotation-band",
+        "dislocate",
+        "sleeper-crac",
+        "lat-stretch",
+        "reverse-nordic",
+        "fire-hydrant-closed",
+        "band-hamstring-stretch"
+      ]
+    },
+    "pre-force-B": {
+      "day": "Mercredi",
+      "duration": 30,
+      "context": "Après Barefoot Strength, avant MS1 force",
+      "dominante": "Active/dynamique",
+      "emphasis": "thoracique + overhead + fléchisseurs + rotateurs hanche",
+      "exercises": [
+        "scapula-pushups",
+        "wall-slides",
+        "prone-y-raise",
+        "floor-cobra",
+        "thoracic-rotation-band",
+        "butchers-block",
+        "bw-pullover",
+        "long-lunge",
+        "jefferson-curl",
+        "pigeon-stretch"
+      ]
+    },
+    "pre-force-C": {
+      "day": "Vendredi",
+      "duration": 30,
+      "context": "Après Barefoot Strength, avant MS1 force",
+      "dominante": "Active/dynamique",
+      "emphasis": "thoracique + fléchisseurs + adducteurs + intégration hanche",
+      "exercises": [
+        "prone-y-raise",
+        "scapula-pushups",
+        "floor-cobra",
+        "thoracic-rotation-band",
+        "lat-stretch",
+        "long-lunge",
+        "reverse-nordic",
+        "cossack-squat",
+        "fire-hydrant-open-iso"
+      ]
+    },
+    "post-cardio-D": {
+      "day": "Mardi",
+      "duration": 23,
+      "context": "Après 4×4 + zone 2 (corps chaud)",
+      "dominante": "Étirements profonds autorisés",
+      "emphasis": "étirements profonds épaules + fléchisseurs + chaîne postérieure",
+      "exercises": [
+        "thoracic-rotation-bw",
+        "sleeper-crac",
+        "lat-stretch",
+        "long-lunge",
+        "pigeon-stretch",
+        "band-hamstring-stretch"
+      ]
+    },
+    "post-cardio-E": {
+      "day": "Jeudi",
+      "duration": 23,
+      "context": "Après 4×4 + zone 2 (corps chaud)",
+      "dominante": "Étirements profonds autorisés",
+      "emphasis": "overhead + fléchisseurs + chaîne postérieure + hanches",
+      "exercises": [
+        "thoracic-rotation-bw",
+        "dislocate",
+        "butchers-block",
+        "bw-pullover",
+        "long-lunge",
+        "jefferson-curl",
+        "cossack-squat"
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "floor-cobra",
+      "name": "Floor Cobra",
+      "category": "Extension thoracique",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [
+        "pre-force-A",
+        "pre-force-B",
+        "pre-force-C"
+      ],
+      "frequency": "3×/sem",
+      "parameters": "3×5×5s isométrique",
+      "progressions": [
+        "hanging-cobra",
+        "bar-thoracic-hold"
+      ],
+      "video": {
+        "filename": "FLOOR ACTIVE COBRA [582384645].mp4",
+        "driveFileId": "1OBx54dIgUOagXDDn8X82pTAr_TpMkTHJ",
+        "driveUrl": "https://drive.google.com/file/d/1OBx54dIgUOagXDDn8X82pTAr_TpMkTHJ/view",
+        "previewUrl": "https://drive.google.com/file/d/1OBx54dIgUOagXDDn8X82pTAr_TpMkTHJ/preview"
+      },
+      "libraryId": "floor-cobra"
+    },
+    {
+      "id": "hanging-cobra",
+      "name": "Hanging Cobra",
+      "category": "Extension thoracique",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Progression Phase 2 (sem 5-8) — remplace Floor Cobra",
+      "parameters": "3×5×5s isométrique",
+      "progressions": [
+        "bar-thoracic-hold"
+      ],
+      "video": {
+        "filename": "HANGING COBRA [582394071].mp4",
+        "driveFileId": "1zeuGl7qMndMQxJzOXYvJl44s01CPAQBf",
+        "driveUrl": "https://drive.google.com/file/d/1zeuGl7qMndMQxJzOXYvJl44s01CPAQBf/view",
+        "previewUrl": "https://drive.google.com/file/d/1zeuGl7qMndMQxJzOXYvJl44s01CPAQBf/preview"
+      },
+      "libraryId": "hanging-cobra"
+    },
+    {
+      "id": "bar-thoracic-hold",
+      "name": "Bar Thoracic Hold",
+      "category": "Extension thoracique",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Progression Phase 3 (sem 9-12) — remplace Hanging Cobra",
+      "parameters": "Passive puis Active",
+      "progressions": [],
+      "video": {
+        "filename": "BAR THORACIC HOLD [582390666].mp4",
+        "driveFileId": "1vCIGUgzCoVMZdTdEWr4dxTOpc_ZyvwF5",
+        "driveUrl": "https://drive.google.com/file/d/1vCIGUgzCoVMZdTdEWr4dxTOpc_ZyvwF5/view",
+        "previewUrl": "https://drive.google.com/file/d/1vCIGUgzCoVMZdTdEWr4dxTOpc_ZyvwF5/preview"
+      },
+      "libraryId": "bar-thoracic-hold"
+    },
+    {
+      "id": "weight-thoracic-extension",
+      "name": "Weight Thoracic Extension",
+      "category": "Extension thoracique",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "WEIGHT THORACIC EXTENSION [582387201].mp4",
+        "driveFileId": "1cMa1tgfMYGijJpLEz9tek8nKT9OXbqTF",
+        "driveUrl": "https://drive.google.com/file/d/1cMa1tgfMYGijJpLEz9tek8nKT9OXbqTF/view",
+        "previewUrl": "https://drive.google.com/file/d/1cMa1tgfMYGijJpLEz9tek8nKT9OXbqTF/preview"
+      },
+      "libraryId": "weight-thoracic-extension"
+    },
+    {
+      "id": "standing-backbend",
+      "name": "Standing Backbend",
+      "category": "Extension thoracique",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "STANDING BACKBEND [582387522].mp4",
+        "driveFileId": "1-edHaK3UiiyQA9MxgH_hW65mH4by4PzZ",
+        "driveUrl": "https://drive.google.com/file/d/1-edHaK3UiiyQA9MxgH_hW65mH4by4PzZ/view",
+        "previewUrl": "https://drive.google.com/file/d/1-edHaK3UiiyQA9MxgH_hW65mH4by4PzZ/preview"
+      },
+      "libraryId": "standing-backbend"
+    },
+    {
+      "id": "wall-block",
+      "name": "Wall Block",
+      "category": "Extension thoracique",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "WALL BLOCK [582389147].mp4",
+        "driveFileId": "11t07pT-M1lhesGoQBCP0ms80mY3GlMJj",
+        "driveUrl": "https://drive.google.com/file/d/11t07pT-M1lhesGoQBCP0ms80mY3GlMJj/view",
+        "previewUrl": "https://drive.google.com/file/d/11t07pT-M1lhesGoQBCP0ms80mY3GlMJj/preview"
+      },
+      "libraryId": "wall-block"
+    },
+    {
+      "id": "butchers-block",
+      "name": "Butchers Block",
+      "category": "Extension thoracique / Overhead",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [
+        "pre-force-B",
+        "post-cardio-E"
+      ],
+      "frequency": "2×/sem",
+      "parameters": "3×45-60s",
+      "progressions": [],
+      "video": {
+        "filename": "BUTCHERS BLOCK [582391693].mp4",
+        "driveFileId": "1I62wioAASn6NW6d6RY5sMunctGdHCFrT",
+        "driveUrl": "https://drive.google.com/file/d/1I62wioAASn6NW6d6RY5sMunctGdHCFrT/view",
+        "previewUrl": "https://drive.google.com/file/d/1I62wioAASn6NW6d6RY5sMunctGdHCFrT/preview"
+      },
+      "libraryId": "butchers-block"
+    },
+    {
+      "id": "thoracic-rotation-band",
+      "name": "Thoracic Rotation — Band",
+      "category": "Rotation thoracique",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [
+        "pre-force-A",
+        "pre-force-B",
+        "pre-force-C"
+      ],
+      "frequency": "3×/sem (pré-force uniquement)",
+      "parameters": "3×8 reps/côté",
+      "note": "Version force/résistance. Coexiste en permanence avec la version BW.",
+      "video": {
+        "filename": "THORACIC ROTATION [582383208].mp4",
+        "driveFileId": "1V_uH1_yHfCndfHKzvPQTxBdaWvgqRi3w",
+        "driveUrl": "https://drive.google.com/file/d/1V_uH1_yHfCndfHKzvPQTxBdaWvgqRi3w/view",
+        "previewUrl": "https://drive.google.com/file/d/1V_uH1_yHfCndfHKzvPQTxBdaWvgqRi3w/preview",
+        "sharedWith": [
+          "thoracic-rotation-bw"
+        ]
+      },
+      "libraryId": "thoracic-rotation-band"
+    },
+    {
+      "id": "thoracic-rotation-bw",
+      "name": "Thoracic Rotation — Bodyweight",
+      "category": "Rotation thoracique",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [
+        "post-cardio-D",
+        "post-cardio-E"
+      ],
+      "frequency": "2×/sem (post-cardio uniquement)",
+      "parameters": "3×8 reps/côté",
+      "note": "Version vitesse/aisance. Coexiste en permanence avec la version Band. Ne jamais retirer l'une au profit de l'autre.",
+      "video": {
+        "filename": "THORACIC ROTATION [582383208].mp4",
+        "driveFileId": "1V_uH1_yHfCndfHKzvPQTxBdaWvgqRi3w",
+        "driveUrl": "https://drive.google.com/file/d/1V_uH1_yHfCndfHKzvPQTxBdaWvgqRi3w/view",
+        "previewUrl": "https://drive.google.com/file/d/1V_uH1_yHfCndfHKzvPQTxBdaWvgqRi3w/preview",
+        "sharedWith": [
+          "thoracic-rotation-band"
+        ]
+      },
+      "libraryId": "thoracic-rotation-bw"
+    },
+    {
+      "id": "dislocate",
+      "name": "Dislocate",
+      "category": "Épaules — Overhead & Rotateurs",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [
+        "pre-force-A",
+        "post-cardio-E"
+      ],
+      "frequency": "2×/sem",
+      "parameters": "3×10 (pré-force) / 2×10 (post-cardio)",
+      "progressions": [],
+      "video": {
+        "filename": "DISLOCATE [582383772].mp4",
+        "driveFileId": "1dtEfEFPd-OYbavmQnrJjrXx-DRkADoJ9",
+        "driveUrl": "https://drive.google.com/file/d/1dtEfEFPd-OYbavmQnrJjrXx-DRkADoJ9/view",
+        "previewUrl": "https://drive.google.com/file/d/1dtEfEFPd-OYbavmQnrJjrXx-DRkADoJ9/preview"
+      },
+      "libraryId": "dislocate"
+    },
+    {
+      "id": "sleeper-crac",
+      "name": "Sleeper CRAC",
+      "category": "Épaules — Rotateurs",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [
+        "pre-force-A",
+        "post-cardio-D"
+      ],
+      "frequency": "2×/sem",
+      "parameters": "2×60s/côté",
+      "progressions": [],
+      "video": {
+        "filename": "SLEEPER STRETCH [582385217].mp4",
+        "driveFileId": "16DkSOiqikXVxBo2KSfyl3923T4oqroGq",
+        "driveUrl": "https://drive.google.com/file/d/16DkSOiqikXVxBo2KSfyl3923T4oqroGq/view",
+        "previewUrl": "https://drive.google.com/file/d/16DkSOiqikXVxBo2KSfyl3923T4oqroGq/preview"
+      },
+      "libraryId": "sleeper-crac"
+    },
+    {
+      "id": "lat-stretch",
+      "name": "Lat Stretch",
+      "category": "Épaules — Lats / Overhead",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [
+        "pre-force-A",
+        "post-cardio-D",
+        "pre-force-C"
+      ],
+      "frequency": "3×/sem",
+      "parameters": "3×45s/côté (pré-force) / 3×50s/côté (post-cardio, corps chaud)",
+      "progressions": [],
+      "video": {
+        "filename": "LAT STRETCH [582394385].mp4",
+        "driveFileId": "1GOFd0HocQh_qqR-PPrwgAmpC3hXfdhfa",
+        "driveUrl": "https://drive.google.com/file/d/1GOFd0HocQh_qqR-PPrwgAmpC3hXfdhfa/view",
+        "previewUrl": "https://drive.google.com/file/d/1GOFd0HocQh_qqR-PPrwgAmpC3hXfdhfa/preview"
+      },
+      "libraryId": "lat-stretch"
+    },
+    {
+      "id": "bw-pullover",
+      "name": "Bodyweight Pullover",
+      "category": "Épaules — Overhead + Extension combinés",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [
+        "pre-force-B",
+        "post-cardio-E"
+      ],
+      "frequency": "2×/sem",
+      "parameters": "3×8-10",
+      "progressions": [
+        "weight-pullover"
+      ],
+      "video": {
+        "filename": "BODYWEIGHT PULLOVER [582391028].mp4",
+        "driveFileId": "1FWef64KJoiF9Xrxh6_aDTn6PlTUG4JAM",
+        "driveUrl": "https://drive.google.com/file/d/1FWef64KJoiF9Xrxh6_aDTn6PlTUG4JAM/view",
+        "previewUrl": "https://drive.google.com/file/d/1FWef64KJoiF9Xrxh6_aDTn6PlTUG4JAM/preview"
+      },
+      "libraryId": "bodyweight-pullover"
+    },
+    {
+      "id": "weight-pullover",
+      "name": "Weight Pullover",
+      "category": "Épaules — Overhead",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Progression de BW Pullover",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "WEIGHT PULLOVER [582391320].mp4",
+        "driveFileId": "1dpsJgSJFFjWiXaQCq-EDyuZ8-ufKhYzz",
+        "driveUrl": "https://drive.google.com/file/d/1dpsJgSJFFjWiXaQCq-EDyuZ8-ufKhYzz/view",
+        "previewUrl": "https://drive.google.com/file/d/1dpsJgSJFFjWiXaQCq-EDyuZ8-ufKhYzz/preview"
+      },
+      "libraryId": "weight-pullover"
+    },
+    {
+      "id": "band-internal-rotation",
+      "name": "Band Internal Rotation",
+      "category": "Épaules — Rotateurs",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "BAND INTERNAL ROTATION [582388329].mp4",
+        "driveFileId": "1MI1s-DtBN1AoQSihmPREh85N8V3chG5d",
+        "driveUrl": "https://drive.google.com/file/d/1MI1s-DtBN1AoQSihmPREh85N8V3chG5d/view",
+        "previewUrl": "https://drive.google.com/file/d/1MI1s-DtBN1AoQSihmPREh85N8V3chG5d/preview"
+      },
+      "libraryId": "band-internal-rotation"
+    },
+    {
+      "id": "knee-db-external-rotation",
+      "name": "Knee DB External Rotation",
+      "category": "Épaules — Rotateurs",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "KNEE DB EXTERNAL ROTATION [582390240].mp4",
+        "driveFileId": "1XMMBPNmkGSdnvVlIq8G2vl5qB2qvCjBN",
+        "driveUrl": "https://drive.google.com/file/d/1XMMBPNmkGSdnvVlIq8G2vl5qB2qvCjBN/view",
+        "previewUrl": "https://drive.google.com/file/d/1XMMBPNmkGSdnvVlIq8G2vl5qB2qvCjBN/preview"
+      },
+      "libraryId": "knee-db-external-rotation"
+    },
+    {
+      "id": "band-90-90-external-rotation",
+      "name": "Band 90-90 External Rotation",
+      "category": "Épaules — Rotateurs",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "90-90 BAND EXTERNAL ROTATION [582388668].mp4",
+        "driveFileId": "1sUNbuSozfsdVw9PzQ8iV-fZxuzztELUc",
+        "driveUrl": "https://drive.google.com/file/d/1sUNbuSozfsdVw9PzQ8iV-fZxuzztELUc/view",
+        "previewUrl": "https://drive.google.com/file/d/1sUNbuSozfsdVw9PzQ8iV-fZxuzztELUc/preview"
+      },
+      "libraryId": "band-90-90-external-rotation"
+    },
+    {
+      "id": "eagle-hang",
+      "name": "Eagle Hang",
+      "category": "Épaules — Overhead",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "EAGLE HANG [582392037].mp4",
+        "driveFileId": "1n1dyosv3-F0LeaBsCpoQgwCK2CLudUAX",
+        "driveUrl": "https://drive.google.com/file/d/1n1dyosv3-F0LeaBsCpoQgwCK2CLudUAX/view",
+        "previewUrl": "https://drive.google.com/file/d/1n1dyosv3-F0LeaBsCpoQgwCK2CLudUAX/preview"
+      },
+      "libraryId": "eagle-hang"
+    },
+    {
+      "id": "stomach-overhead-press",
+      "name": "Stomach Overhead Press",
+      "category": "Épaules — Overhead",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "STOMACH OVERHEAD PRESS [582386803].mp4",
+        "driveFileId": "1d84fmSmpeDGTFTd8cPovtqdPk5bzbz24",
+        "driveUrl": "https://drive.google.com/file/d/1d84fmSmpeDGTFTd8cPovtqdPk5bzbz24/view",
+        "previewUrl": "https://drive.google.com/file/d/1d84fmSmpeDGTFTd8cPovtqdPk5bzbz24/preview"
+      },
+      "libraryId": "stomach-overhead-press"
+    },
+    {
+      "id": "standing-side-bend",
+      "name": "Standing Side Bend",
+      "category": "Flexion latérale rachis",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "STANDING SIDE BEND [582387887].mp4",
+        "driveFileId": "1SVguAlc0DlEr236T8JG21wVrefjU7eXW",
+        "driveUrl": "https://drive.google.com/file/d/1SVguAlc0DlEr236T8JG21wVrefjU7eXW/view",
+        "previewUrl": "https://drive.google.com/file/d/1SVguAlc0DlEr236T8JG21wVrefjU7eXW/preview"
+      },
+      "libraryId": "standing-side-bend"
+    },
+    {
+      "id": "corner-stretch",
+      "name": "Corner Stretch",
+      "category": "Épaules — Pec/Ant. épaule",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "CORNER STRETCH [582392408].mp4",
+        "driveFileId": "1HdNFajPTslH1ekiem4aeA0dv6gNgUzIs",
+        "driveUrl": "https://drive.google.com/file/d/1HdNFajPTslH1ekiem4aeA0dv6gNgUzIs/view",
+        "previewUrl": "https://drive.google.com/file/d/1HdNFajPTslH1ekiem4aeA0dv6gNgUzIs/preview"
+      },
+      "libraryId": "corner-stretch"
+    },
+    {
+      "id": "triangle-stretch",
+      "name": "Triangle Stretch",
+      "category": "Flexion latérale rachis",
+      "priority": "P1",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "TRIANGLE STRETCH [582384209].mp4",
+        "driveFileId": "1X59xzM1CyX6nNXGBkzTSedDfIwQzrQdk",
+        "driveUrl": "https://drive.google.com/file/d/1X59xzM1CyX6nNXGBkzTSedDfIwQzrQdk/view",
+        "previewUrl": "https://drive.google.com/file/d/1X59xzM1CyX6nNXGBkzTSedDfIwQzrQdk/preview"
+      },
+      "libraryId": "triangle-stretch"
+    },
+    {
+      "id": "long-lunge",
+      "name": "Long Lunge",
+      "category": "Fléchisseurs de hanche",
+      "priority": "P2",
+      "source": "BackBridge Pro",
+      "sessions": [
+        "pre-force-B",
+        "post-cardio-D",
+        "post-cardio-E",
+        "pre-force-C"
+      ],
+      "frequency": "4×/sem",
+      "parameters": "3×45-60s/côté (pré-force) / 3×60s/côté (post-cardio, tenues longues)",
+      "progressions": [
+        "wall-lunge"
+      ],
+      "video": {
+        "filename": "LONG LUNGE [582393640].mp4",
+        "driveFileId": "18UU3-kNmyI2owRfISihclPCDL5asKViO",
+        "driveUrl": "https://drive.google.com/file/d/18UU3-kNmyI2owRfISihclPCDL5asKViO/view",
+        "previewUrl": "https://drive.google.com/file/d/18UU3-kNmyI2owRfISihclPCDL5asKViO/preview"
+      },
+      "libraryId": "long-lunge"
+    },
+    {
+      "id": "wall-lunge",
+      "name": "Wall Lunge",
+      "category": "Fléchisseurs de hanche",
+      "priority": "P2",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Progression Phase 2 (sem 5-8) — remplace Long Lunge",
+      "parameters": "3×45-60s/côté → Heavy Wall Lunge Phase 3",
+      "progressions": [],
+      "video": {
+        "filename": "WALL LUNGE [582393118].mp4",
+        "driveFileId": "1gYJBeksxA8_VKXg0__OC2a7WcQbSS7mx",
+        "driveUrl": "https://drive.google.com/file/d/1gYJBeksxA8_VKXg0__OC2a7WcQbSS7mx/view",
+        "previewUrl": "https://drive.google.com/file/d/1gYJBeksxA8_VKXg0__OC2a7WcQbSS7mx/preview"
+      },
+      "libraryId": "wall-lunge"
+    },
+    {
+      "id": "reverse-nordic",
+      "name": "Reverse Nordic",
+      "category": "Fléchisseurs de hanche",
+      "priority": "P2",
+      "source": "BackBridge Pro",
+      "sessions": [
+        "pre-force-A",
+        "pre-force-C"
+      ],
+      "frequency": "2×/sem",
+      "parameters": "3×8-12",
+      "progressions": [],
+      "video": {
+        "filename": "REVERSE NORDIC [582392774].mp4",
+        "driveFileId": "1SYupbj6jX6JHNf97UR-15FqszI1kNjGf",
+        "driveUrl": "https://drive.google.com/file/d/1SYupbj6jX6JHNf97UR-15FqszI1kNjGf/view",
+        "previewUrl": "https://drive.google.com/file/d/1SYupbj6jX6JHNf97UR-15FqszI1kNjGf/preview"
+      },
+      "libraryId": "reverse-nordic"
+    },
+    {
+      "id": "back-bridge",
+      "name": "Back Bridge",
+      "category": "Intégration — Bridge",
+      "priority": "P5",
+      "source": "BackBridge Pro",
+      "sessions": [],
+      "frequency": "Non utilisé actuellement — réintroduire Phase 3 si le temps le permet",
+      "parameters": "Bridge Hold 3×30s → Bridge Push-Up 3×4-6",
+      "progressions": [],
+      "video": {
+        "filename": "23 BACK BRIDGE [582389665].mp4",
+        "driveFileId": "1pqywKmdseqyKAATphWIzEZ0nxh8J3LaF",
+        "driveUrl": "https://drive.google.com/file/d/1pqywKmdseqyKAATphWIzEZ0nxh8J3LaF/view",
+        "previewUrl": "https://drive.google.com/file/d/1pqywKmdseqyKAATphWIzEZ0nxh8J3LaF/preview"
+      },
+      "libraryId": "back-bridge"
+    },
+    {
+      "id": "cossack-squat",
+      "name": "Cossack Squat",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Sidesplit Pro",
+      "sessions": [
+        "pre-force-C",
+        "post-cardio-E"
+      ],
+      "frequency": "2×/sem",
+      "parameters": "3×8/côté + 10s iso end-range (pré-force) / 3×8/côté (post-cardio)",
+      "progressions": [],
+      "video": {
+        "filename": "Cossack Squat_Final (1080p with 25fps).mp4",
+        "driveFileId": "1IL5txBUAYW1aX5D46OjDdXxiUYj02Q_y",
+        "driveUrl": "https://drive.google.com/file/d/1IL5txBUAYW1aX5D46OjDdXxiUYj02Q_y/view",
+        "previewUrl": "https://drive.google.com/file/d/1IL5txBUAYW1aX5D46OjDdXxiUYj02Q_y/preview"
+      },
+      "libraryId": "cossack-squat"
+    },
+    {
+      "id": "fire-hydrant-closed",
+      "name": "Fire Hydrant Closed Hip",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Sidesplit Pro",
+      "sessions": [
+        "pre-force-A"
+      ],
+      "frequency": "1×/sem",
+      "parameters": "3×5-8/côté",
+      "progressions": [
+        "fire-hydrant-open-iso"
+      ],
+      "video": {
+        "filename": "Fire Hydrant Closed Hip_Final (1080p with 25fps).mp4",
+        "driveFileId": "1Jl5qv-IeEj5s8nSD-qdWGleujMLhOdS2",
+        "driveUrl": "https://drive.google.com/file/d/1Jl5qv-IeEj5s8nSD-qdWGleujMLhOdS2/view",
+        "previewUrl": "https://drive.google.com/file/d/1Jl5qv-IeEj5s8nSD-qdWGleujMLhOdS2/preview"
+      },
+      "libraryId": "fire-hydrant-closed"
+    },
+    {
+      "id": "fire-hydrant-open-iso",
+      "name": "Fire Hydrant Open — Overcoming Iso",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Sidesplit Pro",
+      "sessions": [
+        "pre-force-C"
+      ],
+      "frequency": "1×/sem",
+      "parameters": "3×5×5s/côté + 5 reps BW",
+      "progressions": [
+        "fire-hydrant-open-flex-ext"
+      ],
+      "video": {
+        "filename": "FIRE HYDRANT OPEN HIP_Final (1080p with 25fps).mp4",
+        "driveFileId": "1K9Ef0gFoT2UqJeVqXXE4cFZGsgdkLlaQ",
+        "driveUrl": "https://drive.google.com/file/d/1K9Ef0gFoT2UqJeVqXXE4cFZGsgdkLlaQ/view",
+        "previewUrl": "https://drive.google.com/file/d/1K9Ef0gFoT2UqJeVqXXE4cFZGsgdkLlaQ/preview"
+      },
+      "libraryId": "fire-hydrant-open-iso"
+    },
+    {
+      "id": "fire-hydrant-open-flex-ext",
+      "name": "Fire Hydrant Open — Flex/Ext",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Sidesplit Pro",
+      "sessions": [],
+      "frequency": "Progression Phase 2 — mobilité dynamique",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "Fire Hydrant Open Flex-Ext_Final (1080p with 25fps).mp4",
+        "driveFileId": "1K47Uk9tQaeG7mXp1p6AjedOQt3wyUzuH",
+        "driveUrl": "https://drive.google.com/file/d/1K47Uk9tQaeG7mXp1p6AjedOQt3wyUzuH/view",
+        "previewUrl": "https://drive.google.com/file/d/1K47Uk9tQaeG7mXp1p6AjedOQt3wyUzuH/preview"
+      },
+      "libraryId": "fire-hydrant-open-flex-ext"
+    },
+    {
+      "id": "figure-4-stretch",
+      "name": "Figure 4 Stretch",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Sidesplit Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — variante de Pigeon Stretch",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "Figure 4 Stretch_Final (1080p with 25fps).mp4",
+        "driveFileId": "1IP41ngJvM8gH3LDJKzoHKVTqOVr1drOQ",
+        "driveUrl": "https://drive.google.com/file/d/1IP41ngJvM8gH3LDJKzoHKVTqOVr1drOQ/view",
+        "previewUrl": "https://drive.google.com/file/d/1IP41ngJvM8gH3LDJKzoHKVTqOVr1drOQ/preview"
+      },
+      "libraryId": "figure-4-stretch"
+    },
+    {
+      "id": "adductor-fly",
+      "name": "Adductor Fly",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Sidesplit Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "Adductor Fly_Final (1080p with 25fps).mp4",
+        "driveFileId": "1IAG0ik00o-mTh55vmYlQBYYtci61aYfZ",
+        "driveUrl": "https://drive.google.com/file/d/1IAG0ik00o-mTh55vmYlQBYYtci61aYfZ/view",
+        "previewUrl": "https://drive.google.com/file/d/1IAG0ik00o-mTh55vmYlQBYYtci61aYfZ/preview"
+      },
+      "libraryId": "adductor-fly"
+    },
+    {
+      "id": "horse-stance",
+      "name": "Horse Stance",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Sidesplit Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "videos": [
+        {
+          "variant": "Standard",
+          "filename": "Horse Stance_Final (1080p with 25fps).mp4",
+          "driveFileId": "1KW4vDXFxXkG7zUkxaqRbQ-NP3ZjHw4cR",
+          "driveUrl": "https://drive.google.com/file/d/1KW4vDXFxXkG7zUkxaqRbQ-NP3ZjHw4cR/view",
+          "previewUrl": "https://drive.google.com/file/d/1KW4vDXFxXkG7zUkxaqRbQ-NP3ZjHw4cR/preview"
+        },
+        {
+          "variant": "Slides",
+          "filename": "Horse Stance Slides_Final (1080p with 25fps).mp4",
+          "driveFileId": "1KJelJy4TBN4KJiC-5cpIQliICjJoG8Fd",
+          "driveUrl": "https://drive.google.com/file/d/1KJelJy4TBN4KJiC-5cpIQliICjJoG8Fd/view",
+          "previewUrl": "https://drive.google.com/file/d/1KJelJy4TBN4KJiC-5cpIQliICjJoG8Fd/preview"
+        }
+      ],
+      "libraryId": "horse-stance"
+    },
+    {
+      "id": "straddle-up",
+      "name": "Straddle Up",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Sidesplit Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "video": {
+        "filename": "Straddle Up_Final (1080p with 25fps).mp4",
+        "driveFileId": "1Lnnw9VVd1W2T9OGx7HfxUVtKpm12EFxy",
+        "driveUrl": "https://drive.google.com/file/d/1Lnnw9VVd1W2T9OGx7HfxUVtKpm12EFxy/view",
+        "previewUrl": "https://drive.google.com/file/d/1Lnnw9VVd1W2T9OGx7HfxUVtKpm12EFxy/preview"
+      },
+      "libraryId": "straddle-up"
+    },
+    {
+      "id": "tailor-pose",
+      "name": "Tailor Pose",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Sidesplit Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "videos": [
+        {
+          "variant": "Standard",
+          "filename": "Tailor Pose_Final (1080p with 25fps).mp4",
+          "driveFileId": "1MCMTQaEIwbiGMv8sfN3SDQXFEb0JMHNU",
+          "driveUrl": "https://drive.google.com/file/d/1MCMTQaEIwbiGMv8sfN3SDQXFEb0JMHNU/view",
+          "previewUrl": "https://drive.google.com/file/d/1MCMTQaEIwbiGMv8sfN3SDQXFEb0JMHNU/preview"
+        },
+        {
+          "variant": "CRAC",
+          "filename": "Tailor Pose Crac_Final (1080p with 25fps).mp4",
+          "driveFileId": "1M5ahfk1O3bjYDH7XD9KoV6XjOMu7BuV5",
+          "driveUrl": "https://drive.google.com/file/d/1M5ahfk1O3bjYDH7XD9KoV6XjOMu7BuV5/view",
+          "previewUrl": "https://drive.google.com/file/d/1M5ahfk1O3bjYDH7XD9KoV6XjOMu7BuV5/preview"
+        }
+      ],
+      "libraryId": "tailor-pose"
+    },
+    {
+      "id": "side-split",
+      "name": "Side Split",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Sidesplit Pro",
+      "sessions": [],
+      "frequency": "Non utilisé dans sessions actuelles — référence programme",
+      "parameters": "",
+      "progressions": [],
+      "videos": [
+        {
+          "variant": "Shin Support",
+          "filename": "Side Split Shin Support_Final (1080p with 25fps).mp4",
+          "driveFileId": "1LFmtTMkhpZRqLYxQBXnrVi9422F0M5mS",
+          "driveUrl": "https://drive.google.com/file/d/1LFmtTMkhpZRqLYxQBXnrVi9422F0M5mS/view",
+          "previewUrl": "https://drive.google.com/file/d/1LFmtTMkhpZRqLYxQBXnrVi9422F0M5mS/preview"
+        },
+        {
+          "variant": "Passive",
+          "filename": "Side Split Passive_Final (1080p with 25fps).mp4",
+          "driveFileId": "1L7Oly6kPaEbxWDxiiL5oQgrpPw7VzZQg",
+          "driveUrl": "https://drive.google.com/file/d/1L7Oly6kPaEbxWDxiiL5oQgrpPw7VzZQg/view",
+          "previewUrl": "https://drive.google.com/file/d/1L7Oly6kPaEbxWDxiiL5oQgrpPw7VzZQg/preview"
+        },
+        {
+          "variant": "Isometric",
+          "filename": "Side Split ISOMETRIC_Final (1080p with 25fps).mp4",
+          "driveFileId": "1KvLccnNYukDky_WEFi5T5X3iC2AmyZMk",
+          "driveUrl": "https://drive.google.com/file/d/1KvLccnNYukDky_WEFi5T5X3iC2AmyZMk/view",
+          "previewUrl": "https://drive.google.com/file/d/1KvLccnNYukDky_WEFi5T5X3iC2AmyZMk/preview"
+        },
+        {
+          "variant": "Contract Relax",
+          "filename": "Side Split Contract Relax (1080p with 25fps).mp4",
+          "driveFileId": "1KhKnTMHXzCTDReyK1aBQU1R0v-Ao675G",
+          "driveUrl": "https://drive.google.com/file/d/1KhKnTMHXzCTDReyK1aBQU1R0v-Ao675G/view",
+          "previewUrl": "https://drive.google.com/file/d/1KhKnTMHXzCTDReyK1aBQU1R0v-Ao675G/preview"
+        },
+        {
+          "variant": "CRAC",
+          "filename": "Side Split CRAC (1080p with 25fps).mp4",
+          "driveFileId": "1KokVhr627ynNz5Yp0hJJNGe-QRN7UO0l",
+          "driveUrl": "https://drive.google.com/file/d/1KokVhr627ynNz5Yp0hJJNGe-QRN7UO0l/view",
+          "previewUrl": "https://drive.google.com/file/d/1KokVhr627ynNz5Yp0hJJNGe-QRN7UO0l/preview"
+        }
+      ],
+      "libraryId": "side-split"
+    },
+    {
+      "id": "jefferson-curl",
+      "name": "Jefferson Curl",
+      "category": "Chaîne postérieure",
+      "priority": "P3",
+      "source": "Isolé FitnessFAQ",
+      "sessions": [
+        "pre-force-B",
+        "post-cardio-E"
+      ],
+      "frequency": "2×/sem",
+      "parameters": "3×5-8 (charge légère !)",
+      "progressions": [],
+      "video": {
+        "type": "youtube",
+        "youtubeUrl": "https://www.youtube.com/watch?v=rJfehSZOZyU",
+        "channel": "FitnessFAQs",
+        "duration": "10:57"
+      },
+      "videoNote": "Tutoriel FitnessFAQs — source primaire (cohérence programme).",
+      "alternateVideo": {
+        "type": "youtube",
+        "youtubeUrl": "https://www.youtube.com/watch?v=y_APeWo643w",
+        "channel": "Tom Merrick (Bodyweight Warrior)",
+        "duration": "6:19"
+      },
+      "libraryId": "jefferson-curl"
+    },
+    {
+      "id": "band-hamstring-stretch",
+      "name": "Band Hamstring Stretch",
+      "category": "Chaîne postérieure",
+      "priority": "P3",
+      "source": "Isolé FitnessFAQ",
+      "sessions": [
+        "pre-force-A",
+        "post-cardio-D"
+      ],
+      "frequency": "2×/sem",
+      "parameters": "2×45-60s/côté",
+      "progressions": [],
+      "video": {
+        "type": "youtube",
+        "youtubeUrl": "https://www.youtube.com/watch?v=Ola7DKHtJJ0",
+        "channel": "Dynamic Physio Therapy",
+        "duration": "0:09"
+      },
+      "videoNote": "Démonstration courte. Technique : contract-relax avec bande élastique, genou tendu.",
+      "libraryId": "band-hamstring-stretch"
+    },
+    {
+      "id": "pigeon-stretch",
+      "name": "Pigeon Stretch",
+      "category": "Rotateurs de hanche & Adducteurs",
+      "priority": "P4",
+      "source": "Isolé FitnessFAQ",
+      "sessions": [
+        "pre-force-B",
+        "post-cardio-D"
+      ],
+      "frequency": "2×/sem",
+      "parameters": "2×60-90s/côté",
+      "progressions": [],
+      "video": {
+        "type": "youtube",
+        "youtubeUrl": "https://www.youtube.com/watch?v=2msg4jdu0vk",
+        "channel": "Tom Merrick (Bodyweight Warrior)",
+        "duration": "4:08"
+      },
+      "videoNote": "Tutoriel complet par Tom Merrick. Figure 4 Stretch (Drive) reste une alternative valide.",
+      "relatedExercise": "figure-4-stretch",
+      "libraryId": "pigeon-stretch"
+    },
+    {
+      "id": "scapula-pushups",
+      "name": "Scapula Push-ups",
+      "category": "Correctifs Rebuild Pro",
+      "priority": "Warm-up",
+      "source": "Rebuild Pro",
+      "sessions": [
+        "pre-force-A",
+        "pre-force-B",
+        "pre-force-C"
+      ],
+      "frequency": "3×/sem",
+      "parameters": "1×20 (Lun/Mer) / 1×15 (Ven)",
+      "video": {
+        "type": "youtube",
+        "youtubeUrl": "https://www.youtube.com/watch?v=eic2xM8IDWo",
+        "channel": "FitnessFAQs",
+        "duration": "0:45"
+      },
+      "videoNote": "Démonstration FitnessFAQs — protraction/rétraction scapulaire, activation serratus anterior.",
+      "libraryId": "scapula-push-ups"
+    },
+    {
+      "id": "floor-slides",
+      "name": "Floor Slides",
+      "category": "Correctifs Rebuild Pro",
+      "priority": "Warm-up",
+      "source": "Rebuild Pro",
+      "sessions": [
+        "pre-force-A"
+      ],
+      "frequency": "1×/sem",
+      "parameters": "1×8 (tempo lent)",
+      "video": {
+        "type": "youtube",
+        "youtubeUrl": "https://www.youtube.com/watch?v=YZc77dzOnz4",
+        "channel": "Squat University",
+        "duration": "0:57"
+      },
+      "videoNote": "Squat University — dos plaqué au sol, W→Y overhead, tempo lent.",
+      "libraryId": "floor-slides"
+    },
+    {
+      "id": "wall-slides",
+      "name": "Wall Slides",
+      "category": "Correctifs Rebuild Pro",
+      "priority": "Warm-up",
+      "source": "Rebuild Pro",
+      "sessions": [
+        "pre-force-B"
+      ],
+      "frequency": "1×/sem",
+      "parameters": "1×8 (tempo lent)",
+      "video": {
+        "type": "youtube",
+        "youtubeUrl": "https://www.youtube.com/watch?v=oMSVe7PWJ3o",
+        "channel": "[P]rehab",
+        "duration": "0:35"
+      },
+      "videoNote": "[P]rehab — même pattern que Floor Slides, debout dos au mur.",
+      "libraryId": "wall-slides"
+    },
+    {
+      "id": "prone-y-raise",
+      "name": "Prone Y Raise",
+      "category": "Correctifs Rebuild Pro",
+      "priority": "Warm-up",
+      "source": "Rebuild Pro",
+      "sessions": [
+        "pre-force-A",
+        "pre-force-B",
+        "pre-force-C"
+      ],
+      "frequency": "3×/sem",
+      "parameters": "2×10, sans charge puis 1-2 kg",
+      "video": {
+        "type": "youtube",
+        "youtubeUrl": "https://www.youtube.com/watch?v=zN60xc0PwmY",
+        "channel": "E3 Rehab Exercise Library",
+        "duration": "0:18"
+      },
+      "videoNote": "E3 Rehab — prone, bras en Y, thumbs up, activation trapèze inférieur.",
+      "libraryId": "prone-y-raise"
+    }
+  ],
+  "introVideos": {
+    "backBridgePro": [
+      {
+        "name": "Back Bridge 101",
+        "filename": "BACK BRIDGE 101 [582394738].mp4",
+        "driveFileId": "1KnZSLOw_8GJIUUG70x3ng_bt2ZVYPCSg",
+        "driveUrl": "https://drive.google.com/file/d/1KnZSLOw_8GJIUUG70x3ng_bt2ZVYPCSg/view",
+        "previewUrl": "https://drive.google.com/file/d/1KnZSLOw_8GJIUUG70x3ng_bt2ZVYPCSg/preview"
+      },
+      {
+        "name": "How To Follow BBP",
+        "filename": "HOW TO FOLLOW BBP [JemvPD59rXU].webm",
+        "driveFileId": "19bt3wRtHuPNDtASV2wD-muaG8cOJR3U8",
+        "driveUrl": "https://drive.google.com/file/d/19bt3wRtHuPNDtASV2wD-muaG8cOJR3U8/view",
+        "previewUrl": "https://drive.google.com/file/d/19bt3wRtHuPNDtASV2wD-muaG8cOJR3U8/preview"
+      },
+      {
+        "name": "How To Progress",
+        "filename": "HOW TO PROGRESS [582385923].mp4",
+        "driveFileId": "1vaqXISBDu_IzGuzII8oCeFVLj7kuWB1E",
+        "driveUrl": "https://drive.google.com/file/d/1vaqXISBDu_IzGuzII8oCeFVLj7kuWB1E/view",
+        "previewUrl": "https://drive.google.com/file/d/1vaqXISBDu_IzGuzII8oCeFVLj7kuWB1E/preview"
+      },
+      {
+        "name": "Warm Up",
+        "filename": "WARM UP [582385706].mp4",
+        "driveFileId": "1Z9_bCBlVe3ts23q86uiXeKqzC2A58vXe",
+        "driveUrl": "https://drive.google.com/file/d/1Z9_bCBlVe3ts23q86uiXeKqzC2A58vXe/view",
+        "previewUrl": "https://drive.google.com/file/d/1Z9_bCBlVe3ts23q86uiXeKqzC2A58vXe/preview"
+      }
+    ],
+    "sidesplitPro": [
+      {
+        "name": "Side Split 101",
+        "filename": "Side Split 101_1 (1080p with 25fps).mp4",
+        "driveFileId": "1LkZ6IP1o_RerTgGJ6uXcQ85v3aeeXD4h",
+        "driveUrl": "https://drive.google.com/file/d/1LkZ6IP1o_RerTgGJ6uXcQ85v3aeeXD4h/view",
+        "previewUrl": "https://drive.google.com/file/d/1LkZ6IP1o_RerTgGJ6uXcQ85v3aeeXD4h/preview"
+      },
+      {
+        "name": "Reading the Program",
+        "filename": "Reading the Program (1080p with 30fps).mp4",
+        "driveFileId": "1LjUX1oN8CNGiGCEaNUjtk8W9AuLPmpJX",
+        "driveUrl": "https://drive.google.com/file/d/1LjUX1oN8CNGiGCEaNUjtk8W9AuLPmpJX/view",
+        "previewUrl": "https://drive.google.com/file/d/1LjUX1oN8CNGiGCEaNUjtk8W9AuLPmpJX/preview"
+      },
+      {
+        "name": "How To Progress",
+        "filename": "How To Progress_Final (1080p with 25fps).mp4",
+        "driveFileId": "1LbFc9cBX425S_ewgz8GbODQFiEtiGEMG",
+        "driveUrl": "https://drive.google.com/file/d/1LbFc9cBX425S_ewgz8GbODQFiEtiGEMG/view",
+        "previewUrl": "https://drive.google.com/file/d/1LbFc9cBX425S_ewgz8GbODQFiEtiGEMG/preview"
+      },
+      {
+        "name": "Warm Up",
+        "filename": "Warm Up_Final (1080p with 25fps).mp4",
+        "driveFileId": "1LmwhdBHkQcG474e9mtr4dC5Eq0uMqGb8",
+        "driveUrl": "https://drive.google.com/file/d/1LmwhdBHkQcG474e9mtr4dC5Eq0uMqGb8/view",
+        "previewUrl": "https://drive.google.com/file/d/1LmwhdBHkQcG474e9mtr4dC5Eq0uMqGb8/preview"
+      }
+    ]
+  }
+}
