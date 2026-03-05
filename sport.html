@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Programme">
+<meta name="theme-color" content="#08080f">
+<title>Programme Sport</title>
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2308080f' width='100' height='100' rx='20'/><text y='68' x='50' text-anchor='middle' font-size='50'>💪</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #08080f; --s1: #0e0e1a; --s2: #151524; --s3: #1c1c30;
+  --b: #252540; --bh: #353558;
+  --t: #e4e4f0; --t2: #9494ae; --t3: #5e5e76;
+  --a: #6366f1; --ah: #818cf8; --ag: rgba(99,102,241,.10);
+  --g: #10b981; --gg: rgba(16,185,129,.10);
+  --o: #f59e0b; --og: rgba(245,158,11,.10);
+  --r: #ef4444; --rg: rgba(239,68,68,.08);
+  --cy: #06b6d4; --cyg: rgba(6,182,212,.10);
+  --pk: #ec4899; --pkg: rgba(236,72,153,.10);
+  --vi: #8b5cf6; --vig: rgba(139,92,246,.10);
+  --rd: 12px; --rs: 8px;
+}
+* { margin:0; padding:0; box-sizing:border-box }
+body { font-family:'DM Sans',system-ui,sans-serif; background:var(--bg); color:var(--t); min-height:100vh; -webkit-font-smoothing:antialiased; overflow-x:hidden }
+button { font-family:inherit; cursor:pointer; border:none; background:none; -webkit-tap-highlight-color:transparent }
+a { color:inherit; text-decoration:none; -webkit-tap-highlight-color:transparent }
+::-webkit-scrollbar { width:3px } ::-webkit-scrollbar-thumb { background:var(--b); border-radius:3px }
+.mono { font-family:'JetBrains Mono',monospace }
+
+.app { max-width:500px; margin:0 auto; padding-bottom:40px }
+
+/* ── Top bar ── */
+.topbar { position:sticky; top:0; z-index:30; background:rgba(8,8,15,.92); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border-bottom:1px solid var(--b); padding:12px 16px }
+.topbar-inner { display:flex; align-items:center; gap:10px }
+.btn-back { width:32px; height:32px; border-radius:var(--rs); background:var(--s2); border:1px solid var(--b); display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--t2); transition:all .15s; flex-shrink:0 }
+.btn-back:hover { border-color:var(--bh); color:var(--t) }
+.topbar-title { font-size:15px; font-weight:700; letter-spacing:-.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.topbar-sub { font-size:10px; color:var(--t3); margin-top:2px; font-family:'JetBrains Mono',monospace }
+
+/* ── Loading ── */
+.loading { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:60vh; gap:16px }
+.loading .spinner { width:32px; height:32px; border:3px solid var(--b); border-top-color:var(--a); border-radius:50%; animation:spin .8s linear infinite }
+@keyframes spin { to { transform:rotate(360deg) } }
+.loading p { font-size:13px; color:var(--t3) }
+
+/* ── Week view ── */
+.week { padding:14px 16px }
+.day-card { background:var(--s1); border:1px solid var(--b); border-radius:var(--rd); padding:14px 16px; margin-bottom:10px; cursor:pointer; transition:all .15s; position:relative; overflow:hidden }
+.day-card:hover { border-color:var(--bh) }
+.day-card:active { transform:scale(.985) }
+.day-card.rest { opacity:.5 }
+.day-name { font-size:15px; font-weight:700; text-transform:capitalize }
+.day-theme { font-size:11px; color:var(--t2); margin-top:3px }
+.day-stats { display:flex; gap:10px; margin-top:10px; flex-wrap:wrap }
+.day-stat { padding:4px 10px; border-radius:14px; font-size:10px; font-weight:600; font-family:'JetBrains Mono',monospace }
+.ds-bloc { background:var(--ag); color:var(--ah) }
+.ds-exo { background:var(--gg); color:var(--g) }
+.ds-dur { background:var(--og); color:var(--o) }
+.day-indicator { position:absolute; top:0; left:0; bottom:0; width:3px; border-radius:3px 0 0 3px }
+.di-heavy { background:var(--a) }
+.di-light { background:var(--g) }
+.di-rest { background:var(--t3) }
+
+/* ── Day view ── */
+.day-view { padding:14px 16px }
+.bloc-card { background:var(--s1); border:1px solid var(--b); border-radius:var(--rd); margin-bottom:10px; overflow:hidden; cursor:pointer; transition:all .15s }
+.bloc-card:hover { border-color:var(--bh) }
+.bloc-card:active { transform:scale(.985) }
+.bloc-header { padding:14px 16px; display:flex; align-items:center; gap:12px }
+.bloc-icon { width:36px; height:36px; border-radius:var(--rs); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0 }
+.bi-activation { background:var(--vig); }
+.bi-bfs { background:var(--cyg); }
+.bi-mobilite { background:var(--pkg); }
+.bi-force { background:var(--ag); }
+.bi-salle { background:var(--og); }
+.bi-sauna { background:var(--rg); }
+.bi-cardio { background:var(--gg); }
+.bloc-info { flex:1; min-width:0 }
+.bloc-name { font-size:13px; font-weight:600 }
+.bloc-meta { font-size:10px; color:var(--t3); margin-top:2px; font-family:'JetBrains Mono',monospace }
+.bloc-arrow { color:var(--t3); font-size:12px; flex-shrink:0 }
+.bloc-video-btn { padding:5px 8px; border-radius:6px; background:var(--cyg); border:1px solid rgba(6,182,212,.2); color:var(--cy); font-size:10px; font-weight:600; flex-shrink:0 }
+
+/* ── Bloc view (exercise list) ── */
+.bloc-view { padding:14px 16px }
+.bloc-note { background:var(--og); border:1px solid rgba(245,158,11,.2); border-radius:var(--rs); padding:10px 12px; margin-bottom:12px; font-size:11px; color:var(--o); line-height:1.5 }
+.ex-card { background:var(--s1); border:1px solid var(--b); border-radius:var(--rd); margin-bottom:8px; cursor:pointer; transition:all .15s; overflow:hidden }
+.ex-card:hover { border-color:var(--bh) }
+.ex-card:active { transform:scale(.985) }
+.ex-top { padding:12px 14px; display:flex; align-items:center; gap:10px }
+.ex-num { width:26px; height:26px; border-radius:50%; background:var(--s3); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:var(--t2); font-family:'JetBrains Mono',monospace; flex-shrink:0 }
+.ex-info { flex:1; min-width:0 }
+.ex-name { font-size:13px; font-weight:600; line-height:1.3 }
+.ex-params { font-size:11px; color:var(--ah); margin-top:2px; font-family:'JetBrains Mono',monospace }
+.ex-cue-preview { font-size:10px; color:var(--t3); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.ex-arrow { color:var(--t3); font-size:12px; flex-shrink:0 }
+.ex-has-video { width:6px; height:6px; border-radius:50%; background:var(--cy); flex-shrink:0 }
+
+/* ── Exercise detail ── */
+.ex-detail { padding:14px 16px }
+.exd-header { margin-bottom:16px }
+.exd-name { font-size:18px; font-weight:700; line-height:1.3 }
+.exd-params { font-size:14px; color:var(--ah); margin-top:4px; font-family:'JetBrains Mono',monospace }
+
+.exd-section { margin-bottom:14px }
+.exd-label { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:var(--t3); margin-bottom:6px }
+.exd-text { font-size:13px; line-height:1.65; color:var(--t2) }
+.exd-cue { font-size:13px; line-height:1.5; color:var(--o); background:var(--og); border:1px solid rgba(245,158,11,.15); border-radius:var(--rs); padding:10px 12px }
+.exd-errors { font-size:12px; line-height:1.6; color:var(--t3); white-space:pre-line }
+
+.video-buttons { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px }
+.btn-video { display:inline-flex; align-items:center; gap:6px; padding:10px 16px; border-radius:var(--rs); font-size:12px; font-weight:600; transition:all .15s }
+.btn-video:hover { filter:brightness(1.1); transform:translateY(-1px) }
+.btn-video-drive { background:var(--cyg); border:1px solid rgba(6,182,212,.25); color:var(--cy) }
+.btn-video-yt { background:var(--rg); border:1px solid rgba(239,68,68,.25); color:var(--r) }
+
+.exd-note { font-size:11px; color:var(--t3); background:var(--s2); border:1px solid var(--b); border-radius:var(--rs); padding:8px 10px; margin-top:8px; line-height:1.5; font-style:italic }
+
+/* ── Animations ── */
+@keyframes fadeIn { from { opacity:0; transform:translateY(6px) } to { opacity:1; transform:translateY(0) } }
+.fade-in { animation:fadeIn .2s ease-out }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="loading"><div class="spinner"></div><p>Chargement du programme…</p></div>
+</div>
+<script>
+// ── State ──
+let DATA = null;
+let VAHVA = null;
+let VIEW = 'week'; // week | day | bloc | exercise
+let NAV = { jour: null, blocIdx: null, exIdx: null };
+
+const JSON_URL = 'programme_complet.json';
+const VAHVA_URL = 'vahva_unified_mapping.json';
+
+// ── Data loading ──
+async function init() {
+  try {
+    const [pRes, vRes] = await Promise.all([
+      fetch(JSON_URL).then(r => { if(!r.ok) throw new Error('programme_complet.json not found'); return r.json(); }),
+      fetch(VAHVA_URL).then(r => r.ok ? r.json() : null).catch(() => null)
+    ]);
+    DATA = pRes;
+    VAHVA = vRes;
+    // Cache in localStorage
+    try { localStorage.setItem('sport-data', JSON.stringify(DATA)); } catch {}
+    if (VAHVA) try { localStorage.setItem('sport-vahva', JSON.stringify(VAHVA)); } catch {}
+  } catch {
+    // Fallback to localStorage cache
+    try { DATA = JSON.parse(localStorage.getItem('sport-data')); } catch {}
+    try { VAHVA = JSON.parse(localStorage.getItem('sport-vahva')); } catch {}
+  }
+  render();
+}
+
+// ── Helpers ──
+const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+const JOUR_ORDER = ['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
+const JOUR_LABELS = { lundi:'Lundi', mardi:'Mardi', mercredi:'Mercredi', jeudi:'Jeudi', vendredi:'Vendredi', samedi:'Samedi', dimanche:'Dimanche' };
+
+const BLOC_ICONS = {
+  activation: { icon:'🔥', cls:'bi-activation' },
+  bfs: { icon:'🦶', cls:'bi-bfs' },
+  mobilite: { icon:'🧘', cls:'bi-mobilite' },
+  force: { icon:'🏋️', cls:'bi-force' },
+  salle: { icon:'🏢', cls:'bi-salle' },
+  sauna: { icon:'🧖', cls:'bi-sauna' },
+  cardio: { icon:'❤️', cls:'bi-cardio' },
+};
+
+function blocIcon(type) {
+  return BLOC_ICONS[type] || BLOC_ICONS.force;
+}
+
+function totalDuration(blocs) {
+  return blocs.reduce((s, b) => s + (b.duree_min || 0), 0);
+}
+
+function totalExercises(blocs) {
+  return blocs.reduce((s, b) => s + (b.exercises || []).length, 0);
+}
+
+function dayIndicator(jour) {
+  const d = DATA.semaine[jour];
+  if (!d || !d.blocs || !d.blocs.length) return 'di-rest';
+  const rir = d.rir_cible;
+  if (rir === '1-2') return 'di-heavy';
+  return 'di-light';
+}
+
+// ── Video resolution ──
+function resolveVideos(ex, bloc) {
+  const videos = [];
+  const vid = ex.video;
+
+  if (vid) {
+    // fitnessfaq_drive
+    const faq = vid.fitnessfaq_drive;
+    if (faq) {
+      if (faq.type === 'youtube' && faq.youtubeUrl) {
+        videos.push({ type:'youtube', url:faq.youtubeUrl, label:'FitnessFAQ', channel:faq.channel });
+      } else if (faq.driveUrl) {
+        videos.push({ type:'drive', url:faq.driveUrl, label:'FitnessFAQ', filename:faq.filename });
+      }
+    }
+
+    // rebuild_pro
+    const rp = vid.rebuild_pro;
+    if (rp && rp.driveUrl) {
+      videos.push({ type:'drive', url:rp.driveUrl, label:'Rebuild Pro', filename:rp.filename });
+    }
+
+    // vahva_key
+    const vk = vid.vahva_key;
+    if (vk && VAHVA) {
+      const entry = VAHVA.exercises?.[vk];
+      if (entry) {
+        if (entry.youtubeUrl) {
+          videos.push({ type:'youtube', url:entry.youtubeUrl, label:'VAHVA' });
+        } else if (entry.driveUrl) {
+          videos.push({ type:'drive', url:entry.driveUrl, label:'VAHVA' });
+        }
+      }
+    }
+  }
+
+  // BFS: bloc-level video
+  if (bloc && bloc.type === 'bfs' && bloc.bfsWorkoutId && DATA.bfs_workouts) {
+    const bfsW = DATA.bfs_workouts.workouts?.find(w => w.id === bloc.bfsWorkoutId);
+    if (bfsW?.video?.driveUrl) {
+      // Only add if not already present
+      const url = bfsW.video.driveUrl;
+      if (!videos.some(v => v.url === url)) {
+        videos.push({ type:'drive', url, label:'Barefoot Strength', filename:bfsW.video.filename });
+      }
+    }
+  }
+
+  return videos;
+}
+
+function hasAnyVideo(ex, bloc) {
+  return resolveVideos(ex, bloc).length > 0;
+}
+
+// ── Navigation ──
+function goWeek() { VIEW='week'; NAV={jour:null,blocIdx:null,exIdx:null}; render(); window.scrollTo(0,0); }
+function goDay(jour) { VIEW='day'; NAV.jour=jour; NAV.blocIdx=null; NAV.exIdx=null; render(); window.scrollTo(0,0); }
+function goBloc(idx) { VIEW='bloc'; NAV.blocIdx=idx; NAV.exIdx=null; render(); window.scrollTo(0,0); }
+function goExercise(idx) { VIEW='exercise'; NAV.exIdx=idx; render(); window.scrollTo(0,0); }
+
+// ── Render ──
+function render() {
+  const app = document.getElementById('app');
+  if (!DATA) { app.innerHTML = '<div class="loading"><div class="spinner"></div><p>Données non disponibles</p></div>'; return; }
+
+  let h = '';
+
+  // ── WEEK VIEW ──
+  if (VIEW === 'week') {
+    h += `<div class="topbar"><div class="topbar-inner"><div><div class="topbar-title">Programme Sport</div><div class="topbar-sub">Phase ${esc(DATA.meta?.phase_active || '?')} — v${esc(DATA.meta?.version || '?')}</div></div></div></div>`;
+    h += '<div class="week fade-in">';
+    JOUR_ORDER.forEach(jour => {
+      const d = DATA.semaine[jour];
+      if (!d) {
+        h += `<div class="day-card rest"><div class="day-indicator di-rest"></div><div class="day-name">${JOUR_LABELS[jour]}</div><div class="day-theme" style="font-style:italic">Récupération</div></div>`;
+        return;
+      }
+      const blocs = d.blocs || [];
+      const nEx = totalExercises(blocs);
+      const dur = totalDuration(blocs);
+      h += `<div class="day-card" onclick="goDay('${jour}')"><div class="day-indicator ${dayIndicator(jour)}"></div>`;
+      h += `<div class="day-name">${JOUR_LABELS[jour]}</div>`;
+      h += `<div class="day-theme">${esc(d.theme || '')}</div>`;
+      h += `<div class="day-stats">`;
+      h += `<span class="day-stat ds-bloc">${blocs.length} blocs</span>`;
+      h += `<span class="day-stat ds-exo">${nEx} exos</span>`;
+      if (dur) h += `<span class="day-stat ds-dur">~${dur} min</span>`;
+      h += `</div></div>`;
+    });
+    h += '</div>';
+  }
+
+  // ── DAY VIEW ──
+  if (VIEW === 'day') {
+    const jour = NAV.jour;
+    const d = DATA.semaine[jour];
+    h += `<div class="topbar"><div class="topbar-inner"><button class="btn-back" onclick="goWeek()">←</button><div><div class="topbar-title">${JOUR_LABELS[jour]}</div><div class="topbar-sub">${esc(d.theme || '')}</div></div></div></div>`;
+    h += '<div class="day-view fade-in">';
+
+    // Day-level rules
+    if (d.rir_cible) {
+      h += `<div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap">`;
+      h += `<span class="day-stat ds-bloc">RIR ${esc(d.rir_cible)}</span>`;
+      if (d.dominante) h += `<span class="day-stat ds-exo">${esc(d.dominante)}</span>`;
+      h += `</div>`;
+    }
+
+    (d.blocs || []).forEach((bloc, i) => {
+      const bi = blocIcon(bloc.type || 'force');
+      const nEx = (bloc.exercises || []).length;
+      const hasEx = nEx > 0;
+      // Check if bloc has a BFS video
+      let blocVideoUrl = null;
+      if (bloc.type === 'bfs' && bloc.bfsWorkoutId && DATA.bfs_workouts) {
+        const bfsW = DATA.bfs_workouts.workouts?.find(w => w.id === bloc.bfsWorkoutId);
+        if (bfsW?.video?.driveUrl) blocVideoUrl = bfsW.video.driveUrl;
+      }
+
+      h += `<div class="bloc-card" ${hasEx ? `onclick="goBloc(${i})"` : ''}>`;
+      h += `<div class="bloc-header">`;
+      h += `<div class="bloc-icon ${bi.cls}">${bi.icon}</div>`;
+      h += `<div class="bloc-info"><div class="bloc-name">${esc(bloc.nom)}</div>`;
+      h += `<div class="bloc-meta">${esc(bloc.heure || '')}${bloc.duree_min ? ' · '+bloc.duree_min+'min' : ''}${nEx ? ' · '+nEx+' exos' : ''}</div></div>`;
+      if (blocVideoUrl) {
+        h += `<a class="bloc-video-btn" href="${esc(blocVideoUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Vidéo</a>`;
+      }
+      if (hasEx) h += `<span class="bloc-arrow">▶</span>`;
+      h += `</div></div>`;
+    });
+
+    h += '</div>';
+  }
+
+  // ── BLOC VIEW ──
+  if (VIEW === 'bloc') {
+    const jour = NAV.jour;
+    const d = DATA.semaine[jour];
+    const bloc = d.blocs[NAV.blocIdx];
+    const bi = blocIcon(bloc.type || 'force');
+
+    h += `<div class="topbar"><div class="topbar-inner"><button class="btn-back" onclick="goDay('${jour}')">←</button><div><div class="topbar-title">${bi.icon} ${esc(bloc.nom)}</div><div class="topbar-sub">${JOUR_LABELS[jour]} · ${esc(bloc.heure || '')}${bloc.duree_min ? ' · '+bloc.duree_min+'min' : ''}</div></div></div></div>`;
+    h += '<div class="bloc-view fade-in">';
+
+    // Bloc note
+    if (bloc.note) {
+      h += `<div class="bloc-note">💡 ${esc(bloc.note)}</div>`;
+    }
+
+    // BFS workout video at top
+    if (bloc.type === 'bfs' && bloc.bfsWorkoutId && DATA.bfs_workouts) {
+      const bfsW = DATA.bfs_workouts.workouts?.find(w => w.id === bloc.bfsWorkoutId);
+      if (bfsW?.video?.driveUrl) {
+        h += `<div style="margin-bottom:12px"><a class="btn-video btn-video-drive" href="${esc(bfsW.video.driveUrl)}" target="_blank" rel="noopener">▶ Vidéo complète du workout</a></div>`;
+      }
+    }
+
+    (bloc.exercises || []).forEach((ex, i) => {
+      const name = ex.name || ex.label || ex.libraryId || '?';
+      const hasVid = hasAnyVideo(ex, bloc);
+      h += `<div class="ex-card" onclick="goExercise(${i})">`;
+      h += `<div class="ex-top">`;
+      h += `<div class="ex-num">${i+1}</div>`;
+      h += `<div class="ex-info">`;
+      h += `<div class="ex-name">${esc(name)}</div>`;
+      if (ex.params) h += `<div class="ex-params">${esc(ex.params)}</div>`;
+      if (ex.cue_principal) h += `<div class="ex-cue-preview">${esc(ex.cue_principal)}</div>`;
+      h += `</div>`;
+      if (hasVid) h += `<div class="ex-has-video" title="Vidéo disponible"></div>`;
+      h += `<span class="ex-arrow">▶</span>`;
+      h += `</div></div>`;
+    });
+
+    h += '</div>';
+  }
+
+  // ── EXERCISE DETAIL ──
+  if (VIEW === 'exercise') {
+    const jour = NAV.jour;
+    const d = DATA.semaine[jour];
+    const bloc = d.blocs[NAV.blocIdx];
+    const ex = bloc.exercises[NAV.exIdx];
+    const name = ex.name || ex.label || ex.libraryId || '?';
+
+    h += `<div class="topbar"><div class="topbar-inner"><button class="btn-back" onclick="goBloc(${NAV.blocIdx})">←</button><div><div class="topbar-title">${esc(name)}</div><div class="topbar-sub">${JOUR_LABELS[jour]} · ${esc(bloc.nom)}</div></div></div></div>`;
+    h += '<div class="ex-detail fade-in">';
+
+    // Header
+    h += `<div class="exd-header"><div class="exd-name">${esc(name)}</div>`;
+    if (ex.params) h += `<div class="exd-params">${esc(ex.params)}</div>`;
+    h += `</div>`;
+
+    // Videos
+    const vids = resolveVideos(ex, bloc);
+    if (vids.length) {
+      h += `<div class="exd-section"><div class="exd-label">Vidéo</div><div class="video-buttons">`;
+      vids.forEach(v => {
+        if (v.type === 'drive') {
+          h += `<a class="btn-video btn-video-drive" href="${esc(v.url)}" target="_blank" rel="noopener">▶ ${esc(v.label)}</a>`;
+        } else {
+          h += `<a class="btn-video btn-video-yt" href="${esc(v.url)}" target="_blank" rel="noopener">▶ ${esc(v.label)}</a>`;
+        }
+      });
+      h += `</div></div>`;
+    }
+
+    // Cue principal
+    if (ex.cue_principal) {
+      h += `<div class="exd-section"><div class="exd-label">Cue principal</div><div class="exd-cue">${esc(ex.cue_principal)}</div></div>`;
+    }
+    // Cue from planning (separate from library cue)
+    if (ex.cue && ex.cue !== ex.cue_principal) {
+      h += `<div class="exd-section"><div class="exd-label">Note</div><div class="exd-cue">${esc(ex.cue)}</div></div>`;
+    }
+
+    // Position de départ
+    if (ex.position_depart) {
+      h += `<div class="exd-section"><div class="exd-label">Position de départ</div><div class="exd-text">${esc(ex.position_depart)}</div></div>`;
+    }
+
+    // Exécution
+    if (ex.execution) {
+      h += `<div class="exd-section"><div class="exd-label">Exécution</div><div class="exd-text">${esc(ex.execution)}</div></div>`;
+    }
+
+    // Respiration
+    if (ex.respiration) {
+      h += `<div class="exd-section"><div class="exd-label">Respiration</div><div class="exd-text">${esc(ex.respiration)}</div></div>`;
+    }
+
+    // Erreurs fréquentes
+    if (ex.erreurs_frequentes) {
+      h += `<div class="exd-section"><div class="exd-label">Erreurs fréquentes</div><div class="exd-errors">${esc(ex.erreurs_frequentes)}</div></div>`;
+    }
+
+    // Notes biomécaniques
+    if (ex.notes_biomecaniques) {
+      h += `<div class="exd-section"><div class="exd-label">Notes biomécaniques</div><div class="exd-text">${esc(ex.notes_biomecaniques)}</div></div>`;
+    }
+
+    // Filtre profil
+    if (ex.filtre_profil) {
+      h += `<div class="exd-section"><div class="exd-label">Spécifique à ton profil</div><div class="exd-text">${esc(ex.filtre_profil)}</div></div>`;
+    }
+
+    // Asymmetry note
+    if (ex.asymmetry_note) {
+      h += `<div class="exd-note">⚖️ ${esc(ex.asymmetry_note)}</div>`;
+    }
+
+    h += '</div>';
+  }
+
+  app.innerHTML = h;
+}
+
+// ── Init ──
+init();
+</script>
+</body>
+</html>
