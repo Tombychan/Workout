@@ -107,13 +107,13 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "tva-pull-squeeze",
               "label": "TVA Pull Squeeze",
               "params": "1×15-20 reps",
               "cue": "Expirer et tirer le nombril vers la colonne"
             },
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "vacuum",
               "label": "Vacuum",
               "params": "3×max hold",
               "cue": "Expirer tout l'air, aspirer le nombril sous les côtes. Varier : couché → 4 pattes → debout"
@@ -267,7 +267,7 @@
               "params": "3×10/côté"
             },
             {
-              "libraryId": "dead-bug",
+              "libraryId": "pro-bird-dog",
               "label": "Pro Bird Dog",
               "params": "3×8/côté"
             }
@@ -290,7 +290,7 @@
               "params": "4×10-12"
             },
             {
-              "libraryId": "suitcase-carry",
+              "libraryId": "lever-side-bend",
               "label": "Lever Side Bend",
               "params": "3×10-12/côté"
             },
@@ -346,12 +346,12 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "tva-pull-squeeze",
               "label": "TVA Pull Squeeze",
               "params": "1×15-20 reps"
             },
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "vacuum",
               "label": "Vacuum",
               "params": "3×max hold"
             }
@@ -485,12 +485,12 @@
           "type": "core",
           "exercises": [
             {
-              "libraryId": "dead-bug",
+              "libraryId": "pro-bird-dog",
               "label": "Pro Bird Dog",
               "params": "2×8/côté"
             },
             {
-              "libraryId": "3-month-heel-taps",
+              "libraryId": "in-and-out",
               "label": "In-and-Out",
               "params": "2×12 contrôlées"
             },
@@ -517,12 +517,12 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "tva-pull-squeeze",
               "label": "TVA Pull Squeeze",
               "params": "1×15-20 reps"
             },
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "vacuum",
               "label": "Vacuum",
               "params": "3×max hold"
             }
@@ -693,7 +693,7 @@
               "params": "3×12-15"
             },
             {
-              "libraryId": "l-sit",
+              "libraryId": "hanging-leg-raise-15",
               "label": "Hanging Leg Raise 1.5 reps",
               "params": "3×8-10"
             }
@@ -720,12 +720,12 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "tva-pull-squeeze",
               "label": "TVA Pull Squeeze",
               "params": "1×15-20 reps"
             },
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "vacuum",
               "label": "Vacuum",
               "params": "3×max hold"
             }
@@ -881,7 +881,7 @@
               "params": "3×12-15"
             },
             {
-              "libraryId": "3-month-heel-taps",
+              "libraryId": "reverse-crunch-15",
               "label": "Reverse Crunch 1.5 reps",
               "params": "3×10-15"
             }
@@ -952,12 +952,12 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "tva-pull-squeeze",
               "label": "TVA Pull Squeeze",
               "params": "1×15-20 reps"
             },
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "vacuum",
               "label": "Vacuum",
               "params": "3×max hold"
             }

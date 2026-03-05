@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-03-04 13:35:43",
+    "generated_at": "2026-03-05 23:09:54",
     "generated_by": "build.py",
     "version": "2.0.0",
     "phase_active": "phase2",
@@ -114,18 +114,39 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "tva-pull-squeeze",
               "params": "1×15-20 reps",
               "cue": "Expirer et tirer le nombril vers la colonne",
               "name": "TVA Pull Squeeze",
-              "erreurs_frequentes": "- Vacuum : inspirer au lieu de creuser. L'exercice est fait EN APNÉE après une expiration complète.\n- Hollow Hold : bas du dos qui se cambre (rib flare). Monter les jambes plus haut jusqu'à pouvoir maintenir le contact lombaire."
+              "muscles_primaires": [
+                "Transverse abdominis"
+              ],
+              "position_depart": "Position à quatre pattes ou couché sur le dos, genoux pliés. Sur l'expiration calme : activation interne du TVA. Pas d'apnée — respiration normale maintenue. Exercice de connexion neuromusculaire.",
+              "cue_principal": "Tirer le nombril vers la colonne comme si on 'aspirait' le ventre. Maintenir 1-2s, relâcher, répéter. Continuer à respirer normalement pendant la contraction.",
+              "notes_biomecaniques": "Active le transverse abdominal (couche la plus profonde). Fondation pour tous les autres exercices core. Entraîne la coordination diaphragme-transverse. Direct anti-rib flare : le TVA corsète les côtes flottantes vers le bas.",
+              "filtre_profil": "EXCELLENT. Activation TVA dynamique en respiration — pattern direct anti-rib flare.",
+              "verdict": "RECOMMANDÉ",
+              "video": {
+                "vahva_key": "TVA Pull Squeeze"
+              }
             },
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "vacuum",
               "params": "3×max hold",
               "cue": "Expirer tout l'air, aspirer le nombril sous les côtes. Varier : couché → 4 pattes → debout",
               "name": "Vacuum",
-              "erreurs_frequentes": "- Vacuum : inspirer au lieu de creuser. L'exercice est fait EN APNÉE après une expiration complète.\n- Hollow Hold : bas du dos qui se cambre (rib flare). Monter les jambes plus haut jusqu'à pouvoir maintenir le contact lombaire."
+              "muscles_primaires": [
+                "Transverse abdominis"
+              ],
+              "position_depart": "À genoux penché en avant, à quatre pattes, ou debout. Expiration complète d'abord — condition non négociable. Relâcher, inspirer, répéter.",
+              "cue_principal": "Expirer TOUT l'air, puis SANS INSPIRER : tirer le nombril vers la colonne le plus loin possible. En apnée. Technique avancée : 'gentle pulses' — relâcher légèrement puis re-tirer sans reprendre d'air.",
+              "notes_biomecaniques": "TVA en apnée = activation maximale du transverse. Mécanisme direct anti-rib flare. Exercice pivot commun Brieuc + VAHVA.",
+              "filtre_profil": "EXCELLENT. Meilleur exercice TVA isolé. Déjà dans le protocole.",
+              "verdict": "RECOMMANDÉ",
+              "contra_indications": "Hypertension non contrôlée (manœuvre de Valsalva).",
+              "video": {
+                "vahva_key": "Vacuum"
+              }
             }
           ]
         },
@@ -186,15 +207,8 @@
             },
             {
               "libraryId": "hip-bridges-bande",
-              "params": "2×10 + 5s hold",
-              "name": "Hip Bridges (bande légère)",
-              "muscles_primaires": [
-                "Grand fessier",
-                "Moyen fessier"
-              ],
-              "position_depart": "Allongé sur le dos, genoux fléchis, pieds à plat. Mini-bande légère au-dessus des genoux.",
-              "execution": "Pousser le bassin vers le plafond en serrant les fessiers. En haut : genou pousse contre la bande (abduction) pour activer le moyen fessier. Maintenir 5s. Redescendre contrôlé.",
-              "cue_principal": "Serrer les fessiers AVANT de monter. Main sur le fessier qui travaille pour confirmer l'activation."
+              "label": "Hip Bridges (bande légère)",
+              "params": "2×10 + 5s hold"
             }
           ]
         },
@@ -524,32 +538,24 @@
               "respiration": "inspirer en bas, expirer en pressant."
             },
             {
-              "libraryId": "dead-bug",
+              "libraryId": "pro-bird-dog",
               "params": "3×8/côté",
               "name": "Pro Bird Dog",
               "muscles_primaires": [
                 "TVA",
-                "Obliques internes",
-                "Rectus abdominis",
-                "Diaphragme"
+                "Obliques",
+                "Érecteurs du rachis",
+                "Fessiers",
+                "Deltoïdes"
               ],
-              "position_depart": "Allongé sur le dos. Bras tendus vers le plafond, hanches et genoux fléchis à 90° (même position \"3 mois\" que les Heel Taps). Bas du dos plaqué au sol.",
-              "execution": "Étendre simultanément le bras droit au-dessus de la tête et la jambe gauche vers le sol (membres opposés — dissociation croisée des ceintures). Le bras et la jambe s'arrêtent juste au-dessus du sol (sans le toucher). Revenir à la position de départ. Alterner : bras gauche + jambe droite.\n\nTout au long du mouvement, le bas du dos reste plaqué au sol. C'est la même règle absolue que les 3 Month Heel Taps.",
-              "cue_principal": "Bas du dos collé au sol. Les membres bougent indépendamment du tronc.\" L'objectif est la dissociation : les bras et les jambes bougent librement pendant que le tronc reste rigide. C'est le pattern fondamental de la locomotion humaine.",
-              "erreurs_frequentes": "- *Bas du dos qui se cambre* : même correction que les Heel Taps — réduire l'amplitude.\n- *Mouvement rapide / non coordonné* : chaque rep est lente (3s aller, 3s retour). La coordination bras-jambe opposés nécessite de la concentration.\n- *Extension excessive du bras au-dessus de la tête* : le bras va au-delà de ce que la stabilité lombaire permet → rib flare. Le bras s'arrête au point où les côtes commencent à se soulever.",
-              "respiration": "expirer en étendant (la phase la plus difficile de l'anti-extension), inspirer en revenant.",
-              "notes_biomecaniques": "Exercice-roi pour la coordination diaphragme-transverse-obliques dans un contexte de rib flare. Le bras qui descend tire les côtes vers le haut — résister à cette force = entraîner exactement le pattern anti-rib flare. Dissociation ceinture scapulaire/pelvienne.",
-              "filtre_profil": "EXCELLENT. Correctif #1 pour rib flare. Substitution Crucifix/Crunch/Sit-up.",
+              "position_depart": "Départ à quatre pattes. Soulever les genoux 2-3 cm (version Pro). Étendre bras droit + jambe gauche (ou inversement). Revenir, alterner. Extensions partielles si nécessaire en P1.",
+              "cue_principal": "GENOUX 2-3 cm du sol — le corps ne bouge pas quand un bras ou une jambe se lève. Hanches carrées. Ni twisting, ni cambrage.",
+              "notes_biomecaniques": "Anti-extension + anti-rotation simultanés. Le décollement des genoux crée une instabilité qui force TVA + obliques + deep core à travailler en continu. La dissociation ceinture scapulaire/pelvienne est directement pertinente pour la scoliose fonctionnelle.",
+              "filtre_profil": "EXCELLENT. Exercice correctif #1 du profil.",
               "verdict": "RECOMMANDÉ",
-              "asymmetry_note": "Observer si le dos décolle plus facilement quand le bras D descend.",
+              "asymmetry_note": "Documenter asymétrie D/G — marqueur de progression pour la bascule pelvienne.",
               "video": {
-                "rebuild_pro": {
-                  "driveFileId": "1rPb-hjzvU6TERtkFaWOqvr-vLg3Xbcvi",
-                  "driveUrl": "https://drive.google.com/file/d/1rPb-hjzvU6TERtkFaWOqvr-vLg3Xbcvi/view",
-                  "type": "video",
-                  "exerciseId_rebuild": "alternating-dead-bug"
-                },
-                "vahva_key": "Dead Bug"
+                "vahva_key": "Pro Bird Dog"
               }
             }
           ]
@@ -583,32 +589,22 @@
               "respiration": "inspirer en descendant, expirer en poussant (et pendant la protraction finale)."
             },
             {
-              "libraryId": "suitcase-carry",
+              "libraryId": "lever-side-bend",
               "params": "3×10-12/côté",
               "name": "Lever Side Bend",
               "muscles_primaires": [
-                "Obliques (anti-flexion latérale)",
-                "QL",
-                "TVA",
-                "Trapèze supérieur"
+                "Obliques externes",
+                "Obliques internes",
+                "QL"
               ],
-              "position_depart": "Debout, un haltère lourd dans une seule main (comme une valise). L'autre main est libre. Le corps est DROIT — pas d'inclinaison du côté de la charge.",
-              "execution": "Marcher en ligne droite en maintenant le tronc parfaitement vertical. L'épaule du côté chargé ne descend pas. Le bassin reste horizontal (pas de bascule latérale). Marcher pendant 30 secondes ou sur une distance définie. Changer de côté.",
-              "cue_principal": "Personne ne doit deviner de quel côté est le poids.\" Le corps est si stable et vertical que la charge est invisible.",
-              "erreurs_frequentes": "- *Inclinaison vers le côté chargé* : la charge est trop lourde. Réduire. L'exercice n'a d'intérêt que si le tronc reste parfaitement vertical.\n- *Épaule chargée qui descend* : même correction. Le trapèze supérieur du côté chargé doit maintenir l'épaule à niveau.\n- *Marche précipitée* : marcher lentement et délibérément. Chaque pas est une opportunité de sentir les obliques du côté non-chargé travailler.",
-              "respiration": "respiration naturelle mais engagée (ne pas bloquer). Le core est en engagement continu.",
-              "notes_biomecaniques": "Anti-flexion latérale sous charge unilatérale — directement correctif pour la scoliose fonctionnelle. Expose l'asymétrie droite/gauche.",
-              "filtre_profil": "EXCELLENT. Double bénéfice anti-flexion + révélateur d'asymétrie.",
+              "position_depart": "Debout, pieds largeur hanches. Haltère ou club indien dans une main. S'incliner latéralement du côté du poids (3s), remonter en contractant les obliques opposés (1s).",
+              "cue_principal": "Descendre l'haltère le long de la cuisse en 3s, remonter en 1s. Le mouvement part des obliques 'depuis le bas de la taille'. Pas de rotation du tronc.",
+              "notes_biomecaniques": "L'effet de levier du bras tendu augmente la résistance. Cible directement l'oblique externe droit (affaibli par la scoliose convexe droite). QL en co-activation → stabilité pelvienne.",
+              "filtre_profil": "EXCELLENT. Oblique externe droit = muscle prioritaire du profil.",
               "verdict": "RECOMMANDÉ",
-              "asymmetry_note": "Comparer la difficulté D vs G — indicateur direct de la scoliose fonctionnelle.",
+              "asymmetry_note": "Priorité DROITE systématique : +1 série ou +3 reps côté D.",
               "video": {
-                "rebuild_pro": {
-                  "driveFileId": "1tSNq9Fbh2Trdm99PDFKPue57ohICpom6",
-                  "driveUrl": "https://drive.google.com/file/d/1tSNq9Fbh2Trdm99PDFKPue57ohICpom6/view",
-                  "type": "video",
-                  "exerciseId_rebuild": "db-suitcase-hold"
-                },
-                "vahva_key": "Suitcase Carry"
+                "vahva_key": "Lever Side Bend"
               }
             },
             {
@@ -712,16 +708,37 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "tva-pull-squeeze",
               "params": "1×15-20 reps",
               "name": "TVA Pull Squeeze",
-              "erreurs_frequentes": "- Vacuum : inspirer au lieu de creuser. L'exercice est fait EN APNÉE après une expiration complète.\n- Hollow Hold : bas du dos qui se cambre (rib flare). Monter les jambes plus haut jusqu'à pouvoir maintenir le contact lombaire."
+              "muscles_primaires": [
+                "Transverse abdominis"
+              ],
+              "position_depart": "Position à quatre pattes ou couché sur le dos, genoux pliés. Sur l'expiration calme : activation interne du TVA. Pas d'apnée — respiration normale maintenue. Exercice de connexion neuromusculaire.",
+              "cue_principal": "Tirer le nombril vers la colonne comme si on 'aspirait' le ventre. Maintenir 1-2s, relâcher, répéter. Continuer à respirer normalement pendant la contraction.",
+              "notes_biomecaniques": "Active le transverse abdominal (couche la plus profonde). Fondation pour tous les autres exercices core. Entraîne la coordination diaphragme-transverse. Direct anti-rib flare : le TVA corsète les côtes flottantes vers le bas.",
+              "filtre_profil": "EXCELLENT. Activation TVA dynamique en respiration — pattern direct anti-rib flare.",
+              "verdict": "RECOMMANDÉ",
+              "video": {
+                "vahva_key": "TVA Pull Squeeze"
+              }
             },
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "vacuum",
               "params": "3×max hold",
               "name": "Vacuum",
-              "erreurs_frequentes": "- Vacuum : inspirer au lieu de creuser. L'exercice est fait EN APNÉE après une expiration complète.\n- Hollow Hold : bas du dos qui se cambre (rib flare). Monter les jambes plus haut jusqu'à pouvoir maintenir le contact lombaire."
+              "muscles_primaires": [
+                "Transverse abdominis"
+              ],
+              "position_depart": "À genoux penché en avant, à quatre pattes, ou debout. Expiration complète d'abord — condition non négociable. Relâcher, inspirer, répéter.",
+              "cue_principal": "Expirer TOUT l'air, puis SANS INSPIRER : tirer le nombril vers la colonne le plus loin possible. En apnée. Technique avancée : 'gentle pulses' — relâcher légèrement puis re-tirer sans reprendre d'air.",
+              "notes_biomecaniques": "TVA en apnée = activation maximale du transverse. Mécanisme direct anti-rib flare. Exercice pivot commun Brieuc + VAHVA.",
+              "filtre_profil": "EXCELLENT. Meilleur exercice TVA isolé. Déjà dans le protocole.",
+              "verdict": "RECOMMANDÉ",
+              "contra_indications": "Hypertension non contrôlée (manœuvre de Valsalva).",
+              "video": {
+                "vahva_key": "Vacuum"
+              }
             }
           ]
         },
@@ -735,28 +752,11 @@
           "exercises": [
             {
               "libraryId": "five-finger-toe-stretch",
-              "params": "1 min/pied",
-              "name": "Five-Finger Toe Stretch",
-              "muscles_primaires": [
-                "Muscles intrinsèques du pied",
-                "Fascia plantaire"
-              ],
-              "position_depart": "Assis ou debout. Entrelacer les doigts de la main entre les orteils du pied.",
-              "execution": "Étirer doucement les orteils en écartement, maintenir 60s par pied. Mobiliser les orteils individuellement si possible.",
-              "cue_principal": "Orteils libres et espacés — sentir le fascia plantaire s'ouvrir."
+              "params": "1 min/pied"
             },
             {
               "libraryId": "heel-raised-walks",
-              "params": "2 min continues",
-              "name": "Heel Raised Walks",
-              "muscles_primaires": [
-                "Tibial antérieur",
-                "Extenseurs des orteils",
-                "Stabilisateurs cheville"
-              ],
-              "position_depart": "Debout, pieds nus.",
-              "execution": "Marcher sur les talons, orteils relevés du sol. Avancer lentement en maintenant les orteils activement décollés.",
-              "cue_principal": "Orteils vers le ciel, pas de contact de l'avant du pied avec le sol."
+              "params": "2 min continues"
             },
             {
               "libraryId": "heel-elevated-lunges-emom",
@@ -795,25 +795,13 @@
           "exercises": [
             {
               "libraryId": "norwegian-4x4",
-              "params": "25 min",
-              "name": "Norwegian 4×4 Assault Bike",
-              "muscles_primaires": [
-                "Système cardiovasculaire"
-              ],
-              "execution": "4 intervalles de 4 minutes à 85-95% FCmax sur assault bike. Récupération active 3 minutes entre chaque intervalle. Total : ~25 min.",
-              "cue_principal": "Atteindre 85-95% FCmax dès la 2e minute de chaque intervalle et y rester.",
-              "notes_biomecaniques": "Protocole Helgerud et al. 2007. VO2max +7.2% en 8 semaines sur sujets entraînés. Supérieur au HIIT court pour l'amélioration du VO2max."
+              "label": "Norwegian 4×4 Assault Bike",
+              "params": "25 min"
             },
             {
               "libraryId": "zone-2",
-              "params": "20 min",
-              "name": "Zone 2 Assault Bike",
-              "muscles_primaires": [
-                "Système cardiovasculaire"
-              ],
-              "execution": "20 minutes à 60-70% FCmax sur assault bike. Immédiatement après le 4×4. Intensité : capable de tenir une conversation.",
-              "cue_principal": "Rester sous le seuil lactate. Si la respiration devient haletante, réduire l'intensité.",
-              "notes_biomecaniques": "Améliore la biogenèse mitochondriale et l'oxydation des lipides. Complémentaire au 4×4 — les deux stimuli sont distincts et non redondants."
+              "label": "Zone 2 Assault Bike",
+              "params": "20 min"
             }
           ]
         },
@@ -1018,54 +1006,43 @@
           "type": "core",
           "exercises": [
             {
-              "libraryId": "dead-bug",
+              "libraryId": "pro-bird-dog",
               "params": "2×8/côté",
               "name": "Pro Bird Dog",
               "muscles_primaires": [
                 "TVA",
-                "Obliques internes",
-                "Rectus abdominis",
-                "Diaphragme"
+                "Obliques",
+                "Érecteurs du rachis",
+                "Fessiers",
+                "Deltoïdes"
               ],
-              "position_depart": "Allongé sur le dos. Bras tendus vers le plafond, hanches et genoux fléchis à 90° (même position \"3 mois\" que les Heel Taps). Bas du dos plaqué au sol.",
-              "execution": "Étendre simultanément le bras droit au-dessus de la tête et la jambe gauche vers le sol (membres opposés — dissociation croisée des ceintures). Le bras et la jambe s'arrêtent juste au-dessus du sol (sans le toucher). Revenir à la position de départ. Alterner : bras gauche + jambe droite.\n\nTout au long du mouvement, le bas du dos reste plaqué au sol. C'est la même règle absolue que les 3 Month Heel Taps.",
-              "cue_principal": "Bas du dos collé au sol. Les membres bougent indépendamment du tronc.\" L'objectif est la dissociation : les bras et les jambes bougent librement pendant que le tronc reste rigide. C'est le pattern fondamental de la locomotion humaine.",
-              "erreurs_frequentes": "- *Bas du dos qui se cambre* : même correction que les Heel Taps — réduire l'amplitude.\n- *Mouvement rapide / non coordonné* : chaque rep est lente (3s aller, 3s retour). La coordination bras-jambe opposés nécessite de la concentration.\n- *Extension excessive du bras au-dessus de la tête* : le bras va au-delà de ce que la stabilité lombaire permet → rib flare. Le bras s'arrête au point où les côtes commencent à se soulever.",
-              "respiration": "expirer en étendant (la phase la plus difficile de l'anti-extension), inspirer en revenant.",
-              "notes_biomecaniques": "Exercice-roi pour la coordination diaphragme-transverse-obliques dans un contexte de rib flare. Le bras qui descend tire les côtes vers le haut — résister à cette force = entraîner exactement le pattern anti-rib flare. Dissociation ceinture scapulaire/pelvienne.",
-              "filtre_profil": "EXCELLENT. Correctif #1 pour rib flare. Substitution Crucifix/Crunch/Sit-up.",
+              "position_depart": "Départ à quatre pattes. Soulever les genoux 2-3 cm (version Pro). Étendre bras droit + jambe gauche (ou inversement). Revenir, alterner. Extensions partielles si nécessaire en P1.",
+              "cue_principal": "GENOUX 2-3 cm du sol — le corps ne bouge pas quand un bras ou une jambe se lève. Hanches carrées. Ni twisting, ni cambrage.",
+              "notes_biomecaniques": "Anti-extension + anti-rotation simultanés. Le décollement des genoux crée une instabilité qui force TVA + obliques + deep core à travailler en continu. La dissociation ceinture scapulaire/pelvienne est directement pertinente pour la scoliose fonctionnelle.",
+              "filtre_profil": "EXCELLENT. Exercice correctif #1 du profil.",
               "verdict": "RECOMMANDÉ",
-              "asymmetry_note": "Observer si le dos décolle plus facilement quand le bras D descend.",
+              "asymmetry_note": "Documenter asymétrie D/G — marqueur de progression pour la bascule pelvienne.",
               "video": {
-                "rebuild_pro": {
-                  "driveFileId": "1rPb-hjzvU6TERtkFaWOqvr-vLg3Xbcvi",
-                  "driveUrl": "https://drive.google.com/file/d/1rPb-hjzvU6TERtkFaWOqvr-vLg3Xbcvi/view",
-                  "type": "video",
-                  "exerciseId_rebuild": "alternating-dead-bug"
-                },
-                "vahva_key": "Dead Bug"
+                "vahva_key": "Pro Bird Dog"
               }
             },
             {
-              "libraryId": "3-month-heel-taps",
+              "libraryId": "in-and-out",
               "params": "2×12 contrôlées",
               "name": "In-and-Out",
               "muscles_primaires": [
-                "TVA",
-                "Rectus abdominis",
-                "Diaphragme"
+                "Fléchisseurs de hanche",
+                "Rectus abdominis (bas)",
+                "TVA"
               ],
-              "position_depart": "Allongé sur le dos. Hanches fléchies à 90° (cuisses verticales), genoux pliés à 90° (tibias horizontaux). Bras tendus vers le plafond. C'est la position dite \"3 mois\" (mimant la position d'un bébé de 3 mois — référence développementale).",
-              "execution": "Depuis cette position, abaisser lentement UN talon vers le sol en étendant la jambe, tout en maintenant le bas du dos plaqué au sol (pas de cambrure). Le talon touche légèrement le sol, puis revient à la position de départ. Alterner les jambes. Les bras restent tendus vers le plafond, immobiles.\n\nLe bas du dos DOIT rester plaqué au sol pendant tout le mouvement. C'est la règle non négociable. Si le bas du dos décolle quand le talon descend, l'amplitude est trop grande ou le core est fatigué.",
-              "cue_principal": "Bas du dos écrasé dans le sol. Si le dos décolle, la rep ne compte pas.\" L'anti-extension est l'objectif principal : résister à la force qui tire le rachis en hyperextension quand le bras de levier des jambes augmente.",
-              "erreurs_frequentes": "- *Bas du dos qui se cambre* : amplitude trop grande. Descendre le talon moins loin.\n- *Mouvement rapide* : chaque descente de talon doit être lente et contrôlée (3s).\n- *Tête qui se soulève / cou en tension* : la tête reste posée au sol, neutre.\n- *Bras qui bougent* : les bras sont des poteaux verticaux immobiles. Leur rôle est de fournir un référentiel visuel et de stabiliser le torse.",
-              "respiration": "expirer en descendant le talon (l'expiration aide à maintenir la pression intra-abdominale), inspirer en revenant.",
-              "notes_biomecaniques": "Anti-extension par excellence. La position '3 mois' est la fondation de la respiration abdominale (Rebuild Pro). Chaque rep est un test du TVA. Directement anti-rib flare.",
-              "filtre_profil": "EXCELLENT. Alternance mercredi sem A avec Superman Plank sem B.",
-              "verdict": "RECOMMANDÉ",
-              "asymmetry_note": "Observer si un côté décolle le dos plus tôt — asymétrie de contrôle TVA.",
+              "position_depart": "Assis au sol, mains derrière soi. Étendre les jambes (out, 2-3s) puis ramener vers la poitrine (in, pause 1-2s). Expirer sur la phase 'in'.",
+              "cue_principal": "Mains au sol derrière soi (appui obligatoire). Jambes pas complètement tendues. Tempo LENT. Limite = point où le bas du dos se cambre.",
+              "notes_biomecaniques": "Principalement fléchisseurs de hanche. Si le dos se cambre → TVA insuffisant, réduire l'amplitude.",
+              "filtre_profil": "ADAPTER. Pas correctif mais utilisable. Surveiller le cambrage lombaire.",
+              "verdict": "ADAPTER",
+              "contra_indications": "Si bascule pelvienne antérieure systématique → substituer par Lying Leg Raise.",
               "video": {
-                "vahva_key": "3-Month position Heel Taps"
+                "vahva_key": "In-and-Out abs"
               }
             },
             {
@@ -1092,16 +1069,37 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "tva-pull-squeeze",
               "params": "1×15-20 reps",
               "name": "TVA Pull Squeeze",
-              "erreurs_frequentes": "- Vacuum : inspirer au lieu de creuser. L'exercice est fait EN APNÉE après une expiration complète.\n- Hollow Hold : bas du dos qui se cambre (rib flare). Monter les jambes plus haut jusqu'à pouvoir maintenir le contact lombaire."
+              "muscles_primaires": [
+                "Transverse abdominis"
+              ],
+              "position_depart": "Position à quatre pattes ou couché sur le dos, genoux pliés. Sur l'expiration calme : activation interne du TVA. Pas d'apnée — respiration normale maintenue. Exercice de connexion neuromusculaire.",
+              "cue_principal": "Tirer le nombril vers la colonne comme si on 'aspirait' le ventre. Maintenir 1-2s, relâcher, répéter. Continuer à respirer normalement pendant la contraction.",
+              "notes_biomecaniques": "Active le transverse abdominal (couche la plus profonde). Fondation pour tous les autres exercices core. Entraîne la coordination diaphragme-transverse. Direct anti-rib flare : le TVA corsète les côtes flottantes vers le bas.",
+              "filtre_profil": "EXCELLENT. Activation TVA dynamique en respiration — pattern direct anti-rib flare.",
+              "verdict": "RECOMMANDÉ",
+              "video": {
+                "vahva_key": "TVA Pull Squeeze"
+              }
             },
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "vacuum",
               "params": "3×max hold",
               "name": "Vacuum",
-              "erreurs_frequentes": "- Vacuum : inspirer au lieu de creuser. L'exercice est fait EN APNÉE après une expiration complète.\n- Hollow Hold : bas du dos qui se cambre (rib flare). Monter les jambes plus haut jusqu'à pouvoir maintenir le contact lombaire."
+              "muscles_primaires": [
+                "Transverse abdominis"
+              ],
+              "position_depart": "À genoux penché en avant, à quatre pattes, ou debout. Expiration complète d'abord — condition non négociable. Relâcher, inspirer, répéter.",
+              "cue_principal": "Expirer TOUT l'air, puis SANS INSPIRER : tirer le nombril vers la colonne le plus loin possible. En apnée. Technique avancée : 'gentle pulses' — relâcher légèrement puis re-tirer sans reprendre d'air.",
+              "notes_biomecaniques": "TVA en apnée = activation maximale du transverse. Mécanisme direct anti-rib flare. Exercice pivot commun Brieuc + VAHVA.",
+              "filtre_profil": "EXCELLENT. Meilleur exercice TVA isolé. Déjà dans le protocole.",
+              "verdict": "RECOMMANDÉ",
+              "contra_indications": "Hypertension non contrôlée (manœuvre de Valsalva).",
+              "video": {
+                "vahva_key": "Vacuum"
+              }
             }
           ]
         },
@@ -1161,15 +1159,8 @@
             },
             {
               "libraryId": "hip-bridges-bande",
-              "params": "2×10 + 5s hold",
-              "name": "Hip Bridges (bande légère)",
-              "muscles_primaires": [
-                "Grand fessier",
-                "Moyen fessier"
-              ],
-              "position_depart": "Allongé sur le dos, genoux fléchis, pieds à plat. Mini-bande légère au-dessus des genoux.",
-              "execution": "Pousser le bassin vers le plafond en serrant les fessiers. En haut : genou pousse contre la bande (abduction) pour activer le moyen fessier. Maintenir 5s. Redescendre contrôlé.",
-              "cue_principal": "Serrer les fessiers AVANT de monter. Main sur le fessier qui travaille pour confirmer l'activation."
+              "label": "Hip Bridges (bande légère)",
+              "params": "2×10 + 5s hold"
             }
           ]
         },
@@ -1507,27 +1498,25 @@
               "respiration": "expirer en écartant, inspirer en revenant."
             },
             {
-              "libraryId": "l-sit",
+              "libraryId": "hanging-leg-raise-15",
               "params": "3×8-10",
               "name": "Hanging Leg Raise 1.5 reps",
               "muscles_primaires": [
                 "Rectus abdominis",
                 "TVA",
                 "Fléchisseurs de hanche",
-                "Triceps (sol)",
-                "Serratus (sol)",
-                "Grip (suspension)"
+                "Grip",
+                "Épaules"
               ],
-              "position_depart": "Sur parallettes : mains sur les barres, bras tendus, épaules déprimées (ne pas se \"tasser\" entre les épaules). Sur anneaux : même position, instabilité ajoutée.",
-              "execution": "Déprimer les scapulae (pousser les épaules vers le bas), engager les abdominaux, lever les jambes dans la position de la progression en cours. Maintenir aussi longtemps que possible (cible : 15-20s par hold, 3-5 holds).",
-              "cue_principal": "Pousser le sol LOIN et tirer les épaules vers les fesses.\" La dépression scapulaire active est la clé — sans elle, on \"s'effondre\" entre les épaules et le L-sit est impossible.",
-              "erreurs_frequentes": "- *Épaules qui montent vers les oreilles* : le trapèze inférieur et le serratus ne font pas leur travail. Penser \"épaules basses\".\n- *Bas du dos arrondi* : compression discale. Le rachis reste neutre — l'angle de 90° est dans les hanches, pas dans le dos.\n- *Jambes pas assez hautes (les cuisses descendent sous l'horizontale)* : engage les fléchisseurs de hanche. Si la force est insuffisante, rester en tuck.",
-              "notes_biomecaniques": "Skill calisthénique. Au sol : recrutement serratus → pertinent pour dyskinésie scapulaire.",
-              "filtre_profil": "EXCELLENT. Objectif skill moyen terme. Déjà en programme (Ven MS2).",
+              "position_depart": "Suspendu à la barre. Technique 1.5 reps : monter complètement → redescendre à mi-chemin → remonter → redescendre complètement = 1 rep.",
+              "cue_principal": "Épaules loin des oreilles (serratus actif). Basculer le bassin vers l'avant en haut du mouvement ('cruncher'). Ne pas relâcher complètement en bas.",
+              "notes_biomecaniques": "Les 1.5 reps isolent mieux les abdos des fléchisseurs de hanche. L'activation du serratus (pousser épaules vers le bas) est directement pertinente pour la dyskinésie scapulaire droite.",
+              "filtre_profil": "EXCELLENT. Hypertrophie abdominale phare. Double bénéfice : core + serratus.",
               "verdict": "RECOMMANDÉ",
-              "contra_indications": "Épaule D — surveiller en version suspension.",
+              "asymmetry_note": "Observer si le bassin part d'un côté en montant.",
+              "contra_indications": "Surveiller épaule D. Pas de douleur.",
               "video": {
-                "vahva_key": "L-sit"
+                "vahva_key": "Hanging Leg Raise"
               }
             }
           ]
@@ -1553,16 +1542,37 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "tva-pull-squeeze",
               "params": "1×15-20 reps",
               "name": "TVA Pull Squeeze",
-              "erreurs_frequentes": "- Vacuum : inspirer au lieu de creuser. L'exercice est fait EN APNÉE après une expiration complète.\n- Hollow Hold : bas du dos qui se cambre (rib flare). Monter les jambes plus haut jusqu'à pouvoir maintenir le contact lombaire."
+              "muscles_primaires": [
+                "Transverse abdominis"
+              ],
+              "position_depart": "Position à quatre pattes ou couché sur le dos, genoux pliés. Sur l'expiration calme : activation interne du TVA. Pas d'apnée — respiration normale maintenue. Exercice de connexion neuromusculaire.",
+              "cue_principal": "Tirer le nombril vers la colonne comme si on 'aspirait' le ventre. Maintenir 1-2s, relâcher, répéter. Continuer à respirer normalement pendant la contraction.",
+              "notes_biomecaniques": "Active le transverse abdominal (couche la plus profonde). Fondation pour tous les autres exercices core. Entraîne la coordination diaphragme-transverse. Direct anti-rib flare : le TVA corsète les côtes flottantes vers le bas.",
+              "filtre_profil": "EXCELLENT. Activation TVA dynamique en respiration — pattern direct anti-rib flare.",
+              "verdict": "RECOMMANDÉ",
+              "video": {
+                "vahva_key": "TVA Pull Squeeze"
+              }
             },
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "vacuum",
               "params": "3×max hold",
               "name": "Vacuum",
-              "erreurs_frequentes": "- Vacuum : inspirer au lieu de creuser. L'exercice est fait EN APNÉE après une expiration complète.\n- Hollow Hold : bas du dos qui se cambre (rib flare). Monter les jambes plus haut jusqu'à pouvoir maintenir le contact lombaire."
+              "muscles_primaires": [
+                "Transverse abdominis"
+              ],
+              "position_depart": "À genoux penché en avant, à quatre pattes, ou debout. Expiration complète d'abord — condition non négociable. Relâcher, inspirer, répéter.",
+              "cue_principal": "Expirer TOUT l'air, puis SANS INSPIRER : tirer le nombril vers la colonne le plus loin possible. En apnée. Technique avancée : 'gentle pulses' — relâcher légèrement puis re-tirer sans reprendre d'air.",
+              "notes_biomecaniques": "TVA en apnée = activation maximale du transverse. Mécanisme direct anti-rib flare. Exercice pivot commun Brieuc + VAHVA.",
+              "filtre_profil": "EXCELLENT. Meilleur exercice TVA isolé. Déjà dans le protocole.",
+              "verdict": "RECOMMANDÉ",
+              "contra_indications": "Hypertension non contrôlée (manœuvre de Valsalva).",
+              "video": {
+                "vahva_key": "Vacuum"
+              }
             }
           ]
         },
@@ -1576,28 +1586,11 @@
           "exercises": [
             {
               "libraryId": "five-finger-toe-stretch",
-              "params": "1 min/pied",
-              "name": "Five-Finger Toe Stretch",
-              "muscles_primaires": [
-                "Muscles intrinsèques du pied",
-                "Fascia plantaire"
-              ],
-              "position_depart": "Assis ou debout. Entrelacer les doigts de la main entre les orteils du pied.",
-              "execution": "Étirer doucement les orteils en écartement, maintenir 60s par pied. Mobiliser les orteils individuellement si possible.",
-              "cue_principal": "Orteils libres et espacés — sentir le fascia plantaire s'ouvrir."
+              "params": "1 min/pied"
             },
             {
               "libraryId": "heel-raised-walks",
-              "params": "2 min continues",
-              "name": "Heel Raised Walks",
-              "muscles_primaires": [
-                "Tibial antérieur",
-                "Extenseurs des orteils",
-                "Stabilisateurs cheville"
-              ],
-              "position_depart": "Debout, pieds nus.",
-              "execution": "Marcher sur les talons, orteils relevés du sol. Avancer lentement en maintenant les orteils activement décollés.",
-              "cue_principal": "Orteils vers le ciel, pas de contact de l'avant du pied avec le sol."
+              "params": "2 min continues"
             },
             {
               "libraryId": "heel-elevated-lunges-emom",
@@ -1636,25 +1629,13 @@
           "exercises": [
             {
               "libraryId": "norwegian-4x4",
-              "params": "25 min",
-              "name": "Norwegian 4×4 Assault Bike",
-              "muscles_primaires": [
-                "Système cardiovasculaire"
-              ],
-              "execution": "4 intervalles de 4 minutes à 85-95% FCmax sur assault bike. Récupération active 3 minutes entre chaque intervalle. Total : ~25 min.",
-              "cue_principal": "Atteindre 85-95% FCmax dès la 2e minute de chaque intervalle et y rester.",
-              "notes_biomecaniques": "Protocole Helgerud et al. 2007. VO2max +7.2% en 8 semaines sur sujets entraînés. Supérieur au HIIT court pour l'amélioration du VO2max."
+              "label": "Norwegian 4×4 Assault Bike",
+              "params": "25 min"
             },
             {
               "libraryId": "zone-2",
-              "params": "20 min",
-              "name": "Zone 2 Assault Bike",
-              "muscles_primaires": [
-                "Système cardiovasculaire"
-              ],
-              "execution": "20 minutes à 60-70% FCmax sur assault bike. Immédiatement après le 4×4. Intensité : capable de tenir une conversation.",
-              "cue_principal": "Rester sous le seuil lactate. Si la respiration devient haletante, réduire l'intensité.",
-              "notes_biomecaniques": "Améliore la biogenèse mitochondriale et l'oxydation des lipides. Complémentaire au 4×4 — les deux stimuli sont distincts et non redondants."
+              "label": "Zone 2 Assault Bike",
+              "params": "20 min"
             }
           ]
         },
@@ -1936,25 +1917,26 @@
               "notes_biomecaniques": "Exercice basique sans documentation spécifique dans le Glossaire. Variante bilatérale du Single Leg Calf Raise. Exécution standard : monter sur la pointe des pieds, descendre contrôlé. Charge via haltères ou barre."
             },
             {
-              "libraryId": "3-month-heel-taps",
+              "libraryId": "reverse-crunch-15",
               "params": "3×10-15",
               "name": "Reverse Crunch 1.5 reps",
               "muscles_primaires": [
-                "TVA",
-                "Rectus abdominis",
-                "Diaphragme"
+                "Rectus abdominis (fibres inférieures)",
+                "TVA"
               ],
-              "position_depart": "Allongé sur le dos. Hanches fléchies à 90° (cuisses verticales), genoux pliés à 90° (tibias horizontaux). Bras tendus vers le plafond. C'est la position dite \"3 mois\" (mimant la position d'un bébé de 3 mois — référence développementale).",
-              "execution": "Depuis cette position, abaisser lentement UN talon vers le sol en étendant la jambe, tout en maintenant le bas du dos plaqué au sol (pas de cambrure). Le talon touche légèrement le sol, puis revient à la position de départ. Alterner les jambes. Les bras restent tendus vers le plafond, immobiles.\n\nLe bas du dos DOIT rester plaqué au sol pendant tout le mouvement. C'est la règle non négociable. Si le bas du dos décolle quand le talon descend, l'amplitude est trop grande ou le core est fatigué.",
-              "cue_principal": "Bas du dos écrasé dans le sol. Si le dos décolle, la rep ne compte pas.\" L'anti-extension est l'objectif principal : résister à la force qui tire le rachis en hyperextension quand le bras de levier des jambes augmente.",
-              "erreurs_frequentes": "- *Bas du dos qui se cambre* : amplitude trop grande. Descendre le talon moins loin.\n- *Mouvement rapide* : chaque descente de talon doit être lente et contrôlée (3s).\n- *Tête qui se soulève / cou en tension* : la tête reste posée au sol, neutre.\n- *Bras qui bougent* : les bras sont des poteaux verticaux immobiles. Leur rôle est de fournir un référentiel visuel et de stabiliser le torse.",
-              "respiration": "expirer en descendant le talon (l'expiration aide à maintenir la pression intra-abdominale), inspirer en revenant.",
-              "notes_biomecaniques": "Anti-extension par excellence. La position '3 mois' est la fondation de la respiration abdominale (Rebuild Pro). Chaque rep est un test du TVA. Directement anti-rib flare.",
-              "filtre_profil": "EXCELLENT. Alternance mercredi sem A avec Superman Plank sem B.",
-              "verdict": "RECOMMANDÉ",
-              "asymmetry_note": "Observer si un côté décolle le dos plus tôt — asymétrie de contrôle TVA.",
+              "position_depart": "Couché sur le dos, genoux pliés. Support derrière la tête pour stabiliser le haut du corps. Soulever les hanches en roulant le bassin vers la poitrine. Contrôler la descente.",
+              "cue_principal": "Le mouvement part du BASSIN (bottom-up). Soulever le coccyx vers le plafond. En P2 : 1.5 reps — monter bassin → redescendre à mi-chemin → remonter → redescendre = 1 rep.",
+              "notes_biomecaniques": "Flexion inversée bottom-up = plus safe que le crunch classique pour le rib flare. Contrôle du bassin directement pertinent pour la bascule pelvienne antérieure.",
+              "filtre_profil": "OK. Safe — flexion bottom-up préférable à top-down.",
+              "verdict": "OK",
               "video": {
-                "vahva_key": "3-Month position Heel Taps"
+                "rebuild_pro": {
+                  "driveFileId": "1r_Gyjz2gNEb9seFkqc6BtziEPZQvjL1L",
+                  "driveUrl": "https://drive.google.com/file/d/1r_Gyjz2gNEb9seFkqc6BtziEPZQvjL1L/view",
+                  "type": "video",
+                  "exerciseId_rebuild": "reverse-crunch-to-straight-legs"
+                },
+                "vahva_key": "Reverse Crunch"
               }
             }
           ]
@@ -2032,7 +2014,10 @@
               "execution": "Laisser le tronc descendre en flexion de hanche (pas en arrondissant le dos — le dos reste plat). Descendre jusqu'à ~90° de flexion (torse perpendiculaire aux jambes). Remonter en contractant les fessiers et les ischio-jambiers, en tirant le torse vers le haut. Le mouvement se termine quand le corps est aligné (torse dans le prolongement des jambes) — pas en hyperextension.\n\nPour le biais concentrique du jeudi : contrôler la montée (2-3s), descendre rapidement (1s). Cela réduit les DOMS tout en maintenant le stimulus.",
               "cue_principal": "Tirer avec les fessiers, pas avec le bas du dos.\" La majorité du travail doit être ressentie dans les fessiers et l'arrière des cuisses, pas dans les érecteurs spinaux.",
               "erreurs_frequentes": "- *Hyperextension en haut* : le torse dépasse la ligne des jambes = compression discale lombaire. S'arrêter net à l'alignement.\n- *Dos arrondi pendant la descente* : le rachis reste neutre. Si le dos s'arrondit, le pad est trop bas (il devrait être au niveau des crêtes iliaques, pas sur l'abdomen).\n- *Mouvement rapide et incontrôlé* : l'inertie fait le travail au lieu des muscles. Tempo contrôlé.",
-              "respiration": "inspirer en descendant, expirer en montant."
+              "respiration": "inspirer en descendant, expirer en montant.",
+              "video": {
+                "vahva_key": "Superman back extension"
+              }
             }
           ]
         },
@@ -2057,16 +2042,37 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "tva-pull-squeeze",
               "params": "1×15-20 reps",
               "name": "TVA Pull Squeeze",
-              "erreurs_frequentes": "- Vacuum : inspirer au lieu de creuser. L'exercice est fait EN APNÉE après une expiration complète.\n- Hollow Hold : bas du dos qui se cambre (rib flare). Monter les jambes plus haut jusqu'à pouvoir maintenir le contact lombaire."
+              "muscles_primaires": [
+                "Transverse abdominis"
+              ],
+              "position_depart": "Position à quatre pattes ou couché sur le dos, genoux pliés. Sur l'expiration calme : activation interne du TVA. Pas d'apnée — respiration normale maintenue. Exercice de connexion neuromusculaire.",
+              "cue_principal": "Tirer le nombril vers la colonne comme si on 'aspirait' le ventre. Maintenir 1-2s, relâcher, répéter. Continuer à respirer normalement pendant la contraction.",
+              "notes_biomecaniques": "Active le transverse abdominal (couche la plus profonde). Fondation pour tous les autres exercices core. Entraîne la coordination diaphragme-transverse. Direct anti-rib flare : le TVA corsète les côtes flottantes vers le bas.",
+              "filtre_profil": "EXCELLENT. Activation TVA dynamique en respiration — pattern direct anti-rib flare.",
+              "verdict": "RECOMMANDÉ",
+              "video": {
+                "vahva_key": "TVA Pull Squeeze"
+              }
             },
             {
-              "libraryId": "vacuum-hollow-hold",
+              "libraryId": "vacuum",
               "params": "3×max hold",
               "name": "Vacuum",
-              "erreurs_frequentes": "- Vacuum : inspirer au lieu de creuser. L'exercice est fait EN APNÉE après une expiration complète.\n- Hollow Hold : bas du dos qui se cambre (rib flare). Monter les jambes plus haut jusqu'à pouvoir maintenir le contact lombaire."
+              "muscles_primaires": [
+                "Transverse abdominis"
+              ],
+              "position_depart": "À genoux penché en avant, à quatre pattes, ou debout. Expiration complète d'abord — condition non négociable. Relâcher, inspirer, répéter.",
+              "cue_principal": "Expirer TOUT l'air, puis SANS INSPIRER : tirer le nombril vers la colonne le plus loin possible. En apnée. Technique avancée : 'gentle pulses' — relâcher légèrement puis re-tirer sans reprendre d'air.",
+              "notes_biomecaniques": "TVA en apnée = activation maximale du transverse. Mécanisme direct anti-rib flare. Exercice pivot commun Brieuc + VAHVA.",
+              "filtre_profil": "EXCELLENT. Meilleur exercice TVA isolé. Déjà dans le protocole.",
+              "verdict": "RECOMMANDÉ",
+              "contra_indications": "Hypertension non contrôlée (manœuvre de Valsalva).",
+              "video": {
+                "vahva_key": "Vacuum"
+              }
             }
           ]
         },
@@ -2104,26 +2110,13 @@
             },
             {
               "libraryId": "deep-lunge",
-              "params": "4×1 min (alterner)",
-              "name": "Deep Lunge",
-              "muscles_primaires": [
-                "Psoas",
-                "Fléchisseurs de hanche",
-                "Adducteurs"
-              ],
-              "execution": "Position de fente basse profonde, genou arrière au sol. Le pied avant est loin devant. Laisser le bassin descendre vers le sol. Maintenir 60s par côté.",
-              "cue_principal": "Bassin bas et vers l'avant, torse vertical."
+              "label": "Deep Lunge",
+              "params": "4×1 min (alterner)"
             },
             {
               "libraryId": "kneeling-half-splits",
-              "params": "4×1 min (alterner)",
-              "name": "Kneeling Half Splits",
-              "muscles_primaires": [
-                "Ischio-jambiers",
-                "Psoas"
-              ],
-              "execution": "Depuis la position à genoux (un genou au sol), tendre la jambe avant en faisant glisser le pied vers l'avant. Le talon reste au sol. Pencher le torse vers la jambe tendue. Maintenir 60s par côté.",
-              "cue_principal": "Talon au sol, jambe tendue, dos droit en penchant vers l'avant."
+              "label": "Kneeling Half Splits",
+              "params": "4×1 min (alterner)"
             },
             {
               "libraryId": "single-leg-hip-hinge",
@@ -2491,7 +2484,7 @@
         "verdict": "RECOMMANDÉ | OK | ADAPTER | ÉVITER (core uniquement)",
         "video": "Références vidéo — rebuild_pro (Drive), vahva_key (→ vahva_unified_mapping.json), fitnessfaq_drive (Drive)"
       },
-      "total_exercises": 150,
+      "total_exercises": 143,
       "sources_merged": [
         "phase2_tracker Glossaire (71)",
         "core_exercises (33)",
@@ -2759,7 +2752,9 @@
         "sources": [
           "phase2_tracker (Glossaire)"
         ],
-        "video": {}
+        "video": {
+          "vahva_key": "Superman back extension"
+        }
       },
       "supine-hip-elevated-leg-curl": {
         "id": "supine-hip-elevated-leg-curl",
@@ -7922,251 +7917,6 @@
           "mobility_glossary_fitnessfaq"
         ],
         "video": {}
-      },
-      "hip-bridges-bande": {
-        "id": "hip-bridges-bande",
-        "aliases": [],
-        "domain": [
-          "bfs"
-        ],
-        "category": "bfs",
-        "subcategory": "fessier",
-        "pilier": null,
-        "muscles_secondaires": [],
-        "equipment": [],
-        "position_depart": "Allongé sur le dos, genoux fléchis, pieds à plat. Mini-bande légère au-dessus des genoux.",
-        "execution": "Pousser le bassin vers le plafond en serrant les fessiers. En haut : genou pousse contre la bande (abduction) pour activer le moyen fessier. Maintenir 5s. Redescendre contrôlé.",
-        "cue_principal": "Serrer les fessiers AVANT de monter. Main sur le fessier qui travaille pour confirmer l'activation.",
-        "erreurs_frequentes": null,
-        "respiration": null,
-        "notes_biomecaniques": null,
-        "filtre_profil": null,
-        "verdict": null,
-        "phase": null,
-        "progression_depuis": [],
-        "progression_vers": [],
-        "parametres_defaut": {},
-        "asymmetry_note": null,
-        "contra_indications": null,
-        "sources": [
-          "programme_sport (ajout manuel)"
-        ],
-        "video": {},
-        "name": "Hip Bridges (bande légère)",
-        "muscles_primaires": [
-          "Grand fessier",
-          "Moyen fessier"
-        ]
-      },
-      "five-finger-toe-stretch": {
-        "id": "five-finger-toe-stretch",
-        "aliases": [],
-        "domain": [
-          "bfs"
-        ],
-        "category": "bfs",
-        "subcategory": "pied",
-        "pilier": null,
-        "muscles_secondaires": [],
-        "equipment": [],
-        "position_depart": "Assis ou debout. Entrelacer les doigts de la main entre les orteils du pied.",
-        "execution": "Étirer doucement les orteils en écartement, maintenir 60s par pied. Mobiliser les orteils individuellement si possible.",
-        "cue_principal": "Orteils libres et espacés — sentir le fascia plantaire s'ouvrir.",
-        "erreurs_frequentes": null,
-        "respiration": null,
-        "notes_biomecaniques": null,
-        "filtre_profil": null,
-        "verdict": null,
-        "phase": null,
-        "progression_depuis": [],
-        "progression_vers": [],
-        "parametres_defaut": {},
-        "asymmetry_note": null,
-        "contra_indications": null,
-        "sources": [
-          "programme_sport (ajout manuel)"
-        ],
-        "video": {},
-        "name": "Five-Finger Toe Stretch",
-        "muscles_primaires": [
-          "Muscles intrinsèques du pied",
-          "Fascia plantaire"
-        ]
-      },
-      "heel-raised-walks": {
-        "id": "heel-raised-walks",
-        "aliases": [],
-        "domain": [
-          "bfs"
-        ],
-        "category": "bfs",
-        "subcategory": "pied",
-        "pilier": null,
-        "muscles_secondaires": [],
-        "equipment": [],
-        "position_depart": "Debout, pieds nus.",
-        "execution": "Marcher sur les talons, orteils relevés du sol. Avancer lentement en maintenant les orteils activement décollés.",
-        "cue_principal": "Orteils vers le ciel, pas de contact de l'avant du pied avec le sol.",
-        "erreurs_frequentes": null,
-        "respiration": null,
-        "notes_biomecaniques": null,
-        "filtre_profil": null,
-        "verdict": null,
-        "phase": null,
-        "progression_depuis": [],
-        "progression_vers": [],
-        "parametres_defaut": {},
-        "asymmetry_note": null,
-        "contra_indications": null,
-        "sources": [
-          "programme_sport (ajout manuel)"
-        ],
-        "video": {},
-        "name": "Heel Raised Walks",
-        "muscles_primaires": [
-          "Tibial antérieur",
-          "Extenseurs des orteils",
-          "Stabilisateurs cheville"
-        ]
-      },
-      "norwegian-4x4": {
-        "id": "norwegian-4x4",
-        "aliases": [],
-        "domain": [
-          "cardio"
-        ],
-        "category": "cardio",
-        "subcategory": "hiit",
-        "pilier": null,
-        "muscles_secondaires": [],
-        "equipment": [],
-        "position_depart": null,
-        "execution": "4 intervalles de 4 minutes à 85-95% FCmax sur assault bike. Récupération active 3 minutes entre chaque intervalle. Total : ~25 min.",
-        "cue_principal": "Atteindre 85-95% FCmax dès la 2e minute de chaque intervalle et y rester.",
-        "erreurs_frequentes": null,
-        "respiration": null,
-        "notes_biomecaniques": "Protocole Helgerud et al. 2007. VO2max +7.2% en 8 semaines sur sujets entraînés. Supérieur au HIIT court pour l'amélioration du VO2max.",
-        "filtre_profil": null,
-        "verdict": null,
-        "phase": null,
-        "progression_depuis": [],
-        "progression_vers": [],
-        "parametres_defaut": {},
-        "asymmetry_note": null,
-        "contra_indications": null,
-        "sources": [
-          "programme_sport (ajout manuel)"
-        ],
-        "video": {},
-        "name": "Norwegian 4×4",
-        "muscles_primaires": [
-          "Système cardiovasculaire"
-        ]
-      },
-      "zone-2": {
-        "id": "zone-2",
-        "aliases": [],
-        "domain": [
-          "cardio"
-        ],
-        "category": "cardio",
-        "subcategory": "liss",
-        "pilier": null,
-        "muscles_secondaires": [],
-        "equipment": [],
-        "position_depart": null,
-        "execution": "20 minutes à 60-70% FCmax sur assault bike. Immédiatement après le 4×4. Intensité : capable de tenir une conversation.",
-        "cue_principal": "Rester sous le seuil lactate. Si la respiration devient haletante, réduire l'intensité.",
-        "erreurs_frequentes": null,
-        "respiration": null,
-        "notes_biomecaniques": "Améliore la biogenèse mitochondriale et l'oxydation des lipides. Complémentaire au 4×4 — les deux stimuli sont distincts et non redondants.",
-        "filtre_profil": null,
-        "verdict": null,
-        "phase": null,
-        "progression_depuis": [],
-        "progression_vers": [],
-        "parametres_defaut": {},
-        "asymmetry_note": null,
-        "contra_indications": null,
-        "sources": [
-          "programme_sport (ajout manuel)"
-        ],
-        "video": {},
-        "name": "Zone 2 — Endurance aérobie",
-        "muscles_primaires": [
-          "Système cardiovasculaire"
-        ]
-      },
-      "deep-lunge": {
-        "id": "deep-lunge",
-        "aliases": [],
-        "domain": [
-          "bfs"
-        ],
-        "category": "bfs",
-        "subcategory": "hanche",
-        "pilier": null,
-        "muscles_secondaires": [],
-        "equipment": [],
-        "position_depart": null,
-        "execution": "Position de fente basse profonde, genou arrière au sol. Le pied avant est loin devant. Laisser le bassin descendre vers le sol. Maintenir 60s par côté.",
-        "cue_principal": "Bassin bas et vers l'avant, torse vertical.",
-        "erreurs_frequentes": null,
-        "respiration": null,
-        "notes_biomecaniques": null,
-        "filtre_profil": null,
-        "verdict": null,
-        "phase": null,
-        "progression_depuis": [],
-        "progression_vers": [],
-        "parametres_defaut": {},
-        "asymmetry_note": null,
-        "contra_indications": null,
-        "sources": [
-          "programme_sport (ajout manuel)"
-        ],
-        "video": {},
-        "name": "Deep Lunge",
-        "muscles_primaires": [
-          "Psoas",
-          "Fléchisseurs de hanche",
-          "Adducteurs"
-        ]
-      },
-      "kneeling-half-splits": {
-        "id": "kneeling-half-splits",
-        "aliases": [],
-        "domain": [
-          "bfs"
-        ],
-        "category": "bfs",
-        "subcategory": "ischio",
-        "pilier": null,
-        "muscles_secondaires": [],
-        "equipment": [],
-        "position_depart": null,
-        "execution": "Depuis la position à genoux (un genou au sol), tendre la jambe avant en faisant glisser le pied vers l'avant. Le talon reste au sol. Pencher le torse vers la jambe tendue. Maintenir 60s par côté.",
-        "cue_principal": "Talon au sol, jambe tendue, dos droit en penchant vers l'avant.",
-        "erreurs_frequentes": null,
-        "respiration": null,
-        "notes_biomecaniques": null,
-        "filtre_profil": null,
-        "verdict": null,
-        "phase": null,
-        "progression_depuis": [],
-        "progression_vers": [],
-        "parametres_defaut": {},
-        "asymmetry_note": null,
-        "contra_indications": null,
-        "sources": [
-          "programme_sport (ajout manuel)"
-        ],
-        "video": {},
-        "name": "Kneeling Half Splits",
-        "muscles_primaires": [
-          "Ischio-jambiers",
-          "Psoas"
-        ]
       }
     }
   },
