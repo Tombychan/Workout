@@ -1,0 +1,534 @@
+{
+  "meta": {
+    "description": "VAHVA Abs mapping unifié — Drive (31-Day Challenge) + YouTube (Abs 20XX + Brieuc)",
+    "lastUpdated": "2026-03-04",
+    "totalExercises": 77,
+    "stats": {
+      "both": 2,
+      "drive_only": 29,
+      "youtube_only": 45,
+      "no_video": 1
+    }
+  },
+  "exercises": {
+    "3-Month position Heel Taps": {
+      "name": "3-Month position Heel Taps",
+      "youtubeId": "vgufDyLHcIE",
+      "youtubeUrl": "https://www.youtube.com/watch?v=vgufDyLHcIE",
+      "source": "youtube_only"
+    },
+    "Ab Roll Out": {
+      "name": "Ab Roll Out",
+      "youtubeId": "pFjcp2Hk_rw",
+      "youtubeUrl": "https://www.youtube.com/watch?v=pFjcp2Hk_rw",
+      "source": "youtube_only"
+    },
+    "Back Bend Crunch": {
+      "name": "Back Bend Crunch",
+      "day": 24,
+      "driveFileId": "1db8-2ozqJ5cGs94MkdoX9UuS637RK3JD",
+      "driveUrl": "https://drive.google.com/file/d/1db8-2ozqJ5cGs94MkdoX9UuS637RK3JD/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Beginner Jackknife": {
+      "name": "Beginner Jackknife",
+      "day": 1,
+      "driveFileId": "1mbS8EYnydqk2e1V-mvmc0ClEF0fgLsPG",
+      "driveUrl": "https://drive.google.com/file/d/1mbS8EYnydqk2e1V-mvmc0ClEF0fgLsPG/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Bicycle Crunch": {
+      "name": "Bicycle Crunch",
+      "day": 27,
+      "driveFileId": "1-ADl5UqefxDfwdBr-F78RPhGHseeI2ZO",
+      "driveUrl": "https://drive.google.com/file/d/1-ADl5UqefxDfwdBr-F78RPhGHseeI2ZO/view?usp=drivesdk",
+      "youtubeId": "VaL7XWK3MVE",
+      "youtubeUrl": "https://www.youtube.com/watch?v=VaL7XWK3MVE",
+      "source": "both"
+    },
+    "Chair Sit-up": {
+      "name": "Chair Sit-up",
+      "youtubeId": "udyalrKYiuE",
+      "youtubeUrl": "https://www.youtube.com/watch?v=udyalrKYiuE",
+      "source": "youtube_only"
+    },
+    "Circling Crunch": {
+      "name": "Circling Crunch",
+      "day": 23,
+      "driveFileId": "1A9G2Lo8pcKiaBhE3U9cBbSDZkiom1iMJ",
+      "driveUrl": "https://drive.google.com/file/d/1A9G2Lo8pcKiaBhE3U9cBbSDZkiom1iMJ/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Cross Mountain Climbers": {
+      "name": "Cross Mountain Climbers",
+      "youtubeId": "luRruRjECm8",
+      "youtubeUrl": "https://www.youtube.com/watch?v=luRruRjECm8",
+      "source": "youtube_only"
+    },
+    "Crunch bras en croix": {
+      "name": "Crunch bras en croix",
+      "youtubeId": "Qz3ylqqJ90M",
+      "youtubeUrl": "https://www.youtube.com/watch?v=Qz3ylqqJ90M",
+      "source": "youtube_only"
+    },
+    "Dead Bug": {
+      "name": "Dead Bug",
+      "youtubeId": "vgufDyLHcIE",
+      "youtubeUrl": "https://www.youtube.com/watch?v=vgufDyLHcIE",
+      "source": "youtube_only"
+    },
+    "Dragon Fly": {
+      "name": "Dragon Fly",
+      "day": 30,
+      "driveFileId": "11goO3sqAWeABhywh5Z2AupG6CzD3LAJ8",
+      "driveUrl": "https://drive.google.com/file/d/11goO3sqAWeABhywh5Z2AupG6CzD3LAJ8/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Flutter Kicks": {
+      "name": "Flutter Kicks",
+      "youtubeId": "ZEjloSZwXqI",
+      "youtubeUrl": "https://www.youtube.com/watch?v=ZEjloSZwXqI",
+      "source": "youtube_only"
+    },
+    "Full Dragon Flag": {
+      "name": "Full Dragon Flag",
+      "youtubeId": "At0mMAHqWrQ",
+      "youtubeUrl": "https://www.youtube.com/watch?v=At0mMAHqWrQ",
+      "source": "youtube_only"
+    },
+    "Ground Windmill": {
+      "name": "Ground Windmill",
+      "day": 15,
+      "driveFileId": "1BdrMS07g5d5r8B-stv1zLwZWMlkmYiQh",
+      "driveUrl": "https://drive.google.com/file/d/1BdrMS07g5d5r8B-stv1zLwZWMlkmYiQh/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Hanging Knee Raise": {
+      "name": "Hanging Knee Raise",
+      "youtubeId": "QyVq5oUBpss",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QyVq5oUBpss",
+      "source": "youtube_only"
+    },
+    "Hanging Knee Raise Hold": {
+      "name": "Hanging Knee Raise Hold",
+      "day": 17,
+      "driveFileId": "1gKU4OWoc9iSmBYANZE7sh04J2Kk366aG",
+      "driveUrl": "https://drive.google.com/file/d/1gKU4OWoc9iSmBYANZE7sh04J2Kk366aG/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Hanging Knee Raise alternées": {
+      "name": "Hanging Knee Raise alternées",
+      "youtubeId": "QyVq5oUBpss",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QyVq5oUBpss",
+      "source": "youtube_only"
+    },
+    "Hanging Knee Raise croisées": {
+      "name": "Hanging Knee Raise croisées",
+      "youtubeId": "QyVq5oUBpss",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QyVq5oUBpss",
+      "source": "youtube_only"
+    },
+    "Hanging Leg Raise": {
+      "name": "Hanging Leg Raise",
+      "youtubeId": "QyVq5oUBpss",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QyVq5oUBpss",
+      "source": "youtube_only"
+    },
+    "Hanging Oblique Pendulum": {
+      "name": "Hanging Oblique Pendulum",
+      "day": 25,
+      "driveFileId": "1yj5sfSRvHKd7bKnybXcxUJAzc6Ggcf4Z",
+      "driveUrl": "https://drive.google.com/file/d/1yj5sfSRvHKd7bKnybXcxUJAzc6Ggcf4Z/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Hanging Obliques Crunch": {
+      "name": "Hanging Obliques Crunch",
+      "youtubeId": "Pr1ieGZ5atk",
+      "youtubeUrl": "https://www.youtube.com/watch?v=Pr1ieGZ5atk",
+      "source": "youtube_only"
+    },
+    "Hanging Obliques Side Crunch": {
+      "name": "Hanging Obliques Side Crunch",
+      "youtubeId": "Pr1ieGZ5atk",
+      "youtubeUrl": "https://www.youtube.com/watch?v=Pr1ieGZ5atk",
+      "source": "youtube_only"
+    },
+    "Hip Raise": {
+      "name": "Hip Raise",
+      "youtubeId": "VWK9kgM2hBE",
+      "youtubeUrl": "https://www.youtube.com/watch?v=VWK9kgM2hBE",
+      "source": "youtube_only"
+    },
+    "Hollow Hold": {
+      "name": "Hollow Hold",
+      "youtubeId": "Xk-JcNj6lfY",
+      "youtubeUrl": "https://www.youtube.com/watch?v=Xk-JcNj6lfY",
+      "source": "youtube_only"
+    },
+    "In-and-Out abs": {
+      "name": "In-and-Out abs",
+      "youtubeId": "rPoyHmwRzqE",
+      "youtubeUrl": "https://www.youtube.com/watch?v=rPoyHmwRzqE",
+      "source": "youtube_only"
+    },
+    "Inverted Row suspendu": {
+      "name": "Inverted Row suspendu",
+      "youtubeId": "z4RJcgEKRSQ",
+      "youtubeUrl": "https://www.youtube.com/watch?v=z4RJcgEKRSQ",
+      "source": "youtube_only"
+    },
+    "Isometric Contraction": {
+      "name": "Isometric Contraction",
+      "day": 19,
+      "driveFileId": "1gO1HkmbkGnN_O2PXXgrRosgWnjvwSQVr",
+      "driveUrl": "https://drive.google.com/file/d/1gO1HkmbkGnN_O2PXXgrRosgWnjvwSQVr/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Kimura Sit Up": {
+      "name": "Kimura Sit Up",
+      "day": 13,
+      "driveFileId": "1etfAGtPPb1irTpdTIJLGRssPiQeqA3UO",
+      "driveUrl": "https://drive.google.com/file/d/1etfAGtPPb1irTpdTIJLGRssPiQeqA3UO/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Kneeling Core Rotation (bande)": {
+      "name": "Kneeling Core Rotation (bande)",
+      "day": 8,
+      "driveFileId": "19HTMLSIO9BmDQi2zv_SP1xARbe0cs80m",
+      "driveUrl": "https://drive.google.com/file/d/19HTMLSIO9BmDQi2zv_SP1xARbe0cs80m/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Kneeling Iso Rotation": {
+      "name": "Kneeling Iso Rotation",
+      "day": 26,
+      "driveFileId": "1YDdzrz7SO7o8KhM_394Bb3WuLy7WfEYP",
+      "driveUrl": "https://drive.google.com/file/d/1YDdzrz7SO7o8KhM_394Bb3WuLy7WfEYP/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "L-sit": {
+      "name": "L-sit",
+      "youtubeId": "G1_EoDs-G7E",
+      "youtubeUrl": "https://www.youtube.com/watch?v=G1_EoDs-G7E",
+      "source": "youtube_only"
+    },
+    "Lever Side Bend": {
+      "name": "Lever Side Bend",
+      "day": 7,
+      "driveFileId": "1wq6Y3k_3hYzN8khj8XceBUPnHxFuUcIM",
+      "driveUrl": "https://drive.google.com/file/d/1wq6Y3k_3hYzN8khj8XceBUPnHxFuUcIM/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Low Leg Hold": {
+      "name": "Low Leg Hold",
+      "youtubeId": "bR_REnHpXcM",
+      "youtubeUrl": "https://www.youtube.com/watch?v=bR_REnHpXcM",
+      "source": "youtube_only"
+    },
+    "Lower Abs Raise": {
+      "name": "Lower Abs Raise",
+      "source": "no_video"
+    },
+    "Lower Obliques Crunch": {
+      "name": "Lower Obliques Crunch",
+      "youtubeId": "QM9iwYWUouo",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QM9iwYWUouo",
+      "source": "youtube_only"
+    },
+    "Lying Leg Raise": {
+      "name": "Lying Leg Raise",
+      "day": 4,
+      "driveFileId": "1ci7oh-BQhXci11GOjorCcCeoX40r_1Gk",
+      "driveUrl": "https://drive.google.com/file/d/1ci7oh-BQhXci11GOjorCcCeoX40r_1Gk/view?usp=drivesdk",
+      "youtubeId": "ZZ6KjFnbFXs",
+      "youtubeUrl": "https://www.youtube.com/watch?v=ZZ6KjFnbFXs",
+      "source": "both"
+    },
+    "Lying Leg Rotation": {
+      "name": "Lying Leg Rotation",
+      "day": 3,
+      "driveFileId": "19dkPsuB6r8aR_qB1iSgNwTzk2c3WAU9K",
+      "driveUrl": "https://drive.google.com/file/d/19dkPsuB6r8aR_qB1iSgNwTzk2c3WAU9K/view?usp=drivesdk",
+      "driveVariants": [
+        {
+          "driveFileId": "19dkPsuB6r8aR_qB1iSgNwTzk2c3WAU9K",
+          "driveUrl": "https://drive.google.com/file/d/19dkPsuB6r8aR_qB1iSgNwTzk2c3WAU9K/view?usp=drivesdk",
+          "label": "Day 3 Lying Leg Rotation"
+        },
+        {
+          "driveFileId": "1MAOrqPwscblSnoRfUz88suCiyhxE9ffB",
+          "driveUrl": "https://drive.google.com/file/d/1MAOrqPwscblSnoRfUz88suCiyhxE9ffB/view?usp=drivesdk",
+          "label": "Day 3 Lying Leg Rotation 2"
+        }
+      ],
+      "source": "drive_only"
+    },
+    "Lying Oblique Leg Raise": {
+      "name": "Lying Oblique Leg Raise",
+      "day": 21,
+      "driveFileId": "1Qbk4fPKN59oi-c2ivvumAboBs-GzTxEn",
+      "driveUrl": "https://drive.google.com/file/d/1Qbk4fPKN59oi-c2ivvumAboBs-GzTxEn/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Lying Obliques Crunch": {
+      "name": "Lying Obliques Crunch",
+      "day": 2,
+      "driveFileId": "1_m0HkPdih-sYjTJhZQeUE69wSUgMUBQ5",
+      "driveUrl": "https://drive.google.com/file/d/1_m0HkPdih-sYjTJhZQeUE69wSUgMUBQ5/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Mountain Climber": {
+      "name": "Mountain Climber",
+      "day": 16,
+      "driveFileId": "1q12HrJAUUcBakoaMPjCWO-29xNsJkZYr",
+      "driveUrl": "https://drive.google.com/file/d/1q12HrJAUUcBakoaMPjCWO-29xNsJkZYr/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Pallof Press": {
+      "name": "Pallof Press",
+      "youtubeId": "5aZ0IhJS8O8",
+      "youtubeUrl": "https://www.youtube.com/watch?v=5aZ0IhJS8O8",
+      "source": "youtube_only"
+    },
+    "Plank": {
+      "name": "Plank",
+      "youtubeId": "ZyWEXjdAGCQ",
+      "youtubeUrl": "https://www.youtube.com/watch?v=ZyWEXjdAGCQ",
+      "source": "youtube_only"
+    },
+    "Plank Crunch Curl": {
+      "name": "Plank Crunch Curl",
+      "day": 6,
+      "driveFileId": "1w79LtLbBL_wl8TqSaoU_uZYg5REZFAAu",
+      "driveUrl": "https://drive.google.com/file/d/1w79LtLbBL_wl8TqSaoU_uZYg5REZFAAu/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Plank Jacks": {
+      "name": "Plank Jacks",
+      "youtubeId": "VasEy9dNzZM",
+      "youtubeUrl": "https://www.youtube.com/watch?v=VasEy9dNzZM",
+      "source": "youtube_only"
+    },
+    "Plank Knee-to-Elbow": {
+      "name": "Plank Knee-to-Elbow",
+      "youtubeId": "I_syux99Bug",
+      "youtubeUrl": "https://www.youtube.com/watch?v=I_syux99Bug",
+      "source": "youtube_only"
+    },
+    "Plank March": {
+      "name": "Plank March",
+      "day": 9,
+      "driveFileId": "1fYcSQqJcKMLrgdN8Ok2IEV6CLFZayj6W",
+      "driveUrl": "https://drive.google.com/file/d/1fYcSQqJcKMLrgdN8Ok2IEV6CLFZayj6W/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Plank Thread the Needle": {
+      "name": "Plank Thread the Needle",
+      "youtubeId": "hrT--Y0sqRQ",
+      "youtubeUrl": "https://www.youtube.com/watch?v=hrT--Y0sqRQ",
+      "source": "youtube_only"
+    },
+    "Pro Bird Dog": {
+      "name": "Pro Bird Dog",
+      "day": 28,
+      "driveFileId": "1ilKA-jXAbRW0GL7uuHkspXaxZwIdV9se",
+      "driveUrl": "https://drive.google.com/file/d/1ilKA-jXAbRW0GL7uuHkspXaxZwIdV9se/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Reach-up Crunch": {
+      "name": "Reach-up Crunch",
+      "youtubeId": "O1uSRKZB1Is",
+      "youtubeUrl": "https://www.youtube.com/watch?v=O1uSRKZB1Is",
+      "source": "youtube_only"
+    },
+    "Reverse Crunch": {
+      "name": "Reverse Crunch",
+      "day": 20,
+      "driveFileId": "17c11m9nagiUbxd5Br_nWChdY0-O1JPRs",
+      "driveUrl": "https://drive.google.com/file/d/17c11m9nagiUbxd5Br_nWChdY0-O1JPRs/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Rolling Side Plank": {
+      "name": "Rolling Side Plank",
+      "youtubeId": "kyex81vn9LA",
+      "youtubeUrl": "https://www.youtube.com/watch?v=kyex81vn9LA",
+      "source": "youtube_only"
+    },
+    "Russian Twist": {
+      "name": "Russian Twist",
+      "youtubeId": "-BzNffL_6YE",
+      "youtubeUrl": "https://www.youtube.com/watch?v=-BzNffL_6YE",
+      "source": "youtube_only"
+    },
+    "Side Hollow Hold": {
+      "name": "Side Hollow Hold",
+      "day": 29,
+      "driveFileId": "19v6Abdm-0SqWi1WzQyEwhKT4VzKTGr_y",
+      "driveUrl": "https://drive.google.com/file/d/19v6Abdm-0SqWi1WzQyEwhKT4VzKTGr_y/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Side Kick Crunch": {
+      "name": "Side Kick Crunch",
+      "day": 11,
+      "driveFileId": "1dE1cwxboiytjjRauxmHQ-5TlXLOb-UiZ",
+      "driveUrl": "https://drive.google.com/file/d/1dE1cwxboiytjjRauxmHQ-5TlXLOb-UiZ/view?usp=drivesdk",
+      "driveVariants": [
+        {
+          "driveFileId": "1dE1cwxboiytjjRauxmHQ-5TlXLOb-UiZ",
+          "driveUrl": "https://drive.google.com/file/d/1dE1cwxboiytjjRauxmHQ-5TlXLOb-UiZ/view?usp=drivesdk",
+          "label": "Day 11 Side Kick Crunch"
+        },
+        {
+          "driveFileId": "1HrdZ39i_1Ydz2DrVBBoQoKH2-NkV7fRZ",
+          "driveUrl": "https://drive.google.com/file/d/1HrdZ39i_1Ydz2DrVBBoQoKH2-NkV7fRZ/view?usp=drivesdk",
+          "label": "Day 11 Side Kick Crunch 2"
+        }
+      ],
+      "source": "drive_only"
+    },
+    "Side Plank": {
+      "name": "Side Plank",
+      "youtubeId": "NXr4Fw8q60o",
+      "youtubeUrl": "https://www.youtube.com/watch?v=NXr4Fw8q60o",
+      "source": "youtube_only"
+    },
+    "Side Plank Bend": {
+      "name": "Side Plank Bend",
+      "youtubeId": "F63KKkm18xw",
+      "youtubeUrl": "https://www.youtube.com/watch?v=F63KKkm18xw",
+      "source": "youtube_only"
+    },
+    "Side Plank Hip Raise": {
+      "name": "Side Plank Hip Raise",
+      "youtubeId": "F63KKkm18xw",
+      "youtubeUrl": "https://www.youtube.com/watch?v=F63KKkm18xw",
+      "source": "youtube_only"
+    },
+    "Side Plank Run": {
+      "name": "Side Plank Run",
+      "day": 14,
+      "driveFileId": "1-IDXkQDI19-3Vd3Ozr30IwQVAKubgcFx",
+      "driveUrl": "https://drive.google.com/file/d/1-IDXkQDI19-3Vd3Ozr30IwQVAKubgcFx/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Single Leg Dragon Flag": {
+      "name": "Single Leg Dragon Flag",
+      "youtubeId": "At0mMAHqWrQ",
+      "youtubeUrl": "https://www.youtube.com/watch?v=At0mMAHqWrQ",
+      "source": "youtube_only"
+    },
+    "Single Leg Raise": {
+      "name": "Single Leg Raise",
+      "youtubeId": "VAkPh40gS5M",
+      "youtubeUrl": "https://www.youtube.com/watch?v=VAkPh40gS5M&t=506",
+      "source": "youtube_only"
+    },
+    "Sit Up Lever Rotation": {
+      "name": "Sit Up Lever Rotation",
+      "day": 22,
+      "driveFileId": "1hWW9rlwlUbwzOVNhpGvJRu6zxBDchQ7g",
+      "driveUrl": "https://drive.google.com/file/d/1hWW9rlwlUbwzOVNhpGvJRu6zxBDchQ7g/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Sit-up": {
+      "name": "Sit-up",
+      "youtubeId": "pCX65Mtc_Kk",
+      "youtubeUrl": "https://www.youtube.com/watch?v=pCX65Mtc_Kk",
+      "source": "youtube_only"
+    },
+    "Star Crunch": {
+      "name": "Star Crunch",
+      "youtubeId": "_3tEONtx_lY",
+      "youtubeUrl": "https://www.youtube.com/watch?v=_3tEONtx_lY",
+      "source": "youtube_only"
+    },
+    "Stick Rotations": {
+      "name": "Stick Rotations",
+      "day": 18,
+      "driveFileId": "1W0IgB0tRAJgRIgbhVTnEBa8hDw64QW94",
+      "driveUrl": "https://drive.google.com/file/d/1W0IgB0tRAJgRIgbhVTnEBa8hDw64QW94/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Straight Abs Raise": {
+      "name": "Straight Abs Raise",
+      "youtubeId": "QyVq5oUBpss",
+      "youtubeUrl": "https://www.youtube.com/watch?v=QyVq5oUBpss",
+      "source": "youtube_only"
+    },
+    "Suitcase Carry": {
+      "name": "Suitcase Carry",
+      "youtubeId": "w76_JnzMfXM",
+      "youtubeUrl": "https://www.youtube.com/watch?v=w76_JnzMfXM",
+      "source": "youtube_only"
+    },
+    "Superman Plank": {
+      "name": "Superman Plank",
+      "youtubeId": "c4ikfpuEd84",
+      "youtubeUrl": "https://www.youtube.com/watch?v=c4ikfpuEd84",
+      "source": "youtube_only"
+    },
+    "Superman back extension": {
+      "name": "Superman back extension",
+      "youtubeId": "jTNpZIl1qU0",
+      "youtubeUrl": "https://www.youtube.com/watch?v=jTNpZIl1qU0",
+      "source": "youtube_only"
+    },
+    "Superman upper body only": {
+      "name": "Superman upper body only",
+      "youtubeId": "RRSCQSaro24",
+      "youtubeUrl": "https://www.youtube.com/watch?v=RRSCQSaro24",
+      "source": "youtube_only"
+    },
+    "TVA Pull Hold": {
+      "name": "TVA Pull Hold",
+      "day": 12,
+      "driveFileId": "17viHVzgdH6k95XitQMiWhBjFfSGyDTVR",
+      "driveUrl": "https://drive.google.com/file/d/17viHVzgdH6k95XitQMiWhBjFfSGyDTVR/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "TVA Pull Squeeze": {
+      "name": "TVA Pull Squeeze",
+      "day": 5,
+      "driveFileId": "1k7m2AS3aG9Zvx1zBg2uw8_mROnAG1YBG",
+      "driveUrl": "https://drive.google.com/file/d/1k7m2AS3aG9Zvx1zBg2uw8_mROnAG1YBG/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Toes to Bar": {
+      "name": "Toes to Bar",
+      "youtubeId": "9PLvTHeuot8",
+      "youtubeUrl": "https://www.youtube.com/watch?v=9PLvTHeuot8",
+      "source": "youtube_only"
+    },
+    "Tuck Dragon Flag": {
+      "name": "Tuck Dragon Flag",
+      "youtubeId": "At0mMAHqWrQ",
+      "youtubeUrl": "https://www.youtube.com/watch?v=At0mMAHqWrQ",
+      "source": "youtube_only"
+    },
+    "Turtle Rock": {
+      "name": "Turtle Rock",
+      "day": 10,
+      "driveFileId": "1-fxmok9EFzjaaKhlPasM29TJK6lMqjGr",
+      "driveUrl": "https://drive.google.com/file/d/1-fxmok9EFzjaaKhlPasM29TJK6lMqjGr/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "V-up": {
+      "name": "V-up",
+      "youtubeId": "BIOM5eSsJ_8",
+      "youtubeUrl": "https://www.youtube.com/watch?v=BIOM5eSsJ_8",
+      "source": "youtube_only"
+    },
+    "Vacuum": {
+      "name": "Vacuum",
+      "day": 31,
+      "driveFileId": "10zsMMMZCxvXpNKUVT0Es4l2Hp1t68eyA",
+      "driveUrl": "https://drive.google.com/file/d/10zsMMMZCxvXpNKUVT0Es4l2Hp1t68eyA/view?usp=drivesdk",
+      "source": "drive_only"
+    },
+    "Windshield Wiper": {
+      "name": "Windshield Wiper",
+      "youtubeId": "s-jthWFsy48",
+      "youtubeUrl": "https://www.youtube.com/watch?v=s-jthWFsy48",
+      "source": "youtube_only"
+    }
+  }
+}
