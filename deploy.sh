@@ -5,7 +5,7 @@
 
 REPO="$HOME/Documents/Workout"
 DOWNLOADS="$HOME/Downloads/Claude/Routine artefacts"
-KNOWN_FILES=("routine_alimentaire.json" "nutrition.html" "index.html" "routine_sport.json" "app_sport.html" "glossaire_exercices.json" "glossaire_mobilite.json" "phase2_tracker.html" "deploy.sh" "exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json" "build.py" "programme_complet.json" "vahva_unified_mapping.json" "base_nutritionnelle.json")
+KNOWN_FILES=("routine_alimentaire.json" "nutrition.html" "index.html" "routine_sport.json" "app_sport.html" "glossaire_exercices.json" "glossaire_mobilite.json" "phase2_tracker.html" "deploy.sh" "exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json" "build.py" "programme_complet.json" "vahva_unified_mapping.json" "base_nutritionnelle.json" "flocons.html" "tempeh.html")
 
 # Fichiers source qui déclenchent un rebuild de programme_complet.json
 BUILD_SOURCES=("exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json")

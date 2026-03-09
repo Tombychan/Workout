@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Flocons Fermentés — Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0d0c08; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    #root { min-height: 100vh; }
+  </style>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+const { useState, useEffect, useCallback } = React;
+
+
+const BATCH_SIZE = 450;
+const WHEAT_GERM_G = 25;
+
+function calcIngredients(totalG) {
+  const avoine = Math.round(totalG * 0.5);
+  const epeautre = Math.round(totalG * 0.4);
+  const seigle = Math.round(totalG * 0.1);
+  const wheatGerm = WHEAT_GERM_G;
+  const totalWithGerm = totalG + wheatGerm;
+  const waterMin = Math.round(totalWithGerm * 1.5);
+  const waterMax = Math.round(totalWithGerm * 2.0);
+  return { avoine, epeautre, seigle, wheatGerm, waterMin, waterMax, total: totalG, totalWithGerm };
+}
+
+const ing = calcIngredients(BATCH_SIZE);
+
+// ─── SCIENCE DATA ───
+
+const TEMP_ZONES = [
+  {
+    range: "< 18°C", label: "Trop froid", color: "#5577cc", icon: "❄️",
+    flora: "Activité quasi nulle",
+    detail: "Fermentation trop lente — au bout de 24h tu n'auras guère plus qu'un trempage. Les phytases du seigle tournent au ralenti et les bactéries lactiques ne se multiplient pas assez pour acidifier le milieu.",
+    verdict: "Éviter", verdictColor: "#cc5555",
+  },
+  {
+    range: "18–24°C", label: "Mésophile lent — conservative", color: "#77aa77", icon: "👍",
+    flora: "L. plantarum, L. brevis, Leuconostoc (croissance lente)",
+    detail: "Fermentation fonctionnelle mais lente. Acidification progressive sur 24h (pH ~5,0-5,5 à mi-parcours). Les phytases du seigle disposent d'une longue fenêtre de travail dans leur pH optimal, mais leur cinétique enzymatique est aussi ralentie par la température basse. Sans backslopping : 24-30h. Avec backslopping : 18-22h (phase de latence éliminée).",
+    verdict: "Acceptable — allonger si sans backslopping", verdictColor: "#77aa77",
+  },
+  {
+    range: "25–30°C", label: "Mésophile optimal", color: "#6abf6a", icon: "✅",
+    flora: "L. plantarum, L. brevis, Leuconostoc, Pediococcus (diversité max.)",
+    detail: "Sweet spot. Les mésophiles approchent leur taux de croissance maximal, avec une diversité d'espèces maximale. Les phytases du seigle sont aussi plus actives enzymatiquement. Le pH descend plus vite qu'à 22°C, mais le travail phytasique par heure est plus élevé. Les deux effets se compensent. Sans backslopping : 24h. Avec backslopping : 16-20h.",
+    verdict: "Recommandé", verdictColor: "#6abf6a",
+  },
+  {
+    range: "30–33°C", label: "Mésophile chaud — limite haute", color: "#ccaa55", icon: "⚠️",
+    flora: "L. plantarum dominant, L. fermentum, diversité en déclin",
+    detail: "Les mésophiles restent dominants mais la diversité microbienne diminue (Leuconostoc et Pediococcus déclinent). L'acidification est rapide. Sans backslopping : 18-20h (goûter à 18h). Avec backslopping : 12-16h (goûter à 12h). Risque de sur-acidification si on dépasse ces durées. Principaux avantages vs 25-30°C : production de GABA et dégradation des avenines maximales.",
+    verdict: "Acceptable — surveiller étroitement", verdictColor: "#ccaa55",
+  },
+  {
+    range: "33–37°C", label: "Transition thermophile", color: "#cc7755", icon: "⚠️",
+    flora: "L. delbrueckii, S. thermophilus apparaissent",
+    detail: "Les thermophiles commencent à prendre le relais au-dessus de 33°C. Bactéries du yaourt — acidification rapide mais profil enzymatique différent (moins de protéases, pas de phytases). Diversité microbienne en chute. Peu d'intérêt pour ce protocole.",
+    verdict: "Déconseillé", verdictColor: "#cc7755",
+  },
+  {
+    range: "> 40°C", label: "Inactivation enzymatique", color: "#cc5555", icon: "🚫",
+    flora: "Phytases détruites",
+    detail: "Les phytases du seigle sont progressivement inactivées (dénaturation protéique). Leur optimum en milieu purifié est 45-55°C, mais en fermentation réelle elles ne survivent pas à 24h d'exposition à ces températures. Perte de l'intérêt principal du protocole.",
+    verdict: "Interdit", verdictColor: "#cc5555",
+  },
+];
+
+const TEMP_EXPLAINER = {
+  title: "Pourquoi 25-30°C et pas 20-25°C ?",
+  paragraphs: [
+    "Deux logiques s'opposent en apparence quand on choisit la température de cette fermentation, selon qu'on optimise la croissance bactérienne ou la dégradation des phytates.",
+    "Logique « microbiologie » : les mésophiles (L. plantarum, L. brevis, Pediococcus) atteignent leur taux de croissance maximal entre 25 et 35°C, avec un pic de diversité d'espèces autour de 28-32°C. Plus de bactéries = plus d'acide lactique, plus de protéases, plus de GABA, plus d'exopolysaccharides prébiotiques. Par cette logique, 30°C est mieux que 22°C.",
+    "Logique « phytase » : les phytases du seigle ont besoin d'un pH de 5,0-5,5 pour travailler efficacement. Si les bactéries acidifient trop vite (à 30°C), le pH traverse cette fenêtre en quelques heures au lieu de s'y maintenir 6-12h. Par cette logique, ralentir la fermentation (22°C) donne plus de temps de travail aux phytases.",
+    "Mais cette opposition est en partie fausse : à 30°C, les phytases elles-mêmes sont aussi plus actives (la cinétique enzymatique augmente avec la température, tant qu'on reste sous ~40°C). La fenêtre de pH est plus courte en heures, mais le travail par heure est plus élevé. Les deux effets se compensent largement. Et le gain sur la diversité bactérienne, la production de GABA, et la dégradation des protéines (avenines) penche nettement en faveur de 25-30°C.",
+    "En résumé : 22-24°C fonctionne (surtout si on allonge à 30-36h), mais 25-30°C est le vrai sweet spot quand on considère l'ensemble des bénéfices — pas juste les phytates.",
+  ],
+};
+
+// ─── SPERMIDINE & WHEAT GERM DATA ───
+
+const SPERMIDINE_DATA = {
+  title: "Spermidine & germe de blé",
+  intro: "Le germe de blé est la source alimentaire la plus concentrée en spermidine parmi les céréales. Ajouté au batch de fermentation, il bénéficie de la dégradation de ses antinutriments (acide phytique, raffinose, agglutinine) par les lactobacilles du seigle.",
+  sections: [
+    {
+      title: "Spermidine — mécanismes clés",
+      icon: "🔬",
+      items: [
+        {
+          label: "Autophagie",
+          detail: "La spermidine est le plus puissant inducteur naturel d'autophagie connu — le processus de « nettoyage cellulaire » qui dégrade les composants endommagés. Madeo et al. (2018, Science) : prolonge la durée de vie chez la levure, la drosophile, le nématode et la souris via l'induction de l'autophagie.",
+          color: "#6abf6a",
+        },
+        {
+          label: "Longévité",
+          detail: "Kiechl et al. (2018, Am J Clin Nutr) : apport alimentaire élevé en spermidine associé à +5,7 ans d'espérance de vie et réduction de la mortalité cardiovasculaire. Corrélation, pas causalité, mais concordant avec les données animales.",
+          color: "#7a9acc",
+        },
+        {
+          label: "Neuroprotection",
+          detail: "Essais cliniques avec extrait de germe de blé : amélioration cognitive chez les personnes âgées à ≥3,3 mg/jour de spermidine (Wirth et al., 2018, Cortex). L'essai SmartAge Trial à 0,9 mg/jour n'a pas montré d'effet significatif — la dose compte.",
+          color: "#aa88cc",
+        },
+        {
+          label: "Cardioprotection",
+          detail: "Réduit la rigidité artérielle et améliore la fonction diastolique chez la souris âgée (Eisenberg et al., 2016, Nat Med). Synergie potentielle avec les bêta-glucanes (LDL) et les flavanols du Flavochino (eNOS).",
+          color: "#cc8866",
+        },
+      ],
+    },
+    {
+      title: "Germe de blé — profil nutritionnel",
+      icon: "🌾",
+      items: [
+        {
+          label: "Teneur en spermidine",
+          detail: "220-337 μg/g de polyamines totales, spermidine dominante (Mohajeri et al., 2023, Food Sci Nutr). Germe séparé (non germé) > germe germé. 25g/batch (≈5g/jour) : apport estimé 1,0-1,7 mg spermidine/jour.",
+          color: "#c8a86a",
+        },
+        {
+          label: "Dose cible",
+          detail: "Apport moyen européen : ~12,5 mg/jour (toutes sources). Seuil cognitif clinique : ≥3,3 mg/jour (Wirth et al., 2018). L'alimentation complète (tempeh, soja, flocons, légumineuses) + germe de blé contribue significativement.",
+          color: "#6abf6a",
+        },
+        {
+          label: "Autres composés d'intérêt",
+          detail: "Vitamine E (α-tocophérol), B1/B6/folates, Zn, Mg, AGPI (ω-6), protéines (~23-30g/100g). Benzoquinones glycosylées — libérées sous forme bioactive par la fermentation (propriétés immunomodulatrices, études FWGE).",
+          color: "#a8926a",
+        },
+      ],
+    },
+    {
+      title: "Interaction fermentation × germe de blé",
+      icon: "🧫",
+      items: [
+        {
+          label: "Dégradation des antinutriments",
+          detail: "Le germe contient acide phytique, raffinose (→ ballonnements) et agglutinine de blé (WGA, lectine pro-inflammatoire). La fermentation lactique avec L. plantarum les dégrade efficacement. Les phytases du seigle contribuent aussi.",
+          color: "#6abf6a",
+        },
+        {
+          label: "Stabilité de la spermidine",
+          detail: "Stable à pH acide — groupes amines restent protonés en milieu acide. Pas de dégradation significative en 16-24h de fermentation lactique. Résiste bien aux conditions du protocole.",
+          color: "#6abf6a",
+        },
+        {
+          label: "⚠️ Oxydation lipidique — analyse de risque",
+          detail: "Le germe de blé contient ~10% de lipides, majoritairement des AGPI oméga-6 (acide linoléique ~55% des AG). En milieu aqueux acide (fermentation lactique), ces AGPI subissent une peroxydation lipidique auto-catalytique : les radicaux libres arrachent un hydrogène sur le carbone bisallylique → formation de peroxydes lipidiques → décomposition en aldéhydes réactifs : malondialdéhyde (MDA), 4-hydroxy-2-nonénal (4-HNE), hexanal. Ces composés sont pro-inflammatoires (activation NF-κB), génotoxiques (adduits à l'ADN) et perturbent les membranes cellulaires.",
+          color: "#ccaa55",
+        },
+        {
+          label: "Facteurs aggravants & atténuants",
+          detail: "Aggravants : pH acide (catalyse protonique des peroxydes), température >25°C (cinétique x2 par +10°C), durée d'exposition, présence de fer libre (réaction de Fenton → radicaux hydroxyles). Atténuants : la vitamine E endogène du germe (α-tocophérol, ~15 mg/100g) agit comme antioxydant sacrificiel — elle piège les radicaux peroxydes et retarde la propagation en chaîne. Le milieu de fermentation contient aussi des polyphénols protecteurs (acides phénoliques libérés par les lactobacilles). Tant que la vitamine E n'est pas épuisée, l'oxydation reste limitée.",
+          color: "#ccaa55",
+        },
+        {
+          label: "Mise en perspective du risque",
+          detail: "À 25g de germe / batch (5-6g/jour) sur 16-24h : ~2,5g de lipides dans le batch, dont ~1,4g de linoléique. C'est une charge lipidique faible comparée aux 30-50g d'AGPI qu'une cuisson au wok à haute température oxyde en quelques minutes. La fermentation lactique est un environnement réducteur (L. plantarum consomme l'oxygène), ce qui atténue le risque. À 80-100g de germe / batch : la charge passe à ~8-10g de lipides, la vitamine E endogène ne suffit plus à protéger, et le risque devient réel. C'est pourquoi l'approche hybride (25-30g fermentés + complément à cru au service) est recommandée pour atteindre le seuil cognitif de spermidine.",
+          color: "#77aa77",
+        },
+        {
+          label: "Benzoquinones bioactives",
+          detail: "Quinones glycosylées (inactives) libérées par fermentation via glycosidases bactériennes → 2-méthoxy et 2,6-diméthoxy benzoquinone. Propriétés anticancéreuses et immunomodulatrices in vitro (études FWGE). Concentrations dans notre protocole inférieures aux extraits standardisés, mais direction bénéfique.",
+          color: "#7a9acc",
+        },
+      ],
+    },
+  ],
+  practicalNotes: [
+    "Ajouter le germe de blé au mélange sec AVEC les flocons et la farine de seigle — il participe pleinement à la fermentation.",
+    "Pour atteindre le seuil cognitif (≥3,3 mg spermidine/jour) : approche hybride — 25-30g dans le batch + ~15g saupoudrés à cru au moment de servir. Ne pas mettre 80-100g dans le batch (oxydation lipidique).",
+    "Ne pas dépasser 36h de fermentation quand le germe de blé est dans le batch (vitamine E endogène épuisée, AGPI exposés).",
+    "Conserver le germe de blé au réfrigérateur après ouverture (les lipides rancissent rapidement à T° ambiante — sentir avant usage, odeur rance = jeter).",
+    "Choisir du germe de blé NON germé pour maximiser la spermidine (Mohajeri et al., 2023 : séparé industriellement > germé).",
+  ],
+};
+
+// ─── HEALTH DATA: 3×2 grid ───
+
+const HEALTH_DURATIONS = ["24h", "36h", "48h"];
+const HEALTH_TEMPS = ["25-30", "30-33"];
+const HEALTH_MODES = [
+  { key: "24h_25", label: "24h · 25-30°C", row: "24h", col: "25-30" },
+  { key: "24h_30", label: "24h · 30-33°C", row: "24h", col: "30-33" },
+  { key: "36h_25", label: "36h · 25-30°C", row: "36h", col: "25-30" },
+  { key: "36h_30", label: "36h · 30-33°C", row: "36h", col: "30-33" },
+  { key: "48h_25", label: "48h · 25-30°C", row: "48h", col: "25-30" },
+  { key: "48h_30", label: "48h · 30-33°C", row: "48h", col: "30-33" },
+];
+
+const HEALTH_DATA = {
+  "24h_25": {
+    tag: "✅ Sweet spot recommandé",
+    tagColor: "#6abf6a",
+    items: [
+      { nutrient: "Phytates", reduction: "50-70%", color: "#6abf6a", confidence: "Modérée-haute",
+        detail: "Phytases exogènes du seigle + acidification progressive → pH optimal (~5,0-5,5) maintenu 6-10h. Türk et al. (1996, J Cereal Sci). Fenêtre longue × cinétique modérée = bon rendement total.",
+        impact: "↑ Absorption fer, zinc, magnésium, calcium. Pertinent pour régime végétal-dominant et charge polyphénolique élevée.",
+        backslopping: "Acidification démarre ~6-8h plus tôt → fenêtre pH optimal un peu plus courte, mais densité bactérienne initiale compense. Résultat à 16-20h avec BS ≈ 24h sans BS." },
+      { nutrient: "Avenines (prolamines)", reduction: "15-30%", color: "#ccaa55", confidence: "Modérée",
+        detail: "Protéolyse bactérienne modérée. Gänzle et al. (2008, Trends Food Sci Tech) : >48h ou souches spécifiques nécessaires pour dégradation significative.",
+        impact: "↑ Digestibilité modeste. Pas suffisant pour cœliaque, améliore le confort chez les sensibles.",
+        backslopping: "Protéases bactériennes disponibles dès le départ → dégradation légèrement améliorée à durée égale. Gain marginal (~+5%)." },
+      { nutrient: "Amidon résistant", reduction: "40-60%", color: "#6abf6a", confidence: "Modérée",
+        detail: "Amylase bactérienne + acidification. Liljeberg & Björck (1994, EJCN).",
+        impact: "↓ Fermentation colique = ↓ ballonnements. Impact glycémique net favorable dans le contexte du repas complet.",
+        backslopping: "Activité amylasique immédiate → résultat similaire atteint en moins de temps." },
+      { nutrient: "Bêta-glucanes", reduction: "Intacts ✓", color: "#6abf6a", confidence: "Haute",
+        detail: "Polysaccharides structuraux résistants à la fermentation lactique courte.",
+        impact: "✓ Bénéfices cardiovasculaires préservés (↓ LDL, Whitehead et al., 2014). Pertinent pour le bilan lipidique à venir.",
+        backslopping: "Durée réduite (16-20h vs 24h) → marge de sécurité encore plus confortable. Aucun risque." },
+      { nutrient: "Diversité microbienne", reduction: "Maximale ✓", color: "#6abf6a", confidence: "Haute",
+        detail: "L. plantarum, L. brevis, Leuconostoc, Pediococcus — consortium complet. Pic de diversité à 28-32°C.",
+        impact: "Spectre enzymatique large → meilleur équilibre entre dégradation des antinutriments, production de postbiotiques, et stabilité du batch.",
+        backslopping: "Flore du batch précédent s'installe d'emblée → consortium plus stable, plus reproductible d'un batch à l'autre. Moins de place pour les espèces opportunistes productrices d'amines biogènes." },
+      { nutrient: "GABA", reduction: "Production modérée ↑", color: "#7a9acc", confidence: "Modérée",
+        detail: "L. plantarum produit du GABA via glutamate décarboxylase (GAD). Activité GAD augmente avec la température (optimum ~30-37°C, Di Cagno et al., 2010). À 25-30°C, production significative mais pas maximale.",
+        impact: "Effet anxiolytique et favorise le sommeil (pertinent pour les réveils à 3h). Exopolysaccharides nourrissent les producteurs de butyrate coliques.",
+        backslopping: "L. plantarum actif dès le départ → GAD démarre immédiatement. Résultat similaire ou légèrement supérieur en 16-20h vs 24h sans BS." },
+      { nutrient: "Oxalates", reduction: "20-40%", color: "#ccaa55", confidence: "Faible",
+        detail: "Frontela et al. (2011, Food Chem). Peu d'oxalates dans l'avoine de base.",
+        impact: "Impact pratique faible. Pertinent pour la charge rénale (créatine + PrEP).",
+        backslopping: "Impact marginal — pas de différence significative." },
+    ],
+  },
+  "24h_30": {
+    tag: "⚡ Fermentation rapide — raccourcir à 18-20h",
+    tagColor: "#ccaa55",
+    items: [
+      { nutrient: "Phytates", reduction: "40-60%", color: "#ccaa55", confidence: "Modérée",
+        detail: "Les phytases sont plus actives enzymatiquement (+20-40% de cinétique vs 25°C), MAIS le pH traverse la fenêtre optimale (5,0-5,5) en 3-5h au lieu de 6-10h. Bilan net : légèrement inférieur à 25-30°C sur 24h.",
+        impact: "↑ Absorption minérale, mais gain un peu moindre qu'à 25-30°C. Si les phytates sont la priorité, 25-30°C reste supérieur.",
+        backslopping: "Fenêtre pH optimal encore plus courte (2-3h vs 3-5h). Résultat phytates légèrement inférieur à durée égale. Compenser par la durée n'est pas une option (sur-acidification). Accepter le compromis." },
+      { nutrient: "Avenines (prolamines)", reduction: "25-40%", color: "#6abf6a", confidence: "Modérée",
+        detail: "Les protéases bactériennes sont nettement plus actives à 30-33°C. L. plantarum domine et produit des protéases thermostables.",
+        impact: "↑↑ Digestibilité protéique — principal avantage de cette plage. Pertinent si inconfort digestif avec les flocons.",
+        backslopping: "Protéases disponibles immédiatement et en haute densité → bon résultat dès 12-16h. Principal bénéfice du BS à cette température." },
+      { nutrient: "Amidon résistant", reduction: "60-80%", color: "#6abf6a", confidence: "Modérée",
+        detail: "Dégradation accélérée par l'activité amylasique plus forte et l'acidification rapide.",
+        impact: "↓↓ Fermentation colique. Pic glycémique compensé par le contexte du repas.",
+        backslopping: "Dégradation quasi complète dès 12-16h avec BS. Pas de différence fonctionnelle." },
+      { nutrient: "Bêta-glucanes", reduction: "Intacts ✓ (si ≤20h)", color: "#6abf6a", confidence: "Modérée",
+        detail: "Résistants en 18-20h même à 33°C. Au-delà de 24h à cette température, début de fragilisation possible.",
+        impact: "✓ OK si on raccourcit. ⚠️ Risque si on laisse 24h complètes.",
+        backslopping: "Avec BS, fermentation terminée en 12-16h → bêta-glucanes parfaitement intacts. Le raccourcissement par le BS protège ce nutrient clé." },
+      { nutrient: "Diversité microbienne", reduction: "Réduite ⚠️", color: "#ccaa55", confidence: "Haute",
+        detail: "Leuconostoc et Pediococcus déclinent au-dessus de 30°C. L. plantarum domine fortement, L. fermentum apparaît. Consortium moins diversifié.",
+        impact: "Moins de diversité de postbiotiques. Le backslopping est plus important à cette température pour maintenir une flore stable.",
+        backslopping: "Crucial à cette température. Sans BS, la flore est instable et dominée par les espèces opportunistes. Le BS impose d'emblée un consortium L. plantarum stable → résultat plus prévisible et reproductible." },
+      { nutrient: "GABA", reduction: "Production maximale ↑↑", color: "#6abf6a", confidence: "Modérée",
+        detail: "L'activité de la glutamate décarboxylase (GAD) de L. plantarum est à son optimum entre 30 et 37°C (Di Cagno et al., 2010). Production de GABA significativement plus élevée qu'à 25-30°C.",
+        impact: "↑↑ Effet anxiolytique et sommeil. Principal argument « santé » en faveur de 30-33°C.",
+        backslopping: "GAD active dès le départ → production maximale atteinte en 12-16h au lieu de 18-20h." },
+      { nutrient: "Risque sur-acidification", reduction: "Modéré ⚠️", color: "#cc7755", confidence: "Haute",
+        detail: "pH peut descendre sous 3,8-4,0 en 24h à 30-33°C. Goût acide prononcé. Raccourcir à 18-20h limite ce risque.",
+        impact: "⚠️ Goûter à 18h — si franchement acide, c'est prêt. Ne pas laisser 24h par défaut.",
+        backslopping: "⚠️ Le BS accélère tout — sur-acidification possible dès 16-18h. Goûter à 12h impératif. Mettre une alarme." },
+    ],
+    warnings: [
+      "Raccourcir à 18-20h sans BS, 12-16h avec BS.",
+      "Goûter à 12h (BS) ou 18h (sans BS) — si franchement acide, transférer au frigo immédiatement.",
+      "Le backslopping est plus important à cette température (flore moins diverse, plus instable sans inoculum).",
+      "L'avantage principal vs 25-30°C est la production de GABA et la dégradation des avenines — pas les phytates.",
+    ],
+  },
+  "36h_25": {
+    tag: "👍 Bon compromis durée/bénéfices",
+    tagColor: "#77aa77",
+    items: [
+      { nutrient: "Phytates", reduction: "60-78%", color: "#6abf6a", confidence: "Modérée",
+        detail: "L'essentiel du travail phytasique est fait dans les 12-18 premières heures (fenêtre pH 5,0-5,5). Entre 24 et 36h, les phytases continuent à grignoter les phytates résiduels à pH plus bas (~4,5), mais à cinétique réduite. Le gain est réel mais avec des rendements décroissants.",
+        impact: "↑↑ Absorption minérale, gain significatif vs 24h. Bon choix si la B&T est à 25-26°C (cohabitation germination) et que la fermentation est un peu lente.",
+        backslopping: "Avec BS, le pic phytasique est atteint vers 10-14h au lieu de 12-18h. Le résultat à 36h est quasi identique — mais la question se pose : avec BS, 24h à 25-30°C suffit déjà pour atteindre ~55-65%. Les 12h supplémentaires n'apportent qu'un gain marginal." },
+      { nutrient: "Avenines (prolamines)", reduction: "25-40%", color: "#6abf6a", confidence: "Modérée",
+        detail: "Protéases bactériennes continuent leur travail. À 36h les avenines partiellement dénaturées par l'acidification sont plus accessibles. Même principe que le levain longue fermentation.",
+        impact: "↑↑ Digestibilité protéique nettement améliorée vs 24h. Zone où le gain commence à être fonctionnellement significatif.",
+        backslopping: "Densité protéasique plus élevée dès le départ → la dégradation est légèrement plus avancée à 36h. Gain de ~5-10% vs sans BS." },
+      { nutrient: "Amidon résistant", reduction: "70-85%", color: "#6abf6a", confidence: "Modérée",
+        detail: "Dégradation quasi complète. Hydrolyse acide progresse même quand les bactéries ralentissent.",
+        impact: "↓↓ Fermentation colique. Pic glycémique compensé par le contexte du repas complet.",
+        backslopping: "Dégradation quasi complète atteinte dès 24h avec BS. Pas de différence fonctionnelle à 36h." },
+      { nutrient: "Bêta-glucanes", reduction: "Intacts à limite ✓", color: "#77aa77", confidence: "Modérée",
+        detail: "36h est la borne haute de sécurité pour les bêta-glucanes à 25-30°C. La littérature indique un début de dégradation vers 36-40h. À 36h, la structure est encore très majoritairement intacte, mais on est en zone frontière.",
+        impact: "✓ Bénéfices cardiovasculaires probablement préservés. Si la santé lipidique est critique, ne pas dépasser 36h.",
+        backslopping: "⚠️ Avec BS, l'acidification plus rapide signifie que le pH est plus bas à 36h qu'un batch sans BS au même temps. Zone frontière atteinte un peu plus tôt. Si BS + 25-30°C, préférer 24h pour une marge confortable." },
+      { nutrient: "Diversité microbienne", reduction: "Bonne, début de sélection", color: "#77aa77", confidence: "Modérée",
+        detail: "Le pH bas (~4,0-4,2 à 36h) commence à sélectionner les espèces acido-tolérantes. Leuconostoc décline, L. plantarum et L. brevis dominent. Encore correct mais le pic de diversité est derrière (12-24h).",
+        impact: "Profil de postbiotiques encore diversifié mais orienté vers les espèces dominantes.",
+        backslopping: "La flore est plus stable grâce au BS, mais le pH bas à 36h sélectionne de toute façon les acido-tolérantes. Le BS ne change pas fondamentalement le déclin de diversité après 24h." },
+      { nutrient: "GABA", reduction: "Production ↑↑", color: "#6abf6a", confidence: "Modérée",
+        detail: "12h supplémentaires de production par un consortium encore actif. La GAD reste fonctionnelle tant que le pH ne descend pas sous ~3,5 (pas encore le cas à 25-30°C/36h).",
+        impact: "↑↑ Gain significatif vs 24h sur l'axe anxiolytique/sommeil.",
+        backslopping: "Production de GABA cumulée légèrement supérieure grâce au démarrage immédiat de la GAD. Avantage modeste à 36h (l'essentiel du gain GABA est entre 0 et 24h)." },
+    ],
+    warnings: [
+      "36h = borne haute pour les bêta-glucanes à 25-30°C. Avec BS, envisager de raccourcir à 24-28h pour plus de marge.",
+      "Si début de goût vinaigré (acide acétique), transférer immédiatement — levures acétiques possibles.",
+    ],
+  },
+  "36h_30": {
+    tag: "⚠️ Limite haute — surveiller de près",
+    tagColor: "#cc7755",
+    items: [
+      { nutrient: "Phytates", reduction: "45-65%", color: "#ccaa55", confidence: "Modérée",
+        detail: "Les phytases ont terminé leur travail bien avant 36h (fenêtre pH optimale traversée en 3-5h à 30-33°C). Les 12h supplémentaires vs 24h n'apportent quasiment rien pour les phytates — seule l'hydrolyse acide résiduelle contribue marginalement.",
+        impact: "Pas de gain significatif vs 24h/30-33°C pour les phytates. Si c'est l'objectif, augmenter la durée à cette température ne sert à rien.",
+        backslopping: "Avec BS, fenêtre phytasique traversée en 2-3h. Résultat phytates identique au sans BS à 36h — les phytases ont fini leur travail depuis longtemps dans les deux cas." },
+      { nutrient: "Avenines (prolamines)", reduction: "35-55%", color: "#6abf6a", confidence: "Modérée",
+        detail: "Les protéases bactériennes de L. plantarum et L. fermentum travaillent bien en milieu très acide et à 30-33°C. Le temps supplémentaire leur profite.",
+        impact: "↑↑↑ Dégradation protéique élevée. Principal argument en faveur de cette combinaison.",
+        backslopping: "Protéases en haute densité dès le départ → dégradation légèrement supérieure. Mais le gain marginal ne justifie pas les risques de cette combinaison." },
+      { nutrient: "Amidon résistant", reduction: "~Quasi total", color: "#6abf6a", confidence: "Haute",
+        detail: "Dégradation complète avant 36h à cette température.",
+        impact: "Même résultat qu'au 24h — atteint plus tôt.",
+        backslopping: "Aucune différence — dégradation complète bien avant 36h dans les deux cas." },
+      { nutrient: "Bêta-glucanes", reduction: "⚠️ Début de dégradation", color: "#cc7755", confidence: "Modérée",
+        detail: "pH < 3,8 depuis 18-24h + température 30-33°C = l'hydrolyse acide des liaisons β-1,3/β-1,4 glucosidiques est accélérée. La dégradation arrive plus tôt qu'à 25-30°C (où elle commence vers 36-40h). À 30-33°C/36h, on est déjà en zone de perte.",
+        impact: "⚠️ Perte partielle des bénéfices cardiovasculaires. Si bilan lipidique défavorable, éviter.",
+        backslopping: "⚠️ Avec BS, le pH est descendu encore plus vite → dégradation des bêta-glucanes plus avancée qu'au même temps sans BS. Situation aggravée." },
+      { nutrient: "Diversité microbienne", reduction: "Faible ⚠️", color: "#cc7755", confidence: "Haute",
+        detail: "Monoculture quasi installée : L. plantarum et L. fermentum dominent largement. Leuconostoc, Pediococcus éliminés par le pH bas et la température élevée combinés.",
+        impact: "Spectre de postbiotiques rétréci. Le backslopping à partir de ce batch donne une flore appauvrie.",
+        backslopping: "Le BS stabilise la flore L. plantarum mais ne restaure pas la diversité perdue. À 36h/30-33°C, c'est une monoculture quoi qu'il arrive." },
+      { nutrient: "GABA", reduction: "Maximal, plateau ↑↑", color: "#6abf6a", confidence: "Modérée",
+        detail: "La production de GABA est déjà maximale à 24h/30-33°C. L'ajout de 12h n'apporte pas de gain significatif — la GAD commence à être inhibée par le pH très bas (<3,5-3,8).",
+        impact: "Pas d'avantage supplémentaire vs 24h/30-33°C sur cet axe.",
+        backslopping: "Aucun gain supplémentaire. Le GABA est déjà au plateau bien avant 36h, avec ou sans BS." },
+      { nutrient: "Amines biogènes", reduction: "⚠️ Production élevée", color: "#cc7755", confidence: "Modérée",
+        detail: "36h à 30-33°C = conditions favorables à la production d'histamine et tyramine par les bactéries acido-tolérantes restantes. Plus élevé que toutes les combinaisons 24h.",
+        impact: "⚠️ Charge cumulée avec les autres fermentés (tempeh, etc.) à considérer.",
+        backslopping: "Effet mixte : le BS réduit les espèces opportunistes productrices d'amines, MAIS la durée longue (36h) et la température élevée dominent. Production d'amines reste élevée même avec BS — le raccourcissement de la durée est le seul levier efficace." },
+    ],
+    warnings: [
+      "⚠️ Rapport bénéfice/risque défavorable par rapport au 24h/30-33°C ou 36h/25-30°C.",
+      "Avec BS, cette durée est encore moins justifiée : les bénéfices du BS (démarrage rapide) plaident pour raccourcir, pas pour maintenir 36h.",
+      "Le seul gain vs 24h/30-33°C est sur les avenines. GABA et phytates n'augmentent plus.",
+      "Bêta-glucanes déjà en zone de perte — aggravé par le BS (acidification plus rapide).",
+      "Goût fortement acide quasi certain (pH < 3,5).",
+      "Si batch oublié à 30°C+ pendant 36h : consommable mais sous-optimal. Mélanger dans le bol complet pour masquer l'acidité.",
+    ],
+  },
+  "48h_25": {
+    tag: "Réduction maximale — compromis bêta-glucanes",
+    tagColor: "#ccaa55",
+    items: [
+      { nutrient: "Phytates", reduction: "70-85%", color: "#6abf6a", confidence: "Modérée",
+        detail: "Approche le plafond atteignable sans phytases industrielles. Les phytases ont eu le temps de travailler en profondeur dans la fenêtre de pH favorable, puis l'hydrolyse acide résiduelle continue.",
+        impact: "Gain supplémentaire réel sur l'absorption minérale. Intéressant si le bilan sanguin révèle des carences en fer/zinc.",
+        backslopping: "Résultat final quasi identique — les phytases ont terminé leur travail bien avant 48h dans les deux cas. Le BS n'apporte pas de gain supplémentaire à cette durée." },
+      { nutrient: "Avenines", reduction: "30-50%", color: "#6abf6a", confidence: "Modérée",
+        detail: "Protéases bactériennes ont eu le temps d'agir sur les protéines partiellement dénaturées par l'acidification. Même principe que le pain au levain longue fermentation.",
+        impact: "↑↑ Digestibilité protéique significative. Pertinent si inconfort digestif avec les flocons fermentés 24h.",
+        backslopping: "Légèrement supérieur avec BS (densité protéasique initiale plus haute). Gain marginal à cette durée — les protéases ont eu le temps de travailler dans les deux cas." },
+      { nutrient: "Amidon résistant", reduction: "~Quasi total", color: "#6abf6a", confidence: "Modérée",
+        detail: "Dégradation quasi complète. Hydrolyse acide + enzymatique combinées.",
+        impact: "Pic glycémique légèrement plus marqué. Compensé par le contexte du repas complet.",
+        backslopping: "Aucune différence — dégradation complète bien avant 48h dans les deux cas." },
+      { nutrient: "Bêta-glucanes", reduction: "⚠️ Début de dégradation", color: "#cc7755", confidence: "Modérée",
+        detail: "Les bêta-glucanes commencent à se déstructurer au-delà de 36-40h. Perte partielle de la viscosité caractéristique.",
+        impact: "⚠️ Perte progressive des bénéfices cardiovasculaires (↓ LDL) et glycémiques. Principal argument CONTRE le 48h si santé cardiovasculaire prioritaire.",
+        backslopping: "⚠️ Avec BS, dégradation légèrement plus avancée (pH plus bas plus tôt). Si tu as BS et que tu vises cette durée, le compromis bêta-glucanes est un peu plus marqué." },
+      { nutrient: "Diversité microbienne", reduction: "En déclin", color: "#ccaa55", confidence: "Modérée",
+        detail: "Après 48h, le pH très bas (<4,0) sélectionne les espèces acido-tolérantes. Leuconostoc éliminé, L. plantarum domine.",
+        impact: "Le pic de diversité est atteint vers 12-24h. Au-delà, on gagne en dégradation mais on perd en diversité de postbiotiques.",
+        backslopping: "Le BS ne change pas le déclin à 48h — le pH bas est le facteur déterminant, pas l'inoculum initial." },
+      { nutrient: "Postbiotiques / GABA", reduction: "Production ↑↑", color: "#7a9acc", confidence: "Modérée",
+        detail: "Plus d'acide lactique, plus de GABA, plus d'exopolysaccharides. Mais aussi plus d'acide acétique (goût vinaigré) et plus d'amines biogènes (histamine, tyramine).",
+        impact: "Bénéfices postbiotiques augmentés mais risque d'amines biogènes accru.",
+        backslopping: "Effet mixte : le BS réduit les producteurs opportunistes d'amines au démarrage, mais à 48h l'accumulation temporelle domine. Réduction des amines modeste vs sans BS." },
+    ],
+    warnings: [
+      "pH ~3,5-4,0 — goût franchement acide. Myrtilles et cacao masquent bien.",
+      "Risque de levures en surface (film blanc, Candida/Pichia) — pas dangereux, retirer la couche.",
+      "⚠️ Au-delà de 48h : bêta-glucanes se dégradent significativement → perte de l'intérêt lipidique de l'avoine.",
+      "Avec BS, la question se pose : pourquoi 48h ? Le BS permet d'atteindre la plupart des bénéfices en 24h. Réserver le 48h au cas où le bilan sanguin révèle un besoin spécifique de réduction maximale des phytates.",
+      "Érosion de l'émail dentaire si consommé pur. Toujours mélanger dans le bol complet.",
+    ],
+  },
+  "48h_30": {
+    tag: "🚫 Déconseillé — sur-acidification quasi certaine",
+    tagColor: "#cc5555",
+    items: [
+      { nutrient: "Phytates", reduction: "50-70%", color: "#ccaa55", confidence: "Modérée",
+        detail: "Paradoxalement INFÉRIEUR au 48h à 25-30°C. Le pH descend sous 4,0 dès 12-15h, inactivant les phytases bien avant la fin des 48h. Toute la seconde moitié de la fermentation est « perdue » pour les phytates.",
+        impact: "Moins bon que 48h à 25-30°C pour les phytates, et à peine mieux que 24h à 25-30°C. Mauvais rapport durée/résultat.",
+        backslopping: "Avec BS, le pH descend sous 4,0 dès 8-10h. Les phytases sont inactivées encore plus tôt → résultat phytates potentiellement inférieur au sans BS. Le BS aggrave le problème à cette combinaison." },
+      { nutrient: "Avenines", reduction: "45-65%", color: "#6abf6a", confidence: "Modérée",
+        detail: "Seul vrai gain de cette combinaison : les protéases bactériennes travaillent bien en milieu très acide et à haute température.",
+        impact: "↑↑↑ Dégradation protéique maximale. Mais ne justifie probablement pas les compromis.",
+        backslopping: "Légèrement supérieur avec BS. Mais le même résultat est atteignable en 24h à 30-33°C avec BS, sans les inconvénients du 48h." },
+      { nutrient: "Amidon résistant", reduction: "Total", color: "#6abf6a", confidence: "Haute",
+        detail: "Dégradation complète bien avant 48h.",
+        impact: "Même résultat que 48h à 25-30°C, atteint plus vite.",
+        backslopping: "Aucune différence." },
+      { nutrient: "Bêta-glucanes", reduction: "🚫 Dégradation significative", color: "#cc5555", confidence: "Modérée-haute",
+        detail: "pH très bas (<3,5) + température élevée (30-33°C) + durée longue (48h) = hydrolyse acide des liaisons β-1,3/β-1,4 glucosidiques accélérée.",
+        impact: "🚫 Perte majeure des bénéfices cardiovasculaires.",
+        backslopping: "🚫 Aggravé par le BS : pH descendu plus tôt = hydrolyse acide commencée plus tôt = dégradation encore plus avancée à 48h." },
+      { nutrient: "Diversité microbienne", reduction: "🚫 Effondrée", color: "#cc5555", confidence: "Haute",
+        detail: "Seul L. plantarum et quelques levures acido-tolérantes survivent. Monoculture de facto.",
+        impact: "Plus aucune diversité de postbiotiques. Backslopping à partir de ce batch → effet domino négatif.",
+        backslopping: "Le BS ne sauve rien à cette combinaison. Si tu utilises ce batch pour le BS du suivant, « reset » la flore avec farine de seigle fraîche uniquement." },
+      { nutrient: "GABA", reduction: "Plateau — pas de gain vs 24h", color: "#ccaa55", confidence: "Modérée",
+        detail: "Production maximale atteinte dans les 12-24 premières heures. Au-delà, le pH trop bas inhibe la GAD elle-même.",
+        impact: "Le GABA est déjà maximisé par le 24h à 30-33°C. 24h supplémentaires inutiles.",
+        backslopping: "Aucun gain. Avec BS, le plateau GABA est même atteint dès 8-12h." },
+      { nutrient: "Amines biogènes", reduction: "⚠️ Production élevée", color: "#cc7755", confidence: "Modérée",
+        detail: "48h à 30-33°C = conditions optimales pour histamine et tyramine. Quantités plus élevées que toutes les autres combinaisons.",
+        impact: "⚠️ Charge cumulée avec les autres fermentés (tempeh, etc.) potentiellement significative.",
+        backslopping: "Réduction modeste des producteurs opportunistes au démarrage, mais à 48h/30-33°C même les espèces dominantes produisent des amines en quantité. Le BS ne compense pas la durée et la température." },
+    ],
+    warnings: [
+      "🚫 Combinaison à éviter — encore plus avec BS (accélère les dégradations sans bénéfice supplémentaire).",
+      "pH < 3,5 quasi certain — goût fortement acide/vinaigré.",
+      "Appauvrissement de la flore → affecte la qualité des batches suivants via backslopping.",
+      "Si tu veux maximiser les avenines : préférer 12-16h à 30-33°C avec BS (meilleur ratio bénéfice/risque).",
+      "Si batch oublié : consommable mais sous-optimal. Relancer le batch suivant avec de la farine de seigle fraîche seule pour « reset » la flore.",
+    ],
+  },
+};
+
+const STEPS = [
+  { id: "backslopping", phase: "Préparation", title: "Backslopping (recommandé)",
+    detail: "Prélever 2-3 c.à.s. (~40-60g) du batch précédent et les incorporer au bocal propre AVANT d'ajouter l'eau. Accélère le démarrage de 6-8h (phase de latence quasi éliminée), stabilise la flore lactique et réduit la production d'amines biogènes (flore dominante installée d'emblée → moins de bactéries opportunistes productrices d'histamine/tyramine).",
+    tip: "Premier batch ou oubli ? La farine de seigle relance seule grâce à sa microflore lactique indigène dense. Mais les batches suivants seront plus réguliers et prévisibles avec backslopping. Conserver l'inoculum au frigo max 5 jours (même durée que le batch).",
+    checks: [
+      { condition: "Batch source sain (acide, pas de moisissure/odeur putride)", result: "✅ Backslopping OK — même si sur-fermenté", color: "#6abf6a" },
+      { condition: "Batch source avec moisissure, odeur putride ou texture filante", result: "🚫 Ne PAS utiliser — relancer avec farine de seigle seule", color: "#cc5555" },
+    ] },
+  { id: "melange", phase: "Préparation", title: "Mélange des ingrédients secs",
+    isIngredientStep: true,
+    tip: "Le ratio avoine/épeautre est ajustable : plus d'épeautre (60/30/10) = plus d'insolubles. Plus d'avoine (40/50/10) = plus de bêta-glucanes. La farine de seigle doit rester à ~10%. Le germe de blé (25g) s'ajoute par-dessus le mélange de base." },
+  { id: "hydratation", phase: "Préparation", title: "Hydratation",
+    detail: `Ajouter ${ing.waterMin}-${ing.waterMax} ml d'eau tiède (<40°C). Mélanger jusqu'à obtenir une pâte épaisse bien immergée.`,
+    tip: "⚠️ Au-dessus de 40°C les phytases sont inactivées. Si en fin de fermentation les flocons sont secs en surface, augmenter l'eau au prochain batch." },
+  { id: "couvrir", phase: "Préparation", title: "Couvrir et placer en fermentation",
+    detail: "Couvrir d'un torchon ou film percé (pas hermétique). Placer dans la B&T à 25-26°C (compromis optimal : bas du sweet spot fermentation 25-30°C, compatible avec la germination des pousses de brocoli).",
+    tip: "Si pas de germination en cours dans la B&T : monter à 28-30°C pour le cœur du sweet spot (raccourcir la durée en conséquence). Si germination en cours : rester à 25-26°C, les pousses tolèrent cette température." },
+  { id: "fermentation", phase: "Fermentation", title: "Fermentation",
+    detail: "Laisser fermenter sans toucher. Les lactobacilles mésophiles du seigle acidifient progressivement le milieu. Durée par défaut (B&T à 25-26°C) :",
+    checks: [
+      { condition: "✅ 25-26°C AVEC backslopping (défaut)", result: "⏱ 16-20h", color: "#6abf6a" },
+      { condition: "25-26°C SANS backslopping", result: "⏱ 24h", color: "#6abf6a" },
+      { condition: "22-24°C AVEC backslopping", result: "⏱ 18-22h", color: "#77aa77" },
+      { condition: "22-24°C SANS backslopping", result: "⏱ 24-30h", color: "#77aa77" },
+      { condition: "28-30°C AVEC backslopping (B&T libre)", result: "⏱ 14-18h", color: "#6abf6a" },
+      { condition: "28-30°C SANS backslopping", result: "⏱ 20-24h", color: "#6abf6a" },
+      { condition: "30-33°C AVEC backslopping", result: "⏱ 12-16h — goûter à 12h", color: "#ccaa55" },
+      { condition: "30-33°C SANS backslopping", result: "⏱ 18-20h — goûter à 18h", color: "#ccaa55" },
+    ],
+    tip: "Signes normaux : petites bulles, odeur légèrement acide (yaourt/levain). Avec backslopping à 25-26°C, lancer le soir → prêt le lendemain matin/midi. Mettre une alarme à 16h pour le premier contrôle gustatif.",
+    isFermentationStep: true },
+  { id: "controle", phase: "Fermentation", title: "Contrôle de maturité",
+    detail: "Évaluer le résultat.",
+    checks: [
+      { condition: "Bulles, odeur acidulée douce, texture épaisse et immergée", result: "✅ Prêt — transférer au frigo", color: "#6abf6a" },
+      { condition: "Peu d'activité, pas très acide (1er batch sans backslopping, ou T° < 25°C)", result: "⏳ Continuer 6-12h (max 48h — bêta-glucanes)", color: "#ccaa55" },
+      { condition: "Flocons secs en surface, pas assez d'eau", result: "↑ Ajouter 50-100ml d'eau tiède, mélanger, continuer 6h", color: "#ccaa55" },
+      { condition: "Goût très acide / vinaigré (fréquent si T° > 30°C pendant 24h)", result: "⚡ Transférer au frigo immédiatement — sur-acidification", color: "#cc7755" },
+      { condition: "Moisissure en surface (points noirs/verts/blancs duveteux)", result: "🚫 Jeter", color: "#cc5555" },
+      { condition: "Odeur putride (pas acide — putride)", result: "🚫 Jeter — contamination bactérienne", color: "#cc5555" },
+      { condition: "Texture visqueuse excessive / filante", result: "🚫 Jeter — pas de backslopping sur ce batch", color: "#cc5555" },
+    ] },
+  { id: "refrigerer", phase: "Conservation", title: "Réfrigérer",
+    detail: "Transférer dans un contenant en verre avec couvercle. Conservation 4-5 jours au frigo.",
+    tip: "L'acidification continue lentement au frigo — batch plus acide au jour 4-5. Normal." },
+  { id: "consommation", phase: "Conservation", title: "Notes de consommation",
+    detail: "Portion quotidienne : ~110g sec = ~220-250g hydraté. Ajouter au bol du matin.",
+    tips: [
+      "🔴 Ténébrions en poudre AU MOMENT DE SERVIR — jamais pendant la fermentation (oxydation lipidique en milieu acide).",
+      "🟡 Le germe de blé fermenté est DANS le batch (25g). Pour atteindre le seuil cognitif : ajouter ~15g de germe CRU AU MOMENT DE SERVIR (pas de risque d'oxydation, consommation immédiate).",
+      "Les myrtilles masquent bien l'acidité.",
+      "Pincée de bicarbonate si trop acide (détruit un peu de B1 — compromis mineur).",
+      "Psyllium au dîner uniquement — ne pas co-ingérer avec les polyphénols du matin.",
+    ] },
+];
+
+const SCHEDULE = [
+  { day: "Dim. ~18h", action: "Préparer batch 1 + backslopping", icon: "🫙" },
+  { day: "Lun. ~12h", action: "Contrôle batch 1 (16-20h) → frigo", icon: "❄️" },
+  { day: "Mar.", action: "Consommer batch 1 (jour 2)", icon: "🥣" },
+  { day: "Mer. matin", action: "Prélèvement backslopping batch 1", icon: "🥄" },
+  { day: "Mer. ~18h", action: "Préparer batch 2 + backslopping", icon: "🫙" },
+  { day: "Jeu. ~12h", action: "Contrôle batch 2 (16-20h) → frigo", icon: "❄️" },
+  { day: "Ven.", action: "Consommer batch 2 (jour 2)", icon: "🥣" },
+  { day: "Sam.", action: "Consommer batch 2 (jour 3)", icon: "🥣" },
+  { day: "Dim.", action: "Prélèvement + préparer batch 1 le soir", icon: "🔄" },
+];
+
+// ─── COMPONENTS ───
+
+function formatTime(seconds) {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
+function Timer({ minutes, label }) {
+  const [totalSeconds, setTotalSeconds] = useState(minutes * 60);
+  const [running, setRunning] = useState(false);
+  const [finished, setFinished] = useState(false);
+  useEffect(() => {
+    if (!running || totalSeconds <= 0) return;
+    const iv = setInterval(() => {
+      setTotalSeconds((p) => { if (p <= 1) { setRunning(false); setFinished(true); return 0; } return p - 1; });
+    }, 1000);
+    return () => clearInterval(iv);
+  }, [running, totalSeconds]);
+  const progress = 1 - totalSeconds / (minutes * 60);
+  const reset = () => { setTotalSeconds(minutes * 60); setRunning(false); setFinished(false); };
+  return (
+    <div style={{ marginTop: 12, background: finished ? "#1a2e1a" : "#1a1a2e", borderRadius: 12, padding: "14px 16px", border: finished ? "1px solid #2d5a2d" : "1px solid #2a2a4a" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+        <span style={{ fontSize: 12, color: "#8888aa", letterSpacing: 1, textTransform: "uppercase" }}>⏱ {label}</span>
+        {finished && <span style={{ fontSize: 12, color: "#6abf6a" }}>✓ Terminé</span>}
+      </div>
+      <div style={{ fontSize: 36, fontFamily: "'JetBrains Mono', 'SF Mono', monospace", fontWeight: 600, color: finished ? "#6abf6a" : "#e8e8ff", textAlign: "center", margin: "4px 0 12px" }}>{formatTime(totalSeconds)}</div>
+      <div style={{ height: 4, background: "#2a2a4a", borderRadius: 2, marginBottom: 12, overflow: "hidden" }}>
+        <div style={{ height: "100%", width: `${progress * 100}%`, background: finished ? "#6abf6a" : "#aa8844", borderRadius: 2, transition: "width 1s linear" }} />
+      </div>
+      <div style={{ display: "flex", gap: 8 }}>
+        <button onClick={() => setRunning(!running)} style={{ flex: 1, padding: "10px 0", borderRadius: 8, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", background: running ? "#cc5555" : "#8a7a44", color: "#fff" }}>
+          {running ? "Pause" : totalSeconds === minutes * 60 ? "Démarrer" : "Reprendre"}
+        </button>
+        <button onClick={reset} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid #3a3a3a", fontSize: 14, cursor: "pointer", background: "transparent", color: "#8888aa" }}>Reset</button>
+      </div>
+    </div>
+  );
+}
+
+function Collapsible({ title, icon, color, children }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ marginTop: 12 }}>
+      <button onClick={() => setOpen(!open)} style={{ width: "100%", padding: "12px 14px", borderRadius: open ? "12px 12px 0 0" : 12, border: `1px solid ${color}33`, background: `${color}08`, color, fontSize: 13, fontWeight: 600, cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", textAlign: "left" }}>
+        <span>{icon} {title}</span>
+        <span style={{ transform: open ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s ease", flexShrink: 0 }}>▾</span>
+      </button>
+      {open && <div style={{ background: "#0e0e12", borderRadius: "0 0 12px 12px", border: `1px solid ${color}22`, borderTop: "none", padding: "12px 14px" }}>{children}</div>}
+    </div>
+  );
+}
+
+function TempZonesPanel() {
+  const [showExplainer, setShowExplainer] = useState(false);
+  return (
+    <Collapsible title="Plages de température et flores bactériennes" icon="🌡" color="#aa8844">
+      {TEMP_ZONES.map((z, i) => (
+        <div key={i} style={{ padding: "10px 0", borderBottom: i < TEMP_ZONES.length - 1 ? "1px solid #1a1a20" : "none" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+            <span style={{ fontSize: 14, fontWeight: 700, color: z.color }}>{z.icon} {z.range}</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: z.verdictColor, background: `${z.verdictColor}15`, padding: "2px 8px", borderRadius: 4 }}>{z.verdict}</span>
+          </div>
+          <p style={{ fontSize: 12, color: "#9a9ab0", margin: "2px 0 4px", fontWeight: 600 }}>{z.label} — {z.flora}</p>
+          <p style={{ fontSize: 12, color: "#777", margin: 0, lineHeight: 1.5 }}>{z.detail}</p>
+        </div>
+      ))}
+      <button onClick={() => setShowExplainer(!showExplainer)} style={{ width: "100%", marginTop: 12, padding: "10px 12px", borderRadius: showExplainer ? "8px 8px 0 0" : 8, border: "1px solid #3a3520", background: "#1a1808", color: "#ccaa55", fontSize: 12, fontWeight: 600, cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", textAlign: "left" }}>
+        <span>💡 {TEMP_EXPLAINER.title}</span>
+        <span style={{ transform: showExplainer ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s ease", flexShrink: 0 }}>▾</span>
+      </button>
+      {showExplainer && (
+        <div style={{ padding: "12px 12px", background: "#14120a", borderRadius: "0 0 8px 8px", border: "1px solid #2a2518", borderTop: "none" }}>
+          {TEMP_EXPLAINER.paragraphs.map((p, i) => (
+            <p key={i} style={{ fontSize: 12, color: i === 0 ? "#bba866" : "#998866", margin: i === 0 ? "0 0 10px" : "8px 0", lineHeight: 1.6, fontWeight: i === 0 ? 600 : 400 }}>{p}</p>
+          ))}
+        </div>
+      )}
+    </Collapsible>
+  );
+}
+
+function HealthPanel() {
+  const [mode, setMode] = useState("24h_25");
+  const data = HEALTH_DATA[mode];
+  const modeInfo = HEALTH_MODES.find(m => m.key === mode);
+
+  return (
+    <Collapsible title="Bénéfices santé par modalité de fermentation" icon="🧬" color="#6a9a6a">
+      {/* 3×2 grid selector */}
+      <div style={{ marginBottom: 14 }}>
+        <div style={{ display: "flex", gap: 1, marginBottom: 1 }}>
+          <div style={{ width: 36 }} />
+          <div style={{ flex: 1, textAlign: "center", padding: "4px 0", fontSize: 10, color: "#777", letterSpacing: 0.5 }}>25-30°C</div>
+          <div style={{ flex: 1, textAlign: "center", padding: "4px 0", fontSize: 10, color: "#777", letterSpacing: 0.5 }}>30-33°C</div>
+        </div>
+        {HEALTH_DURATIONS.map((dur) => (
+          <div key={dur} style={{ display: "flex", gap: 1, marginBottom: 1 }}>
+            <div style={{ width: 36, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, color: "#777", fontWeight: 600 }}>{dur}</div>
+            {HEALTH_TEMPS.map(temp => {
+              const k = `${dur}_${temp.split("-")[0]}`;
+              const d = HEALTH_DATA[k];
+              const sel = mode === k;
+              return (
+                <button key={k} onClick={() => setMode(k)} style={{
+                  flex: 1, padding: "8px 4px", borderRadius: 6,
+                  border: sel ? `1px solid ${d.tagColor}` : "1px solid #2a2a30",
+                  background: sel ? `${d.tagColor}15` : "transparent",
+                  color: sel ? d.tagColor : "#555", fontSize: 11, fontWeight: 600, cursor: "pointer",
+                  textAlign: "center", lineHeight: 1.3,
+                }}>{temp}°C</button>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+
+      <div style={{ padding: "6px 10px", background: `${data.tagColor}10`, borderRadius: 6, marginBottom: 12 }}>
+        <span style={{ fontSize: 12, color: data.tagColor, fontWeight: 600 }}>{modeInfo.label} — {data.tag}</span>
+      </div>
+
+      {data.items.map((item, i) => (
+        <div key={i} style={{ padding: "10px 0", borderBottom: i < data.items.length - 1 ? "1px solid #1a1a20" : "none" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#ccc" }}>{item.nutrient}</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: item.color }}>{item.reduction}</span>
+          </div>
+          <p style={{ fontSize: 11, color: "#666", margin: "0 0 4px" }}>Confiance : {item.confidence}</p>
+          <p style={{ fontSize: 12, color: "#888", margin: "0 0 4px", lineHeight: 1.5 }}>{item.detail}</p>
+          <div style={{ padding: "6px 8px", background: "#0a0a12", borderRadius: 6, borderLeft: `2px solid ${item.color}` }}>
+            <p style={{ fontSize: 12, color: item.color, margin: 0, lineHeight: 1.5, opacity: 0.85 }}>{item.impact}</p>
+          </div>
+          {item.backslopping && (
+            <div style={{ padding: "6px 8px", background: "#12100a", borderRadius: 6, borderLeft: "2px solid #aa8844", marginTop: 4 }}>
+              <p style={{ fontSize: 11, color: "#aa8844", margin: 0, lineHeight: 1.5 }}>🥄 BS : {item.backslopping}</p>
+            </div>
+          )}
+        </div>
+      ))}
+
+      {data.warnings && (
+        <div style={{ marginTop: 10, padding: "10px 12px", background: "#1a1510", borderRadius: 8, border: "1px solid #2a2518" }}>
+          <p style={{ fontSize: 11, color: "#cc8844", margin: "0 0 6px", fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 }}>Points de vigilance</p>
+          {data.warnings.map((w, i) => (
+            <p key={i} style={{ fontSize: 12, color: "#aa8855", margin: "4px 0", lineHeight: 1.5 }}>• {w}</p>
+          ))}
+        </div>
+      )}
+    </Collapsible>
+  );
+}
+
+function SpermidinePanel() {
+  return (
+    <Collapsible title="Spermidine & germe de blé — longévité cellulaire" icon="🧬" color="#b8a050">
+      <p style={{ fontSize: 12, color: "#998866", lineHeight: 1.6, margin: "0 0 14px" }}>{SPERMIDINE_DATA.intro}</p>
+
+      {SPERMIDINE_DATA.sections.map((section, si) => (
+        <div key={si} style={{ marginBottom: si < SPERMIDINE_DATA.sections.length - 1 ? 16 : 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+            <span style={{ fontSize: 14 }}>{section.icon}</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#ccbb88", letterSpacing: 0.5, textTransform: "uppercase" }}>{section.title}</span>
+          </div>
+          {section.items.map((item, ii) => (
+            <div key={ii} style={{ padding: "8px 0", borderBottom: ii < section.items.length - 1 ? "1px solid #1a1a20" : "none" }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: item.color, marginBottom: 3 }}>{item.label}</div>
+              <p style={{ fontSize: 12, color: "#888", margin: 0, lineHeight: 1.5 }}>{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      ))}
+
+      <div style={{ marginTop: 14, padding: "10px 12px", background: "#1a1810", borderRadius: 8, border: "1px solid #2a2518" }}>
+        <p style={{ fontSize: 11, color: "#aa9955", margin: "0 0 6px", fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 }}>Notes pratiques</p>
+        {SPERMIDINE_DATA.practicalNotes.map((note, i) => (
+          <p key={i} style={{ fontSize: 12, color: "#998855", margin: "4px 0", lineHeight: 1.5 }}>• {note}</p>
+        ))}
+      </div>
+
+      <div style={{ marginTop: 12, padding: "10px 12px", background: "#0e1018", borderRadius: 8, border: "1px solid #1e2030" }}>
+        <p style={{ fontSize: 11, color: "#8888aa", margin: "0 0 8px", fontWeight: 700 }}>📊 Apport spermidine — estimation & cible</p>
+
+        <div style={{ padding: "8px 10px", background: "#12141e", borderRadius: 6, marginBottom: 10 }}>
+          <p style={{ fontSize: 11, color: "#aa88cc", margin: "0 0 4px", fontWeight: 700 }}>Protocole actuel — {WHEAT_GERM_G}g dans le batch</p>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "3px 0" }}>
+            <span style={{ fontSize: 12, color: "#aab" }}>Germe fermenté ({Math.ceil(WHEAT_GERM_G / 4)}-{Math.ceil(WHEAT_GERM_G / 5)}g/jour)</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#b8a050" }}>~1,0-1,7 mg</span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "3px 0" }}>
+            <span style={{ fontSize: 12, color: "#aab" }}>Autres sources (tempeh, soja, etc.)</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#888" }}>variable</span>
+          </div>
+        </div>
+
+        <div style={{ padding: "8px 10px", background: "#0e1810", borderRadius: 6, border: "1px solid #1e3020", marginBottom: 10 }}>
+          <p style={{ fontSize: 11, color: "#6abf6a", margin: "0 0 4px", fontWeight: 700 }}>🎯 Pour atteindre le seuil cognitif : ≥3,3 mg/jour</p>
+          <p style={{ fontSize: 12, color: "#88aa88", margin: "0 0 6px", lineHeight: 1.5 }}>
+            Il faut ~20g de germe de blé/jour. Mais 80-100g dans le batch = oxydation lipidique significative.
+          </p>
+          <p style={{ fontSize: 12, color: "#6abf6a", margin: "0 0 4px", fontWeight: 600 }}>→ Approche hybride recommandée :</p>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "3px 0" }}>
+            <span style={{ fontSize: 12, color: "#aab" }}>① {WHEAT_GERM_G}-30g dans le batch (fermentés)</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#b8a050" }}>~1,0-1,7 mg</span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "3px 0" }}>
+            <span style={{ fontSize: 12, color: "#aab" }}>② ~15g saupoudrés à cru au service</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#b8a050" }}>~2,3-3,6 mg</span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "4px 0", borderTop: "1px solid #1e3020", marginTop: 2 }}>
+            <span style={{ fontSize: 12, color: "#aab", fontWeight: 600 }}>Total germe de blé (~20g/jour)</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#6abf6a" }}>~3,0-4,8 mg ✓</span>
+          </div>
+          <p style={{ fontSize: 11, color: "#77aa77", margin: "6px 0 0", lineHeight: 1.5 }}>
+            Le germe cru a un goût doux de noisette — s'intègre bien dans le bol. Les antinutriments des 15g crus sont négligeables en quantité et dans un repas mixte. Pas de risque d'oxydation car consommation immédiate.
+          </p>
+        </div>
+
+        <div style={{ padding: "6px 10px", background: "#1a1510", borderRadius: 6, border: "1px solid #2a2518" }}>
+          <p style={{ fontSize: 11, color: "#cc8855", margin: "0 0 3px", fontWeight: 600 }}>⚠️ Oxydation lipidique — seuils</p>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "2px 0" }}>
+            <span style={{ fontSize: 11, color: "#998866" }}>25-30g / batch (16-24h, 25-30°C)</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: "#6abf6a" }}>✅ Risque faible</span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "2px 0" }}>
+            <span style={{ fontSize: 11, color: "#998866" }}>25-30g / batch (24-36h ou 30-33°C)</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: "#ccaa55" }}>⚠️ Modéré</span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "2px 0" }}>
+            <span style={{ fontSize: 11, color: "#998866" }}>80-100g / batch (toute durée)</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: "#cc5555" }}>🚫 Significatif</span>
+          </div>
+        </div>
+      </div>
+    </Collapsible>
+  );
+}
+
+function IngredientCard() {
+  return (
+    <div style={{ marginTop: 12, background: "#1a1810", borderRadius: 12, border: "1px solid #2a2818", overflow: "hidden" }}>
+      <div style={{ padding: "10px 14px", background: "#22200e", borderBottom: "1px solid #2a2818" }}>
+        <span style={{ fontSize: 12, fontWeight: 700, color: "#aa9955", letterSpacing: 1, textTransform: "uppercase" }}>🌾 Ingrédients — batch {BATCH_SIZE}g + {WHEAT_GERM_G}g germe</span>
+      </div>
+      <div style={{ padding: "10px 14px" }}>
+        {[
+          { label: "Flocons d'avoine bio", qty: `${ing.avoine} g`, pct: "50%", color: "#c8a86a", note: "Bêta-glucanes, fibres solubles" },
+          { label: "Flocons petit épeautre bio", qty: `${ing.epeautre} g`, pct: "40%", color: "#a8926a", note: "Arabinoxylanes (prébiotique butyrogène), Mg/Zn, méthionine" },
+          { label: "Farine de seigle bio", qty: `${ing.seigle} g`, pct: "10%", color: "#8a7a5a", note: "Phytases exogènes + microflore lactique indigène" },
+          { label: "Germe de blé (non germé)", qty: `${ing.wheatGerm} g`, pct: "", color: "#b8a050", note: "Spermidine (~1-1,7 mg/jour), vit E, B1/B6, Zn — autophagie & longévité" },
+          { label: "Eau tiède (<40°C)", qty: `${ing.waterMin}-${ing.waterMax} ml`, pct: "", color: "#6a8acc", note: "Ratio 1:1,5 à 1:2 — flocons bien immergés" },
+        ].map((item, i) => (
+          <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0", borderBottom: i < 3 ? "1px solid #1e1e18" : "none" }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 13, color: item.color, fontWeight: 600 }}>{item.label}</div>
+              <div style={{ fontSize: 11, color: "#666", marginTop: 1 }}>{item.note}</div>
+            </div>
+            <div style={{ textAlign: "right" }}>
+              <span style={{ fontSize: 14, fontWeight: 700, color: "#ddd" }}>{item.qty}</span>
+              {item.pct && <span style={{ fontSize: 11, color: "#777", marginLeft: 6 }}>{item.pct}</span>}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ padding: "8px 14px 10px", background: "#1e1c0e", borderTop: "1px solid #2a2818" }}>
+        <span style={{ fontSize: 11, color: "#887744" }}>→ ~{Math.round(ing.totalWithGerm * 2)}g hydraté · Portion : ~{Math.round(ing.totalWithGerm / 4)}g sec = ~{Math.round(ing.totalWithGerm / 4 * 2)}g hydraté · 4-5 jours</span>
+      </div>
+    </div>
+  );
+}
+
+function ChecksPanel({ checks }) {
+  return (
+    <div style={{ marginTop: 12, padding: "10px 12px", background: "#0d0d10", borderRadius: 10, border: "1px solid #1e1e2e" }}>
+      <p style={{ fontSize: 11, color: "#7a7a9a", margin: "0 0 8px", fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>Évaluation :</p>
+      {checks.map((c, i) => (
+        <div key={i} style={{ padding: "6px 0", borderBottom: i < checks.length - 1 ? "1px solid #1a1a2a" : "none" }}>
+          <p style={{ fontSize: 12, color: "#aab", margin: 0, lineHeight: 1.4 }}>{c.condition}</p>
+          <p style={{ fontSize: 12, color: c.color, margin: "2px 0 0", fontWeight: 600, lineHeight: 1.4 }}>{c.result}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function StepCard({ step, completed, onToggle }) {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <div style={{ background: completed ? "#111110" : "#16150f", border: completed ? "1px solid #1e1e18" : expanded ? "1px solid #8a7a44" : "1px solid #25241a", borderRadius: 14, marginBottom: 10, overflow: "hidden", opacity: completed ? 0.5 : 1, transition: "all 0.2s ease" }}>
+      <div onClick={() => setExpanded(!expanded)} style={{ display: "flex", alignItems: "center", padding: "14px 16px", cursor: "pointer", gap: 12 }}>
+        <div onClick={(e) => { e.stopPropagation(); onToggle(); }} style={{ width: 26, height: 26, borderRadius: 8, border: completed ? "2px solid #6abf6a" : "2px solid #5a5a3a", background: completed ? "#1a2e1a" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, cursor: "pointer" }}>
+          {completed && <span style={{ color: "#6abf6a", fontSize: 14, fontWeight: 700 }}>✓</span>}
+        </div>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 15, fontWeight: 600, color: completed ? "#555" : "#ddddd0", textDecoration: completed ? "line-through" : "none" }}>{step.title}</div>
+        </div>
+        <span style={{ color: "#555", fontSize: 18, transform: expanded ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s ease" }}>▾</span>
+      </div>
+      {expanded && (
+        <div style={{ padding: "0 16px 16px", borderTop: "1px solid #1e1e18" }}>
+          {step.detail && <p style={{ color: "#aab", fontSize: 14, lineHeight: 1.6, margin: "12px 0 0" }}>{step.detail}</p>}
+          {step.isIngredientStep && <IngredientCard />}
+          {step.tip && <div style={{ marginTop: 10, padding: "10px 12px", background: "#1a1a0e", borderRadius: 8, borderLeft: "3px solid #aa8833" }}><p style={{ color: "#ccaa55", fontSize: 13, margin: 0, lineHeight: 1.5 }}>{step.tip}</p></div>}
+          {step.tips && step.tips.map((t, i) => <div key={i} style={{ marginTop: i === 0 ? 10 : 6, padding: "10px 12px", background: "#1a1a0e", borderRadius: 8, borderLeft: "3px solid #aa8833" }}><p style={{ color: "#ccaa55", fontSize: 13, margin: 0, lineHeight: 1.5 }}>{t}</p></div>)}
+          {step.checks && <ChecksPanel checks={step.checks} />}
+          {step.isFermentationStep && <Timer minutes={1440} label="Fermentation 24h" />}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ScheduleView() {
+  return (
+    <Collapsible title="Planning hebdomadaire (2 batches/sem)" icon="📅" color="#887744">
+      {SCHEDULE.map((s, i) => (
+        <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 0", borderBottom: i < SCHEDULE.length - 1 ? "1px solid #1e1e18" : "none" }}>
+          <span style={{ fontSize: 16, width: 24, textAlign: "center" }}>{s.icon}</span>
+          <span style={{ fontSize: 12, color: "#887744", fontWeight: 600, minWidth: 70 }}>{s.day}</span>
+          <span style={{ fontSize: 13, color: "#aab" }}>{s.action}</span>
+        </div>
+      ))}
+    </Collapsible>
+  );
+}
+
+function BatchNotes({ notes, onAdd }) {
+  const [input, setInput] = useState("");
+  const handleSubmit = () => { if (input.trim()) { onAdd(input.trim()); setInput(""); } };
+  return (
+    <div style={{ marginTop: 20 }}>
+      <h3 style={{ color: "#887744", fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 12 }}>Journal du batch</h3>
+      <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+        <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleSubmit()} placeholder="Observation, ajustement..." style={{ flex: 1, padding: "10px 14px", borderRadius: 10, border: "1px solid #2a2818", background: "#111110", color: "#ddddd0", fontSize: 14, outline: "none" }} />
+        <button onClick={handleSubmit} style={{ padding: "10px 16px", borderRadius: 10, border: "none", background: "#8a7a44", color: "#fff", fontSize: 14, fontWeight: 600, cursor: "pointer" }}>+</button>
+      </div>
+      {notes.map((note, i) => (
+        <div key={i} style={{ padding: "10px 14px", background: "#111110", borderRadius: 10, marginBottom: 6, borderLeft: "3px solid #4a4430" }}>
+          <span style={{ color: "#554", fontSize: 11 }}>{note.time}</span>
+          <p style={{ color: "#bba", fontSize: 13, margin: "4px 0 0", lineHeight: 1.5 }}>{note.text}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─── MAIN ───
+
+function FloconsTracker() {
+  const [completed, setCompleted] = useState({});
+  const [notes, setNotes] = useState([]);
+  const [started, setStarted] = useState(false);
+  const [batchNum, setBatchNum] = useState(1);
+  const toggleStep = useCallback((id) => { setCompleted((p) => ({ ...p, [id]: !p[id] })); }, []);
+  const addNote = useCallback((text) => {
+    const now = new Date();
+    const time = now.toLocaleString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+    setNotes((p) => [{ text, time }, ...p]);
+  }, []);
+  const completedCount = Object.values(completed).filter(Boolean).length;
+  const progress = completedCount / STEPS.length;
+  const reset = () => { setCompleted({}); setNotes([]); setStarted(false); };
+  const newBatch = () => { setCompleted({}); setNotes([]); setBatchNum((p) => p + 1); };
+
+  if (!started) {
+    return (
+      <div style={{ minHeight: "100vh", background: "#0d0c08", color: "#ddddd0", fontFamily: "'DM Sans', 'Avenir', -apple-system, sans-serif", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 24 }}>
+        <div style={{ textAlign: "center", maxWidth: 400, width: "100%" }}>
+          <div style={{ fontSize: 56, marginBottom: 16 }}>🌾</div>
+          <h1 style={{ fontSize: 28, fontWeight: 700, margin: "0 0 6px", letterSpacing: -0.5 }}>Flocons Fermentés</h1>
+          <p style={{ color: "#6a6a5a", fontSize: 14, marginBottom: 24 }}>Avoine + petit épeautre + seigle — fermentation lactique</p>
+          <div style={{ padding: "16px", background: "#111110", borderRadius: 14, border: "1px solid #2a2818", marginBottom: 16, textAlign: "left" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+              <span style={{ color: "#887744", fontSize: 12, fontWeight: 600 }}>Batch standard</span>
+              <span style={{ color: "#aa9955", fontSize: 13, fontWeight: 700 }}>{BATCH_SIZE}g + {WHEAT_GERM_G}g germe</span>
+            </div>
+            {[
+              { label: "Avoine", qty: `${ing.avoine}g`, color: "#c8a86a" },
+              { label: "Petit épeautre", qty: `${ing.epeautre}g`, color: "#a8926a" },
+              { label: "Farine de seigle", qty: `${ing.seigle}g`, color: "#8a7a5a" },
+              { label: "Germe de blé", qty: `${ing.wheatGerm}g`, color: "#b8a050" },
+              { label: "Eau tiède (<40°C)", qty: `${ing.waterMin}-${ing.waterMax} ml`, color: "#6a8acc" },
+            ].map((item, i) => (
+              <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "5px 0", borderTop: i === 0 ? "1px solid #1e1e18" : "none" }}>
+                <span style={{ color: item.color, fontSize: 13 }}>{item.label}</span>
+                <span style={{ color: "#ccc", fontSize: 13, fontWeight: 500 }}>{item.qty}</span>
+              </div>
+            ))}
+            <div style={{ marginTop: 8, paddingTop: 8, borderTop: "1px solid #1e1e18" }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}><span style={{ color: "#666", fontSize: 12 }}>Rendement</span><span style={{ color: "#aaa", fontSize: 12 }}>~{Math.round(ing.totalWithGerm * 2)}g hydraté → 4-5 jours</span></div>
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 2 }}><span style={{ color: "#666", fontSize: 12 }}>Fermentation</span><span style={{ color: "#aaa", fontSize: 12 }}>16-20h à 25-26°C avec backslopping</span></div>
+            </div>
+          </div>
+          <div style={{ textAlign: "left", marginBottom: 16 }}>
+            <TempZonesPanel />
+            <HealthPanel />
+            <SpermidinePanel />
+          </div>
+          <button onClick={() => setStarted(true)} style={{ width: "100%", padding: "14px 0", borderRadius: 12, border: "none", background: "#8a7a44", color: "#fff", fontSize: 16, fontWeight: 700, cursor: "pointer", letterSpacing: 0.5 }}>Démarrer le batch</button>
+        </div>
+      </div>
+    );
+  }
+
+  const phases = [...new Set(STEPS.map((s) => s.phase))];
+  return (
+    <div style={{ minHeight: "100vh", background: "#0d0c08", color: "#ddddd0", fontFamily: "'DM Sans', 'Avenir', -apple-system, sans-serif", paddingBottom: 40 }}>
+      <div style={{ position: "sticky", top: 0, zIndex: 10, background: "rgba(13,12,8,0.92)", backdropFilter: "blur(12px)", padding: "14px 18px 12px", borderBottom: "1px solid #1e1e18" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+          <div>
+            <span style={{ fontSize: 18, fontWeight: 700 }}>🌾 Flocons</span>
+            <span style={{ color: "#5a5a4a", fontSize: 13, marginLeft: 10 }}>Batch #{batchNum} · {BATCH_SIZE}+{WHEAT_GERM_G}g</span>
+          </div>
+          <div style={{ display: "flex", gap: 6 }}>
+            {progress === 1 && <button onClick={newBatch} style={{ padding: "6px 12px", borderRadius: 6, border: "none", background: "#6abf6a", color: "#fff", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>Batch suivant</button>}
+            <button onClick={reset} style={{ padding: "6px 12px", borderRadius: 6, border: "1px solid #2a2818", background: "transparent", color: "#6a6a5a", fontSize: 12, cursor: "pointer" }}>Reset</button>
+          </div>
+        </div>
+        <div style={{ height: 4, background: "#1e1e18", borderRadius: 2, overflow: "hidden" }}>
+          <div style={{ height: "100%", width: `${progress * 100}%`, background: progress === 1 ? "#6abf6a" : "#8a7a44", borderRadius: 2, transition: "width 0.3s ease" }} />
+        </div>
+        <div style={{ textAlign: "right", fontSize: 11, color: "#555", marginTop: 4 }}>{completedCount}/{STEPS.length}</div>
+      </div>
+      <div style={{ padding: "12px 14px 0" }}>
+        {phases.map((phase) => (
+          <div key={phase} style={{ marginBottom: 16 }}>
+            <h2 style={{ fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "#5a5a4a", margin: "16px 0 10px 4px", fontWeight: 600 }}>{phase}</h2>
+            {STEPS.filter((s) => s.phase === phase).map((step) => (
+              <StepCard key={step.id} step={step} completed={completed[step.id]} onToggle={() => toggleStep(step.id)} />
+            ))}
+          </div>
+        ))}
+      </div>
+      <div style={{ padding: "0 14px" }}>
+        <TempZonesPanel />
+        <HealthPanel />
+        <SpermidinePanel />
+        <ScheduleView />
+      </div>
+      <div style={{ padding: "0 14px" }}><BatchNotes notes={notes} onAdd={addNote} /></div>
+      {progress === 1 && (
+        <div style={{ margin: "24px 14px", padding: 20, background: "#1a2e1a", border: "1px solid #2d5a2d", borderRadius: 14, textAlign: "center" }}>
+          <div style={{ fontSize: 32, marginBottom: 8 }}>🌾</div>
+          <p style={{ color: "#6abf6a", fontSize: 16, fontWeight: 600, margin: 0 }}>Batch terminé !</p>
+          <p style={{ color: "#5a8a5a", fontSize: 13, marginTop: 6 }}>4-5 jours au frigo · prochain batch dans 3-4 jours</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(FloconsTracker));
+  </script>
+</body>
+</html>

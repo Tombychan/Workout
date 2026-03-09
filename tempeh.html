@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Tempeh — Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a14; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    #root { min-height: 100vh; }
+  </style>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+const { useState, useEffect, useCallback } = React;
+
+
+const QUANTITIES = [
+  { key: "400g", label: "400g", starter: "1 c.à.c. rase (~2g)", yield: "~800-900g cuit, 2 bacs" },
+  { key: "500g", label: "500g", starter: "1¼ c.à.c. (~2,5g)", yield: "~1-1,1kg cuit, 2-3 bacs" },
+  { key: "750g", label: "750g", starter: "1½ c.à.c. (~3,5g)", yield: "~1,5-1,6kg cuit, 3-4 bacs" },
+  { key: "1kg", label: "1kg", starter: "2 c.à.c. (~4-5g)", yield: "~2-2,2kg cuit, 4-5 bacs" },
+];
+
+const STEPS = [
+  {
+    id: "trempage",
+    phase: "Préparation",
+    title: "Trempage",
+    detail: "Soja dépelliculé bio (Celnat) dans 3 volumes d'eau. 12-24h à température ambiante.",
+    tip: "Bulles et odeur acidulée = normal et souhaitable (abaisse le pH).",
+    hygiene: "Basique — saladier/omnicuiseur propre (lavé au savon, rincé). Couvrir d'un torchon propre.",
+    water: "Eau du robinet OK — le chlore s'évapore pendant les 12-24h de trempage.",
+    timerMinutes: null,
+  },
+  {
+    id: "cuisson",
+    phase: "Préparation",
+    title: "Cuisson",
+    detail: "Égoutter, rincer, cuire jusqu'à ce que les graines cèdent sous le doigt mais gardent leur forme.",
+    tip: "Surcuisson = masse trop humide = cause fréquente d'échec.",
+    hygiene: "Aucune précaution spéciale — l'ébullition stérilise le substrat et le récipient.",
+    water: "Eau du robinet OK — l'ébullition élimine tout le chlore.",
+    isCookingStep: true,
+    timerMinutes: null,
+  },
+  {
+    id: "egouttage",
+    phase: "Préparation",
+    title: "Égouttage",
+    detail: "Étaler en couche fine dans le panier vapeur de l'omnicuiseur ou une passoire large. 15-20 min à l'air libre, remuer 1-2 fois.",
+    tip: "Test : main sèche après une poignée = OK. Pas collant, pas brillant. Vapeur visible qui cesse = gros de l'eau parti.",
+    hygiene: "Modéré — passoire/panier/bac propres (savon + eau chaude). Les mains propres suffisent pour remuer.",
+    water: null,
+    timerMinutes: 18,
+    timerLabel: "Égouttage",
+  },
+  {
+    id: "acidification",
+    phase: "Préparation",
+    title: "Acidification",
+    detail: "Attendre ~35-40°C (tiède, pas chaud). Ajouter 1-2 c.à.s. de vinaigre par kg de soja cuit, mélanger.",
+    tip: "Abaisse le pH à ~5 — optimal pour Rhizopus, hostile aux bactéries. Le vinaigre de cidre fonctionne bien mais peut laisser une odeur résiduelle dans l'enceinte humide de l'APO. Vinaigre blanc distillé = profil plus neutre.",
+    hygiene: "Basique — le vinaigre est lui-même antimicrobien. Cuillère propre.",
+    water: null,
+    timerMinutes: null,
+  },
+  {
+    id: "inoculation",
+    phase: "Préparation",
+    title: "Inoculation",
+    detail: null,
+    isInoculationStep: true,
+    tip: "⚠️ Au-dessus de 35°C les spores meurent. Mélanger 1-2 min — chaque graine doit être en contact avec du starter.",
+    hygiene: "Modéré — mains lavées au savon, cuillère propre. Gants stériles = overkill.",
+    water: "⚠️ Eau filtrée préférable pour le dernier rinçage avant cette étape (chlore → ralentit les spores).",
+    timerMinutes: null,
+  },
+  {
+    id: "mise_en_bac",
+    phase: "Préparation",
+    title: "Mise en bac",
+    detail: null,
+    isMiseEnBacStep: true,
+    tip: "Pas de torchon épais (piège humidité), pas de papier sulfurisé (condensation). Charlotte coton imperméable = piège à condensation → ne pas utiliser. Gaze/cheesecloth = idéal (perméable à l'air + retient l'humidité au contact).",
+    hygiene: "Modéré — bacs lavés savon + eau chaude, bien rincés et séchés. Étamine/sac propre (eau bouillante 2 min si réutilisé).",
+    water: null,
+    timerMinutes: null,
+  },
+  {
+    id: "fermentation_start",
+    phase: "Fermentation",
+    title: "Lancer la fermentation",
+    detail: "",
+    isVariantStep: true,
+    hygiene: null,
+    water: null,
+    timerMinutes: null,
+  },
+  {
+    id: "phase1",
+    phase: "Fermentation",
+    title: "Phase 1 — Colonisation initiale (0-12h)",
+    detail: "Rien de visible. Le mycélium germe au niveau microscopique. L'APO chauffe activement — le substrat est inerte thermiquement.",
+    tip: "Ne pas ouvrir l'APO inutilement — chaque ouverture perturbe l'équilibre thermique et hydrique. Idéal : lancer le matin (~8h) pour que le pic exothermique tombe le soir (~20-24h plus tard) quand tu es éveillé.",
+    isAPOPhase: true,
+    apoGuidance: {
+      title: "Gestion APO — Phase 1",
+      temp: { label: "Température", value: "30°C (air) ou sonde 31°C", note: "Pas de thermogenèse à ce stade — l'APO chauffe activement. Mode sonde : la sonde lit ~30°C = température du substrat inerte. Mode air : consigne 30°C standard." },
+      humidity: { label: "HR", value: "85-90%", note: "La ventilation forcée de l'APO sèche les surfaces exposées plus vite qu'un environnement statique (Brod & Taylor). 85% minimum, monter à 90% si les bords semblent secs. Gaze humide posée sur le substrat = meilleure protection." },
+      action: "Premier contrôle visuel à 12-14h :",
+      checks: [
+        { condition: "Voile blanc entre les graines", result: "✅ OK — ne rien changer", color: "#6abf6a" },
+        { condition: "Surface sèche, graines mates, bords desséchés", result: "↑ Monter HR à 90-95% + gaze humide sur le dessus", color: "#ccaa55" },
+        { condition: "Gouttelettes d'eau sur les graines", result: "↓ Baisser HR à 80-85%", color: "#cc7755" },
+      ],
+    },
+    timerMinutes: null,
+  },
+  {
+    id: "flip",
+    phase: "Fermentation",
+    title: "Retournement mi-fermentation (~12-14h)",
+    detail: "Retourner le bloc (dessous vers le haut) pour égaliser la colonisation. Le dessous reçoit moins d'oxygène (contact avec le fond) et accumule l'humidité résiduelle → toujours moins colonisé si on ne retourne pas.",
+    tip: "Si surélevé sur baguettes/grille, le retournement reste bénéfique même si l'écart est réduit. Réinsérer la sonde après retournement. Profiter de l'ouverture pour vérifier l'état de la gaze et la ré-humidifier si nécessaire.",
+    isAPOPhase: false,
+    timerMinutes: null,
+  },
+  {
+    id: "phase2",
+    phase: "Fermentation",
+    title: "Phase 2 — Croissance active (12-28h)",
+    detail: "Mycélium visible (filaments blancs cotonneux). La masse commence à chauffer — Rhizopus est exothermique. La courbe de production de chaleur est sigmoïdale : montée exponentielle (12-24h) puis plateau et déclin.",
+    tip: "Phase critique. L'APO ne peut PAS refroidir activement — il peut seulement cesser de chauffer. Si l'exothermie produit plus de chaleur que ce que la ventilation dissipe, la température monte quand même.",
+    isAPOPhase: true,
+    apoGuidance: {
+      title: "Gestion APO — Phase 2 (critique)",
+      temp: {
+        label: "Température",
+        value: "Sonde à 31°C (recommandé) ou air 27-28°C",
+        note: "⚡ Phase exothermique : le tempeh génère +2-4°C au-dessus de l'air ambiant. Le four coupe le chauffage quand la sonde dépasse la cible — mais ne refroidit pas. Si la sonde affiche >35°C malgré le four éteint : entrouvrir la porte 30s-2 min pour ventiler, puis refermer. Ne pas laisser la porte entrouverte longtemps (l'APO ne maintient pas l'humidité porte ouverte — confirmé par la documentation Anova).",
+      },
+      humidity: {
+        label: "HR",
+        value: "85-90%",
+        note: "Le mycélium produit maintenant sa propre humidité. Risque de dessèchement surtout sur les bords (flux d'air du ventilateur). Si bords secs → monter à 90-95%. Si condensation visible sous la gaze → baisser de 5% et écarter la gaze 5 min pour aérer.",
+      },
+      action: "Contrôle à 20-24h :",
+      checks: [
+        { condition: "Mycélium blanc dense, masse tiède au toucher", result: "✅ OK — maintenir les paramètres", color: "#6abf6a" },
+        { condition: "Sonde indique 33-35°C, four ne chauffe plus", result: "⚠️ Zone haute mais acceptable — surveiller", color: "#ccaa55" },
+        { condition: "Sonde indique > 35°C", result: "🚪 Entrouvrir porte 30s-2 min, refermer. Pas de porte ouverte prolongée.", color: "#cc7755" },
+        { condition: "Condensation sous la gaze", result: "↓ Baisser HR 5%, aérer 5 min", color: "#ccaa55" },
+        { condition: "Taches noires apparaissent", result: "⚠️ Sporulation (surchauffe) — récolter dès que possible", color: "#cc5555" },
+      ],
+    },
+    timerMinutes: null,
+  },
+  {
+    id: "overnight",
+    phase: "Fermentation",
+    title: "Stratégie overnight",
+    detail: null,
+    isOvernightStep: true,
+    tip: null,
+    timerMinutes: null,
+  },
+  {
+    id: "phase3",
+    phase: "Fermentation",
+    title: "Phase 3 — Maturation (28-48h)",
+    detail: "Le bloc doit être entièrement blanc, ferme, les graines solidement liées. Se tient d'un bloc quand soulevé — c'est le test décisif.",
+    tip: "Odeur agréable : champignon frais, noisette légère. Odeur ammoniac = contamination → jeter. L'exothermie décline — l'APO reprend la chauffe progressivement pour maintenir la température.",
+    isAPOPhase: true,
+    apoGuidance: {
+      title: "Gestion APO — Phase 3",
+      temp: {
+        label: "Température",
+        value: "Sonde 31°C ou air 27-28°C",
+        note: "Thermogenèse déclinante. En mode sonde, l'APO reprend automatiquement le relais quand l'exothermie retombe. En mode air, maintenir 27-28°C — le mycélium ralentit sa production de chaleur.",
+      },
+      humidity: {
+        label: "HR",
+        value: "85% (ou état actuel)",
+        note: "Le mycélium gère son propre microclimat sous la gaze. Peu de raison de modifier l'HR à ce stade.",
+      },
+      action: "Évaluation de maturité :",
+      checks: [
+        { condition: "Surface uniformément blanche et dense, bloc tient en un seul morceau", result: "✅ Prêt — récolter", color: "#6abf6a" },
+        { condition: "Bloc tient mais zones clairsemées (surtout dessous)", result: "⏳ Consommable tel quel ou +3-5h pour densifier", color: "#ccaa55" },
+        { condition: "Taches noires isolées", result: "⚠️ Sporulation — récolter maintenant (consommable)", color: "#cc7755" },
+        { condition: "Taches colorées (vert, rose)", result: "🚫 Contamination — jeter", color: "#cc5555" },
+      ],
+    },
+    timerMinutes: null,
+  },
+  {
+    id: "recolte",
+    phase: "Récolte",
+    title: "Récolte",
+    detail: "Sortir et réfrigérer immédiatement. Consulter la section Post-Récolte ci-dessous pour les options de découpe, conservation, cuisson et marinades.",
+    tip: "Au frigo (4°C), le Rhizopus entre en dormance totale — pas de croissance, pas de mort. Les enzymes (protéases, lipases) restent faiblement actives : le tempeh évolue lentement sur 5-7 jours. Cuire ou congeler rapidement pour stabiliser.",
+    hygiene: null,
+    water: null,
+    timerMinutes: null,
+  },
+];
+
+const COOKING_METHODS = [
+  { key: "casserole", label: "Casserole", time: 35, range: "30-45 min", icon: "🍳" },
+  { key: "omnicuiseur", label: "Omnicuiseur", sub: "réglage 2 bas", time: 75, range: "60-90 min", icon: "♨️" },
+];
+
+const APO_CONFIG = {
+  name: "APO",
+  icon: "🔥",
+  params: [
+    { label: "Mode", value: "Vapeur (Steam)" },
+    { label: "Température", value: "Sonde 31°C (recommandé) ou air 30°C → 27-28°C à 12h+" },
+    { label: "Sonde", value: "Pointe au centre du bloc (~1,5-2 cm profondeur). Seuls les 3-5 derniers mm mesurent." },
+    { label: "HR", value: "85-90% (monter à 90-95% si bords secs)" },
+    { label: "Ventilation", value: "Activée" },
+    { label: "Couverture", value: "Gaze/cheesecloth humide posée sur le substrat" },
+    { label: "Élévation", value: "Baguettes chinoises ou grille au fond du bac (5-8mm d'espace)" },
+  ],
+  waterNote: "Réservoir APO : eau du robinet OK (vapeur, pas de contact direct). Le mode vapeur tient ~24h sur un réservoir plein. Vérifier le niveau avant la nuit.",
+  hygieneNote: "Intérieur essuyé avec chiffon humide. Cycle vapeur 100°C 5 min optionnel.",
+};
+
+const BT_CONFIG = {
+  name: "Brod & Taylor",
+  icon: "🫙",
+  params: [
+    { label: "Température", value: "30°C" },
+    { label: "Humidité", value: "Écuelle d'eau plate au fond" },
+    { label: "Ventilation", value: "Stylo dans le couvercle (~1cm)" },
+    { label: "Couverture", value: "Gaze/cheesecloth (pas charlotte coton imperméable → piège à condensation)" },
+    { label: "Mi-parcours", value: "Inverser bacs haut/bas à 18-24h + retourner le bloc" },
+  ],
+  waterNote: "Écuelle : eau du robinet OK (évaporation, pas de contact substrat).",
+  hygieneNote: "Intérieur essuyé avec chiffon humide propre.",
+};
+
+const THERMAL_MANAGEMENT = {
+  title: "Gestion thermique APO — sonde, exothermie et overnight",
+  sections: [
+    {
+      heading: "Courbe exothermique du Rhizopus (sigmoïdale)",
+      text: "La production de chaleur suit la croissance du mycélium :\n• Latence (0-8h) : substrat inerte, quasi pas de chaleur. L'APO chauffe activement.\n• Exponentielle (8-24h) : colonisation rapide, chaleur croissante. +2-4°C au cœur vs air.\n• Pic/Plateau (18-28h) : pic de température. Le cœur peut atteindre 35-37°C même si le four ne chauffe plus.\n• Déclin (28h+) : substrat colonisé, chaleur diminue progressivement. L'APO reprend le relais.\nL'épaisseur du bloc est le facteur principal : 2-3 cm surchauffe beaucoup moins que 4-5 cm (ratio surface/volume).",
+    },
+    {
+      heading: "Seuils critiques",
+      items: [
+        { range: "30-33°C cœur", verdict: "✅ Optimal", color: "#6abf6a", detail: "Rhizopus à son optimum (~31-32°C). Croissance maximale du mycélium." },
+        { range: "33-35°C cœur", verdict: "⚠️ Zone de vigilance", color: "#ccaa55", detail: "Le mycélium reste actif mais ralentit. Agir pour éviter que ça monte." },
+        { range: "35-38°C cœur", verdict: "⚠️ Sporulation prématurée", color: "#cc7755", detail: "Stress thermique → taches noires/grises en surface. Encore consommable." },
+        { range: "> 40°C cœur", verdict: "🚫 Mort du mycélium", color: "#cc5555", detail: "Dégâts irréversibles. Le batch est compromis." },
+      ],
+    },
+    {
+      heading: "Limites de l'APO — ce qu'il peut et ne peut PAS faire",
+      text: "✅ Chauffer précisément (±1°C sous 100°C en mode sonde)\n✅ Maintenir l'humidité dans une enceinte fermée (capteurs wet/dry bulb)\n✅ Ventiler pour homogénéiser la température\n❌ Refroidir activement (pas de compresseur ni Peltier)\n❌ Maintenir l'humidité porte ouverte (le boiler ne compense pas la fuite — documentation Anova)\n❌ Déshumidifier en dessous de l'humidité ambiante de la cuisine\n\nConséquence : quand l'exothermie dépasse la consigne, le seul levier est la convection du ventilateur + entrouvrir brièvement la porte (30s-2 min max, pas une stratégie prolongée).",
+    },
+    {
+      heading: "Mode sonde — fonctionnement précis",
+      text: "La sonde mesure la température au point de contact de la pointe uniquement (thermistor dans les 3-5 derniers mm). La tige ne mesure rien.\n\nAffichage APO en mode sonde :\n• Gauche : lecture actuelle de la sonde (température substrat)\n• Centre (« Probe ») : lecture sonde OU consigne air selon l'écran\n• Droite : humidité relative\n\nComportement : le four chauffe l'air jusqu'à ce que la sonde atteigne la cible, puis coupe. Pendant l'exothermie, la sonde dépasse la cible → le four reste éteint et ne fait que maintenir l'humidité et la ventilation. Quand l'exothermie retombe, le four reprend automatiquement le relais.",
+    },
+    {
+      heading: "Protocole overnight (validé en pratique)",
+      text: "Réglage optimal pour la nuit : APO allumé, sonde 27-28°C, HR 85%, porte fermée, réservoir plein à ras bord.\n\nPourquoi ça marche : le four ne chauffe pas (substrat au-dessus de la cible) mais maintient l'humidité active et la ventilation (dissipation de la chaleur résiduelle). Le réservoir plein tient ~24h en mode vapeur.\n\nRisque résiduel : si l'exothermie est encore forte, la température peut monter au-dessus de 35°C sans intervention. Risque faible si le pic est passé (~25h+ avec mycélium dense visible). Risque acceptable vs alternatives (APO éteint = pas d'humidité ni ventilation ; porte ouverte = dessèchement).\n\nAlternative sûre : sortir au frigo et reprendre le lendemain matin (voir section Reprise après frigo).",
+    },
+    {
+      heading: "Reprise après réfrigération",
+      text: "À 4°C, le Rhizopus entre en dormance totale (thermophile, activité nulle sous ~15°C). Il ne meurt pas mais ne pousse pas non plus. Le tempeh sort du frigo identique à quand il y est entré.\n\nPour reprendre : retour APO 30-31°C, HR 85-90%, sonde en place. Réactivation du mycélium en 1-2h. Prévoir 3-5h sous surveillance.\n\nOptimisation : retourner le bloc (face sous-colonisée vers le haut), surélever sur baguettes/grille. Le côté déjà dense supporte bien d'être contre le fond.\n\nLimites : la reprise après cycle froid est plus lente. Le résultat sera moins homogène qu'une fermentation continue — le dessous ne rattrapera pas le niveau du dessus. C'est une pratique rapportée par la communauté, pas documentée dans la littérature mycologique.",
+    },
+  ],
+};
+
+const OPTIMIZATION_TIPS = {
+  title: "Optimisations pour les prochains batches",
+  tips: [
+    { icon: "📐", label: "Épaisseur 2-3 cm", detail: "Facteur principal de surchauffe. 2-3 cm surchauffe beaucoup moins que 4-5 cm. Même principe que le compostage — ratio surface/volume." },
+    { icon: "🔄", label: "Retourner à 12-14h", detail: "Le dessous est toujours moins colonisé (moins d'O₂, plus d'humidité). Retourner le bloc à mi-fermentation égalise la colonisation." },
+    { icon: "⬆️", label: "Surélever le substrat", detail: "Baguettes chinoises (5-8mm d'espace) + gaze par-dessus. Ou : poser sur la grille filaire APO, gaze autour, bac perforé en dessous pour condensation. Un sac à lait végétal posé à plat ne crée PAS d'espace (s'aplatit sous le poids)." },
+    { icon: "🧻", label: "Gaze humide sur le dessus", detail: "Mimétisme de la feuille de bananier indonésienne. Crée un microclimat humide en surface, réduit le dessèchement des bords par la ventilation APO. Perméable à l'air contrairement au film/charlotte." },
+    { icon: "⏰", label: "Démarrer le matin", detail: "Lancer à ~8h → pic exothermique à ~20-24h (le soir) quand tu es éveillé et peux intervenir (entrouvrir la porte, ajuster). Évite le pic en pleine nuit." },
+    { icon: "✂️", label: "Deux blocs fins > un gros", detail: "Plus de surface exposée, meilleure dissipation thermique. Le ventilateur APO circule l'air entre les deux blocs." },
+    { icon: "🕳️", label: "Perforer toutes les faces", detail: "Dessus, dessous, côtés. Plus l'échange thermique et gazeux avec l'air ambiant est efficace, moins le cœur surchauffe." },
+    { icon: "💧", label: "HR 90-95% si bords secs", detail: "La ventilation forcée APO sèche les surfaces plus vite qu'un environnement statique. Monter l'HR si les bords/coins sont secs. Risque de condensation bactérienne minimal à 30-31°C." },
+  ],
+};
+
+// ═══════════════════════════════════════════
+// POST-RÉCOLTE — Découpe, Conservation, Cuisson, Marinades
+// ═══════════════════════════════════════════
+
+const CUTTING_OPTIONS = {
+  title: "Découpe",
+  intro: "Le tempeh frais se coupe mieux que le congelé (mycélium souple). Le tempeh cuit se coupe mieux que le cru (structure raffermie). Trancher à la récolte en portions de ~150g, forme finale ajustable ensuite.",
+  thicknesses: [
+    { name: "Tranches fines", size: "3-5 mm", icon: "📄", use: "Croustillant maximal — sèchent vite au four, Maillard sur presque toute la section. Chips / jerky de tempeh.", best: "Chaleur sèche, déshydratation" },
+    { name: "Tranches standard", size: "8-12 mm", icon: "📏", use: "Format polyvalent — cuisson à cœur en temps raisonnable, bon ratio croûte/intérieur.", best: "Tous profils de cuisson" },
+    { name: "Tranches épaisses", size: "1,5-2 cm", icon: "📐", use: "Intérieur moelleux même avec cuisson agressive. Format « steak de tempeh ».", best: "Vapeur + sec, combiné, basse temp." },
+    { name: "Pavés / blocs", size: "3-4 cm", icon: "🧱", use: "Braisé ou cuisson vapeur longue. Absorbe un bouillon en profondeur.", best: "Braisé (Ninja Foodi)" },
+  ],
+  shapes: [
+    { name: "Cubes", size: "1-2 cm", icon: "🔲", use: "Sauté, curry, bowl. Plus de surface exposée → plus de Maillard par gramme." },
+    { name: "Allumettes", size: "1×1×5 cm", icon: "🥢", use: "Stir-fry, « lardons végétaux » dans salade tiède, garniture." },
+    { name: "Émietté", size: "variable", icon: "🤏", use: "Au doigt ou à la fourchette (pas au couteau — suit les lignes du mycélium). Haché végétal : bolognaise, farce, chili, mélangé aux œufs brouillés." },
+    { name: "Râpé épais", size: "Thermomix", icon: "🧀", use: "« Parmesan de tempeh » — séché au four ensuite. Condiment qui se conserve 2-4 semaines en bocal. Snack/topping, pas un composant de repas principal." },
+  ],
+};
+
+const CONSERVATION_METHODS = {
+  title: "Conservation",
+  methods: [
+    {
+      category: "Frigo (4°C)",
+      icon: "❄️",
+      options: [
+        { name: "Cru", duration: "5-7 jours", icon: "🟢", detail: "Rhizopus en dormance mais enzymes (protéases, lipases) faiblement actives. Meilleur les 2-3 premiers jours. Au-delà de 5j, odeur d'ammoniac possible. Contenant hermétique ou film avec petit passage d'air (anaérobie → risque bactérien).", recommended: false },
+        { name: "Cuit", duration: "6-7 jours", icon: "⭐", detail: "Enzymes dénaturées, produit biologiquement inerte. Meilleure option pour le batch-cooking de la semaine. Texture constante du jour 1 au jour 7. Contenant hermétique.", recommended: true },
+        { name: "Mariné cru", duration: "4-5 jours", icon: "🟡", detail: "L'acidité de la marinade ralentit la protéolyse mais les protéases fongiques fonctionnent en milieu acide → dégradation continue. La surface ramollit au fil des jours.", recommended: false },
+        { name: "Mariné + cuit", duration: "6-7 jours", icon: "⭐", detail: "Saveur intégrée, enzymes mortes, conservation stable. Prêt-à-manger. Inconvénient : même profil aromatique toute la semaine.", recommended: true },
+      ],
+    },
+    {
+      category: "Congélation (-18°C)",
+      icon: "🧊",
+      options: [
+        { name: "Cru", duration: "3-6 mois", icon: "🟢", detail: "Activité enzymatique quasi nulle. Texture au dégel légèrement plus friable/poreuse (cristaux de glace). Avantage : absorbe mieux les marinades après décongélation (micro-ruptures cellulaires). Congeler à plat, max d'air expulsé.", recommended: true },
+        { name: "Cuit", duration: "3-6 mois", icon: "⭐", detail: "Texture résiste mieux au cycle congélation-décongélation (protéines déjà restructurées). Le plus « meal-prep » : sortir → réchauffer 2-3 min. Le croustillant ne revient pas sauf re-passage à haute température.", recommended: true },
+        { name: "Mariné cru", duration: "3-6 mois", icon: "🟢", detail: "Meal-prep avancé : mariner → congeler en sachets plats (1 portion chaque) → décongeler + cuire au moment voulu. La marinade pénètre encore pendant la décongélation au frigo. Marinades miso/tamari résistent bien. Herbes fraîches perdent de l'éclat.", recommended: false },
+        { name: "Mariné + cuit", duration: "3-6 mois", icon: "🟡", detail: "Zéro-effort au quotidien mais le moins flexible. Même saveur, même texture.", recommended: false },
+      ],
+    },
+    {
+      category: "Traitements spéciaux",
+      icon: "⚡",
+      options: [
+        { name: "Blanching vapeur", duration: "Pré-traitement", icon: "♨️", detail: "APO 100°C, HR 100%, 5-10 min. Tue le Rhizopus + dénature toutes les enzymes → produit biologiquement inerte. Utile si : marinade + stockage frigo plusieurs jours (protéases + acidité sur-attendrissent sinon). Redondant si congélation directe.", recommended: false },
+        { name: "Sous vide", duration: "+50% durée frigo", icon: "🫙", detail: "Applicable à toutes les options ci-dessus. Cru : 7-10j frigo. Cuit : 10-12j frigo. Élimine la brûlure de congélation. Le tempeh supporte bien la compression (mycélium résilient).", recommended: false },
+        { name: "Déshydratation / jerky", duration: "2-4 semaines (ambiante)", icon: "🥓", detail: "Trancher fin (2-3 mm), mariner (tamari + épices), APO 65-70°C, HR 0%, ventilation, 4-6h. Chips/jerky croquantes. Très concentré en protéines par gramme. Condiment/snack, pas un composant de repas principal (volume trop faible pour 150g/jour).", recommended: false },
+        { name: "Sur-fermentation", duration: "48h+ (intentionnel)", icon: "🧪", detail: "Laisser fermenter au-delà de 48h → protéolyse dominante. Tempeh semangit/bosok indonésien : condiment umami (comparable miso/fromage affiné). Si un batch dépasse le timing prévu, ce n'est pas nécessairement perdu — c'est un produit différent.", recommended: false },
+      ],
+    },
+  ],
+  decongel: "Décongélation : frigo 12-24h (préférable). Ou directement du congélateur à l'APO en chaleur sèche (+5-8 min au temps de cuisson — la vapeur interne fait le travail).",
+};
+
+const COOKING_PROFILES = {
+  title: "Cuisson APO — profils",
+  intro: "Tous calibrés pour un batch complet (500-700g) en tranches de ~1 cm, une seule couche sur grille ou bac perforé. Huiler = badigeonner d'huile d'olive avant cuisson sauf mention contraire.",
+  profiles: [
+    {
+      id: "vapeur",
+      name: "Vapeur pure",
+      icon: "💨",
+      subtitle: "Fondant, neutre",
+      temp: "100°C",
+      humidity: "HR 100%",
+      time: "15-20 min",
+      oil: false,
+      flip: false,
+      description: "Texture fondante, presque crémeuse. Aucun brunissement. Canvas neutre — prend n'importe quel assaisonnement au réchauffage. Se réchauffe sans se dessécher (micro-ondes 30s ou froid dans un bowl avec les œufs chauds).",
+      batchNote: "Polyvalence maximale pour assaisonnement variable au quotidien.",
+      color: "#6a8acc",
+    },
+    {
+      id: "vapeur_sec",
+      name: "Vapeur + chaleur sèche",
+      icon: "💨🔥",
+      subtitle: "Moelleux-doré (recommandé)",
+      temp: "100°C → 200-210°C",
+      humidity: "HR 100% → HR 0%",
+      time: "10 min + 8-12 min",
+      oil: true,
+      flip: false,
+      description: "Étape 1 : vapeur (cuisson à cœur, hydrate le mycélium). Étape 2 : chaleur sèche (Maillard en surface). Huiler entre les deux étapes. Meilleur contraste croûte fine dorée / intérieur moelleux. La croûte ramollit un peu au frigo mais la saveur reste.",
+      batchNote: "Meilleur compromis texture/saveur pour un usage quotidien. Profil par défaut recommandé.",
+      color: "#6abf6a",
+    },
+    {
+      id: "combine",
+      name: "Combiné",
+      icon: "🔄",
+      subtitle: "Croustillant équilibré",
+      temp: "190°C",
+      humidity: "HR 20-30%",
+      time: "20-25 min",
+      oil: true,
+      flip: true,
+      description: "La vapeur résiduelle empêche le dessèchement intérieur. Brunissement uniforme. Moins de contraste croûte/cœur que la méthode vapeur+sec, mais plus homogène et en une seule étape.",
+      batchNote: "Plus simple que le vapeur+sec. Idéal si tu veux un résultat décent sans gestion en deux étapes.",
+      color: "#ccaa55",
+    },
+    {
+      id: "roti_sec",
+      name: "Rôti sec",
+      icon: "🔥",
+      subtitle: "Croûte intense, texture ferme",
+      temp: "200-210°C",
+      humidity: "HR 0%",
+      time: "25-30 min",
+      oil: true,
+      flip: true,
+      description: "Croûte épaisse, presque craquante, intérieur ferme et sec. Saveur noisettée prononcée (Maillard + caramélisation des sucres de la fermentation). Se rapproche du tempeh frit sans bain d'huile. Se conserve très bien au frigo — la texture ferme résiste au stockage. Sec si mangé froid.",
+      batchNote: "Bonne tenue au frigo. Se réchauffe mieux que les versions molles.",
+      color: "#cc7755",
+    },
+    {
+      id: "basse_temp",
+      name: "Basse température",
+      icon: "🌡️",
+      subtitle: "Tendreté maximale (expérimental)",
+      temp: "75-80°C",
+      humidity: "HR 50-60%",
+      time: "45-60 min",
+      oil: false,
+      flip: false,
+      description: "Approche sous-vide-like sans sachet. Dénature les protéines progressivement sans les durcir. Texture crémeuse, inhabituelle pour du tempeh. Pas de Maillard. Peut être suivi d'un flash à 220°C, 5 min pour le Maillard (reverse sear).",
+      batchNote: "Expérimental — à tester sur une portion avant de commiter un batch entier.",
+      color: "#aa88cc",
+    },
+    {
+      id: "confit",
+      name: "Confit basse HR",
+      icon: "✨",
+      subtitle: "Dense, mâchu, concentré",
+      temp: "150°C",
+      humidity: "HR 10-15%",
+      time: "30-40 min",
+      oil: true,
+      flip: true,
+      description: "Entre le rôti et le séchage. Le tempeh perd pas mal d'eau, se concentre en saveur, Maillard progressif et uniforme. Texture dense et « mâchue ». Fonctionne très bien avec une marinade tamari — le tamari caramélise lentement.",
+      batchNote: "Bonne option pour varier les textures d'un batch à l'autre.",
+      color: "#cc9977",
+    },
+    {
+      id: "deshydratation",
+      name: "Déshydratation / chips",
+      icon: "🥓",
+      subtitle: "Snack / condiment",
+      temp: "65-70°C",
+      humidity: "HR 0%",
+      time: "4-6h (tranches 2-3 mm)",
+      oil: false,
+      flip: false,
+      description: "Produit sec, croquant, très concentré en protéines par gramme. Enzymes complètement dénaturées. Conservation 2-4 semaines en bocal hermétique à température ambiante. Snack/condiment, pas un composant de repas principal (volume insuffisant pour 150g/jour).",
+      batchNote: "En complément du circuit principal, pas en remplacement.",
+      color: "#aa7755",
+    },
+  ],
+  otherMethods: [
+    { name: "Air-fry (Ninja Foodi)", detail: "190°C, 12-18 min, secouer à mi-cuisson. Spray d'huile. Croustillant comparable à la friture. Plus rapide que l'APO pour de petites quantités (pas de préchauffage)." },
+    { name: "Braisé (Ninja Foodi ou APO)", detail: "Cubes dans bouillon/sauce (curry, tomate, coco). 160-170°C, 30-45 min couvert. Le tempeh absorbe la sauce comme une éponge. Pertinent pour curry de tempeh en batch." },
+    { name: "Poêle", detail: "Huile d'olive, feu moyen-vif, 3-4 min par face (1 cm). Le Maillard le plus intense (contact direct métal). Usage ponctuel — pas un mode batch." },
+    { name: "Friture (immersion)", detail: "Huile 170-180°C, 3-5 min. Tempeh goreng traditionnel. Le plus calorique (tempeh poreux absorbe l'huile). Pas cohérent avec tes objectifs de composition corporelle sauf usage occasionnel. Égoutter sur grille (pas papier absorbant)." },
+  ],
+};
+
+const MARINADES = {
+  title: "Marinades",
+  intro: "Toutes dosées pour 500-700g de tempeh (1 cm d'épaisseur). Temps de marinade min. 30 min, idéal 1-2h (le tempeh poreux absorbe vite — au-delà de 2h le gain est marginal).",
+  recipes: [
+    {
+      id: "asiatique",
+      name: "Asiatique classique",
+      subtitle: "Umami dominant",
+      icon: "🥢",
+      color: "#ccaa55",
+      ingredients: "Tamari 3 c.à.s. · huile de sésame grillé 1 c.à.s. · gingembre frais râpé 1 c.à.c. · ail 1 gousse · vinaigre de riz 1 c.à.c.",
+      note: "Le standard. L'umami du tamari + saveur noisettée du tempeh. Gingembre = hépatoprotecteur (NF-κB). Bonne conservation frigo (sel du tamari).",
+      apoCuisson: "Tous profils",
+    },
+    {
+      id: "indonesienne",
+      name: "Indonésienne",
+      subtitle: "Aigre-douce épicée",
+      icon: "🌶️",
+      color: "#cc7755",
+      ingredients: "Kecap manis 2 c.à.s. · jus de citron vert 2 c.à.s. · ail 2 gousses · coriandre moulue 1 c.à.c. · curcuma frais 1 c.à.c. · piment au goût",
+      note: "Marinade traditionnelle du tempeh goreng. Curcuma = anti-inflammatoire (curcuminoïdes liposolubles — l'huile de cuisson assure l'absorption). ⚠️ Kecap manis contient du sucre (~5g/c.à.s.).",
+      apoCuisson: "Combiné ou rôti sec",
+    },
+    {
+      id: "mediterraneenne",
+      name: "Méditerranéenne",
+      subtitle: "Herbes + acidité",
+      icon: "🫒",
+      color: "#6abf6a",
+      ingredients: "Huile d'olive 2 c.à.s. · jus de citron 2 c.à.s. · ail 2 gousses · origan séché 1 c.à.c. · thym ½ c.à.c. · paprika fumé 1 c.à.c. · sel ½ c.à.c.",
+      note: "La plus cohérente avec le profil du repas 2 (vinaigrette huile d'olive, légumes cuits). Le paprika fumé apporte une profondeur que le tempeh capte bien. Le citron attendrit la surface — favorise le doré.",
+      apoCuisson: "Vapeur + sec ou combiné",
+    },
+    {
+      id: "miso",
+      name: "Miso-gingembre",
+      subtitle: "Umami profond, fermenté²",
+      icon: "🍶",
+      color: "#aa88cc",
+      ingredients: "Miso blanc (shiro) 1,5 c.à.s. · mirin 1 c.à.s. · huile de sésame 1 c.à.s. · gingembre frais 2 c.à.c. · eau (pour diluer le miso)",
+      note: "Fermenté sur fermenté = charge umami exceptionnelle. Miso blanc moins salé que le rouge. ⚠️ Le miso brûle facilement → plutôt profil combiné (HR 20-30%) que chaleur sèche pure.",
+      apoCuisson: "Combiné (HR 20-30%)",
+    },
+    {
+      id: "chermoula",
+      name: "Chermoula",
+      subtitle: "Herbacée intense (Maghreb)",
+      icon: "🌿",
+      color: "#6a8acc",
+      ingredients: "Coriandre fraîche 1 bouquet · persil ½ bouquet · ail 2 gousses · cumin 1 c.à.c. · paprika 1 c.à.c. · jus de citron 3 c.à.s. · huile d'olive 2 c.à.s. Mixer grossièrement.",
+      note: "Marinade épaisse → croûte aromatique à la cuisson. Cumin = carminatif (pertinent si ballonnements au repas 2). Herbes fraîches = vitamine K1, folates. Conservation frigo plus courte (3-4j vs 6-7j pour tamari/miso).",
+      apoCuisson: "Vapeur + sec ou rôti sec",
+    },
+    {
+      id: "cacahuete",
+      name: "Cacahuète-sriracha",
+      subtitle: "Riche, sauce-repas",
+      icon: "🥜",
+      color: "#cc9977",
+      ingredients: "Purée de cacahuète 2 c.à.s. · tamari 1 c.à.s. · sriracha 1-2 c.à.c. · jus de citron vert 1 c.à.s. · eau chaude 2 c.à.s. (pour fluidifier)",
+      note: "Plus une sauce qu'une marinade — coate le tempeh en couche épaisse qui caramélise. Très « satisfaisant ». +8g lipides et +4g protéines par portion. ⚠️ Combiné 180°C, HR 20% sinon la cacahuète brûle. Éviter au dîner (lipides + épicé = vidange gastrique ralentie → reflux).",
+      apoCuisson: "Combiné 180°C, HR 20%",
+    },
+    {
+      id: "balsamique",
+      name: "Balsamique-moutarde",
+      subtitle: "Européenne, tangy",
+      icon: "🍷",
+      color: "#8a6acc",
+      ingredients: "Vinaigre balsamique 2 c.à.s. · moutarde de Dijon 1 c.à.s. · huile d'olive 1 c.à.s. · sirop d'érable ½ c.à.c. (optionnel) · ail 1 gousse · poivre noir",
+      note: "L'acidité du balsamique + la moutarde créent un glacé à la cuisson. Le sucre résiduel du balsamique accentue le Maillard. Fonctionne très bien avec le profil rôti sec.",
+      apoCuisson: "Rôti sec ou combiné",
+    },
+  ],
+  conservationNote: "Les marinades tamari/miso (1, 2, 4) se conservent mieux sur la semaine (sel = conservateur). Herbes fraîches (5) : 3-4 jours max.",
+};
+
+const BATCH_CIRCUITS = {
+  title: "Circuits batch-cooking",
+  circuits: [
+    {
+      name: "Express",
+      icon: "⚡",
+      color: "#6abf6a",
+      steps: "Récolte → trancher 1 cm → cuisson batch APO (vapeur + sec) → frigo hermétique → réchauffage quotidien 2-3 min",
+      surplus: "Surplus → congélation directe crue en portions",
+      recommended: true,
+    },
+    {
+      name: "Mariné",
+      icon: "🫙",
+      color: "#ccaa55",
+      steps: "Récolte → trancher → mariner 1-2h → cuisson batch APO → frigo hermétique",
+      surplus: "Plus de saveur, moins de flexibilité quotidienne (même profil toute la semaine)",
+      recommended: false,
+    },
+    {
+      name: "Mixte",
+      icon: "🔀",
+      color: "#6a8acc",
+      steps: "Récolte → trancher → moitié cuisson neutre (vapeur + sec) pour la semaine → moitié congélation crue pour les semaines suivantes",
+      surplus: "Le stock congelé se cuit au moment de la décongélation — varier les profils et marinades au fil des semaines",
+      recommended: true,
+    },
+    {
+      name: "Meal-prep avancé",
+      icon: "📦",
+      color: "#aa88cc",
+      steps: "Récolte → trancher → mariner avec 2-3 marinades différentes → cuisson batch APO → frigo en contenants séparés par marinade",
+      surplus: "Variété dans la semaine, mais plus de travail initial",
+      recommended: false,
+    },
+    {
+      name: "Condiment",
+      icon: "🥓",
+      color: "#cc9977",
+      steps: "Récolte → trancher fin (3 mm) → marinade tamari → déshydratation APO 65-70°C, 4-6h → bocal hermétique",
+      surplus: "Chips/jerky en complément du circuit principal, pas en remplacement",
+      recommended: false,
+    },
+  ],
+};
+
+function formatTime(seconds) {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
+function Timer({ minutes, label }) {
+  const [totalSeconds, setTotalSeconds] = useState(minutes * 60);
+  const [running, setRunning] = useState(false);
+  const [finished, setFinished] = useState(false);
+
+  useEffect(() => {
+    if (!running || totalSeconds <= 0) return;
+    const interval = setInterval(() => {
+      setTotalSeconds((prev) => {
+        if (prev <= 1) { setRunning(false); setFinished(true); return 0; }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [running, totalSeconds]);
+
+  const progress = 1 - totalSeconds / (minutes * 60);
+  const reset = () => { setTotalSeconds(minutes * 60); setRunning(false); setFinished(false); };
+
+  return (
+    <div style={{
+      marginTop: 12, background: finished ? "#1a2e1a" : "#1a1a2e",
+      borderRadius: 12, padding: "14px 16px",
+      border: finished ? "1px solid #2d5a2d" : "1px solid #2a2a4a",
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+        <span style={{ fontSize: 12, color: "#8888aa", letterSpacing: 1, textTransform: "uppercase" }}>⏱ {label}</span>
+        {finished && <span style={{ fontSize: 12, color: "#6abf6a" }}>✓ Terminé</span>}
+      </div>
+      <div style={{
+        fontSize: 36, fontFamily: "'JetBrains Mono', 'SF Mono', monospace",
+        fontWeight: 600, color: finished ? "#6abf6a" : "#e8e8ff", textAlign: "center", margin: "4px 0 12px",
+      }}>
+        {formatTime(totalSeconds)}
+      </div>
+      <div style={{ height: 4, background: "#2a2a4a", borderRadius: 2, marginBottom: 12, overflow: "hidden" }}>
+        <div style={{
+          height: "100%", width: `${progress * 100}%`,
+          background: finished ? "#6abf6a" : "#7878cc", borderRadius: 2, transition: "width 1s linear",
+        }} />
+      </div>
+      <div style={{ display: "flex", gap: 8 }}>
+        <button onClick={() => setRunning(!running)} style={{
+          flex: 1, padding: "10px 0", borderRadius: 8, border: "none", fontSize: 14, fontWeight: 600,
+          cursor: "pointer", background: running ? "#cc5555" : "#5a5aaa", color: "#fff",
+        }}>
+          {running ? "Pause" : totalSeconds === minutes * 60 ? "Démarrer" : "Reprendre"}
+        </button>
+        <button onClick={reset} style={{
+          padding: "10px 16px", borderRadius: 8, border: "1px solid #3a3a5a",
+          fontSize: 14, cursor: "pointer", background: "transparent", color: "#8888aa",
+        }}>Reset</button>
+      </div>
+    </div>
+  );
+}
+
+function InfoBadge({ icon, text, color }) {
+  return (
+    <div style={{
+      marginTop: 8, padding: "8px 12px", background: `${color}11`,
+      borderRadius: 8, borderLeft: `3px solid ${color}`,
+    }}>
+      <p style={{ color, fontSize: 12, margin: 0, lineHeight: 1.5, opacity: 0.85 }}>{icon} {text}</p>
+    </div>
+  );
+}
+
+function APOGuidancePanel({ guidance, variant }) {
+  if (!guidance || variant !== "apo") return null;
+
+  return (
+    <div style={{
+      marginTop: 12, background: "#12121e", borderRadius: 12,
+      border: "1px solid #2a2a4a", overflow: "hidden",
+    }}>
+      <div style={{
+        padding: "10px 14px", background: "#1a1a2e",
+        borderBottom: "1px solid #2a2a4a",
+      }}>
+        <span style={{ fontSize: 12, fontWeight: 700, color: "#8888cc", letterSpacing: 1, textTransform: "uppercase" }}>
+          🔥 {guidance.title}
+        </span>
+      </div>
+      <div style={{ padding: "12px 14px" }}>
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+            <span style={{ fontSize: 12, color: "#cc7755", fontWeight: 600 }}>🌡 {guidance.temp.label}</span>
+            <span style={{
+              fontSize: 13, fontWeight: 700, color: "#e8c8b8",
+              background: "#2a1a1a", padding: "2px 10px", borderRadius: 6,
+            }}>{guidance.temp.value}</span>
+          </div>
+          <p style={{ fontSize: 12, color: "#888", margin: "2px 0 0", lineHeight: 1.5 }}>{guidance.temp.note}</p>
+        </div>
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+            <span style={{ fontSize: 12, color: "#6a8acc", fontWeight: 600 }}>💧 {guidance.humidity.label}</span>
+            <span style={{
+              fontSize: 13, fontWeight: 700, color: "#b8d0e8",
+              background: "#1a1a2a", padding: "2px 10px", borderRadius: 6,
+            }}>{guidance.humidity.value}</span>
+          </div>
+          <p style={{ fontSize: 12, color: "#888", margin: "2px 0 0", lineHeight: 1.5 }}>{guidance.humidity.note}</p>
+        </div>
+        <div style={{
+          padding: "10px 12px", background: "#0d0d16", borderRadius: 8,
+          border: "1px solid #1e1e2e",
+        }}>
+          <p style={{ fontSize: 11, color: "#7a7a9a", margin: "0 0 8px", fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>
+            {guidance.action}
+          </p>
+          {guidance.checks.map((c, i) => (
+            <div key={i} style={{
+              display: "flex", gap: 8, padding: "6px 0",
+              borderBottom: i < guidance.checks.length - 1 ? "1px solid #1a1a2a" : "none",
+              alignItems: "flex-start",
+            }}>
+              <div style={{ flex: 1 }}>
+                <p style={{ fontSize: 12, color: "#aab", margin: 0, lineHeight: 1.4 }}>{c.condition}</p>
+                <p style={{ fontSize: 12, color: c.color, margin: "2px 0 0", fontWeight: 600, lineHeight: 1.4 }}>{c.result}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Collapsible({ title, icon, color, children, defaultOpen }) {
+  const [open, setOpen] = useState(defaultOpen || false);
+  return (
+    <div style={{ marginTop: 12 }}>
+      <button onClick={() => setOpen(!open)} style={{ width: "100%", padding: "12px 14px", borderRadius: open ? "12px 12px 0 0" : 12, border: `1px solid ${color}33`, background: `${color}08`, color, fontSize: 13, fontWeight: 600, cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", textAlign: "left" }}>
+        <span>{icon} {title}</span>
+        <span style={{ transform: open ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s ease", flexShrink: 0 }}>▾</span>
+      </button>
+      {open && <div style={{ background: "#0e0e14", borderRadius: "0 0 12px 12px", border: `1px solid ${color}22`, borderTop: "none", padding: "12px 14px" }}>{children}</div>}
+    </div>
+  );
+}
+
+function ThermalManagementPanel({ variant }) {
+  if (variant !== "apo") return null;
+  const data = THERMAL_MANAGEMENT;
+
+  return (
+    <Collapsible title={data.title} icon="🌡" color="#cc7755">
+      {data.sections.map((section, si) => (
+        <div key={si} style={{ marginBottom: si < data.sections.length - 1 ? 16 : 0 }}>
+          <p style={{ fontSize: 13, fontWeight: 700, color: "#cc9977", margin: "0 0 6px" }}>{section.heading}</p>
+          {section.text && section.text.split("\n").map((line, li) => (
+            <p key={li} style={{ fontSize: 12, color: "#888", margin: line === "" ? "6px 0" : "4px 0", lineHeight: 1.6 }}>{line}</p>
+          ))}
+          {section.items && section.items.map((item, ii) => (
+            <div key={ii} style={{ padding: "8px 0", borderBottom: ii < section.items.length - 1 ? "1px solid #1a1a24" : "none" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 3 }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: item.color }}>{item.range}</span>
+                <span style={{ fontSize: 11, fontWeight: 600, color: item.color, background: `${item.color}15`, padding: "2px 8px", borderRadius: 4 }}>{item.verdict}</span>
+              </div>
+              <p style={{ fontSize: 12, color: "#777", margin: 0, lineHeight: 1.5 }}>{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      ))}
+    </Collapsible>
+  );
+}
+
+function OptimizationPanel({ variant }) {
+  if (variant !== "apo") return null;
+  const data = OPTIMIZATION_TIPS;
+
+  return (
+    <Collapsible title={data.title} icon="💡" color="#6a8acc">
+      {data.tips.map((tip, i) => (
+        <div key={i} style={{
+          padding: "10px 0",
+          borderBottom: i < data.tips.length - 1 ? "1px solid #1a1a24" : "none",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+            <span style={{ fontSize: 16 }}>{tip.icon}</span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#aaccee" }}>{tip.label}</span>
+          </div>
+          <p style={{ fontSize: 12, color: "#888", margin: 0, lineHeight: 1.5, paddingLeft: 28 }}>{tip.detail}</p>
+        </div>
+      ))}
+    </Collapsible>
+  );
+}
+
+function StarterBadge({ quantity }) {
+  const q = QUANTITIES.find(x => x.key === quantity);
+  if (!q) return null;
+
+  return (
+    <div style={{
+      marginTop: 12, padding: "12px 14px", background: "#1a1e1a",
+      borderRadius: 10, border: "1px solid #2a3a2a",
+      display: "flex", alignItems: "center", gap: 12,
+    }}>
+      <div style={{ fontSize: 24 }}>🍄</div>
+      <div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: "#b8d8b0" }}>{q.starter}</div>
+        <div style={{ fontSize: 12, color: "#7a9a7a", marginTop: 2 }}>
+          Starter Rhizopus oligosporus pour {q.label} de soja sec
+        </div>
+        <div style={{ fontSize: 11, color: "#5a7a5a", marginTop: 2 }}>
+          → {q.yield}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function OvernightPanel({ variant }) {
+  if (variant !== "apo") return null;
+
+  return (
+    <div style={{
+      marginTop: 12, background: "#12121e", borderRadius: 12,
+      border: "1px solid #2a2a4a", overflow: "hidden",
+    }}>
+      <div style={{
+        padding: "10px 14px", background: "#1a1a28",
+        borderBottom: "1px solid #2a2a4a",
+      }}>
+        <span style={{ fontSize: 12, fontWeight: 700, color: "#8888cc", letterSpacing: 1, textTransform: "uppercase" }}>
+          🌙 Protocole overnight APO
+        </span>
+      </div>
+      <div style={{ padding: "12px 14px" }}>
+        <p style={{ fontSize: 13, color: "#aab", margin: "0 0 10px", lineHeight: 1.6 }}>
+          Si la fermentation tombe pendant la nuit et que tu ne peux pas surveiller :
+        </p>
+
+        <div style={{ padding: "10px 12px", background: "#0d0d16", borderRadius: 8, border: "1px solid #1e1e2e", marginBottom: 10 }}>
+          <p style={{ fontSize: 12, color: "#6abf6a", margin: 0, fontWeight: 600 }}>✅ Option recommandée : APO allumé pour la nuit</p>
+          <p style={{ fontSize: 12, color: "#888", margin: "6px 0 0", lineHeight: 1.5 }}>
+            Sonde 27-28°C · HR 85% · Porte fermée · Réservoir plein à ras bord.
+            Le four ne chauffe pas (substrat au-dessus de la cible) mais maintient humidité + ventilation.
+          </p>
+        </div>
+
+        <div style={{ padding: "10px 12px", background: "#0d0d16", borderRadius: 8, border: "1px solid #1e1e2e", marginBottom: 10 }}>
+          <p style={{ fontSize: 12, color: "#ccaa55", margin: 0, fontWeight: 600 }}>🔒 Option sûre : frigo + reprise le matin</p>
+          <p style={{ fontSize: 12, color: "#888", margin: "6px 0 0", lineHeight: 1.5 }}>
+            Sortir → frigo immédiat. Rhizopus en dormance. Reprendre le lendemain : APO 30-31°C, HR 85-90%, retourner le bloc, 3-5h sous surveillance. Résultat moins homogène qu'une fermentation continue.
+          </p>
+        </div>
+
+        <div style={{ padding: "10px 12px", background: "#0d0d16", borderRadius: 8, border: "1px solid #cc555533" }}>
+          <p style={{ fontSize: 12, color: "#cc7755", margin: 0, fontWeight: 600 }}>❌ Éviter</p>
+          <p style={{ fontSize: 12, color: "#888", margin: "6px 0 0", lineHeight: 1.5 }}>
+            APO éteint (pas d'humidité ni ventilation, surchauffe possible). Porte entrouverte prolongée (dessèchement, l'APO ne compense pas l'humidité porte ouverte).
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MiseEnBacPanel({ variant }) {
+  const isAPO = variant === "apo";
+  const [container, setContainer] = useState("bac");
+
+  return (
+    <div style={{
+      marginTop: 12, background: "#12121e", borderRadius: 12,
+      border: "1px solid #2a2a4a", overflow: "hidden",
+    }}>
+      <div style={{
+        padding: "10px 14px", background: "#1a1a28",
+        borderBottom: "1px solid #2a2a4a",
+      }}>
+        <span style={{ fontSize: 12, fontWeight: 700, color: "#8888cc", letterSpacing: 1, textTransform: "uppercase" }}>
+          📐 Mise en forme du substrat
+        </span>
+      </div>
+      <div style={{ padding: "12px 14px" }}>
+        {isAPO && (
+          <div style={{ marginBottom: 12 }}>
+            <p style={{ fontSize: 11, color: "#7a7a9a", margin: "0 0 6px", fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>
+              Contenant
+            </p>
+            <div style={{ display: "flex", gap: 8 }}>
+              {[
+                { key: "bac", label: "Bac perforé inox", icon: "🥘" },
+                { key: "mesh", label: "Mesh basket + étamine", icon: "🧺" },
+              ].map((opt) => (
+                <button key={opt.key} onClick={() => setContainer(opt.key)} style={{
+                  flex: 1, padding: "8px 10px", borderRadius: 8,
+                  border: container === opt.key ? "1px solid #5a5aaa" : "1px solid #2a2a4a",
+                  background: container === opt.key ? "#1e1e3e" : "transparent",
+                  color: container === opt.key ? "#dddde8" : "#6a6a8a",
+                  fontSize: 12, fontWeight: 600, cursor: "pointer",
+                  display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+                }}>
+                  <span>{opt.icon}</span> {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Paramètres communs + spécifiques selon le contenant */}
+        {(container === "bac" || !isAPO) ? (
+          <>
+            {[
+              { label: "Épaisseur", value: "2-3 cm (pas 4-5 cm)", note: "Facteur principal pour limiter le pic exothermique." },
+              { label: "Élévation", value: isAPO ? "Baguettes chinoises + gaze par-dessus" : "Baguettes ou grille si possible", note: isAPO ? "5-8mm d'espace d'air sous le substrat. Ou : poser directement sur la grille filaire APO (gaze autour), bac perforé en dessous pour condensation." : "Améliore la circulation d'air sous le bloc." },
+              { label: "Couverture", value: "Gaze/cheesecloth humide posée à plat", note: "Crée un microclimat humide au contact (mimétisme feuille de bananier). Perméable à l'air. Pas de torchon épais, pas de film, pas de charlotte coton." },
+              { label: "Tassement", value: "Légèrement tassé, surface plane", note: "Un bloc compact fermente plus uniformément qu'un substrat en vrac." },
+            ].map((item, i) => (
+              <div key={i} style={{ padding: "7px 0", borderBottom: i < 3 ? "1px solid #1e1e2e" : "none" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
+                  <span style={{ color: "#777", fontSize: 13 }}>{item.label}</span>
+                  <span style={{ color: "#bbc", fontSize: 13, fontWeight: 500, textAlign: "right", maxWidth: "60%" }}>{item.value}</span>
+                </div>
+                <p style={{ fontSize: 11, color: "#666", margin: "2px 0 0", lineHeight: 1.4 }}>{item.note}</p>
+              </div>
+            ))}
+            {isAPO && (
+              <div style={{ marginTop: 10, padding: "8px 10px", background: "#0d0d16", borderRadius: 6, border: "1px solid #1e1e2e" }}>
+                <p style={{ fontSize: 11, color: "#666", margin: 0, lineHeight: 1.4 }}>
+                  📏 Bac perforé APO intérieur : ~36 × 28 cm. Aucune grille standard ne correspond parfaitement. Solutions : découper une grille 40×25 cm à la pince coupante, ou utiliser la grille filaire APO directement.
+                </p>
+              </div>
+            )}
+            {isAPO && (
+              <div style={{ marginTop: 8, padding: "8px 10px", background: "#1a1a12", borderRadius: 6, borderLeft: "3px solid #ccaa55" }}>
+                <p style={{ fontSize: 11, color: "#ccaa55", margin: 0, lineHeight: 1.4 }}>
+                  ⚠️ Limite du bac inox : le fond crée une zone à oxygénation réduite + accumulation d'humidité → dessous moins colonisé. Le retournement à 12-14h compense partiellement.
+                </p>
+              </div>
+            )}
+          </>
+        ) : (
+          <>
+            {[
+              { label: "Épaisseur", value: "2-3 cm (pas 4-5 cm)", note: "Facteur principal pour limiter le pic exothermique. Identique au bac inox." },
+              { label: "Contenant", value: "Mesh basket inox (~34×26 cm)", note: "Maille 3-5 mm idéale. Doit rentrer dans l'APO : soit sur les rails, soit posé dans le bac perforé (récupère la condensation en dessous). Profondeur 4-5 cm suffisante." },
+              { label: "Étamine", value: "Envelopper intégralement le substrat", note: "Tapisser le mesh basket d'étamine humide. Verser le substrat inoculé, tasser. Rabattre l'étamine par-dessus. Crée le microclimat humide sur les 6 faces." },
+              { label: "Tassement", value: "Légèrement tassé, surface plane", note: "Un bloc compact fermente plus uniformément qu'un substrat en vrac." },
+              { label: "Sonde", value: "À travers la maille + étamine", note: "La maille est assez large pour passer la sonde. Pointe au centre du bloc en épaisseur." },
+            ].map((item, i) => (
+              <div key={i} style={{ padding: "7px 0", borderBottom: i < 4 ? "1px solid #1e1e2e" : "none" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
+                  <span style={{ color: "#777", fontSize: 13 }}>{item.label}</span>
+                  <span style={{ color: "#bbc", fontSize: 13, fontWeight: 500, textAlign: "right", maxWidth: "60%" }}>{item.value}</span>
+                </div>
+                <p style={{ fontSize: 11, color: "#666", margin: "2px 0 0", lineHeight: 1.4 }}>{item.note}</p>
+              </div>
+            ))}
+            <div style={{ marginTop: 10, padding: "10px 12px", background: "#0d1a0d", borderRadius: 8, border: "1px solid #2d5a2d" }}>
+              <p style={{ fontSize: 12, color: "#6abf6a", margin: "0 0 6px", fontWeight: 600 }}>✅ Avantages vs bac inox</p>
+              <div style={{ fontSize: 12, color: "#888", lineHeight: 1.6, margin: 0 }}>
+                {[
+                  "Circulation d'air sur les 6 faces → colonisation uniforme dessus/dessous",
+                  "Pas besoin de baguettes d'élévation (le mesh est son propre support)",
+                  "Retournement à 12-14h probablement plus nécessaire (à confirmer empiriquement)",
+                  "Étamine intégrale = microclimat humide sur toute la surface (pas juste le dessus)",
+                  "Principe identique aux paniers en bambou tressé indonésiens traditionnels",
+                ].map((line, li) => (
+                  <p key={li} style={{ margin: "3px 0", color: "#888" }}>• {line}</p>
+                ))}
+              </div>
+            </div>
+            <div style={{ marginTop: 8, padding: "8px 10px", background: "#1a1a12", borderRadius: 6, borderLeft: "3px solid #ccaa55" }}>
+              <p style={{ fontSize: 11, color: "#ccaa55", margin: 0, lineHeight: 1.4 }}>
+                💡 Dimensionnement : chercher un panier de ~34×26 cm pour s'insérer dans le bac perforé APO (~36×28 cm intérieur). Le bac perforé en dessous récupère la condensation.
+              </p>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════
+// POST-RÉCOLTE — Panel Components
+// ═══════════════════════════════════════════
+
+function CuttingPanel() {
+  const data = CUTTING_OPTIONS;
+  return (
+    <Collapsible title={data.title} icon="🔪" color="#cc9977">
+      <p style={{ fontSize: 12, color: "#888", margin: "0 0 12px", lineHeight: 1.6 }}>{data.intro}</p>
+
+      <p style={{ fontSize: 11, color: "#7a7a9a", margin: "0 0 8px", fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>
+        Épaisseurs
+      </p>
+      {data.thicknesses.map((t, i) => (
+        <div key={i} style={{
+          padding: "8px 0",
+          borderBottom: i < data.thicknesses.length - 1 ? "1px solid #1a1a24" : "none",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 3 }}>
+            <span style={{ fontSize: 16 }}>{t.icon}</span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#bbc" }}>{t.name}</span>
+            <span style={{ fontSize: 12, color: "#cc9977", fontWeight: 500, background: "#1e1412", padding: "1px 8px", borderRadius: 4 }}>{t.size}</span>
+          </div>
+          <p style={{ fontSize: 12, color: "#888", margin: "2px 0 0 28px", lineHeight: 1.5 }}>{t.use}</p>
+          <p style={{ fontSize: 11, color: "#6a8acc", margin: "2px 0 0 28px" }}>→ {t.best}</p>
+        </div>
+      ))}
+
+      <p style={{ fontSize: 11, color: "#7a7a9a", margin: "14px 0 8px", fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>
+        Formes
+      </p>
+      {data.shapes.map((s, i) => (
+        <div key={i} style={{
+          padding: "8px 0",
+          borderBottom: i < data.shapes.length - 1 ? "1px solid #1a1a24" : "none",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 3 }}>
+            <span style={{ fontSize: 16 }}>{s.icon}</span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#bbc" }}>{s.name}</span>
+            <span style={{ fontSize: 11, color: "#666" }}>({s.size})</span>
+          </div>
+          <p style={{ fontSize: 12, color: "#888", margin: "2px 0 0 28px", lineHeight: 1.5 }}>{s.use}</p>
+        </div>
+      ))}
+    </Collapsible>
+  );
+}
+
+function ConservationPanel() {
+  const data = CONSERVATION_METHODS;
+  return (
+    <Collapsible title={data.title} icon="❄️" color="#6a8acc">
+      {data.methods.map((cat, ci) => (
+        <div key={ci} style={{ marginBottom: ci < data.methods.length - 1 ? 16 : 0 }}>
+          <p style={{ fontSize: 13, fontWeight: 700, color: "#8888cc", margin: "0 0 8px", display: "flex", alignItems: "center", gap: 6 }}>
+            <span>{cat.icon}</span> {cat.category}
+          </p>
+          {cat.options.map((opt, oi) => (
+            <div key={oi} style={{
+              padding: "10px 12px", background: "#0d0d16", borderRadius: 8,
+              border: opt.recommended ? "1px solid #2d5a2d" : "1px solid #1e1e2e",
+              marginBottom: 8,
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span>{opt.icon}</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: opt.recommended ? "#6abf6a" : "#bbc" }}>{opt.name}</span>
+                  {opt.recommended && <span style={{ fontSize: 10, color: "#6abf6a", background: "#1a2e1a", padding: "1px 6px", borderRadius: 4, fontWeight: 600 }}>RECOMMANDÉ</span>}
+                </div>
+                <span style={{ fontSize: 12, color: "#cc9977", fontWeight: 500 }}>{opt.duration}</span>
+              </div>
+              <p style={{ fontSize: 12, color: "#777", margin: 0, lineHeight: 1.5 }}>{opt.detail}</p>
+            </div>
+          ))}
+        </div>
+      ))}
+      <div style={{ marginTop: 12, padding: "8px 12px", background: "#1a1a12", borderRadius: 8, borderLeft: "3px solid #ccaa55" }}>
+        <p style={{ fontSize: 12, color: "#ccaa55", margin: 0, lineHeight: 1.5 }}>{data.decongel}</p>
+      </div>
+    </Collapsible>
+  );
+}
+
+function CookingProfilesPanel() {
+  const [expanded, setExpanded] = useState(null);
+  const data = COOKING_PROFILES;
+
+  return (
+    <Collapsible title={data.title} icon="🔥" color="#cc7755" defaultOpen={false}>
+      <p style={{ fontSize: 12, color: "#888", margin: "0 0 12px", lineHeight: 1.6 }}>{data.intro}</p>
+
+      {data.profiles.map((p) => (
+        <div key={p.id} style={{
+          marginBottom: 8, background: "#0d0d16", borderRadius: 10,
+          border: expanded === p.id ? `1px solid ${p.color}55` : "1px solid #1e1e2e",
+          overflow: "hidden",
+        }}>
+          <div onClick={() => setExpanded(expanded === p.id ? null : p.id)} style={{
+            padding: "10px 12px", cursor: "pointer",
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <span style={{ fontSize: 18 }}>{p.icon}</span>
+              <div>
+                <span style={{ fontSize: 13, fontWeight: 600, color: p.color }}>{p.name}</span>
+                <span style={{ fontSize: 11, color: "#666", marginLeft: 8 }}>{p.subtitle}</span>
+              </div>
+            </div>
+            <span style={{ color: "#555", fontSize: 14, transform: expanded === p.id ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s" }}>▾</span>
+          </div>
+
+          {expanded === p.id && (
+            <div style={{ padding: "0 12px 12px", borderTop: "1px solid #1e1e2e" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, margin: "10px 0" }}>
+                {[
+                  { label: "Temp.", value: p.temp },
+                  { label: "HR", value: p.humidity },
+                  { label: "Durée", value: p.time },
+                  ...(p.oil ? [{ label: "Huile", value: "Oui" }] : []),
+                  ...(p.flip ? [{ label: "Retourner", value: "Mi-cuisson" }] : []),
+                ].map((param, pi) => (
+                  <span key={pi} style={{
+                    fontSize: 11, padding: "3px 8px", borderRadius: 4,
+                    background: "#1a1a2e", color: "#aab", border: "1px solid #2a2a4a",
+                  }}>
+                    <span style={{ color: "#666" }}>{param.label} </span>{param.value}
+                  </span>
+                ))}
+              </div>
+              <p style={{ fontSize: 12, color: "#888", margin: "0 0 6px", lineHeight: 1.5 }}>{p.description}</p>
+              <p style={{ fontSize: 11, color: p.color, margin: 0, fontWeight: 500 }}>💡 {p.batchNote}</p>
+            </div>
+          )}
+        </div>
+      ))}
+
+      <p style={{ fontSize: 11, color: "#7a7a9a", margin: "14px 0 8px", fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>
+        Autres méthodes (hors APO)
+      </p>
+      {data.otherMethods.map((m, i) => (
+        <div key={i} style={{ padding: "6px 0", borderBottom: i < data.otherMethods.length - 1 ? "1px solid #1a1a24" : "none" }}>
+          <span style={{ fontSize: 12, fontWeight: 600, color: "#888" }}>{m.name}</span>
+          <p style={{ fontSize: 11, color: "#666", margin: "2px 0 0", lineHeight: 1.5 }}>{m.detail}</p>
+        </div>
+      ))}
+    </Collapsible>
+  );
+}
+
+function MarinadePanel() {
+  const [expanded, setExpanded] = useState(null);
+  const data = MARINADES;
+
+  return (
+    <Collapsible title={data.title} icon="🫙" color="#ccaa55" defaultOpen={false}>
+      <p style={{ fontSize: 12, color: "#888", margin: "0 0 12px", lineHeight: 1.6 }}>{data.intro}</p>
+
+      {data.recipes.map((r) => (
+        <div key={r.id} style={{
+          marginBottom: 8, background: "#0d0d16", borderRadius: 10,
+          border: expanded === r.id ? `1px solid ${r.color}55` : "1px solid #1e1e2e",
+          overflow: "hidden",
+        }}>
+          <div onClick={() => setExpanded(expanded === r.id ? null : r.id)} style={{
+            padding: "10px 12px", cursor: "pointer",
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <span style={{ fontSize: 18 }}>{r.icon}</span>
+              <div>
+                <span style={{ fontSize: 13, fontWeight: 600, color: r.color }}>{r.name}</span>
+                <span style={{ fontSize: 11, color: "#666", marginLeft: 8 }}>{r.subtitle}</span>
+              </div>
+            </div>
+            <span style={{ color: "#555", fontSize: 14, transform: expanded === r.id ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s" }}>▾</span>
+          </div>
+
+          {expanded === r.id && (
+            <div style={{ padding: "0 12px 12px", borderTop: "1px solid #1e1e2e" }}>
+              <div style={{ marginTop: 10, padding: "8px 10px", background: "#12121e", borderRadius: 6, border: "1px solid #1e1e2e" }}>
+                <p style={{ fontSize: 12, color: "#bbc", margin: 0, lineHeight: 1.7 }}>{r.ingredients}</p>
+              </div>
+              <p style={{ fontSize: 12, color: "#888", margin: "8px 0 6px", lineHeight: 1.5 }}>{r.note}</p>
+              <p style={{ fontSize: 11, color: "#6a8acc", margin: 0 }}>🔥 Cuisson APO : {r.apoCuisson}</p>
+            </div>
+          )}
+        </div>
+      ))}
+
+      <div style={{ marginTop: 12, padding: "8px 12px", background: "#1a1a12", borderRadius: 8, borderLeft: "3px solid #ccaa55" }}>
+        <p style={{ fontSize: 12, color: "#ccaa55", margin: 0, lineHeight: 1.5 }}>{data.conservationNote}</p>
+      </div>
+    </Collapsible>
+  );
+}
+
+function BatchCircuitsPanel() {
+  const data = BATCH_CIRCUITS;
+  return (
+    <Collapsible title={data.title} icon="📦" color="#6abf6a" defaultOpen={false}>
+      {data.circuits.map((c, i) => (
+        <div key={i} style={{
+          padding: "10px 12px", background: "#0d0d16", borderRadius: 10,
+          border: c.recommended ? "1px solid #2d5a2d" : "1px solid #1e1e2e",
+          marginBottom: 8,
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+            <span style={{ fontSize: 18 }}>{c.icon}</span>
+            <span style={{ fontSize: 14, fontWeight: 600, color: c.color }}>{c.name}</span>
+            {c.recommended && <span style={{ fontSize: 10, color: "#6abf6a", background: "#1a2e1a", padding: "1px 6px", borderRadius: 4, fontWeight: 600 }}>RECOMMANDÉ</span>}
+          </div>
+          <p style={{ fontSize: 12, color: "#aab", margin: "0 0 4px", lineHeight: 1.5, paddingLeft: 30 }}>{c.steps}</p>
+          <p style={{ fontSize: 11, color: "#777", margin: 0, lineHeight: 1.5, paddingLeft: 30, fontStyle: "italic" }}>{c.surplus}</p>
+        </div>
+      ))}
+    </Collapsible>
+  );
+}
+
+function PostRecolteSection() {
+  return (
+    <div style={{ marginTop: 8 }}>
+      <h2 style={{
+        fontSize: 11, letterSpacing: 2, textTransform: "uppercase",
+        color: "#5a5a7a", margin: "16px 0 10px 4px", fontWeight: 600,
+      }}>Post-récolte</h2>
+      <CuttingPanel />
+      <ConservationPanel />
+      <CookingProfilesPanel />
+      <MarinadePanel />
+      <BatchCircuitsPanel />
+    </div>
+  );
+}
+
+function StepCard({ step, completed, onToggle, variant, cookingMethod, quantity }) {
+  const [expanded, setExpanded] = useState(false);
+  const isActive = !completed && expanded;
+  const config = variant === "apo" ? APO_CONFIG : BT_CONFIG;
+
+  const detail = step.isVariantStep && variant
+    ? variant === "apo"
+      ? "APO : sonde 31°C (recommandé), Vapeur, HR 85-90%, ventilation activée. Gaze humide sur le substrat, substrat surélevé sur baguettes.\n\n🌡 Sonde : insérer par un trou du bac perforé, pointe au centre du bloc en épaisseur (~1,5-2 cm). Seuls les 3-5 derniers mm mesurent — positionner la pointe, pas la tige. L'APO s'autorégule automatiquement pendant la phase exothermique."
+      : "B&T : 30°C, écuelle d'eau, stylo dans couvercle. Gaze/cheesecloth (pas charlotte coton). Inverser bacs haut/bas et retourner le bloc à 18-24h."
+    : step.isInoculationStep
+      ? `Saupoudrer le starter sur le soja tiède (≤35°C). Mélanger soigneusement 1-2 min.`
+      : step.isMiseEnBacStep
+        ? null
+        : step.isOvernightStep
+          ? null
+          : step.detail;
+
+  const cookInfo = step.isCookingStep && cookingMethod
+    ? COOKING_METHODS.find(m => m.key === cookingMethod) : null;
+  const timerMinutes = cookInfo ? cookInfo.time : step.timerMinutes;
+  const timerLabel = cookInfo ? cookInfo.label : step.timerLabel;
+
+  return (
+    <div style={{
+      background: completed ? "#111118" : "#16161f",
+      border: completed ? "1px solid #1e1e2e" : isActive ? "1px solid #5a5aaa" : "1px solid #25253a",
+      borderRadius: 14, marginBottom: 10, overflow: "hidden",
+      opacity: completed ? 0.5 : 1, transition: "all 0.2s ease",
+    }}>
+      <div onClick={() => setExpanded(!expanded)} style={{
+        display: "flex", alignItems: "center", padding: "14px 16px", cursor: "pointer", gap: 12,
+      }}>
+        <div onClick={(e) => { e.stopPropagation(); onToggle(); }} style={{
+          width: 26, height: 26, borderRadius: 8,
+          border: completed ? "2px solid #6abf6a" : "2px solid #4a4a6a",
+          background: completed ? "#1a2e1a" : "transparent",
+          display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, cursor: "pointer",
+        }}>
+          {completed && <span style={{ color: "#6abf6a", fontSize: 14, fontWeight: 700 }}>✓</span>}
+        </div>
+        <div style={{ flex: 1 }}>
+          <div style={{
+            fontSize: 15, fontWeight: 600, color: completed ? "#555" : "#dddde8",
+            textDecoration: completed ? "line-through" : "none",
+          }}>{step.title}</div>
+          {step.isAPOPhase && variant === "apo" && !expanded && (
+            <div style={{ fontSize: 11, color: "#5a5a8a", marginTop: 2 }}>🔥 Gestion APO détaillée</div>
+          )}
+          {step.isOvernightStep && !expanded && (
+            <div style={{ fontSize: 11, color: "#5a5a8a", marginTop: 2 }}>🌙 Stratégies pour la nuit</div>
+          )}
+        </div>
+        <span style={{
+          color: "#555", fontSize: 18,
+          transform: expanded ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s ease",
+        }}>▾</span>
+      </div>
+
+      {expanded && (
+        <div style={{ padding: "0 16px 16px", borderTop: "1px solid #1e1e2e" }}>
+          {cookInfo && (
+            <div style={{
+              marginTop: 12, padding: "8px 12px", background: "#1a1a2e",
+              borderRadius: 8, display: "flex", alignItems: "center", gap: 8,
+            }}>
+              <span style={{ fontSize: 18 }}>{cookInfo.icon}</span>
+              <div>
+                <span style={{ color: "#aab0ff", fontSize: 13, fontWeight: 600 }}>{cookInfo.label}</span>
+                {cookInfo.sub && <span style={{ color: "#6a6a8a", fontSize: 12, marginLeft: 6 }}>{cookInfo.sub}</span>}
+                <span style={{ color: "#7878aa", fontSize: 12, marginLeft: 8 }}>{cookInfo.range}</span>
+              </div>
+            </div>
+          )}
+
+          {detail && <p style={{ color: "#aab", fontSize: 14, lineHeight: 1.6, margin: "12px 0 0", whiteSpace: "pre-line" }}>{detail}</p>}
+
+          {step.isMiseEnBacStep && <MiseEnBacPanel variant={variant} />}
+
+          {step.isOvernightStep && <OvernightPanel variant={variant} />}
+          {step.isOvernightStep && variant !== "apo" && (
+            <p style={{ color: "#aab", fontSize: 14, lineHeight: 1.6, margin: "12px 0 0" }}>
+              B&T : vérifier la température et le niveau d'eau avant de dormir. La B&T n'a pas de sonde — utiliser un thermomètre externe si possible. Si impossible de surveiller : frigo + reprise le matin.
+            </p>
+          )}
+
+          {step.isInoculationStep && <StarterBadge quantity={quantity} />}
+
+          {step.tip && (
+            <div style={{
+              marginTop: 10, padding: "10px 12px", background: "#1a1a12",
+              borderRadius: 8, borderLeft: "3px solid #aa8833",
+            }}>
+              <p style={{ color: "#ccaa55", fontSize: 13, margin: 0, lineHeight: 1.5 }}>{step.tip}</p>
+            </div>
+          )}
+
+          {step.hygiene && <InfoBadge icon="🧼" text={step.hygiene} color="#7a9aaa" />}
+          {step.water && <InfoBadge icon="💧" text={step.water} color="#6a8acc" />}
+
+          {step.isVariantStep && variant && (
+            <div style={{ marginTop: 12 }}>
+              {config.params.map((p, i) => (
+                <div key={i} style={{
+                  display: "flex", justifyContent: "space-between", padding: "7px 0",
+                  borderBottom: "1px solid #1e1e2e",
+                }}>
+                  <span style={{ color: "#777", fontSize: 13 }}>{p.label}</span>
+                  <span style={{ color: "#bbc", fontSize: 13, fontWeight: 500, textAlign: "right", maxWidth: "55%" }}>{p.value}</span>
+                </div>
+              ))}
+              {config.hygieneNote && <InfoBadge icon="🧼" text={config.hygieneNote} color="#7a9aaa" />}
+              {config.waterNote && <InfoBadge icon="💧" text={config.waterNote} color="#6a8acc" />}
+            </div>
+          )}
+
+          {step.apoGuidance && <APOGuidancePanel guidance={step.apoGuidance} variant={variant} />}
+
+          {timerMinutes && <Timer minutes={timerMinutes} label={timerLabel} />}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function BatchNotes({ notes, onAdd }) {
+  const [input, setInput] = useState("");
+  const handleSubmit = () => { if (input.trim()) { onAdd(input.trim()); setInput(""); } };
+
+  return (
+    <div style={{ marginTop: 20 }}>
+      <h3 style={{ color: "#8888aa", fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 12 }}>
+        Journal du batch
+      </h3>
+      <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+        <input value={input} onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+          placeholder="Observation, ajustement..."
+          style={{
+            flex: 1, padding: "10px 14px", borderRadius: 10, border: "1px solid #2a2a4a",
+            background: "#111118", color: "#dddde8", fontSize: 14, outline: "none",
+          }}
+        />
+        <button onClick={handleSubmit} style={{
+          padding: "10px 16px", borderRadius: 10, border: "none",
+          background: "#5a5aaa", color: "#fff", fontSize: 14, fontWeight: 600, cursor: "pointer",
+        }}>+</button>
+      </div>
+      {notes.map((note, i) => (
+        <div key={i} style={{
+          padding: "10px 14px", background: "#111118", borderRadius: 10,
+          marginBottom: 6, borderLeft: "3px solid #3a3a6a",
+        }}>
+          <span style={{ color: "#556", fontSize: 11 }}>{note.time}</span>
+          <p style={{ color: "#bbc", fontSize: 13, margin: "4px 0 0", lineHeight: 1.5 }}>{note.text}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TempehTracker() {
+  const [variant, setVariant] = useState(null);
+  const [cookingMethod, setCookingMethod] = useState(null);
+  const [completed, setCompleted] = useState({});
+  const [notes, setNotes] = useState([]);
+  const [started, setStarted] = useState(false);
+  const [quantity, setQuantity] = useState("1kg");
+
+  const toggleStep = useCallback((id) => {
+    setCompleted((prev) => ({ ...prev, [id]: !prev[id] }));
+  }, []);
+
+  const addNote = useCallback((text) => {
+    const now = new Date();
+    const time = now.toLocaleString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+    setNotes((prev) => [{ text, time }, ...prev]);
+  }, []);
+
+  const completedCount = Object.values(completed).filter(Boolean).length;
+  const progress = completedCount / STEPS.length;
+  const canStart = variant && cookingMethod;
+  const selectedQ = QUANTITIES.find(q => q.key === quantity);
+
+  const reset = () => {
+    setCompleted({}); setNotes([]); setStarted(false); setVariant(null); setCookingMethod(null);
+  };
+
+  if (!started) {
+    return (
+      <div style={{
+        minHeight: "100vh", background: "#0d0d14", color: "#dddde8",
+        fontFamily: "'DM Sans', 'Avenir', -apple-system, sans-serif",
+        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 24,
+      }}>
+        <div style={{ textAlign: "center", maxWidth: 360, width: "100%" }}>
+          <div style={{ fontSize: 56, marginBottom: 16 }}>🫘</div>
+          <h1 style={{ fontSize: 28, fontWeight: 700, margin: "0 0 6px", letterSpacing: -0.5 }}>Tempeh Tracker</h1>
+          <p style={{ color: "#6a6a8a", fontSize: 14, marginBottom: 28 }}>Protocole de fermentation pas à pas</p>
+
+          <div style={{ marginBottom: 22 }}>
+            <p style={{ color: "#8888aa", fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 }}>Soja dépelliculé bio (Celnat)</p>
+            <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
+              {QUANTITIES.map((q) => (
+                <button key={q.key} onClick={() => setQuantity(q.key)} style={{
+                  padding: "8px 16px", borderRadius: 8,
+                  border: quantity === q.key ? "1px solid #5a5aaa" : "1px solid #2a2a4a",
+                  background: quantity === q.key ? "#1e1e3e" : "transparent",
+                  color: quantity === q.key ? "#aab0ff" : "#6a6a8a", fontSize: 14, fontWeight: 500, cursor: "pointer",
+                }}>{q.label}</button>
+              ))}
+            </div>
+            {selectedQ && (
+              <div style={{ marginTop: 10, padding: "10px 14px", background: "#111118", borderRadius: 10, border: "1px solid #1e1e2e" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ color: "#7a9a7a", fontSize: 12 }}>🍄 Starter</span>
+                  <span style={{ color: "#b8d8b0", fontSize: 13, fontWeight: 600 }}>{selectedQ.starter}</span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 4 }}>
+                  <span style={{ color: "#7a7a9a", fontSize: 12 }}>Rendement</span>
+                  <span style={{ color: "#aab", fontSize: 12 }}>{selectedQ.yield}</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div style={{ marginBottom: 22 }}>
+            <p style={{ color: "#8888aa", fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 }}>Cuisson</p>
+            <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
+              {COOKING_METHODS.map((m) => (
+                <button key={m.key} onClick={() => setCookingMethod(m.key)} style={{
+                  padding: "12px 16px", borderRadius: 12,
+                  border: cookingMethod === m.key ? "1px solid #5a5aaa" : "1px solid #2a2a4a",
+                  background: cookingMethod === m.key ? "#1e1e3e" : "transparent",
+                  color: cookingMethod === m.key ? "#dddde8" : "#6a6a8a",
+                  fontSize: 14, fontWeight: 600, cursor: "pointer",
+                  display: "flex", flexDirection: "column", alignItems: "center", gap: 3, minWidth: 140,
+                }}>
+                  <span style={{ fontSize: 20 }}>{m.icon}</span>
+                  <span>{m.label}</span>
+                  {m.sub && <span style={{ fontSize: 11, color: "#6a6a8a", fontWeight: 400 }}>{m.sub}</span>}
+                  <span style={{ fontSize: 11, color: "#5a5a7a", fontWeight: 400 }}>{m.range}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ marginBottom: 24 }}>
+            <p style={{ color: "#8888aa", fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 }}>Fermentation</p>
+            <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
+              {[{ key: "apo", ...APO_CONFIG }, { key: "bt", ...BT_CONFIG }].map((v) => (
+                <button key={v.key} onClick={() => setVariant(v.key)} style={{
+                  padding: "14px 24px", borderRadius: 12,
+                  border: variant === v.key ? "1px solid #5a5aaa" : "1px solid #2a2a4a",
+                  background: variant === v.key ? "#1e1e3e" : "transparent",
+                  color: variant === v.key ? "#dddde8" : "#6a6a8a",
+                  fontSize: 15, fontWeight: 600, cursor: "pointer",
+                  display: "flex", flexDirection: "column", alignItems: "center", gap: 6, minWidth: 130,
+                }}>
+                  <span style={{ fontSize: 24 }}>{v.icon}</span>
+                  {v.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div style={{
+            padding: "12px 16px", background: "#111118", borderRadius: 12,
+            border: "1px solid #1e1e2e", marginBottom: 20, textAlign: "left",
+          }}>
+            <p style={{ color: "#7a9aaa", fontSize: 12, margin: 0, lineHeight: 1.6 }}>
+              🧼 <strong style={{ color: "#9abac8" }}>Hygiène</strong> — Propre, pas stérile. La sécurité vient du process (pH acide, égouttage, 30°C). Chaque étape affiche son niveau requis.
+            </p>
+          </div>
+
+          <button onClick={() => canStart && setStarted(true)} disabled={!canStart} style={{
+            width: "100%", padding: "14px 0", borderRadius: 12, border: "none",
+            background: canStart ? "#5a5aaa" : "#2a2a4a", color: canStart ? "#fff" : "#555",
+            fontSize: 16, fontWeight: 700, cursor: canStart ? "pointer" : "default", letterSpacing: 0.5,
+          }}>
+            Démarrer le batch
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const phases = [...new Set(STEPS.map((s) => s.phase))];
+
+  return (
+    <div style={{
+      minHeight: "100vh", background: "#0d0d14", color: "#dddde8",
+      fontFamily: "'DM Sans', 'Avenir', -apple-system, sans-serif", paddingBottom: 40,
+    }}>
+      <div style={{
+        position: "sticky", top: 0, zIndex: 10,
+        background: "rgba(13,13,20,0.92)", backdropFilter: "blur(12px)",
+        padding: "14px 18px 12px", borderBottom: "1px solid #1e1e2e",
+      }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+          <div>
+            <span style={{ fontSize: 18, fontWeight: 700 }}>🫘 Tempeh</span>
+            <span style={{ color: "#5a5a7a", fontSize: 13, marginLeft: 10 }}>
+              {variant === "apo" ? "APO" : "B&T"} · {cookingMethod === "omnicuiseur" ? "Omni" : "Cass."} · {quantity}
+            </span>
+          </div>
+          <button onClick={reset} style={{
+            padding: "6px 12px", borderRadius: 6, border: "1px solid #2a2a4a",
+            background: "transparent", color: "#6a6a8a", fontSize: 12, cursor: "pointer",
+          }}>Nouveau</button>
+        </div>
+        <div style={{ height: 4, background: "#1e1e2e", borderRadius: 2, overflow: "hidden" }}>
+          <div style={{
+            height: "100%", width: `${progress * 100}%`,
+            background: progress === 1 ? "#6abf6a" : "#5a5aaa", borderRadius: 2, transition: "width 0.3s ease",
+          }} />
+        </div>
+        <div style={{ textAlign: "right", fontSize: 11, color: "#555", marginTop: 4 }}>
+          {completedCount}/{STEPS.length}
+        </div>
+      </div>
+
+      <div style={{ padding: "12px 14px 0" }}>
+        {phases.map((phase) => (
+          <div key={phase} style={{ marginBottom: 16 }}>
+            <h2 style={{
+              fontSize: 11, letterSpacing: 2, textTransform: "uppercase",
+              color: "#5a5a7a", margin: "16px 0 10px 4px", fontWeight: 600,
+            }}>{phase}</h2>
+            {STEPS.filter((s) => s.phase === phase).map((step) => (
+              <StepCard key={step.id} step={step} completed={completed[step.id]}
+                onToggle={() => toggleStep(step.id)} variant={variant}
+                cookingMethod={cookingMethod} quantity={quantity} />
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div style={{ padding: "0 14px" }}>
+        <ThermalManagementPanel variant={variant} />
+      </div>
+
+      <div style={{ padding: "0 14px" }}>
+        <OptimizationPanel variant={variant} />
+      </div>
+
+      <div style={{ padding: "0 14px" }}>
+        <PostRecolteSection />
+      </div>
+
+      <div style={{ padding: "0 14px" }}>
+        <BatchNotes notes={notes} onAdd={addNote} />
+      </div>
+
+      {progress === 1 && (
+        <div style={{
+          margin: "24px 14px", padding: 20, background: "#1a2e1a",
+          border: "1px solid #2d5a2d", borderRadius: 14, textAlign: "center",
+        }}>
+          <div style={{ fontSize: 32, marginBottom: 8 }}>🎉</div>
+          <p style={{ color: "#6abf6a", fontSize: 16, fontWeight: 600, margin: 0 }}>Batch terminé !</p>
+          <p style={{ color: "#5a8a5a", fontSize: 13, marginTop: 6 }}>Consulte la section Post-Récolte pour découpe, conservation, cuisson et marinades.</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(TempehTracker));
+  </script>
+</body>
+</html>
