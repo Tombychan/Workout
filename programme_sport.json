@@ -1,10 +1,11 @@
 {
   "meta": {
-    "version": "2.0.0",
+    "version": "2.1.0",
     "date_creation": "2026-03-04",
     "description": "Master d'orchestration du programme sport. Référence les exercices via libraryId → exercise_library.json. Ne jamais éditer programme_complet.json directement — modifier ce fichier puis lancer build.py.",
     "phase_active": "phase2",
-    "note_refactor": "Extrait de phase2_tracker.html (mars 2026). Architecture découplée : programme_sport.json (planning) + exercise_library.json (exécution) → build.py → programme_complet.json."
+    "note_refactor": "Extrait de phase2_tracker.html (mars 2026). Architecture découplée : programme_sport.json (planning) + exercise_library.json (exécution) → build.py → programme_complet.json.",
+    "changelog_v2_1": "Mars 2026 — Rééquilibrage ratio flow/hypertrophie (80/20). Mardi : MS1 allégée + Circuit Brieuc remplacés par session flow (clubs + masse + Unitree + finishers). Jeudi : MS3 isolation remplacée par session flow. Voir flow_library.json."
   },
   "profil_biomecanique": {
     "ilmi_mm": 13,
@@ -107,13 +108,13 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "tva-pull-squeeze",
+              "libraryId": "vacuum-hollow-hold",
               "label": "TVA Pull Squeeze",
               "params": "1×15-20 reps",
               "cue": "Expirer et tirer le nombril vers la colonne"
             },
             {
-              "libraryId": "vacuum",
+              "libraryId": "vacuum-hollow-hold",
               "label": "Vacuum",
               "params": "3×max hold",
               "cue": "Expirer tout l'air, aspirer le nombril sous les côtes. Varier : couché → 4 pattes → debout"
@@ -267,7 +268,7 @@
               "params": "3×10/côté"
             },
             {
-              "libraryId": "pro-bird-dog",
+              "libraryId": "dead-bug",
               "label": "Pro Bird Dog",
               "params": "3×8/côté"
             }
@@ -290,7 +291,7 @@
               "params": "4×10-12"
             },
             {
-              "libraryId": "lever-side-bend",
+              "libraryId": "suitcase-carry",
               "label": "Lever Side Bend",
               "params": "3×10-12/côté"
             },
@@ -346,12 +347,12 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "tva-pull-squeeze",
+              "libraryId": "vacuum-hollow-hold",
               "label": "TVA Pull Squeeze",
               "params": "1×15-20 reps"
             },
             {
-              "libraryId": "vacuum",
+              "libraryId": "vacuum-hollow-hold",
               "label": "Vacuum",
               "params": "3×max hold"
             }
@@ -441,65 +442,36 @@
           ]
         },
         {
-          "id": "ms1-mar",
-          "nom": "MS1: Full Body métabolique",
+          "id": "flow-mar",
+          "nom": "Session Flow — Clubs + Masse + Unitree + Finishers",
           "heure": "11h00",
-          "duree_min": 30,
-          "type": "force",
-          "rir": "3-4",
+          "duree_min": 35,
+          "type": "flow",
+          "rir": "N/A — flow continu, pas de sets à l'échec",
+          "note": "Remplace l'ancienne MS1 Full Body métabolique + Circuit Brieuc. Voir flow_library.json pour les séquences et la progression par phases. Phase 0 (sem 1-3) : clubs et masse en sets isolés, flow Unitree uniquement. Phase 1+ : flow continu sur les 3 outils.",
           "exercises": [
             {
-              "libraryId": "bent-knee-side-plank-hip-abduction",
-              "params": "2×20s/côté"
+              "name": "Bloc 1 — Indian Clubs (5-7 min)",
+              "params": "Pendulum, Front Circles, Wrist Circles",
+              "note": "Mobilité articulaire, échauffement synovial. Charge 0.5-1 kg/club. Voir flow_library.json séquences."
             },
             {
-              "libraryId": "incline-db-fly-bande",
-              "params": "3×10-12"
+              "name": "Bloc 2 — Steel Mace (8-10 min)",
+              "params": "10-to-2, Front Pendulum, Grave Digger",
+              "note": "Anti-rotation, transfert de force rotationnel. Charge 3-5 kg total. Côtes basses obligatoire."
             },
             {
-              "libraryId": "reverse-fly-cable-unitree",
-              "label": "Reverse Fly (câble Unitree)",
-              "params": "3×15-20"
+              "name": "Bloc 3 — Unitree Pump Max (10-12 min)",
+              "params": "Row Unilatéral, Arc Curl→Tirage, Face Pull Long",
+              "note": "Tirages multi-plans en flow continu. Résistance 25-30% max (~15-20 kg/câble)."
             },
             {
-              "libraryId": "sissy-squat",
-              "label": "Sissy Squat lesté",
-              "params": "3×12-15"
-            },
-            {
-              "libraryId": "bayesian-curl-cable-unitree",
-              "label": "Bayesian Curl (câble Unitree)",
-              "params": "2×10-12"
-            },
-            {
-              "libraryId": "overhead-tricep-extension-unitree",
-              "params": "2×12-15"
+              "name": "Finishers (10 min)",
+              "params": "Curl Concentré 2×12-15 RIR 3 + Face Pull Iso 2×15 RIR 3",
+              "note": "Hypertrophie post-flow. Biceps et scapula D pré-fatigués → charge basse normale."
             }
-          ]
-        },
-        {
-          "id": "core-mar",
-          "nom": "Bloc Core: sets discrets + Circuit Brieuc",
-          "heure": "~11h30",
-          "duree_min": 20,
-          "type": "core",
-          "exercises": [
-            {
-              "libraryId": "pro-bird-dog",
-              "label": "Pro Bird Dog",
-              "params": "2×8/côté"
-            },
-            {
-              "libraryId": "in-and-out",
-              "label": "In-and-Out",
-              "params": "2×12 contrôlées"
-            },
-            {
-              "libraryId": "vacuum-hollow-hold",
-              "label": "Circuit Brieuc follow-along",
-              "params": ""
-            }
-          ]
+          ],
+          "circuit_brieuc_note": "Le Circuit Brieuc hebdomadaire (anciennement post-MS1 mardi) est désormais optionnel. Le travail anti-rotation de la masse (Grave Digger, Front Pendulum) et les woodchops Unitree couvrent partiellement cette fonction. Si le temps et l'énergie le permettent, le circuit peut être ajouté après les finishers (~15 min, filtre substitution actif)."
         }
       ]
     },
@@ -517,12 +489,12 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "tva-pull-squeeze",
+              "libraryId": "vacuum-hollow-hold",
               "label": "TVA Pull Squeeze",
               "params": "1×15-20 reps"
             },
             {
-              "libraryId": "vacuum",
+              "libraryId": "vacuum-hollow-hold",
               "label": "Vacuum",
               "params": "3×max hold"
             }
@@ -693,7 +665,7 @@
               "params": "3×12-15"
             },
             {
-              "libraryId": "hanging-leg-raise-15",
+              "libraryId": "l-sit",
               "label": "Hanging Leg Raise 1.5 reps",
               "params": "3×8-10"
             }
@@ -720,12 +692,12 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "tva-pull-squeeze",
+              "libraryId": "vacuum-hollow-hold",
               "label": "TVA Pull Squeeze",
               "params": "1×15-20 reps"
             },
             {
-              "libraryId": "vacuum",
+              "libraryId": "vacuum-hollow-hold",
               "label": "Vacuum",
               "params": "3×max hold"
             }
@@ -881,41 +853,40 @@
               "params": "3×12-15"
             },
             {
-              "libraryId": "reverse-crunch-15",
+              "libraryId": "3-month-heel-taps",
               "label": "Reverse Crunch 1.5 reps",
               "params": "3×10-15"
             }
           ]
         },
         {
-          "id": "ms3-jeu",
-          "nom": "MS3: Isolation + correctif",
+          "id": "flow-jeu",
+          "nom": "Session Flow — Clubs + Masse + Unitree + Finishers",
           "heure": "18h30",
           "duree_min": 30,
-          "type": "force",
-          "rir": "3-4",
+          "type": "flow",
+          "rir": "N/A — flow continu",
+          "note": "Remplace l'ancienne MS3 Isolation + correctif (optionnelle). Même format que le flow mardi mais séquence différente (alterner Séquence A et B). Introduit en Phase 1 du flow (semaine 4+), en Phase 0 (sem 1-3) cette MS3 reste isolation classique ou est supprimée.",
           "exercises": [
             {
-              "libraryId": "face-pulls-bande-ou-cable",
-              "label": "Face Pulls (bande, angle différent)",
-              "params": "2×15-20"
+              "name": "Bloc 1 — Indian Clubs (5-7 min)",
+              "params": "Pendulum, Front Circles, Wrist Circles",
+              "note": "Mobilité articulaire. Charge 0.5-1 kg/club."
             },
             {
-              "libraryId": "kelso-shrug-banc-incline-db-legers",
-              "label": "Kelso Shrug",
-              "params": "2×AMRAP"
+              "name": "Bloc 2 — Steel Mace (8-10 min)",
+              "params": "10-to-2, Grave Digger, Uppercut (Phase 2+)",
+              "note": "Anti-rotation. Charge 3-5 kg total."
             },
             {
-              "libraryId": "db-lateral-raise",
-              "params": "3×12-15"
+              "name": "Bloc 3 — Unitree Pump Max (8-10 min)",
+              "params": "Row Unilatéral, Pulldown, Arc Curl→Tirage",
+              "note": "Tirages en flow. Résistance 25-30% max."
             },
             {
-              "libraryId": "tall-kneeling-hammer-curls",
-              "params": "2×12"
-            },
-            {
-              "libraryId": "tricep-pushdowns-bande",
-              "params": "2×12-15"
+              "name": "Finishers (5-8 min)",
+              "params": "Hammer Curl 2×12-15 RIR 3 + Kelso Shrug 2×12-15 RIR 3",
+              "note": "Finishers alternatifs au mardi pour varier le stimulus."
             }
           ]
         },
@@ -952,12 +923,12 @@
           "type": "activation",
           "exercises": [
             {
-              "libraryId": "tva-pull-squeeze",
+              "libraryId": "vacuum-hollow-hold",
               "label": "TVA Pull Squeeze",
               "params": "1×15-20 reps"
             },
             {
-              "libraryId": "vacuum",
+              "libraryId": "vacuum-hollow-hold",
               "label": "Vacuum",
               "params": "3×max hold"
             }
