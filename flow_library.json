@@ -1,0 +1,1376 @@
+{
+  "meta": {
+    "version": "1.2.0",
+    "date": "2026-03-12",
+    "description": "Bibliothèque des mouvements flow — Indian Clubs, Steel Mace, Unitree Pump Max. Complémentaire à exercise_library.json. Format identique pour intégration future.",
+    "schema_note": "Suit le schéma de exercise_library.json. Champ 'flow_rating' (1-5 étoiles) ajouté pour indiquer la compatibilité avec le format flow continu. Champ 'flow_phase' indique la phase de progression minimale (0 = apprentissage moteur isolé).",
+    "tools": [
+      "indian_clubs",
+      "steel_mace",
+      "unitree_pump_max"
+    ],
+    "starting_weights": {
+      "indian_clubs": "0.5-1 kg par club (poids total manche inclus). Force centrifuge ×3-5.",
+      "steel_mace": "3-5 kg total (manche + tête). Levier amplifie le moment de force.",
+      "unitree_pump_max": "25-30% du max (~15-20 kg/câble)."
+    },
+    "profile_note": "Débutant complet masse/clubs (musclé mais aucune expérience des outils). Phase 0 obligatoire.",
+    "profile_filters": [
+      "dyskinésie scapulaire D (trapèze inf + serratus ant faibles)",
+      "rib flare D (oblique externe D affaibli)",
+      "bascule pelvienne (ILMI 13mm D)",
+      "pieds plats, marche canard"
+    ],
+    "total_exercises": 21,
+    "sequences": 3,
+    "finishers": 4,
+    "sessions": {
+      "mardi": {
+        "heure": "11h00",
+        "duree_min": 35,
+        "note": "Remplace ancienne MS1 Full Body métabolique + Circuit Brieuc"
+      },
+      "jeudi": {
+        "heure": "18h30",
+        "duree_min": 30,
+        "note": "Remplace ancienne MS3 Isolation + correctif. Introduit Phase 1+."
+      }
+    }
+  },
+  "exercises": {
+    "ic-front-circle-inside": {
+      "id": "ic-front-circle-inside",
+      "name": "Front Circle (Inside)",
+      "aliases": [
+        "Inside Front Circle",
+        "Cercle Avant Intérieur"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "mobilite-dynamique",
+      "subcategory": "épaule-rotation",
+      "pilier": null,
+      "muscles_primaires": [
+        "Deltoïdes",
+        "Coiffe des rotateurs (subscapulaire, infra-épineux)",
+        "Serratus anterior"
+      ],
+      "muscles_secondaires": [
+        "Trapèze",
+        "Rhomboïdes"
+      ],
+      "equipment": [
+        "indian_clubs"
+      ],
+      "position_depart": "Debout, pieds largeur hanches, posture haute, épaules basses et en arrière. Clubs en grip sabre (paume vers l'intérieur).",
+      "execution": "Bras tendus devant, faire des cercles vers l'intérieur (les clubs se croisent au point bas). Mouvement fluide, initié par l'épaule, pas par le poignet. Les clubs passent devant le corps en arc. Alterner quel bras passe devant.",
+      "cue_principal": "Épaules basses, cercles larges.",
+      "erreurs_frequentes": "- Mouvement initié par le poignet au lieu de l'épaule\n- Épaules qui montent vers les oreilles\n- Cercles trop petits (manque d'amplitude)",
+      "respiration": "naturelle, rythmée sur les cercles",
+      "notes_biomecaniques": "Le mouvement de protraction/rétraction douce active le serratus anterior sans charge significative.",
+      "filtre_profil": "Excellent pour serratus anterior bilatéral. Surveiller que l'épaule D ne monte pas. Cue : épaule droite vers le sol.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P1",
+      "flow_rating": 5,
+      "flow_phase": 0,
+      "progression_depuis": [],
+      "progression_vers": [
+        "ic-mill-inside"
+      ],
+      "parametres_defaut": {
+        "params": "15-20 reps (10/direction)",
+        "resistance": "0.5-1 kg par club"
+      },
+      "asymmetry_note": "Surveiller élévation épaule D",
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "ic-front-circle-outside": {
+      "id": "ic-front-circle-outside",
+      "name": "Front Circle (Outside)",
+      "aliases": [
+        "Outside Front Circle",
+        "Cercle Avant Extérieur"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "mobilite-dynamique",
+      "subcategory": "épaule-rotation",
+      "pilier": null,
+      "muscles_primaires": [
+        "Deltoïdes",
+        "Infra-épineux",
+        "Teres minor"
+      ],
+      "muscles_secondaires": [
+        "Trapèze moyen",
+        "Rhomboïdes"
+      ],
+      "equipment": [
+        "indian_clubs"
+      ],
+      "position_depart": "Identique au Front Circle Inside.",
+      "execution": "Cercles vers l'extérieur (les clubs s'écartent au point bas). Plus exigeant en rotation externe que l'inside circle.",
+      "cue_principal": "Ouvrir la poitrine à chaque cercle.",
+      "erreurs_frequentes": "- Amplitude réduite côté D (rotation externe limitée)\n- Compensation par inclinaison du tronc",
+      "respiration": "naturelle",
+      "notes_biomecaniques": "Encourage la rotation externe de l'épaule et la rétraction scapulaire — contrer la protraction excessive scapula D.",
+      "filtre_profil": "Directement bénéfique pour la protraction excessive de la scapula D. Accepter asymétrie d'amplitude.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P1",
+      "flow_rating": 5,
+      "flow_phase": 1,
+      "progression_depuis": [],
+      "progression_vers": [
+        "ic-mill-inside"
+      ],
+      "parametres_defaut": {
+        "params": "15-20 reps (10/direction)",
+        "resistance": "0.5-1 kg par club"
+      },
+      "asymmetry_note": "Amplitude rotation externe probablement réduite côté D",
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "ic-arm-cast": {
+      "id": "ic-arm-cast",
+      "name": "Arm Cast",
+      "aliases": [
+        "Club Cast"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "mobilite-dynamique",
+      "subcategory": "épaule-overhead",
+      "pilier": null,
+      "muscles_primaires": [
+        "Deltoïde postérieur",
+        "Infra-épineux",
+        "Teres minor",
+        "Rhomboïdes"
+      ],
+      "muscles_secondaires": [
+        "Trapèze inférieur",
+        "Core anti-extension"
+      ],
+      "equipment": [
+        "indian_clubs"
+      ],
+      "position_depart": "Debout, un club par main. Bras le long du corps.",
+      "execution": "Lancer le club vers l'arrière par-dessus l'épaule (flexion → extension → rotation derrière la tête) puis ramener devant en arc fluide. Le coude reste relativement tendu. Alterner les bras.",
+      "cue_principal": "Le club suit un arc, pas une ligne droite. Côtes rentrées au point haut.",
+      "erreurs_frequentes": "- Rib flare au passage overhead\n- Mouvement saccadé au lieu d'un arc fluide\n- Épaule qui se hausse",
+      "respiration": "inspirer en montant, expirer en redescendant",
+      "notes_biomecaniques": "Passage overhead — acceptable à charge très légère (1-2 lb).",
+      "filtre_profil": "⚠️ Overhead. Surveiller rib flare D au passage du club derrière la tête. Limiter amplitude si kiné n'a pas validé overhead (club ne descend pas plus bas que la nuque).",
+      "verdict": "ADAPTER",
+      "phase": "P2",
+      "flow_rating": 4,
+      "flow_phase": 2,
+      "progression_depuis": [
+        "ic-front-circle-inside",
+        "ic-pendulum"
+      ],
+      "progression_vers": [
+        "ic-mill-inside"
+      ],
+      "parametres_defaut": {
+        "params": "10 reps/bras",
+        "resistance": "0.5-1 kg par club"
+      },
+      "asymmetry_note": "Amplitude réduite côté D acceptable",
+      "contra_indications": "Rib flare D incontrôlable → réduire amplitude",
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "ic-pendulum": {
+      "id": "ic-pendulum",
+      "name": "Pendulum (Avant-Arrière)",
+      "aliases": [
+        "Club Pendulum",
+        "Balancement"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "mobilite-dynamique",
+      "subcategory": "épaule-sagittal",
+      "pilier": null,
+      "muscles_primaires": [
+        "Deltoïdes (toutes portions)",
+        "Coiffe des rotateurs"
+      ],
+      "muscles_secondaires": [
+        "Core anti-extension"
+      ],
+      "equipment": [
+        "indian_clubs"
+      ],
+      "position_depart": "Debout, un club par main. Bras le long du corps, clubs pointés vers le bas.",
+      "execution": "Balancer les clubs d'avant en arrière comme un pendule. Mouvement initié par l'épaule. Augmenter progressivement l'amplitude.",
+      "cue_principal": "Laisser la gravité faire le travail. Tu guides, tu ne forces pas.",
+      "erreurs_frequentes": "- Forcer le mouvement au lieu de guider\n- Amplitude excessive trop tôt",
+      "respiration": "naturelle, rythmée",
+      "notes_biomecaniques": "Traction douce dans l'articulation gléno-humérale — bénéfique pour la décoaptation. Aucune contrainte overhead.",
+      "filtre_profil": "Très sûr. Aucune précaution particulière.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P1",
+      "flow_rating": 5,
+      "flow_phase": 0,
+      "progression_depuis": [],
+      "progression_vers": [
+        "ic-arm-cast",
+        "ic-swipe"
+      ],
+      "parametres_defaut": {
+        "params": "20-30 reps continues",
+        "resistance": "0.5-1 kg par club"
+      },
+      "asymmetry_note": null,
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "ic-mill-inside": {
+      "id": "ic-mill-inside",
+      "name": "Mill (Inside)",
+      "aliases": [
+        "Inside Mill",
+        "Heart-Shaped Swing"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "mobilite-dynamique",
+      "subcategory": "épaule-overhead",
+      "pilier": null,
+      "muscles_primaires": [
+        "Coiffe des rotateurs complète",
+        "Deltoïdes",
+        "Trapèze",
+        "Rhomboïdes"
+      ],
+      "muscles_secondaires": [
+        "Core anti-extension"
+      ],
+      "equipment": [
+        "indian_clubs"
+      ],
+      "position_depart": "Debout, grip sabre.",
+      "execution": "Extension du front circle : le club monte devant, passe au-dessus de la tête, descend derrière l'épaule (cast), puis remonte par l'avant. Cercle complet dans le plan sagittal.",
+      "cue_principal": "Monter haut, lancer derrière, rattraper devant. Côtes verrouillées.",
+      "erreurs_frequentes": "- Rib flare au passage overhead\n- Coudes qui s'ouvrent\n- Perte de rythme",
+      "respiration": "naturelle",
+      "notes_biomecaniques": "Overhead + rotation derrière la tête. Mouvement avancé.",
+      "filtre_profil": "⚠️ Overhead complet. Phase 2 minimum. Charge minimale. Côtes rentrées. Amplitude réduite côté D si scapula ne tient pas la dépression.",
+      "verdict": "ADAPTER",
+      "phase": "P2",
+      "flow_rating": 4,
+      "flow_phase": 2,
+      "progression_depuis": [
+        "ic-front-circle-inside",
+        "ic-arm-cast"
+      ],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "8-10 reps/bras",
+        "resistance": "0.5-1 kg par club"
+      },
+      "asymmetry_note": "Amplitude réduite côté D si scapula D ne tient pas la dépression",
+      "contra_indications": "Rib flare D incontrôlable → revenir aux circles",
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "ic-wrist-circles": {
+      "id": "ic-wrist-circles",
+      "name": "Wrist Circles",
+      "aliases": [
+        "Cercles de Poignet"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "mobilite-dynamique",
+      "subcategory": "poignet-avant-bras",
+      "pilier": null,
+      "muscles_primaires": [
+        "Fléchisseurs du poignet",
+        "Extenseurs du poignet",
+        "Pronateurs",
+        "Supinateurs"
+      ],
+      "muscles_secondaires": [],
+      "equipment": [
+        "indian_clubs"
+      ],
+      "position_depart": "Bras fléchis devant, coudes au corps, clubs pointés vers le haut.",
+      "execution": "Rotation du poignet uniquement. Intérieur et extérieur. Le coude reste fixe.",
+      "cue_principal": "Seul le poignet bouge. Le coude est collé.",
+      "erreurs_frequentes": "- Mouvement du coude\n- Cercles trop rapides sans contrôle",
+      "respiration": "naturelle",
+      "notes_biomecaniques": "Renforce les muscles intrinsèques de l'avant-bras.",
+      "filtre_profil": "Aucun risque. Pertinent pour le grip tractions et Unitree.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P1",
+      "flow_rating": 3,
+      "flow_phase": 0,
+      "progression_depuis": [],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "10 reps/direction",
+        "resistance": "0.5-1 kg par club"
+      },
+      "asymmetry_note": null,
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "ic-swipe": {
+      "id": "ic-swipe",
+      "name": "Swipe",
+      "aliases": [
+        "Club Swipe"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "mobilite-dynamique",
+      "subcategory": "épaule-intégration",
+      "pilier": null,
+      "muscles_primaires": [
+        "Deltoïdes",
+        "Trapèzes",
+        "Rhomboïdes"
+      ],
+      "muscles_secondaires": [
+        "Core"
+      ],
+      "equipment": [
+        "indian_clubs"
+      ],
+      "position_depart": "Debout, clubs en position de repos (order position).",
+      "execution": "Passer de la position d'ordre à la position dos puis à la position Y en flux continu. Trois positions, un seul mouvement.",
+      "cue_principal": "Trois positions, un seul mouvement.",
+      "erreurs_frequentes": "- Transitions saccadées\n- Rib flare en position Y",
+      "respiration": "naturelle",
+      "notes_biomecaniques": "La position Y active le trapèze inférieur — directement correctif pour la dyskinésie D.",
+      "filtre_profil": "⚠️ Position Y = overhead. Charge minimale, rib flare contrôlé.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P2",
+      "flow_rating": 4,
+      "flow_phase": 2,
+      "progression_depuis": [
+        "ic-pendulum"
+      ],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "8-10 reps",
+        "resistance": "0.5-1 kg par club"
+      },
+      "asymmetry_note": null,
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "sm-360": {
+      "id": "sm-360",
+      "name": "Mace 360",
+      "aliases": [
+        "360 Swing"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "anti-rotation",
+      "subcategory": "overhead-rotatif",
+      "pilier": null,
+      "muscles_primaires": [
+        "Deltoïdes",
+        "Trapèzes",
+        "Rhomboïdes",
+        "Obliques"
+      ],
+      "muscles_secondaires": [
+        "Core complet"
+      ],
+      "equipment": [
+        "steel_mace"
+      ],
+      "position_depart": "Debout, pieds largeur hanches. Mains empilées près du nombril, masse verticale devant soi (tête en haut).",
+      "execution": "Basculer la tête de la masse par-dessus une épaule. La masse descend derrière la tête et le dos, passe derrière l'autre épaule, et remonte devant. Cercle complet autour de la tête. Mains relativement basses. Coudes proches du corps.",
+      "cue_principal": "Côtes rentrées, coudes serrés. La masse tourne, pas toi.",
+      "erreurs_frequentes": "- Rib flare au passage de la masse derrière\n- Coudes qui s'ouvrent\n- Tronc qui suit la rotation (doit résister)\n- Mains trop hautes",
+      "respiration": "expirer quand la masse passe derrière, inspirer au retour devant",
+      "notes_biomecaniques": "Mouvement overhead rotatif — le plus exigeant de la bibliothèque masse. Force centrifuge tire épaules en élévation et côtes en flare.",
+      "filtre_profil": "⚠️ Avancé. Commencer avec poids minimum. Si rib flare D incontrôlable → utiliser SM-02 (10-to-2) comme alternative. Travailler les deux directions à parts égales.",
+      "verdict": "ADAPTER",
+      "phase": "P2",
+      "flow_rating": 5,
+      "flow_phase": 2,
+      "progression_depuis": [
+        "sm-10-to-2"
+      ],
+      "progression_vers": [
+        "sm-squat-360"
+      ],
+      "parametres_defaut": {
+        "params": "8-10 reps/direction",
+        "resistance": "3-5 kg total"
+      },
+      "asymmetry_note": "Comparer contrôle D/G au passage derrière la tête",
+      "contra_indications": "Rib flare D incontrôlable → revenir au 10-to-2",
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "sm-10-to-2": {
+      "id": "sm-10-to-2",
+      "name": "10-to-2",
+      "aliases": [
+        "Demi-360",
+        "Pendulum Postérieur"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "anti-rotation",
+      "subcategory": "overhead-partiel",
+      "pilier": null,
+      "muscles_primaires": [
+        "Deltoïdes postérieurs",
+        "Trapèzes",
+        "Rhomboïdes",
+        "Obliques"
+      ],
+      "muscles_secondaires": [
+        "Core anti-rotation"
+      ],
+      "equipment": [
+        "steel_mace"
+      ],
+      "position_depart": "Identique au 360. Masse verticale devant.",
+      "execution": "Basculer la tête par-dessus une épaule, la laisser descendre derrière la tête jusqu'aux omoplates, puis la ramener par la même épaule. Demi-360, pas de tour complet.",
+      "cue_principal": "Pendule contrôlé. La masse ne descend pas plus bas que les omoplates.",
+      "erreurs_frequentes": "- Amplitude excessive (masse descend trop bas)\n- Vitesse incontrôlée\n- Rib flare",
+      "respiration": "naturelle",
+      "notes_biomecaniques": "Alternative plus sûre au 360 : amplitude réduite, moins de force centrifuge.",
+      "filtre_profil": "Recommandé comme mouvement principal jusqu'à maîtrise du contrôle du rib flare.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P1",
+      "flow_rating": 5,
+      "flow_phase": 0,
+      "progression_depuis": [],
+      "progression_vers": [
+        "sm-360"
+      ],
+      "parametres_defaut": {
+        "params": "12-15 reps/direction",
+        "resistance": "3-5 kg total"
+      },
+      "asymmetry_note": null,
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "sm-front-pendulum": {
+      "id": "sm-front-pendulum",
+      "name": "Front Pendulum (Masse)",
+      "aliases": [
+        "Mace Front Pendulum"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "anti-rotation",
+      "subcategory": "rotation-transverse",
+      "pilier": null,
+      "muscles_primaires": [
+        "Obliques (anti-rotation)",
+        "Core",
+        "Deltoïdes antérieurs"
+      ],
+      "muscles_secondaires": [
+        "Fléchisseurs de hanche (stabilisation)"
+      ],
+      "equipment": [
+        "steel_mace"
+      ],
+      "position_depart": "Debout. Masse tenue horizontalement devant la poitrine, mains aux deux extrémités.",
+      "execution": "Balancer la masse d'un côté à l'autre devant soi en pivot horizontal. Les hanches restent fixes, le mouvement vient du tronc. Contrôler la décélération.",
+      "cue_principal": "Les hanches ne bougent pas. C'est le tronc qui freine.",
+      "erreurs_frequentes": "- Hanches qui pivotent\n- Amplitude incontrôlée\n- Vitesse excessive",
+      "respiration": "naturelle",
+      "notes_biomecaniques": "Anti-rotation directement bénéfique pour les obliques (scoliose fonctionnelle). Observer différence D/G.",
+      "filtre_profil": "Bénéfique. Si contrôle nettement plus faible côté D, réduire amplitude de ce côté.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P1",
+      "flow_rating": 4,
+      "flow_phase": 0,
+      "progression_depuis": [],
+      "progression_vers": [
+        "sm-grave-digger"
+      ],
+      "parametres_defaut": {
+        "params": "15-20 reps totales (alternées)",
+        "resistance": "3-5 kg total"
+      },
+      "asymmetry_note": "Observer différence de contrôle D/G au freinage",
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "sm-mace-row": {
+      "id": "sm-mace-row",
+      "name": "Mace Row (unilatéral)",
+      "aliases": [
+        "Mace Single Arm Row"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "tirage",
+      "subcategory": "tirage-horizontal-offset",
+      "pilier": null,
+      "muscles_primaires": [
+        "Grand dorsal",
+        "Rhomboïdes",
+        "Trapèze moyen",
+        "Biceps"
+      ],
+      "muscles_secondaires": [
+        "Core anti-rotation"
+      ],
+      "equipment": [
+        "steel_mace"
+      ],
+      "position_depart": "Split stance. Masse tenue par le bout du manche (tête pend). Tronc légèrement penché ~30°.",
+      "execution": "Tirer le bout du manche vers la hanche en rétractant la scapula. Levier augmente la difficulté au fur et à mesure. Contrôler la descente.",
+      "cue_principal": "Scapula d'abord, bras ensuite.",
+      "erreurs_frequentes": "- Tirer avec le bras sans rétracter la scapula\n- Levier de la masse qui fait pivoter le tronc",
+      "respiration": "expirer en tirant, inspirer en descendant",
+      "notes_biomecaniques": "Le levier offset force l'anti-rotation.",
+      "filtre_profil": "Excellent pour trapèze moyen/rhomboïdes en unilatéral. Commencer côté D. ⚠️ Position penchée : placer après vidange gastrique.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P2",
+      "flow_rating": 3,
+      "flow_phase": 2,
+      "progression_depuis": [
+        "sm-front-pendulum"
+      ],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "10-12 reps/côté",
+        "resistance": "3-5 kg total"
+      },
+      "asymmetry_note": "Commencer côté D. Comparer rétraction scapulaire D/G.",
+      "contra_indications": "Position penchée incompatible avec digestion active",
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "sm-pullover": {
+      "id": "sm-pullover",
+      "name": "Mace Pullover",
+      "aliases": [],
+      "domain": [
+        "flow"
+      ],
+      "category": "tirage",
+      "subcategory": "extension-épaule",
+      "pilier": null,
+      "muscles_primaires": [
+        "Grand dorsal",
+        "Teres major",
+        "Triceps (long chef)",
+        "Serratus anterior"
+      ],
+      "muscles_secondaires": [
+        "Core anti-extension"
+      ],
+      "equipment": [
+        "steel_mace"
+      ],
+      "position_depart": "Debout. Masse tenue au bout du manche, tête en bas. Bras tendus devant à hauteur de poitrine.",
+      "execution": "Monter la masse au-dessus de la tête en gardant les bras tendus, puis ramener devant. Arc dans le plan sagittal. Core résiste à l'extension.",
+      "cue_principal": "Côtes verrouillées. La masse monte, pas les côtes.",
+      "erreurs_frequentes": "- Rib flare en position haute\n- Extension lombaire compensatoire\n- Amplitude excessive",
+      "respiration": "inspirer en montant, expirer en descendant",
+      "notes_biomecaniques": "Double bénéfice : étirement grand dorsal en position haute + anti-extension core (rib flare).",
+      "filtre_profil": "⚠️ Overhead. Charge légère. Si rib flare D incontrôlable, réduire amplitude (masse ne dépasse pas la verticale).",
+      "verdict": "ADAPTER",
+      "phase": "P2",
+      "flow_rating": 4,
+      "flow_phase": 2,
+      "progression_depuis": [
+        "sm-10-to-2"
+      ],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "10-12 reps",
+        "resistance": "3-5 kg total"
+      },
+      "asymmetry_note": null,
+      "contra_indications": "Rib flare D incontrôlable → réduire amplitude",
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "sm-grave-digger": {
+      "id": "sm-grave-digger",
+      "name": "Grave Digger / Shovel",
+      "aliases": [
+        "Shovel",
+        "Mace Dig"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "anti-rotation",
+      "subcategory": "rotation-transverse-dynamique",
+      "pilier": null,
+      "muscles_primaires": [
+        "Obliques",
+        "Grand dorsal",
+        "Deltoïdes",
+        "Fessiers"
+      ],
+      "muscles_secondaires": [
+        "Core complet"
+      ],
+      "equipment": [
+        "steel_mace"
+      ],
+      "position_depart": "Stance athlétique large. Masse tenue comme une pelle.",
+      "execution": "Pivoter le tronc et creuser d'un côté puis l'autre. Combine rotation du tronc + flexion latérale + contrôle anti-rotation au retour. Les hanches pivotent.",
+      "cue_principal": "Creuser, pivoter, creuser. Les hanches guident.",
+      "erreurs_frequentes": "- Rib flare D à la rotation\n- Mouvement uniquement dans les bras (sans les hanches)\n- Vitesse incontrôlée",
+      "respiration": "expirer en creusant, inspirer en pivotant",
+      "notes_biomecaniques": "Rotation contrôlée sous charge pour les obliques (scoliose fonctionnelle). Supérieur au russian twist (contrôlé vs explosif).",
+      "filtre_profil": "Directement correctif pour scoliose fonctionnelle. Surveiller rib flare D.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P1",
+      "flow_rating": 5,
+      "flow_phase": 1,
+      "progression_depuis": [
+        "sm-front-pendulum"
+      ],
+      "progression_vers": [
+        "sm-uppercut"
+      ],
+      "parametres_defaut": {
+        "params": "12-15 reps totales (alternées)",
+        "resistance": "3-5 kg total"
+      },
+      "asymmetry_note": "Observer différence de contrôle rotation D/G",
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "sm-squat-360": {
+      "id": "sm-squat-360",
+      "name": "Mace Squat + 360",
+      "aliases": [
+        "Barbarian Squat"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "composé-flow",
+      "subcategory": "squat-rotatif",
+      "pilier": null,
+      "muscles_primaires": [
+        "Quadriceps",
+        "Fessiers",
+        "Core",
+        "Deltoïdes",
+        "Trapèzes"
+      ],
+      "muscles_secondaires": [
+        "Obliques"
+      ],
+      "equipment": [
+        "steel_mace"
+      ],
+      "position_depart": "Stance de squat naturelle. Masse verticale devant (position de départ du 360).",
+      "execution": "Descendre en squat pendant que la masse fait un 360 autour de la tête. Se relever quand la masse revient devant. Un squat = un 360.",
+      "cue_principal": "Descendre avec la masse, remonter avec la masse.",
+      "erreurs_frequentes": "- Désynchronisation squat/360\n- Bascule pelvienne exacerbée par la rotation\n- Rib flare",
+      "respiration": "inspirer avant la descente, expirer en remontant",
+      "notes_biomecaniques": "Avancé. La rotation ajoute une contrainte sur le bassin.",
+      "filtre_profil": "⚠️ Avancé — Phase 3 minimum. Ne pas introduire avant maîtrise 360 seul ET squat seul à la masse. Contrainte rotationnelle sur bassin pourrait exacerber bascule pelvienne.",
+      "verdict": "ADAPTER",
+      "phase": "P3",
+      "flow_rating": 4,
+      "flow_phase": 3,
+      "progression_depuis": [
+        "sm-360"
+      ],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "6-8 reps/direction",
+        "resistance": "3-5 kg total"
+      },
+      "asymmetry_note": "Comparer stabilité pelvienne D/G pendant la rotation",
+      "contra_indications": "Bascule pelvienne non compensée → différer",
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "sm-uppercut": {
+      "id": "sm-uppercut",
+      "name": "Mace Uppercut",
+      "aliases": [],
+      "domain": [
+        "flow"
+      ],
+      "category": "transfert-force",
+      "subcategory": "poussée-diagonale",
+      "pilier": null,
+      "muscles_primaires": [
+        "Deltoïdes",
+        "Obliques",
+        "Fessiers"
+      ],
+      "muscles_secondaires": [
+        "Core (transfert de force)"
+      ],
+      "equipment": [
+        "steel_mace"
+      ],
+      "position_depart": "Split stance. Masse en position basse, tête vers le sol, manche diagonal.",
+      "execution": "Pousser la masse en diagonal vers le haut. Initié par hanches (rotation + extension), transféré par core, terminé par épaules/bras. Pattern de transfert de force intégré.",
+      "cue_principal": "Hanches → core → épaule. La masse part du sol et monte en diagonale.",
+      "erreurs_frequentes": "- Mouvement uniquement dans les bras\n- Pas de rotation de hanche\n- Split stance instable",
+      "respiration": "expirer en poussant vers le haut",
+      "notes_biomecaniques": "Pattern de transfert de force intégré. Le split stance active le fessier de la jambe avant.",
+      "filtre_profil": "Excellent. Alterner jambe avant. Commencer pied D devant.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P2",
+      "flow_rating": 4,
+      "flow_phase": 2,
+      "progression_depuis": [
+        "sm-grave-digger"
+      ],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "10-12 reps/côté",
+        "resistance": "3-5 kg total"
+      },
+      "asymmetry_note": "Commencer pied D devant. Comparer puissance D/G.",
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "up-row-unilateral": {
+      "id": "up-row-unilateral",
+      "name": "Row Horizontal Unilatéral (Split Stance)",
+      "aliases": [
+        "Unitree Single Arm Row"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "tirage",
+      "subcategory": "tirage-horizontal",
+      "pilier": null,
+      "muscles_primaires": [
+        "Grand dorsal",
+        "Rhomboïdes",
+        "Trapèze moyen",
+        "Biceps",
+        "Deltoïde postérieur"
+      ],
+      "muscles_secondaires": [],
+      "equipment": [
+        "unitree_pump_max",
+        "swissies_v2"
+      ],
+      "position_depart": "Debout en split stance face à l'Unitree. Un câble, poignée Swissie V2 ou D-handle.",
+      "execution": "Tirer le câble vers la hanche en initiant par la rétraction scapulaire. Swissies permettent rotation naturelle du grip. Contrôler retour 1-2s. Focus dépression scapulaire côté D.",
+      "cue_principal": "Scapula basse et en arrière. Le bras suit, il ne tire pas.",
+      "erreurs_frequentes": "- Tirer avec le bras sans rétracter la scapula\n- Épaule qui monte\n- Rotation du tronc pour compenser",
+      "respiration": "expirer en tirant, inspirer en relâchant",
+      "notes_biomecaniques": "Correctif direct pour scapula D : rétraction + dépression active trapèze moyen + inférieur.",
+      "filtre_profil": "Mouvement correctif direct. Format unilatéral = focus côté D sans compensation bilatérale.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P1",
+      "flow_rating": 5,
+      "flow_phase": 0,
+      "progression_depuis": [],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "15-20 reps/côté",
+        "resistance": "15-20 kg/câble (25-30% max)"
+      },
+      "asymmetry_note": "Commencer côté D. Comparer rétraction/dépression scapulaire D/G.",
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "up-pulldown": {
+      "id": "up-pulldown",
+      "name": "Pulldown Vertical",
+      "aliases": [
+        "Unitree Pulldown"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "tirage",
+      "subcategory": "tirage-vertical",
+      "pilier": null,
+      "muscles_primaires": [
+        "Grand dorsal",
+        "Teres major",
+        "Biceps",
+        "Trapèze inférieur"
+      ],
+      "muscles_secondaires": [],
+      "equipment": [
+        "unitree_pump_max"
+      ],
+      "position_depart": "Assis ou à genoux face à l'Unitree, câbles ancrés en haut.",
+      "execution": "Tirer vers le bas en ramenant coudes vers côtes. Initier par dépression scapulaire. Mouvement en arc, pas en ligne.",
+      "cue_principal": "Épaules vers les poches, coudes vers les côtes.",
+      "erreurs_frequentes": "- Tirer sans dépression scapulaire\n- Épaules qui montent\n- Mouvement en ligne droite (pas d'arc)",
+      "respiration": "expirer en tirant, inspirer en relâchant",
+      "notes_biomecaniques": "Excellent pour trapèze inférieur (dépression scapulaire sous charge).",
+      "filtre_profil": "Permet de comparer capacité de dépression D/G si fait unilatéral.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P2",
+      "flow_rating": 4,
+      "flow_phase": 2,
+      "progression_depuis": [
+        "up-row-unilateral"
+      ],
+      "progression_vers": [
+        "up-snow-angel"
+      ],
+      "parametres_defaut": {
+        "params": "15-20 reps",
+        "resistance": "15-20 kg/câble (25-30% max)"
+      },
+      "asymmetry_note": null,
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "up-arc-curl-tirage": {
+      "id": "up-arc-curl-tirage",
+      "name": "Arc Continu : Curl → Tirage Haut",
+      "aliases": [
+        "REVVLL Arc",
+        "Hammer Arc"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "tirage",
+      "subcategory": "arc-multi-articulaire",
+      "pilier": null,
+      "muscles_primaires": [
+        "Biceps",
+        "Deltoïde antérieur",
+        "Trapèze supérieur"
+      ],
+      "muscles_secondaires": [
+        "Core anti-extension"
+      ],
+      "equipment": [
+        "unitree_pump_max"
+      ],
+      "position_depart": "Debout face à l'Unitree, câble(s) ancré(s) en bas. Prise neutre (hammer).",
+      "execution": "Commencer par un hammer curl. Sans pause, continuer en tirant coudes vers le haut et l'arrière (tirage haut). Trajectoire en arc continu depuis cuisses jusqu'à épaules. Redescendre en arc contrôlé (2s). Le mouvement signature du flow.",
+      "cue_principal": "Un seul arc, pas deux exercices collés.",
+      "erreurs_frequentes": "- Pause entre le curl et le tirage (doit être un seul arc)\n- Coudes au-dessus des épaules (risque conflit sous-acromial)\n- Excentrique trop rapide",
+      "respiration": "inspirer en bas, expirer en haut",
+      "notes_biomecaniques": "La version Unitree du mouvement REVVLL — avec l'excentrique en plus.",
+      "filtre_profil": "⚠️ Tirage haut amène coudes au-dessus des épaules — si inconfort épaule D, limiter montée au sternum. Prise hammer plus sûre que pronation.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P1",
+      "flow_rating": 5,
+      "flow_phase": 0,
+      "progression_depuis": [],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "12-15 reps",
+        "resistance": "15-20 kg/câble (25-30% max)"
+      },
+      "asymmetry_note": "Si inconfort épaule D, limiter la montée au sternum côté D",
+      "contra_indications": "Conflit sous-acromial → limiter amplitude",
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "up-face-pull-long": {
+      "id": "up-face-pull-long",
+      "name": "Face Pull Long + Rotation Externe Terminale",
+      "aliases": [
+        "Face Pull Flow"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "tirage",
+      "subcategory": "tirage-horizontal-rotation",
+      "pilier": null,
+      "muscles_primaires": [
+        "Deltoïde postérieur",
+        "Infra-épineux",
+        "Teres minor",
+        "Trapèze moyen et inférieur",
+        "Rhomboïdes"
+      ],
+      "muscles_secondaires": [],
+      "equipment": [
+        "unitree_pump_max"
+      ],
+      "position_depart": "Debout face à l'Unitree, câble(s) légèrement au-dessus de la tête.",
+      "execution": "Dépression scapulaire d'abord, puis tirer vers le visage en écartant coudes. En fin de course, rotation externe (avant-bras vers le plafond). Pause 1-2s. Retour contrôlé. Tempo lent, amplitude maximale.",
+      "cue_principal": "Tirer ET tourner. Pause en haut. Sentir les omoplates se serrer.",
+      "erreurs_frequentes": "- Pas de rotation externe terminale\n- Reps trop rapides\n- Épaules qui montent",
+      "respiration": "expirer en tirant, inspirer en relâchant",
+      "notes_biomecaniques": "Exercice correctif n°1 pour scapula D. Cible infra-épineux, teres minor (rotation externe), trapèze moyen (rétraction), trapèze inférieur (dépression).",
+      "filtre_profil": "Exercice clé. Accepter asymétrie d'amplitude côté D (rotation externe et/ou rétraction moindre).",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P1",
+      "flow_rating": 4,
+      "flow_phase": 0,
+      "progression_depuis": [],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "15-20 reps, tempo lent",
+        "resistance": "15-20 kg/câble (25-30% max)"
+      },
+      "asymmetry_note": "Rotation externe et rétraction probablement réduites côté D — documenter.",
+      "contra_indications": null,
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    },
+    "up-snow-angel": {
+      "id": "up-snow-angel",
+      "name": "Snow Angel Inversé (Pull-apart Arc)",
+      "aliases": [
+        "Reverse Snow Angel",
+        "Pull-Apart Arc"
+      ],
+      "domain": [
+        "flow"
+      ],
+      "category": "tirage",
+      "subcategory": "arc-multi-plan",
+      "pilier": null,
+      "muscles_primaires": [
+        "Deltoïdes postérieurs",
+        "Trapèze inférieur",
+        "Rhomboïdes",
+        "Coiffe des rotateurs"
+      ],
+      "muscles_secondaires": [],
+      "equipment": [
+        "unitree_pump_max"
+      ],
+      "position_depart": "Debout face à l'Unitree, deux câbles, prise basse. Bras croisés devant cuisses.",
+      "execution": "Écarter bras en arc latéral (pull-apart) puis continuer vers le haut en Y (trapèze inférieur), redescendre en arc contrôlé. Snow angel debout face à la résistance. Lent et continu.",
+      "cue_principal": "Dessiner un ange dans la neige, debout face à la résistance.",
+      "erreurs_frequentes": "- Rib flare en position Y haute\n- Vitesse trop rapide\n- Bras qui se plient",
+      "respiration": "inspirer en montant, expirer en descendant",
+      "notes_biomecaniques": "Portion Y = correctrice pour trapèze inférieur D. Portion pull-apart = rhomboïdes. Arc complet supérieur à chaque composante isolée.",
+      "filtre_profil": "⚠️ Portion Y = overhead. Charge légère. Si rib flare D incontrôlable en Y, réduire au pull-apart latéral uniquement.",
+      "verdict": "RECOMMANDÉ",
+      "phase": "P3",
+      "flow_rating": 5,
+      "flow_phase": 3,
+      "progression_depuis": [
+        "up-pulldown"
+      ],
+      "progression_vers": [],
+      "parametres_defaut": {
+        "params": "10-12 reps, tempo très lent",
+        "resistance": "15-20 kg/câble (25-30% max)"
+      },
+      "asymmetry_note": "Observer capacité à tenir la position Y côté D vs G",
+      "contra_indications": "Rib flare D en Y → réduire au pull-apart",
+      "sources": [
+        "flow_library"
+      ],
+      "video": {}
+    }
+  },
+  "sequences": {
+    "sequence-a-eveil": {
+      "id": "sequence-a-eveil",
+      "name": "Séquence A — Éveil",
+      "phase": "P1",
+      "objectif": "Apprendre les mouvements de base dans un flux simple",
+      "duree_estimee_min": 32,
+      "exercices": [
+        {
+          "exerciseId": "ic-pendulum",
+          "params": "30 reps"
+        },
+        {
+          "exerciseId": "ic-front-circle-inside",
+          "params": "20 reps"
+        },
+        {
+          "exerciseId": "ic-front-circle-outside",
+          "params": "20 reps"
+        },
+        {
+          "exerciseId": "ic-wrist-circles",
+          "params": "10/direction"
+        },
+        {
+          "exerciseId": "sm-10-to-2",
+          "params": "12/direction"
+        },
+        {
+          "exerciseId": "sm-front-pendulum",
+          "params": "15 reps"
+        },
+        {
+          "exerciseId": "sm-grave-digger",
+          "params": "12 reps"
+        },
+        {
+          "exerciseId": "up-row-unilateral",
+          "params": "15/côté"
+        },
+        {
+          "exerciseId": "up-arc-curl-tirage",
+          "params": "12 reps"
+        },
+        {
+          "exerciseId": "up-face-pull-long",
+          "params": "15 reps"
+        }
+      ],
+      "finishers": [
+        {
+          "exerciseId": "fin-curl-concentre",
+          "params": "2×12-15, RIR 3"
+        },
+        {
+          "exerciseId": "fin-face-pull-iso",
+          "params": "2×15, RIR 3, pause 2-3s"
+        }
+      ]
+    },
+    "sequence-b-rotation": {
+      "id": "sequence-b-rotation",
+      "name": "Séquence B — Rotation",
+      "phase": "P1-P2",
+      "objectif": "Accent anti-rotation et chaîne postérieure",
+      "duree_estimee_min": 34,
+      "exercices": [
+        {
+          "exerciseId": "ic-pendulum",
+          "params": "20 reps"
+        },
+        {
+          "exerciseId": "ic-arm-cast",
+          "params": "10/bras"
+        },
+        {
+          "exerciseId": "ic-swipe",
+          "params": "8 reps"
+        },
+        {
+          "exerciseId": "sm-10-to-2",
+          "params": "12/direction"
+        },
+        {
+          "exerciseId": "sm-uppercut",
+          "params": "10/côté"
+        },
+        {
+          "exerciseId": "sm-grave-digger",
+          "params": "12 reps"
+        },
+        {
+          "exerciseId": "up-woodchop-haut-bas",
+          "params": "12/côté"
+        },
+        {
+          "exerciseId": "up-woodchop-bas-haut",
+          "params": "12/côté"
+        },
+        {
+          "exerciseId": "up-row-unilateral",
+          "params": "15/côté"
+        },
+        {
+          "exerciseId": "up-reverse-fly-arc",
+          "params": "12/côté"
+        }
+      ],
+      "finishers": [
+        {
+          "exerciseId": "fin-hammer-curl",
+          "params": "2×12-15, RIR 3"
+        },
+        {
+          "exerciseId": "fin-kelso-shrug",
+          "params": "2×12-15, RIR 3"
+        }
+      ]
+    },
+    "sequence-c-arc-complet": {
+      "id": "sequence-c-arc-complet",
+      "name": "Séquence C — Arc Complet",
+      "phase": "P2-P3",
+      "objectif": "Amplitude maximale, coordination multi-plan",
+      "duree_estimee_min": 35,
+      "exercices": [
+        {
+          "exerciseId": "ic-front-circle-inside",
+          "params": "10 reps"
+        },
+        {
+          "exerciseId": "ic-front-circle-outside",
+          "params": "10 reps"
+        },
+        {
+          "exerciseId": "ic-mill-inside",
+          "params": "8/bras"
+        },
+        {
+          "exerciseId": "ic-swipe",
+          "params": "8 reps"
+        },
+        {
+          "exerciseId": "sm-360",
+          "params": "8/direction"
+        },
+        {
+          "exerciseId": "sm-pullover",
+          "params": "10 reps"
+        },
+        {
+          "exerciseId": "sm-mace-row",
+          "params": "10/côté"
+        },
+        {
+          "exerciseId": "up-snow-angel",
+          "params": "10 reps"
+        },
+        {
+          "exerciseId": "up-arc-curl-tirage",
+          "params": "15 reps"
+        },
+        {
+          "exerciseId": "up-pulldown",
+          "params": "15 reps"
+        }
+      ],
+      "finishers": [
+        {
+          "exerciseId": "fin-curl-concentre",
+          "params": "2×12-15, RIR 3"
+        },
+        {
+          "exerciseId": "fin-face-pull-iso",
+          "params": "2×15, RIR 3, pause 2-3s"
+        }
+      ]
+    }
+  },
+  "finishers": {
+    "fin-curl-concentre": {
+      "id": "fin-curl-concentre",
+      "name": "Curl Concentré Unilatéral",
+      "equipment": [
+        "unitree_pump_max",
+        "haltere"
+      ],
+      "muscles_primaires": [
+        "Biceps brachial"
+      ],
+      "params": "2×12-15, RIR 3, repos 60s",
+      "note": "Biceps pré-fatigués par le flow → charge naturellement basse."
+    },
+    "fin-face-pull-iso": {
+      "id": "fin-face-pull-iso",
+      "name": "Face Pull Isométrique",
+      "equipment": [
+        "unitree_pump_max"
+      ],
+      "muscles_primaires": [
+        "Deltoïde postérieur",
+        "Trapèze moyen/inférieur",
+        "Infra-épineux"
+      ],
+      "params": "2×15, RIR 3, pause 2-3s, repos 60s",
+      "note": "Focus asymétrique : observer tenue D vs G."
+    },
+    "fin-hammer-curl": {
+      "id": "fin-hammer-curl",
+      "name": "Hammer Curl",
+      "equipment": [
+        "haltere",
+        "unitree_pump_max"
+      ],
+      "muscles_primaires": [
+        "Brachial",
+        "Brachioradial",
+        "Biceps"
+      ],
+      "params": "2×12-15, RIR 3, repos 60s",
+      "note": "Alternative au curl concentré. Cible davantage le brachial (épaisseur du bras)."
+    },
+    "fin-kelso-shrug": {
+      "id": "fin-kelso-shrug",
+      "name": "Kelso Shrug",
+      "equipment": [
+        "haltere",
+        "banc_incline"
+      ],
+      "muscles_primaires": [
+        "Trapèze moyen et inférieur",
+        "Rhomboïdes"
+      ],
+      "params": "2×12-15, RIR 3, repos 60s",
+      "note": "Allongé face banc incliné ~30°. Mouvement scapulaire pur, pas de flexion de coude. Pause 2s en haut."
+    }
+  },
+  "progression": {
+    "phase_0": {
+      "label": "Apprentissage moteur — semaines 1-3",
+      "objectif": "Acquérir les patterns moteurs isolément. PAS de flow continu clubs/masse — sets séparés avec repos. Flow Unitree OK dès le début. Jeudi MS3 reste en isolation classique ou supprimée.",
+      "format": "3 blocs séparés : clubs (7-8 min, sets isolés) → masse (8-10 min, sets isolés) → Unitree flow + finishers (15-18 min)",
+      "clubs": [
+        "ic-pendulum",
+        "ic-front-circle-inside",
+        "ic-wrist-circles"
+      ],
+      "clubs_format": "3×10 reps, repos 30s entre séries. Vitesse lente.",
+      "mace": [
+        "sm-10-to-2",
+        "sm-front-pendulum"
+      ],
+      "mace_format": "3×8 reps/direction, repos 45s. Focus côtes basses.",
+      "unitree": [
+        "up-row-unilateral",
+        "up-arc-curl-tirage",
+        "up-face-pull-long"
+      ],
+      "unitree_format": "Flow continu, 1-2 tours + finishers",
+      "sequences": [],
+      "frequence": "1×/semaine (mardi). Jeudi : isolation classique ou repos.",
+      "criteres_passage": [
+        "Pendulum et front circles fluides 20+ reps sans épaules qui montent",
+        "10-to-2 propre (côtes basses, pas de rotation parasite) sur 12 reps/direction",
+        "Sensation de pouvoir enchaîner clubs et masse sans pause cognitive"
+      ]
+    },
+    "phase_1": {
+      "label": "Fondation — semaines 4-7",
+      "objectif": "Les clubs et la masse rejoignent le flow continu. Première séquence enchaînée. Le jeudi intègre le flow.",
+      "clubs": [
+        "ic-front-circle-inside",
+        "ic-front-circle-outside",
+        "ic-pendulum",
+        "ic-wrist-circles"
+      ],
+      "mace": [
+        "sm-10-to-2",
+        "sm-front-pendulum",
+        "sm-grave-digger"
+      ],
+      "unitree": [
+        "up-row-unilateral",
+        "up-arc-curl-tirage",
+        "up-face-pull-long"
+      ],
+      "sequences": [
+        "sequence-a-eveil"
+      ],
+      "frequence": "2×/semaine — mardi (11h, 35 min) + jeudi (18h30, 30 min). Alterner finishers : mardi FIN-01+FIN-02, jeudi FIN-03+FIN-04."
+    },
+    "phase_2": {
+      "label": "Expansion — semaines 8-11",
+      "clubs_add": [
+        "ic-arm-cast",
+        "ic-swipe",
+        "ic-mill-inside"
+      ],
+      "mace_add": [
+        "sm-mace-row",
+        "sm-uppercut",
+        "sm-pullover",
+        "sm-360"
+      ],
+      "unitree_add": [
+        "up-pulldown",
+        "up-rotation-externe",
+        "up-reverse-fly-arc",
+        "up-woodchop-haut-bas",
+        "up-woodchop-bas-haut"
+      ],
+      "sequences": [
+        "sequence-a-eveil",
+        "sequence-b-rotation"
+      ],
+      "frequence": "2×/semaine (mardi + jeudi). Alterner séquences A et B."
+    },
+    "phase_3": {
+      "label": "Intégration — semaines 12+",
+      "clubs_add": [
+        "augmentation charge 1.5-2 kg si technique maîtrisée"
+      ],
+      "mace_add": [
+        "sm-squat-360",
+        "augmentation charge 6-8 kg"
+      ],
+      "unitree_add": [
+        "up-snow-angel",
+        "résistance 30-35%"
+      ],
+      "sequences": [
+        "sequence-a-eveil",
+        "sequence-b-rotation",
+        "sequence-c-arc-complet"
+      ],
+      "frequence": "2×/semaine (mardi + jeudi). Évaluer samedi en récupération active (clubs + masse seuls, 15-20 min)."
+    }
+  }
+}
