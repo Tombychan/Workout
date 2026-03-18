@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "1.1.1",
-    "date": "2026-03-03",
+    "version": "1.2.0",
+    "date": "2026-03-18",
     "eating_window": "8h00–18h30 (~10h30)",
     "target_kcal": 2900,
     "target_protein_g": 172,
@@ -16,6 +16,15 @@
     "notes": "Cibles basées sur TDEE ~2700-2800 + surplus modeste 100-200 kcal pour recomposition. Protéines initialement à 1.6g/kg (136g) mais l'architecture actuelle fournit ~172g (2g/kg) — dans le corridor optimal 1.6-2.2g/kg (Stokes et al. 2018). Déficit calorique identifié principalement sur les glucides."
   },
   "changelog": [
+    {
+      "date": "2026-03-18",
+      "version": "1.2.0",
+      "changes": [
+        "Oméga-3 EPAX redistribués : 3+3 (R2+dîner) → 2+2+2 (R1+R2+dîner). Couverture anti-inflammatoire post-prandiale sur toute la fenêtre alimentaire",
+        "Dose totale inchangée (6 gél/j = 2520mg EPA + 1800mg DHA). Le fractionnement améliore l'absorption fractionnaire d'EPA/DHA (Schuchardt & Hahn 2013)",
+        "Correction note erronée 'capacité micellisation saturée à ~2-3g lipides/prise' — le vrai facteur limitant est l'absorption fractionnaire d'EPA/DHA au-delà de ~3-4g par prise, pas la micellisation lipidique globale"
+      ]
+    },
     {
       "date": "2026-03-04",
       "version": "1.1.1",
@@ -49,7 +58,7 @@
         "R2 passé à 2 œufs (au lieu de 3) pour réduire l'excès protéique",
         "Ajout germe de blé 15g au R1 (spermidine + zinc + réduction phytates via co-fermentation)",
         "Flocons avoine passés à 100g (depuis 80g)",
-        "Omega-3 répartis en 2 prises (3 gél. R2 + 3 gél. dîner)",
+        "Omega-3 répartis en 2 prises (3 gél. R2 + 3 gél. dîner) — mis à jour en v1.2.0 vers 2-2-2",
         "Pending : 3 ajustements pour atteindre ~2900 kcal (flocons 120g, banane R1, patate douce 300g)"
       ]
     }
@@ -129,6 +138,18 @@
           "cost_eur_per_kg": 50,
           "cost_eur_per_day": 0.75,
           "notes": "Dr. Jacob's. ~255 mg flavanols de cacao, ~546 mg polyphénols totaux par 15g. Mélangé dans le bol. Contient caféine (~15-20mg) + théobromine (~80-100mg)."
+        },
+        {
+          "name": "Oméga-3 EPAX (2 gélules)",
+          "qty": 2,
+          "unit": "gélules",
+          "protein_g": 0,
+          "carb_g": 0,
+          "fat_g": 2,
+          "leucine_g": 0,
+          "kcal": 18,
+          "cost_eur_per_day": 0.19,
+          "notes": "1ère prise (2-2-2). 840mg EPA + 600mg DHA. Couverture anti-inflammatoire post-prandiale matinale. Lipides du repas suffisants pour absorption (~16g)."
         }
       ],
       "juice": {
@@ -153,8 +174,8 @@
       "totals": {
         "protein_g": 45.5,
         "carb_g": 112,
-        "fat_g": 16.0,
-        "kcal": 757,
+        "fat_g": 18.0,
+        "kcal": 775,
         "leucine_g": 3.3
       },
       "leucine_threshold": true,
@@ -162,7 +183,7 @@
         "gastric_emptying_50pct": "1h30-1h40",
         "gastric_emptying_90pct": "2h30-3h",
         "full_absorption": "4h",
-        "profile": "Semi-liquide, faible en lipides (15g). Vidange rapide. Flocons 130g pré-digérés par fermentation. Volume du bol ~410g — confortable pour MS1 à 9h30."
+        "profile": "Semi-liquide, faible en lipides (18g). Vidange rapide. Flocons 130g pré-digérés par fermentation. Volume du bol ~410g — confortable pour MS1 à 9h30."
       }
     },
     {
@@ -197,7 +218,7 @@
       "id": "R2",
       "name": "Repas 2",
       "time": "12h30",
-      "context": "Repas le plus dense de la journée. Pris avec le jus #2 (caroténoïdes liposolubles + lipides). Citron systématique sur le tempeh (enhancer Fe non-héminique). Omega-3 : 3 gélules ici.",
+      "context": "Repas le plus dense de la journée. Pris avec le jus #2 (caroténoïdes liposolubles + lipides). Citron systématique sur le tempeh (enhancer Fe non-héminique). Omega-3 : 2 gélules ici.",
       "items": [
         {
           "name": "Tempeh maison",
@@ -288,16 +309,16 @@
           "notes": "Systématique sur le tempeh. ~15mg vit C + acide citrique. Enhancer absorption Fe non-héminique par 2 mécanismes (réduction Fe³⁺→Fe²⁺ + chélation). Siegenberg et al. 1991."
         },
         {
-          "name": "Oméga-3 EPAX (3 gélules)",
-          "qty": 3,
+          "name": "Oméga-3 EPAX (2 gélules)",
+          "qty": 2,
           "unit": "gélules",
           "protein_g": 0,
           "carb_g": 0,
-          "fat_g": 3,
+          "fat_g": 2,
           "leucine_g": 0,
-          "kcal": 27,
-          "cost_eur_per_day": 0.29,
-          "notes": "Nutripure. 3 gél = 1260mg EPA + 900mg DHA. Pris avec le repas le plus riche en lipides pour absorption maximale."
+          "kcal": 18,
+          "cost_eur_per_day": 0.19,
+          "notes": "2e prise (2-2-2). 840mg EPA + 600mg DHA. Pris avec le repas le plus riche en lipides."
         }
       ],
       "juice": {
@@ -323,8 +344,8 @@
       "totals": {
         "protein_g": 65.6,
         "carb_g": 96.7,
-        "fat_g": 49.5,
-        "kcal": 1084,
+        "fat_g": 48.5,
+        "kcal": 1075,
         "leucine_g": 4.4
       },
       "leucine_threshold": true,
@@ -332,7 +353,7 @@
         "gastric_emptying_50pct": "3h-3h30",
         "gastric_emptying_90pct": "5h-6h",
         "full_absorption": "6h-7h",
-        "profile": "Repas le plus lourd. Charge calorique élevée + 48g lipides + texture solide. Implications pour MS2 lundi (14h = 1h30 post-R2, positions verticales uniquement)."
+        "profile": "Repas le plus lourd. Charge calorique élevée + 47g lipides + texture solide. Implications pour MS2 lundi (14h = 1h30 post-R2, positions verticales uniquement)."
       }
     },
     {
@@ -409,7 +430,7 @@
       "id": "diner",
       "name": "Dîner",
       "time": "18h00-18h30",
-      "context": "Dernier repas. Pas d'exigence de seuil leucine (3 stimulations déjà atteintes). Contribution au total protéique. Glucides lents pour stabilité glycémique nocturne (voie tryptophane → sérotonine → mélatonine). Protéines limitées ~28-30g (charge osmotique rénale nocturne). Omega-3 : 3 gélules ici.",
+      "context": "Dernier repas. Pas d'exigence de seuil leucine (3 stimulations déjà atteintes). Contribution au total protéique. Glucides lents pour stabilité glycémique nocturne (voie tryptophane → sérotonine → mélatonine). Protéines limitées ~28-30g (charge osmotique rénale nocturne). Omega-3 : 2 gélules ici.",
       "protein_source_rotation": [
         {
           "name": "Sardines bio",
@@ -526,16 +547,16 @@
           "notes": "Structure les selles. Supérieur au lin/chia (pas de phytates/oxalates ajoutés). Gel visqueux qui lisse la glycémie postprandiale."
         },
         {
-          "name": "Oméga-3 EPAX (3 gélules)",
-          "qty": 3,
+          "name": "Oméga-3 EPAX (2 gélules)",
+          "qty": 2,
           "unit": "gélules",
           "protein_g": 0,
           "carb_g": 0,
-          "fat_g": 3,
+          "fat_g": 2,
           "leucine_g": 0,
-          "kcal": 27,
-          "cost_eur_per_day": 0.29,
-          "notes": "2e prise. Total journalier : 6 gél = 2520mg EPA + 1800mg DHA."
+          "kcal": 18,
+          "cost_eur_per_day": 0.19,
+          "notes": "3e prise (2-2-2). 840mg EPA + 600mg DHA. Total journalier : 6 gél = 2520mg EPA + 1800mg DHA."
         },
         {
           "name": "Huile d'olive (vinaigrette légumes)",
@@ -553,8 +574,8 @@
       "totals_average": {
         "protein_g": 33,
         "carb_g": 99,
-        "fat_g": 26,
-        "kcal": 771,
+        "fat_g": 25,
+        "kcal": 762,
         "leucine_g": 1.5,
         "note": "Moyenne simple des 3 sources protéiques actives. Sardines corrigées à 95g (1 boîte égouttée)."
       },
@@ -574,7 +595,7 @@
       "fat_g": 99,
       "kcal": 2936,
       "leucine_stimulations": 3,
-      "note": "Totaux v1.1.1. Greenwhey corrigée selon étiquette réelle (117kcal/30g, 1.8g leucine). Sardines corrigées à 95g/boîte égouttée."
+      "note": "Totaux v1.2.0. Greenwhey corrigée selon étiquette réelle (117kcal/30g, 1.8g leucine). Sardines corrigées à 95g/boîte égouttée. Oméga-3 redistribués 2-2-2 (total inchangé)."
     }
   },
   "variants": {
@@ -625,9 +646,9 @@
       "name": "Oméga-3 EPAX",
       "brand": "Nutripure (grand format 3×540)",
       "dose": "6 gélules/jour",
-      "timing": "3 gél. R2 + 3 gél. dîner",
+      "timing": "2 gél. R1 + 2 gél. R2 + 2 gél. dîner",
       "cost_eur_month": 31.78,
-      "notes": "2520mg EPA + 1800mg DHA/jour. Répartition en 2 prises pour meilleure absorption (capacité micellisation saturée à ~2-3g lipides/prise)."
+      "notes": "2520mg EPA + 1800mg DHA/jour. Répartition en 3 prises (2-2-2) pour couverture anti-inflammatoire post-prandiale sur toute la fenêtre alimentaire. L'absorption fractionnaire d'EPA/DHA diminue au-delà de ~3-4g par prise (Schuchardt & Hahn 2013) — fractionner améliore l'absorption."
     },
     {
       "name": "Safran extrait gélules",
