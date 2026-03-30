@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.2.0",
-    "date": "2026-03-18",
+    "date": "2026-03-30",
     "eating_window": "8h00–18h30 (~10h30)",
     "target_kcal": 2900,
     "target_protein_g": 172,
@@ -17,12 +17,17 @@
   },
   "changelog": [
     {
-      "date": "2026-03-18",
+      "date": "2026-03-30",
       "version": "1.2.0",
       "changes": [
-        "Oméga-3 EPAX redistribués : 3+3 (R2+dîner) → 2+2+2 (R1+R2+dîner). Couverture anti-inflammatoire post-prandiale sur toute la fenêtre alimentaire",
-        "Dose totale inchangée (6 gél/j = 2520mg EPA + 1800mg DHA). Le fractionnement améliore l'absorption fractionnaire d'EPA/DHA (Schuchardt & Hahn 2013)",
-        "Correction note erronée 'capacité micellisation saturée à ~2-3g lipides/prise' — le vrai facteur limitant est l'absorption fractionnaire d'EPA/DHA au-delà de ~3-4g par prise, pas la micellisation lipidique globale"
+        "Ajout concentré de tomate double (15g) au R2 — source lycopène, gap photoprotection identifié (Rizwan et al. 2011)",
+        "Suppléments : magnésium bisglycinate remplacé par citrate Mg Nutrimuscle poudre (~1.2-1.5g/j fractionné, dose réduite car apport alimentaire élevé)",
+        "Suppléments : ajout taurine pure 2-3g/j (dîner + pré-4×4) — sommeil, osmorégulation, longévité (Singh et al. 2023)",
+        "Suppléments : ajout glycine pure 3g coucher — thermorégulation sommeil (Bannai & Kawai 2012), précurseur collagène/glutathion",
+        "Suppléments : collagène Naticol® documenté comme 2e intention post-bilan rénal",
+        "Oméga-3 : timing corrigé de 3+3 vers 2+2+2 (fractionné 3 repas, meilleure absorption — Schuchardt & Hahn 2013)",
+        "Key interactions : ajout glycation (pain vs flocons), lycopène, triade caroténoïdes, alliums/Nrf2",
+        "Vigilance : ajout pain petit épeautre comme principal poste AGEs exogènes, réduction au profit des flocons recommandée"
       ]
     },
     {
@@ -58,7 +63,7 @@
         "R2 passé à 2 œufs (au lieu de 3) pour réduire l'excès protéique",
         "Ajout germe de blé 15g au R1 (spermidine + zinc + réduction phytates via co-fermentation)",
         "Flocons avoine passés à 100g (depuis 80g)",
-        "Omega-3 répartis en 2 prises (3 gél. R2 + 3 gél. dîner) — mis à jour en v1.2.0 vers 2-2-2",
+        "Omega-3 répartis en 2 prises (3 gél. R2 + 3 gél. dîner)",
         "Pending : 3 ajustements pour atteindre ~2900 kcal (flocons 120g, banane R1, patate douce 300g)"
       ]
     }
@@ -149,7 +154,7 @@
           "leucine_g": 0,
           "kcal": 18,
           "cost_eur_per_day": 0.19,
-          "notes": "1ère prise (2-2-2). 840mg EPA + 600mg DHA. Couverture anti-inflammatoire post-prandiale matinale. Lipides du repas suffisants pour absorption (~16g)."
+          "notes": "1ère prise (fractionnement 2+2+2, Schuchardt & Hahn 2013). Lipides du repas suffisants pour absorption (~16g)."
         }
       ],
       "juice": {
@@ -183,7 +188,7 @@
         "gastric_emptying_50pct": "1h30-1h40",
         "gastric_emptying_90pct": "2h30-3h",
         "full_absorption": "4h",
-        "profile": "Semi-liquide, faible en lipides (18g). Vidange rapide. Flocons 130g pré-digérés par fermentation. Volume du bol ~410g — confortable pour MS1 à 9h30."
+        "profile": "Semi-liquide, faible en lipides (15g). Vidange rapide. Flocons 130g pré-digérés par fermentation. Volume du bol ~410g — confortable pour MS1 à 9h30."
       }
     },
     {
@@ -218,7 +223,7 @@
       "id": "R2",
       "name": "Repas 2",
       "time": "12h30",
-      "context": "Repas le plus dense de la journée. Pris avec le jus #2 (caroténoïdes liposolubles + lipides). Citron systématique sur le tempeh (enhancer Fe non-héminique). Omega-3 : 2 gélules ici.",
+      "context": "Repas le plus dense de la journée. Pris avec le jus #2 (caroténoïdes liposolubles + lipides). Citron systématique sur le tempeh (enhancer Fe non-héminique). Concentré tomate double pour lycopène. Omega-3 : 2 gélules ici (fractionnement 2+2+2).",
       "items": [
         {
           "name": "Tempeh maison",
@@ -309,6 +314,18 @@
           "notes": "Systématique sur le tempeh. ~15mg vit C + acide citrique. Enhancer absorption Fe non-héminique par 2 mécanismes (réduction Fe³⁺→Fe²⁺ + chélation). Siegenberg et al. 1991."
         },
         {
+          "name": "Concentré de tomate double",
+          "qty": 15,
+          "unit": "g (~1 c.à.s.)",
+          "protein_g": 0.8,
+          "carb_g": 3,
+          "fat_g": 0.1,
+          "leucine_g": 0,
+          "kcal": 15,
+          "cost_eur_per_day": 0.1,
+          "notes": "Source lycopène (~9mg/15g). Gap photoprotection identifié — Rizwan et al. 2011 : +33% MED après 12 sem. Double concentré bio en tube ou bocal verre (éviter boîtes métal/BPA). Absorption optimisée par lipides du R2. Complète bêta-carotène (jus carotte) + flavanols (Flavochino) = 3 voies photoprotection endogène distinctes."
+        },
+        {
           "name": "Oméga-3 EPAX (2 gélules)",
           "qty": 2,
           "unit": "gélules",
@@ -318,7 +335,7 @@
           "leucine_g": 0,
           "kcal": 18,
           "cost_eur_per_day": 0.19,
-          "notes": "2e prise (2-2-2). 840mg EPA + 600mg DHA. Pris avec le repas le plus riche en lipides."
+          "notes": "Nutripure. Fractionnement 2+2+2 aux 3 repas (Schuchardt & Hahn 2013 : meilleure absorption fractionnelle)."
         }
       ],
       "juice": {
@@ -342,10 +359,10 @@
         "preparation_note": "Préparable le matin avec le jus #1, réfrigérer. Perte vit C 10-20% sur 6h acceptable ; polyphénols/caroténoïdes stables."
       },
       "totals": {
-        "protein_g": 65.6,
-        "carb_g": 96.7,
-        "fat_g": 48.5,
-        "kcal": 1075,
+        "protein_g": 66.4,
+        "carb_g": 99.7,
+        "fat_g": 48.6,
+        "kcal": 1090,
         "leucine_g": 4.4
       },
       "leucine_threshold": true,
@@ -353,7 +370,7 @@
         "gastric_emptying_50pct": "3h-3h30",
         "gastric_emptying_90pct": "5h-6h",
         "full_absorption": "6h-7h",
-        "profile": "Repas le plus lourd. Charge calorique élevée + 47g lipides + texture solide. Implications pour MS2 lundi (14h = 1h30 post-R2, positions verticales uniquement)."
+        "profile": "Repas le plus lourd. Charge calorique élevée + 48g lipides + texture solide. Implications pour MS2 lundi (14h = 1h30 post-R2, positions verticales uniquement)."
       }
     },
     {
@@ -430,7 +447,7 @@
       "id": "diner",
       "name": "Dîner",
       "time": "18h00-18h30",
-      "context": "Dernier repas. Pas d'exigence de seuil leucine (3 stimulations déjà atteintes). Contribution au total protéique. Glucides lents pour stabilité glycémique nocturne (voie tryptophane → sérotonine → mélatonine). Protéines limitées ~28-30g (charge osmotique rénale nocturne). Omega-3 : 2 gélules ici.",
+      "context": "Dernier repas. Pas d'exigence de seuil leucine (3 stimulations déjà atteintes). Contribution au total protéique. Glucides lents pour stabilité glycémique nocturne (voie tryptophane → sérotonine → mélatonine). Protéines limitées ~28-30g (charge osmotique rénale nocturne). Omega-3 : 2 gélules ici (fractionnement 2+2+2).",
       "protein_source_rotation": [
         {
           "name": "Sardines bio",
@@ -556,7 +573,7 @@
           "leucine_g": 0,
           "kcal": 18,
           "cost_eur_per_day": 0.19,
-          "notes": "3e prise (2-2-2). 840mg EPA + 600mg DHA. Total journalier : 6 gél = 2520mg EPA + 1800mg DHA."
+          "notes": "3e prise (fractionnement 2+2+2). Total journalier : 6 gél = 2520mg EPA + 1800mg DHA."
         },
         {
           "name": "Huile d'olive (vinaigrette légumes)",
@@ -574,8 +591,8 @@
       "totals_average": {
         "protein_g": 33,
         "carb_g": 99,
-        "fat_g": 25,
-        "kcal": 762,
+        "fat_g": 26,
+        "kcal": 771,
         "leucine_g": 1.5,
         "note": "Moyenne simple des 3 sources protéiques actives. Sardines corrigées à 95g (1 boîte égouttée)."
       },
@@ -595,7 +612,7 @@
       "fat_g": 99,
       "kcal": 2936,
       "leucine_stimulations": 3,
-      "note": "Totaux v1.2.0. Greenwhey corrigée selon étiquette réelle (117kcal/30g, 1.8g leucine). Sardines corrigées à 95g/boîte égouttée. Oméga-3 redistribués 2-2-2 (total inchangé)."
+      "note": "Totaux v1.1.1. Greenwhey corrigée selon étiquette réelle (117kcal/30g, 1.8g leucine). Sardines corrigées à 95g/boîte égouttée."
     }
   },
   "variants": {
@@ -648,7 +665,7 @@
       "dose": "6 gélules/jour",
       "timing": "2 gél. R1 + 2 gél. R2 + 2 gél. dîner",
       "cost_eur_month": 31.78,
-      "notes": "2520mg EPA + 1800mg DHA/jour. Répartition en 3 prises (2-2-2) pour couverture anti-inflammatoire post-prandiale sur toute la fenêtre alimentaire. L'absorption fractionnaire d'EPA/DHA diminue au-delà de ~3-4g par prise (Schuchardt & Hahn 2013) — fractionner améliore l'absorption."
+      "notes": "2520mg EPA + 1800mg DHA/jour. Fractionnement 2+2+2 pour meilleure absorption (Schuchardt & Hahn 2013 : absorption fractionnelle supérieure, compétition micellaire non limitante)."
     },
     {
       "name": "Safran extrait gélules",
@@ -675,12 +692,37 @@
       "notes": "Contient 2,5µg B12. Couvre le RNP mais pas l'optimum. Ajouter B12 sérique + homocystéine au bilan sanguin."
     },
     {
-      "name": "Magnésium bisglycinate",
-      "brand": "Poudre",
-      "dose": "~2 gélules le soir",
-      "timing": "Soir",
-      "cost_eur_month": 15.0,
-      "notes": "Forme bisglycinate = bonne biodisponibilité, moins d'effets digestifs."
+      "name": "Citrate de magnésium",
+      "brand": "Nutrimuscle (poudre, Solabia)",
+      "dose": "~1.2-1.5g/jour fractionné (0.6-0.7g matin + 0.6-0.7g dîner)",
+      "timing": "R1 + dîner (fractionné)",
+      "cost_eur_month": 5.0,
+      "notes": "~190-240mg Mg élémentaire (dose réduite vs posologie fabricant 2.5g car apport alimentaire élevé ~615-750mg Mg contenu/jour). Moduler à la hausse jours 4×4+sauna. Effet alcalinisant (citrate→bicarbonate, pertinent charge acide protéique). Cofacteur activation vitamine D (CYP2R1, CYP27B1). Si effet laxatif → réduire ou switcher bisglycinate."
+    },
+    {
+      "name": "Taurine pure",
+      "brand": "Poudre (Nutrimuscle ou équivalent)",
+      "dose": "2-3g/jour",
+      "timing": "1-1.5g dîner + 1-1.5g pré-4×4 (mardi/jeudi)",
+      "cost_eur_month": 1.5,
+      "notes": "Osmorégulation rénale (pertinent réveils 3h + mictions), GABAergique (sommeil, synergie ashwagandha), cardioprotection (↓PA, anti-arythmique), longévité (Singh et al. 2023 Science : déclin taurine = hallmark vieillissement). Ergogénique pré-effort (Waldron et al. 2018). Filtrée par les reins → bilan rénal préalable souhaitable."
+    },
+    {
+      "name": "Glycine pure",
+      "brand": "Poudre (Nutrimuscle ou équivalent)",
+      "dose": "3g au coucher",
+      "timing": "Coucher (séparé du Mg et taurine)",
+      "cost_eur_month": 2.5,
+      "notes": "Thermorégulation sommeil : ↓ température corporelle centrale → endormissement (Bannai & Kawai 2012). Précurseur collagène (33% des AA). Cofacteur glutathion. Timing coucher isolé pour effet thermorégulateur spécifique."
+    },
+    {
+      "name": "Collagène hydrolysé Naticol®",
+      "brand": "Nutripure (marin sauvage, 2000 Daltons)",
+      "dose": "10g/jour (en 2e intention)",
+      "timing": "Non démarré",
+      "cost_eur_month": 19.0,
+      "status": "En attente bilan rénal",
+      "notes": "Seau 4kg = ~13 mois. Dipeptides Pro-Hyp et Hyp-Gly = signal fibroblastes (synthèse collagène + acide hyaluronique + élastine). Supérieur à glycine seule pour signal peptidique. Charge azotée supplémentaire → séquençage post-bilan rénal. Poissons sauvages européens, Friend of the Sea."
     },
     {
       "name": "Vitamine D3+K2",
@@ -707,7 +749,10 @@
     "Repas 2 dense + MS2 lundi : R2 ~950 kcal, ~48g lip, vidange 5-6h. MS2 lundi (14h) = positions verticales/suspendues uniquement. Hinge/row en MS3 (17h30).",
     "Germe de blé co-fermenté : la fermentation réduit les phytates du germe ET pourrait augmenter la teneur en spermidine (polyamine stable en conditions LAB, production par L. plantarum via décarboxylation ornithine).",
     "Pommes de terre cuites-refroidies (RS3) : cuire puis réfrigérer ≥4h. Le RS3 survit au réchauffage (Englyst & Cummings 1987). Prébiotique mieux toléré que l'inuline (fermentation lente, côlon distal). Batch cooking 2-3 jours.",
-    "Banane exclue de tout repas contenant des flavanols (cacao, myrtilles, Flavochino). La polyphénol oxydase (PPO) détruit jusqu'à 84% des flavanols par conversion en quinones (Ottaviani et al. 2023, Food & Function, UC Davis)."
+    "Banane exclue de tout repas contenant des flavanols (cacao, myrtilles, Flavochino). La polyphénol oxydase (PPO) détruit jusqu'à 84% des flavanols par conversion en quinones (Ottaviani et al. 2023, Food & Function, UC Davis).",
+    "Pain petit épeautre et glycation : principal poste AGEs exogènes (cuisson sèche four ~230°C = réaction de Maillard). IG ~65-70 = glycation endogène. Flocons fermentés supérieurs sur les deux axes : zéro AGEs (25-30°C), meilleur profil glycémique (bêta-glucanes + acides organiques). Réduction du pain au profit des flocons = levier anti-glycation multi-axes (Uribarri et al. 2010).",
+    "Lycopène et photoprotection : concentré de tomate double au R2 (~9mg lycopène/15g). Absorption optimisée par lipides du R2 (~49g). Complémentaire bêta-carotène (jus carotte) + flavanols (Flavochino) = 3 voies distinctes. Triade caroténoïdes (bêta-carotène + lycopène + astaxanthine) = SPF endogène ~2-4. Astaxanthine = 3e priorité non urgente.",
+    "Composés organosoufrés (alliums) et Nrf2 : ail cru/échalote = activation Nrf2 complémentaire au sulforaphane (résidus cystéine distincts sur Keap1). Vasodilatation via H₂S (voie distincte NO/nitrates et eNOS/flavanols). Échalote crue vinaigrette R2 = intégration naturelle (quercétine liposoluble + lipides). Flag RGO : ail cru peut relaxer sphincter œsophagien inférieur."
   ],
   "principles": {
     "stable": [
@@ -728,16 +773,17 @@
       "Charge polyphénolique élevée R1 et collation → surveiller ferritine + saturation transferrine + zinc sérique",
       "B12 : 2,5µg/jour (multivitamines) + sources alimentaires = probablement suffisant mais vérifier au bilan (B12 sérique + homocystéine)",
       "Protéine blanc d'œuf poudre au dîner : en évaluation (découplage lipides/protéines pour reflux/chant)",
-      "Banane : ne jamais combiner avec aliments riches en flavanols (PPO — Ottaviani et al. 2023)"
+      "Banane : ne jamais combiner avec aliments riches en flavanols (PPO — Ottaviani et al. 2023)",
+      "Pain petit épeautre : principal poste AGEs exogènes + IG élevé. Réduction progressive au profit des flocons fermentés = levier anti-glycation + budget + glycémie. Ne pas éliminer (véhicule repas, plaisir) mais réduire."
     ]
   },
   "monthly_cost_estimate": {
-    "supplements": 98.61,
+    "supplements": 92.61,
     "protein_powders": 87.94,
-    "food": 516.19,
+    "food": 519.19,
     "care": 15.22,
-    "total": 717.96,
-    "source": "budget_mensuel_alimentation.xlsx (19/02/2026). Ordre de grandeur, pas suivi comptable exact.",
-    "note": "Ajustements depuis le budget initial : œufs réduits à ~5/jour (2 R2 + rotation dîner) vs 6/jour budgeté, ténébrions réduits à 15g/jour vs 50g budgeté. Le budget réel est probablement inférieur."
+    "total": 714.96,
+    "source": "budget_mensuel_alimentation.xlsx (19/02/2026) + ajustements v1.2.0. Ordre de grandeur, pas suivi comptable exact.",
+    "note": "v1.2.0 : Mg bisglycinate (15€) remplacé par citrate Mg (5€) + taurine (1.50€) + glycine (2.50€) = 9€. Concentré tomate ajouté (~3€/mois). Collagène Naticol® (19€/mois) non comptabilisé (en attente bilan rénal)."
   }
 }
