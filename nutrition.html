@@ -550,6 +550,48 @@ body {
 }
 .status-dot.cached { background: var(--accent); }
 .status-dot.offline { background: var(--red); }
+/* ── Leucine Calculator ── */
+.leu-summary { background: var(--bg-card); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+.leu-summary-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.leu-summary-stat .leu-val { font-family: 'DM Mono', monospace; font-size: 1.4rem; font-weight: 700; }
+.leu-summary-stat .leu-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.leu-bar-row { margin-bottom: 6px; }
+.leu-bar-label { display: flex; justify-content: space-between; font-size: 0.78rem; margin-bottom: 3px; color: var(--text-muted); }
+.leu-bar-label .leu-bar-val { font-weight: 600; }
+.leu-bar-label .leu-bar-val.ok { color: var(--green); }
+.leu-bar-label .leu-bar-val.low { color: var(--red); }
+.leu-bar-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.leu-bar-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+.leu-bar-fill.ok { background: var(--green); }
+.leu-bar-fill.low { background: linear-gradient(90deg, var(--red), var(--accent)); }
+.leu-meal-tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+.leu-meal-tab { flex: 1; padding: 8px 4px; font-size: 0.72rem; font-weight: 500; border: 1px solid var(--border); border-radius: var(--radius-sm); background: transparent; color: var(--text-muted); cursor: pointer; text-align: center; transition: all 0.2s; line-height: 1.3; font-family: 'DM Sans', sans-serif; }
+.leu-meal-tab.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+.leu-meal-card { background: var(--bg-card); border-radius: var(--radius); padding: 12px; margin-bottom: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); min-height: 80px; }
+.leu-meal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.leu-meal-title { font-size: 0.88rem; font-weight: 600; color: var(--accent-dark); }
+.leu-meal-totals { font-size: 0.75rem; color: var(--text-muted); font-family: 'DM Mono', monospace; }
+.leu-item-row { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-top: 1px solid var(--border); }
+.leu-item-info { flex: 1; min-width: 0; }
+.leu-item-name { font-size: 0.82rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.leu-item-detail { font-size: 0.7rem; color: var(--text-muted); font-family: 'DM Mono', monospace; }
+.leu-item-qty { display: flex; align-items: center; gap: 4px; }
+.leu-item-qty input { width: 50px; padding: 4px 6px; font-size: 0.82rem; font-family: 'DM Mono', monospace; background: var(--bg-card-alt); color: var(--text); border: 1px solid var(--border); border-radius: 6px; text-align: right; }
+.leu-item-qty span { font-size: 0.7rem; color: var(--text-muted); }
+.leu-item-remove { background: none; border: none; color: var(--red); opacity: 0.5; cursor: pointer; font-size: 1.1rem; padding: 0 4px; }
+.leu-add-btn { width: 100%; padding: 10px; margin-top: 8px; background: var(--bg-card-alt); color: var(--accent-dark); border: 1px dashed var(--border); border-radius: var(--radius-sm); cursor: pointer; font-size: 0.82rem; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+.leu-empty { color: var(--text-light); font-size: 0.82rem; text-align: center; padding: 20px 0; }
+.leu-search-overlay { position: fixed; inset: 0; background: rgba(44,36,22,0.5); z-index: 200; display: flex; flex-direction: column; padding: 50px 12px 12px; }
+.leu-search-panel { background: var(--bg-card); border-radius: 16px; max-height: 75vh; display: flex; flex-direction: column; border: 1px solid var(--border); box-shadow: var(--shadow-lg); overflow: hidden; }
+.leu-search-input { width: 100%; padding: 12px 14px; font-size: 0.92rem; font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); border: none; border-bottom: 1px solid var(--border); outline: none; box-sizing: border-box; }
+.leu-search-results { overflow-y: auto; flex: 1; }
+.leu-search-item { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 14px; background: none; border: none; border-bottom: 1px solid var(--border); color: var(--text); cursor: pointer; text-align: left; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; }
+.leu-search-item:active { background: var(--bg-card-alt); }
+.leu-search-item-name { font-weight: 500; }
+.leu-search-item-cat { font-size: 0.7rem; color: var(--text-muted); }
+.leu-search-item-vals { text-align: right; white-space: nowrap; font-family: 'DM Mono', monospace; font-size: 0.75rem; }
+.leu-search-item-leu { color: var(--green); }
+.leu-search-item-leu.low { color: var(--text-muted); }
 </style>
 </head>
 <body>
@@ -572,6 +614,7 @@ body {
   <button class="nav-tab" data-tab="suppl">Suppléments</button>
   <button class="nav-tab" data-tab="info">Infos</button>
   <button class="nav-tab" data-tab="data">Données</button>
+  <button class="nav-tab" data-tab="leucine">Leucine</button>
 </div>
 
 <div id="dateNavContainer"></div>
@@ -589,6 +632,48 @@ let routine = null;
 let currentDate = todayStr();
 let currentTab = 'meals';
 let tracking = {};
+
+// ── Leucine calculator state ──
+let baseNutritionelle = null;
+let leuFoods = [];
+let leuMeals = { r1: [], r2: [], collation: [], diner: [] };
+let leuActiveMeal = 'r1';
+const LEU_MEALS = [
+  { id: 'r1', label: 'R1', time: '8h' },
+  { id: 'r2', label: 'R2', time: '12h30' },
+  { id: 'collation', label: 'Collation', time: '16h' },
+  { id: 'diner', label: 'Dîner', time: '18h30' },
+];
+const LEU_THRESHOLD = 2.5;
+
+async function loadBaseNutritionelle() {
+  try {
+    const resp = await fetch('base_nutritionnelle.json?v=' + Date.now());
+    if (resp.ok) {
+      baseNutritionelle = await resp.json();
+      localStorage.setItem('nt-basenutri-cache', JSON.stringify(baseNutritionelle));
+    }
+  } catch(e) {}
+  if (!baseNutritionelle) {
+    try {
+      const cached = localStorage.getItem('nt-basenutri-cache');
+      if (cached) baseNutritionelle = JSON.parse(cached);
+    } catch(e) {}
+  }
+  if (baseNutritionelle && baseNutritionelle.items) {
+    leuFoods = [];
+    for (const [, v] of Object.entries(baseNutritionelle.items)) {
+      const leu = parseFloat(v['Leucine /100g (g)']) || 0;
+      const pr = parseFloat(v['Prot (g/100g)']) || 0;
+      if (leu > 0 || pr > 0) {
+        leuFoods.push({ id: v.id || '', n: v.Aliment || '', p: parseFloat(v['Portion type (g)']) || 100, l: leu, pr: pr, c: v['Catégorie'] || '' });
+      }
+    }
+    leuFoods.sort((a, b) => (a.l > 0 && b.l === 0) ? -1 : (a.l === 0 && b.l > 0) ? 1 : b.l - a.l);
+  }
+  try { const saved = localStorage.getItem('nt-leumeal-v1'); if (saved) leuMeals = JSON.parse(saved); } catch(e) {}
+}
+function saveLeuMeals() { localStorage.setItem('nt-leumeal-v1', JSON.stringify(leuMeals)); }
 
 function todayStr() {
   const d = new Date();
@@ -611,7 +696,7 @@ function formatDateLabel(ds) {
 async function loadRoutine() {
   // Try fetch from same domain
   try {
-    const resp = await fetch('data/nutrition/routine_alimentaire.json?v=' + Date.now());
+    const resp = await fetch('routine_alimentaire.json?v=' + Date.now());
     if (resp.ok) {
       routine = await resp.json();
       localStorage.setItem('nt-routine-cache', JSON.stringify(routine));
@@ -703,6 +788,7 @@ function render() {
     case 'suppl': renderSupplements(); break;
     case 'info': renderInfo(); break;
     case 'data': renderData(); break;
+      case 'leucine': renderLeucine(); break;
   }
 }
 
@@ -1029,6 +1115,107 @@ function renderData() {
   document.getElementById('mainContent').innerHTML = html;
 }
 
+// ── Leucine Calculator ──
+function leuCalc(food, grams) {
+  return { leu: (food.l / 100) * grams, prot: (food.pr / 100) * grams };
+}
+function leuMealTotals(mealId) {
+  const items = leuMeals[mealId] || [];
+  let leu = 0, prot = 0;
+  items.forEach(i => { const c = leuCalc(i, i.grams); leu += c.leu; prot += c.prot; });
+  return { leu, prot };
+}
+
+function renderLeucine() {
+  if (!leuFoods.length) {
+    document.getElementById('mainContent').innerHTML = `<div class="loading">Base nutritionnelle non chargée.<br><small>Vérifier que base_nutritionnelle.json est déployé.</small></div>`;
+    return;
+  }
+  let dayLeu = 0, dayProt = 0, thresholds = 0;
+  const mealData = LEU_MEALS.map(m => {
+    const t = leuMealTotals(m.id);
+    dayLeu += t.leu; dayProt += t.prot;
+    if (t.leu >= LEU_THRESHOLD) thresholds++;
+    return { ...m, ...t };
+  });
+
+  let html = `<div class="leu-summary">
+    <div class="leu-summary-header">
+      <div class="leu-summary-stat"><div class="leu-label">PROTÉINES JOUR</div><div class="leu-val">${Math.round(dayProt)}g <span style="font-size:0.85rem;font-weight:400;color:var(--text-muted)">/ 136g</span></div></div>
+      <div class="leu-summary-stat" style="text-align:right"><div class="leu-label">STIMULATIONS</div><div class="leu-val">${thresholds} <span style="font-size:0.85rem;font-weight:400;color:var(--text-muted)">/ 3</span>${thresholds >= 3 ? ' <span style="color:var(--green)">✓</span>' : ''}</div></div>
+    </div>`;
+  mealData.forEach(m => {
+    const pct = Math.min((m.leu / LEU_THRESHOLD) * 100, 100);
+    const ok = m.leu >= LEU_THRESHOLD;
+    html += `<div class="leu-bar-row"><div class="leu-bar-label"><span>${m.label} — ${m.time}</span><span class="leu-bar-val ${ok?'ok':'low'}">${m.leu.toFixed(2)}g ${ok ? '✓' : '(−'+(LEU_THRESHOLD-m.leu).toFixed(2)+'g)'}</span></div><div class="leu-bar-track"><div class="leu-bar-fill ${ok?'ok':'low'}" style="width:${pct}%"></div></div></div>`;
+  });
+  html += `</div>`;
+
+  html += `<div class="leu-meal-tabs">`;
+  LEU_MEALS.forEach(m => {
+    html += `<button class="leu-meal-tab${leuActiveMeal===m.id?' active':''}" onclick="leuSetMeal('${m.id}')">${m.label}<br><span style="font-size:0.65rem;opacity:0.7">${m.time}</span></button>`;
+  });
+  html += `</div>`;
+
+  const active = LEU_MEALS.find(m => m.id === leuActiveMeal);
+  const activeT = leuMealTotals(leuActiveMeal);
+  const items = leuMeals[leuActiveMeal] || [];
+  html += `<div class="leu-meal-card"><div class="leu-meal-header"><span class="leu-meal-title">${active.label} — ${active.time}</span><span class="leu-meal-totals">${activeT.prot.toFixed(1)}g prot · ${activeT.leu.toFixed(2)}g leu</span></div>`;
+  if (!items.length) html += `<div class="leu-empty">Aucun aliment ajouté</div>`;
+  items.forEach((item, idx) => {
+    const c = leuCalc(item, item.grams);
+    html += `<div class="leu-item-row"><div class="leu-item-info"><div class="leu-item-name">${item.n}</div><div class="leu-item-detail">${c.prot.toFixed(1)}g prot · ${c.leu.toFixed(2)}g leu</div></div><div class="leu-item-qty"><input type="number" value="${item.grams}" onchange="leuUpdateGrams(${idx},this.value)"><span>g</span></div><button class="leu-item-remove" onclick="leuRemoveItem(${idx})">×</button></div>`;
+  });
+  html += `<button class="leu-add-btn" onclick="leuShowSearch()">+ Ajouter un aliment</button></div>`;
+  html += `<div style="margin-top:12px"><button class="action-btn" onclick="leuReset()">Réinitialiser</button></div>`;
+  document.getElementById('mainContent').innerHTML = html;
+}
+
+function leuSetMeal(id) { leuActiveMeal = id; renderLeucine(); }
+function leuAddItem(food) {
+  if (!leuMeals[leuActiveMeal]) leuMeals[leuActiveMeal] = [];
+  leuMeals[leuActiveMeal].push({ ...food, grams: food.p });
+  saveLeuMeals(); leuCloseSearch(); renderLeucine();
+}
+function leuUpdateGrams(idx, val) {
+  const g = parseFloat(val) || 0;
+  if (leuMeals[leuActiveMeal] && leuMeals[leuActiveMeal][idx]) {
+    leuMeals[leuActiveMeal][idx].grams = Math.max(0, g);
+    saveLeuMeals(); renderLeucine();
+  }
+}
+function leuRemoveItem(idx) {
+  if (leuMeals[leuActiveMeal]) { leuMeals[leuActiveMeal].splice(idx, 1); saveLeuMeals(); renderLeucine(); }
+}
+function leuReset() {
+  if (!confirm('Réinitialiser tous les repas du calculateur leucine ?')) return;
+  leuMeals = { r1: [], r2: [], collation: [], diner: [] };
+  saveLeuMeals(); renderLeucine(); showToast('Calculateur réinitialisé');
+}
+function leuShowSearch() {
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const overlay = document.createElement('div');
+  overlay.className = 'leu-search-overlay'; overlay.id = 'leuSearchOverlay';
+  overlay.onclick = e => { if (e.target === overlay) leuCloseSearch(); };
+  const panel = document.createElement('div'); panel.className = 'leu-search-panel';
+  const input = document.createElement('input'); input.className = 'leu-search-input'; input.placeholder = 'Rechercher un aliment…'; input.type = 'text';
+  const results = document.createElement('div'); results.className = 'leu-search-results';
+  function renderResults(q) {
+    const query = norm(q);
+    const filtered = query ? leuFoods.filter(f => norm(f.n).includes(query) || norm(f.c).includes(query)) : leuFoods;
+    results.innerHTML = filtered.map(f => {
+      const lp = (f.l*f.p/100).toFixed(2), pp = (f.pr*f.p/100).toFixed(1);
+      return `<button class="leu-search-item" data-fid="${f.id}"><div><div class="leu-search-item-name">${f.n}</div><div class="leu-search-item-cat">${f.c} · ${f.p}g</div></div><div class="leu-search-item-vals"><div class="leu-search-item-leu${f.l>1.5?'':' low'}">${lp}g leu</div><div style="color:var(--text-muted);font-size:0.7rem">${pp}g prot</div></div></button>`;
+    }).join('') || '<div style="text-align:center;padding:20px;color:var(--text-muted)">Aucun résultat</div>';
+  }
+  input.oninput = () => renderResults(input.value);
+  results.onclick = e => { const btn = e.target.closest('.leu-search-item'); if (!btn) return; const food = leuFoods.find(f => f.id === btn.dataset.fid); if (food) leuAddItem(food); };
+  panel.appendChild(input); panel.appendChild(results); overlay.appendChild(panel);
+  document.body.appendChild(overlay); renderResults('');
+  setTimeout(() => input.focus(), 100);
+}
+function leuCloseSearch() { const el = document.getElementById('leuSearchOverlay'); if (el) el.remove(); }
+
 // ── Actions ──
 function exportBackup() {
   const data = {
@@ -1105,7 +1292,7 @@ document.getElementById('navTabs').addEventListener('click', (e) => {
 // ── Init ──
 async function init() {
   loadTracking();
-  await loadRoutine();
+  await Promise.all([loadRoutine(), loadBaseNutritionelle()]);
   render();
 }
 
