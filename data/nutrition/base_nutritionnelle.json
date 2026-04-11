@@ -5,7 +5,8 @@
     "total_items": 173,
     "sources": "USDA FoodData Central, CIQUAL (ANSES), données fabricant, conversations projet",
     "notes": "Valeurs pour 100g sauf indication. Base de référence pour routine_alimentaire.json et app nutrition.",
-    "changelog": "v2.1.0 (2026-04-10) : Skyr remplacé par ricotta brebis artisanale (marché) à la collation. 3 entrées skyr marquées Inactif. Références croisées mises à jour. Ricotta brebis : protéines corrigées 11→13g/100g (texture sèche bien égouttée), macros et micros recalculés."
+    "changelog": "v2.1.0 (2026-04-10) : Skyr remplacé par ricotta brebis artisanale (marché) à la collation. 3 entrées skyr marquées Inactif. Références croisées mises à jour. Ricotta brebis : protéines corrigées 11→13g/100g (texture sèche bien égouttée), macros et micros recalculés.",
+    "item_count": 174
   },
   "items": {
     "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec": {
@@ -7445,6 +7446,51 @@
       "Met (mg/100g)": 320,
       "Gly (mg/100g)": 236,
       "Lys (mg/100g)": 980
+    },
+    "whey_isolate_native_nutripure": {
+      "id": "whey_isolate_native_nutripure",
+      "Aliment": "Whey Isolate Native (Nutripure)",
+      "Catégorie": "Poudres prot.",
+      "Portion type (g)": 30,
+      "kcal/100g": 382,
+      "Prot (g/100g)": 89,
+      "Lip (g/100g)": 1.8,
+      "Glu (g/100g)": 3.1,
+      "Fibres (g/100g)": 0,
+      "Leucine (% prot)": 0.1315,
+      "Leucine /100g (g)": 11.7,
+      "Prot /portion (g)": 27,
+      "Leucine /portion (g)": 3.5,
+      "Seuil 2,5g ?": "✓ OUI",
+      "Notes & source": "Isolat natif lait français, filtration à froid. 94% prot matière sèche, <0.2% lactose. Traces gluten, œufs, soja, poisson. Seau 4kg = 169.90€. ATTENTION : sensibilité whey suspectée (réactions cutanées) — protocole test préalable obligatoire.",
+      "Mg (mg/100g)": 53,
+      "Zn (mg/100g)": 0,
+      "Fe (mg/100g)": 0.6,
+      "K (mg/100g)": 360,
+      "Vit K1 (µg/100g)": 0,
+      "Choline (mg/100g)": 0,
+      "Trp (mg/100g)": 2200,
+      "Ω3 EPA+DHA (mg/100g)": 0,
+      "Na (mg/100g)": 84,
+      "Ch. osmot. rénale (mOsm/100g)": 520,
+      "Polyphén. totaux (mg/100g)": 0,
+      "Famille dominante": "—",
+      "Inhib. Fe/Zn": "—",
+      "Vidange gastr. (min)": 40,
+      "Fermentesc.": "Très faible",
+      "Notes digestives": "Isolat = quasi sans lactose (<0.2%). Vidange rapide en solution. Sensibilité whey suspectée : tester avant intégration.",
+      "Prix (€/100g)": 4.25,
+      "€/g prot.": 0.0477,
+      "€/g leucine": 0.36,
+      "Repas recommandé": "Pré-4×4 ou R1 (si toléré)",
+      "Synergies": "30g = 27g prot + 3.5g leucine = seuil MPS atteint seul. Cinétique rapide = idéal péri-effort.",
+      "Antagonismes / Contraintes": "Sensibilité suspectée non confirmée. Test éviction formel requis avant usage régulier.",
+      "BCAA tot. (mg/100g)": 22200,
+      "Ile (mg/100g)": 5300,
+      "Val (mg/100g)": 5200,
+      "Met (mg/100g)": 2200,
+      "Gly (mg/100g)": 1800,
+      "Lys (mg/100g)": 9400
     }
   }
 }
