@@ -137,14 +137,14 @@ let VAHVA = null;
 let VIEW = 'week'; // week | day | bloc | exercise
 let NAV = { jour: null, blocIdx: null, exIdx: null };
 
-const JSON_URL = 'programme_complet.json';
-const VAHVA_URL = 'vahva_unified_mapping.json';
+const JSON_URL = 'data/sport/programme_complet.json';
+const VAHVA_URL = 'data/sport/vahva_unified_mapping.json';
 
 // ── Data loading ──
 async function init() {
   try {
     const [pRes, vRes] = await Promise.all([
-      fetch(JSON_URL).then(r => { if(!r.ok) throw new Error('programme_complet.json not found'); return r.json(); }),
+      fetch(JSON_URL).then(r => { if(!r.ok) throw new Error('data/sport/programme_complet.json not found'); return r.json(); }),
       fetch(VAHVA_URL).then(r => r.ok ? r.json() : null).catch(() => null)
     ]);
     DATA = pRes;

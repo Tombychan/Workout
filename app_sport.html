@@ -261,17 +261,17 @@ async function loadData() {
     const base = window.location.pathname.includes('/') ?
       window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1) : './';
     const [progRes, vahvaRes] = await Promise.all([
-      fetch(base + 'programme_complet.json'),
-      fetch(base + 'vahva_unified_mapping.json').catch(() => null)
+      fetch(base + 'data/sport/programme_complet.json'),
+      fetch(base + 'data/sport/vahva_unified_mapping.json').catch(() => null)
     ]);
-    if (!progRes.ok) throw new Error('programme_complet.json: ' + progRes.status);
+    if (!progRes.ok) throw new Error('data/sport/programme_complet.json: ' + progRes.status);
     DATA = await progRes.json();
     if (vahvaRes && vahvaRes.ok) VAHVA = await vahvaRes.json();
     loadTracking();
     return true;
   } catch(e) {
     document.getElementById('loading').innerHTML =
-      `<div class="error-msg">Erreur de chargement<br><small>${e.message}</small><br><br><small>Vérifier que programme_complet.json est déployé.</small></div>`;
+      `<div class="error-msg">Erreur de chargement<br><small>${e.message}</small><br><br><small>Vérifier que data/sport/programme_complet.json est déployé.</small></div>`;
     return false;
   }
 }

@@ -611,7 +611,7 @@ function formatDateLabel(ds) {
 async function loadRoutine() {
   // Try fetch from same domain
   try {
-    const resp = await fetch('routine_alimentaire.json?v=' + Date.now());
+    const resp = await fetch('data/nutrition/routine_alimentaire.json?v=' + Date.now());
     if (resp.ok) {
       routine = await resp.json();
       localStorage.setItem('nt-routine-cache', JSON.stringify(routine));
