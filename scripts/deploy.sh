@@ -5,12 +5,10 @@
 
 REPO="$HOME/Documents/Workout"
 DOWNLOADS="$HOME/Downloads/Claude/Routine artefacts"
-KNOWN_FILES=("routine_alimentaire.json" "base_nutritionnelle.json" "nutrition.html" "index.html" "app_sport.html" "sport.html" "flocons.html" "tempeh.html" "fermentation.html" "exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json" "programme_complet.json" "vahva_unified_mapping.json" "flow_library.json" "flow_library.md" "programme_synthese_v3.md" "fermentation_index.json" "houmous_gaba.json" "flocons_fermentes.json" "tempeh.json" "build.py" "deploy.sh")
+KNOWN_FILES=("routine_alimentaire.json" "base_nutritionnelle.json" "hub.json" "hub.html" "nutrition.html" "index.html" "app_sport.html" "sport.html" "flocons.html" "tempeh.html" "fermentation.html" "exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json" "programme_complet.json" "vahva_unified_mapping.json" "flow_library.json" "flow_library.md" "programme_synthese_v3.md" "fermentation_index.json" "houmous_gaba.json" "flocons_fermentes.json" "tempeh.json" "build.py" "deploy.sh")
 
-# Mapping : basename → chemin relatif dans le repo
+# Mapping : basename → chemin relatif dans le repo (absent = racine)
 declare -A FILE_MAP=(
-  ["routine_alimentaire.json"]="data/nutrition/"
-  ["base_nutritionnelle.json"]="data/nutrition/"
   ["exercise_library.json"]="data/sport/"
   ["programme_sport.json"]="data/sport/"
   ["bfs_workouts_refactored.json"]="data/sport/"

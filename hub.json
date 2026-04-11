@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "title": "Projet Santé",
+    "subtitle": "Sébastien — Apps & Outils"
+  },
+  "apps": [
+    {
+      "id": "nutrition",
+      "name": "Nutrition",
+      "description": "Suivi alimentaire, suppléments, interactions, calculateur leucine",
+      "url": "nutrition.html",
+      "icon": "🥬",
+      "tags": ["nutrition", "leucine", "suppléments"]
+    },
+    {
+      "id": "workout",
+      "name": "Workout Tracker",
+      "description": "Log de séances, charges, séries, RPE",
+      "url": "index.html",
+      "icon": "🏋️",
+      "tags": ["entraînement", "tracking"]
+    },
+    {
+      "id": "app_sport",
+      "name": "Programme Sport",
+      "description": "Micro-sessions, routine hebdomadaire, exercices",
+      "url": "app_sport.html",
+      "icon": "📋",
+      "tags": ["entraînement", "programmation"]
+    },
+    {
+      "id": "flocons",
+      "name": "Flocons Fermentés",
+      "description": "Tracker de fermentation des flocons d'avoine/épeautre",
+      "url": "flocons.html",
+      "icon": "🌾",
+      "tags": ["fermentation", "nutrition"]
+    },
+    {
+      "id": "tempeh",
+      "name": "Tempeh",
+      "description": "Tracker de production tempeh maison",
+      "url": "tempeh.html",
+      "icon": "🫘",
+      "tags": ["fermentation", "nutrition"]
+    },
+    {
+      "id": "fermentation",
+      "name": "Fermentation",
+      "description": "Index et protocoles de fermentation",
+      "url": "fermentation.html",
+      "icon": "🧫",
+      "tags": ["fermentation"]
+    }
+  ]
+}

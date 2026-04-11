@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Projet Santé</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #FAF7F2;
+  --bg-card: #FFFFFF;
+  --bg-card-alt: #F5F0E8;
+  --text: #2C2416;
+  --text-muted: #8C7E6A;
+  --text-light: #B5A898;
+  --accent: #D4A574;
+  --accent-dark: #B8854A;
+  --accent-light: #F0DCC8;
+  --border: #E8E0D4;
+  --shadow: 0 2px 8px rgba(44,36,22,0.06);
+  --shadow-lg: 0 4px 16px rgba(44,36,22,0.1);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; }
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header {
+  background: linear-gradient(135deg, #3D3024 0%, #2C2416 100%);
+  color: #FAF7F2;
+  padding: 28px 16px 20px;
+  text-align: center;
+}
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.header p {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 14px 12px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.app-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 18px 14px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.15s;
+  cursor: pointer;
+}
+.app-card:active {
+  transform: scale(0.97);
+  box-shadow: var(--shadow-lg);
+}
+.app-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+.app-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.app-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  flex: 1;
+}
+.app-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+}
+.app-tag {
+  font-size: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  padding: 2px 6px;
+  background: var(--bg-card-alt);
+  color: var(--text-muted);
+  border-radius: 10px;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.loading-spinner {
+  width: 30px; height: 30px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.footer {
+  text-align: center;
+  padding: 20px 12px 30px;
+  font-size: 0.7rem;
+  color: var(--text-light);
+  font-family: 'DM Mono', monospace;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1 id="hubTitle">Projet Santé</h1>
+  <p id="hubSubtitle">Chargement…</p>
+</div>
+
+<div class="grid" id="appGrid">
+  <div class="loading" style="grid-column:1/-1">
+    <div class="loading-spinner"></div>
+    Chargement des apps…
+  </div>
+</div>
+
+<div class="footer" id="footer"></div>
+
+<script>
+async function init() {
+  let data;
+  try {
+    const resp = await fetch('hub.json?v=' + Date.now());
+    if (resp.ok) {
+      data = await resp.json();
+      localStorage.setItem('hub-cache', JSON.stringify(data));
+    }
+  } catch(e) {}
+
+  if (!data) {
+    try {
+      const cached = localStorage.getItem('hub-cache');
+      if (cached) data = JSON.parse(cached);
+    } catch(e) {}
+  }
+
+  if (!data) {
+    document.getElementById('appGrid').innerHTML = '<div class="loading" style="grid-column:1/-1">Impossible de charger hub.json</div>';
+    return;
+  }
+
+  document.getElementById('hubTitle').textContent = data.meta.title;
+  document.getElementById('hubSubtitle').textContent = data.meta.subtitle;
+
+  const grid = document.getElementById('appGrid');
+  grid.innerHTML = data.apps.map(app => `
+    <a class="app-card" href="${app.url}">
+      <div class="app-icon">${app.icon}</div>
+      <div class="app-name">${app.name}</div>
+      <div class="app-desc">${app.description}</div>
+      <div class="app-tags">${app.tags.map(t => `<span class="app-tag">${t}</span>`).join('')}</div>
+    </a>
+  `).join('');
+
+  document.getElementById('footer').textContent = data.apps.length + ' apps · tombychan.github.io/Workout';
+}
+
+init();
+</script>
+</body>
+</html>
