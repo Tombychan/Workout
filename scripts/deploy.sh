@@ -5,7 +5,35 @@
 
 REPO="$HOME/Documents/Workout"
 DOWNLOADS="$HOME/Downloads/Claude/Routine artefacts"
-KNOWN_FILES=("routine_alimentaire.json" "nutrition.html" "index.html" "routine_sport.json" "app_sport.html" "glossaire_exercices.json" "glossaire_mobilite.json" "phase2_tracker.html" "deploy.sh" "exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json" "build.py" "programme_complet.json" "vahva_unified_mapping.json" "base_nutritionnelle.json" "flocons.html" "tempeh.html")
+KNOWN_FILES=("routine_alimentaire.json" "base_nutritionnelle.json" "nutrition.html" "index.html" "app_sport.html" "sport.html" "flocons.html" "tempeh.html" "fermentation.html" "exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json" "programme_complet.json" "vahva_unified_mapping.json" "flow_library.json" "flow_library.md" "programme_synthese_v3.md" "fermentation_index.json" "houmous_gaba.json" "flocons_fermentes.json" "tempeh.json" "build.py" "deploy.sh")
+
+# Mapping : basename → chemin relatif dans le repo
+declare -A FILE_MAP=(
+  ["routine_alimentaire.json"]="data/nutrition/"
+  ["base_nutritionnelle.json"]="data/nutrition/"
+  ["exercise_library.json"]="data/sport/"
+  ["programme_sport.json"]="data/sport/"
+  ["bfs_workouts_refactored.json"]="data/sport/"
+  ["mobility_workouts_refactored.json"]="data/sport/"
+  ["core_exercises_refactored.json"]="data/sport/"
+  ["programme_complet.json"]="data/sport/"
+  ["vahva_unified_mapping.json"]="data/sport/"
+  ["flow_library.json"]="data/sport/"
+  ["flow_library.md"]="data/sport/"
+  ["programme_synthese_v3.md"]="data/sport/"
+  ["fermentation_index.json"]="data/fermentation/"
+  ["houmous_gaba.json"]="data/fermentation/"
+  ["flocons_fermentes.json"]="data/fermentation/"
+  ["tempeh.json"]="data/fermentation/"
+  ["build.py"]="scripts/"
+  ["deploy.sh"]="scripts/"
+)
+
+# Résout le chemin repo pour un basename (racine si pas dans FILE_MAP)
+repo_path() {
+  local dir="${FILE_MAP[$1]}"
+  if [ -n "$dir" ]; then echo "$dir$1"; else echo "$1"; fi
+}
 
 # Fichiers source qui déclenchent un rebuild de programme_complet.json
 BUILD_SOURCES=("exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json")
@@ -32,24 +60,25 @@ if [ -n "$1" ]; then
     fi
     
     BASENAME=$(basename "$FILE")
-    cp "$FILE" "$REPO/$BASENAME"
+    DEST=$(repo_path "$BASENAME")
+    cp "$FILE" "$REPO/$DEST"
     cd "$REPO"
 
     # Rebuild programme_complet.json si le fichier est une source sport
     for src in "${BUILD_SOURCES[@]}"; do
         if [ "$BASENAME" = "$src" ]; then
             echo -e "${YELLOW}⚙ $BASENAME est une source sport → build.py...${NC}"
-            python3 "$REPO/build.py" --out "$REPO/programme_complet.json"
+            python3 "$REPO/scripts/build.py" --out "$REPO/data/sport/programme_complet.json"
             if [ $? -ne 0 ]; then
                 echo -e "${RED}✗ build.py a échoué — déploiement annulé${NC}"
                 exit 1
             fi
-            git add "programme_complet.json"
+            git add "data/sport/programme_complet.json"
             break
         fi
     done
 
-    git add "$BASENAME"
+    git add "$DEST"
     git commit -m "$MSG"
     git pull --rebase 2>/dev/null
     git push
@@ -95,8 +124,9 @@ for i in "${!FOUND[@]}"; do
     SIZE=$(stat -f "%z" "${FOUND[$i]}" | awk '{printf "%.1f Ko", $1/1024}')
     
     # Comparer avec la version dans le repo
-    if [ -f "$REPO/$BASENAME" ]; then
-        if diff -q "${FOUND[$i]}" "$REPO/$BASENAME" > /dev/null 2>&1; then
+    DEST=$(repo_path "$BASENAME")
+    if [ -f "$REPO/$DEST" ]; then
+        if diff -q "${FOUND[$i]}" "$REPO/$DEST" > /dev/null 2>&1; then
             STATUS="identique"
         else
             STATUS="modifié"
@@ -133,8 +163,9 @@ DEPLOYED=()
 NEEDS_BUILD=false
 for f in "${DEPLOY[@]}"; do
     BASENAME=$(basename "$f")
-    cp "$f" "$REPO/$BASENAME"
-    git add "$BASENAME"
+    DEST=$(repo_path "$BASENAME")
+    cp "$f" "$REPO/$DEST"
+    git add "$DEST"
     DEPLOYED+=("$BASENAME")
     # Vérifier si ce fichier est une source sport
     for src in "${BUILD_SOURCES[@]}"; do
@@ -148,12 +179,12 @@ done
 # Rebuild programme_complet.json si au moins une source sport a changé
 if [ "$NEEDS_BUILD" = true ]; then
     echo -e "${YELLOW}⚙ Source(s) sport modifiée(s) → build.py...${NC}"
-    python3 "$REPO/build.py" --out "$REPO/programme_complet.json"
+    python3 "$REPO/scripts/build.py" --out "$REPO/data/sport/programme_complet.json"
     if [ $? -ne 0 ]; then
         echo -e "${RED}✗ build.py a échoué — déploiement annulé${NC}"
         exit 1
     fi
-    git add "programme_complet.json"
+    git add "data/sport/programme_complet.json"
     DEPLOYED+=("programme_complet.json")
 fi
 
