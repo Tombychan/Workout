@@ -1,0 +1,304 @@
+{
+  "meta": {
+    "id": "flocons_fermentes",
+    "name": "Flocons Fermentés",
+    "icon": "🌾",
+    "version": "1.0.0",
+    "description": "Avoine + petit épeautre + seigle — fermentation lactique avec germe de blé",
+    "theme": {
+      "accent": "#8a7a44",
+      "accentLight": "#1a1a12",
+      "accentBorder": "#2a2818",
+      "bg": "#0d0c08",
+      "headerBg": "rgba(13,12,8,0.92)",
+      "surface": "#16161f",
+      "surfaceAlt": "#111110",
+      "border": "#2a2818",
+      "borderActive": "#8a7a44",
+      "text": "#ddddd0",
+      "textMuted": "#8888aa",
+      "textDim": "#6a6a5a",
+      "success": "#6abf6a",
+      "warning": "#ccaa55",
+      "danger": "#cc5555",
+      "info": "#7a9acc"
+    }
+  },
+
+  "config": {
+    "selectors": [],
+    "fixed_batch": {
+      "total": "450g",
+      "ingredients": [
+        { "label": "Avoine", "qty": "225g", "color": "#c8a86a" },
+        { "label": "Petit épeautre", "qty": "180g", "color": "#a8926a" },
+        { "label": "Farine de seigle", "qty": "45g", "color": "#8a7a5a" },
+        { "label": "Germe de blé", "qty": "25g", "color": "#b8a050" },
+        { "label": "Eau tiède (<40°C)", "qty": "712–950 ml", "color": "#6a8acc" }
+      ],
+      "yield": "~950g hydraté → 4-5 jours",
+      "fermentation": "16-20h à 25-26°C avec backslopping"
+    }
+  },
+
+  "steps": [
+    {
+      "id": "backslopping",
+      "phase": "Préparation",
+      "title": "Backslopping (recommandé)",
+      "blocks": [
+        { "type": "text", "content": "Prélever 2-3 c.à.s. (~40-60g) du batch précédent et les incorporer au bocal propre AVANT d'ajouter l'eau. Accélère le démarrage de 6-8h (phase de latence quasi éliminée), stabilise la flore lactique et réduit la production d'amines biogènes." },
+        { "type": "tip", "content": "Premier batch ou oubli ? La farine de seigle relance seule grâce à sa microflore lactique indigène dense. Mais les batches suivants seront plus réguliers avec backslopping. Conserver l'inoculum au frigo max 5 jours." },
+        {
+          "type": "checks",
+          "items": [
+            { "condition": "Batch source sain (acide, pas de moisissure/odeur putride)", "result": "✅ Backslopping OK — même si sur-fermenté", "color": "#6abf6a" },
+            { "condition": "Batch source avec moisissure, odeur putride ou texture filante", "result": "🚫 Ne PAS utiliser — relancer avec farine de seigle seule", "color": "#cc5555" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "melange",
+      "phase": "Préparation",
+      "title": "Mélange des ingrédients secs",
+      "blocks": [
+        {
+          "type": "ingredient_cards",
+          "groups": [
+            {
+              "label": null,
+              "items": [
+                { "name": "Avoine", "icon": "🌾", "quantity": "225g", "heat_sensitive": false, "what": "Base du batch — source de bêta-glucanes (fibres solubles hypocholestérolémiantes).", "where": "Flocons gros bio (Celnat, Markal)." },
+                { "name": "Petit épeautre", "icon": "🌾", "quantity": "180g", "heat_sensitive": false, "what": "Apporte gluten modéré + profil AA complémentaire à l'avoine.", "where": "Flocons bio (Celnat, Priméal)." },
+                { "name": "Farine de seigle", "icon": "🌾", "quantity": "45g", "heat_sensitive": false, "what": "Apporte les phytases exogènes (l'avoine a des phytases endogènes minimales) + microflore lactique indigène dense pour le démarrage de la fermentation.", "where": "Farine complète bio (Celnat, Markal)." },
+                { "name": "Germe de blé", "icon": "🌱", "quantity": "25g", "heat_sensitive": false, "what": "Source la plus concentrée de spermidine (24-35 mg/100g). Ajouté au mélange sec — les antinutriments (acide phytique, raffinose, WGA) sont dégradés par la fermentation lactique.", "where": "Germline Enzymes Actifs ou équivalent bio." }
+              ]
+            }
+          ]
+        },
+        { "type": "tip", "content": "Le ratio avoine/épeautre est ajustable : plus d'épeautre (60/30/10) = plus d'insolubles. Plus d'avoine (40/50/10) = plus de bêta-glucanes. La farine de seigle doit rester à ~10%. Le germe de blé (25g) s'ajoute par-dessus le mélange de base." }
+      ]
+    },
+    {
+      "id": "hydratation",
+      "phase": "Préparation",
+      "title": "Hydratation",
+      "blocks": [
+        { "type": "text", "content": "Ajouter 712–950 ml d'eau tiède (<40°C). Mélanger jusqu'à obtenir une pâte épaisse bien immergée." },
+        { "type": "tip", "content": "⚠️ Au-dessus de 40°C les phytases sont inactivées. Si en fin de fermentation les flocons sont secs en surface, augmenter l'eau au prochain batch." }
+      ]
+    },
+    {
+      "id": "couvrir",
+      "phase": "Préparation",
+      "title": "Couvrir et placer en fermentation",
+      "blocks": [
+        { "type": "text", "content": "Couvrir d'un torchon ou film percé (pas hermétique). Placer dans la B&T à 25-26°C." },
+        { "type": "tip", "content": "Si pas de germination en cours dans la B&T : monter à 28-30°C pour le cœur du sweet spot. Si germination en cours (pousses de brocoli) : rester à 25-26°C, les pousses tolèrent cette température." }
+      ]
+    },
+    {
+      "id": "fermentation",
+      "phase": "Fermentation",
+      "title": "Fermentation",
+      "blocks": [
+        { "type": "text", "content": "Laisser fermenter sans toucher. Les lactobacilles mésophiles du seigle acidifient progressivement le milieu." },
+        {
+          "type": "checks",
+          "items": [
+            { "condition": "✅ 25-26°C AVEC backslopping (défaut)", "result": "⏱ 16-20h", "color": "#6abf6a" },
+            { "condition": "25-26°C SANS backslopping", "result": "⏱ 24h", "color": "#6abf6a" },
+            { "condition": "22-24°C AVEC backslopping", "result": "⏱ 18-22h", "color": "#77aa77" },
+            { "condition": "22-24°C SANS backslopping", "result": "⏱ 24-30h", "color": "#77aa77" },
+            { "condition": "28-30°C AVEC backslopping (B&T libre)", "result": "⏱ 14-18h", "color": "#6abf6a" },
+            { "condition": "28-30°C SANS backslopping", "result": "⏱ 20-24h", "color": "#6abf6a" },
+            { "condition": "30-33°C AVEC backslopping", "result": "⏱ 12-16h — goûter à 12h", "color": "#ccaa55" },
+            { "condition": "30-33°C SANS backslopping", "result": "⏱ 18-20h — goûter à 18h", "color": "#ccaa55" }
+          ]
+        },
+        { "type": "tip", "content": "Signes normaux : petites bulles, odeur légèrement acide (yaourt/levain). Avec backslopping à 25-26°C, lancer le soir → prêt le lendemain matin/midi. Mettre une alarme à 16h pour le premier contrôle gustatif." }
+      ]
+    },
+    {
+      "id": "controle",
+      "phase": "Fermentation",
+      "title": "Contrôle de maturité",
+      "blocks": [
+        { "type": "text", "content": "Évaluer le résultat." },
+        {
+          "type": "checks",
+          "items": [
+            { "condition": "Bulles, odeur acidulée douce, texture épaisse et immergée", "result": "✅ Prêt — transférer au frigo", "color": "#6abf6a" },
+            { "condition": "Peu d'activité, pas très acide (1er batch sans BS, ou T° < 25°C)", "result": "⏳ Continuer 6-12h (max 48h)", "color": "#ccaa55" },
+            { "condition": "Flocons secs en surface, pas assez d'eau", "result": "↑ Ajouter 50-100ml eau tiède, mélanger, continuer 6h", "color": "#ccaa55" },
+            { "condition": "Goût très acide / vinaigré (fréquent si T° > 30°C pendant 24h)", "result": "⚡ Transférer au frigo immédiatement", "color": "#cc7755" },
+            { "condition": "Moisissure en surface (points noirs/verts/blancs duveteux)", "result": "🚫 Jeter", "color": "#cc5555" },
+            { "condition": "Odeur putride (pas acide — putride)", "result": "🚫 Jeter — contamination bactérienne", "color": "#cc5555" },
+            { "condition": "Texture visqueuse excessive / filante", "result": "🚫 Jeter — pas de backslopping sur ce batch", "color": "#cc5555" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "refrigerer",
+      "phase": "Conservation",
+      "title": "Réfrigérer",
+      "blocks": [
+        { "type": "text", "content": "Transférer dans un contenant en verre avec couvercle. Conservation 4-5 jours au frigo." },
+        { "type": "tip", "content": "L'acidification continue lentement au frigo — batch plus acide au jour 4-5. Normal." }
+      ]
+    },
+    {
+      "id": "consommation",
+      "phase": "Conservation",
+      "title": "Notes de consommation",
+      "blocks": [
+        { "type": "text", "content": "Portion quotidienne : ~110g sec = ~220-250g hydraté. Ajouter au bol du matin." },
+        { "type": "tip", "content": "🔴 Ténébrions en poudre AU MOMENT DE SERVIR — jamais pendant la fermentation (oxydation lipidique en milieu acide).\n🟡 Le germe de blé fermenté est DANS le batch (25g). Pour le seuil cognitif : ajouter ~15g de germe CRU AU MOMENT DE SERVIR.\nLes myrtilles masquent bien l'acidité.\nPincée de bicarbonate si trop acide (détruit un peu de B1 — compromis mineur).\nPsyllium au dîner uniquement — ne pas co-ingérer avec les polyphénols du matin." }
+      ]
+    }
+  ],
+
+  "panels": [
+    {
+      "id": "temp_zones",
+      "icon": "🌡️",
+      "title": "Zones de température",
+      "color": "#8a7a44",
+      "sections": [
+        { "heading": "❄️ < 18°C — Trop froid", "text": "Activité quasi nulle. Fermentation trop lente — au bout de 24h tu n'auras guère plus qu'un trempage. Éviter." },
+        { "heading": "👍 18–24°C — Mésophile lent", "text": "L. plantarum, L. brevis, Leuconostoc (croissance lente). Fermentation fonctionnelle mais lente. Acidification progressive sur 24h. Sans backslopping : 24-30h. Avec backslopping : 18-22h. Acceptable — allonger si sans backslopping." },
+        { "heading": "✅ 25–30°C — Mésophile optimal (recommandé)", "text": "L. plantarum, L. brevis, Leuconostoc, Pediococcus (diversité max.). Sweet spot. Les mésophiles approchent leur taux de croissance maximal, avec une diversité d'espèces maximale. Sans backslopping : 24h. Avec backslopping : 16-20h." },
+        { "heading": "⚠️ 30–33°C — Mésophile chaud", "text": "L. plantarum dominant, L. fermentum, diversité en déclin. L'acidification est rapide. Sans backslopping : 18-20h (goûter à 18h). Avec backslopping : 12-16h (goûter à 12h). Principaux avantages vs 25-30°C : production de GABA et dégradation des avenines maximales." },
+        { "heading": "⚠️ 33–37°C — Transition thermophile", "text": "L. delbrueckii, S. thermophilus apparaissent. Bactéries du yaourt — acidification rapide mais profil enzymatique différent. Peu d'intérêt pour ce protocole. Déconseillé." },
+        { "heading": "🚫 > 40°C — Inactivation enzymatique", "text": "Les phytases du seigle sont inactivées. Perte de l'intérêt principal du protocole. Interdit." }
+      ]
+    },
+    {
+      "id": "temp_explainer",
+      "icon": "🔬",
+      "title": "Pourquoi 25-30°C et pas 20-25°C ?",
+      "color": "#7a9acc",
+      "sections": [
+        { "heading": "Le compromis apparent", "text": "Deux logiques s'opposent en apparence. Logique microbiologie : les mésophiles atteignent leur taux de croissance maximal entre 25 et 35°C. Plus de bactéries = plus d'acide lactique, GABA, exopolysaccharides. Logique phytase : les phytases du seigle ont besoin d'un pH de 5,0-5,5. Si les bactéries acidifient trop vite (30°C), le pH traverse cette fenêtre en quelques heures au lieu de 6-12h." },
+        { "heading": "Pourquoi l'opposition est fausse", "text": "À 30°C, les phytases elles-mêmes sont aussi plus actives (cinétique enzymatique augmente avec la température, tant qu'on reste sous ~40°C). La fenêtre de pH est plus courte en heures, mais le travail par heure est plus élevé. Les deux effets se compensent largement. Et le gain sur la diversité bactérienne, la production de GABA, et la dégradation des protéines (avenines) penche nettement en faveur de 25-30°C." }
+      ]
+    },
+    {
+      "id": "health_matrix",
+      "icon": "📊",
+      "title": "Matrice Durée × Température — Impact nutritionnel",
+      "color": "#6abf6a",
+      "type": "matrix",
+      "matrix": {
+        "row_label": "Durée",
+        "col_label": "Température",
+        "rows": ["24h", "36h", "48h"],
+        "cols": ["25-30°C", "30-33°C"],
+        "cells": {
+          "24h|25-30°C": {
+            "tag": "✅ Sweet spot recommandé",
+            "tag_color": "#6abf6a",
+            "items": [
+              { "nutrient": "Phytates", "reduction": "50-70%", "color": "#6abf6a", "detail": "Phytases exogènes du seigle + acidification progressive → pH optimal maintenu 6-10h. Türk et al. (1996).", "impact": "↑ Absorption fer, zinc, magnésium, calcium." },
+              { "nutrient": "Avenines", "reduction": "15-30%", "color": "#ccaa55", "detail": "Protéolyse bactérienne modérée. Gänzle et al. (2008) : >48h nécessaires pour dégradation significative.", "impact": "↑ Digestibilité modeste." },
+              { "nutrient": "Bêta-glucanes", "reduction": "Intacts ✓", "color": "#6abf6a", "detail": "Polysaccharides structuraux résistants à la fermentation lactique courte.", "impact": "✓ Bénéfices cardiovasculaires préservés." },
+              { "nutrient": "Diversité microbienne", "reduction": "Maximale ✓", "color": "#6abf6a", "detail": "L. plantarum, L. brevis, Leuconostoc, Pediococcus — consortium complet.", "impact": "Spectre enzymatique large → meilleur équilibre." },
+              { "nutrient": "GABA", "reduction": "Production modérée ↑", "color": "#7a9acc", "detail": "L. plantarum produit du GABA via GAD. Activité augmente avec la température (optimum ~30-37°C).", "impact": "Effet anxiolytique/sommeil." },
+              { "nutrient": "Oxalates", "reduction": "20-40%", "color": "#ccaa55", "detail": "Frontela et al. (2011). Peu d'oxalates dans l'avoine de base.", "impact": "Impact pratique faible." }
+            ]
+          },
+          "24h|30-33°C": {
+            "tag": "⚡ Fermentation rapide — raccourcir à 18-20h",
+            "tag_color": "#ccaa55",
+            "items": [
+              { "nutrient": "Phytates", "reduction": "40-60%", "color": "#ccaa55", "detail": "Phytases plus actives (+20-40% cinétique) MAIS pH traverse la fenêtre optimale en 3-5h au lieu de 6-10h. Bilan net : légèrement inférieur à 25-30°C.", "impact": "↑ Absorption minérale, gain un peu moindre qu'à 25-30°C." },
+              { "nutrient": "Avenines", "reduction": "25-40%", "color": "#6abf6a", "detail": "Protéases bactériennes nettement plus actives à 30-33°C. L. plantarum domine.", "impact": "↑↑ Digestibilité protéique — principal avantage de cette plage." },
+              { "nutrient": "Bêta-glucanes", "reduction": "Intacts ✓ (si ≤20h)", "color": "#6abf6a", "detail": "Résistants en 18-20h même à 33°C. Au-delà de 24h, début de fragilisation.", "impact": "✓ OK si on raccourcit. ⚠️ Risque si 24h complètes." },
+              { "nutrient": "Diversité microbienne", "reduction": "Réduite ⚠️", "color": "#ccaa55", "detail": "Leuconostoc et Pediococcus déclinent au-dessus de 30°C. L. plantarum domine.", "impact": "Backslopping crucial à cette température." },
+              { "nutrient": "GABA", "reduction": "Production maximale ↑↑", "color": "#6abf6a", "detail": "GAD de L. plantarum à son optimum entre 30 et 37°C (Di Cagno et al., 2010).", "impact": "↑↑ Principal argument santé en faveur de 30-33°C." },
+              { "nutrient": "Risque sur-acidification", "reduction": "Modéré ⚠️", "color": "#cc7755", "detail": "pH peut descendre sous 3,8-4,0 en 24h. Goûter à 18h.", "impact": "⚠️ Raccourcir. Ne pas laisser 24h par défaut." }
+            ],
+            "warnings": ["Raccourcir à 18-20h sans BS, 12-16h avec BS.", "L'avantage principal vs 25-30°C est le GABA et les avenines — pas les phytates."]
+          },
+          "36h|25-30°C": {
+            "tag": "👍 Bon compromis durée/bénéfices",
+            "tag_color": "#77aa77",
+            "items": [
+              { "nutrient": "Phytates", "reduction": "60-78%", "color": "#6abf6a", "detail": "Gain réel vs 24h, rendements décroissants. Bon choix si B&T à 25-26°C et fermentation lente.", "impact": "↑↑ Absorption minérale significative." },
+              { "nutrient": "Avenines", "reduction": "25-40%", "color": "#6abf6a", "detail": "Protéases continuent. Même principe que le levain longue fermentation.", "impact": "↑↑ Digestibilité nettement améliorée vs 24h." },
+              { "nutrient": "Bêta-glucanes", "reduction": "Intacts à limite ✓", "color": "#77aa77", "detail": "36h = borne haute de sécurité pour les bêta-glucanes à 25-30°C. Début de dégradation vers 36-40h.", "impact": "✓ Probablement préservés. Zone frontière." },
+              { "nutrient": "GABA", "reduction": "Production ↑↑", "color": "#6abf6a", "detail": "12h supplémentaires de production. GAD reste fonctionnelle (pH pas encore sous 3,5).", "impact": "↑↑ Gain significatif vs 24h." }
+            ],
+            "warnings": ["36h = borne haute pour les bêta-glucanes. Avec BS, envisager 24-28h."]
+          },
+          "36h|30-33°C": {
+            "tag": "⚠️ Limite haute — surveiller de près",
+            "tag_color": "#cc7755",
+            "items": [
+              { "nutrient": "Phytates", "reduction": "45-65%", "color": "#ccaa55", "detail": "Phytases ont terminé bien avant 36h. Les 12h supplémentaires n'apportent quasi rien.", "impact": "Pas de gain significatif vs 24h/30-33°C." },
+              { "nutrient": "Avenines", "reduction": "35-55%", "color": "#6abf6a", "detail": "Protéases travaillent bien en milieu très acide et à 30-33°C.", "impact": "↑↑↑ Principal argument en faveur de cette combinaison." },
+              { "nutrient": "Bêta-glucanes", "reduction": "⚠️ Début de dégradation", "color": "#cc7755", "detail": "pH < 3,8 depuis 18-24h + température élevée = hydrolyse acide accélérée.", "impact": "⚠️ Perte partielle des bénéfices cardiovasculaires." },
+              { "nutrient": "GABA", "reduction": "Maximal, plateau", "color": "#6abf6a", "detail": "Déjà maximal à 24h/30-33°C. Pas de gain supplémentaire.", "impact": "Pas d'avantage vs 24h." },
+              { "nutrient": "Amines biogènes", "reduction": "⚠️ Production élevée", "color": "#cc7755", "detail": "36h à 30-33°C = conditions favorables à histamine et tyramine.", "impact": "⚠️ Charge cumulée avec les autres fermentés." }
+            ],
+            "warnings": ["⚠️ Rapport bénéfice/risque défavorable vs 24h/30-33°C ou 36h/25-30°C.", "Le seul gain vs 24h est sur les avenines."]
+          },
+          "48h|25-30°C": {
+            "tag": "Réduction maximale — compromis bêta-glucanes",
+            "tag_color": "#ccaa55",
+            "items": [
+              { "nutrient": "Phytates", "reduction": "70-85%", "color": "#6abf6a", "detail": "Approche le plafond atteignable sans phytases industrielles.", "impact": "Intéressant si bilan sanguin révèle carences Fe/Zn." },
+              { "nutrient": "Avenines", "reduction": "30-50%", "color": "#6abf6a", "detail": "Protéases ont eu le temps d'agir sur les protéines dénaturées par l'acidification.", "impact": "↑↑ Digestibilité protéique significative." },
+              { "nutrient": "Bêta-glucanes", "reduction": "⚠️ Début de dégradation", "color": "#cc7755", "detail": "Les bêta-glucanes commencent à se déstructurer au-delà de 36-40h.", "impact": "⚠️ Perte progressive des bénéfices cardiovasculaires." },
+              { "nutrient": "GABA", "reduction": "Production ↑↑", "color": "#7a9acc", "detail": "Plus de GABA mais aussi plus d'acide acétique et d'amines biogènes.", "impact": "Bénéfices augmentés mais risques accrus." }
+            ],
+            "warnings": ["pH ~3,5-4,0 — goût franchement acide.", "Risque de levures en surface (film blanc) — pas dangereux, retirer.", "⚠️ Au-delà de 48h : bêta-glucanes se dégradent significativement."]
+          },
+          "48h|30-33°C": {
+            "tag": "🚫 Déconseillé — sur-acidification quasi certaine",
+            "tag_color": "#cc5555",
+            "items": [
+              { "nutrient": "Phytates", "reduction": "50-70%", "color": "#ccaa55", "detail": "Paradoxalement INFÉRIEUR au 48h à 25-30°C. Le pH descend sous 4,0 dès 12-15h, inactivant les phytases.", "impact": "Mauvais rapport durée/résultat." },
+              { "nutrient": "Bêta-glucanes", "reduction": "🚫 Dégradation significative", "color": "#cc5555", "detail": "pH très bas + température élevée + durée longue = hydrolyse acide accélérée.", "impact": "🚫 Perte majeure des bénéfices cardiovasculaires." },
+              { "nutrient": "Diversité microbienne", "reduction": "🚫 Effondrée", "color": "#cc5555", "detail": "Monoculture de facto. Seul L. plantarum et quelques levures survivent.", "impact": "Plus aucune diversité de postbiotiques." },
+              { "nutrient": "Amines biogènes", "reduction": "⚠️ Production élevée", "color": "#cc7755", "detail": "48h à 30-33°C = conditions optimales pour histamine et tyramine.", "impact": "⚠️ Quantités plus élevées que toutes les autres combinaisons." }
+            ],
+            "warnings": ["🚫 Combinaison à éviter.", "pH < 3,5 quasi certain.", "Si batch oublié : consommable mais sous-optimal. Reset la flore avec farine de seigle fraîche seule."]
+          }
+        }
+      }
+    },
+    {
+      "id": "spermidine",
+      "icon": "🧬",
+      "title": "Spermidine & germe de blé",
+      "color": "#b8a050",
+      "sections": [
+        { "heading": "Autophagie", "text": "La spermidine est le plus puissant inducteur naturel d'autophagie connu. Madeo et al. (2018, Science) : prolonge la durée de vie chez la levure, la drosophile, le nématode et la souris." },
+        { "heading": "Longévité", "text": "Kiechl et al. (2018, AJCN) : apport alimentaire élevé associé à +5,7 ans d'espérance de vie et réduction mortalité cardiovasculaire. Corrélation concordante avec données animales." },
+        { "heading": "Teneur en spermidine", "text": "Germe de blé : 220-337 μg/g de polyamines totales, spermidine dominante (Mohajeri et al., 2023). 25g/batch (≈5g/jour) : apport estimé 1,0-1,7 mg/jour. Pour le seuil cognitif (≥3,3 mg/jour, Wirth et al. 2018) : approche hybride — 25g fermentés dans le batch + ~15g crus saupoudrés au service." },
+        { "heading": "Stabilité en fermentation", "text": "La spermidine est stable à pH acide — groupes amines protonés. Pas de dégradation significative en 16-24h de fermentation lactique." },
+        { "heading": "⚠️ Oxydation lipidique", "text": "Le germe contient ~10% de lipides (AGPI oméga-6). En milieu aqueux acide, peroxydation possible. À 25g/batch (5-6g/jour) : charge lipidique faible, vitamine E endogène protège. À 80-100g/batch : risque réel. Ne pas dépasser 30g dans le batch. Ne pas dépasser 36h de fermentation quand le germe est dans le batch." }
+      ]
+    },
+    {
+      "id": "schedule",
+      "icon": "📅",
+      "title": "Planning hebdomadaire",
+      "color": "#8a7a44",
+      "sections": [
+        { "heading": "Dim. ~18h", "text": "🫙 Préparer batch 1 + backslopping" },
+        { "heading": "Lun. ~12h", "text": "❄️ Contrôle batch 1 (16-20h) → frigo" },
+        { "heading": "Mar.", "text": "🥣 Consommer batch 1 (jour 2)" },
+        { "heading": "Mer. matin", "text": "🥄 Prélèvement backslopping batch 1" },
+        { "heading": "Mer. ~18h", "text": "🫙 Préparer batch 2 + backslopping" },
+        { "heading": "Jeu. ~12h", "text": "❄️ Contrôle batch 2 (16-20h) → frigo" },
+        { "heading": "Ven.", "text": "🥣 Consommer batch 2 (jour 2)" },
+        { "heading": "Sam.", "text": "🥣 Consommer batch 2 (jour 3)" },
+        { "heading": "Dim.", "text": "🔄 Prélèvement + préparer batch 1 le soir" }
+      ]
+    }
+  ]
+}

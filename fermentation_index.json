@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "protocols": [
+    {
+      "id": "houmous_gaba",
+      "name": "Houmous GABA",
+      "icon": "🫘",
+      "file": "data/houmous_gaba.json",
+      "description": "Pâte de légumineuses fermentée enrichie en GABA + spermidine"
+    },
+    {
+      "id": "flocons_fermentes",
+      "name": "Flocons Fermentés",
+      "icon": "🌾",
+      "file": "data/flocons_fermentes.json",
+      "description": "Avoine + petit épeautre + seigle — fermentation lactique"
+    },
+    {
+      "id": "tempeh",
+      "name": "Tempeh",
+      "icon": "🫘",
+      "file": "data/tempeh.json",
+      "description": "Soja fermenté par Rhizopus oligosporus — APO ou Brod & Taylor"
+    }
+  ]
+}
