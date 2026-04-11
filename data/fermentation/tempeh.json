@@ -1,0 +1,454 @@
+{
+  "meta": {
+    "id": "tempeh",
+    "name": "Tempeh",
+    "icon": "🫘",
+    "version": "1.0.0",
+    "description": "Soja fermenté par Rhizopus oligosporus — APO ou Brod & Taylor",
+    "theme": {
+      "accent": "#5a5aaa",
+      "accentLight": "#1e1e3e",
+      "accentBorder": "#2a2a4a",
+      "bg": "#0d0d14",
+      "headerBg": "rgba(13,13,20,0.92)",
+      "surface": "#16161f",
+      "surfaceAlt": "#111118",
+      "border": "#25253a",
+      "borderActive": "#5a5aaa",
+      "text": "#dddde8",
+      "textMuted": "#8888aa",
+      "textDim": "#6a6a8a",
+      "success": "#6abf6a",
+      "warning": "#ccaa55",
+      "danger": "#cc5555",
+      "info": "#6a8acc",
+      "purple": "#8a6acc"
+    }
+  },
+
+  "config": {
+    "selectors": [
+      {
+        "key": "quantity",
+        "label": "Quantité de soja sec",
+        "options": [
+          { "key": "400g", "label": "400g", "values": { "starter": "1 c.à.c. rase (~2g)", "yield": "~800-900g cuit, 2 bacs" } },
+          { "key": "500g", "label": "500g", "values": { "starter": "1¼ c.à.c. (~2,5g)", "yield": "~1-1,1kg cuit, 2-3 bacs" } },
+          { "key": "750g", "label": "750g", "values": { "starter": "1½ c.à.c. (~3,5g)", "yield": "~1,5-1,6kg cuit, 3-4 bacs" } },
+          { "key": "1kg", "label": "1kg", "values": { "starter": "2 c.à.c. (~4-5g)", "yield": "~2-2,2kg cuit, 4-5 bacs" } }
+        ]
+      },
+      {
+        "key": "cooking",
+        "label": "Cuisson",
+        "options": [
+          { "key": "casserole", "label": "Casserole", "icon": "🍳", "subtitle": "30-45 min" },
+          { "key": "omnicuiseur", "label": "Omnicuiseur", "icon": "♨️", "subtitle": "réglage 2 bas, 60-90 min" }
+        ]
+      },
+      {
+        "key": "variant",
+        "label": "Fermentation",
+        "options": [
+          { "key": "apo", "label": "APO", "icon": "🔥", "description": "Anova Precision Oven — contrôle précis température/humidité/sonde." },
+          { "key": "bt", "label": "B&T", "icon": "🫙", "description": "Brod & Taylor — gestion passive humidité, plus simple." }
+        ]
+      }
+    ],
+    "summary_fields": [
+      { "label": "Starter", "value_key": "quantity.starter" },
+      { "label": "Rendement", "value_key": "quantity.yield" }
+    ],
+    "warnings": [
+      {
+        "type": "info",
+        "icon": "🧼",
+        "title": "Hygiène",
+        "text": "Propre, pas stérile. La sécurité vient du process (pH acide, égouttage, 30°C). Chaque étape affiche son niveau requis."
+      }
+    ]
+  },
+
+  "steps": [
+    {
+      "id": "trempage",
+      "phase": "Préparation",
+      "title": "Trempage",
+      "blocks": [
+        { "type": "text", "content": "Soja dépelliculé bio (Celnat) dans 3 volumes d'eau. 12-24h à température ambiante." },
+        { "type": "tip", "content": "Bulles et odeur acidulée = normal et souhaitable (abaisse le pH)." },
+        { "type": "hygiene", "content": "Basique — saladier/omnicuiseur propre (lavé au savon, rincé). Couvrir d'un torchon propre." }
+      ]
+    },
+    {
+      "id": "cuisson",
+      "phase": "Préparation",
+      "title": "Cuisson",
+      "blocks": [
+        { "type": "text", "content": {
+          "depends_on": "cooking",
+          "values": {
+            "casserole": "Égoutter, rincer, cuire en casserole 30-45 min jusqu'à ce que les graines cèdent sous le doigt mais gardent leur forme.",
+            "omnicuiseur": "Égoutter, rincer, cuire à l'omnicuiseur réglage 2 bas, 60-90 min jusqu'à ce que les graines cèdent sous le doigt mais gardent leur forme."
+          }
+        }},
+        { "type": "tip", "content": "Surcuisson = masse trop humide = cause fréquente d'échec." },
+        { "type": "hygiene", "content": "Aucune précaution spéciale — l'ébullition stérilise le substrat et le récipient." }
+      ]
+    },
+    {
+      "id": "egouttage",
+      "phase": "Préparation",
+      "title": "Égouttage",
+      "blocks": [
+        { "type": "text", "content": "Étaler en couche fine dans le panier vapeur de l'omnicuiseur ou une passoire large. 15-20 min à l'air libre, remuer 1-2 fois." },
+        { "type": "timer", "minutes": 18, "label": "Égouttage" },
+        { "type": "tip", "content": "Test : main sèche après une poignée = OK. Pas collant, pas brillant. Vapeur visible qui cesse = gros de l'eau parti." },
+        { "type": "hygiene", "content": "Modéré — passoire/panier/bac propres (savon + eau chaude). Les mains propres suffisent pour remuer." }
+      ]
+    },
+    {
+      "id": "acidification",
+      "phase": "Préparation",
+      "title": "Acidification",
+      "blocks": [
+        { "type": "text", "content": "Attendre ~35-40°C (tiède, pas chaud). Ajouter 1-2 c.à.s. de vinaigre par kg de soja cuit, mélanger." },
+        { "type": "tip", "content": "Abaisse le pH à ~5 — optimal pour Rhizopus, hostile aux bactéries. Vinaigre blanc distillé = profil plus neutre que cidre." },
+        { "type": "hygiene", "content": "Basique — le vinaigre est lui-même antimicrobien. Cuillère propre." }
+      ]
+    },
+    {
+      "id": "inoculation",
+      "phase": "Préparation",
+      "title": "Inoculation",
+      "blocks": [
+        { "type": "text", "content": "Saupoudrer le starter sur le soja tiède (≤35°C). Quantité : {{quantity.starter}}. Mélanger soigneusement 1-2 min — chaque graine doit être en contact avec du starter." },
+        { "type": "tip", "content": "⚠️ Au-dessus de 35°C les spores meurent. Mélanger 1-2 min — chaque graine doit être en contact avec du starter." },
+        { "type": "hygiene", "content": "Modéré — mains lavées au savon, cuillère propre. Gants stériles = overkill." }
+      ]
+    },
+    {
+      "id": "mise_en_bac",
+      "phase": "Préparation",
+      "title": "Mise en bac",
+      "blocks": [
+        { "type": "text", "content": {
+          "depends_on": "variant",
+          "values": {
+            "apo": "Répartir dans un bac perforé APO. Épaisseur 2-3 cm max (ratio surface/volume = clé de la gestion thermique). Perforer toutes les faces. Couvrir de gaze/cheesecloth humide (pas de charlotte coton imperméable — piège à condensation). Surélever sur baguettes chinoises (5-8mm d'espace sous le bac).",
+            "bt": "Répartir dans un sac à lait végétal ou bac perforé. Épaisseur 2-3 cm. Couvrir de gaze/cheesecloth (pas de charlotte coton). Placer dans le B&T avec une écuelle d'eau plate au fond pour l'humidité."
+          }
+        }},
+        { "type": "tip", "content": "Pas de torchon épais (piège humidité), pas de papier sulfurisé (condensation). Gaze/cheesecloth = idéal (perméable à l'air + retient l'humidité au contact)." },
+        { "type": "hygiene", "content": "Modéré — bacs lavés savon + eau chaude, bien rincés et séchés. Étamine/sac propre (eau bouillante 2 min si réutilisé)." }
+      ]
+    },
+    {
+      "id": "fermentation_start",
+      "phase": "Fermentation",
+      "title": "Lancer la fermentation",
+      "blocks": [
+        { "type": "text", "content": {
+          "depends_on": "variant",
+          "values": {
+            "apo": "APO : sonde 31°C (recommandé), Vapeur, HR 85-90%, ventilation activée. Gaze humide sur le substrat, substrat surélevé sur baguettes.\n\n🌡 Sonde : insérer par un trou du bac perforé, pointe au centre du bloc en épaisseur (~1,5-2 cm). Seuls les 3-5 derniers mm mesurent — positionner la pointe, pas la tige. L'APO s'autorégule automatiquement pendant la phase exothermique.",
+            "bt": "B&T : 30°C, écuelle d'eau, stylo dans couvercle (~1cm d'ouverture). Gaze/cheesecloth (pas charlotte coton). Inverser bacs haut/bas et retourner le bloc à 18-24h."
+          }
+        }},
+        { "type": "text", "content": {
+          "depends_on": "variant",
+          "values": {
+            "apo": "",
+            "bt": ""
+          }
+        }}
+      ]
+    },
+    {
+      "id": "phase1",
+      "phase": "Fermentation",
+      "title": "Phase 1 — Colonisation initiale (0-12h)",
+      "blocks": [
+        { "type": "text", "content": "Rien de visible. Le mycélium germe au niveau microscopique. L'APO chauffe activement — le substrat est inerte thermiquement." },
+        { "type": "tip", "content": "Ne pas ouvrir l'APO inutilement — chaque ouverture perturbe l'équilibre thermique et hydrique. Idéal : lancer le matin (~8h) pour que le pic exothermique tombe le soir (~20-24h plus tard) quand tu es éveillé." },
+        {
+          "type": "guidance",
+          "params": [
+            { "label": "Température", "value": "30°C (air) ou sonde 31°C", "note": "Pas de thermogenèse à ce stade — l'APO chauffe activement." },
+            { "label": "HR", "value": "85-90%", "note": "Gaze humide posée sur le substrat = meilleure protection contre le dessèchement par la ventilation APO." }
+          ],
+          "checks": [
+            { "condition": "Voile blanc entre les graines (12-14h)", "result": "✅ OK — ne rien changer", "color": "#6abf6a" },
+            { "condition": "Surface sèche, graines mates, bords desséchés", "result": "↑ Monter HR à 90-95% + gaze humide", "color": "#ccaa55" },
+            { "condition": "Gouttelettes d'eau sur les graines", "result": "↓ Baisser HR à 80-85%", "color": "#cc7755" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flip",
+      "phase": "Fermentation",
+      "title": "Retournement mi-fermentation (~12-14h)",
+      "blocks": [
+        { "type": "text", "content": "Retourner le bloc (dessous vers le haut) pour égaliser la colonisation. Le dessous reçoit moins d'oxygène et accumule l'humidité → toujours moins colonisé si on ne retourne pas." },
+        { "type": "tip", "content": "Réinsérer la sonde après retournement. Profiter de l'ouverture pour vérifier l'état de la gaze et la ré-humidifier si nécessaire." }
+      ]
+    },
+    {
+      "id": "phase2",
+      "phase": "Fermentation",
+      "title": "Phase 2 — Croissance active (12-28h)",
+      "blocks": [
+        { "type": "text", "content": "Mycélium visible (filaments blancs cotonneux). La masse commence à chauffer — Rhizopus est exothermique." },
+        { "type": "tip", "content": "Phase critique. L'APO ne peut PAS refroidir activement — il peut seulement cesser de chauffer. Si l'exothermie produit plus de chaleur que la ventilation dissipe, la température monte." },
+        {
+          "type": "guidance",
+          "params": [
+            { "label": "Température", "value": "Sonde 31°C ou air 27-28°C", "note": "⚡ Phase exothermique : le tempeh génère +2-4°C au-dessus de l'air ambiant. Si sonde >35°C malgré four éteint : entrouvrir la porte 30s-2 min, refermer." },
+            { "label": "HR", "value": "85-90%", "note": "Le mycélium produit sa propre humidité. Si bords secs → 90-95%. Si condensation sous la gaze → baisser de 5%." }
+          ],
+          "checks": [
+            { "condition": "Mycélium blanc dense, masse tiède au toucher", "result": "✅ OK — maintenir", "color": "#6abf6a" },
+            { "condition": "Sonde 33-35°C, four ne chauffe plus", "result": "⚠️ Zone haute mais acceptable — surveiller", "color": "#ccaa55" },
+            { "condition": "Sonde > 35°C", "result": "🚪 Entrouvrir porte 30s-2 min, refermer", "color": "#cc7755" },
+            { "condition": "Condensation sous la gaze", "result": "↓ Baisser HR 5%, aérer 5 min", "color": "#ccaa55" },
+            { "condition": "Taches noires apparaissent", "result": "⚠️ Sporulation (surchauffe) — récolter", "color": "#cc5555" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overnight",
+      "phase": "Fermentation",
+      "title": "Stratégie overnight",
+      "blocks": [
+        { "type": "text", "content": {
+          "depends_on": "variant",
+          "values": {
+            "apo": "Réglage overnight : APO allumé, sonde 27-28°C, HR 85%, porte fermée, réservoir plein à ras bord.\n\nPourquoi ça marche : le four ne chauffe pas (substrat au-dessus de la cible) mais maintient l'humidité et la ventilation. Le réservoir tient ~24h en mode vapeur.\n\nRisque résiduel : si l'exothermie est encore forte, la température peut monter >35°C sans intervention. Risque faible si le pic est passé (~25h+).\n\nAlternative sûre : sortir au frigo et reprendre le lendemain matin.",
+            "bt": "B&T : vérifier la température et le niveau d'eau avant de dormir. La B&T n'a pas de sonde — utiliser un thermomètre externe si possible. Si impossible de surveiller : frigo + reprise le matin."
+          }
+        }}
+      ]
+    },
+    {
+      "id": "phase3",
+      "phase": "Fermentation",
+      "title": "Phase 3 — Maturation (28-48h)",
+      "blocks": [
+        { "type": "text", "content": "Le bloc doit être entièrement blanc, ferme, les graines solidement liées. Se tient d'un bloc quand soulevé — c'est le test décisif." },
+        { "type": "tip", "content": "Odeur agréable : champignon frais, noisette légère. Odeur ammoniac = contamination → jeter. L'exothermie décline — l'APO reprend la chauffe progressivement." },
+        {
+          "type": "guidance",
+          "params": [
+            { "label": "Température", "value": "Sonde 31°C ou air 27-28°C", "note": "Thermogenèse déclinante. L'APO reprend automatiquement le relais." },
+            { "label": "HR", "value": "85%", "note": "Le mycélium gère son propre microclimat sous la gaze." }
+          ],
+          "checks": [
+            { "condition": "Surface uniformément blanche et dense, bloc tient en un seul morceau", "result": "✅ Prêt — récolter", "color": "#6abf6a" },
+            { "condition": "Bloc tient mais zones clairsemées (surtout dessous)", "result": "⏳ Consommable ou +3-5h pour densifier", "color": "#ccaa55" },
+            { "condition": "Taches noires isolées", "result": "⚠️ Sporulation — récolter maintenant (consommable)", "color": "#cc7755" },
+            { "condition": "Taches colorées (vert, rose)", "result": "🚫 Contamination — jeter", "color": "#cc5555" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recolte",
+      "phase": "Récolte",
+      "title": "Récolte",
+      "blocks": [
+        { "type": "text", "content": "Sortir et réfrigérer immédiatement. Consulter les sections Post-Récolte ci-dessous pour les options de découpe, conservation, cuisson et marinades." },
+        { "type": "tip", "content": "Au frigo (4°C), le Rhizopus entre en dormance totale. Les enzymes (protéases, lipases) restent faiblement actives : le tempeh évolue lentement sur 5-7 jours. Cuire ou congeler rapidement pour stabiliser." }
+      ]
+    }
+  ],
+
+  "panels": [
+    {
+      "id": "thermal",
+      "icon": "🌡️",
+      "title": "Gestion thermique — sonde, exothermie et overnight",
+      "color": "#5a5aaa",
+      "sections": [
+        { "heading": "Courbe exothermique du Rhizopus (sigmoïdale)", "text": "Latence (0-8h) : substrat inerte, quasi pas de chaleur. L'APO chauffe activement.\nExponentielle (8-24h) : colonisation rapide, chaleur croissante. +2-4°C au cœur vs air.\nPic/Plateau (18-28h) : pic de température. Le cœur peut atteindre 35-37°C même si le four ne chauffe plus.\nDéclin (28h+) : substrat colonisé, chaleur diminue. L'APO reprend le relais.\nL'épaisseur du bloc est le facteur principal : 2-3 cm surchauffe beaucoup moins que 4-5 cm." },
+        { "heading": "Seuils critiques", "items": [
+          { "label": "30-33°C cœur", "value": "✅ Optimal", "color": "#6abf6a" },
+          { "label": "33-35°C cœur", "value": "⚠️ Zone de vigilance", "color": "#ccaa55" },
+          { "label": "35-38°C cœur", "value": "⚠️ Sporulation prématurée", "color": "#cc7755" },
+          { "label": "> 40°C cœur", "value": "🚫 Mort du mycélium", "color": "#cc5555" }
+        ]},
+        { "heading": "Limites de l'APO", "text": "✅ Chauffer précisément (±1°C en mode sonde)\n✅ Maintenir l'humidité en enceinte fermée\n✅ Ventiler pour homogénéiser\n❌ Refroidir activement (pas de compresseur)\n❌ Maintenir l'humidité porte ouverte\n❌ Déshumidifier sous l'humidité ambiante" },
+        { "heading": "Mode sonde — fonctionnement", "text": "La sonde mesure la température au point de contact de la pointe uniquement (thermistor dans les 3-5 derniers mm). Le four chauffe l'air jusqu'à ce que la sonde atteigne la cible, puis coupe. Pendant l'exothermie, la sonde dépasse la cible → le four reste éteint. Quand l'exothermie retombe, le four reprend automatiquement." },
+        { "heading": "Reprise après réfrigération", "text": "À 4°C, le Rhizopus entre en dormance totale. Retour APO 30-31°C, HR 85-90%, sonde en place. Réactivation en 1-2h. Prévoir 3-5h sous surveillance. Retourner le bloc (face sous-colonisée vers le haut). Le résultat sera moins homogène qu'une fermentation continue." }
+      ]
+    },
+    {
+      "id": "optimization",
+      "icon": "💡",
+      "title": "Optimisations",
+      "color": "#ccaa55",
+      "sections": [
+        { "heading": "📐 Épaisseur 2-3 cm", "text": "Facteur principal de surchauffe. 2-3 cm surchauffe beaucoup moins que 4-5 cm (ratio surface/volume)." },
+        { "heading": "🔄 Retourner à 12-14h", "text": "Le dessous est toujours moins colonisé (moins d'O₂, plus d'humidité). Retourner égalise la colonisation." },
+        { "heading": "⬆️ Surélever le substrat", "text": "Baguettes chinoises (5-8mm d'espace) + gaze par-dessus." },
+        { "heading": "🧻 Gaze humide sur le dessus", "text": "Mimétisme de la feuille de bananier indonésienne. Crée un microclimat humide en surface." },
+        { "heading": "⏰ Démarrer le matin", "text": "Lancer à ~8h → pic exothermique le soir quand tu es éveillé et peux intervenir." },
+        { "heading": "✂️ Deux blocs fins > un gros", "text": "Plus de surface exposée, meilleure dissipation thermique." },
+        { "heading": "🕳️ Perforer toutes les faces", "text": "Dessus, dessous, côtés. Meilleur échange thermique et gazeux." },
+        { "heading": "💧 HR 90-95% si bords secs", "text": "La ventilation forcée APO sèche les surfaces plus vite qu'un environnement statique." }
+      ]
+    },
+    {
+      "id": "cutting",
+      "icon": "🔪",
+      "title": "Découpe",
+      "color": "#6a8acc",
+      "intro": "Le tempeh frais se coupe mieux que le congelé. Le tempeh cuit se coupe mieux que le cru. Trancher à la récolte en portions de ~150g.",
+      "sections": [
+        { "heading": "📄 Tranches fines (3-5 mm)", "text": "Croustillant maximal. Chips/jerky de tempeh. Chaleur sèche ou déshydratation." },
+        { "heading": "📏 Tranches standard (8-12 mm)", "text": "Format polyvalent. Bon ratio croûte/intérieur. Tous profils de cuisson." },
+        { "heading": "📐 Tranches épaisses (1,5-2 cm)", "text": "Intérieur moelleux. Format « steak de tempeh ». Vapeur + sec, combiné, basse temp." },
+        { "heading": "🧱 Pavés (3-4 cm)", "text": "Braisé ou vapeur longue. Absorbe un bouillon en profondeur." },
+        { "heading": "🔲 Cubes (1-2 cm)", "text": "Sauté, curry, bowl. Plus de surface → plus de Maillard par gramme." },
+        { "heading": "🥢 Allumettes (1×1×5 cm)", "text": "Stir-fry, « lardons végétaux » dans salade tiède." },
+        { "heading": "🤏 Émietté", "text": "Au doigt ou à la fourchette (pas au couteau — suit les lignes du mycélium). Haché végétal : bolognaise, farce, chili." },
+        { "heading": "🧀 Râpé épais (Thermomix)", "text": "« Parmesan de tempeh » séché au four. Condiment 2-4 semaines en bocal." }
+      ]
+    },
+    {
+      "id": "conservation",
+      "icon": "❄️",
+      "title": "Conservation",
+      "color": "#6a8acc",
+      "sections": [
+        { "heading": "❄️ Frigo — Cru (5-7j)", "text": "Rhizopus en dormance mais enzymes faiblement actives. Meilleur les 2-3 premiers jours. Contenant hermétique ou film avec petit passage d'air." },
+        { "heading": "⭐ Frigo — Cuit (6-7j, recommandé)", "text": "Enzymes dénaturées, produit biologiquement inerte. Meilleure option pour le batch-cooking de la semaine. Texture constante." },
+        { "heading": "🧊 Congélation — Cru (3-6 mois)", "text": "Texture au dégel légèrement plus friable/poreuse (cristaux de glace). Absorbe mieux les marinades après décongélation. Congeler à plat, max d'air expulsé." },
+        { "heading": "⭐ Congélation — Cuit (3-6 mois, recommandé)", "text": "Texture résiste mieux au cycle congélation-décongélation. Le plus « meal-prep » : sortir → réchauffer." },
+        { "heading": "♨️ Blanching vapeur (pré-traitement)", "text": "APO 100°C, HR 100%, 5-10 min. Tue le Rhizopus + dénature toutes les enzymes. Utile si marinade + stockage frigo plusieurs jours." },
+        { "heading": "🥓 Déshydratation / jerky", "text": "Trancher fin (2-3 mm), mariner (tamari + épices), APO 65-70°C, HR 0%, 4-6h. Conservation 2-4 semaines ambiante." },
+        { "heading": "Décongélation", "text": "Frigo 12-24h (préférable). Ou directement du congélateur à l'APO en chaleur sèche (+5-8 min au temps de cuisson)." }
+      ]
+    },
+    {
+      "id": "cooking_profiles",
+      "icon": "🔥",
+      "title": "Cuisson APO — profils",
+      "color": "#cc7755",
+      "intro": "Tous calibrés pour un batch complet (500-700g) en tranches de ~1 cm, une seule couche. Huiler = badigeonner d'huile d'olive avant cuisson sauf mention contraire.",
+      "recipes": [
+        { "name": "Vapeur pure", "icon": "💨", "color": "#6a8acc", "timing": "100°C, HR 100%, 15-20 min", "gaba": null, "spd": "Rétention max",
+          "ingredients": "Pas d'huile", "method": "Texture fondante, presque crémeuse. Aucun brunissement. Canvas neutre — prend n'importe quel assaisonnement au réchauffage.",
+          "note": "Polyvalence maximale pour assaisonnement variable au quotidien. Mode le plus pro-spermidine." },
+        { "name": "Vapeur + chaleur sèche (recommandé)", "icon": "💨🔥", "color": "#6abf6a", "timing": "100°C HR 100% 10 min → 200-210°C HR 0% 8-12 min", "gaba": null, "spd": "Bonne rétention",
+          "ingredients": "Huiler entre les deux étapes", "method": "Vapeur cuisson à cœur, puis chaleur sèche Maillard en surface. Meilleur contraste croûte fine / intérieur moelleux.",
+          "note": "Meilleur compromis texture/saveur. Profil par défaut recommandé." },
+        { "name": "Combiné", "icon": "🔄", "color": "#ccaa55", "timing": "190°C, HR 20-30%, 20-25 min", "gaba": null, "spd": "Rétention modérée",
+          "ingredients": "Huiler, retourner à mi-cuisson", "method": "Vapeur résiduelle empêche le dessèchement intérieur. Brunissement uniforme. Une seule étape.",
+          "note": "Plus simple que vapeur+sec." },
+        { "name": "Rôti sec", "icon": "🔥", "color": "#cc7755", "timing": "200-210°C, HR 0%, 25-30 min", "gaba": null, "spd": "Pertes surface",
+          "ingredients": "Huiler, retourner à mi-cuisson", "method": "Croûte épaisse, presque craquante, intérieur ferme et sec. Saveur noisettée prononcée.",
+          "note": "Bonne tenue au frigo. Se réchauffe bien." },
+        { "name": "Basse température", "icon": "🌡️", "color": "#aa88cc", "timing": "75-80°C, HR 50-60%, 45-60 min", "gaba": null, "spd": "Rétention haute",
+          "ingredients": "Pas d'huile", "method": "Approche sous-vide-like sans sachet. Texture crémeuse, inhabituelle. Peut être suivi d'un flash à 220°C 5 min pour le Maillard.",
+          "note": "⚠️ Expérimental — tester sur une portion." },
+        { "name": "Confit basse HR", "icon": "✨", "color": "#cc9977", "timing": "150°C, HR 10-15%, 30-40 min", "gaba": null, "spd": "Rétention modérée",
+          "ingredients": "Huiler, retourner à mi-cuisson", "method": "Entre le rôti et le séchage. Dense, mâchu, concentré. Maillard progressif. Fonctionne très bien avec tamari.",
+          "note": "Bonne option pour varier les textures." },
+        { "name": "Déshydratation / chips", "icon": "🥓", "color": "#aa7755", "timing": "65-70°C, HR 0%, 4-6h", "gaba": null, "spd": "Pertes élevées",
+          "ingredients": "Tranches 2-3 mm, pas d'huile", "method": "Produit sec, croquant, très concentré en protéines. Conservation 2-4 semaines en bocal.",
+          "note": "Snack/condiment, pas composant de repas principal (volume insuffisant pour 150g/jour)." }
+      ]
+    },
+    {
+      "id": "other_cooking",
+      "icon": "🍳",
+      "title": "Autres méthodes de cuisson",
+      "color": "#ccaa55",
+      "sections": [
+        { "heading": "Air-fry (Ninja Foodi)", "text": "190°C, 12-18 min, secouer à mi-cuisson. Spray d'huile. Croustillant comparable à la friture. Plus rapide que l'APO pour petites quantités." },
+        { "heading": "Braisé (Ninja Foodi ou APO)", "text": "Cubes dans bouillon/sauce (curry, tomate, coco). 160-170°C, 30-45 min couvert. Le tempeh absorbe la sauce comme une éponge." },
+        { "heading": "Poêle", "text": "Huile d'olive, feu moyen-vif, 3-4 min par face (1 cm). Maillard le plus intense. Usage ponctuel, pas un mode batch." },
+        { "heading": "Friture (immersion)", "text": "Huile 170-180°C, 3-5 min. Tempeh goreng traditionnel. Le plus calorique (tempeh poreux absorbe l'huile). Pas cohérent avec les objectifs de composition corporelle sauf usage occasionnel." }
+      ]
+    },
+    {
+      "id": "marinades",
+      "icon": "🫙",
+      "title": "Marinades",
+      "color": "#aa88cc",
+      "intro": "Dosées pour 500-700g de tempeh (1 cm d'épaisseur). Temps de marinade min. 30 min, idéal 1-2h (au-delà de 2h le gain est marginal).",
+      "recipes": [
+        { "name": "Asiatique classique", "icon": "🥢", "color": "#ccaa55", "timing": "Tous profils",
+          "ingredients": "Tamari 3 c.à.s. · huile de sésame grillé 1 c.à.s. · gingembre frais râpé 1 c.à.c. · ail 1 gousse · vinaigre de riz 1 c.à.c.",
+          "method": "Le standard. L'umami du tamari + saveur noisettée du tempeh. Gingembre = hépatoprotecteur (NF-κB). Bonne conservation frigo (sel du tamari).",
+          "note": null },
+        { "name": "Indonésienne", "icon": "🌶️", "color": "#cc7755", "timing": "Combiné ou rôti sec",
+          "ingredients": "Kecap manis 2 c.à.s. · jus de citron vert 2 c.à.s. · ail 2 gousses · coriandre moulue 1 c.à.c. · curcuma frais 1 c.à.c. · piment",
+          "method": "Marinade traditionnelle du tempeh goreng. Curcuma = anti-inflammatoire. ⚠️ Kecap manis contient du sucre (~5g/c.à.s.).",
+          "note": null },
+        { "name": "Méditerranéenne", "icon": "🫒", "color": "#6abf6a", "timing": "Vapeur + sec ou combiné",
+          "ingredients": "Huile d'olive 2 c.à.s. · jus de citron 2 c.à.s. · ail 2 gousses · origan 1 c.à.c. · thym ½ c.à.c. · paprika fumé 1 c.à.c. · sel ½ c.à.c.",
+          "method": "La plus cohérente avec le profil du repas 2. Le paprika fumé apporte une profondeur que le tempeh capte bien. Le citron attendrit la surface.",
+          "note": null },
+        { "name": "Miso-gingembre", "icon": "🍶", "color": "#aa88cc", "timing": "Combiné (HR 20-30%)",
+          "ingredients": "Miso blanc 1,5 c.à.s. · mirin 1 c.à.s. · huile de sésame 1 c.à.s. · gingembre frais 2 c.à.c. · eau",
+          "method": "Fermenté sur fermenté = charge umami exceptionnelle. Miso blanc moins salé que le rouge. ⚠️ Le miso brûle facilement → profil combiné.",
+          "note": null },
+        { "name": "Chermoula", "icon": "🌿", "color": "#6a8acc", "timing": "Vapeur + sec ou rôti sec",
+          "ingredients": "Coriandre fraîche 1 bouquet · persil ½ bouquet · ail 2 gousses · cumin 1 c.à.c. · paprika 1 c.à.c. · jus de citron 3 c.à.s. · huile d'olive 2 c.à.s. Mixer grossièrement.",
+          "method": "Marinade épaisse → croûte aromatique à la cuisson. Cumin = carminatif. Herbes fraîches = vitamine K1, folates. Conservation frigo plus courte (3-4j).",
+          "note": null },
+        { "name": "Cacahuète-sriracha", "icon": "🥜", "color": "#cc9977", "timing": "Combiné 180°C HR 20%",
+          "ingredients": "Purée de cacahuète 2 c.à.s. · tamari 1 c.à.s. · sriracha 1-2 c.à.c. · jus de citron vert 1 c.à.s. · eau chaude 2 c.à.s.",
+          "method": "Plus une sauce qu'une marinade — coate en couche épaisse qui caramélise. +8g lipides +4g protéines par portion. Éviter au dîner (lipides + épicé = reflux).",
+          "note": null },
+        { "name": "Balsamique-moutarde", "icon": "🍷", "color": "#8a6acc", "timing": "Rôti sec ou combiné",
+          "ingredients": "Vinaigre balsamique 2 c.à.s. · moutarde de Dijon 1 c.à.s. · huile d'olive 1 c.à.s. · sirop d'érable ½ c.à.c. (opt.) · ail 1 gousse · poivre noir",
+          "method": "L'acidité du balsamique + la moutarde créent un glacé à la cuisson. Le sucre résiduel du balsamique accentue le Maillard.",
+          "note": null }
+      ]
+    },
+    {
+      "id": "batch_circuits",
+      "icon": "📦",
+      "title": "Circuits batch-cooking",
+      "color": "#6abf6a",
+      "sections": [
+        { "heading": "⚡ Express (recommandé)", "text": "Récolte → trancher 1 cm → cuisson batch APO (vapeur + sec) → frigo hermétique → réchauffage quotidien 2-3 min. Surplus → congélation directe crue en portions." },
+        { "heading": "🫙 Mariné", "text": "Récolte → trancher → mariner 1-2h → cuisson batch APO → frigo hermétique. Plus de saveur, moins de flexibilité quotidienne." },
+        { "heading": "🔀 Mixte (recommandé)", "text": "Récolte → trancher → moitié cuisson neutre (vapeur + sec) pour la semaine → moitié congélation crue pour les semaines suivantes. Le stock congelé se cuit au moment de la décongélation — varier les profils." },
+        { "heading": "📦 Meal-prep avancé", "text": "Récolte → trancher → mariner avec 2-3 marinades différentes → cuisson batch APO → frigo en contenants séparés par marinade." },
+        { "heading": "🥓 Condiment", "text": "Récolte → trancher fin (3 mm) → marinade tamari → déshydratation APO 65-70°C, 4-6h → bocal hermétique. En complément du circuit principal." }
+      ]
+    },
+    {
+      "id": "spermidine",
+      "icon": "🧬",
+      "title": "Spermidine & Tempeh",
+      "color": "#8a6acc",
+      "intro": "Le tempeh est l'une des meilleures sources alimentaires de spermidine — un inducteur d'autophagie cellulaire lié à la longévité (Madeo et al. 2018, Science).",
+      "sections": [
+        { "heading": "Teneur du soja sec", "text": "12,8–20,7 mg/100g de spermidine (Okamoto 1997 ; Kalač 2014). Variabilité énorme — dépend du cultivar (r = 0,95), conditions de culture, stockage." },
+        { "heading": "Teneur du tempeh", "text": "5,4–10,9 mg/100g (Muñoz-Esparza 2021). La fourchette reflète les variations de souche Rhizopus, durée et température. À 150g/jour → 8–16 mg de spermidine." },
+        { "heading": "Cuisson & rétention", "text": "Sous-vide/vapeur : ~96-100% rétention. Micro-ondes : ~81-100%. Grillage/poêle : ~66-90%. Ébullition : ~63-100% (94% récupérable dans le bouillon). Vapeur APO = mode le plus pro-spermidine. Recommandation : batch vapeur + flash poêle au réchauffage." },
+        { "heading": "Objectif quotidien", "text": "Cible ≥20 mg/jour (Greger). Seuil Bruneck ≥12 mg/jour (-24% mortalité). Tempeh vapeur 150g (8-16 mg) + germe de blé 15g (3-5 mg) + houmous GABA 75g (3-4,5 mg) + graines courge 20g (1-1,5 mg) + divers (2-3 mg) = ~17-30 mg/jour." }
+      ],
+      "recipes": [
+        { "name": "Bowl R2 spermidine max", "icon": "🥣", "color": "#6abf6a", "timing": "R2 (12h30)", "spd": "~18-28 mg",
+          "ingredients": "Tempeh vapeur 150g · 3 œufs · ténébrions poudre · légumes vapeur (brocoli 100g, chou-fleur 100g) · germe de blé 10g saupoudré après cuisson · filet de citron",
+          "method": "Tempeh cuit batch en vapeur APO. Légumes vapeur séparément. Assembler, saupoudrer germe de blé cru.",
+          "note": "Le germe de blé cru sur le tempeh chaud = pas de dégradation (<60°C). Brocoli et chou-fleur retiennent ~100% de leur spermidine quelle que soit la cuisson." },
+        { "name": "Tempeh mariné vapeur-flash", "icon": "⚡", "color": "#6a8acc", "timing": "Quotidien", "spd": "~10-16 mg",
+          "ingredients": "Tempeh 150g tranché 1 cm · marinade au choix",
+          "method": "1. Batch vapeur APO (100°C, HR 100%, 15-20 min). 2. Frigo. 3. Au repas : mariner 15-30 min + poêle inox 2-3 min par face.",
+          "note": "~90-95% spermidine préservée (Maillard ne touche que la surface). Meilleur compromis spermidine/saveur." },
+        { "name": "Tempeh-houmous GABA bowl", "icon": "🫘", "color": "#aa88cc", "timing": "R2", "spd": "~14-21 mg",
+          "ingredients": "Tempeh vapeur 150g · houmous GABA 75g · légumes vapeur · graines de courge 15g",
+          "method": "Tempeh vapeur tranché + houmous en dip + légumes vapeur. Graines de courge saupoudrées.",
+          "note": "Double fermentation = double spermidine + GABA. L'houmous apporte aussi protéines partiellement hydrolysées." }
+      ]
+    }
+  ]
+}

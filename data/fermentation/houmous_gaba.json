@@ -1,0 +1,434 @@
+{
+  "meta": {
+    "id": "houmous_gaba",
+    "name": "Houmous GABA",
+    "icon": "🫘",
+    "version": "1.0.0",
+    "description": "Pâte de légumineuses fermentée enrichie en GABA + spermidine",
+    "theme": {
+      "accent": "#aa8833",
+      "accentLight": "#1e1a12",
+      "accentBorder": "#3a2a1a",
+      "bg": "#0d0d14",
+      "headerBg": "rgba(13,13,20,0.92)",
+      "surface": "#16161f",
+      "surfaceAlt": "#111118",
+      "border": "#25253a",
+      "borderActive": "#aa8833",
+      "text": "#dddde8",
+      "textMuted": "#8888aa",
+      "textDim": "#6a6a8a",
+      "success": "#6abf6a",
+      "warning": "#ccaa55",
+      "danger": "#cc5555",
+      "info": "#6a8acc",
+      "purple": "#8a6acc"
+    }
+  },
+
+  "config": {
+    "selectors": [
+      {
+        "key": "substrat",
+        "label": "Substrat",
+        "options": [
+          {
+            "key": "pois_chiche",
+            "label": "Pois chiche pur",
+            "icon": "🫘",
+            "subtitle": "SPD : ~4–6 mg/100g",
+            "description": "Substrat validé par Coda et al. 2010. Meilleur rendement GABA parmi les légumineuses testées."
+          },
+          {
+            "key": "blend",
+            "label": "Blend soja + pois chiche",
+            "icon": "🫘🫛",
+            "subtitle": "SPD : ~6–10 mg/100g",
+            "description": "Soja = plus de glutamate endogène (libération prolongée par protéases). Spermidine nettement supérieure. Goût plus prononcé — tester avant de commiter."
+          }
+        ]
+      },
+      {
+        "key": "quantity",
+        "label": "Quantité",
+        "options": [
+          {
+            "key": "300g",
+            "label": "300g farine",
+            "values": {
+              "water": "450–500 ml",
+              "yield": "~700–750g pâte (7–10 portions de 75g)",
+              "msg": "3g",
+              "p5p": "~10 mg (½ gélule 25mg)",
+              "sugar": "3g",
+              "kombu": "1 morceau ~3g (3×3 cm)",
+              "plantarum": "1 gélule (~10 Mrd UFC)",
+              "flour_half": "150g",
+              "flour_full": "300g"
+            }
+          },
+          {
+            "key": "500g",
+            "label": "500g farine",
+            "values": {
+              "water": "750–850 ml",
+              "yield": "~1,2–1,3 kg pâte (12–17 portions de 75g)",
+              "msg": "5g",
+              "p5p": "~15 mg (⅔ gélule 25mg)",
+              "sugar": "5g",
+              "kombu": "1 morceau ~5g (5×5 cm)",
+              "plantarum": "2 gélules (~20 Mrd UFC)",
+              "flour_half": "250g",
+              "flour_full": "500g"
+            }
+          }
+        ]
+      }
+    ],
+    "warnings": [
+      {
+        "type": "danger",
+        "icon": "⚠️",
+        "title": "Sécurité",
+        "text": "Pasteurisation 90°C/10 min non négociable. pH <4,5 à 24h obligatoire. Contrôle pH = outil de sécurité critique. En cas de doute → jeter."
+      }
+    ],
+    "summary_fields": [
+      { "label": "Rendement", "value_key": "quantity.yield" },
+      { "label": "L. plantarum 299v", "value_key": "quantity.plantarum" }
+    ]
+  },
+
+  "steps": [
+    {
+      "id": "prep_farine",
+      "phase": "Préparation",
+      "title": "Préparation de la farine",
+      "blocks": [
+        {
+          "type": "text",
+          "content": {
+            "depends_on": "substrat",
+            "values": {
+              "blend": "Blend 50/50 : moudre {{quantity.flour_half}} de soja Celnat dépelliculé sec au Thermomix (vitesse 10, 30–60s). Mélanger avec {{quantity.flour_half}} de farine de pois chiche bio. Moudre seulement la quantité nécessaire (rancissement rapide du soja cru moulu).",
+              "pois_chiche": "Utiliser {{quantity.flour_full}} de farine de pois chiche bio (Markal, Celnat ou Priméal en Biocoop). Prête à l'emploi."
+            }
+          }
+        },
+        {
+          "type": "tip",
+          "content": "Si blend soja : moudre le soja Celnat dépelliculé sec au Thermomix (vitesse 10, 30–60s) juste avant utilisation. Ne pas stocker la farine de soja crue (rancit vite, lipases actives). La farine de pois chiche se conserve normalement."
+        },
+        { "type": "hygiene", "content": "Basique — bol Thermomix propre, farines bio." }
+      ]
+    },
+    {
+      "id": "melange",
+      "phase": "Préparation",
+      "title": "Mélange farine + eau",
+      "blocks": [
+        { "type": "text", "content": "Verser {{quantity.water}} d'eau dans le bol Thermomix. Ajouter la farine. Mixer vitesse 4-5, 30 secondes. Viser une consistance de houmous épais." },
+        { "type": "tip", "content": "Viser la consistance d'un houmous épais / pâte à crêpes épaisse. Trop sec = fermentation hétérogène, zones mortes. Trop liquide = stratification. Ratio hydratation : ~1:1,5 à 1:1,7 (farine:eau)." },
+        { "type": "hygiene", "content": "Basique — Thermomix propre." }
+      ]
+    },
+    {
+      "id": "pasteurisation",
+      "phase": "Préparation",
+      "title": "Pasteurisation (90°C / 10 min)",
+      "blocks": [
+        { "type": "text", "content": "Thermomix 90°C, vitesse 1-2, 10 minutes. Non négociable — dénature lectines, inhibiteurs de trypsine, tue les cellules végétatives de B. cereus. Les spores survivent mais l'acidification rapide par L. plantarum empêchera leur germination." },
+        { "type": "timer", "minutes": 10, "label": "Pasteurisation" },
+        { "type": "tip", "content": "⚠️ Ne pas sauter cette étape même si la farine est « précuite ». Les farines crues (surtout soja) contiennent des antinutritionnels actifs et des spores de B. cereus qui survivent à la mouture." },
+        { "type": "hygiene", "content": "L'ébullition stérilise le mélange. Aucune précaution supplémentaire." }
+      ]
+    },
+    {
+      "id": "refroidissement",
+      "phase": "Préparation",
+      "title": "Refroidissement à 38°C",
+      "blocks": [
+        { "type": "text", "content": "Laisser refroidir couvercle Thermomix entrouvert, remuer de temps en temps (vitesse 1 intermittent). Objectif : 38°C maximum. Au-dessus de 45°C → les probiotiques meurent. En dessous de 30°C → acceptable mais plus lent." },
+        { "type": "timer", "minutes": 20, "label": "Refroidissement" },
+        { "type": "tip", "content": "Le Thermomix n'a pas de fonction de refroidissement actif. Compter 15–25 min selon la quantité. Accélérer en posant un torchon humide autour du bol." },
+        { "type": "hygiene", "content": "Modéré — à partir de cette étape, le mélange est un milieu de culture. Cuillère propre pour remuer." }
+      ]
+    },
+    {
+      "id": "inoculation",
+      "phase": "Préparation",
+      "title": "Inoculation",
+      "blocks": [
+        { "type": "text", "content": "Confirmer : température ≤38°C (tiède, pas chaud). Ajouter les ingrédients dans l'ordre ci-dessous. Les 3 premiers supportent la chaleur (ajoutables dès 45°C). Les 2 derniers sont thermosensibles — attendre ≤38°C." },
+        {
+          "type": "ingredient_cards",
+          "groups": [
+            {
+              "label": null,
+              "items": [
+                {
+                  "name": "MSG (glutamate monosodique)",
+                  "icon": "🧂",
+                  "quantity": "{{quantity.msg}}",
+                  "heat_sensitive": false,
+                  "what": "Le « carburant » du protocole. La GAD (l'enzyme bactérienne qui produit le GABA) prend une molécule de glutamate et la convertit en GABA. Sans glutamate libre, les bactéries n'ont presque rien à convertir (2–10 mg au lieu de 50–100+ mg de GABA).",
+                  "where": "Épicerie asiatique (marque Ajinomoto, sachet rouge) ou en ligne."
+                },
+                {
+                  "name": "Sucre (glucose ou sucrose)",
+                  "icon": "🍬",
+                  "quantity": "{{quantity.sugar}}",
+                  "heat_sensitive": false,
+                  "what": "L'accélérateur de démarrage pour L. plantarum. Les bactéries consomment le sucre en priorité et produisent de l'acide lactique rapidement, faisant chuter le pH sous 4,5 en <24h. Cette acidification rapide est la barrière de sécurité principale contre B. cereus.",
+                  "where": "Sucre de cuisine classique."
+                },
+                {
+                  "name": "Kombu séché",
+                  "icon": "🌿",
+                  "quantity": "{{quantity.kombu}}",
+                  "heat_sensitive": false,
+                  "what": "Algue japonaise naturellement très riche en glutamate libre (~1,5–3g pour 10g). Deuxième source de glutamate, complémentaire au MSG : le kombu libère son glutamate progressivement pendant la fermentation (libération prolongée), tandis que le MSG est immédiatement disponible (bolus). À retirer avant portionnement.",
+                  "where": "Rayon japonais en magasin bio (Clearspring bio) ou épicerie asiatique."
+                }
+              ]
+            },
+            {
+              "label": "⚠️ À partir d'ici : température ≤38°C obligatoire. Au-dessus → bactéries mortes, cofacteur dénaturé.",
+              "label_type": "danger",
+              "items": [
+                {
+                  "name": "P-5-P (pyridoxal-5'-phosphate)",
+                  "icon": "💊",
+                  "quantity": "{{quantity.p5p}}",
+                  "heat_sensitive": true,
+                  "what": "La forme active de la vitamine B6. C'est le cofacteur de la GAD : sans P-5-P, l'enzyme ne fonctionne pas même avec tout le glutamate du monde. C'est comme une clé qui permet à l'enzyme de tourner. Dosage : ouvrir la gélule en tirant les deux moitiés (elles s'emboîtent comme un capuchon de stylo), verser environ la moitié dans le mélange. Refermer la demi-gélule restante, la garder dans un petit pot fermé à l'abri de la lumière (photolabile). 1 gélule de 25 mg = 2 batches.",
+                  "where": "Gélules P-5-P 25 mg : Nutrimuscle, Solgar, Now Foods — en ligne ou parapharmacie."
+                },
+                {
+                  "name": "L. plantarum 299v",
+                  "icon": "🦠",
+                  "quantity": "{{quantity.plantarum}}",
+                  "heat_sensitive": true,
+                  "what": "La bactérie qui fait tout le travail : elle possède la GAD (production de GABA), produit l'acide lactique (sécurité alimentaire), et fermente le substrat. Ouvrir la/les gélule(s) et verser la poudre dans le mélange tiède.",
+                  "where": "Probiotique en gélules mentionnant explicitement « Lactobacillus plantarum 299v ». Marques : Probi LP299V, ou toute marque listant cette souche spécifique."
+                }
+              ]
+            }
+          ],
+          "footer": "Mélanger 30 secondes vitesse 2 au Thermomix, puis transférer en bocaux."
+        },
+        { "type": "hygiene", "content": "Modéré — mains propres, gélules ouvertes proprement." }
+      ]
+    },
+    {
+      "id": "transfert",
+      "phase": "Préparation",
+      "title": "Transfert en bocaux",
+      "blocks": [
+        { "type": "text", "content": "Répartir dans des bocaux Le Parfait (500 ml idéal). Remplir aux ¾ max (laisser de l'espace pour le CO₂). Couvrir lâchement — torchon propre ou couvercle posé sans clips. Pas hermétique à ce stade." },
+        { "type": "tip", "content": "Les bocaux Le Parfait avec joint caoutchouc sont idéaux — le joint permet une surpression légère de s'échapper si nécessaire. À ce stade, couvercle SANS clips (pas hermétique)." },
+        { "type": "hygiene", "content": "Modéré — bocaux lavés eau chaude + savon, rincés, séchés. Eau bouillante 2 min si doute." }
+      ]
+    },
+    {
+      "id": "fermentation",
+      "phase": "Fermentation",
+      "title": "Fermentation aérobie (48h à 35°C)",
+      "blocks": [
+        { "type": "text", "content": "Bocaux dans le Brod & Taylor à 35°C, couvercle lâche. La fermentation par L. plantarum 299v abaisse le pH progressivement. Le GABA est produit par la glutamate décarboxylase (GAD) bactérienne, dont l'activité est optimale à pH 4,0–5,0 et 30–35°C." },
+        { "type": "tip", "content": "Laisser fermenter sans intervenir. Le mélange va développer une odeur acidulée, légèrement umami — normale. Odeur putride ou de moisi = contamination → jeter. Ne pas remuer pendant la fermentation (la stratification naturelle est OK)." }
+      ]
+    },
+    {
+      "id": "ph_check",
+      "phase": "Fermentation",
+      "title": "Contrôle pH à 24h",
+      "safety_critical": true,
+      "blocks": [
+        { "type": "text", "content": "Vérifier le pH avec bandelettes. Objectif : en descente vers 5,0 ou moins. Si encore au-dessus de 5,5, ajouter une pincée d'acide citrique." },
+        { "type": "tip", "content": "⚠️ pH critique : si le pH n'a PAS atteint 4,5 à 24h → jeter le batch. Risque B. cereus. L'inoculation lourde en L. plantarum + le sucre doivent assurer une descente rapide. Un échec signale un problème de viabilité des probiotiques (trop chauds à l'inoculation ?) ou une contamination." },
+        { "type": "hygiene", "content": "Basique — bandelette propre, toucher le minimum." }
+      ]
+    },
+    {
+      "id": "fin_fermentation",
+      "phase": "Fermentation",
+      "title": "Fin de fermentation (48h)",
+      "blocks": [
+        { "type": "text", "content": "La pâte doit sentir l'acidulé/yaourt avec des notes umami. Texture crémeuse-épaisse, légèrement bullée en surface. pH cible : 3,8–4,5." },
+        { "type": "tip", "content": "Si pH > 4,5 à 48h et odeur normale → prolonger 6–12h. Si pH < 3,5 → sur-acidification, l'activité GAD diminue mais le produit est safe et consommable (juste plus acide)." }
+      ]
+    },
+    {
+      "id": "anaerobie",
+      "phase": "Phase anaérobie",
+      "title": "Phase anaérobie GABA boost (6–24h)",
+      "blocks": [
+        { "type": "text", "content": "Fermer hermétiquement les bocaux (clips Le Parfait). Remettre dans le B&T à 35°C pendant 6–24h. L'anaérobiose active la GAD sous stress, multipliant potentiellement le GABA ×4–12 (Watanabe et al. 2003)." },
+        { "type": "tip", "content": "Les bocaux Le Parfait classiques avec clips suffisent. Le CO₂ résiduel produit par les LAB chasse l'O₂ via le joint caoutchouc en 1–2h. La pompe sous-vide Le Parfait (~25€) est optionnelle — elle gagne 1–2h d'anaérobiose stricte au début, soit ~8–15% de la phase. Gain marginal pour le coût." }
+      ]
+    },
+    {
+      "id": "portionnement",
+      "phase": "Récolte",
+      "title": "Portionnement & conservation",
+      "blocks": [
+        { "type": "text", "content": "Diviser en portions de 75g (dose quotidienne). Réfrigérer les portions pour 5–7 jours. Congeler le reste à plat en sachets (1 portion/sachet). Le GABA est stable à -18°C pendant 3–6 mois (>90% rétention)." },
+        { "type": "tip", "content": "Ne pas chauffer au-dessus de 90°C à la consommation — le GABA se dégrade par réaction de Maillard au-delà de 100°C. Consommer froid ou tiède (mélangé à un bol chaud, en dip, en sauce)." },
+        { "type": "hygiene", "content": "Basique — contenants propres, étiqueter avec la date." }
+      ]
+    }
+  ],
+
+  "panels": [
+    {
+      "id": "gaba_science",
+      "icon": "🧠",
+      "title": "GABA — Pourquoi et combien",
+      "color": "#aa8833",
+      "sections": [
+        { "heading": "Qu'est-ce que le GABA ?", "text": "Principal neurotransmetteur inhibiteur du SNC. Contrebalance le glutamate (excitateur). L'équilibre GABA/glutamate régule l'anxiété, le sommeil, la réactivité au stress. Récepteurs GABA-A (anxiolyse rapide — cible des benzodiazépines) et GABA-B (relaxation musculaire, humeur). Déficit GABAergique impliqué dans : anxiété généralisée, insomnie (pertinent pour tes réveils à 3h), tension musculaire chronique." },
+        { "heading": "Axe intestin-cerveau", "text": "Le GABA alimentaire agit principalement via le nerf vague (Bravo et al. 2011, PNAS : effets anxiolytiques de L. rhamnosus JB-1 aboliés par vagotomie). Le passage direct de la BHE est débattu — probablement marginal chez l'adulte sain. L'essentiel de l'effet passe par la signalisation vagale et l'interaction avec le microbiote intestinal." },
+        { "heading": "Production de GABA dans le protocole", "text": "La GAD (glutamate décarboxylase) de L. plantarum convertit le glutamate en GABA. Facteurs critiques : température (optimum 30-35°C), pH (optimum 4,0-5,0), disponibilité en glutamate (MSG/kombu = ×5-50 vs substrat seul), cofacteur P-5-P (pyridoxal-5'-phosphate, forme active de B6), et anaérobiose (stress → upregulation GAD)." },
+        {
+          "heading": "Rendement estimé",
+          "items": [
+            { "label": "Protocole basique (22°C, 24h, sans MSG)", "value": "2–10 mg/100g", "color": "#6a6a8a" },
+            { "label": "Protocole chaud (35°C, 48h, sans MSG)", "value": "15–40 mg/100g", "color": "#ccaa55" },
+            { "label": "Protocole optimisé (35°C, 48h, + MSG + P-5-P)", "value": "50–100+ mg/100g", "color": "#aa8833" },
+            { "label": "+ Phase anaérobie (6-24h)", "value": "×4–12 supplémentaire", "color": "#6abf6a" }
+          ]
+        },
+        { "heading": "Dose clinique de référence", "text": "Études positives (stress, sommeil) : 100–300 mg/jour. Byun et al. 2018 : GABA 300 mg 1h avant coucher → amélioration latence d'endormissement. Yamatsu 2016 : pic plasmatique ~30 min post-ingestion. Avec le protocole optimisé, 75g/jour délivrent potentiellement 75–225 mg de GABA." }
+      ]
+    },
+    {
+      "id": "spermidine",
+      "icon": "🧬",
+      "title": "Spermidine & Autophagie",
+      "color": "#8a6acc",
+      "sections": [
+        { "heading": "Spermidine dans le houmous GABA", "text": "Les pois chiches contiennent ~2,9 mg/100g de spermidine (Ali et al. 2011). Le soja sec : 12,8–20,7 mg/100g (Kalač 2014). La fermentation lactique augmente modestement la teneur via les décarboxylases bactériennes. En blend 50/50 soja/pois chiches, estimation après fermentation : ~6–10 mg/100g. À 75g/jour → ~4,5–7,5 mg de spermidine." },
+        { "heading": "Impact du mode de consommation", "text": "Le GABA se dégrade au-dessus de 100°C (Maillard). La spermidine aussi. Double raison de consommer l'houmous GABA froid ou tiède — pas cuit. Mélangé dans un bol chaud (flocons ~60°C) = pas de dégradation significative. En dip avec des légumes vapeur = parfait. Jamais au four ou à la poêle." },
+        { "heading": "Objectif quotidien (toutes sources)", "text": "Cible : ≥20 mg/jour (Greger). Seuil Bruneck : ≥12 mg/jour (-24% mortalité). Ton houmous GABA à 75g/jour contribue ~3–7,5 mg selon le substrat — un pilier complémentaire au tempeh vapeur (8–16 mg) et au germe de blé (3–5 mg)." }
+      ]
+    },
+    {
+      "id": "safety",
+      "icon": "⚠️",
+      "title": "Sécurité alimentaire",
+      "color": "#cc5555",
+      "sections": [
+        { "heading": "⚠️ B. cereus", "text": "Risque principal. Les spores survivent à la pasteurisation et germent à 30-37°C dans un milieu riche. Défense : inoculation lourde L. plantarum + acidification rapide pH <4,5 en 24h. Si pH >4,5 à 24h → jeter sans hésiter." },
+        { "heading": "🧪 Amines biogènes", "text": "L. plantarum 299v est un faible producteur d'amines biogènes (histamine, tyramine). Ne jamais utiliser de fermentation spontanée (risque cadavérine/putrescine élevé). Limiter la fermentation à 48h max — la production d'amines s'accélère en phase stationnaire tardive." },
+        { "heading": "🔄 Backslopping", "text": "Réserver 50–100g comme inoculum pour le batch suivant. Stable sur 5+ cycles. Ré-inoculer avec des gélules fraîches toutes les 4–6 semaines pour éviter la dérive vers des souches sauvages non caractérisées." },
+        { "heading": "📏 Contrôle pH", "text": "Bandelettes pH (Merck ou Amazon, précision 0,5) = outil de sécurité non négociable. Le nez ne suffit pas pour détecter une fermentation insuffisante. pH <4,5 = safe. pH >4,5 après 24h = risque → jeter." }
+      ]
+    },
+    {
+      "id": "serving",
+      "icon": "🍽️",
+      "title": "Idées d'intégration",
+      "color": "#6abf6a",
+      "sections": [
+        { "heading": "🥣 Bol R1 (8h)", "text": "75g mélangé aux flocons fermentés tièdes + Greenwhey + myrtilles. La texture crémeuse s'intègre naturellement. GABA matinal = contrôle impulsionnel (Yamatsu 2016 : pic à 30 min). SPD +3–7,5 mg." },
+        { "heading": "🥕 Dip R2 (12h30)", "text": "75g en dip avec les légumes cuits du repas 2. Le tempeh + houmous GABA = double fermenté, double spermidine. Citron en filet (enhancer Fe + vitamine C). SPD +3–7,5 mg." },
+        { "heading": "🍽️ Sauce dîner (18h30)", "text": "50g dilué en sauce tiède sur les légumes + glucides lents. Prise vespérale = GABA pour le sommeil (Byun 2018 : 1h avant coucher). Dose réduite pour ne pas surcharger les protéines du dîner. SPD +2–5 mg." },
+        { "heading": "⚡ Double dose split", "text": "50g matin (anxiolyse/contrôle impulsionnel) + 50g soir (sommeil). Couvre les deux fenêtres pharmacocinétiques. Total ~100g/jour. SPD +4–10 mg." }
+      ]
+    },
+    {
+      "id": "conservation",
+      "icon": "❄️",
+      "title": "Conservation",
+      "color": "#6a8acc",
+      "sections": [
+        { "heading": "❄️ Frigo (4°C) — 5–7 jours", "text": "Contenant hermétique. L'acidité (pH <4,5) assure la sécurité. Le GABA est stable au froid. Texture et goût constants sur la semaine." },
+        { "heading": "🧊 Congélation (-18°C) — 3–6 mois", "text": "Portions individuelles (75g) en sachets plats. GABA rétention >90%. Décongeler au frigo 12–24h. Ne pas réchauffer au-dessus de 90°C." },
+        { "heading": "🔄 Backslopping (réserve) — 7 jours frigo", "text": "50–100g réservés comme starter pour le prochain batch. Ré-inoculer avec gélules fraîches toutes les 4–6 semaines." }
+      ]
+    },
+    {
+      "id": "sweet_recipes",
+      "icon": "🍫",
+      "title": "Recettes sucrées pro-GABA",
+      "color": "#8a5a3a",
+      "intro": "Recettes qui préservent le GABA (pas de cuisson >100°C) et cumulent des ingrédients GABAergiques. Le cacao masque l'acidité fermentée.",
+      "subsections": [
+        {
+          "heading": "Ingrédients pro-GABA",
+          "items": [
+            { "label": "🍫 Cacao cru", "value": "Contient GABA (~2-3 mg/100g) + flavanols modulant GABA-A (Scholey 2010)" },
+            { "label": "🫐 Myrtilles", "value": "Anthocyanines → récepteurs benzodiazépiniques, effet anxiolytique" },
+            { "label": "🍌 Banane mûre", "value": "Contient GABA + tryptophane → sérotonine → mélatonine" },
+            { "label": "💊 Magnésium", "value": "Modulateur allostérique positif GABA-A (déjà dans ton stack)" },
+            { "label": "⚡ Taurine", "value": "Agoniste GABA-A (déjà au dîner, 1-1,5g)" }
+          ]
+        }
+      ],
+      "recipes": [
+        {
+          "name": "Mousse cacao-houmous GABA",
+          "icon": "🍫",
+          "color": "#8a5a3a",
+          "timing": "🌙 Soir, ~1h avant coucher",
+          "gaba": "~100–150 mg",
+          "spd": "+3–5 mg",
+          "ingredients": "75g houmous GABA · 15g cacao cru en poudre · 1 banane mûre · 50 ml lait d'avoine",
+          "method": "Mixer au Thermomix vitesse 8, 30 secondes. Servir immédiatement ou réfrigérer 30 min pour une texture plus ferme.",
+          "why": "Le cacao masque complètement l'acidité fermentée. La banane apporte le sucré naturel + tryptophane (voie sérotonine → mélatonine). Pas de cuisson = GABA intact. Triple axe GABAergique : GABA fermenté + flavanols cacao (GABA-A) + tryptophane.",
+          "note": "Les mousses au chocolat à base de pois chiches sont bien documentées en cuisine végétale — le goût fonctionne. Confiance haute sur la faisabilité gustative."
+        },
+        {
+          "name": "Bol du matin GABA-boosted",
+          "icon": "🥣",
+          "color": "#6abf6a",
+          "timing": "☀️ Matin, R1 (8h)",
+          "gaba": "~50–100 mg (flocons) + ~75–150 mg (houmous)",
+          "spd": "+3–7,5 mg",
+          "ingredients": "Flocons fermentés GABA-enrichis (protocole 30°C/48h + kombu + farine pois chiche) · Greenwhey · 75g myrtilles sauvages · 15g Flavochino · 50g houmous GABA (optionnel, en plus des flocons)",
+          "method": "Bol standard du R1. Le changement est dans le protocole de fermentation des flocons (30°C au lieu de 22°C, ajout kombu + 27g farine de pois chiche en substitution de l'épeautre). L'houmous GABA peut être mélangé directement dans le bol tiède.",
+          "why": "Aucun nouvel ingrédient — seul le protocole de fermentation des flocons change. Les myrtilles (anthocyanines → récepteurs BZD) + Flavochino (flavanols GABA-A) + flocons fermentés GABA = stack GABAergique matinal.",
+          "note": "Levier gratuit — change le protocole, pas la recette."
+        },
+        {
+          "name": "Truffes crues cacao-GABA",
+          "icon": "🟤",
+          "color": "#5a3a2a",
+          "timing": "🌙 Soir, snack (2–3 truffes)",
+          "gaba": "~15–25 mg/truffe",
+          "spd": "+0,5–1 mg/truffe",
+          "ingredients": "100g houmous GABA · 30g cacao cru en poudre · 20g purée d'amande · 10g sirop d'érable ou miel (optionnel) · Enrobage : cacao ou poudre de noisette",
+          "method": "Mélanger à la fourchette jusqu'à pâte épaisse et homogène. Former des boules de ~15g (environ 10 truffes). Rouler dans le cacao ou la poudre de noisette. Frigo 2h pour raffermir.",
+          "why": "Format snack portable et batch-preppable (conservation 5–7 jours frigo). Le cacao domine complètement le goût. 2–3 truffes le soir = dose GABAergique dans un format gourmand. Pas de cuisson = GABA intact.",
+          "note": "La purée d'amande apporte la texture lisse et la cohésion. Le sirop d'érable est optionnel — les truffes fonctionnent sans, juste plus amères."
+        },
+        {
+          "name": "Smoothie GABA nocturne",
+          "icon": "🥤",
+          "color": "#6a3acc",
+          "timing": "🌙 Soir, 30–60 min avant coucher",
+          "gaba": "~75–150 mg",
+          "spd": "+2–5 mg",
+          "ingredients": "50g houmous GABA · 75g myrtilles surgelées · 100 ml lait d'avoine · 5g cacao cru · 1 c.à.c. miel (optionnel)",
+          "method": "Mixer au Thermomix ou blender. Les myrtilles congelées donnent la texture épaisse et le froid.",
+          "why": "L'acidité de l'houmous fermenté se fond dans l'acidité naturelle des myrtilles — synergie gustative. Triple GABAergique : GABA fermenté + anthocyanines myrtilles (BZD) + flavanols cacao (GABA-A).",
+          "note": "Format plus liquide que la mousse — absorption potentiellement plus rapide. Idéal si tu ne veux pas « manger » avant de dormir."
+        },
+        {
+          "name": "Pancakes APO basse température",
+          "icon": "🥞",
+          "color": "#cc9955",
+          "timing": "☀️ ou 🌙 (flexible)",
+          "gaba": "~75–125 mg (réduit ~15-20% par la cuisson)",
+          "spd": "+2–4 mg",
+          "ingredients": "75g houmous GABA · 1 œuf · 30g farine de sarrasin · 50 ml lait d'avoine",
+          "method": "Mélanger. Cuire à l'APO 85°C, HR 30%, 15–20 min sur plaque antiadhésive. Ou poêle à feu TRÈS doux (induction réglage 3-4/9).",
+          "why": "Seule recette cuite de la liste — le GABA se dégrade par Maillard au-dessus de 100°C, mais à 85°C la dégradation reste modérée (~15-20%). Texture entre pancake et flan.",
+          "note": "⚠️ Expérimental. Moins de GABA que les versions crues. Le sarrasin est sans gluten et apporte du magnésium (potentialisateur GABA-A)."
+        }
+      ],
+      "caveat": "Le GABA alimentaire agit principalement via la signalisation vagale intestinale — son passage de la BHE est probablement marginal chez l'adulte sain. L'effet clinique est réel (études positives à 100-300 mg/jour) mais le mécanisme exact reste débattu. Confiance modérée sur les doses effectives."
+    }
+  ]
+}
