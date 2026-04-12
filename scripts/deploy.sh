@@ -7,30 +7,22 @@ REPO="$HOME/Documents/Workout"
 DOWNLOADS="$HOME/Downloads/Claude/Routine artefacts"
 KNOWN_FILES=("routine_alimentaire.json" "base_nutritionnelle.json" "hub.json" "hub.html" "nutrition.html" "index.html" "app_sport.html" "sport.html" "flocons.html" "tempeh.html" "fermentation.html" "exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json" "programme_complet.json" "vahva_unified_mapping.json" "flow_library.json" "flow_library.md" "programme_synthese_v3.md" "fermentation_index.json" "houmous_gaba.json" "flocons_fermentes.json" "tempeh.json" "build.py" "deploy.sh")
 
-# Mapping : basename → chemin relatif dans le repo (absent = racine)
-declare -A FILE_MAP=(
-  ["exercise_library.json"]="data/sport/"
-  ["programme_sport.json"]="data/sport/"
-  ["bfs_workouts_refactored.json"]="data/sport/"
-  ["mobility_workouts_refactored.json"]="data/sport/"
-  ["core_exercises_refactored.json"]="data/sport/"
-  ["programme_complet.json"]="data/sport/"
-  ["vahva_unified_mapping.json"]="data/sport/"
-  ["flow_library.json"]="data/sport/"
-  ["flow_library.md"]="data/sport/"
-  ["programme_synthese_v3.md"]="data/sport/"
-  ["fermentation_index.json"]="data/fermentation/"
-  ["houmous_gaba.json"]="data/fermentation/"
-  ["flocons_fermentes.json"]="data/fermentation/"
-  ["tempeh.json"]="data/fermentation/"
-  ["build.py"]="scripts/"
-  ["deploy.sh"]="scripts/"
-)
-
-# Résout le chemin repo pour un basename (racine si pas dans FILE_MAP)
+# Résout le chemin repo pour un basename (racine si pas mappé)
+# Compatible bash 3.x (pas de declare -A sur macOS)
 repo_path() {
-  local dir="${FILE_MAP[$1]}"
-  if [ -n "$dir" ]; then echo "$dir$1"; else echo "$1"; fi
+  case "$1" in
+    exercise_library.json|programme_sport.json|bfs_workouts_refactored.json|\
+    mobility_workouts_refactored.json|core_exercises_refactored.json|\
+    programme_complet.json|vahva_unified_mapping.json|\
+    flow_library.json|flow_library.md|programme_synthese_v3.md)
+      echo "data/sport/$1" ;;
+    fermentation_index.json|houmous_gaba.json|flocons_fermentes.json|tempeh.json)
+      echo "data/fermentation/$1" ;;
+    build.py|deploy.sh)
+      echo "scripts/$1" ;;
+    *)
+      echo "$1" ;;
+  esac
 }
 
 # Fichiers source qui déclenchent un rebuild de programme_complet.json

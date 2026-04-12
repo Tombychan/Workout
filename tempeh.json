@@ -154,13 +154,6 @@
             "apo": "APO : sonde 31°C (recommandé), Vapeur, HR 85-90%, ventilation activée. Gaze humide sur le substrat, substrat surélevé sur baguettes.\n\n🌡 Sonde : insérer par un trou du bac perforé, pointe au centre du bloc en épaisseur (~1,5-2 cm). Seuls les 3-5 derniers mm mesurent — positionner la pointe, pas la tige. L'APO s'autorégule automatiquement pendant la phase exothermique.",
             "bt": "B&T : 30°C, écuelle d'eau, stylo dans couvercle (~1cm d'ouverture). Gaze/cheesecloth (pas charlotte coton). Inverser bacs haut/bas et retourner le bloc à 18-24h."
           }
-        }},
-        { "type": "text", "content": {
-          "depends_on": "variant",
-          "values": {
-            "apo": "",
-            "bt": ""
-          }
         }}
       ]
     },
