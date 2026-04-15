@@ -441,7 +441,7 @@ function App() {
 
   // Load index
   useEffect(() => {
-    fetch('data/fermentation_index.json')
+    fetch('data/fermentation/fermentation_index.json')
       .then(r => r.json())
       .then(data => { setIndex(data); setLoading(false); })
       .catch(e => {
