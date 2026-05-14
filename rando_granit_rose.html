@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#1e3a5f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Granit Rose">
+<title>Rando Granit Rose · 14-16 mai 2026</title>
+<style>
+  /* ============ TYPOGRAPHIE ET RESET ============ */
+  :root {
+    --rose-granit: #d4847a;
+    --rose-pale: #f4e4e0;
+    --bleu-marine: #1e3a5f;
+    --bleu-pale: #e8eef5;
+    --vert-lande: #5a7a5a;
+    --vert-pale: #e8efe8;
+    --jaune-genet: #f0c050;
+    --orange-alert: #d97757;
+    --gris-pierre: #6b6258;
+    --gris-clair: #ebe7e0;
+    --noir-doux: #2a2520;
+    --blanc-creme: #faf7f2;
+    --ombre-douce: 0 1px 3px rgba(42, 37, 32, 0.08);
+    --ombre-marquee: 0 4px 12px rgba(42, 37, 32, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--blanc-creme);
+    color: var(--noir-doux);
+    line-height: 1.55;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 90px;
+  }
+
+  /* ============ HEADER FIXE ============ */
+  .header {
+    position: sticky;
+    top: 0;
+    background: var(--bleu-marine);
+    color: var(--blanc-creme);
+    padding: 14px 18px 12px;
+    z-index: 100;
+    box-shadow: var(--ombre-marquee);
+  }
+
+  .header h1 {
+    font-size: 1.05rem;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    font-style: italic;
+  }
+
+  .header .dates {
+    font-size: 0.78rem;
+    opacity: 0.85;
+    margin-top: 2px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-style: normal;
+    letter-spacing: 0.8px;
+  }
+
+  /* ============ NAVIGATION TABS ============ */
+  .tabs {
+    display: flex;
+    overflow-x: auto;
+    background: var(--bleu-marine);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab {
+    flex: 0 0 auto;
+    padding: 11px 16px 10px;
+    color: rgba(255,255,255,0.65);
+    background: none;
+    border: none;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .tab.active {
+    color: var(--blanc-creme);
+    border-bottom-color: var(--rose-granit);
+  }
+
+  /* ============ MAIN CONTENT ============ */
+  .content { padding: 20px 16px 40px; max-width: 720px; margin: 0 auto; }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeIn 0.3s; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2.section-title {
+    font-size: 1.45rem;
+    color: var(--bleu-marine);
+    margin-bottom: 6px;
+    font-weight: normal;
+    letter-spacing: -0.3px;
+  }
+
+  .section-subtitle {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: var(--gris-pierre);
+    font-size: 0.78rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--gris-clair);
+    padding-bottom: 10px;
+  }
+
+  /* ============ JOUR CARDS ============ */
+  .jour-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 22px;
+  }
+
+  .meta-pill {
+    background: var(--rose-pale);
+    color: var(--bleu-marine);
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.78rem;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+  }
+
+  /* ============ STEPS (étapes horaires) ============ */
+  .step {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--gris-clair);
+    align-items: flex-start;
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-time {
+    flex: 0 0 56px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--rose-granit);
+    text-align: right;
+    padding-top: 2px;
+  }
+
+  .step-body { flex: 1; }
+
+  .step-title {
+    font-weight: bold;
+    color: var(--noir-doux);
+    font-size: 1.02rem;
+    margin-bottom: 3px;
+  }
+
+  .step-desc {
+    font-size: 0.92rem;
+    color: var(--gris-pierre);
+    line-height: 1.5;
+  }
+
+  /* ============ ALERT / TIP BLOCKS ============ */
+  .alert, .tip, .info {
+    padding: 12px 14px;
+    margin: 14px 0;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .alert {
+    background: #fdf2ee;
+    border-left: 3px solid var(--orange-alert);
+    color: #6b3a25;
+  }
+
+  .alert::before { content: "⚠️ "; }
+
+  .tip {
+    background: var(--vert-pale);
+    border-left: 3px solid var(--vert-lande);
+    color: #2d4a2d;
+  }
+
+  .tip::before { content: "💡 "; }
+
+  .info {
+    background: var(--bleu-pale);
+    border-left: 3px solid var(--bleu-marine);
+    color: #1a2a45;
+  }
+
+  .info::before { content: "ℹ️ "; }
+
+  /* ============ CONTACT CARDS ============ */
+  .contact-card {
+    background: white;
+    border: 1px solid var(--gris-clair);
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    box-shadow: var(--ombre-douce);
+  }
+
+  .contact-card.featured {
+    border-left: 3px solid var(--rose-granit);
+  }
+
+  .contact-name {
+    font-size: 1.02rem;
+    font-weight: bold;
+    color: var(--bleu-marine);
+    margin-bottom: 4px;
+  }
+
+  .contact-detail {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.85rem;
+    color: var(--gris-pierre);
+    margin-bottom: 6px;
+  }
+
+  .contact-tel {
+    display: inline-block;
+    padding: 7px 14px;
+    background: var(--rose-granit);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    margin-top: 6px;
+    margin-right: 6px;
+  }
+
+  .contact-tel.urgent {
+    background: var(--orange-alert);
+  }
+
+  .contact-note {
+    font-size: 0.88rem;
+    color: var(--gris-pierre);
+    margin-top: 8px;
+    font-style: italic;
+    line-height: 1.45;
+  }
+
+  /* ============ RESTAURANTS ============ */
+  .resto-card {
+    background: white;
+    border: 1px solid var(--gris-clair);
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+  }
+
+  .resto-card.starred {
+    background: linear-gradient(135deg, white 0%, #fff8f5 100%);
+    border-color: var(--rose-granit);
+  }
+
+  .resto-name {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--bleu-marine);
+    margin-bottom: 4px;
+  }
+
+  .resto-name .stars {
+    color: var(--jaune-genet);
+    margin-left: 4px;
+    font-size: 0.9rem;
+  }
+
+  .resto-meta {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.8rem;
+    color: var(--gris-pierre);
+    margin: 4px 0 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .resto-meta .rating {
+    background: var(--vert-lande);
+    color: white;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-right: 6px;
+  }
+
+  .resto-meta .price {
+    color: var(--rose-granit);
+    font-weight: bold;
+    margin-right: 8px;
+  }
+
+  .resto-desc {
+    font-size: 0.92rem;
+    color: var(--noir-doux);
+    line-height: 1.5;
+    margin: 8px 0;
+  }
+
+  .resto-hours {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.82rem;
+    color: var(--gris-pierre);
+    background: var(--blanc-creme);
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+
+  /* ============ CHECKLIST ============ */
+  .checklist-section {
+    background: white;
+    border: 1px solid var(--gris-clair);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .checklist-header {
+    background: var(--bleu-marine);
+    color: white;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+  }
+
+  .checklist-items { padding: 8px 0; }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gris-clair);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .check-item:last-child { border-bottom: none; }
+
+  .check-item input[type="checkbox"] {
+    margin-right: 12px;
+    margin-top: 3px;
+    transform: scale(1.3);
+    accent-color: var(--rose-granit);
+    flex-shrink: 0;
+  }
+
+  .check-item label {
+    font-size: 0.92rem;
+    cursor: pointer;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .check-item input:checked + label {
+    text-decoration: line-through;
+    color: var(--gris-pierre);
+    opacity: 0.6;
+  }
+
+  /* ============ MAREES ============ */
+  .maree-day {
+    background: white;
+    border: 1px solid var(--gris-clair);
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+  }
+
+  .maree-day-name {
+    font-weight: bold;
+    color: var(--bleu-marine);
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+  }
+
+  .maree-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.88rem;
+  }
+
+  .maree-cell {
+    padding: 8px 10px;
+    background: var(--bleu-pale);
+    border-radius: 4px;
+  }
+
+  .maree-cell.basse { background: var(--rose-pale); }
+
+  .maree-label {
+    font-size: 0.7rem;
+    color: var(--gris-pierre);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .maree-time {
+    font-weight: bold;
+    color: var(--noir-doux);
+  }
+
+  .maree-coef {
+    margin-top: 8px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.85rem;
+    color: var(--gris-pierre);
+  }
+
+  .maree-coef strong { color: var(--rose-granit); }
+
+  /* ============ BUDGET ============ */
+  .budget-table {
+    background: white;
+    border: 1px solid var(--gris-clair);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+  }
+
+  .budget-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--gris-clair);
+    font-size: 0.92rem;
+  }
+
+  .budget-row.total {
+    background: var(--bleu-pale);
+    border-top: 2px solid var(--bleu-marine);
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .budget-row:last-child { border-bottom: none; }
+
+  .budget-label { flex: 1; color: var(--noir-doux); }
+
+  .budget-amount {
+    color: var(--rose-granit);
+    font-weight: bold;
+    white-space: nowrap;
+    margin-left: 12px;
+  }
+
+  /* ============ DECORATIVE ============ */
+  .ornament {
+    text-align: center;
+    color: var(--rose-granit);
+    margin: 24px 0;
+    font-size: 1.2rem;
+    letter-spacing: 8px;
+  }
+
+  /* ============ HOME SCREEN ============ */
+  .hero {
+    text-align: center;
+    padding: 30px 20px 24px;
+    background: linear-gradient(135deg, var(--rose-pale) 0%, var(--blanc-creme) 100%);
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    color: var(--bleu-marine);
+    font-style: italic;
+    margin-bottom: 8px;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: var(--gris-pierre);
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .quick-access {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .quick-card {
+    background: white;
+    border: 1px solid var(--gris-clair);
+    padding: 14px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: var(--ombre-douce);
+    transition: transform 0.15s;
+  }
+
+  .quick-card:active { transform: scale(0.97); }
+
+  .quick-card .icon {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .quick-card .label {
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: var(--bleu-marine);
+  }
+
+  .quick-card .sub {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.7rem;
+    color: var(--gris-pierre);
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ============ FOOTER FIXE ============ */
+  .footer-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--blanc-creme);
+    border-top: 1px solid var(--gris-clair);
+    padding: 8px 0 8px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+    z-index: 99;
+  }
+
+  .footer-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 6px 4px 8px;
+    text-align: center;
+    color: var(--gris-pierre);
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    cursor: pointer;
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .footer-btn.active {
+    color: var(--rose-granit);
+  }
+
+  .footer-btn .ic {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 1px;
+  }
+
+  /* ============ DARK MODE PREF ============ */
+  @media (prefers-color-scheme: dark) {
+    /* Volontairement pas de dark mode, l'appli doit rester lisible en plein soleil */
+  }
+
+  /* ============ EMERGENCY ============ */
+  .emergency-banner {
+    background: var(--orange-alert);
+    color: white;
+    padding: 12px 14px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .emergency-banner a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 1.05rem;
+    margin: 0 6px;
+  }
+
+  /* ============ CARTE SVG ============ */
+  .map-container {
+    background: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 16px 0 20px;
+    box-shadow: var(--ombre-douce);
+    overflow: hidden;
+  }
+
+  .map-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    background: #f5f9fc;
+  }
+
+  .map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 12px 0 0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.78rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--gris-pierre);
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-line {
+    width: 18px;
+    height: 3px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* Interactive map elements */
+  .map-point {
+    cursor: pointer;
+    transition: transform 0.2s;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+
+  .map-point:hover, .map-point:active {
+    transform: scale(1.35);
+  }
+
+  .map-label {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 9px;
+    fill: var(--noir-doux);
+    pointer-events: none;
+    font-weight: 600;
+  }
+
+  .map-label-bg {
+    fill: white;
+    fill-opacity: 0.85;
+    stroke: var(--gris-clair);
+    stroke-width: 0.5;
+  }
+
+  .map-path-j1 {
+    fill: none;
+    stroke: var(--rose-granit);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1, 0;
+  }
+
+  .map-path-j2 {
+    fill: none;
+    stroke: var(--vert-lande);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .map-path-j3 {
+    fill: none;
+    stroke: var(--jaune-genet);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .map-path-bus {
+    fill: none;
+    stroke: var(--bleu-marine);
+    stroke-width: 1.5;
+    stroke-dasharray: 4, 3;
+    opacity: 0.6;
+  }
+
+  .map-coast {
+    fill: #e8d7c5;
+    stroke: #c4a988;
+    stroke-width: 0.5;
+  }
+
+  .map-sea {
+    fill: #d6e4ee;
+  }
+
+  .map-island {
+    fill: #e8d7c5;
+    stroke: #c4a988;
+    stroke-width: 0.5;
+  }
+
+  /* Map detail card (shown on tap) */
+  .map-detail {
+    background: white;
+    border: 1px solid var(--gris-clair);
+    border-left: 3px solid var(--rose-granit);
+    padding: 14px;
+    border-radius: 6px;
+    margin-top: 16px;
+    box-shadow: var(--ombre-douce);
+    display: none;
+  }
+
+  .map-detail.active {
+    display: block;
+    animation: fadeIn 0.25s;
+  }
+
+  .map-detail-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--bleu-marine);
+    margin-bottom: 6px;
+  }
+
+  .map-detail-meta {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.8rem;
+    color: var(--gris-pierre);
+    margin-bottom: 8px;
+  }
+
+  .map-detail-desc {
+    font-size: 0.92rem;
+    color: var(--noir-doux);
+    margin-bottom: 12px;
+    line-height: 1.45;
+  }
+
+  .map-detail-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .map-detail-links a {
+    display: inline-block;
+    padding: 7px 12px;
+    background: var(--bleu-marine);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.3px;
+  }
+
+  .map-detail-links a.secondary {
+    background: var(--rose-granit);
+  }
+
+  .map-detail-links a.tertiary {
+    background: var(--vert-lande);
+  }
+
+  .map-help {
+    background: var(--bleu-pale);
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #1a2a45;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>Côte de Granit Rose</h1>
+  <div class="dates">14 — 16 MAI 2026  ·  GR34</div>
+  <nav class="tabs">
+    <button class="tab active" data-tab="home">Accueil</button>
+    <button class="tab" data-tab="carte">Carte</button>
+    <button class="tab" data-tab="j1">J1 · Jeu</button>
+    <button class="tab" data-tab="j2">J2 · Ven</button>
+    <button class="tab" data-tab="j3">J3 · Sam</button>
+    <button class="tab" data-tab="resto">Manger</button>
+    <button class="tab" data-tab="contacts">Contacts</button>
+    <button class="tab" data-tab="marees">Marées</button>
+    <button class="tab" data-tab="check">Check-list</button>
+    <button class="tab" data-tab="budget">Budget</button>
+  </nav>
+</header>
+
+<main class="content">
+
+  <!-- ========== ACCUEIL ========== -->
+  <section class="panel active" data-panel="home">
+    <div class="hero">
+      <div class="hero-title">Côte de Granit Rose</div>
+      <div class="hero-subtitle">Perros-Guirec · Trégastel · Trébeurden · Louannec</div>
+    </div>
+
+    <div class="emergency-banner">
+      <strong>URGENCES</strong><br>
+      <a href="tel:112">112</a> ·
+      <a href="tel:18">18</a> ·
+      <a href="tel:196">196 (mer)</a>
+    </div>
+
+    <h2 class="section-title">Accès rapide</h2>
+    <div class="section-subtitle">L'essentiel à portée de pouce</div>
+
+    <div class="quick-access">
+      <div class="quick-card" onclick="switchTab('carte')">
+        <div class="icon">🗺️</div>
+        <div class="label">Carte</div>
+        <div class="sub">L'ITINÉRAIRE EN UN COUP D'ŒIL</div>
+      </div>
+      <div class="quick-card" onclick="switchTab('j1')">
+        <div class="icon">🥾</div>
+        <div class="label">Jeudi 14</div>
+        <div class="sub">PERROS → TRÉGASTEL</div>
+      </div>
+      <div class="quick-card" onclick="switchTab('j2')">
+        <div class="icon">🌊</div>
+        <div class="label">Vendredi 15</div>
+        <div class="sub">ÎLE-GRANDE · MILLIAU</div>
+      </div>
+      <div class="quick-card" onclick="switchTab('j3')">
+        <div class="icon">🏁</div>
+        <div class="label">Samedi 16</div>
+        <div class="sub">→ LOUANNEC · 16H</div>
+      </div>
+      <div class="quick-card" onclick="switchTab('contacts')">
+        <div class="icon">📞</div>
+        <div class="label">Contacts</div>
+        <div class="sub">HÉBERGEMENTS · BUS</div>
+      </div>
+      <div class="quick-card" onclick="switchTab('marees')">
+        <div class="icon">🌒</div>
+        <div class="label">Marées</div>
+        <div class="sub">3 JOURS</div>
+      </div>
+      <div class="quick-card" onclick="switchTab('resto')">
+        <div class="icon">🥖</div>
+        <div class="label">Manger</div>
+        <div class="sub">RESTOS BUDGET</div>
+      </div>
+      <div class="quick-card" onclick="switchTab('check')">
+        <div class="icon">✓</div>
+        <div class="label">Check-list</div>
+        <div class="sub">MATÉRIEL · AVANT DÉPART</div>
+      </div>
+      <div class="quick-card" onclick="switchTab('budget')">
+        <div class="icon">💰</div>
+        <div class="label">Budget</div>
+        <div class="sub">ESTIMATION TOTALE</div>
+      </div>
+    </div>
+
+    <div class="ornament">· · ·</div>
+
+    <h2 class="section-title">Synthèse</h2>
+    <div class="section-subtitle">L'itinéraire en un coup d'œil</div>
+
+    <div class="resto-card">
+      <div class="resto-name">J1 · Jeudi 14 mai</div>
+      <div class="resto-meta">
+        <span class="price">10-12 km</span> 3-4 h · Camping Tourony
+      </div>
+      <div class="resto-desc">Arrivée covoit 13h à Perros-Guirec. Marche après-midi par Ploumanac'h. Sunset Île Renote.</div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-name">J2 · Vendredi 15 mai</div>
+      <div class="resto-meta">
+        <span class="price">12-14 km + Milliau</span> 5-6 h · Bivouac toléré ou chambre
+      </div>
+      <div class="resto-desc">Île-Grande, traversée à pied de l'Île Milliau (marée basse 14h30). Bus retour vers Perros en fin d'aprem.</div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-name">J3 · Samedi 16 mai</div>
+      <div class="resto-meta">
+        <span class="price">5-6 km</span> 1h30-2h · Covoit retour 16h
+      </div>
+      <div class="resto-desc">Petit-déj tranquille. Marche douce vers Louannec. Marge confortable avant covoit.</div>
+    </div>
+
+    <div class="info">
+      <strong>Astuce</strong> : ajoute cette appli à l'écran d'accueil de ton téléphone (Safari : <em>Partager → Ajouter à l'écran d'accueil</em> · Chrome : menu → <em>Ajouter à l'écran d'accueil</em>). Elle s'ouvrira alors comme une vraie appli, hors-ligne.
+    </div>
+  </section>
+
+  <!-- ========== CARTE ========== -->
+  <section class="panel" data-panel="carte">
+    <h2 class="section-title">Carte interactive</h2>
+    <div class="section-subtitle">Tape un point pour le détail</div>
+
+    <div class="map-help">
+      🗺️ Carte stylisée du Trégor avec les 3 jours de marche. Tape sur un point pour voir le détail, avec des liens vers <strong>Google Maps</strong>, <strong>Plans iOS</strong> et <strong>Visorando</strong> pour la navigation GPS réelle.
+    </div>
+
+    <div class="map-container">
+      <svg class="map-svg" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" aria-label="Carte du Trégor">
+        <!-- Mer -->
+        <rect x="0" y="0" width="400" height="360" class="map-sea"/>
+
+        <!-- Côte continentale (approximation stylisée) -->
+        <path class="map-coast" d="
+          M 0,360
+          L 0,260
+          C 30,255 50,240 70,235
+          C 90,230 110,240 130,230
+          C 150,220 170,205 200,200
+          C 220,198 235,210 250,205
+          C 270,200 285,180 300,175
+          C 320,170 340,180 360,175
+          C 380,170 395,165 400,160
+          L 400,360 Z
+        "/>
+
+        <!-- Presqu'île de Trébeurden -->
+        <path class="map-coast" d="
+          M 60,235
+          C 50,225 45,210 50,200
+          C 55,190 65,185 75,190
+          C 85,195 88,205 85,215
+          C 82,225 75,232 70,235 Z
+        "/>
+
+        <!-- Île Milliau -->
+        <ellipse class="map-island" cx="35" cy="195" rx="14" ry="9"/>
+
+        <!-- Île Grande (reliée par pont) -->
+        <path class="map-coast" d="
+          M 100,210
+          C 105,200 115,195 125,200
+          C 135,205 138,215 132,220
+          C 125,225 110,222 100,210 Z
+        "/>
+        <line x1="125" y1="218" x2="135" y2="225" stroke="#c4a988" stroke-width="1"/>
+
+        <!-- Île Renote -->
+        <ellipse class="map-island" cx="195" cy="180" rx="12" ry="7"/>
+        <line x1="200" y1="187" x2="205" y2="195" stroke="#c4a988" stroke-width="1"/>
+
+        <!-- Sept-Îles (au large) -->
+        <circle cx="280" cy="60" r="3" class="map-island"/>
+        <circle cx="295" cy="65" r="2" class="map-island"/>
+        <circle cx="310" cy="62" r="2.5" class="map-island"/>
+        <circle cx="305" cy="78" r="2" class="map-island"/>
+        <text x="278" y="50" class="map-label" style="font-size: 8px; font-style: italic; fill: #6b6258;">Sept-Îles</text>
+
+        <!-- TRACÉ J1 : Perros-Guirec → Trégastel -->
+        <path class="map-path-j1" d="
+          M 305,175
+          C 295,172 285,170 275,172
+          C 260,175 245,180 230,182
+          L 200,195
+        "/>
+
+        <!-- TRACÉ J2 : Trégastel → Île-Grande → Trébeurden -->
+        <path class="map-path-j2" d="
+          M 200,195
+          C 180,202 160,208 140,212
+          L 132,218
+          C 125,225 115,228 105,232
+          C 95,235 85,232 78,228
+          L 75,225
+        "/>
+
+        <!-- TRACÉ J2 BIS : Trébeurden → Île Milliau (tombolo) -->
+        <path class="map-path-j2" stroke-dasharray="3,2" d="
+          M 70,210 L 50,200
+        "/>
+
+        <!-- TRACÉ BUS RETOUR (J2 fin de journée) -->
+        <path class="map-path-bus" d="
+          M 75,225
+          Q 150,290 250,250
+          Q 290,225 305,178
+        "/>
+        <text x="170" y="280" class="map-label" style="font-size: 8px; font-style: italic; fill: #1e3a5f;">Bus TILT</text>
+
+        <!-- TRACÉ J3 : Perros-Guirec → Louannec -->
+        <path class="map-path-j3" d="
+          M 305,175
+          C 320,180 335,185 350,190
+          L 365,200
+        "/>
+
+        <!-- POINTS CLIQUABLES -->
+
+        <!-- Perros-Guirec / Trestraou (départ J1) -->
+        <circle class="map-point" cx="305" cy="175" r="6"
+          fill="#d4847a" stroke="white" stroke-width="2"
+          onclick="showMapDetail('perros')"/>
+        <rect class="map-label-bg" x="280" y="158" width="50" height="12" rx="2"/>
+        <text x="305" y="167" class="map-label" text-anchor="middle">Perros-Guirec</text>
+
+        <!-- Ploumanac'h -->
+        <circle class="map-point" cx="260" cy="180" r="5"
+          fill="#d97757" stroke="white" stroke-width="2"
+          onclick="showMapDetail('ploumanach')"/>
+        <rect class="map-label-bg" x="240" y="190" width="44" height="12" rx="2"/>
+        <text x="262" y="199" class="map-label" text-anchor="middle">Ploumanac'h</text>
+
+        <!-- Trégastel -->
+        <circle class="map-point" cx="200" cy="195" r="6"
+          fill="#d4847a" stroke="white" stroke-width="2"
+          onclick="showMapDetail('tregastel')"/>
+        <rect class="map-label-bg" x="180" y="208" width="42" height="12" rx="2"/>
+        <text x="201" y="217" class="map-label" text-anchor="middle">Trégastel</text>
+
+        <!-- Camping Tourony -->
+        <circle class="map-point" cx="195" cy="210" r="4"
+          fill="#5a7a5a" stroke="white" stroke-width="1.5"
+          onclick="showMapDetail('tourony')"/>
+
+        <!-- Landrellec -->
+        <circle class="map-point" cx="155" cy="210" r="4"
+          fill="#5a7a5a" stroke="white" stroke-width="1.5"
+          onclick="showMapDetail('landrellec')"/>
+        <text x="155" y="222" class="map-label" text-anchor="middle" style="font-size: 8px;">Landrellec</text>
+
+        <!-- Île-Grande -->
+        <circle class="map-point" cx="118" cy="210" r="5"
+          fill="#5a7a5a" stroke="white" stroke-width="2"
+          onclick="showMapDetail('ilegrande')"/>
+        <rect class="map-label-bg" x="98" y="194" width="42" height="12" rx="2"/>
+        <text x="120" y="203" class="map-label" text-anchor="middle">Île-Grande</text>
+
+        <!-- Trébeurden -->
+        <circle class="map-point" cx="75" cy="225" r="6"
+          fill="#5a7a5a" stroke="white" stroke-width="2"
+          onclick="showMapDetail('trebeurden')"/>
+        <rect class="map-label-bg" x="55" y="238" width="42" height="12" rx="2"/>
+        <text x="76" y="247" class="map-label" text-anchor="middle">Trébeurden</text>
+
+        <!-- Île Milliau (point cliquable au centre) -->
+        <circle class="map-point" cx="35" cy="195" r="5"
+          fill="#f0c050" stroke="white" stroke-width="2"
+          onclick="showMapDetail('milliau')"/>
+        <rect class="map-label-bg" x="13" y="170" width="44" height="12" rx="2"/>
+        <text x="35" y="179" class="map-label" text-anchor="middle">Î. Milliau</text>
+
+        <!-- Louannec (arrivée J3) -->
+        <circle class="map-point" cx="365" cy="200" r="6"
+          fill="#f0c050" stroke="white" stroke-width="2"
+          onclick="showMapDetail('louannec')"/>
+        <rect class="map-label-bg" x="343" y="184" width="44" height="12" rx="2"/>
+        <text x="365" y="193" class="map-label" text-anchor="middle">Louannec</text>
+
+        <!-- Boussole / décor -->
+        <g transform="translate(360, 30)">
+          <circle cx="0" cy="0" r="14" fill="white" stroke="#c4a988" stroke-width="0.5"/>
+          <text x="0" y="-6" text-anchor="middle" style="font-size: 8px; font-weight: bold; fill: #1e3a5f;">N</text>
+          <line x1="0" y1="-4" x2="0" y2="4" stroke="#1e3a5f" stroke-width="1"/>
+          <polygon points="0,-9 -2,-5 2,-5" fill="#d4847a"/>
+        </g>
+
+        <!-- Échelle approximative -->
+        <g transform="translate(20, 340)">
+          <line x1="0" y1="0" x2="40" y2="0" stroke="#6b6258" stroke-width="1.5"/>
+          <line x1="0" y1="-3" x2="0" y2="3" stroke="#6b6258" stroke-width="1.5"/>
+          <line x1="40" y1="-3" x2="40" y2="3" stroke="#6b6258" stroke-width="1.5"/>
+          <text x="20" y="-6" text-anchor="middle" style="font-size: 8px; fill: #6b6258;">~5 km</text>
+        </g>
+      </svg>
+
+      <div class="map-legend">
+        <div class="legend-item"><span class="legend-line" style="background: #d4847a;"></span>J1 Jeu · Perros → Trégastel</div>
+        <div class="legend-item"><span class="legend-line" style="background: #5a7a5a;"></span>J2 Ven · Île-Grande / Milliau</div>
+        <div class="legend-item"><span class="legend-line" style="background: #f0c050;"></span>J3 Sam · → Louannec</div>
+        <div class="legend-item"><span class="legend-line" style="background: #1e3a5f; opacity: 0.6;"></span>Bus TILT</div>
+      </div>
+    </div>
+
+    <!-- Card de détail (s'affiche au tap) -->
+    <div class="map-detail" id="map-detail"></div>
+
+    <div class="info">
+      💡 Pour la navigation GPS précise pendant la rando : utilise <strong>Visorando</strong> (cartes IGN hors-ligne, GR34 balisé) ou <strong>Decathlon Outdoor</strong> (gratuit). Cette carte est un repère stylisé, pas un GPS.
+    </div>
+
+    <h2 class="section-title" style="margin-top: 24px;">Apps GPS recommandées</h2>
+
+    <div class="contact-card">
+      <div class="contact-name">Visorando</div>
+      <div class="contact-detail">Cartes IGN · GR34 balisé · Hors-ligne payant</div>
+      <div class="contact-note">L'app de référence des randonneurs français. Téléchargement des cartes IGN dans l'app premium (~3€/mois). Trace GPS du GR34 disponible.</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-name">Decathlon Outdoor</div>
+      <div class="contact-detail">Cartes IGN gratuites hors-ligne</div>
+      <div class="contact-note">Gratuit et bien fait. Téléchargement des cartes IGN par zone. Tracé GR34 disponible.</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-name">Google Maps · Plans iOS</div>
+      <div class="contact-detail">Téléchargement zone hors-ligne</div>
+      <div class="contact-note">Avant le départ, ouvrir la zone Trégor, télécharger pour usage hors-ligne. Pas de tracé GR34 mais utile pour repères généraux.</div>
+    </div>
+  </section>
+
+  <!-- ========== JOUR 1 ========== -->
+  <section class="panel" data-panel="j1">
+    <h2 class="section-title">Jeudi 14 mai · Ascension</h2>
+    <div class="section-subtitle">Perros-Guirec → Trégastel</div>
+
+    <div class="jour-meta">
+      <span class="meta-pill">10-12 km</span>
+      <span class="meta-pill">3-4 h marche</span>
+      <span class="meta-pill">D+ 150 m</span>
+      <span class="meta-pill">Marée basse 13h</span>
+    </div>
+
+    <div class="step">
+      <div class="step-time">13:00</div>
+      <div class="step-body">
+        <div class="step-title">Arrivée covoit Perros-Guirec</div>
+        <div class="step-desc">Dépose idéale : plage de Trestraou (point de départ classique GR34). À confirmer avec conducteur.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">13:30</div>
+      <div class="step-body">
+        <div class="step-title">Départ marche · Plage de Trestraou</div>
+        <div class="step-desc">Sentier des douaniers (GR34) vers l'ouest. Balisage rouge/blanc. Dernier ravitaillement eau/encas si besoin.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">14:00</div>
+      <div class="step-body">
+        <div class="step-title">Pointe du Squewel</div>
+        <div class="step-desc">Premiers chaos rocheux. Formes étonnantes du granit rose.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">14:30</div>
+      <div class="step-body">
+        <div class="step-title">Ploumanac'h ★</div>
+        <div class="step-desc">Cœur du chaos rose : oratoire Saint-Guirec, phare Men Ruz, château de Costaérès, vue sur les Sept-Îles. Pause 1h-1h30, prends ton temps, c'est le morceau iconique.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">16:30</div>
+      <div class="step-body">
+        <div class="step-title">Anse de Pors Rolland · Anse Sainte-Anne</div>
+        <div class="step-desc">Reprise du sentier, paysages plus doux.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">18:00</div>
+      <div class="step-body">
+        <div class="step-title">Trégastel · Coz Pors</div>
+        <div class="step-desc">Bonus : tour de l'Île Renote (~2 km, 30-45 min). Le Dé, la Sorcière, vue Sept-Îles. À faire absolument.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">20:00</div>
+      <div class="step-body">
+        <div class="step-title">Camping Tourony</div>
+        <div class="step-desc">Montage tente, douche, dîner. Si pas réservé : NOMAD à 5 min à pied.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">21:15</div>
+      <div class="step-body">
+        <div class="step-title">Coucher de soleil ★</div>
+        <div class="step-desc">Île Renote (orientation ouest) ou plage de Coz Pors. À ne pas manquer.</div>
+      </div>
+    </div>
+
+    <div class="tip">
+      Lumière dorée sur le granit en fin d'après-midi. Garde de la batterie téléphone pour les photos. Le tronçon Perros-Guirec → Trégastel est probablement le plus iconique de tout le GR34 français.
+    </div>
+  </section>
+
+  <!-- ========== JOUR 2 ========== -->
+  <section class="panel" data-panel="j2">
+    <h2 class="section-title">Vendredi 15 mai</h2>
+    <div class="section-subtitle">Trégastel → Île-Grande → Île Milliau</div>
+
+    <div class="jour-meta">
+      <span class="meta-pill">12-14 km</span>
+      <span class="meta-pill">5-6 h marche</span>
+      <span class="meta-pill">+ 2h sur Milliau</span>
+      <span class="meta-pill">Marée basse 14h30</span>
+    </div>
+
+    <div class="alert">
+      <strong>CRITIQUE Île Milliau</strong> : marée basse à 14h30 (coef 88). Vérifier horaires officiels la veille sur <em>trebeurden.fr → Découvrir → Île Milliau → Horaires de passage</em>. NE PAS s'engager s'il reste plus de 10 cm d'eau dans la passe.
+    </div>
+
+    <div class="step">
+      <div class="step-time">08:00</div>
+      <div class="step-body">
+        <div class="step-title">Petit-déj rapide camping</div>
+        <div class="step-desc">Pain frais à la réception. Lever tôt = clé du succès du J2.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">08:45</div>
+      <div class="step-body">
+        <div class="step-title">Démontage tente</div>
+        <div class="step-desc">Attention rosée matinale (sécher si possible).</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">09:00</div>
+      <div class="step-body">
+        <div class="step-title">Départ GR34 sud</div>
+        <div class="step-desc">Sortie de Trégastel par la route de Poul Palud.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">10:15</div>
+      <div class="step-body">
+        <div class="step-title">Presqu'île de Landrellec</div>
+        <div class="step-desc">Pause 15 min. Landes de Bringwiller, panoramas sur l'archipel des Triagoz.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">11:15</div>
+      <div class="step-body">
+        <div class="step-title">Pont de l'Île-Grande</div>
+        <div class="step-desc">Décision : tour complet (6 km, +1h30) ou traversée directe (3 km, +1h) ? Pour Milliau, traversée directe.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">11:30</div>
+      <div class="step-body">
+        <div class="step-title">Île-Grande sud → nord</div>
+        <div class="step-desc">Vues Sept-Îles, port Saint-Sauveur.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">13:15</div>
+      <div class="step-body">
+        <div class="step-title">Déjeuner pique-nique</div>
+        <div class="step-desc">30 min max, en chemin si possible.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">13:45</div>
+      <div class="step-body">
+        <div class="step-title">Trébeurden centre</div>
+        <div class="step-desc">Eau potable, café/pause éventuelle au port.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">14:15</div>
+      <div class="step-body">
+        <div class="step-title">Pointe du Castel · Entrée tombolo</div>
+        <div class="step-desc">Marée basse 14h30. Vérifier panneau horaires officiels sur place.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">14:30</div>
+      <div class="step-body">
+        <div class="step-title">Traversée tombolo ★</div>
+        <div class="step-desc">15 min, escalader quelques rochers. Prudence si humide.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">14:45</div>
+      <div class="step-body">
+        <div class="step-title">Île Milliau · Visite 2h</div>
+        <div class="step-desc">Tour complet du sentier (4,4 km, +77 m). Allée couverte mégalithique, vue 360° au sommet (37 m), panorama Molène / Pointe de Bihit.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">16:45</div>
+      <div class="step-body">
+        <div class="step-title">Retour traversée tombolo</div>
+        <div class="step-desc">Impératif : avant remontée d'eau >10 cm. Courants forts ensuite.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">17:30</div>
+      <div class="step-body">
+        <div class="step-title">Arrêt bus Mairie de Trébeurden</div>
+        <div class="step-desc">Bus TILT ligne D vers Lannion (~30 min) puis correspondance ligne E vers Perros-Guirec (~25 min). Vérifier horaires app TILT le matin.</div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <strong>Station LPO Île-Grande</strong> : en mai uniquement les week-ends, jours fériés et ponts (14h-18h). Vendredi 15 mai probablement FERMÉE. Confirmer 02 96 91 91 40.
+    </div>
+
+    <div class="tip">
+      <strong>Si trop fatigué après pique-nique</strong> : s'arrêter à Trébeurden, repos au port, prendre directement le bus D vers Lannion → Perros-Guirec. On zappe Milliau mais on arrive plus frais.
+    </div>
+  </section>
+
+  <!-- ========== JOUR 3 ========== -->
+  <section class="panel" data-panel="j3">
+    <h2 class="section-title">Samedi 16 mai</h2>
+    <div class="section-subtitle">Perros-Guirec → Louannec · Covoit retour 16h</div>
+
+    <div class="jour-meta">
+      <span class="meta-pill">5-6 km</span>
+      <span class="meta-pill">1h30-2h tranquille</span>
+      <span class="meta-pill">Marée basse 14h45</span>
+    </div>
+
+    <div class="alert">
+      <strong>Covoit 16h INFLEXIBLE</strong>. Pas de plan B simple si raté. Marge d'1h obligatoire (arrivée Louannec ~15h max).
+    </div>
+
+    <div class="step">
+      <div class="step-time">09:00</div>
+      <div class="step-body">
+        <div class="step-title">Petit-déj breton</div>
+        <div class="step-desc">Tranquille, on profite.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">10:30</div>
+      <div class="step-body">
+        <div class="step-title">Départ vers Trestrignel</div>
+        <div class="step-desc">Direction est sur le GR34. Si tu sens que tu marches lent, pars à 10h plutôt que 10h30.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">11:00</div>
+      <div class="step-body">
+        <div class="step-title">Plage de Trestrignel</div>
+        <div class="step-desc">Plage en demi-cercle, vue Sept-Îles. Reprise GR34 au-dessus.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">11:30</div>
+      <div class="step-body">
+        <div class="step-title">Pointe du Château</div>
+        <div class="step-desc">Sentier côtier doux, lumière du matin.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">12:15</div>
+      <div class="step-body">
+        <div class="step-title">Plage de Saint-Guirec (Louannec)</div>
+        <div class="step-desc">Différente de l'oratoire de Ploumanac'h. Petite crique préservée. Pause éventuelle.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">13:00</div>
+      <div class="step-body">
+        <div class="step-title">Pointe du Bilzic</div>
+        <div class="step-desc">Dernier promontoire. Vue large sur l'archipel des Sept-Îles côté large.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">14:00</div>
+      <div class="step-body">
+        <div class="step-title">Arrivée Louannec mairie</div>
+        <div class="step-desc">Boulangerie/épicerie dans le bourg. Déjeuner L'Abricôtier (12h-13h30) ou en terrasse.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">15:00</div>
+      <div class="step-body">
+        <div class="step-title">Repos avant covoit</div>
+        <div class="step-desc">1h de marge confortable. Confirmer point de RDV exact.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-time">16:00</div>
+      <div class="step-body">
+        <div class="step-title">Départ covoit retour</div>
+        <div class="step-desc">CONFIRMER LE POINT DE RDV EXACT.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESTAURANTS ========== -->
+  <section class="panel" data-panel="resto">
+    <h2 class="section-title">Où manger</h2>
+    <div class="section-subtitle">Sélection budget · Terroir local</div>
+
+    <h3 style="color: var(--bleu-marine); margin: 18px 0 10px; font-size: 1.1rem;">🎯 Top 3 budget</h3>
+
+    <div class="resto-card starred">
+      <div class="resto-name">NOMAD <span class="stars">★★</span></div>
+      <div class="resto-meta">
+        <span class="rating">4.8</span>
+        <span class="price">~18€/pers</span>
+        Crêperie · Trégastel · J1 SOIR
+      </div>
+      <div class="resto-desc">
+        Galettes au blé noir local (ils ont visité la ferme), produits frais, cidre IPA artisanal. Ambiance jeune, terrasse.
+      </div>
+      <a href="tel:+33296480844" class="contact-tel">02 96 48 08 44</a>
+      <div class="resto-hours">Mer-Dim · 12h-13h30 · 19h-21h15 · Réserver impérativement</div>
+    </div>
+
+    <div class="resto-card starred">
+      <div class="resto-name">OSSA Bar à Galettes <span class="stars">★★</span></div>
+      <div class="resto-meta">
+        <span class="rating">4.8</span>
+        <span class="price">~17€/pers</span>
+        Crêperie · Ploumanac'h · J2 SOIR
+      </div>
+      <div class="resto-desc">
+        Crêperie authentique, ingrédients qualité, créneaux larges. "REAL one, limited selection but authentic and excellent".
+      </div>
+      <a href="tel:+33296471105" class="contact-tel">02 96 47 11 05</a>
+      <div class="resto-hours">Tous les jours · 12h-21h · 168 Rue Saint-Guirec</div>
+    </div>
+
+    <div class="resto-card starred">
+      <div class="resto-name">L'Abricôtier <span class="stars">★★</span></div>
+      <div class="resto-meta">
+        <span class="rating">4.8</span>
+        <span class="price">~17€/pers</span>
+        Bistrot · Louannec · J3 MIDI
+      </div>
+      <div class="resto-desc">
+        Moules-frites, galettes. Cuisine simple et généreuse, sans chichis. "Amazing moules et frites".
+      </div>
+      <a href="tel:+33296912028" class="contact-tel">02 96 91 20 28</a>
+      <div class="resto-hours">Mar-Dim midi 12h-13h30 · 35 Route de Perros</div>
+    </div>
+
+    <div class="ornament">· · ·</div>
+
+    <h3 style="color: var(--bleu-marine); margin: 18px 0 10px; font-size: 1.1rem;">Alternatives</h3>
+
+    <div class="resto-card">
+      <div class="resto-name">Roulez Galettes !</div>
+      <div class="resto-meta">
+        <span class="rating">4.9</span>
+        <span class="price">~10€/pers</span>
+        À emporter · Trégastel
+      </div>
+      <div class="resto-desc">Galettes/crêpes à emporter. Parfait pour dîner léger après une grosse journée. À 200m du camping Tourony.</div>
+      <a href="tel:+33680384679" class="contact-tel">06 80 38 46 79</a>
+      <div class="resto-hours">Lun + Mer-Dim · 12h-18h · Route de l'Île Renote</div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-name">Ty Breizh</div>
+      <div class="resto-meta">
+        <span class="rating">4.6</span>
+        <span class="price">~17€/pers</span>
+        Crêperie · Perros-Guirec
+      </div>
+      <div class="resto-desc">Crêperie locale authentique, ambiance moins touristique. Alternative pour J2 soir si OSSA complet.</div>
+      <a href="tel:+33296912064" class="contact-tel">02 96 91 20 64</a>
+      <div class="resto-hours">Tous les jours · 12h-14h30 · 19h-21h30</div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-name">Auberge de la Vieille Église</div>
+      <div class="resto-meta">
+        <span class="rating">4.8</span>
+        <span class="price">~35€/pers</span>
+        Gastronomique · Trégastel
+      </div>
+      <div class="resto-desc">Niveau quasi-Michelin, produits locaux, prix correct vu la qualité. Pour un dîner-événement si budget. Capacité limitée.</div>
+      <a href="tel:+33296238831" class="contact-tel">02 96 23 88 31</a>
+      <div class="resto-hours">Mer-Dim · 12h15-13h15 · 19h-20h · Réserver +++</div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-name">Restaurant L'Atelier Perros-Guirec</div>
+      <div class="resto-meta">
+        <span class="rating">4.8</span>
+        <span class="price">~27€ midi</span>
+        Gastro vue port · Perros-Guirec
+      </div>
+      <div class="resto-desc">Menu midi 26,50€ / 3 plats. Vue port de Ploumanac'h. Top rapport qualité-prix gastro.</div>
+      <a href="tel:+33296481928" class="contact-tel">02 96 48 19 28</a>
+      <div class="resto-hours">Lun + Jeu-Dim · 81 Bd des Traouiero</div>
+    </div>
+
+    <div class="info">
+      <strong>Note bio</strong> : pas de "bio certifié" pur dans la zone, mais beaucoup de "local/saisonnier/circuit court" (NOMAD avec ferme partenaire, Auberge VE, etc.). Biocoop Douar Bihan à Perros-Guirec pour courses bio (fermé ven et dim).
+    </div>
+  </section>
+
+  <!-- ========== CONTACTS ========== -->
+  <section class="panel" data-panel="contacts">
+    <h2 class="section-title">Contacts</h2>
+    <div class="section-subtitle">Hébergements · Transport · Urgences</div>
+
+    <h3 style="color: var(--bleu-marine); margin: 18px 0 10px; font-size: 1.05rem;">Hébergements</h3>
+
+    <div class="contact-card featured">
+      <div class="contact-name">Camping Tourony</div>
+      <div class="contact-detail">⭐ 4.3 · Trégastel · Nuit J1</div>
+      <a href="tel:+33296238661" class="contact-tel">02 96 23 86 61</a>
+      <div class="contact-note">105 Rue de Poul Palud. Sur GR34 entre Trégastel et Ploumanac'h. Réserver impérativement.</div>
+    </div>
+
+    <div class="contact-card featured">
+      <div class="contact-name">Mer et Landes (chambre d'hôtes)</div>
+      <div class="contact-detail">⭐ 4.9 · Perros-Guirec · Nuit J2 (option)</div>
+      <a href="tel:+33640423325" class="contact-tel">06 40 42 33 25</a>
+      <div class="contact-note">Chez Maïder. 3 Chemin de Kernon. Adaptée randonneurs GR34, petit-déj breton.</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-name">Ma Ripoz B&B (alternative)</div>
+      <div class="contact-detail">⭐ 4.9 · Perros-Guirec</div>
+      <a href="tel:+33644953869" class="contact-tel">06 44 95 38 69</a>
+      <div class="contact-note">Vue mer, déco asiatique, parking. Plus haut de gamme.</div>
+    </div>
+
+    <h3 style="color: var(--bleu-marine); margin: 22px 0 10px; font-size: 1.05rem;">Transport · Bus TILT</h3>
+
+    <div class="contact-card">
+      <div class="contact-name">TILT info-usagers</div>
+      <div class="contact-detail">Bus Lannion-Trégor</div>
+      <a href="tel:+33296055555" class="contact-tel">02 96 05 55 55</a>
+      <div class="contact-note">Ticket par SMS : envoyer "TILT" au 93400. Ligne D (Lannion-Trébeurden-Trégastel), ligne E (Lannion-Perros-Trégastel).</div>
+    </div>
+
+    <h3 style="color: var(--bleu-marine); margin: 22px 0 10px; font-size: 1.05rem;">Information</h3>
+
+    <div class="contact-card">
+      <div class="contact-name">Office tourisme Perros-Guirec</div>
+      <a href="tel:+33296232115" class="contact-tel">02 96 23 21 15</a>
+      <div class="contact-note">bretagne-cotedegranitrose.com</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-name">Mairie de Trébeurden</div>
+      <div class="contact-detail">Horaires Île Milliau</div>
+      <a href="tel:+33296234410" class="contact-tel">02 96 23 44 10</a>
+      <div class="contact-note">trebeurden.fr → Découvrir → Île Milliau → Horaires de passage</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-name">Station LPO Île-Grande</div>
+      <a href="tel:+33296919140" class="contact-tel">02 96 91 91 40</a>
+      <div class="contact-note">Vérifier ouverture J2 (probablement fermée vendredi 15 mai).</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-name">Mairie de Louannec</div>
+      <div class="contact-detail">Point covoit retour</div>
+      <a href="tel:+33296232063" class="contact-tel">02 96 23 20 63</a>
+      <div class="contact-note">3 Route de Perros, 22700 Louannec. RDV covoit 16h samedi.</div>
+    </div>
+
+    <h3 style="color: var(--orange-alert); margin: 22px 0 10px; font-size: 1.05rem;">🚨 Urgences</h3>
+
+    <div class="contact-card">
+      <div class="contact-name">SAMU / Européen</div>
+      <a href="tel:112" class="contact-tel urgent">112</a>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-name">Pompiers</div>
+      <a href="tel:18" class="contact-tel urgent">18</a>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-name">CROSS · Secours en mer</div>
+      <a href="tel:196" class="contact-tel urgent">196</a>
+      <div class="contact-note">Indispensable si problème sur tombolo Île Milliau ou bord de mer.</div>
+    </div>
+
+  </section>
+
+  <!-- ========== MARÉES ========== -->
+  <section class="panel" data-panel="marees">
+    <h2 class="section-title">Marées</h2>
+    <div class="section-subtitle">Trébeurden · Île Milliau · 14-16 mai 2026</div>
+
+    <div class="alert">
+      Horaires indicatifs. Confirmer la veille sur <strong>maree.info</strong> ou <strong>trebeurden.fr</strong> (horaires de passage actualisés selon météo et pression).
+    </div>
+
+    <div class="maree-day">
+      <div class="maree-day-name">🌒 Jeudi 14 mai · Ascension</div>
+      <div class="maree-table">
+        <div class="maree-cell">
+          <div class="maree-label">PM matin</div>
+          <div class="maree-time">~07h00</div>
+        </div>
+        <div class="maree-cell basse">
+          <div class="maree-label">BM mi-journée</div>
+          <div class="maree-time">~13h00</div>
+        </div>
+        <div class="maree-cell">
+          <div class="maree-label">PM soir</div>
+          <div class="maree-time">~19h30</div>
+        </div>
+        <div class="maree-cell basse">
+          <div class="maree-label">BM tardive</div>
+          <div class="maree-time">~01h30</div>
+        </div>
+      </div>
+      <div class="maree-coef">Coefficient : <strong>70 / 77</strong> · Marée moyenne</div>
+    </div>
+
+    <div class="maree-day">
+      <div class="maree-day-name">🌊 Vendredi 15 mai · Île Milliau ★</div>
+      <div class="maree-table">
+        <div class="maree-cell">
+          <div class="maree-label">PM matin</div>
+          <div class="maree-time">~08h00</div>
+        </div>
+        <div class="maree-cell basse">
+          <div class="maree-label">BM CLÉ</div>
+          <div class="maree-time">~14h30</div>
+        </div>
+        <div class="maree-cell">
+          <div class="maree-label">PM soir</div>
+          <div class="maree-time">~20h30</div>
+        </div>
+        <div class="maree-cell basse">
+          <div class="maree-label">BM nuit</div>
+          <div class="maree-time">~02h30</div>
+        </div>
+      </div>
+      <div class="maree-coef">Coefficient : <strong>83 / 88</strong> · Bonnes marées · Fenêtre Milliau ~3h</div>
+    </div>
+
+    <div class="maree-day">
+      <div class="maree-day-name">🌑 Samedi 16 mai · Grandes marées</div>
+      <div class="maree-table">
+        <div class="maree-cell">
+          <div class="maree-label">PM matin</div>
+          <div class="maree-time">~09h00</div>
+        </div>
+        <div class="maree-cell basse">
+          <div class="maree-label">BM aprem</div>
+          <div class="maree-time">~15h15</div>
+        </div>
+        <div class="maree-cell">
+          <div class="maree-label">PM soir</div>
+          <div class="maree-time">~21h30</div>
+        </div>
+      </div>
+      <div class="maree-coef">Coefficient : <strong>92 / 96</strong> · Grandes marées · Estran spectaculaire</div>
+    </div>
+
+    <div class="info">
+      <strong>Règle Île Milliau</strong> : passage à pied possible dans une fenêtre d'environ 2h avant à 2h après marée basse. NE PAS s'engager s'il reste plus de 10 cm d'eau dans la passe (courants forts).
+    </div>
+  </section>
+
+  <!-- ========== CHECK-LIST ========== -->
+  <section class="panel" data-panel="check">
+    <h2 class="section-title">Check-list</h2>
+    <div class="section-subtitle">Cases sauvegardées dans le téléphone</div>
+
+    <div class="checklist-section">
+      <div class="checklist-header">À faire avant départ</div>
+      <div class="checklist-items" id="check-pre"></div>
+    </div>
+
+    <div class="checklist-section">
+      <div class="checklist-header">Couchage</div>
+      <div class="checklist-items" id="check-couch"></div>
+    </div>
+
+    <div class="checklist-section">
+      <div class="checklist-header">Vêtements</div>
+      <div class="checklist-items" id="check-vet"></div>
+    </div>
+
+    <div class="checklist-section">
+      <div class="checklist-header">Cuisine et eau</div>
+      <div class="checklist-items" id="check-eau"></div>
+    </div>
+
+    <div class="checklist-section">
+      <div class="checklist-header">Sécurité et hygiène</div>
+      <div class="checklist-items" id="check-secu"></div>
+    </div>
+
+    <div class="checklist-section">
+      <div class="checklist-header">Navigation et électronique</div>
+      <div class="checklist-items" id="check-nav"></div>
+    </div>
+
+    <div class="checklist-section">
+      <div class="checklist-header">La veille du départ</div>
+      <div class="checklist-items" id="check-veille"></div>
+    </div>
+  </section>
+
+  <!-- ========== BUDGET ========== -->
+  <section class="panel" data-panel="budget">
+    <h2 class="section-title">Budget estimé</h2>
+    <div class="section-subtitle">Pour 2 personnes · 3 jours · Hors covoit</div>
+
+    <h3 style="color: var(--bleu-marine); margin: 18px 0 10px; font-size: 1.05rem;">Scénario serré · Bivouac nuit 2</h3>
+    <div class="budget-table">
+      <div class="budget-row">
+        <div class="budget-label">Camping Tourony (nuit 1)</div>
+        <div class="budget-amount">12-18€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Bivouac toléré (nuit 2)</div>
+        <div class="budget-amount">0€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Dîner J1 · NOMAD</div>
+        <div class="budget-amount">36-44€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Pique-niques + petits-déj</div>
+        <div class="budget-amount">25-30€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Dîner J2 · réchaud bivouac</div>
+        <div class="budget-amount">10-15€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Déjeuner J3 · L'Abricôtier</div>
+        <div class="budget-amount">30-40€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Bus TILT (4-6 trajets)</div>
+        <div class="budget-amount">10-15€</div>
+      </div>
+      <div class="budget-row total">
+        <div class="budget-label">TOTAL</div>
+        <div class="budget-amount">~125-165€</div>
+      </div>
+    </div>
+
+    <h3 style="color: var(--bleu-marine); margin: 22px 0 10px; font-size: 1.05rem;">Scénario confort · Chambre nuit 2</h3>
+    <div class="budget-table">
+      <div class="budget-row">
+        <div class="budget-label">Camping Tourony (nuit 1)</div>
+        <div class="budget-amount">12-18€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Mer et Landes (nuit 2)</div>
+        <div class="budget-amount">80-110€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Dîner J1 · NOMAD</div>
+        <div class="budget-amount">36-44€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Pique-niques + petits-déj</div>
+        <div class="budget-amount">25-30€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Dîner J2 · OSSA</div>
+        <div class="budget-amount">30-40€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Déjeuner J3 · L'Abricôtier</div>
+        <div class="budget-amount">30-40€</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Bus TILT</div>
+        <div class="budget-amount">10-15€</div>
+      </div>
+      <div class="budget-row total">
+        <div class="budget-label">TOTAL</div>
+        <div class="budget-amount">~225-295€</div>
+      </div>
+    </div>
+
+    <div class="info">
+      Différence entre les 2 scénarios : <strong>~100-130€</strong>. Arbitrage principal sur la nuit 2.
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // ========== NAVIGATION TABS ==========
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.tab === tabName);
+    });
+    document.querySelectorAll('.panel').forEach(p => {
+      p.classList.toggle('active', p.dataset.panel === tabName);
+    });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    localStorage.setItem('cgr_active_tab', tabName);
+    // Fermer le détail carte si on change d'onglet
+    const detail = document.getElementById('map-detail');
+    if (detail) detail.classList.remove('active');
+  }
+
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+  });
+
+  // Restore last active tab
+  const savedTab = localStorage.getItem('cgr_active_tab');
+  if (savedTab) switchTab(savedTab);
+
+  // ========== CARTE INTERACTIVE ==========
+  const MAP_POINTS = {
+    'perros': {
+      title: 'Perros-Guirec · Trestraou',
+      meta: '📍 Départ J1 · Arrivée covoit 13h',
+      desc: "Plage de Trestraou, point de départ classique du sentier des douaniers vers Ploumanac'h. Dernier ravitaillement avant marche.",
+      coords: '48.8214,-3.4476',
+      gmaps: 'https://www.google.com/maps/search/?api=1&query=Plage+Trestraou+Perros-Guirec',
+      apple: 'maps://?q=Plage+Trestraou+Perros-Guirec&ll=48.8214,-3.4476',
+      visorando: 'https://www.visorando.com/randonnee-/perros-guirec.html'
+    },
+    'ploumanach': {
+      title: "Ploumanac'h",
+      meta: '⭐ Site emblématique · J1 14h30-16h30',
+      desc: "Cœur du chaos rose : oratoire Saint-Guirec, phare Men Ruz, château de Costaérès. Vue sur les Sept-Îles. Prendre son temps.",
+      coords: '48.8311,-3.4783',
+      gmaps: "https://www.google.com/maps/search/?api=1&query=Ploumanac'h+phare+Men+Ruz",
+      apple: "maps://?q=Ploumanac'h&ll=48.8311,-3.4783"
+    },
+    'tregastel': {
+      title: 'Trégastel · Coz Pors',
+      meta: '🏁 Arrivée J1 · Site Île Renote',
+      desc: "Plage de Coz Pors, Île Renote (tour 2 km recommandé), 'le Dé', 'la Sorcière'. Spot coucher de soleil 21h15.",
+      coords: '48.8326,-3.5151',
+      gmaps: 'https://www.google.com/maps/search/?api=1&query=Trégastel+Coz+Pors',
+      apple: 'maps://?q=Trégastel&ll=48.8326,-3.5151'
+    },
+    'tourony': {
+      title: 'Camping Tourony',
+      meta: '🏕️ Nuit 1 · 02 96 23 86 61',
+      desc: "105 Rue de Poul Palud. Sur GR34 entre Trégastel et Ploumanac'h. Sanitaires propres, snack-bar.",
+      coords: '48.8255,-3.4914',
+      gmaps: 'https://www.google.com/maps/search/?api=1&query=Camping+Tourony+Tregastel',
+      apple: 'maps://?q=Camping+Tourony&ll=48.8255,-3.4914',
+      tel: '+33296238661'
+    },
+    'landrellec': {
+      title: 'Presqu\'île de Landrellec',
+      meta: '🌿 Étape J2 · Vers 10h15',
+      desc: "Site naturel protégé des landes de Bringwiller. Panoramas sur l'archipel des Triagoz. Pause 15 min.",
+      coords: '48.8081,-3.5293',
+      gmaps: 'https://www.google.com/maps/search/?api=1&query=Landrellec+Pleumeur-Bodou',
+      apple: 'maps://?q=Landrellec&ll=48.8081,-3.5293'
+    },
+    'ilegrande': {
+      title: 'Île-Grande',
+      meta: '🦅 Étape J2 · Vers 11h15',
+      desc: "Reliée par pont. Décision : tour complet (6 km +1h30) ou traversée directe (3 km). Station LPO (probablement fermée vendredi).",
+      coords: '48.8067,-3.5722',
+      gmaps: 'https://www.google.com/maps/search/?api=1&query=Île-Grande+Pleumeur-Bodou',
+      apple: 'maps://?q=Île-Grande&ll=48.8067,-3.5722'
+    },
+    'trebeurden': {
+      title: 'Trébeurden · Pointe du Castel',
+      meta: '🌊 Étape J2 · Vers 14h15',
+      desc: "Centre Trébeurden + accès tombolo vers Île Milliau. Bus TILT ligne D pour retour Perros-Guirec en soirée.",
+      coords: '48.77,-3.5722',
+      gmaps: 'https://www.google.com/maps/search/?api=1&query=Pointe+du+Castel+Trebeurden',
+      apple: 'maps://?q=Trébeurden&ll=48.77,-3.5722'
+    },
+    'milliau': {
+      title: 'Île Milliau ★',
+      meta: '⚠️ Accès marée basse 14h30 · 2h sur l\'île',
+      desc: "Traversée par tombolo découvert (coef 88). Visite 2h confortable : tour 4,4 km, sommet 37 m, allée couverte. SORTIR AVANT 17h.",
+      coords: '48.7625,-3.5814',
+      gmaps: 'https://www.google.com/maps/search/?api=1&query=Île+Milliau+Trebeurden',
+      apple: 'maps://?q=Île+Milliau&ll=48.7625,-3.5814'
+    },
+    'louannec': {
+      title: 'Louannec · Mairie',
+      meta: '🏁 Arrivée J3 · Covoit retour 16h',
+      desc: "3 Route de Perros. Point de RDV covoit. Boulangerie/épicerie dans le bourg. L'Abricôtier pour déjeuner (12h-13h30).",
+      coords: '48.7949,-3.4127',
+      gmaps: 'https://www.google.com/maps/search/?api=1&query=Mairie+Louannec',
+      apple: 'maps://?q=Mairie+Louannec&ll=48.7949,-3.4127',
+      tel: '+33296232063'
+    }
+  };
+
+  function showMapDetail(key) {
+    const data = MAP_POINTS[key];
+    if (!data) return;
+    const detail = document.getElementById('map-detail');
+    let linksHtml = `
+      <a href="${data.gmaps}" target="_blank" rel="noopener">🗺️ Google Maps</a>
+      <a href="${data.apple}" class="secondary">📍 Plans (iOS)</a>
+    `;
+    if (data.visorando) {
+      linksHtml += `<a href="${data.visorando}" target="_blank" rel="noopener" class="tertiary">🥾 Visorando</a>`;
+    }
+    if (data.tel) {
+      linksHtml += `<a href="tel:${data.tel}" class="secondary">📞 Appeler</a>`;
+    }
+    detail.innerHTML = `
+      <div class="map-detail-title">${data.title}</div>
+      <div class="map-detail-meta">${data.meta}</div>
+      <div class="map-detail-desc">${data.desc}</div>
+      <div class="map-detail-links">${linksHtml}</div>
+    `;
+    detail.classList.add('active');
+    detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ========== CHECKLISTS ==========
+  const CHECKLISTS = {
+    'check-pre': [
+      'Réserver Camping Tourony · 02 96 23 86 61',
+      'Réserver Mer et Landes (si nuit 2 chambre) · 06 40 42 33 25',
+      'Confirmer point dépose covoit Perros-Guirec (Trestraou)',
+      'Confirmer point RDV covoit retour Louannec (Mairie)',
+      'Vérifier horaires bus TILT D et E un jour férié',
+      'Télécharger app TILT (e-ticket bus)',
+      'Télécharger cartes hors-ligne (Visorando)',
+      'Tester montage tente à blanc dans le jardin',
+      'Tester réchaud avec cartouche neuve',
+      'Acheter carte IGN TOP25 0714OT (optionnel)',
+    ],
+    'check-couch': [
+      'Tente légère, autoportante, étanche (3000 mm min)',
+      'Sac de couchage confort 5°C minimum',
+      'Matelas isolant R-value 3+ (critique)',
+      'Drap en soie ou polaire (gain 3-5°C)',
+      'Bonnet de nuit (oui, même en mai breton)',
+    ],
+    'check-vet': [
+      'Veste imperméable + capuche',
+      'Polaire ou doudoune fine',
+      'T-shirt technique × 2',
+      'Pantalon de rando + short',
+      'Sous-vêtements techniques × 2',
+      'Chaussettes de rando × 3',
+      'Bonnet léger + gants fins',
+      'Tenue de soir/dodo (sec et propre)',
+      'Chaussures de rando rodées',
+      'Sandales/tongs camping',
+    ],
+    'check-eau': [
+      'Réchaud à gaz + cartouche neuve',
+      'Popote (casserole + couvercle)',
+      'Couverts (cuillère)',
+      'Briquet × 2 (redondance)',
+      'Gourdes/poches à eau · 2L total/pers',
+      'Filtre à eau OU pastilles purification',
+      'Repas lyophilisés ou simples × 4',
+      'Encas : barres, fruits secs, fromage',
+      'Petit-déj rapide (porridge, café)',
+    ],
+    'check-secu': [
+      'Trousse premiers secours · Compeed · antalgiques',
+      'Frontale + piles rechange',
+      'Couteau / multi-outil',
+      'Sifflet (sécurité bord de mer)',
+      'Crème solaire + lunettes (réverbération)',
+      'Brosse à dents · dentifrice · savon bio',
+      'PQ + petite truelle',
+      'Sacs poubelle (emporter déchets)',
+    ],
+    'check-nav': [
+      'App Visorando avec cartes hors-ligne',
+      'Téléphone chargé + batterie externe (10 000 mAh)',
+      'Câble + chargeur',
+      'Sac à dos 50-60L max',
+      'Housse pluie sac à dos',
+      'Sacs étanches affaires sensibles',
+      'Bâtons de marche (utiles)',
+      'Argent liquide (~50€) + CB',
+      'Pièce d\'identité',
+    ],
+    'check-veille': [
+      'Recharger téléphones + batterie externe 100%',
+      'Préparer pique-nique J1 (si pas le temps demain)',
+      'Confirmer une dernière fois covoit aller',
+      'Météo-France 24h · ajuster équipement',
+      'Vérifier que tout rentre dans le sac (≤12 kg/pers)',
+      'VÉRIFIER horaires passage Île Milliau sur trebeurden.fr',
+      'Confirmer ouverture Station LPO Île-Grande au 02 96 91 91 40',
+    ],
+  };
+
+  function buildChecklists() {
+    Object.entries(CHECKLISTS).forEach(([id, items]) => {
+      const container = document.getElementById(id);
+      if (!container) return;
+      container.innerHTML = '';
+      items.forEach((text, idx) => {
+        const item = document.createElement('div');
+        item.className = 'check-item';
+        const cbId = `${id}-${idx}`;
+        const saved = localStorage.getItem(`cgr_${cbId}`) === '1';
+        item.innerHTML = `
+          <input type="checkbox" id="${cbId}" ${saved ? 'checked' : ''}>
+          <label for="${cbId}">${text}</label>
+        `;
+        const cb = item.querySelector('input');
+        cb.addEventListener('change', e => {
+          localStorage.setItem(`cgr_${cbId}`, e.target.checked ? '1' : '0');
+        });
+        container.appendChild(item);
+      });
+    });
+  }
+
+  buildChecklists();
+
+  // ========== KEEP SCREEN ON (when available) ==========
+  if ('wakeLock' in navigator) {
+    let wakeLock = null;
+    document.addEventListener('visibilitychange', async () => {
+      if (document.visibilityState === 'visible' && !wakeLock) {
+        try { wakeLock = await navigator.wakeLock.request('screen'); } catch(e) {}
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
