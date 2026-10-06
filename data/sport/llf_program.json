@@ -1,12 +1,12 @@
 {
   "meta": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "date": "2026-10-06",
     "titre": "Lower Limb Foundations",
     "auteur": "Conor Harris (BS, CSCS, XPS, CES, CPT)",
     "source": "eBook « Lower Limb Foundations 9.0 » (PDF, © Conor Harris 2023)",
     "description": "Programme de 6 semaines pied-cheville-genou intégré à la hanche et au tronc, organisé selon les phases de la marche. Bibliothèque consultable : rien n'est injecté dans programme_sport.json.",
-    "statut": "Bibliothèque consultable — non intégrée à la semaine type (décision du 06/10/2026)",
+    "statut": "Bibliothèque + programme journalier autonome (onglet Aujourd'hui) — non injecté dans programme_sport.json",
     "redaction": "Fiches reformulées et commentées en français : elles ne reproduisent pas le texte du livre. Paramètres = ceux des fiches d'exercice (le récap de fin de bloc est indiqué quand il diverge). Vidéos = chaîne YouTube publique de l'auteur, titres vérifiés le 06/10/2026.",
     "legende_verdicts": {
       "vert": "Compatible tel quel avec ton profil",
@@ -18,8 +18,30 @@
         "version": "1.0.0",
         "date": "2026-10-06",
         "note": "Création — extraction du PDF, vérification des 33 liens vidéo, filtre profil."
+      },
+      {
+        "version": "1.1.0",
+        "date": "2026-10-06",
+        "note": "Programme journalier : paramètres de suivi (séries/tenues, côtés, progression des durées), consignes du jour, règles de progression."
       }
     ]
+  },
+  "programme_jour": {
+    "jours_seance_defaut": [
+      0,
+      2,
+      4
+    ],
+    "jours_actifs_par_bloc": 14,
+    "ordre_seance": [
+      "quotidien",
+      "isometrique",
+      "pliometrique",
+      "force"
+    ],
+    "regle_progression": "Le bloc suivant s'ouvre après 14 jours actifs dans le bloc en cours (un jour actif = au moins une série de drill notée). C'est la règle de l'auteur : ne pas sauter de bloc, et cumuler 14 jours même en cas d'oubli.",
+    "repartition_drills": "Idéalement 3-4 séries par drill et par jour, réparties entre le matin et le soir.",
+    "note_bfs": "Les jours de BFS Anti-Pronation, ne cumule pas les sauts : pogo hops LLF ou Grounded Hops BFS, pas les deux. À partir du bloc 2 (sauts sur une jambe), retire plutôt les Grounded Hops du BFS."
   },
   "principes": {
     "types": [
@@ -298,7 +320,16 @@
       "filtre_profil": "Position combinant flexion, adduction et rotation interne de hanche : c'est la position du test FADIR. Avec la sensation articulaire de hanche droite non élucidée, côté droit = amplitude réduite et arrêt immédiat à toute sensation antérieure ou au pli de l'aine. Le critère de l'auteur (« zéro sensation devant ») sert justement de règle d'arrêt. Côté gauche : tel quel. À valider par le kiné avant de pousser l'amplitude à droite.",
       "confiance": "élevée sur la géométrie de la position ; modérée sur le risque réel (non évalué cliniquement)",
       "recoupements": [],
-      "id": "pri-standing-posterior-hip-capsule-stretch"
+      "id": "pri-standing-posterior-hip-capsule-stretch",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 2,
+        "cote": true,
+        "min_s": 60,
+        "max_s": 120,
+        "pas_s": 15
+      },
+      "consigne_jour": "Côté D : amplitude réduite, stop à toute sensation à l'avant de la hanche ou au pli de l'aine."
     },
     "tibial-untwister": {
       "nom": "Tibial Untwister",
@@ -333,7 +364,14 @@
       "filtre_profil": "Directement pertinent pour la marche canard (pied ouvert) si elle comporte une composante de rotation externe tibiale fonctionnelle. Limite : si l'ouverture du pied vient d'une torsion tibiale osseuse, aucun drill ne la modifiera — demander si l'EOS mesure les torsions fémorales et tibiales.",
       "confiance": "modérée",
       "recoupements": [],
-      "id": "tibial-untwister"
+      "id": "tibial-untwister",
+      "suivi": {
+        "mode": "series",
+        "cible": 3,
+        "cote": false,
+        "reps": "20-25 très lentes/côté"
+      },
+      "consigne_jour": "Trois appuis du pied en permanence ; tirage dans le genou OK, douleur non."
     },
     "wedge-supination-drill": {
       "nom": "Wedge Supination Drill",
@@ -373,7 +411,14 @@
       "recoupements": [
         "BFS Anti-Pronation (même direction de travail)"
       ],
-      "id": "wedge-supination-drill"
+      "id": "wedge-supination-drill",
+      "suivi": {
+        "mode": "series",
+        "cible": 5,
+        "cote": false,
+        "reps": "5 cycles/côté"
+      },
+      "consigne_jour": "Si le bas du dos se raidit, tourne moins."
     },
     "bilateral-hamstring-isometric-bridge": {
       "nom": "Bilateral Hamstring Isometric Bridge",
@@ -408,7 +453,15 @@
         "hip-bridges (BFS Glute Re-Education)",
         "bridge-hold"
       ],
-      "id": "bilateral-hamstring-isometric-bridge"
+      "id": "bilateral-hamstring-isometric-bridge",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 3,
+        "cote": false,
+        "min_s": 15,
+        "max_s": 45,
+        "pas_s": 5
+      }
     },
     "hamstring-bridge-tibial-ir": {
       "nom": "Hamstring Bridge with Tibial Internal Rotation Focus",
@@ -444,7 +497,14 @@
       "recoupements": [
         "hip-bridges (BFS)"
       ],
-      "id": "hamstring-bridge-tibial-ir"
+      "id": "hamstring-bridge-tibial-ir",
+      "suivi": {
+        "mode": "series",
+        "cible": 3,
+        "cote": false,
+        "reps": "8-10/côté · 3:1:3"
+      },
+      "consigne_jour": "Ne force pas l'amplitude haute côté D."
     },
     "seated-tempo-calf-raise": {
       "nom": "Seated Tempo Calf Raise",
@@ -481,7 +541,13 @@
         "calf-raise-bilateral",
         "single-leg-calf-raise-au-poids-de-corps"
       ],
-      "id": "seated-tempo-calf-raise"
+      "id": "seated-tempo-calf-raise",
+      "suivi": {
+        "mode": "series",
+        "cible": 3,
+        "cote": false,
+        "reps": "12 · 3:1:3"
+      }
     },
     "bilateral-pogo-hops": {
       "nom": "Bilateral Pogo Hops (with optional modifications)",
@@ -514,7 +580,15 @@
       "recoupements": [
         "grounded-hops-emom (BFS Anti-Pronation)"
       ],
-      "id": "bilateral-pogo-hops"
+      "id": "bilateral-pogo-hops",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 3,
+        "cote": false,
+        "min_s": 20,
+        "max_s": 30,
+        "pas_s": 5
+      }
     },
     "supine-wall-switches": {
       "nom": "Supine Wall Switches",
@@ -547,7 +621,14 @@
       "filtre_profil": "Pliométrie sans impact axial : idéale pour démarrer. Sur le dos → pas dans les ~2 h qui suivent le R2.",
       "confiance": "élevée",
       "recoupements": [],
-      "id": "supine-wall-switches"
+      "id": "supine-wall-switches",
+      "suivi": {
+        "mode": "series",
+        "cible": 3,
+        "cote": false,
+        "reps": "15-20/côté"
+      },
+      "consigne_jour": "Sur le dos : pas dans les ~2 h après le R2."
     },
     "pronation-drill": {
       "nom": "Pronation Drill",
@@ -591,7 +672,14 @@
       "recoupements": [
         "BFS Anti-Pronation (direction opposée)"
       ],
-      "id": "pronation-drill"
+      "id": "pronation-drill",
+      "suivi": {
+        "mode": "series",
+        "cible": 3,
+        "cote": false,
+        "reps": "15 lentes/côté"
+      },
+      "consigne_jour": "Affaissement minimal, trois appuis non négociables, priorité à la dorsiflexion."
     },
     "90-90-hip-lift-ball": {
       "nom": "90/90 Hip Lift with Ball Hold",
@@ -632,7 +720,14 @@
       "recoupements": [
         "dead bugs / travail anti-extension du pilier correctif core"
       ],
-      "id": "90-90-hip-lift-ball"
+      "id": "90-90-hip-lift-ball",
+      "suivi": {
+        "mode": "series",
+        "cible": 2,
+        "cote": false,
+        "reps": "8 respirations"
+      },
+      "consigne_jour": "Ischios seulement, pas de fessiers, bas du dos relâché. Hors fenêtre post-R2."
     },
     "sidelying-grounding": {
       "nom": "Sidelying Grounding with Breathing Focus",
@@ -671,7 +766,14 @@
       "filtre_profil": "Travaille les obliques du côté au sol. Couché sur le côté droit, c'est l'oblique externe droit — ton maillon faible : +1 série de ce côté, conformément à ta règle d'asymétrie (suggestion de ma part).",
       "confiance": "modérée-élevée",
       "recoupements": [],
-      "id": "sidelying-grounding"
+      "id": "sidelying-grounding",
+      "suivi": {
+        "mode": "series",
+        "cible": 2,
+        "cote": false,
+        "reps": "8 respirations/côté"
+      },
+      "consigne_jour": "+1 série couché sur le côté droit (oblique externe D)."
     },
     "hauser-pronation-isometric": {
       "nom": "Hauser Pronation Isometric",
@@ -713,7 +815,16 @@
       "filtre_profil": "Même tension de cadre que le Pronation Drill. Nuance mécanique : « pronateur » ne veut pas dire « affaissant » — le long fibulaire abaisse le 1er métatarsien et soutient l'arche transverse. Je n'ai pas pu visionner la vidéo : le détail d'exécution reste à vérifier.",
       "confiance": "faible-modérée",
       "recoupements": [],
-      "id": "hauser-pronation-isometric"
+      "id": "hauser-pronation-isometric",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 3,
+        "cote": true,
+        "min_s": 30,
+        "max_s": 45,
+        "pas_s": 5
+      },
+      "consigne_jour": "Garde l'arche active : stop si elle s'effondre ou si le genou part en dedans."
     },
     "single-leg-isometric-hamstring-bridge": {
       "nom": "Single Leg Isometric Hamstring Bridge",
@@ -748,7 +859,15 @@
       "recoupements": [
         "hip-bridges (BFS)"
       ],
-      "id": "single-leg-isometric-hamstring-bridge"
+      "id": "single-leg-isometric-hamstring-bridge",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 3,
+        "cote": true,
+        "min_s": 15,
+        "max_s": 45,
+        "pas_s": 5
+      }
     },
     "soleus-slouch": {
       "nom": "Soleus Slouch",
@@ -780,7 +899,13 @@
       "filtre_profil": "Debout, charge faible, travail soléaire : aucun conflit.",
       "confiance": "élevée",
       "recoupements": [],
-      "id": "soleus-slouch"
+      "id": "soleus-slouch",
+      "suivi": {
+        "mode": "series",
+        "cible": 3,
+        "cote": false,
+        "reps": "10/côté"
+      }
     },
     "heel-float-split-squat": {
       "nom": "Heel Float Split Squat",
@@ -825,7 +950,14 @@
         "heel-elevated-lunges-emom (BFS Anti-Pronation)",
         "split-squat-bande"
       ],
-      "id": "heel-float-split-squat"
+      "id": "heel-float-split-squat",
+      "suivi": {
+        "mode": "series",
+        "cible": 3,
+        "cote": false,
+        "reps": "10/côté, lent"
+      },
+      "consigne_jour": "Charge : sac de rucking plutôt qu'haltère d'un côté."
     },
     "single-leg-box-pogo-hops": {
       "nom": "Single Leg Box Pogo Hops (with optional modifications)",
@@ -860,7 +992,16 @@
       "recoupements": [
         "grounded-hops-emom (BFS)"
       ],
-      "id": "single-leg-box-pogo-hops"
+      "id": "single-leg-box-pogo-hops",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 3,
+        "cote": true,
+        "min_s": 20,
+        "max_s": 30,
+        "pas_s": 5
+      },
+      "consigne_jour": "Avance seulement si réception silencieuse, genou dans l'axe, tendons OK le lendemain."
     },
     "sidelying-glute-max": {
       "nom": "Sidelying Glute Max",
@@ -899,7 +1040,14 @@
       "recoupements": [
         "clam-shells (BFS Glute Re-Education)"
       ],
-      "id": "sidelying-glute-max"
+      "id": "sidelying-glute-max",
+      "suivi": {
+        "mode": "series",
+        "cible": 2,
+        "cote": false,
+        "reps": "5 respirations/côté"
+      },
+      "consigne_jour": "Arche du pied du dessus plaquée au mur ; nuque et lombaires relâchées."
     },
     "pri-alternating-reciprocal-step-through": {
       "nom": "PRI Alternating Reciprocal Step-Through with Elevation",
@@ -932,7 +1080,15 @@
       "filtre_profil": "Debout, spécifique à la marche, sans charge. Cadre PRI (faible niveau de preuve), mais aucun risque identifié.",
       "confiance": "modérée",
       "recoupements": [],
-      "id": "pri-alternating-reciprocal-step-through"
+      "id": "pri-alternating-reciprocal-step-through",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 2,
+        "cote": true,
+        "min_s": 30,
+        "max_s": 120,
+        "pas_s": 10
+      }
     },
     "spring-ankle-isometric": {
       "nom": "Spring-Ankle Isometric",
@@ -976,7 +1132,15 @@
       "recoupements": [
         "BFS (travail du pied)"
       ],
-      "id": "spring-ankle-isometric"
+      "id": "spring-ankle-isometric",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 3,
+        "cote": true,
+        "min_s": 30,
+        "max_s": 60,
+        "pas_s": 5
+      }
     },
     "single-leg-iso-hamstring-bridge-oscillation": {
       "nom": "Single Leg Isometric Hamstring Bridge with Oscillation",
@@ -1011,7 +1175,15 @@
       "recoupements": [
         "hip-bridges (BFS)"
       ],
-      "id": "single-leg-iso-hamstring-bridge-oscillation"
+      "id": "single-leg-iso-hamstring-bridge-oscillation",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 3,
+        "cote": true,
+        "min_s": 15,
+        "max_s": 45,
+        "pas_s": 5
+      }
     },
     "bottoms-up-split-squat-pronation": {
       "nom": "Bottoms-Up Split Squat with Pronation Focus",
@@ -1051,7 +1223,16 @@
       "recoupements": [
         "split-squat-bande"
       ],
-      "id": "bottoms-up-split-squat-pronation"
+      "id": "bottoms-up-split-squat-pronation",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 5,
+        "cote": true,
+        "min_s": 5,
+        "max_s": 45,
+        "pas_s": 5
+      },
+      "consigne_jour": "Jambe D devant : profondeur réduite, stop à toute sensation d'aine."
     },
     "kickstand-hinge-forefoot": {
       "nom": "Kickstand Hinge with Forefoot Focus",
@@ -1085,7 +1266,14 @@
       "recoupements": [
         "kickstand-rdl"
       ],
-      "id": "kickstand-hinge-forefoot"
+      "id": "kickstand-hinge-forefoot",
+      "suivi": {
+        "mode": "series",
+        "cible": 3,
+        "cote": false,
+        "reps": "12/côté"
+      },
+      "consigne_jour": "Charnière : pas dans les ~2 h après le R2. Charge en sac/gilet."
     },
     "single-leg-step-down-series": {
       "nom": "Single Leg Step-Down Progression Series",
@@ -1118,7 +1306,14 @@
       "filtre_profil": "Excentrique de 5 s en unipodal : contrôle du valgus, sollicitation tendineuse favorable, coût nerveux faible. Le meilleur exercice de force du livre pour ton profil. Côté droit : surveiller la chute du bassin controlatéral (moyen fessier D).",
       "confiance": "élevée",
       "recoupements": [],
-      "id": "single-leg-step-down-series"
+      "id": "single-leg-step-down-series",
+      "suivi": {
+        "mode": "series",
+        "cible": 3,
+        "cote": false,
+        "reps": "5-8/côté · 5:1:3"
+      },
+      "consigne_jour": "Côté D : surveille la chute du bassin opposé."
     },
     "single-leg-multidirectional-pogo": {
       "nom": "Single Leg Multi-Directional Pogo Hops with Optional Regressions",
@@ -1156,7 +1351,16 @@
       "filtre_profil": "30-60 s unipodal en multidirectionnel : volume d'impact conséquent sur un pied plat, avec un moyen fessier D faible dans le plan frontal. Commencer par la version bilatérale (vidéo de régression), passer à l'unipodal seulement si les critères de la pliométrie sont remplis.",
       "confiance": "modérée",
       "recoupements": [],
-      "id": "single-leg-multidirectional-pogo"
+      "id": "single-leg-multidirectional-pogo",
+      "suivi": {
+        "mode": "tenue",
+        "cible": 3,
+        "cote": true,
+        "min_s": 30,
+        "max_s": 60,
+        "pas_s": 5
+      },
+      "consigne_jour": "Commence en bilatéral (vidéo régression) ; unipodal seulement si critères pliométrie OK."
     },
     "single-leg-lateral-hurdle-hops": {
       "nom": "Single Leg Lateral Hurdle Hops - Double-Contact",
@@ -1192,7 +1396,14 @@
       "filtre_profil": "Réception latérale unipodale : demande frontale maximale sur les abducteurs de hanche (moyen fessier D) et sur l'arche. Dernier exercice à introduire, obstacle bas, uniquement si le step-down est propre des deux côtés.",
       "confiance": "modérée",
       "recoupements": [],
-      "id": "single-leg-lateral-hurdle-hops"
+      "id": "single-leg-lateral-hurdle-hops",
+      "suivi": {
+        "mode": "series",
+        "cible": 3,
+        "cote": false,
+        "reps": "5-6/côté"
+      },
+      "consigne_jour": "Seulement si le step-down est propre des deux côtés. Obstacle bas."
     }
   },
   "filtre_profil": {

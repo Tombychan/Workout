@@ -143,11 +143,81 @@ a{color:var(--ah);text-decoration:none}
 .errata .pg{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t3)}
 .foot{font-size:11px;color:var(--t3);text-align:center;margin-top:18px;line-height:1.6}
 em{color:var(--t);font-style:italic}
+
+/* Segmented (niveau 1) */
+.seg{display:flex;gap:2px;background:var(--s1);border-radius:var(--rs);padding:2px;margin-bottom:6px}
+.seg button{flex:1;padding:9px 4px;font-size:13px;font-weight:700;color:var(--t3);border-radius:6px;min-height:40px}
+.seg button.on{background:var(--a);color:#fff}
+
+/* Aujourd'hui */
+.daycard{background:linear-gradient(135deg,rgba(99,102,241,.16),rgba(6,182,212,.08));border:1px solid rgba(99,102,241,.35);border-radius:var(--rd);padding:14px;margin-bottom:14px}
+.daycard .kick{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ah)}
+.daycard h2{font-size:17px;font-weight:700;margin:2px 0 4px;letter-spacing:-.2px}
+.daycard p{font-size:13px;color:var(--t2)}
+.squares{display:flex;gap:4px;margin:10px 0 4px}
+.sq{flex:1;height:8px;border-radius:2px;background:var(--s3)}
+.sq.on{background:var(--g)}
+.sq.today{background:var(--ah)}
+.sqlbl{font-size:11px;color:var(--t2);display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px}
+.prog{display:flex;align-items:center;gap:8px;margin-top:10px}
+.prog .bar{flex:1;height:6px;background:var(--s3);border-radius:3px;overflow:hidden}
+.prog .fill{height:100%;background:var(--g);border-radius:3px;transition:width .3s}
+.prog span{font-size:11px;color:var(--t2);font-family:'JetBrains Mono',monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600;padding:9px 14px;border-radius:var(--rs);background:var(--s2);border:1px solid var(--b);color:var(--t);min-height:40px}
+.btn.pri{background:var(--a);border-color:var(--a);color:#fff}
+.btn.ghost{background:none}
+.btn.warn{color:var(--r);border-color:var(--rb)}
+.btn.sm{font-size:12px;padding:6px 10px;min-height:34px}
+.hint{font-size:12px;color:var(--t3);margin:0 2px 8px}
+.row{background:var(--s1);border:1px solid var(--b);border-radius:var(--rd);margin-bottom:8px;overflow:hidden;scroll-margin-top:150px}
+.row.done{border-color:var(--gb)}
+.row-top{display:flex;gap:10px;padding:12px 12px 4px;align-items:flex-start}
+.row-top .ex-info{cursor:pointer}
+.row .chk{width:20px;height:20px;border-radius:50%;border:2px solid var(--bh);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff}
+.row.done .chk{background:var(--g);border-color:var(--g)}
+.consigne{font-size:12px;color:var(--t2);margin:2px 12px 0 42px;line-height:1.45}
+.consigne.orange{color:#fcd34d}
+.trk{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:10px 12px 12px 42px}
+.cnt-n{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;min-width:44px}
+.cnt-n.ok{color:var(--g)}
+.side{display:flex;align-items:center;gap:6px;width:100%}
+.side .lbl{font-size:11px;font-weight:700;color:var(--t3);width:14px}
+.holds{display:flex;flex-wrap:wrap;gap:4px;flex:1}
+.hold{font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 6px;border-radius:4px;background:var(--gg);color:var(--g);border:1px solid var(--gb)}
+.tgt{font-size:11px;color:var(--t3);width:100%;padding-left:20px}
+.undo{width:34px;height:34px;border-radius:var(--rs);background:var(--s2);border:1px solid var(--b);color:var(--t2);font-size:15px}
+.row .ex-body{display:block;border-top:1px solid var(--b);padding-top:2px}
+.setup{background:var(--s1);border:1px solid var(--b);border-radius:var(--rd);padding:14px;margin-bottom:12px}
+.setup h3{font-size:13px;font-weight:700;margin:12px 0 6px}
+.setup h3:first-child{margin-top:0}
+.setup p{font-size:13px;color:var(--t2);margin-bottom:8px}
+.setup input[type=date]{font-family:inherit;font-size:14px;color:var(--t);background:var(--s2);border:1px solid var(--b);border-radius:var(--rs);padding:8px 10px;min-height:40px;color-scheme:dark}
+.daychips{display:flex;gap:4px}
+.daychip{flex:1;min-height:38px;border-radius:var(--rs);background:var(--s2);border:1px solid var(--b);font-size:12px;font-weight:700;color:var(--t3)}
+.daychip.on{background:var(--ag);border-color:var(--a);color:var(--t)}
+.blocsel{display:flex;flex-wrap:wrap;gap:6px}
+textarea.note{width:100%;min-height:64px;font-family:inherit;font-size:13px;color:var(--t);background:var(--s2);border:1px solid var(--b);border-radius:var(--rs);padding:8px 10px;resize:vertical}
+details.set{margin-top:14px}
+details.set summary{font-size:12px;color:var(--t2);cursor:pointer;padding:8px 2px;list-style:none}
+details.set summary::-webkit-details-marker{display:none}
+.timerbar{position:fixed;left:50%;transform:translateX(-50%);bottom:max(14px,env(safe-area-inset-bottom));z-index:100;width:calc(100% - 24px);max-width:536px;display:none;align-items:center;gap:10px;padding:10px 12px;border-radius:16px;background:rgba(14,14,26,.97);border:1px solid var(--a);box-shadow:0 6px 30px rgba(0,0,0,.6)}
+.timerbar.on{display:flex}
+.timerbar.done{border-color:var(--g)}
+.timerbar .tn{flex:1;min-width:0;font-size:12px;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.timerbar .tt{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;min-width:64px;text-align:right}
+.timerbar .tg{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t3)}
+.timerbar.done .tt{color:var(--g)}
 </style>
 </head>
 <body>
 <div class="app" id="app">
   <div class="loading" id="loading"><div class="spinner"></div><span>Chargement…</span></div>
+</div>
+<div class="timerbar" id="timerbar" role="timer" aria-live="polite">
+  <div class="tn" id="tb-name"></div>
+  <div style="text-align:right"><div class="tt" id="tb-time">0s</div><div class="tg" id="tb-target"></div></div>
+  <button class="btn pri sm" onclick="stopHold(true)">■ Stop</button>
+  <button class="undo" onclick="stopHold(false)" aria-label="Annuler">✕</button>
 </div>
 <script>
 /* ═══════════ STATE ═══════════ */
@@ -160,7 +230,14 @@ const VCLS = {vert:'g', orange:'o', rouge:'r'};
 const VCOUNT = {vert:'compatibles', orange:'avec adaptation', rouge:'à écarter'};
 let D = null;
 let OFFLINE = false;
-const S = { tab: 'b1', open: {}, video: {}, filter: 'tous' };
+const S = { tab: 'jour', libTab: 'b1', open: {}, video: {}, filter: 'tous', confirmReset: false };
+const PLAN_KEY = 'llf-plan-v1';
+const LOG_KEY = 'llf-log-v1';
+const JOURS_C = ['L','Ma','Me','J','V','S','D'];
+const JOURS_N = ['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
+let PLAN = null;   // { start:'YYYY-MM-DD', days:[0,2,4], forceBloc:null }
+let LOG = {};      // { 'YYYY-MM-DD': { bloc, full, note, ex: { id: { sets, holds:[{c:'G'|'D'|'', t}] } } } }
+let TIMER = null;
 
 function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
 function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
@@ -180,10 +257,13 @@ async function load(){
       return;
     }
   }
+  loadState();
   const saved = lsGet(TAB_KEY);
-  if (saved && (saved === 'principes' || saved === 'profil' || D.blocs.some(b => b.id === saved))) S.tab = saved;
+  const valid = t => t === 'jour' || t === 'principes' || t === 'profil' || D.blocs.some(b => b.id === t);
+  if (saved && valid(saved)) S.tab = saved;
+  if (S.tab !== 'jour') S.libTab = S.tab;
   const h = location.hash.match(/ex=([\w-]+)/);
-  if (h && D.exercices[h[1]]) { S.tab = D.exercices[h[1]].bloc; S.open[h[1]] = true; render(); focusEx(h[1]); return; }
+  if (h && D.exercices[h[1]]) { S.tab = S.libTab = D.exercices[h[1]].bloc; S.open[h[1]] = true; render(); focusEx(h[1]); return; }
   render();
 }
 
@@ -197,10 +277,11 @@ function exName(id){ const e = D.exercices[id]; return e ? e.nom_fr : id; }
 function render(){
   let h = header();
   h += '<div class="cnt">';
-  if (S.tab === 'principes') h += principes();
+  if (S.tab === 'jour') h += today();
+  else if (S.tab === 'principes') h += principes();
   else if (S.tab === 'profil') h += profil();
   else h += bloc(D.blocs.find(b => b.id === S.tab));
-  h += `<div class="foot">${esc(D.meta.source)}<br>v${esc(D.meta.version)} · ${esc(D.meta.date)} · ${esc(D.meta.statut)}</div>`;
+  h += `<div class="foot">${esc(D.meta.source)}<br>v${esc(D.meta.version)} · ${esc(D.meta.date)}</div>`;
   h += '</div>';
   document.getElementById('app').innerHTML = h;
 }
@@ -208,9 +289,12 @@ function render(){
 function header(){
   let h = '<div class="hdr"><div class="hdr-top">';
   h += '<a class="back" href="hub.html" aria-label="Retour au hub">←</a>';
-  h += `<div><h1>${esc(D.meta.titre)}</h1><div class="sub">Conor Harris · 6 semaines · bibliothèque</div></div>`;
+  h += `<div><h1>${esc(D.meta.titre)}</h1><div class="sub">Conor Harris · 6 semaines</div></div>`;
   if (OFFLINE) h += '<span class="offline">● hors ligne</span>';
-  h += '</div><div class="tabs" role="tablist">';
+  h += '</div>';
+  h += `<div class="seg"><button class="${S.tab==='jour'?'on':''}" onclick="setTab('jour')">Aujourd'hui</button><button class="${S.tab!=='jour'?'on':''}" onclick="setTab(S.libTab)">Bibliothèque</button></div>`;
+  if (S.tab === 'jour') { h += '</div>'; return h; }
+  h += '<div class="tabs" role="tablist">';
   D.blocs.forEach(b => {
     h += `<button class="tab ${S.tab===b.id?'on':''}" role="tab" onclick="setTab('${b.id}')">S${esc(b.semaines)}<small>${esc(b.titre)}</small></button>`;
   });
@@ -375,7 +459,7 @@ function profil(){
 }
 
 /* ═══════════ ACTIONS ═══════════ */
-function setTab(t){ S.tab = t; S.filter = 'tous'; lsSet(TAB_KEY, t); render(); window.scrollTo(0,0); }
+function setTab(t){ S.tab = t; if (t !== 'jour') S.libTab = t; S.filter = 'tous'; lsSet(TAB_KEY, t); render(); window.scrollTo(0,0); }
 function setFilter(f){ S.filter = f; render(); }
 function toggleEx(id){
   S.open[id] = !S.open[id];
@@ -388,7 +472,7 @@ function toggleVideo(id, i){
 }
 function goEx(id){
   const e = D.exercices[id];
-  S.tab = e.bloc; S.filter = 'tous'; S.open[id] = true; lsSet(TAB_KEY, e.bloc);
+  S.tab = S.libTab = e.bloc; S.filter = 'tous'; S.open[id] = true; lsSet(TAB_KEY, e.bloc);
   render(); focusEx(id);
 }
 function focusEx(id){
@@ -398,6 +482,263 @@ function focusEx(id){
     el.scrollIntoView({behavior:'smooth', block:'start'});
     el.classList.add('flash');
   });
+}
+
+
+/* ═══════════ PROGRAMME DU JOUR ═══════════ */
+function loadState(){
+  try { PLAN = JSON.parse(lsGet(PLAN_KEY)) || null; } catch(e){ PLAN = null; }
+  try { LOG = JSON.parse(lsGet(LOG_KEY)) || {}; } catch(e){ LOG = {}; }
+}
+function saveState(){ lsSet(PLAN_KEY, JSON.stringify(PLAN)); lsSet(LOG_KEY, JSON.stringify(LOG)); }
+function dk(d){ d = d || new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function dow(d){ d = d || new Date(); return (d.getDay() + 6) % 7; }
+function parseDk(k){ const [y,m,d] = k.split('-').map(Number); return new Date(y, m-1, d); }
+function fmtDate(k){ return parseDk(k).toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long'}); }
+function isActive(v){ return !!v && Object.values(v.ex || {}).some(x => (x.sets || 0) > 0 || (x.holds || []).length > 0); }
+function activeDaysIn(bloc, exclude){ return Object.entries(LOG).filter(([k,v]) => k !== exclude && v.bloc === bloc && isActive(v)).length; }
+function needDays(){ return D.programme_jour?.jours_actifs_par_bloc || 14; }
+
+function currentBloc(){
+  const k = dk();
+  if (PLAN.forceBloc) return PLAN.forceBloc;
+  if (isActive(LOG[k]) && LOG[k].bloc) return LOG[k].bloc;
+  for (const b of D.blocs) if (activeDaysIn(b.id, k) < needDays()) return b.id;
+  return 'fini';
+}
+function entryForLog(){
+  const k = dk(), b = currentBloc();
+  if (!LOG[k]) LOG[k] = { ex: {} };
+  if (!isActive(LOG[k])) LOG[k].bloc = b;
+  return LOG[k];
+}
+function exLog(entry, id){ if (!entry.ex[id]) entry.ex[id] = { sets: 0, holds: [] }; return entry.ex[id]; }
+function isFullDay(){ return PLAN.days.includes(dow()) || !!LOG[dk()]?.full; }
+
+function bestPrev(id, side){
+  const k = dk();
+  const keys = Object.keys(LOG).filter(x => x < k).sort().reverse();
+  for (const key of keys) {
+    const hs = (LOG[key].ex?.[id]?.holds || []).filter(h => (h.c || '') === (side || ''));
+    if (hs.length) return Math.max(...hs.map(h => h.t));
+  }
+  return null;
+}
+function targetFor(e, side){
+  const su = e.suivi, b = bestPrev(e.id, side);
+  if (b === null) return su.min_s;
+  return Math.min(su.max_s, Math.max(su.min_s, b + su.pas_s));
+}
+function exDone(e, x){
+  const su = e.suivi;
+  if (!x) return false;
+  if (su.mode === 'series') return (x.sets || 0) >= su.cible;
+  const hs = x.holds || [];
+  if (su.cote) return hs.filter(h => h.c === 'G').length >= su.cible && hs.filter(h => h.c === 'D').length >= su.cible;
+  return hs.length >= su.cible;
+}
+function fmtS(s){ return s >= 60 ? Math.floor(s/60) + ':' + String(s%60).padStart(2,'0') : s + ' s'; }
+function nextFullDay(){
+  for (let i = 1; i <= 7; i++) { const d = new Date(); d.setDate(d.getDate() + i); if (PLAN.days.includes(dow(d))) return JOURS_N[dow(d)]; }
+  return null;
+}
+function fullSessionsThisWeek(){
+  const now = new Date(), monday = new Date(now); monday.setDate(now.getDate() - dow(now)); const mk = dk(monday);
+  return Object.entries(LOG).filter(([k,v]) => k >= mk && k <= dk(now) && Object.entries(v.ex || {}).some(([id,x]) => D.exercices[id] && D.exercices[id].categorie !== 'quotidien' && ((x.sets||0) > 0 || (x.holds||[]).length))).length;
+}
+
+function today(){
+  if (!PLAN) return setupView();
+  const b = currentBloc();
+  if (b === 'fini') return finishedView();
+  const B = D.blocs.find(x => x.id === b);
+  const k = dk(), entry = LOG[k] || { ex: {} };
+  const full = isFullDay();
+  const order = D.programme_jour?.ordre_seance || ['quotidien','isometrique','pliometrique','force'];
+  const cats = order.filter(c => c === 'quotidien' || full).map(c => B.categories.find(x => x.type === c)).filter(c => c && c.exercices.length);
+  const ids = cats.flatMap(c => c.exercices);
+  const done = ids.filter(id => exDone(D.exercices[id], entry.ex?.[id])).length;
+  const actDone = activeDaysIn(b, k) + (isActive(entry) ? 1 : 0);
+  const need = needDays();
+
+  let h = '<div class="daycard">';
+  h += `<div class="kick">${esc(fmtDate(k))}${PLAN.forceBloc ? ' · bloc fixé manuellement' : ''}</div>`;
+  h += `<h2>Semaines ${esc(B.semaines)} — ${esc(B.titre)}</h2>`;
+  const nb = v => String(v).replace(/≈\s*/g, '');
+  const dur = full ? `≈ ${nb(B.duree_estimee.quotidien_min)} min de drills + ≈ ${nb(B.duree_estimee.tri_hebdo_min)} min` : `≈ ${nb(B.duree_estimee.quotidien_min)} min`;
+  h += `<p>${full ? 'Séance complète : drills + isométrie + pliométrie + force' : 'Drills quotidiens seulement'} · ${esc(dur)}</p>`;
+  if (PLAN.start > k) h += `<p style="margin-top:6px;color:var(--o)">Démarrage prévu ${esc(fmtDate(PLAN.start))} — tu peux déjà t'entraîner, les jours comptent dès la première série notée.</p>`;
+  h += '<div class="squares">';
+  for (let i = 0; i < need; i++) {
+    const cls = i < actDone ? (i === actDone - 1 && isActive(entry) ? 'sq today' : 'sq on') : 'sq';
+    h += `<div class="${cls}"></div>`;
+  }
+  h += '</div>';
+  h += `<div class="sqlbl"><span>Jours actifs dans le bloc : ${Math.min(actDone, need)}/${need}</span><span>Séances complètes cette semaine : ${fullSessionsThisWeek()}/${PLAN.days.length}</span></div>`;
+  h += `<div class="prog"><div class="bar"><div class="fill" style="width:${ids.length ? Math.round(done/ids.length*100) : 0}%"></div></div><span>${done}/${ids.length}</span></div>`;
+  h += '</div>';
+
+  cats.forEach(c => {
+    h += `<div class="cat cat-${c.type}"><div class="cat-hdr"><h3>${CAT_LABELS[c.type]}</h3><span>${esc(c.frequence)}</span></div>`;
+    if (c.type === 'quotidien' && D.programme_jour?.repartition_drills) h += `<p class="hint">${fmt(D.programme_jour.repartition_drills)}</p>`;
+    c.exercices.forEach(id => { h += dayRow(D.exercices[id], entry); });
+    h += '</div>';
+  });
+
+  if (full && D.programme_jour?.note_bfs) h += `<div class="callout" style="margin-bottom:14px">${fmt(D.programme_jour.note_bfs)}</div>`;
+  if (!full) {
+    const nx = nextFullDay();
+    h += `<div class="setup"><p>${nx ? 'Prochaine séance complète : <b style="color:var(--t)">' + esc(nx) + '</b>.' : 'Aucun jour de séance complète choisi.'}</p><button class="btn sm" onclick="addFull()">+ Faire la séance complète aujourd'hui</button></div>`;
+  }
+
+  h += `<div class="setup"><h3>Note du jour</h3><textarea class="note" placeholder="Sensations hanche D, tendons le lendemain, charges…" oninput="saveNote(this.value)">${esc(entry.note || '')}</textarea></div>`;
+  h += settingsView(b);
+  return h;
+}
+
+function dayRow(e, entry){
+  const su = e.suivi, x = entry.ex?.[e.id], ok = exDone(e, x), open = !!S.open[e.id];
+  let h = `<div class="row ${ok ? 'done' : ''}" id="ex-${e.id}">`;
+  h += `<div class="row-top"><span class="chk">${ok ? '✓' : ''}</span>`;
+  h += `<div class="ex-info" onclick="toggleEx('${e.id}')"><div class="ex-name"><span class="dot ${e.verdict}" style="display:inline-block;width:7px;height:7px;margin:0 6px 2px 0"></span>${esc(e.nom_fr)}</div>`;
+  const par = su.mode === 'series' ? `${su.cible} séries · ${su.reps}` : `${su.cible} × ${fmtS(su.min_s)}→${fmtS(su.max_s)}${su.cote ? ' /côté' : ''}`;
+  h += `<div class="ex-params">${esc(par)}</div></div>`;
+  h += `<span class="chev" onclick="toggleEx('${e.id}')" style="cursor:pointer">${open ? '▾' : '▸'}</span></div>`;
+  if (e.consigne_jour) h += `<div class="consigne ${e.verdict === 'orange' ? 'orange' : ''}">${e.verdict === 'orange' ? '⚠︎ ' : ''}${fmt(e.consigne_jour)}</div>`;
+  h += '<div class="trk">';
+  if (su.mode === 'series') {
+    const n = x?.sets || 0;
+    h += `<span class="cnt-n ${n >= su.cible ? 'ok' : ''}">${n}/${su.cible}</span>`;
+    h += `<button class="btn pri sm" onclick="addSet('${e.id}',1)">+1 série</button>`;
+    if (n > 0) h += `<button class="undo" onclick="addSet('${e.id}',-1)" aria-label="Retirer une série">−</button>`;
+  } else {
+    const sides = su.cote ? ['G','D'] : [''];
+    sides.forEach(sd => {
+      const hs = (x?.holds || []).filter(hh => (hh.c || '') === sd);
+      const tg = targetFor(e, sd), prev = bestPrev(e.id, sd);
+      h += '<div class="side">';
+      if (sd) h += `<span class="lbl">${sd}</span>`;
+      h += `<button class="btn pri sm" onclick="startHold('${e.id}','${sd}')">▶ ${fmtS(tg)}</button>`;
+      h += `<span class="cnt-n ${hs.length >= su.cible ? 'ok' : ''}">${hs.length}/${su.cible}</span>`;
+      h += '<div class="holds">' + hs.map(hh => `<span class="hold">${fmtS(hh.t)}</span>`).join('') + '</div>';
+      if (hs.length) h += `<button class="undo" onclick="undoHold('${e.id}','${sd}')" aria-label="Retirer la dernière tenue">−</button>`;
+      h += '</div>';
+      h += `<div class="tgt">Objectif ${fmtS(tg)}${prev !== null ? ' · meilleur précédent ' + fmtS(prev) : ' · première séance'}</div>`;
+    });
+  }
+  h += '</div>';
+  if (open) h += exBody(e);
+  h += '</div>';
+  return h;
+}
+
+function setupView(){
+  const def = D.programme_jour?.jours_seance_defaut || [0,2,4];
+  if (!S.draft) S.draft = { start: dk(), days: def.slice() };
+  let h = '<div class="daycard"><div class="kick">Programme journalier</div><h2>Démarrer Lower Limb Foundations</h2>';
+  h += `<p>Chaque jour : les drills du bloc en cours. Les jours choisis ci-dessous : la séance complète (isométrie, pliométrie, force). ${fmt(D.programme_jour?.regle_progression || '')}</p></div>`;
+  h += '<div class="setup"><h3>Date de début</h3>';
+  h += `<input type="date" value="${esc(S.draft.start)}" onchange="S.draft.start=this.value">`;
+  h += '<h3>Jours de séance complète (3×/semaine)</h3><div class="daychips">';
+  JOURS_C.forEach((j,i) => { h += `<button class="daychip ${S.draft.days.includes(i)?'on':''}" onclick="toggleDraftDay(${i})">${j}</button>`; });
+  h += '</div><p style="margin-top:8px;font-size:12px;color:var(--t3)">Par défaut lundi, mercredi, vendredi : système nerveux frais pour la pliométrie, et pas de sauts les jours de BFS Anti-Pronation (mardi/jeudi).</p>';
+  h += `<button class="btn pri" style="width:100%;margin-top:6px" onclick="startPlan()">Commencer</button></div>`;
+  return h;
+}
+
+function finishedView(){
+  let h = '<div class="daycard"><div class="kick">Programme terminé</div><h2>Les 3 blocs sont validés 🎉</h2>';
+  h += `<p>${needDays()} jours actifs dans chaque bloc. Tu peux continuer le dernier bloc en entretien ou relancer un bloc précis.</p></div>`;
+  h += '<div class="setup"><div class="blocsel">';
+  D.blocs.forEach(b => { h += `<button class="btn sm" onclick="setForce('${b.id}')">Continuer S${esc(b.semaines)}</button>`; });
+  h += '</div></div>';
+  h += settingsView('fini');
+  return h;
+}
+
+function settingsView(b){
+  let h = '<details class="set"><summary>⚙︎ Réglages du programme</summary><div class="setup">';
+  h += `<p>Démarré le ${esc(fmtDate(PLAN.start))}.</p>`;
+  h += '<h3>Jours de séance complète</h3><div class="daychips">';
+  JOURS_C.forEach((j,i) => { h += `<button class="daychip ${PLAN.days.includes(i)?'on':''}" onclick="togglePlanDay(${i})">${j}</button>`; });
+  h += '</div><h3>Bloc</h3><div class="blocsel">';
+  h += `<button class="btn sm ${!PLAN.forceBloc ? 'pri' : ''}" onclick="setForce(null)">Auto (14 jours actifs)</button>`;
+  D.blocs.forEach(x => { h += `<button class="btn sm ${PLAN.forceBloc === x.id ? 'pri' : ''}" onclick="setForce('${x.id}')">S${esc(x.semaines)}</button>`; });
+  h += '</div><h3>Données</h3><div class="blocsel">';
+  h += '<button class="btn sm" onclick="exportLog()">📤 Exporter le suivi (JSON)</button>';
+  h += `<button class="btn sm warn" onclick="resetPlan()">${S.confirmReset ? 'Confirmer la remise à zéro' : 'Remettre à zéro'}</button>`;
+  h += '</div><p style="margin-top:8px;font-size:12px;color:var(--t3)">Le suivi est enregistré dans ce navigateur (iPhone). Exporte-le pour tes bilans du 1er et du 15.</p>';
+  h += '</div></details>';
+  return h;
+}
+
+/* ── Actions programme ── */
+function toggleDraftDay(i){ const a = S.draft.days; const j = a.indexOf(i); j >= 0 ? a.splice(j,1) : a.push(i); a.sort(); render(); }
+function startPlan(){ PLAN = { start: S.draft.start || dk(), days: S.draft.days.slice().sort(), forceBloc: null }; saveState(); render(); window.scrollTo(0,0); }
+function togglePlanDay(i){ const a = PLAN.days; const j = a.indexOf(i); j >= 0 ? a.splice(j,1) : a.push(i); a.sort(); saveState(); render(); }
+function setForce(b){ PLAN.forceBloc = b; saveState(); render(); }
+function addFull(){ const k = dk(); if (!LOG[k]) LOG[k] = { ex: {} }; LOG[k].full = true; saveState(); render(); }
+function addSet(id, d){
+  const x = exLog(entryForLog(), id);
+  x.sets = Math.max(0, (x.sets || 0) + d);
+  saveState(); render();
+}
+function undoHold(id, sd){
+  const x = LOG[dk()]?.ex?.[id]; if (!x) return;
+  for (let i = x.holds.length - 1; i >= 0; i--) if ((x.holds[i].c || '') === sd) { x.holds.splice(i,1); break; }
+  saveState(); render();
+}
+function saveNote(v){ const k = dk(); if (!LOG[k]) LOG[k] = { ex: {} }; LOG[k].note = v; saveState(); }
+function resetPlan(){
+  if (!S.confirmReset) { S.confirmReset = true; render(); setTimeout(() => { S.confirmReset = false; }, 5000); return; }
+  S.confirmReset = false; PLAN = null; LOG = {}; S.draft = null; saveState(); render(); window.scrollTo(0,0);
+}
+function exportLog(){
+  const blob = new Blob([JSON.stringify({ exported_at: new Date().toISOString(), source: 'llf.html', version: D.meta.version, plan: PLAN, log: LOG }, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `llf-suivi-${dk()}.json`;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+
+/* ── Chrono de tenue ── */
+let AC = null;
+function audio(){ try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === 'suspended') AC.resume(); } catch(e){} }
+function beep(){
+  try {
+    if (!AC) return;
+    [0, .22].forEach(dt => {
+      const o = AC.createOscillator(), g = AC.createGain();
+      o.frequency.value = 880; o.connect(g); g.connect(AC.destination);
+      g.gain.setValueAtTime(.25, AC.currentTime + dt); g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + dt + .18);
+      o.start(AC.currentTime + dt); o.stop(AC.currentTime + dt + .2);
+    });
+  } catch(e){}
+  if (navigator.vibrate) navigator.vibrate([150, 80, 150]);
+}
+function startHold(id, sd){
+  if (TIMER) stopHold(false);
+  audio();
+  const e = D.exercices[id];
+  TIMER = { id, sd, t0: Date.now(), target: targetFor(e, sd), beeped: false };
+  const bar = document.getElementById('timerbar');
+  bar.classList.add('on'); bar.classList.remove('done');
+  document.getElementById('tb-name').textContent = e.nom_fr + (sd ? ' · ' + (sd === 'G' ? 'gauche' : 'droite') : '');
+  document.getElementById('tb-target').textContent = '/ ' + fmtS(TIMER.target);
+  tick(); TIMER.iv = setInterval(tick, 250);
+}
+function tick(){
+  if (!TIMER) return;
+  const s = Math.floor((Date.now() - TIMER.t0) / 1000);
+  document.getElementById('tb-time').textContent = s >= 60 ? Math.floor(s/60) + ':' + String(s%60).padStart(2,'0') : s + 's';
+  if (!TIMER.beeped && s >= TIMER.target) { TIMER.beeped = true; document.getElementById('timerbar').classList.add('done'); beep(); }
+}
+function stopHold(save){
+  if (!TIMER) return;
+  clearInterval(TIMER.iv);
+  const s = Math.floor((Date.now() - TIMER.t0) / 1000), t = TIMER;
+  TIMER = null;
+  document.getElementById('timerbar').classList.remove('on','done');
+  if (save && s >= 1) { exLog(entryForLog(), t.id).holds.push({ c: t.sd || '', t: s }); saveState(); }
+  render();
 }
 
 window.addEventListener('hashchange', () => {
