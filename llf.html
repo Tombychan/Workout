@@ -258,10 +258,11 @@ async function load(){
     }
   }
   loadState();
+  // Ouverture toujours sur « Aujourd'hui » ; on ne mémorise que le dernier onglet de la bibliothèque
   const saved = lsGet(TAB_KEY);
-  const valid = t => t === 'jour' || t === 'principes' || t === 'profil' || D.blocs.some(b => b.id === t);
-  if (saved && valid(saved)) S.tab = saved;
-  if (S.tab !== 'jour') S.libTab = S.tab;
+  const validLib = t => t === 'principes' || t === 'profil' || D.blocs.some(b => b.id === t);
+  if (saved && validLib(saved)) S.libTab = saved;
+  S.tab = 'jour';
   const h = location.hash.match(/ex=([\w-]+)/);
   if (h && D.exercices[h[1]]) { S.tab = S.libTab = D.exercices[h[1]].bloc; S.open[h[1]] = true; render(); focusEx(h[1]); return; }
   render();
