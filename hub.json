@@ -29,6 +29,14 @@
       "tags": ["entraînement", "programmation"]
     },
     {
+      "id": "llf",
+      "name": "Lower Limb Foundations",
+      "description": "Bibliothèque 6 semaines pied-cheville-genou (Conor Harris) — vidéos, consignes, filtre profil",
+      "url": "llf.html",
+      "icon": "🦶",
+      "tags": ["entraînement", "pieds", "bibliothèque"]
+    },
+    {
       "id": "flocons",
       "name": "Flocons Fermentés",
       "description": "Tracker de fermentation des flocons d'avoine/épeautre",

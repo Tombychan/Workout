@@ -5,7 +5,7 @@
 
 REPO="$HOME/Documents/Workout"
 DOWNLOADS="$HOME/Downloads/Claude/Routine artefacts"
-KNOWN_FILES=("routine_alimentaire.json" "base_nutritionnelle.json" "hub.json" "hub.html" "nutrition.html" "index.html" "app_sport.html" "sport.html" "flocons.html" "tempeh.html" "fermentation.html" "exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json" "programme_complet.json" "vahva_unified_mapping.json" "flow_library.json" "flow_library.md" "programme_synthese_v3.md" "fermentation_index.json" "houmous_gaba.json" "flocons_fermentes.json" "tempeh.json" "build.py" "deploy.sh")
+KNOWN_FILES=("routine_alimentaire.json" "base_nutritionnelle.json" "hub.json" "hub.html" "nutrition.html" "index.html" "app_sport.html" "sport.html" "flocons.html" "tempeh.html" "fermentation.html" "exercise_library.json" "programme_sport.json" "bfs_workouts_refactored.json" "mobility_workouts_refactored.json" "core_exercises_refactored.json" "programme_complet.json" "vahva_unified_mapping.json" "llf_program.json" "llf.html" "flow_library.json" "flow_library.md" "programme_synthese_v3.md" "fermentation_index.json" "houmous_gaba.json" "flocons_fermentes.json" "tempeh.json" "build.py" "deploy.sh")
 
 # Résout le chemin repo pour un basename (racine si pas mappé)
 # Compatible bash 3.x (pas de declare -A sur macOS)
@@ -13,7 +13,7 @@ repo_path() {
   case "$1" in
     exercise_library.json|programme_sport.json|bfs_workouts_refactored.json|\
     mobility_workouts_refactored.json|core_exercises_refactored.json|\
-    programme_complet.json|vahva_unified_mapping.json|\
+    programme_complet.json|vahva_unified_mapping.json|llf_program.json|\
     flow_library.json|flow_library.md|programme_synthese_v3.md)
       echo "data/sport/$1" ;;
     fermentation_index.json|houmous_gaba.json|flocons_fermentes.json|tempeh.json)

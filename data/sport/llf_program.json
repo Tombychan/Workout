@@ -1,0 +1,1328 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "date": "2026-10-06",
+    "titre": "Lower Limb Foundations",
+    "auteur": "Conor Harris (BS, CSCS, XPS, CES, CPT)",
+    "source": "eBook « Lower Limb Foundations 9.0 » (PDF, © Conor Harris 2023)",
+    "description": "Programme de 6 semaines pied-cheville-genou intégré à la hanche et au tronc, organisé selon les phases de la marche. Bibliothèque consultable : rien n'est injecté dans programme_sport.json.",
+    "statut": "Bibliothèque consultable — non intégrée à la semaine type (décision du 06/10/2026)",
+    "redaction": "Fiches reformulées et commentées en français : elles ne reproduisent pas le texte du livre. Paramètres = ceux des fiches d'exercice (le récap de fin de bloc est indiqué quand il diverge). Vidéos = chaîne YouTube publique de l'auteur, titres vérifiés le 06/10/2026.",
+    "legende_verdicts": {
+      "vert": "Compatible tel quel avec ton profil",
+      "orange": "Compatible avec adaptation ou critère de progression",
+      "rouge": "À écarter en l'état"
+    },
+    "changelog": [
+      {
+        "version": "1.0.0",
+        "date": "2026-10-06",
+        "note": "Création — extraction du PDF, vérification des 33 liens vidéo, filtre profil."
+      }
+    ]
+  },
+  "principes": {
+    "types": [
+      {
+        "type": "quotidien",
+        "nom": "Drills quotidiens",
+        "frequence": "Chaque jour",
+        "consigne": "Tous les jours, idéalement 3-4 séries réparties matin et soir. C'est la répétition quotidienne qui « fait accepter » les nouvelles positions au corps ; le minimum de séries varie selon la fiche (2+, 3+ ou 5+)."
+      },
+      {
+        "type": "isometrique",
+        "nom": "Isométriques",
+        "frequence": "3×/semaine",
+        "consigne": "Plus exigeants : construisent les co-contractions qui stabilisent une articulation lors des mouvements rapides (et, dans une moindre mesure, à la marche). Bénéfice tendineux. On ajoute du temps à chaque séance."
+      },
+      {
+        "type": "force",
+        "nom": "Force",
+        "frequence": "3×/semaine",
+        "consigne": "Servent à « posséder » l'amplitude gagnée par les drills. RPE ≤ 8/10, soit 2 bonnes reps en réserve. Plus n'est pas mieux ici."
+      },
+      {
+        "type": "pliometrique",
+        "nom": "Pliométrie",
+        "frequence": "3×/semaine",
+        "consigne": "Les plus exigeants : résilience des tissus et des tendons à l'impact et à la vitesse, une qualité que ni la force ni l'isométrie n'entraînent. L'auteur les juge indispensables même pour un non-athlète."
+      }
+    ],
+    "tempo": "Notation X:X:X en secondes = excentrique (descente) : pause : concentrique (montée).",
+    "regle_14_jours": "Ne pas sauter de bloc. En cas de jours manqués, cumuler au moins 14 jours sur un bloc avant de passer au suivant : c'est le délai d'adaptation retenu par l'auteur.",
+    "integration_seance": {
+      "intro": "Si le programme est greffé à une séance de musculation, l'auteur recommande cet ordre :",
+      "etapes": [
+        "2 séries de chaque drill quotidien en échauffement",
+        "2 séries de l'isométrique de la semaine",
+        "2 séries des exercices pliométriques",
+        "Les exercices de force en fin de séance, comme accessoires",
+        "Puis le travail spécifique du jour"
+      ],
+      "notes": [
+        "Ces séries comptent dans le total quotidien des drills : il n'en reste qu'une ou deux à faire plus tard",
+        "Les exercices de force peuvent aussi se faire les jours off : ni lourds ni assez fatigants pour gêner la récupération"
+      ]
+    },
+    "respiration": {
+      "texte": "Expirations complètes et relâchées par la bouche, les plus longues possible. On doit sentir les obliques (abdominaux latéraux) plutôt que le grand droit, et ils doivent s'activer parce qu'on expire, pas parce qu'on gaine. Si on ne les sent pas, l'expiration n'est pas assez longue (pas « pas assez forte »). Repère : 5-10 s d'expiration + 5-10 s d'inspiration = 1 respiration dans les fiches.",
+      "video": {
+        "youtubeId": "SYJu_y6WvEc",
+        "url": "https://www.youtube.com/watch?v=SYJu_y6WvEc",
+        "titre_youtube": "How To Improve Your Breathing - A Tutorial For Diaphragmatic Breathing",
+        "role": "principale",
+        "label": "Vidéo"
+      }
+    },
+    "chaussures": {
+      "texte": "Deux écueils : la chaussure trop amortie (« caisson de privation sensorielle » qui dégrade la relation pied-sol et le timing pied-hanche) et la chaussure trop peu soutenante quand le pied a besoin d'appui — l'exemple type étant l'arche haute qui n'arrive pas à s'abaisser en chaussure minimaliste. Objectif final : pouvoir porter n'importe quoi ; parfois, il faut d'abord passer par une chaussure plus soutenante.",
+      "lecture_profil": "Tu es déjà passé au minimaliste à toe-box large. L'avertissement « trop peu soutenant » vise surtout les arches hautes ; pour des pieds plats, c'est au podologue de trancher (consultation prévue).",
+      "video": {
+        "youtubeId": "GWihpCoeorQ",
+        "url": "https://www.youtube.com/watch?v=GWihpCoeorQ",
+        "titre_youtube": "The BEST Guide To Picking Shoewear That Will Fix Your Body (posture and pain)",
+        "role": "principale",
+        "label": "Vidéo"
+      }
+    },
+    "cales": {
+      "texte": "Les cales ne sont pas indispensables mais aident nettement sur les drills de pronation/supination. N'importe quelle cale de squat à pente modérée convient.",
+      "liens": [
+        {
+          "label": "Cales Gary Ward (recommandées par l'auteur)",
+          "url": "https://finding-centre.myshopify.com/products/wake-your-feet-up"
+        }
+      ],
+      "exercices": [
+        "wedge-supination-drill",
+        "pronation-drill"
+      ],
+      "note": "Le lien « Amazon » du livre pointe par erreur vers la vidéo sur les chaussures : pas de lien exploitable."
+    }
+  },
+  "cadre": {
+    "phases_marche": [
+      {
+        "phase": "Attaque talon & début d'appui",
+        "texte": "Contact par le bord externe du talon, hanche fléchie, biais de rotation externe qui bascule rapidement vers la rotation interne. Pied en supination/flexion plantaire. Fin : contact du gros orteil."
+      },
+      {
+        "phase": "Pied à plat",
+        "texte": "Le pied pronate (l'arche s'aplatit), le membre inférieur tourne en interne, le bassin est au maximum tourné à l'opposé de la jambe d'appui. L'aplatissement met en tension les muscles plantaires, ce qui permet de « re-ressorter » l'arche ensuite."
+      },
+      {
+        "phase": "Mi-appui",
+        "texte": "Le bassin tourne vers la jambe d'appui, l'arche remonte en supination alors que la hanche est encore en rotation interne. Clé du transfert de poids latéral : supiner le pied pendant que la hanche est en rotation interne."
+      },
+      {
+        "phase": "Décollement / fin d'appui",
+        "texte": "Pied très supiné, bassin encore tourné vers l'appui, haut du corps tourné vers l'autre côté. Sans supination possible, la poussée est difficile."
+      }
+    ],
+    "compensations": [
+      "Antéversion du bassin : centre de masse projeté vers l'avant, perte de rotation externe, d'attaque talon et d'extension de hanche",
+      "Torsions opposées : fémur en rotation interne + tibia en rotation externe + arche abaissée — présentation la plus fréquente selon l'auteur",
+      "Arche haute avec bassin en avant : appui sur les orteils qui « court-circuite » la pronation ; hallux valgus et orteils déviés fréquents"
+    ],
+    "marche_vs_course": "À vitesse élevée, on utilise davantage d'isométrie dans les tissus mous : les co-contractions rigidifient l'articulation pour que le tendon s'étire et restitue l'énergie comme un ressort. Elles existent aussi, à moindre degré, à la marche."
+  },
+  "blocs": [
+    {
+      "id": "b1",
+      "semaines": "1-2",
+      "titre": "Début d'appui",
+      "objectif": "Rotation externe relative et supination : préparer une attaque talon correcte. Sans ce point de départ, ni pronation ni rotation interne ne sont accessibles ensuite.",
+      "duree_estimee": {
+        "quotidien_min": "≈ 13-20",
+        "tri_hebdo_min": "≈ 25-30"
+      },
+      "categories": [
+        {
+          "type": "quotidien",
+          "frequence": "Chaque jour",
+          "exercices": [
+            "pri-standing-posterior-hip-capsule-stretch",
+            "tibial-untwister",
+            "wedge-supination-drill"
+          ]
+        },
+        {
+          "type": "isometrique",
+          "frequence": "3×/semaine",
+          "exercices": [
+            "bilateral-hamstring-isometric-bridge"
+          ]
+        },
+        {
+          "type": "force",
+          "frequence": "3×/semaine",
+          "exercices": [
+            "hamstring-bridge-tibial-ir",
+            "seated-tempo-calf-raise"
+          ]
+        },
+        {
+          "type": "pliometrique",
+          "frequence": "3×/semaine",
+          "exercices": [
+            "bilateral-pogo-hops",
+            "supine-wall-switches"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "semaines": "3-4",
+      "titre": "Mi-appui",
+      "objectif": "Positions plus exigeantes, avec un biais de rotation interne de hanche et de jambe couplé à la pronation et à la dorsiflexion du pied.",
+      "duree_estimee": {
+        "quotidien_min": "≈ 15-18",
+        "tri_hebdo_min": "≈ 30"
+      },
+      "categories": [
+        {
+          "type": "quotidien",
+          "frequence": "Chaque jour",
+          "exercices": [
+            "pronation-drill",
+            "90-90-hip-lift-ball",
+            "sidelying-grounding"
+          ]
+        },
+        {
+          "type": "isometrique",
+          "frequence": "3×/semaine",
+          "exercices": [
+            "hauser-pronation-isometric",
+            "single-leg-isometric-hamstring-bridge"
+          ]
+        },
+        {
+          "type": "force",
+          "frequence": "3×/semaine",
+          "exercices": [
+            "soleus-slouch",
+            "heel-float-split-squat"
+          ]
+        },
+        {
+          "type": "pliometrique",
+          "frequence": "3×/semaine",
+          "exercices": [
+            "single-leg-box-pogo-hops"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "semaines": "5-6",
+      "titre": "Fin d'appui & dynamique",
+      "objectif": "Travail debout, plus dynamique et plus coûteux, spécifique à la marche, pour bien transiter vers la fin d'appui — qui ne vaut que ce que valent le début et le mi-appui.",
+      "duree_estimee": {
+        "quotidien_min": "≈ 10-23",
+        "tri_hebdo_min": "≈ 35-40"
+      },
+      "categories": [
+        {
+          "type": "quotidien",
+          "frequence": "Chaque jour",
+          "exercices": [
+            "sidelying-glute-max",
+            "pri-alternating-reciprocal-step-through",
+            "spring-ankle-isometric"
+          ]
+        },
+        {
+          "type": "isometrique",
+          "frequence": "3×/semaine",
+          "exercices": [
+            "single-leg-iso-hamstring-bridge-oscillation",
+            "bottoms-up-split-squat-pronation"
+          ]
+        },
+        {
+          "type": "force",
+          "frequence": "3×/semaine",
+          "exercices": [
+            "kickstand-hinge-forefoot",
+            "single-leg-step-down-series"
+          ]
+        },
+        {
+          "type": "pliometrique",
+          "frequence": "3×/semaine",
+          "exercices": [
+            "single-leg-multidirectional-pogo",
+            "single-leg-lateral-hurdle-hops"
+          ]
+        }
+      ]
+    }
+  ],
+  "exercices": {
+    "pri-standing-posterior-hip-capsule-stretch": {
+      "nom": "PRI Standing Supported Posterior Hip Capsule Stretch",
+      "nom_fr": "Étirement debout de la capsule postérieure de hanche (avec appui)",
+      "bloc": "b1",
+      "categorie": "quotidien",
+      "rang": "Drill quotidien #1",
+      "parametres": {
+        "fiche": "1-2 min/côté — 2+ séries/jour",
+        "recap": "2 × 1-2 min/côté"
+      },
+      "objectif": [
+        "Gagner de la rotation interne de hanche, préalable à une pronation correcte du pied",
+        "Décompresser l'arrière de la hanche, zone souvent comprimée qui bloque la rotation interne"
+      ],
+      "criteres": [
+        "Étirement ressenti uniquement à l'arrière de la hanche (éventuellement un peu sur le côté)",
+        "Aucune sensation à l'avant de la hanche",
+        "Pied entièrement au sol, poids surtout sur le talon"
+      ],
+      "materiel": [
+        "Support stable pour les mains (table, espalier)"
+      ],
+      "credit": "PRI (Postural Restoration Institute)",
+      "videos": [
+        {
+          "youtubeId": "IiIF7jpAj1U",
+          "url": "https://www.youtube.com/watch?v=IiIF7jpAj1U",
+          "titre_youtube": "Standing Posterior Hip Capsule Stretch",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "orange",
+      "filtre_profil": "Position combinant flexion, adduction et rotation interne de hanche : c'est la position du test FADIR. Avec la sensation articulaire de hanche droite non élucidée, côté droit = amplitude réduite et arrêt immédiat à toute sensation antérieure ou au pli de l'aine. Le critère de l'auteur (« zéro sensation devant ») sert justement de règle d'arrêt. Côté gauche : tel quel. À valider par le kiné avant de pousser l'amplitude à droite.",
+      "confiance": "élevée sur la géométrie de la position ; modérée sur le risque réel (non évalué cliniquement)",
+      "recoupements": [],
+      "id": "pri-standing-posterior-hip-capsule-stretch"
+    },
+    "tibial-untwister": {
+      "nom": "Tibial Untwister",
+      "nom_fr": "Dé-vrillage tibial (auto-mobilisation en rotation interne)",
+      "bloc": "b1",
+      "categorie": "quotidien",
+      "rang": "Drill quotidien #2",
+      "parametres": {
+        "fiche": "20-25 reps très lentes/côté — 3+ séries/jour",
+        "recap": "3 × 20-25/côté"
+      },
+      "objectif": [
+        "Rendre au tibia sa capacité de rotation interne",
+        "Défaire le vrillage fréquent fémur en rotation interne / tibia en rotation externe"
+      ],
+      "criteres": [
+        "Genou aligné avec le pied et la hanche",
+        "Trois appuis du pied conservés en permanence : talon, tête du 1er et du 5e métatarsien",
+        "Une sensation de « tirage » étrange dans le genou est attendue — jamais de douleur"
+      ],
+      "materiel": [],
+      "videos": [
+        {
+          "youtubeId": "I2wb-9_4D7A",
+          "url": "https://www.youtube.com/watch?v=I2wb-9_4D7A",
+          "titre_youtube": "Tibial Un-Twister Self-Mobilization - Internal Rotation Focus",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Directement pertinent pour la marche canard (pied ouvert) si elle comporte une composante de rotation externe tibiale fonctionnelle. Limite : si l'ouverture du pied vient d'une torsion tibiale osseuse, aucun drill ne la modifiera — demander si l'EOS mesure les torsions fémorales et tibiales.",
+      "confiance": "modérée",
+      "recoupements": [],
+      "id": "tibial-untwister"
+    },
+    "wedge-supination-drill": {
+      "nom": "Wedge Supination Drill",
+      "nom_fr": "Drill de supination sur cale",
+      "bloc": "b1",
+      "categorie": "quotidien",
+      "rang": "Drill quotidien #3",
+      "parametres": {
+        "fiche": "5 cycles/côté (1 cycle = 2-3 rotations vers la hanche puis retour hanches de face) — 5+ fois/jour",
+        "recap": "3 × 5 cycles/côté"
+      },
+      "objectif": [
+        "Amener le pied vers une arche plus haute (supination)",
+        "Améliorer la capacité de la hanche à tourner vers le côté d'appui"
+      ],
+      "criteres": [
+        "L'arche monte légèrement à mesure que tu tournes",
+        "Trois appuis du pied conservés",
+        "Le bas du dos ne s'active pas et ne se raidit pas — sinon tu tournes trop, réduis l'amplitude",
+        "Étirement léger à modéré à l'extérieur et/ou à l'arrière de la hanche"
+      ],
+      "materiel": [
+        "Cale inclinée (voir Principes → Cales)"
+      ],
+      "videos": [
+        {
+          "youtubeId": "vwK8D0nlzB0",
+          "url": "https://www.youtube.com/watch?v=vwK8D0nlzB0",
+          "titre_youtube": "Wedge Supination Drill",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Sens de travail cohérent avec des pieds plats et avec le BFS (monter l'arche). Sans cale, une serviette pliée ou un livre fin sous l'avant-pied externe est un substitut improvisé — suggestion de ma part, non validée par l'auteur.",
+      "confiance": "modérée-élevée",
+      "recoupements": [
+        "BFS Anti-Pronation (même direction de travail)"
+      ],
+      "id": "wedge-supination-drill"
+    },
+    "bilateral-hamstring-isometric-bridge": {
+      "nom": "Bilateral Hamstring Isometric Bridge",
+      "nom_fr": "Pont ischios isométrique bilatéral (sur rouleau)",
+      "bloc": "b1",
+      "categorie": "isometrique",
+      "rang": "Isométrique #1",
+      "parametres": {
+        "fiche": "3 × 15-45 s, en ajoutant du temps à chaque séance jusqu'à 45 s — 3×/sem",
+        "recap": "2 × 20+ s"
+      },
+      "objectif": [
+        "Porte d'entrée vers les co-contractions autour de la cheville, du genou et du pied"
+      ],
+      "criteres": [],
+      "materiel": [
+        "Rouleau en mousse (d'après la vidéo)"
+      ],
+      "videos": [
+        {
+          "youtubeId": "dgSYUIWoWe4",
+          "url": "https://www.youtube.com/watch?v=dgSYUIWoWe4",
+          "titre_youtube": "Bilateral Hamstring Isometric Bridge on Foam Roller",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Bilatéral, charge faible. Surveiller la sensation de hanche droite en extension, sans plus.",
+      "confiance": "élevée",
+      "recoupements": [
+        "hip-bridges (BFS Glute Re-Education)",
+        "bridge-hold"
+      ],
+      "id": "bilateral-hamstring-isometric-bridge"
+    },
+    "hamstring-bridge-tibial-ir": {
+      "nom": "Hamstring Bridge with Tibial Internal Rotation Focus",
+      "nom_fr": "Pont ischios avec rotation interne du tibia",
+      "bloc": "b1",
+      "categorie": "force",
+      "rang": "Force #1",
+      "parametres": {
+        "fiche": "3 × 8-10/côté, tempo 3:1:3 — 3×/sem",
+        "recap": "3 × 8-12/côté"
+      },
+      "objectif": [
+        "Faire entrer et sortir le tibia de la rotation interne pendant l'extension de hanche",
+        "Renforcer ischio-jambiers et fessiers"
+      ],
+      "criteres": [],
+      "materiel": [
+        "Rouleau en mousse (d'après la vidéo)"
+      ],
+      "credit": "David Grey",
+      "videos": [
+        {
+          "youtubeId": "l-JMSXLuKyg",
+          "url": "https://www.youtube.com/watch?v=l-JMSXLuKyg",
+          "titre_youtube": "Hamstring Roller Bridge with Tibial IR",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Unilatéral, tempo lent : compatible. La « légère sensation en poussée sur jambe droite » déjà notée s'applique ici — ne pas forcer l'amplitude haute côté droit.",
+      "confiance": "élevée",
+      "recoupements": [
+        "hip-bridges (BFS)"
+      ],
+      "id": "hamstring-bridge-tibial-ir"
+    },
+    "seated-tempo-calf-raise": {
+      "nom": "Seated Tempo Calf Raise",
+      "nom_fr": "Mollets assis au tempo (avant-pied surélevé)",
+      "bloc": "b1",
+      "categorie": "force",
+      "rang": "Force #2",
+      "parametres": {
+        "fiche": "3 × 12, tempo 3:1:3 — 3×/sem",
+        "recap": "3 × 12/côté"
+      },
+      "objectif": [
+        "Renforcer les mollets — genou fléchi = biais soléaire",
+        "Position de genou qui décompresse l'arrière de l'articulation"
+      ],
+      "criteres": [],
+      "materiel": [
+        "Haltère ou sac posé sur le genou",
+        "Cale ou marche sous l'avant-pied (d'après la vidéo)"
+      ],
+      "videos": [
+        {
+          "youtubeId": "gEH1qaWOiRI",
+          "url": "https://www.youtube.com/watch?v=gEH1qaWOiRI",
+          "titre_youtube": "Seated Calf Raise with Foot Elevation",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Aucun conflit. Complète le calf raise debout (gastrocnémiens) déjà présent dans ta bibliothèque.",
+      "confiance": "élevée",
+      "recoupements": [
+        "calf-raise-bilateral",
+        "single-leg-calf-raise-au-poids-de-corps"
+      ],
+      "id": "seated-tempo-calf-raise"
+    },
+    "bilateral-pogo-hops": {
+      "nom": "Bilateral Pogo Hops (with optional modifications)",
+      "nom_fr": "Pogo hops bilatéraux (bas), avec modifications possibles",
+      "bloc": "b1",
+      "categorie": "pliometrique",
+      "rang": "Pliométrie #1",
+      "parametres": {
+        "fiche": "3 × 20-30 s — 3×/sem",
+        "recap": "2 × 20+ s"
+      },
+      "objectif": [
+        "Construire la résilience des tendons du pied, de la cheville et du genou",
+        "Entraîner les co-contractions dynamiques à bas niveau (progressées ensuite)"
+      ],
+      "criteres": [],
+      "materiel": [],
+      "videos": [
+        {
+          "youtubeId": "u2ymL4HC41g",
+          "url": "https://www.youtube.com/watch?v=u2ymL4HC41g",
+          "titre_youtube": "Bilateral Low Pogo Hops with Optional Modifications",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Faible impact, bilatéral. Redondant avec les Grounded Hops du BFS : le même jour, l'un ou l'autre, pas les deux.",
+      "confiance": "élevée",
+      "recoupements": [
+        "grounded-hops-emom (BFS Anti-Pronation)"
+      ],
+      "id": "bilateral-pogo-hops"
+    },
+    "supine-wall-switches": {
+      "nom": "Supine Wall Switches",
+      "nom_fr": "Alternances unipodales au mur, sur le dos",
+      "bloc": "b1",
+      "categorie": "pliometrique",
+      "rang": "Pliométrie #2",
+      "parametres": {
+        "fiche": "3 × 15-20/côté — 3×/sem",
+        "recap": "2 × 15-20/côté"
+      },
+      "objectif": [
+        "Résilience tendineuse pied-cheville-genou",
+        "Co-contractions dynamiques sans charger le poids du corps"
+      ],
+      "criteres": [],
+      "materiel": [
+        "Mur"
+      ],
+      "videos": [
+        {
+          "youtubeId": "ghy-SC_5H1c",
+          "url": "https://www.youtube.com/watch?v=ghy-SC_5H1c",
+          "titre_youtube": "Supine Single Leg Wall Switches",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Pliométrie sans impact axial : idéale pour démarrer. Sur le dos → pas dans les ~2 h qui suivent le R2.",
+      "confiance": "élevée",
+      "recoupements": [],
+      "id": "supine-wall-switches"
+    },
+    "pronation-drill": {
+      "nom": "Pronation Drill",
+      "nom_fr": "Drill de pronation (dorsiflexion + pronation)",
+      "bloc": "b2",
+      "categorie": "quotidien",
+      "rang": "Drill quotidien #1",
+      "parametres": {
+        "fiche": "15 reps lentes/côté — 3+ séries/jour",
+        "recap": "3 × 25/côté (divergence avec la fiche)"
+      },
+      "objectif": [
+        "Coupler la dorsiflexion de cheville et la pronation du pied"
+      ],
+      "criteres": [
+        "L'arche s'abaisse un peu quand le genou avance — subtil mais présent",
+        "Trois appuis du pied conservés"
+      ],
+      "materiel": [
+        "Cale (version principale) — ou sans cale (vidéo alternative)"
+      ],
+      "videos": [
+        {
+          "youtubeId": "l4goD1L3eTE",
+          "url": "https://www.youtube.com/watch?v=l4goD1L3eTE",
+          "titre_youtube": "Wedge Pronation Drill",
+          "role": "principale",
+          "label": "Vidéo"
+        },
+        {
+          "youtubeId": "B2oup-R4HGo",
+          "url": "https://www.youtube.com/watch?v=B2oup-R4HGo",
+          "titre_youtube": "Pronation Drill",
+          "role": "alternative",
+          "label": "Sans cale"
+        }
+      ],
+      "verdict": "orange",
+      "filtre_profil": "Tension conceptuelle avec tes pieds plats et avec le BFS « anti-pronation ». La logique de l'auteur : un pied plat est souvent affaissé sans savoir pronater *de façon contrôlée* (couplée à la dorsiflexion et à la rotation interne de hanche). Règle : amplitude d'affaissement minimale, trois appuis non négociables, priorité à la composante dorsiflexion. Question à poser au podologue.",
+      "confiance": "faible-modérée — désaccord de cadres non tranché par la littérature",
+      "recoupements": [
+        "BFS Anti-Pronation (direction opposée)"
+      ],
+      "id": "pronation-drill"
+    },
+    "90-90-hip-lift-ball": {
+      "nom": "90/90 Hip Lift with Ball Hold",
+      "nom_fr": "Hip lift 90/90 avec ballon entre les genoux",
+      "bloc": "b2",
+      "categorie": "quotidien",
+      "rang": "Drill quotidien #2",
+      "parametres": {
+        "fiche": "8 respirations — 2+ séries/jour",
+        "recap": "colonnes du récap décalées — se fier à la fiche"
+      },
+      "objectif": [
+        "Contrôler la bascule du bassin avec ischios et abdominaux",
+        "Décompresser le bas du dos"
+      ],
+      "criteres": [
+        "Seuls les ischios travaillent (un peu les adducteurs si tu serres le ballon)",
+        "Pas de fessiers",
+        "Bas du dos relâché"
+      ],
+      "materiel": [
+        "Mur ou banc pour les pieds",
+        "Ballon ou coussin entre les genoux"
+      ],
+      "credit": "Exercice issu du répertoire PRI (non crédité dans le livre)",
+      "videos": [
+        {
+          "youtubeId": "TyhUuANFYrM",
+          "url": "https://www.youtube.com/watch?v=TyhUuANFYrM",
+          "titre_youtube": "90/90 Hip Lift with Ball Hold",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Cohérent avec ton travail anti-extension et rib flare (expiration longue, côtes basses). Respirations selon le protocole du livre (Principes → Respiration). Sur le dos → hors fenêtre post-R2.",
+      "confiance": "élevée",
+      "recoupements": [
+        "dead bugs / travail anti-extension du pilier correctif core"
+      ],
+      "id": "90-90-hip-lift-ball"
+    },
+    "sidelying-grounding": {
+      "nom": "Sidelying Grounding with Breathing Focus",
+      "nom_fr": "Ancrage en décubitus latéral, focus respiration",
+      "bloc": "b2",
+      "categorie": "quotidien",
+      "rang": "Drill quotidien #3",
+      "parametres": {
+        "fiche": "8 respirations/côté — 2+ séries/jour",
+        "recap": "2 × 8 respirations"
+      },
+      "objectif": [
+        "Placer la cage thoracique et engager les abdominaux quand le pied pousse dans le sol (ici, le mur)"
+      ],
+      "criteres": [
+        "Bas du dos et nuque toujours relâchés",
+        "Seuls les abdominaux du côté au sol travaillent, avec éventuellement un peu de fessier quand tu pousses dans le mur"
+      ],
+      "notes": [
+        "Variante confort : poser le pied du dessus sur celui du dessous en gardant l'objet entre les cuisses"
+      ],
+      "materiel": [
+        "Mur",
+        "Objet entre les cuisses (coussin, ballon)"
+      ],
+      "videos": [
+        {
+          "youtubeId": "c-dj-KdT1ao",
+          "url": "https://www.youtube.com/watch?v=c-dj-KdT1ao",
+          "titre_youtube": "Sidelying Grounding",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Travaille les obliques du côté au sol. Couché sur le côté droit, c'est l'oblique externe droit — ton maillon faible : +1 série de ce côté, conformément à ta règle d'asymétrie (suggestion de ma part).",
+      "confiance": "modérée-élevée",
+      "recoupements": [],
+      "id": "sidelying-grounding"
+    },
+    "hauser-pronation-isometric": {
+      "nom": "Hauser Pronation Isometric",
+      "nom_fr": "Isométrique de pronation (Hauser), focus orteils relevés",
+      "bloc": "b2",
+      "categorie": "isometrique",
+      "rang": "Isométrique #1",
+      "parametres": {
+        "fiche": "3-5 × 30 s/côté, en ajoutant du temps jusqu'à 45 s — 3×/sem (quotidien possible si l'effet est net)",
+        "recap": "3-5 × 30+ s/côté"
+      },
+      "objectif": [
+        "Renforcer la musculature pronatrice du pied"
+      ],
+      "criteres": [],
+      "notes": [
+        "L'auteur rapporte un effet souvent immédiat (pied plus « connecté » au sol à la marche) et autorise alors une pratique quotidienne"
+      ],
+      "materiel": [
+        "Mur (version alternative)"
+      ],
+      "videos": [
+        {
+          "youtubeId": "f51_RPFd1ik",
+          "url": "https://www.youtube.com/watch?v=f51_RPFd1ik",
+          "titre_youtube": "Hauser Pronation Isometric with Toe-Up Focus",
+          "role": "principale",
+          "label": "Vidéo"
+        },
+        {
+          "youtubeId": "c-MYWX_g2yU",
+          "url": "https://www.youtube.com/watch?v=c-MYWX_g2yU",
+          "titre_youtube": "Single Leg Pronation Isometric with Wall Support",
+          "role": "alternative",
+          "label": "Alternative"
+        }
+      ],
+      "verdict": "orange",
+      "filtre_profil": "Même tension de cadre que le Pronation Drill. Nuance mécanique : « pronateur » ne veut pas dire « affaissant » — le long fibulaire abaisse le 1er métatarsien et soutient l'arche transverse. Je n'ai pas pu visionner la vidéo : le détail d'exécution reste à vérifier.",
+      "confiance": "faible-modérée",
+      "recoupements": [],
+      "id": "hauser-pronation-isometric"
+    },
+    "single-leg-isometric-hamstring-bridge": {
+      "nom": "Single Leg Isometric Hamstring Bridge",
+      "nom_fr": "Pont ischios isométrique unipodal (sur rouleau)",
+      "bloc": "b2",
+      "categorie": "isometrique",
+      "rang": "Isométrique #2",
+      "parametres": {
+        "fiche": "3 × 15-45 s/côté, objectif 45 s par série — 3×/sem",
+        "recap": "3 × 30-45 s/côté"
+      },
+      "objectif": [
+        "Co-contractions ischio-jambiers / fessier / mollet"
+      ],
+      "criteres": [],
+      "materiel": [
+        "Rouleau en mousse (d'après la vidéo)"
+      ],
+      "credit": "David Grey",
+      "videos": [
+        {
+          "youtubeId": "CjBfkgjoMpg",
+          "url": "https://www.youtube.com/watch?v=CjBfkgjoMpg",
+          "titre_youtube": "Single Leg Hamstring Bridge Isometric on Foam Roller",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Unilatéral, isométrique : rapport bénéfice/coût excellent. Vigilance hanche droite en extension terminale.",
+      "confiance": "élevée",
+      "recoupements": [
+        "hip-bridges (BFS)"
+      ],
+      "id": "single-leg-isometric-hamstring-bridge"
+    },
+    "soleus-slouch": {
+      "nom": "Soleus Slouch",
+      "nom_fr": "Soleus slouch en fente décalée",
+      "bloc": "b2",
+      "categorie": "force",
+      "rang": "Force #1",
+      "parametres": {
+        "fiche": "3 × 10/côté — 3×/sem",
+        "recap": "3 × 12/côté"
+      },
+      "objectif": [
+        "Apprendre à étendre la hanche avant le genou (séquence de la course et de la marche)",
+        "Co-contractions mollet / ischios / fessier"
+      ],
+      "criteres": [],
+      "materiel": [],
+      "credit": "Dave O'Sullivan",
+      "videos": [
+        {
+          "youtubeId": "G3FYvqJqyXU",
+          "url": "https://www.youtube.com/watch?v=G3FYvqJqyXU",
+          "titre_youtube": "Soleus Slouch in Staggered Stance",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Debout, charge faible, travail soléaire : aucun conflit.",
+      "confiance": "élevée",
+      "recoupements": [],
+      "id": "soleus-slouch"
+    },
+    "heel-float-split-squat": {
+      "nom": "Heel Float Split Squat",
+      "nom_fr": "Split squat talon décollé",
+      "bloc": "b2",
+      "categorie": "force",
+      "rang": "Force #2",
+      "parametres": {
+        "fiche": "3 × 10 reps lentes et contrôlées — 3×/sem",
+        "recap": "3 × 10/côté"
+      },
+      "objectif": [
+        "Renforcer mollets, quadriceps et ischios"
+      ],
+      "criteres": [],
+      "notes": [
+        "Sans charge si trop dur, ou une main sur un chambranle/une table pour alléger"
+      ],
+      "materiel": [
+        "Charge optionnelle"
+      ],
+      "videos": [
+        {
+          "youtubeId": "TFkl687qtmk",
+          "url": "https://www.youtube.com/watch?v=TFkl687qtmk",
+          "titre_youtube": "Heel Float Split Squat with Ipsilateral Load",
+          "role": "principale",
+          "label": "Vidéo"
+        },
+        {
+          "youtubeId": "sBFFy-uzyr8",
+          "url": "https://www.youtube.com/watch?v=sBFFy-uzyr8",
+          "titre_youtube": "Heel Float Split Squat",
+          "role": "variante",
+          "label": "Sans charge"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Unilatéral, compatible. Pour charger : sac de rucking plutôt qu'un haltère d'un côté (préférence déjà actée pour les fentes, et ça épargne poignets/coudes). Redondant avec les Heel Elevated Lunges du BFS : l'un ou l'autre le même jour.",
+      "confiance": "élevée",
+      "recoupements": [
+        "heel-elevated-lunges-emom (BFS Anti-Pronation)",
+        "split-squat-bande"
+      ],
+      "id": "heel-float-split-squat"
+    },
+    "single-leg-box-pogo-hops": {
+      "nom": "Single Leg Box Pogo Hops (with optional modifications)",
+      "nom_fr": "Pogo hops unipodaux (sur box), avec modifications possibles",
+      "bloc": "b2",
+      "categorie": "pliometrique",
+      "rang": "Pliométrie #1",
+      "parametres": {
+        "fiche": "3 × 20-30+ s/côté — 3×/sem",
+        "recap": "3 × 20+ s/côté"
+      },
+      "objectif": [
+        "Résilience tendineuse pied-cheville-genou",
+        "Progression unipodale des pogo hops bilatéraux"
+      ],
+      "criteres": [],
+      "materiel": [
+        "Box ou marche"
+      ],
+      "videos": [
+        {
+          "youtubeId": "HovRiNcjHPg",
+          "url": "https://www.youtube.com/watch?v=HovRiNcjHPg",
+          "titre_youtube": "Single Leg Box Pogo Hops with Optional Modifications",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Passage à l'unipodal sur un pied plat : n'avancer que si réception silencieuse, genou dans l'axe et tendons revenus à la normale le lendemain matin (voir Filtre profil → pliométrie).",
+      "confiance": "modérée-élevée",
+      "recoupements": [
+        "grounded-hops-emom (BFS)"
+      ],
+      "id": "single-leg-box-pogo-hops"
+    },
+    "sidelying-glute-max": {
+      "nom": "Sidelying Glute Max",
+      "nom_fr": "Grand fessier en décubitus latéral (arche contre le mur)",
+      "bloc": "b3",
+      "categorie": "quotidien",
+      "rang": "Drill quotidien #1",
+      "parametres": {
+        "fiche": "5 respirations des deux côtés — 2+ séries/jour",
+        "recap": "2 × 5/côté"
+      },
+      "objectif": [
+        "Coordonner l'arche du pied et l'activation du fessier",
+        "Améliorer la rotation du bassin vers le côté au sol"
+      ],
+      "criteres": [
+        "Tu ne sens que le fessier du dessus et les abdominaux du dessous (un peu l'adducteur du dessous, éventuellement)",
+        "L'arche du pied du dessus est fermement plaquée au mur",
+        "Nuque et bas du dos relâchés"
+      ],
+      "materiel": [
+        "Mur"
+      ],
+      "videos": [
+        {
+          "youtubeId": "w4DkkdHwc5U",
+          "url": "https://www.youtube.com/watch?v=w4DkkdHwc5U",
+          "titre_youtube": "Sidelying Glute Max",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Couple pied ↔ fessier : écho direct au constat validé en kiné (l'activation volontaire du fessier D améliore la position de l'épaule D). Probablement le drill le plus aligné sur ta chaîne de tout le livre.",
+      "confiance": "modérée-élevée",
+      "recoupements": [
+        "clam-shells (BFS Glute Re-Education)"
+      ],
+      "id": "sidelying-glute-max"
+    },
+    "pri-alternating-reciprocal-step-through": {
+      "nom": "PRI Alternating Reciprocal Step-Through with Elevation",
+      "nom_fr": "Pas réciproque alterné avec surélévation (PRI)",
+      "bloc": "b3",
+      "categorie": "quotidien",
+      "rang": "Drill quotidien #2",
+      "parametres": {
+        "fiche": "3 × 30-120 s/côté, en ajoutant du temps chaque jour — 2+ séries/jour",
+        "recap": "2 × 30+ s/côté (nommé « PRI Mid-Stance Reciprocal Step-Through »)"
+      },
+      "objectif": [
+        "Améliorer la transition mi-appui → fin d'appui, avec la musculature associée"
+      ],
+      "criteres": [],
+      "materiel": [
+        "Marche ou cale pour la surélévation"
+      ],
+      "credit": "© Postural Restoration Institute — utilisé avec permission",
+      "videos": [
+        {
+          "youtubeId": "ulKCA37iLIY",
+          "url": "https://www.youtube.com/watch?v=ulKCA37iLIY",
+          "titre_youtube": "PRI Alternating Reciprocal Step-Through with Elevation",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Debout, spécifique à la marche, sans charge. Cadre PRI (faible niveau de preuve), mais aucun risque identifié.",
+      "confiance": "modérée",
+      "recoupements": [],
+      "id": "pri-alternating-reciprocal-step-through"
+    },
+    "spring-ankle-isometric": {
+      "nom": "Spring-Ankle Isometric",
+      "nom_fr": "Isométrique « cheville-ressort »",
+      "bloc": "b3",
+      "categorie": "quotidien",
+      "rang": "Drill quotidien #3",
+      "parametres": {
+        "fiche": "3 × 30-60 s/côté, en ajoutant du temps chaque jour — 3+ séries/jour",
+        "recap": "3 × 30+ s/côté"
+      },
+      "objectif": [
+        "Renforcer les muscles plantaires du pied",
+        "Co-contractions pied / genou / hanche"
+      ],
+      "criteres": [],
+      "notes": [
+        "Bien qu'isométrique, l'auteur le place en quotidien",
+        "Version alternative (focus dorsiflexion) si la première ne « tombe » pas juste"
+      ],
+      "materiel": [],
+      "videos": [
+        {
+          "youtubeId": "KBYrfn33PAI",
+          "url": "https://www.youtube.com/watch?v=KBYrfn33PAI",
+          "titre_youtube": "Spring-Ankle Isometric with Plantar Flexion Focus",
+          "role": "principale",
+          "label": "Vidéo"
+        },
+        {
+          "youtubeId": "tSJgB7nmjcQ",
+          "url": "https://www.youtube.com/watch?v=tSJgB7nmjcQ",
+          "titre_youtube": "Spring-Ankle Isometric with Dorsiflexion Focus",
+          "role": "alternative",
+          "label": "Focus dorsiflexion"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Renforcement intrinsèque du pied : complément direct du BFS, même cible (pieds plats).",
+      "confiance": "élevée",
+      "recoupements": [
+        "BFS (travail du pied)"
+      ],
+      "id": "spring-ankle-isometric"
+    },
+    "single-leg-iso-hamstring-bridge-oscillation": {
+      "nom": "Single Leg Isometric Hamstring Bridge with Oscillation",
+      "nom_fr": "Pont ischios unipodal isométrique avec oscillations",
+      "bloc": "b3",
+      "categorie": "isometrique",
+      "rang": "Isométrique #1",
+      "parametres": {
+        "fiche": "3 × 15-45 s/côté, objectif 45 s par série — 3×/sem",
+        "recap": "3 × 15-45 s/côté"
+      },
+      "objectif": [
+        "Co-contractions ischio-jambiers / fessier / mollet, version dynamisée"
+      ],
+      "criteres": [],
+      "materiel": [
+        "Rouleau en mousse (d'après la vidéo)"
+      ],
+      "credit": "David Grey",
+      "videos": [
+        {
+          "youtubeId": "gzj2ACwPSDw",
+          "url": "https://www.youtube.com/watch?v=gzj2ACwPSDw",
+          "titre_youtube": "Single Leg Hamstring Bridge Isometric with Oscillation on Foam Roller",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Progression logique du bloc 2. Même vigilance hanche droite.",
+      "confiance": "élevée",
+      "recoupements": [
+        "hip-bridges (BFS)"
+      ],
+      "id": "single-leg-iso-hamstring-bridge-oscillation"
+    },
+    "bottoms-up-split-squat-pronation": {
+      "nom": "Bottoms-Up Split Squat with Pronation Focus",
+      "nom_fr": "Split squat isométrique en position basse, focus pronation",
+      "bloc": "b3",
+      "categorie": "isometrique",
+      "rang": "Isométrique #2",
+      "parametres": {
+        "fiche": "5 × 5-30 s/côté, en ajoutant du temps jusqu'à 45 s — 3×/sem",
+        "recap": "3 × 30+ s/côté"
+      },
+      "objectif": [
+        "Orienter la transition mi-appui → fin d'appui via grand fessier, quadriceps et abducteurs de hanche"
+      ],
+      "criteres": [],
+      "materiel": [],
+      "credit": "Zac Cupples",
+      "videos": [
+        {
+          "youtubeId": "9gW3k6pA3fk",
+          "url": "https://www.youtube.com/watch?v=9gW3k6pA3fk",
+          "titre_youtube": "Bottoms-Up Split Squat Isometric - Pronation Focus",
+          "role": "principale",
+          "label": "Vidéo"
+        },
+        {
+          "youtubeId": "iKcOoWOh7t0",
+          "url": "https://www.youtube.com/watch?v=iKcOoWOh7t0",
+          "titre_youtube": "Bottoms-Up Split Squat Isometric - Supination Focus",
+          "role": "variante",
+          "label": "Focus supination"
+        }
+      ],
+      "verdict": "orange",
+      "filtre_profil": "Position basse = flexion profonde de la hanche avant ; le focus pronation y ajoute de la rotation interne. Jambe droite devant : profondeur réduite, arrêt à toute sensation d'aine. La variante « supination » (retrouvée via un lien erroné du livre) est moins exigeante pour la hanche dans ce plan.",
+      "confiance": "modérée",
+      "recoupements": [
+        "split-squat-bande"
+      ],
+      "id": "bottoms-up-split-squat-pronation"
+    },
+    "kickstand-hinge-forefoot": {
+      "nom": "Kickstand Hinge with Forefoot Focus",
+      "nom_fr": "Charnière en kickstand, appui avant-pied",
+      "bloc": "b3",
+      "categorie": "force",
+      "rang": "Force #1",
+      "parametres": {
+        "fiche": "3 × 12/côté — 3×/sem",
+        "recap": "3 × 12/côté"
+      },
+      "objectif": [
+        "Renforcer les co-contractions mollet / ischios / quadriceps / fessier dans un mouvement plus dynamique"
+      ],
+      "criteres": [],
+      "materiel": [
+        "Charge optionnelle"
+      ],
+      "videos": [
+        {
+          "youtubeId": "W_kl87cqS0o",
+          "url": "https://www.youtube.com/watch?v=W_kl87cqS0o",
+          "titre_youtube": "Kickstand Hinge with Forefoot Focus",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Variante de ton Kickstand RDL avec appui avant-pied. Charnière de hanche → jamais dans la fenêtre post-R2 (règle MS2 du lundi). Charge : sac ou gilet plutôt qu'haltère pour épargner la prise.",
+      "confiance": "élevée",
+      "recoupements": [
+        "kickstand-rdl"
+      ],
+      "id": "kickstand-hinge-forefoot"
+    },
+    "single-leg-step-down-series": {
+      "nom": "Single Leg Step-Down Progression Series",
+      "nom_fr": "Step-down unipodal — série de progressions",
+      "bloc": "b3",
+      "categorie": "force",
+      "rang": "Force #2",
+      "parametres": {
+        "fiche": "3 × 5-8/côté, tempo 5:1:3 — commencer par la progression #1 — 3×/sem",
+        "recap": "3 × 8-12/côté"
+      },
+      "objectif": [
+        "Entraîner les muscles du genou à s'allonger tout en stabilisant l'articulation",
+        "Contrôler la rotation interne de hanche et du membre inférieur"
+      ],
+      "criteres": [],
+      "materiel": [
+        "Marche ou box"
+      ],
+      "videos": [
+        {
+          "youtubeId": "L53PjAsbmw8",
+          "url": "https://www.youtube.com/watch?v=L53PjAsbmw8",
+          "titre_youtube": "Single Leg Step-Down Progression Series",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "vert",
+      "filtre_profil": "Excentrique de 5 s en unipodal : contrôle du valgus, sollicitation tendineuse favorable, coût nerveux faible. Le meilleur exercice de force du livre pour ton profil. Côté droit : surveiller la chute du bassin controlatéral (moyen fessier D).",
+      "confiance": "élevée",
+      "recoupements": [],
+      "id": "single-leg-step-down-series"
+    },
+    "single-leg-multidirectional-pogo": {
+      "nom": "Single Leg Multi-Directional Pogo Hops with Optional Regressions",
+      "nom_fr": "Pogo hops unipodaux multidirectionnels, avec régressions",
+      "bloc": "b3",
+      "categorie": "pliometrique",
+      "rang": "Pliométrie #1",
+      "parametres": {
+        "fiche": "3 × 30-60 s/côté — 3×/sem",
+        "recap": "3 × 30+ s/côté"
+      },
+      "objectif": [
+        "Force et résilience tendineuses sous fatigue, défi accru"
+      ],
+      "criteres": [],
+      "materiel": [],
+      "credit": "Paul Fabritz",
+      "videos": [
+        {
+          "youtubeId": "zQi7BsVO998",
+          "url": "https://www.youtube.com/watch?v=zQi7BsVO998",
+          "titre_youtube": "Single Leg Multi-Directional Pogo Hops with Optional Regressions",
+          "role": "principale",
+          "label": "Vidéo"
+        },
+        {
+          "youtubeId": "S9zS3Kj2WRQ",
+          "url": "https://www.youtube.com/watch?v=S9zS3Kj2WRQ",
+          "titre_youtube": "Multi-Directional Pogo Hops with Optional Regressions",
+          "role": "regression",
+          "label": "Version bilatérale"
+        }
+      ],
+      "verdict": "orange",
+      "filtre_profil": "30-60 s unipodal en multidirectionnel : volume d'impact conséquent sur un pied plat, avec un moyen fessier D faible dans le plan frontal. Commencer par la version bilatérale (vidéo de régression), passer à l'unipodal seulement si les critères de la pliométrie sont remplis.",
+      "confiance": "modérée",
+      "recoupements": [],
+      "id": "single-leg-multidirectional-pogo"
+    },
+    "single-leg-lateral-hurdle-hops": {
+      "nom": "Single Leg Lateral Hurdle Hops - Double-Contact",
+      "nom_fr": "Sauts latéraux unipodaux au-dessus d'une haie, double contact",
+      "bloc": "b3",
+      "categorie": "pliometrique",
+      "rang": "Pliométrie #2",
+      "parametres": {
+        "fiche": "3 × 5-6/côté — 3×/sem",
+        "recap": "3 × 5-6/côté"
+      },
+      "objectif": [
+        "Production de force plus élevée",
+        "Renforcer les tendons du genou, de la cheville et du pied"
+      ],
+      "criteres": [],
+      "notes": [
+        "N'importe quel obstacle de 10-15 cm (4-6 pouces) convient"
+      ],
+      "materiel": [
+        "Obstacle de 10-15 cm"
+      ],
+      "videos": [
+        {
+          "youtubeId": "xXjVr4r7OpY",
+          "url": "https://www.youtube.com/watch?v=xXjVr4r7OpY",
+          "titre_youtube": "Single Leg Lateral Hurdle Hops - Double-Contact",
+          "role": "principale",
+          "label": "Vidéo"
+        }
+      ],
+      "verdict": "orange",
+      "filtre_profil": "Réception latérale unipodale : demande frontale maximale sur les abducteurs de hanche (moyen fessier D) et sur l'arche. Dernier exercice à introduire, obstacle bas, uniquement si le step-down est propre des deux côtés.",
+      "confiance": "modérée",
+      "recoupements": [],
+      "id": "single-leg-lateral-hurdle-hops"
+    }
+  },
+  "filtre_profil": {
+    "synthese": "Le programme le plus aligné sur ton maillon distal (pieds plats, marche canard, rotation tibiale) parmi ceux analysés jusqu'ici. Contrairement à Beginner Body Restoration, il est peu PRI (2 exercices crédités PRI, plus le 90/90 hip lift qui en vient), ne latéralise rien par postulat, et son intérêt ne dépend pas du verdict structurel/fonctionnel de l'EOS. Le cadre « phases de la marche » est un modèle explicatif peu testé en tant que système ; les briques (isométrie, pliométrie progressive, renforcement intrinsèque du pied, excentrique contrôlé) sont, elles, bien soutenues.",
+    "points": [
+      {
+        "titre": "Hanche droite et positions de type FADIR",
+        "texte": "Étirement de capsule postérieure (bloc 1) et split squat en position basse focus pronation (bloc 3) placent la hanche en flexion + rotation interne (+ adduction pour le premier). Côté droit : amplitude réduite, arrêt à toute sensation antérieure ou d'aine, jusqu'à l'avis du kiné.",
+        "exercices": [
+          "pri-standing-posterior-hip-capsule-stretch",
+          "bottoms-up-split-squat-pronation"
+        ],
+        "confiance": "élevée sur la mécanique, modérée sur le risque réel"
+      },
+      {
+        "titre": "Pronation (bloc 2) vs pieds plats et BFS « anti-pronation »",
+        "texte": "Les deux programmes reposent sur des modèles différents du pied plat. BFS : excès de pronation à contrer. Harris : pied affaissé qui ne sait ni pronater de façon contrôlée ni supiner à temps. La littérature ne tranche pas. En pratique : affaissement minimal, trois appuis non négociables, priorité à la dorsiflexion, et question au podologue.",
+        "exercices": [
+          "pronation-drill",
+          "hauser-pronation-isometric"
+        ],
+        "confiance": "faible-modérée"
+      },
+      {
+        "titre": "Recoupements avec le BFS",
+        "texte": "Pogo hops ↔ Grounded Hops ; Heel Float Split Squat ↔ Heel Elevated Lunges ; ponts ischios ↔ Hip Bridges ; Spring-Ankle ↔ travail du pied. Si tu pioches dans LLF un jour de BFS, remplace l'équivalent plutôt que d'additionner : sinon volume en hausse et effets impossibles à attribuer.",
+        "exercices": [
+          "bilateral-pogo-hops",
+          "heel-float-split-squat",
+          "spring-ankle-isometric"
+        ],
+        "confiance": "élevée"
+      },
+      {
+        "titre": "Critères de progression en pliométrie",
+        "texte": "Passer au niveau suivant seulement si : réception silencieuse, genou dans l'axe du pied, douleur tendineuse ≤ 3/10 pendant l'effort et revenue à l'état de base le lendemain matin. Ces critères s'inspirent du modèle de monitoring de la douleur de Silbernagel et al. (2007, Am J Sports Med), qui tolère jusqu'à 5/10 en contexte de tendinopathie ; sans tendinopathie, je retiens un seuil plus prudent. Pour les deux derniers sauts du bloc 3, le step-down propre des deux côtés est un prérequis.",
+        "exercices": [
+          "single-leg-box-pogo-hops",
+          "single-leg-multidirectional-pogo",
+          "single-leg-lateral-hurdle-hops"
+        ],
+        "confiance": "modérée — arbitrage de programmation"
+      },
+      {
+        "titre": "Charges et membres supérieurs",
+        "texte": "Heel float split squat et kickstand hinge se chargent dans la vidéo avec un haltère tenu d'un côté. Avec tes coudes médiaux et tes poignets côté cubital, préfère le sac de rucking ou un gilet.",
+        "exercices": [
+          "heel-float-split-squat",
+          "kickstand-hinge-forefoot"
+        ],
+        "confiance": "élevée"
+      },
+      {
+        "titre": "Positions et digestion",
+        "texte": "Charnières (kickstand hinge) et drills sur le dos ou sur le côté (90/90, sidelying, wall switches, ponts) : pas dans les ~2 h qui suivent le R2, comme pour la MS2 du lundi.",
+        "exercices": [
+          "kickstand-hinge-forefoot",
+          "90-90-hip-lift-ball",
+          "sidelying-grounding",
+          "supine-wall-switches"
+        ],
+        "confiance": "modérée-élevée"
+      },
+      {
+        "titre": "Ce que l'EOS peut apporter ici",
+        "texte": "Si la reconstruction 3D mesure les torsions fémorales et tibiales, elle dira si ta marche canard a une part osseuse — auquel cas le Tibial Untwister n'agira que sur la composante fonctionnelle. Question à poser au radiologue ou au médecin prescripteur.",
+        "exercices": [
+          "tibial-untwister"
+        ],
+        "confiance": "modérée"
+      }
+    ],
+    "lecture_critique": [
+      {
+        "titre": "« Windlass mechanism » employé de façon approximative",
+        "texte": "Le livre appelle ainsi la mise en tension des muscles plantaires par l'aplatissement de l'arche. Le mécanisme de treuil décrit par Hicks (1954, J Anat) est autre chose : la dorsiflexion du gros orteil en fin d'appui tend l'aponévrose plantaire et remonte l'arche. Ça n'invalide pas les exercices, mais c'est un signal de rigueur.",
+        "confiance": "élevée"
+      },
+      {
+        "titre": "Rhétorique non falsifiable",
+        "texte": "« Suivez le livre exactement, sinon je ne serai pas réceptif si ça ne marche pas » : même tournure que dans Beginner Body Restoration. Si ça marche, le cadre est validé ; sinon, c'est l'exécution qui est en cause. Ça doit calibrer la confiance accordée au modèle, pas aux exercices.",
+        "confiance": "élevée"
+      },
+      {
+        "titre": "Ce qui est solide",
+        "texte": "Adaptation de la raideur tendineuse aux charges élevées, isométriques comprises (méta-analyse de Bohm, Mersmann & Arampatzis 2015, Sports Med Open) ; effet de la pliométrie sur le complexe muscle-tendon (Kubo et al. 2007, Med Sci Sports Exerc) ; renforcement des muscles intrinsèques du pied et morphologie de l'arche (Mulligan & Cook 2013, Man Ther ; Ridge et al. 2019, Med Sci Sports Exerc).",
+        "confiance": "élevée sur l'existence de ces résultats ; modérée sur leur transposition à ce programme précis"
+      }
+    ],
+    "selection": {
+      "texte": "Si un jour tu décides de piocher plutôt que de tout suivre, voici les modules au meilleur rapport valeur/risque pour ton profil, par ordre de priorité :",
+      "exercices": [
+        "sidelying-glute-max",
+        "single-leg-step-down-series",
+        "spring-ankle-isometric",
+        "tibial-untwister",
+        "wedge-supination-drill",
+        "soleus-slouch"
+      ],
+      "confiance": "modérée — arbitrage de programmation"
+    }
+  },
+  "errata": [
+    {
+      "page": 41,
+      "texte": "Hauser Pronation Isometric : le bouton « Exercise video link » pointe vers le Bottoms-Up Split Squat (focus supination). La bonne vidéo est celle liée au nom de l'exercice — c'est celle retenue ici."
+    },
+    {
+      "page": 43,
+      "texte": "Soleus Slouch est titré « Weeks 5-6 », mais il figure dans le bloc 3-4 et dans le récap 3-4 : classé en semaines 3-4."
+    },
+    {
+      "page": 55,
+      "texte": "Multi-Directional Pogo Hops : le bouton vidéo mène à la version bilatérale, le nom de l'exercice à la version unipodale. Les deux sont gardées (bilatérale = régression)."
+    },
+    {
+      "page": 57,
+      "texte": "Récap 5-6 : le Single Leg Isometric Hamstring Bridge with Oscillation renvoie à la vidéo du Soleus Slouch."
+    },
+    {
+      "page": 22,
+      "texte": "Lien « Amazon » des cales : pointe vers la vidéo sur les chaussures."
+    },
+    {
+      "page": null,
+      "texte": "Les récaps divergent souvent des fiches (Pronation Drill 15 vs 25 reps ; colonnes décalées pour le 90/90 et le Sidelying Grounding ; Bottoms-Up 5 × 5-30 s vs 3 × 30+ s ; Step-Down 5-8 vs 8-12 reps). Règle appliquée : la fiche d'exercice fait foi, le récap est affiché en second."
+    },
+    {
+      "page": 32,
+      "texte": "Pogo hops bilatéraux notés « par côté » : sans objet pour un exercice bilatéral, lu comme durée totale."
+    }
+  ]
+}
