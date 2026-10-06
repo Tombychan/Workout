@@ -289,7 +289,9 @@ function render(){
 
 function header(){
   let h = '<div class="hdr"><div class="hdr-top">';
-  h += '<a class="back" href="hub.html" aria-label="Retour au hub">←</a>';
+  // Flèche : depuis la bibliothèque → accueil de l'app (Aujourd'hui) ; depuis Aujourd'hui → hub (icône maison)
+  if (S.tab === 'jour') h += '<a class="back" href="hub.html" aria-label="Retour au hub" title="Hub">⌂</a>';
+  else h += `<button class="back" onclick="setTab('jour')" aria-label="Retour à Aujourd'hui" title="Aujourd'hui">←</button>`;
   h += `<div><h1>${esc(D.meta.titre)}</h1><div class="sub">Conor Harris · 6 semaines</div></div>`;
   if (OFFLINE) h += '<span class="offline">● hors ligne</span>';
   h += '</div>';
