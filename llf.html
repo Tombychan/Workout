@@ -200,6 +200,11 @@ textarea.note{width:100%;min-height:64px;font-family:inherit;font-size:13px;colo
 details.set{margin-top:14px}
 details.set summary{font-size:12px;color:var(--t2);cursor:pointer;padding:8px 2px;list-style:none}
 details.set summary::-webkit-details-marker{display:none}
+.fullbox{margin-top:12px;padding-top:12px;border-top:1px solid rgba(99,102,241,.25)}
+.fullon{font-size:13px;font-weight:600;color:var(--g);text-align:center}
+.adv{font-size:12px;color:var(--t2);margin-top:8px;line-height:1.5}
+.adv.o{color:#fcd34d}
+.adv.g{color:var(--g)}
 .timerbar{position:fixed;left:50%;transform:translateX(-50%);bottom:max(14px,env(safe-area-inset-bottom));z-index:100;width:calc(100% - 24px);max-width:536px;display:none;align-items:center;gap:10px;padding:10px 12px;border-radius:16px;background:rgba(14,14,26,.97);border:1px solid var(--a);box-shadow:0 6px 30px rgba(0,0,0,.6)}
 .timerbar.on{display:flex}
 .timerbar.done{border-color:var(--g)}
@@ -516,7 +521,8 @@ function entryForLog(){
   return LOG[k];
 }
 function exLog(entry, id){ if (!entry.ex[id]) entry.ex[id] = { sets: 0, holds: [] }; return entry.ex[id]; }
-function isFullDay(){ return PLAN.days.includes(dow()) || !!LOG[dk()]?.full; }
+function hasNonDaily(v){ return !!v && Object.entries(v.ex || {}).some(([id,x]) => D.exercices[id] && D.exercices[id].categorie !== 'quotidien' && ((x.sets || 0) > 0 || (x.holds || []).length > 0)); }
+function isFullDay(){ const v = LOG[dk()]; return !!v?.full || hasNonDaily(v); }
 
 function bestPrev(id, side){
   const k = dk();
@@ -541,13 +547,29 @@ function exDone(e, x){
   return hs.length >= su.cible;
 }
 function fmtS(s){ return s >= 60 ? Math.floor(s/60) + ':' + String(s%60).padStart(2,'0') : s + ' s'; }
-function nextFullDay(){
-  for (let i = 1; i <= 7; i++) { const d = new Date(); d.setDate(d.getDate() + i); if (PLAN.days.includes(dow(d))) return JOURS_N[dow(d)]; }
-  return null;
+function weekTarget(){ return D.programme_jour?.seances_completes_semaine || 3; }
+function fullInfo(){
+  const now = new Date(), k = dk(now);
+  const monday = new Date(now); monday.setDate(now.getDate() - dow(now)); const mk = dk(monday);
+  const y = new Date(now); y.setDate(now.getDate() - 1); const yk = dk(y);
+  const days = Object.keys(LOG).filter(x => hasNonDaily(LOG[x])).sort();
+  const prev = days.filter(x => x < k).pop() || null;
+  return { week: days.filter(x => x >= mk && x <= k).length, prev, yesterday: prev === yk, daysLeft: 7 - dow(now) };
 }
-function fullSessionsThisWeek(){
-  const now = new Date(), monday = new Date(now); monday.setDate(now.getDate() - dow(now)); const mk = dk(monday);
-  return Object.entries(LOG).filter(([k,v]) => k >= mk && k <= dk(now) && Object.entries(v.ex || {}).some(([id,x]) => D.exercices[id] && D.exercices[id].categorie !== 'quotidien' && ((x.sets||0) > 0 || (x.holds||[]).length))).length;
+function fullAdvice(full){
+  const I = fullInfo(), T = weekTarget();
+  const doneBefore = I.week - (hasNonDaily(LOG[dk()]) ? 1 : 0);
+  const left = Math.max(0, T - doneBefore);
+  const last = I.prev ? ` Dernière séance complète : ${esc(fmtDate(I.prev))}.` : '';
+  if (full) {
+    if (I.yesterday) return `<p class="adv o">Tu as déjà fait une séance complète hier. ${fmt(D.programme_jour?.conseil_espacement || '')}</p>`;
+    return '';
+  }
+  if (doneBefore >= T) return `<p class="adv g">Objectif de la semaine atteint (${T}/${T}) : aujourd'hui, les drills suffisent.${last}</p>`;
+  if (I.yesterday) return `<p class="adv o">Séance complète faite hier : si tu peux, garde aujourd'hui pour les drills et fais la suivante demain.</p>`;
+  let t = `Il te reste ${left} séance${left > 1 ? 's' : ''} complète${left > 1 ? 's' : ''} à placer d'ici dimanche (${I.daysLeft} jour${I.daysLeft > 1 ? 's' : ''} restant${I.daysLeft > 1 ? 's' : ''}, aujourd'hui compris).${last}`;
+  if (left * 2 - 1 > I.daysLeft) t += " Pas assez de jours pour bien les espacer : ce n'est pas grave, le programme avance en jours actifs, pas en semaines.";
+  return `<p class="adv">${t}</p>`;
 }
 
 function today(){
@@ -577,8 +599,14 @@ function today(){
     h += `<div class="${cls}"></div>`;
   }
   h += '</div>';
-  h += `<div class="sqlbl"><span>Jours actifs dans le bloc : ${Math.min(actDone, need)}/${need}</span><span>Séances complètes cette semaine : ${fullSessionsThisWeek()}/${PLAN.days.length}</span></div>`;
+  h += `<div class="sqlbl"><span>Jours actifs dans le bloc : ${Math.min(actDone, need)}/${need}</span><span>Séances complètes cette semaine : ${fullInfo().week}/${weekTarget()}</span></div>`;
   h += `<div class="prog"><div class="bar"><div class="fill" style="width:${ids.length ? Math.round(done/ids.length*100) : 0}%"></div></div><span>${done}/${ids.length}</span></div>`;
+  h += '<div class="fullbox">';
+  if (!full) h += `<button class="btn pri" style="width:100%" onclick="addFull()">＋ Séance complète aujourd'hui</button>`;
+  else if (!hasNonDaily(LOG[k])) h += `<button class="btn ghost sm" style="width:100%" onclick="removeFull()">Retirer la séance complète d'aujourd'hui</button>`;
+  else h += '<div class="fullon">✓ Séance complète en cours</div>';
+  h += fullAdvice(full);
+  h += '</div>';
   h += '</div>';
 
   cats.forEach(c => {
@@ -589,10 +617,6 @@ function today(){
   });
 
   if (full && D.programme_jour?.note_bfs) h += `<div class="callout" style="margin-bottom:14px">${fmt(D.programme_jour.note_bfs)}</div>`;
-  if (!full) {
-    const nx = nextFullDay();
-    h += `<div class="setup"><p>${nx ? 'Prochaine séance complète : <b style="color:var(--t)">' + esc(nx) + '</b>.' : 'Aucun jour de séance complète choisi.'}</p><button class="btn sm" onclick="addFull()">+ Faire la séance complète aujourd'hui</button></div>`;
-  }
 
   h += `<div class="setup"><h3>Note du jour</h3><textarea class="note" placeholder="Sensations hanche D, tendons le lendemain, charges…" oninput="saveNote(this.value)">${esc(entry.note || '')}</textarea></div>`;
   h += settingsView(b);
@@ -636,16 +660,11 @@ function dayRow(e, entry){
 }
 
 function setupView(){
-  const def = D.programme_jour?.jours_seance_defaut || [0,2,4];
-  if (!S.draft) S.draft = { start: dk(), days: def.slice() };
   let h = '<div class="daycard"><div class="kick">Programme journalier</div><h2>Démarrer Lower Limb Foundations</h2>';
-  h += `<p>Chaque jour : les drills du bloc en cours. Les jours choisis ci-dessous : la séance complète (isométrie, pliométrie, force). ${fmt(D.programme_jour?.regle_progression || '')}</p></div>`;
-  h += '<div class="setup"><h3>Date de début</h3>';
-  h += `<input type="date" value="${esc(S.draft.start)}" onchange="S.draft.start=this.value">`;
-  h += '<h3>Jours de séance complète (3×/semaine)</h3><div class="daychips">';
-  JOURS_C.forEach((j,i) => { h += `<button class="daychip ${S.draft.days.includes(i)?'on':''}" onclick="toggleDraftDay(${i})">${j}</button>`; });
-  h += '</div><p style="margin-top:8px;font-size:12px;color:var(--t3)">Par défaut lundi, mercredi, vendredi : système nerveux frais pour la pliométrie, et pas de sauts les jours de BFS Anti-Pronation (mardi/jeudi).</p>';
-  h += `<button class="btn pri" style="width:100%;margin-top:6px" onclick="startPlan()">Commencer</button></div>`;
+  h += '<p>Chaque jour, l\'appli t\'affiche les drills du bloc en cours. Le jour où tu as le temps, touche « Séance complète aujourd\'hui » pour ajouter isométrie, pliométrie et force. ';
+  h += `Objectif : ${weekTarget()} par semaine, idéalement pas deux jours de suite — rien n'est fixé à l'avance.</p></div>`;
+  h += `<div class="setup"><p>${fmt(D.programme_jour?.regle_progression || '')}</p>`;
+  h += `<button class="btn pri" style="width:100%;margin-top:6px" onclick="startPlan()">Commencer aujourd'hui</button></div>`;
   return h;
 }
 
@@ -662,9 +681,7 @@ function finishedView(){
 function settingsView(b){
   let h = '<details class="set"><summary>⚙︎ Réglages du programme</summary><div class="setup">';
   h += `<p>Démarré le ${esc(fmtDate(PLAN.start))}.</p>`;
-  h += '<h3>Jours de séance complète</h3><div class="daychips">';
-  JOURS_C.forEach((j,i) => { h += `<button class="daychip ${PLAN.days.includes(i)?'on':''}" onclick="togglePlanDay(${i})">${j}</button>`; });
-  h += '</div><h3>Bloc</h3><div class="blocsel">';
+  h += '<h3>Bloc</h3><div class="blocsel">';
   h += `<button class="btn sm ${!PLAN.forceBloc ? 'pri' : ''}" onclick="setForce(null)">Auto (14 jours actifs)</button>`;
   D.blocs.forEach(x => { h += `<button class="btn sm ${PLAN.forceBloc === x.id ? 'pri' : ''}" onclick="setForce('${x.id}')">S${esc(x.semaines)}</button>`; });
   h += '</div><h3>Données</h3><div class="blocsel">';
@@ -676,11 +693,10 @@ function settingsView(b){
 }
 
 /* ── Actions programme ── */
-function toggleDraftDay(i){ const a = S.draft.days; const j = a.indexOf(i); j >= 0 ? a.splice(j,1) : a.push(i); a.sort(); render(); }
-function startPlan(){ PLAN = { start: S.draft.start || dk(), days: S.draft.days.slice().sort(), forceBloc: null }; saveState(); render(); window.scrollTo(0,0); }
-function togglePlanDay(i){ const a = PLAN.days; const j = a.indexOf(i); j >= 0 ? a.splice(j,1) : a.push(i); a.sort(); saveState(); render(); }
+function startPlan(){ PLAN = { start: dk(), forceBloc: null }; saveState(); render(); window.scrollTo(0,0); }
 function setForce(b){ PLAN.forceBloc = b; saveState(); render(); }
 function addFull(){ const k = dk(); if (!LOG[k]) LOG[k] = { ex: {} }; LOG[k].full = true; saveState(); render(); }
+function removeFull(){ const k = dk(); if (LOG[k]) { LOG[k].full = false; saveState(); } render(); }
 function addSet(id, d){
   const x = exLog(entryForLog(), id);
   x.sets = Math.max(0, (x.sets || 0) + d);
@@ -694,7 +710,7 @@ function undoHold(id, sd){
 function saveNote(v){ const k = dk(); if (!LOG[k]) LOG[k] = { ex: {} }; LOG[k].note = v; saveState(); }
 function resetPlan(){
   if (!S.confirmReset) { S.confirmReset = true; render(); setTimeout(() => { S.confirmReset = false; }, 5000); return; }
-  S.confirmReset = false; PLAN = null; LOG = {}; S.draft = null; saveState(); render(); window.scrollTo(0,0);
+  S.confirmReset = false; PLAN = null; LOG = {}; saveState(); render(); window.scrollTo(0,0);
 }
 function exportLog(){
   const blob = new Blob([JSON.stringify({ exported_at: new Date().toISOString(), source: 'llf.html', version: D.meta.version, plan: PLAN, log: LOG }, null, 2)], { type: 'application/json' });

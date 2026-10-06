@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.0",
+    "version": "1.2.0",
     "date": "2026-10-06",
     "titre": "Lower Limb Foundations",
     "auteur": "Conor Harris (BS, CSCS, XPS, CES, CPT)",
@@ -23,15 +23,17 @@
         "version": "1.1.0",
         "date": "2026-10-06",
         "note": "Programme journalier : paramètres de suivi (séries/tenues, côtés, progression des durées), consignes du jour, règles de progression."
+      },
+      {
+        "version": "1.2.0",
+        "date": "2026-10-06",
+        "note": "Séances complètes à la demande (plus de jours fixes) : objectif 3/semaine, conseil d'espacement."
       }
     ]
   },
   "programme_jour": {
-    "jours_seance_defaut": [
-      0,
-      2,
-      4
-    ],
+    "seances_completes_semaine": 3,
+    "conseil_espacement": "Idéalement pas deux séances complètes deux jours de suite : la pliométrie et l'isométrie sollicitent les tendons, qui récupèrent mieux avec ~48 h d'écart (conseil de programmation, non précisé par l'auteur).",
     "jours_actifs_par_bloc": 14,
     "ordre_seance": [
       "quotidien",
