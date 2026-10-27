@@ -1,12 +1,12 @@
 {
   "meta": {
-    "version": "2.3.0",
-    "date": "2026-04-13",
-    "total_items": 176,
+    "version": "2.4.0",
+    "date": "2026-10-21",
+    "total_items": 182,
     "sources": "USDA FoodData Central, CIQUAL (ANSES), données fabricant, conversations projet",
     "notes": "Valeurs pour 100g sauf indication. Base de référence pour routine_alimentaire.json et app nutrition.",
-    "changelog": "v2.3.0 (2026-04-13) : Ajout œuf entier bio calibre M (60-63g avec coquille, ~54g comestible). Mêmes valeurs /100g que XL, portion ajustée. v2.2.0 (2026-04-12) : Ajout steak haché de bœuf 15% MG (USDA/CIQUAL).",
-    "item_count": 176
+    "changelog": "v2.4.0 (2026-10-21) : champs pour l’onglet Bol de l’app nutrition — État (solide/semi-liquide/liquide), Unité (pas de saisie), Repères visuels, Digest. prot. (coef, leucine corrigée), Méthylxanthines (mg/100g), Déclencheurs (acide, menthe, allium), Masse ingérée (coef). Leucine estimée par catégorie quand elle manquait (119 aliments, champ « Leucine estimée »). Ajouts : betterave cuite, jus de légumes matin et midi, eau, flocons fermentés (pesés secs), blanc de poulet cuit. Greenwhey aligné sur l’étiquette. v2.3.0 (2026-04-13) : Ajout œuf entier bio calibre M (60-63g avec coquille, ~54g comestible). Mêmes valeurs /100g que XL, portion ajustée. v2.2.0 (2026-04-12) : Ajout steak haché de bœuf 15% MG (USDA/CIQUAL).",
+    "item_count": 182
   },
   "items": {
     "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec": {
@@ -52,7 +52,17 @@
       "Val (mg/100g)": 859,
       "Met (mg/100g)": 392,
       "Gly (mg/100g)": 432,
-      "Lys (mg/100g)": 912
+      "Lys (mg/100g)": 912,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "œuf",
+        "p": "œufs",
+        "g": 65
+      }
     },
     "oeuf_entier_bio_1_oeuf_54g_sans_coquille_calibre_M": {
       "id": "oeuf_entier_bio_1_oeuf_54g_sans_coquille_calibre_M",
@@ -66,7 +76,7 @@
       "Fibres (g/100g)": 0,
       "Leucine (% prot)": 0.085,
       "Leucine /100g (g)": 1.071,
-      "Prot /portion (g)": 6.80,
+      "Prot /portion (g)": 6.8,
       "Leucine /portion (g)": 0.578,
       "Seuil 2,5g ?": "✗ NON",
       "Notes & source": "Calibre M (60-63g avec coquille). Jaune ~17g, blanc ~33g, coquille ~7.5g. Mêmes valeurs /100g que XL — seul le poids comestible diffère. Bio recommandé (contaminants lipophiles concentrés dans le jaune).",
@@ -97,7 +107,17 @@
       "Val (mg/100g)": 859,
       "Met (mg/100g)": 392,
       "Gly (mg/100g)": 432,
-      "Lys (mg/100g)": 912
+      "Lys (mg/100g)": 912,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "œuf",
+        "p": "œufs",
+        "g": 54
+      }
     },
     "blanc_doeuf_cuit_1_blanc_43g": {
       "id": "blanc_doeuf_cuit_1_blanc_43g",
@@ -142,7 +162,17 @@
       "Val (mg/100g)": 740,
       "Met (mg/100g)": 399,
       "Gly (mg/100g)": 354,
-      "Lys (mg/100g)": 640
+      "Lys (mg/100g)": 640,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "blanc",
+        "p": "blancs",
+        "g": 43
+      }
     },
     "tempeh_soja_maison": {
       "id": "tempeh_soja_maison",
@@ -187,7 +217,13 @@
       "Val (mg/100g)": 1060,
       "Met (mg/100g)": 260,
       "Gly (mg/100g)": 860,
-      "Lys (mg/100g)": 1000
+      "Lys (mg/100g)": 1000,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.9,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Repères": "portion habituelle du R2 : 150 g"
     },
     "sardines_en_conserve_huile_dolive": {
       "id": "sardines_en_conserve_huile_dolive",
@@ -232,7 +268,17 @@
       "Val (mg/100g)": 1270,
       "Met (mg/100g)": 722,
       "Gly (mg/100g)": 1140,
-      "Lys (mg/100g)": 2240
+      "Lys (mg/100g)": 2240,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "boîte égouttée",
+        "p": "boîtes égouttées",
+        "g": 95
+      }
     },
     "tenebrions_poudre": {
       "id": "tenebrions_poudre",
@@ -277,7 +323,12 @@
       "Val (mg/100g)": 3000,
       "Met (mg/100g)": 700,
       "Gly (mg/100g)": 2700,
-      "Lys (mg/100g)": 2800
+      "Lys (mg/100g)": 2800,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.6,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "skyr_brebis_ecreme_bio": {
       "id": "skyr_brebis_ecreme_bio",
@@ -323,7 +374,13 @@
       "Val (mg/100g)": 580,
       "Met (mg/100g)": 240,
       "Gly (mg/100g)": 170,
-      "Lys (mg/100g)": 720
+      "Lys (mg/100g)": 720,
+      "État": "semi-liquide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Repères": "1 pot ≈ 150 g (selon la marque)"
     },
     "skyr_vache_jersiaise_bio": {
       "id": "skyr_vache_jersiaise_bio",
@@ -369,7 +426,13 @@
       "Val (mg/100g)": 570,
       "Met (mg/100g)": 235,
       "Gly (mg/100g)": 165,
-      "Lys (mg/100g)": 705
+      "Lys (mg/100g)": 705,
+      "État": "semi-liquide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Repères": "1 pot ≈ 150 g (selon la marque)"
     },
     "skyr_vache_classique_holstein": {
       "id": "skyr_vache_classique_holstein",
@@ -410,7 +473,15 @@
       "Glu (g/100g)": 4,
       "Fibres (g/100g)": 0,
       "Statut": "Inactif — remplacé par ricotta brebis artisanale (marché) depuis avril 2026.",
-      "Notes & source": "CIQUAL. Caséine A1 (Holstein → BCM-7 pro-inflammatoire potentiel). Alternative : skyr brebis/jersiaise."
+      "Notes & source": "CIQUAL. Caséine A1 (Holstein → BCM-7 pro-inflammatoire potentiel). Alternative : skyr brebis/jersiaise.",
+      "Leucine /100g (g)": 1.04,
+      "Leucine (% prot)": 0.095,
+      "État": "semi-liquide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Repères": "1 pot ≈ 150 g (selon la marque)"
     },
     "tofu_ferme": {
       "id": "tofu_ferme",
@@ -429,7 +500,7 @@
       "Seuil 2,5g ?": "⚠ Partiel",
       "Notes & source": "CIQUAL. Coagulé nigari (MgCl2) ou sulfate de calcium. Isoflavones bio-disponibles.",
       "Mg (mg/100g)": 58,
-      "Zn (mg/100g)": 1.0,
+      "Zn (mg/100g)": 1,
       "Fe (mg/100g)": 2.7,
       "K (mg/100g)": 237,
       "Vit K1 (µg/100g)": 2.4,
@@ -455,7 +526,12 @@
       "Val (mg/100g)": 880,
       "Met (mg/100g)": 220,
       "Gly (mg/100g)": 710,
-      "Lys (mg/100g)": 1010
+      "Lys (mg/100g)": 1010,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.9,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "tofu_soyeux": {
       "id": "tofu_soyeux",
@@ -500,7 +576,12 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "semi-liquide",
+      "Digest. prot. (coef)": 0.9,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "natto": {
       "id": "natto",
@@ -519,7 +600,7 @@
       "Seuil 2,5g ?": "✗ NON",
       "Notes & source": "USDA. Soja fermenté Bacillus subtilis. Vitamine K2 (MK-7) la plus élevée de tous les aliments (~1000 µg/100g).",
       "Mg (mg/100g)": 115,
-      "Zn (mg/100g)": 3.0,
+      "Zn (mg/100g)": 3,
       "Fe (mg/100g)": 8.6,
       "K (mg/100g)": 729,
       "Vit K1 (µg/100g)": 23,
@@ -534,7 +615,7 @@
       "Vidange gastr. (min)": 80,
       "Fermentesc.": "Modérée",
       "Notes digestives": "Odeur/texture rebutante pour beaucoup. Nattokinase = fibrinolytique. Histamine modérée.",
-      "Prix (€/100g)": 2.0,
+      "Prix (€/100g)": 2,
       "€/g prot.": 0.113,
       "€/g leucine": 1.487,
       "Repas recommandé": "R1 ou R2",
@@ -545,7 +626,12 @@
       "Val (mg/100g)": 910,
       "Met (mg/100g)": 250,
       "Gly (mg/100g)": 740,
-      "Lys (mg/100g)": 1100
+      "Lys (mg/100g)": 1100,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.9,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "yaourt_grec_brebis_entier": {
       "id": "yaourt_grec_brebis_entier",
@@ -553,13 +639,13 @@
       "Catégorie": "Protéines",
       "Portion type (g)": 200,
       "kcal/100g": 100,
-      "Prot (g/100g)": 6.0,
+      "Prot (g/100g)": 6,
       "Lip (g/100g)": 6.5,
-      "Glu (g/100g)": 4.0,
+      "Glu (g/100g)": 4,
       "Fibres (g/100g)": 0,
       "Leucine (% prot)": 0.095,
       "Leucine /100g (g)": 0.57,
-      "Prot /portion (g)": 12.0,
+      "Prot /portion (g)": 12,
       "Leucine /portion (g)": 1.14,
       "Seuil 2,5g ?": "✗ NON",
       "Notes & source": "Estimation commerciale FR. Caséine A2 exclusivement (brebis). Pas de BCM-7.",
@@ -579,7 +665,7 @@
       "Vidange gastr. (min)": 90,
       "Fermentesc.": "Faible",
       "Notes digestives": "A2 = pas de BCM-7. Mieux toléré que vache Holstein. Lipides ralentissent vidange.",
-      "Prix (€/100g)": 1.0,
+      "Prix (€/100g)": 1,
       "€/g prot.": 0.1667,
       "€/g leucine": 1.7544,
       "Repas recommandé": "Collation (alt. ricotta)",
@@ -590,24 +676,29 @@
       "Val (mg/100g)": 420,
       "Met (mg/100g)": 160,
       "Gly (mg/100g)": 110,
-      "Lys (mg/100g)": 500
+      "Lys (mg/100g)": 500,
+      "État": "semi-liquide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "greenwhey_poisfevescourge": {
       "id": "greenwhey_poisfevescourge",
       "Aliment": "Greenwhey (pois+fèves+courge)",
       "Catégorie": "Poudres prot.",
       "Portion type (g)": 30,
-      "kcal/100g": 380,
+      "kcal/100g": 390,
       "Prot (g/100g)": 70,
-      "Lip (g/100g)": 5,
-      "Glu (g/100g)": 8,
+      "Lip (g/100g)": 7.3,
+      "Glu (g/100g)": 10,
       "Fibres (g/100g)": 3,
-      "Leucine (% prot)": 0.095,
-      "Leucine /100g (g)": 6.65,
+      "Leucine (% prot)": 0.0857,
+      "Leucine /100g (g)": 6,
       "Prot /portion (g)": 21,
       "Leucine /portion (g)": 0,
       "Seuil 2,5g ?": "✗ NON",
-      "Notes & source": "PAS de la whey. PDCAAS 0.8-1.0. Pré-germée + bio-fermentée. 30g dose = 21g prot, 2g leu.",
+      "Notes & source": "PAS de la whey. PDCAAS 0.8-1.0. Pré-germée + bio-fermentée. 30g dose = 21g prot, 2g leu. | v2.4.0 : aligné sur l’étiquette (30 g = 117 kcal, 21 g prot, 3 g gluc, 2,2 g lip, 1,8 g leucine).",
       "Mg (mg/100g)": 50,
       "Zn (mg/100g)": 2.5,
       "Fe (mg/100g)": 5,
@@ -635,7 +726,17 @@
       "Val (mg/100g)": 3500,
       "Met (mg/100g)": 700,
       "Gly (mg/100g)": 2800,
-      "Lys (mg/100g)": 5100
+      "Lys (mg/100g)": 5100,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.9,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "dose",
+        "p": "doses",
+        "g": 30
+      }
     },
     "proteine_blanc_doeuf_bio": {
       "id": "proteine_blanc_doeuf_bio",
@@ -675,7 +776,14 @@
       "Lip (g/100g)": 0.5,
       "Glu (g/100g)": 5,
       "Fibres (g/100g)": 0,
-      "Notes & source": "Nutrielement/Nutrimuscle. 40g = ~33g prot, ~2.7g leucine. En évaluation pour dîner (découplage prot/lipides)."
+      "Notes & source": "Nutrielement/Nutrimuscle. 40g = ~33g prot, ~2.7g leucine. En évaluation pour dîner (découplage prot/lipides).",
+      "Leucine /100g (g)": 6.75,
+      "Leucine (% prot)": 0.082,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "flocons_davoine_bio_sec": {
       "id": "flocons_davoine_bio_sec",
@@ -720,7 +828,12 @@
       "Val (mg/100g)": 750,
       "Met (mg/100g)": 230,
       "Gly (mg/100g)": 680,
-      "Lys (mg/100g)": 570
+      "Lys (mg/100g)": 570,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "flocons_petit_epeautre_bio_sec": {
       "id": "flocons_petit_epeautre_bio_sec",
@@ -765,7 +878,12 @@
       "Val (mg/100g)": 640,
       "Met (mg/100g)": 200,
       "Gly (mg/100g)": 550,
-      "Lys (mg/100g)": 380
+      "Lys (mg/100g)": 380,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "pain_petit_epeautre_au_levain": {
       "id": "pain_petit_epeautre_au_levain",
@@ -810,7 +928,18 @@
       "Val (mg/100g)": 390,
       "Met (mg/100g)": 120,
       "Gly (mg/100g)": 340,
-      "Lys (mg/100g)": 230
+      "Lys (mg/100g)": 230,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "tranche",
+        "p": "tranches",
+        "g": 40
+      },
+      "Repères": "1 tranche ≈ 40 g"
     },
     "patate_douce_cuite": {
       "id": "patate_douce_cuite",
@@ -855,7 +984,13 @@
       "Val (mg/100g)": 48,
       "Met (mg/100g)": 24,
       "Gly (mg/100g)": 34,
-      "Lys (mg/100g)": 40
+      "Lys (mg/100g)": 40,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Repères": "1 patate douce moyenne cuite ≈ 150 g"
     },
     "quinoa_cuit": {
       "id": "quinoa_cuit",
@@ -900,7 +1035,12 @@
       "Val (mg/100g)": 190,
       "Met (mg/100g)": 100,
       "Gly (mg/100g)": 240,
-      "Lys (mg/100g)": 240
+      "Lys (mg/100g)": 240,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "pommes_de_terre_cuites": {
       "id": "pommes_de_terre_cuites",
@@ -945,7 +1085,18 @@
       "Val (mg/100g)": 80,
       "Met (mg/100g)": 28,
       "Gly (mg/100g)": 44,
-      "Lys (mg/100g)": 110
+      "Lys (mg/100g)": 110,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "pomme de terre moy.",
+        "p": "pommes de terre moy.",
+        "g": 110
+      },
+      "Repères": "petite ≈ 75 g · moyenne ≈ 110 g · grosse ≈ 160 g"
     },
     "farine_de_seigle_fermentation": {
       "id": "farine_de_seigle_fermentation",
@@ -984,7 +1135,14 @@
       "Lip (g/100g)": 1.7,
       "Glu (g/100g)": 68,
       "Fibres (g/100g)": 14,
-      "Notes & source": "CIQUAL. Farine complète. Phytases exogènes actives (l'avoine en a peu). 10-20% du batch flocons fermentés."
+      "Notes & source": "CIQUAL. Farine complète. Phytases exogènes actives (l'avoine en a peu). 10-20% du batch flocons fermentés.",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.595,
+      "Leucine estimée": true
     },
     "germe_de_ble": {
       "id": "germe_de_ble",
@@ -1029,7 +1187,12 @@
       "Val (mg/100g)": 1190,
       "Met (mg/100g)": 390,
       "Gly (mg/100g)": 1050,
-      "Lys (mg/100g)": 640
+      "Lys (mg/100g)": 640,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "riz_complet_cuit": {
       "id": "riz_complet_cuit",
@@ -1070,7 +1233,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.189,
+      "Leucine estimée": true
     },
     "riz_basmati_cuit": {
       "id": "riz_basmati_cuit",
@@ -1111,7 +1281,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.189,
+      "Leucine estimée": true
     },
     "sarrasin_kasha_cuit": {
       "id": "sarrasin_kasha_cuit",
@@ -1156,7 +1333,12 @@
       "Val (mg/100g)": 210,
       "Met (mg/100g)": 55,
       "Gly (mg/100g)": 280,
-      "Lys (mg/100g)": 240
+      "Lys (mg/100g)": 240,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "millet_cuit": {
       "id": "millet_cuit",
@@ -1165,7 +1347,7 @@
       "Portion type (g)": 180,
       "kcal/100g": 119,
       "Prot (g/100g)": 3.5,
-      "Lip (g/100g)": 1.0,
+      "Lip (g/100g)": 1,
       "Glu (g/100g)": 23.7,
       "Fibres (g/100g)": 1.3,
       "Leucine (% prot)": "—",
@@ -1197,7 +1379,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.245,
+      "Leucine estimée": true
     },
     "amarante_cuite": {
       "id": "amarante_cuite",
@@ -1242,7 +1431,12 @@
       "Val (mg/100g)": 190,
       "Met (mg/100g)": 50,
       "Gly (mg/100g)": 320,
-      "Lys (mg/100g)": 240
+      "Lys (mg/100g)": 240,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "pates_completes_epeautre_cuites": {
       "id": "pates_completes_epeautre_cuites",
@@ -1283,7 +1477,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.371,
+      "Leucine estimée": true
     },
     "semoule_de_ble_dur_cuite": {
       "id": "semoule_de_ble_dur_cuite",
@@ -1324,7 +1525,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.308,
+      "Leucine estimée": true
     },
     "lentilles_vertes_cuites": {
       "id": "lentilles_vertes_cuites",
@@ -1368,7 +1576,12 @@
       "Val (mg/100g)": 450,
       "Met (mg/100g)": 77,
       "Gly (mg/100g)": 370,
-      "Lys (mg/100g)": 630
+      "Lys (mg/100g)": 630,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "lentilles_corail_cuites": {
       "id": "lentilles_corail_cuites",
@@ -1412,7 +1625,12 @@
       "Val (mg/100g)": 450,
       "Met (mg/100g)": 77,
       "Gly (mg/100g)": 370,
-      "Lys (mg/100g)": 630
+      "Lys (mg/100g)": 630,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "pois_chiches_cuits": {
       "id": "pois_chiches_cuits",
@@ -1456,7 +1674,12 @@
       "Val (mg/100g)": 430,
       "Met (mg/100g)": 115,
       "Gly (mg/100g)": 370,
-      "Lys (mg/100g)": 620
+      "Lys (mg/100g)": 620,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "haricots_rouges_cuits": {
       "id": "haricots_rouges_cuits",
@@ -1500,7 +1723,12 @@
       "Val (mg/100g)": 470,
       "Met (mg/100g)": 110,
       "Gly (mg/100g)": 350,
-      "Lys (mg/100g)": 600
+      "Lys (mg/100g)": 600,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "edamame_soja_vert_cuit": {
       "id": "edamame_soja_vert_cuit",
@@ -1544,7 +1772,12 @@
       "Val (mg/100g)": 590,
       "Met (mg/100g)": 150,
       "Gly (mg/100g)": 510,
-      "Lys (mg/100g)": 750
+      "Lys (mg/100g)": 750,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "banane": {
       "id": "banane",
@@ -1557,7 +1790,7 @@
       "Glu (g/100g)": 22.8,
       "Fibres (g/100g)": 2.6,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.055,
       "Prot /portion (g)": 1.32,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -1588,7 +1821,18 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "banane",
+        "p": "bananes",
+        "g": 120
+      },
+      "Leucine estimée": true
     },
     "pomme_avec_peau": {
       "id": "pomme_avec_peau",
@@ -1601,7 +1845,7 @@
       "Glu (g/100g)": 13.8,
       "Fibres (g/100g)": 2.4,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.015,
       "Prot /portion (g)": 0.54,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -1632,7 +1876,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "kiwi_vert": {
       "id": "kiwi_vert",
@@ -1645,7 +1895,7 @@
       "Glu (g/100g)": 14.7,
       "Fibres (g/100g)": 3,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.055,
       "Prot /portion (g)": 1.1,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -1676,7 +1926,20 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "acide"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "kiwi",
+        "p": "kiwis",
+        "g": 100
+      },
+      "Leucine estimée": true
     },
     "framboises": {
       "id": "framboises",
@@ -1689,7 +1952,7 @@
       "Glu (g/100g)": 11.9,
       "Fibres (g/100g)": 6.5,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.06,
       "Prot /portion (g)": 1.2,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -1720,7 +1983,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "mures": {
       "id": "mures",
@@ -1733,7 +2002,7 @@
       "Glu (g/100g)": 9.6,
       "Fibres (g/100g)": 5.3,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.07,
       "Prot /portion (g)": 1.4,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -1764,7 +2033,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "orange_clementine": {
       "id": "orange_clementine",
@@ -1777,7 +2052,7 @@
       "Glu (g/100g)": 11.8,
       "Fibres (g/100g)": 2.4,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.045,
       "Prot /portion (g)": 1.35,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -1808,7 +2083,15 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "acide"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "grenade_arilles": {
       "id": "grenade_arilles",
@@ -1821,7 +2104,7 @@
       "Glu (g/100g)": 18.7,
       "Fibres (g/100g)": 4,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.085,
       "Prot /portion (g)": 1.36,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -1852,7 +2135,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "citron_jus_30ml": {
       "id": "citron_jus_30ml",
@@ -1865,7 +2154,7 @@
       "Glu (g/100g)": 6.9,
       "Fibres (g/100g)": 0.3,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.02,
       "Prot /portion (g)": 0.12,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -1896,7 +2185,20 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "acide"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "c. à soupe",
+        "p": "c. à soupe",
+        "g": 15
+      },
+      "Leucine estimée": true
     },
     "soja_jaune_sec_base_tempeh": {
       "id": "soja_jaune_sec_base_tempeh",
@@ -1941,7 +2243,12 @@
       "Val (mg/100g)": 1840,
       "Met (mg/100g)": 490,
       "Gly (mg/100g)": 1600,
-      "Lys (mg/100g)": 2400
+      "Lys (mg/100g)": 2400,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "haricots_blancs_cuits": {
       "id": "haricots_blancs_cuits",
@@ -1960,7 +2267,7 @@
       "Seuil 2,5g ?": "✗ NON",
       "Notes & source": "USDA. Riches en fibres solubles (effet prébiotique). Amidon résistant élevé.",
       "Mg (mg/100g)": 63,
-      "Zn (mg/100g)": 1.0,
+      "Zn (mg/100g)": 1,
       "Fe (mg/100g)": 3.7,
       "K (mg/100g)": 454,
       "Vit K1 (µg/100g)": 1,
@@ -1986,7 +2293,12 @@
       "Val (mg/100g)": 500,
       "Met (mg/100g)": 100,
       "Gly (mg/100g)": 380,
-      "Lys (mg/100g)": 660
+      "Lys (mg/100g)": 660,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "lentilles_beluga_cuites": {
       "id": "lentilles_beluga_cuites",
@@ -1994,7 +2306,7 @@
       "Catégorie": "Légumineuses",
       "Portion type (g)": 150,
       "kcal/100g": 120,
-      "Prot (g/100g)": 9.0,
+      "Prot (g/100g)": 9,
       "Lip (g/100g)": 0.4,
       "Glu (g/100g)": 20,
       "Fibres (g/100g)": 8,
@@ -2031,7 +2343,12 @@
       "Val (mg/100g)": 450,
       "Met (mg/100g)": 77,
       "Gly (mg/100g)": 370,
-      "Lys (mg/100g)": 630
+      "Lys (mg/100g)": 630,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "feves_cuites_fraiches_ou_seches": {
       "id": "feves_cuites_fraiches_ou_seches",
@@ -2076,7 +2393,12 @@
       "Val (mg/100g)": 400,
       "Met (mg/100g)": 70,
       "Gly (mg/100g)": 330,
-      "Lys (mg/100g)": 550
+      "Lys (mg/100g)": 550,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "pois_casses_cuits": {
       "id": "pois_casses_cuits",
@@ -2095,7 +2417,7 @@
       "Seuil 2,5g ?": "✗ NON",
       "Notes & source": "USDA. Fibres solubles très élevées. Purée naturelle.",
       "Mg (mg/100g)": 36,
-      "Zn (mg/100g)": 1.0,
+      "Zn (mg/100g)": 1,
       "Fe (mg/100g)": 1.3,
       "K (mg/100g)": 362,
       "Vit K1 (µg/100g)": 5,
@@ -2121,7 +2443,12 @@
       "Val (mg/100g)": 430,
       "Met (mg/100g)": 80,
       "Gly (mg/100g)": 350,
-      "Lys (mg/100g)": 560
+      "Lys (mg/100g)": 560,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "myrtilles_sauvages_bio_surgelees": {
       "id": "myrtilles_sauvages_bio_surgelees",
@@ -2162,11 +2489,18 @@
       "Glu (g/100g)": 14.5,
       "Fibres (g/100g)": 2.4,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.035,
       "Prot /portion (g)": 0.53,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
-      "Notes & source": "USDA wild blueberries frozen. Picard bio sauvages. 150g/j (75g R1 + 75g R3). Anthocyanines très élevées (~560mg/100g). Poste budgétaire ~91€/mois."
+      "Notes & source": "USDA wild blueberries frozen. Picard bio sauvages. 150g/j (75g R1 + 75g R3). Anthocyanines très élevées (~560mg/100g). Poste budgétaire ~91€/mois.",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Repères": "portion habituelle : 75 g",
+      "Leucine estimée": true
     },
     "fraise": {
       "id": "fraise",
@@ -2177,7 +2511,7 @@
       "Prot (g/100g)": 0.7,
       "Lip (g/100g)": 0.3,
       "Glu (g/100g)": 7.7,
-      "Fibres (g/100g)": 2.0,
+      "Fibres (g/100g)": 2,
       "Leucine (% prot)": "—",
       "Prot /portion (g)": 1.05,
       "Notes & source": "CIQUAL. Vitamine C très élevée (~59mg/100g). Ellagitannins. Saison avr-juin.",
@@ -2207,7 +2541,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.035,
+      "Leucine estimée": true
     },
     "cerise": {
       "id": "cerise",
@@ -2215,7 +2556,7 @@
       "Catégorie": "Fruits",
       "Portion type (g)": 120,
       "kcal/100g": 50,
-      "Prot (g/100g)": 1.0,
+      "Prot (g/100g)": 1,
       "Lip (g/100g)": 0.3,
       "Glu (g/100g)": 12.2,
       "Fibres (g/100g)": 1.6,
@@ -2238,8 +2579,8 @@
       "Vidange gastr. (min)": 30,
       "Fermentesc.": "Modérée",
       "Notes digestives": "FODMAPs (sorbitol). Portions >100g = gaz/ballonnements chez sensibles.",
-      "Prix (€/100g)": 1.0,
-      "€/g prot.": 1.0,
+      "Prix (€/100g)": 1,
+      "€/g prot.": 1,
       "Repas recommandé": "Collation ou dîner (mélatonine)",
       "Synergies": "Mélatonine naturelle → pertinent pour sommeil. Anti-inflammatoire musculaire post-effort.",
       "Antagonismes / Contraintes": "FODMAPs (sorbitol). Saisonnalité courte. Coût élevé.",
@@ -2248,7 +2589,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.05,
+      "Leucine estimée": true
     },
     "abricot": {
       "id": "abricot",
@@ -2259,7 +2607,7 @@
       "Prot (g/100g)": 1.4,
       "Lip (g/100g)": 0.4,
       "Glu (g/100g)": 11.1,
-      "Fibres (g/100g)": 2.0,
+      "Fibres (g/100g)": 2,
       "Leucine (% prot)": "—",
       "Prot /portion (g)": 1.4,
       "Notes & source": "CIQUAL. Bêta-carotène élevé. Saison juin-août.",
@@ -2289,7 +2637,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.07,
+      "Leucine estimée": true
     },
     "peche_nectarine": {
       "id": "peche_nectarine",
@@ -2313,7 +2668,7 @@
       "Trp (mg/100g)": 10,
       "Ω3 EPA+DHA (mg/100g)": 0,
       "Na (mg/100g)": 0,
-      "Ch. osmot. rénale (mOsm/100g)": 10.0,
+      "Ch. osmot. rénale (mOsm/100g)": 10,
       "Polyphén. totaux (mg/100g)": 50,
       "Famille dominante": "Acide chlorogénique, anthocyanines (peau)",
       "Inhib. Fe/Zn": "—",
@@ -2330,7 +2685,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.045,
+      "Leucine estimée": true
     },
     "prune_mirabelle": {
       "id": "prune_mirabelle",
@@ -2371,7 +2733,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.035,
+      "Leucine estimée": true
     },
     "poire": {
       "id": "poire",
@@ -2412,7 +2781,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.02,
+      "Leucine estimée": true
     },
     "figue_fraiche": {
       "id": "figue_fraiche",
@@ -2443,7 +2819,7 @@
       "Vidange gastr. (min)": 30,
       "Fermentesc.": "Modérée",
       "Notes digestives": "FODMAPs (fructose). Graines = fibres insolubles, laxatif doux.",
-      "Prix (€/100g)": 1.0,
+      "Prix (€/100g)": 1,
       "€/g prot.": 1.25,
       "Repas recommandé": "Collation",
       "Synergies": "Calcium naturel (~35mg/100g). Fibres prébiotiques.",
@@ -2453,7 +2829,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.04,
+      "Leucine estimée": true
     },
     "raisin": {
       "id": "raisin",
@@ -2494,7 +2877,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.035,
+      "Leucine estimée": true
     },
     "cassis": {
       "id": "cassis",
@@ -2535,7 +2925,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.07,
+      "Leucine estimée": true
     },
     "groseille": {
       "id": "groseille",
@@ -2552,7 +2949,7 @@
       "Notes & source": "CIQUAL. Vit C élevée (~41mg/100g). Saison juin-juil.",
       "Mg (mg/100g)": 13,
       "Zn (mg/100g)": 0.2,
-      "Fe (mg/100g)": 1.0,
+      "Fe (mg/100g)": 1,
       "K (mg/100g)": 275,
       "Vit K1 (µg/100g)": 11,
       "Choline (mg/100g)": 7.6,
@@ -2576,7 +2973,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.07,
+      "Leucine estimée": true
     },
     "melon": {
       "id": "melon",
@@ -2617,7 +3021,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.04,
+      "Leucine estimée": true
     },
     "pasteque": {
       "id": "pasteque",
@@ -2658,7 +3069,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.03,
+      "Leucine estimée": true
     },
     "mangue": {
       "id": "mangue",
@@ -2699,7 +3117,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.04,
+      "Leucine estimée": true
     },
     "ananas": {
       "id": "ananas",
@@ -2740,7 +3165,16 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "acide"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.025,
+      "Leucine estimée": true
     },
     "pamplemousse_pomelo": {
       "id": "pamplemousse_pomelo",
@@ -2781,7 +3215,16 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "acide"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.04,
+      "Leucine estimée": true
     },
     "coing_cuit": {
       "id": "coing_cuit",
@@ -2822,7 +3265,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.02,
+      "Leucine estimée": true
     },
     "amandes": {
       "id": "amandes",
@@ -2867,7 +3317,12 @@
       "Val (mg/100g)": 870,
       "Met (mg/100g)": 160,
       "Gly (mg/100g)": 1470,
-      "Lys (mg/100g)": 580
+      "Lys (mg/100g)": 580,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "graines_de_courge": {
       "id": "graines_de_courge",
@@ -2878,7 +3333,7 @@
       "Prot (g/100g)": 30.2,
       "Lip (g/100g)": 49,
       "Glu (g/100g)": 10.7,
-      "Fibres (g/100g)": 6.0,
+      "Fibres (g/100g)": 6,
       "Leucine (% prot)": 0.068,
       "Leucine /100g (g)": 2.054,
       "Prot /portion (g)": 6.04,
@@ -2912,7 +3367,12 @@
       "Val (mg/100g)": 1580,
       "Met (mg/100g)": 600,
       "Gly (mg/100g)": 1840,
-      "Lys (mg/100g)": 1240
+      "Lys (mg/100g)": 1240,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "graines_de_tournesol": {
       "id": "graines_de_tournesol",
@@ -2931,7 +3391,7 @@
       "Seuil 2,5g ?": "✗ NON",
       "Notes & source": "USDA. Vitamine E très élevée (~35mg/100g). Sélénium.",
       "Mg (mg/100g)": 325,
-      "Zn (mg/100g)": 5.0,
+      "Zn (mg/100g)": 5,
       "Fe (mg/100g)": 5.3,
       "K (mg/100g)": 645,
       "Vit K1 (µg/100g)": 0,
@@ -2957,7 +3417,12 @@
       "Val (mg/100g)": 1100,
       "Met (mg/100g)": 390,
       "Gly (mg/100g)": 1160,
-      "Lys (mg/100g)": 540
+      "Lys (mg/100g)": 540,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "sesame_tahini": {
       "id": "sesame_tahini",
@@ -2991,7 +3456,7 @@
       "Vidange gastr. (min)": 100,
       "Fermentesc.": "Faible",
       "Notes digestives": "Oxalates très élevés. Phytates. Allergène. Tahini = forme broyée, mieux absorbé.",
-      "Prix (€/100g)": 2.0,
+      "Prix (€/100g)": 2,
       "€/g prot.": 0.113,
       "€/g leucine": 1.6863,
       "Repas recommandé": "R2 (condiment)",
@@ -3002,7 +3467,12 @@
       "Val (mg/100g)": 900,
       "Met (mg/100g)": 580,
       "Gly (mg/100g)": 1040,
-      "Lys (mg/100g)": 470
+      "Lys (mg/100g)": 470,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "noisettes": {
       "id": "noisettes",
@@ -3047,7 +3517,12 @@
       "Val (mg/100g)": 700,
       "Met (mg/100g)": 160,
       "Gly (mg/100g)": 720,
-      "Lys (mg/100g)": 420
+      "Lys (mg/100g)": 420,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "noix_de_cajou": {
       "id": "noix_de_cajou",
@@ -3092,7 +3567,12 @@
       "Val (mg/100g)": 900,
       "Met (mg/100g)": 280,
       "Gly (mg/100g)": 940,
-      "Lys (mg/100g)": 870
+      "Lys (mg/100g)": 870,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "noix_du_bresil": {
       "id": "noix_du_bresil",
@@ -3126,7 +3606,7 @@
       "Vidange gastr. (min)": 120,
       "Fermentesc.": "Faible",
       "Notes digestives": "Riche en sélénium — toxicité si >400µg/j (sélénose). 2 noix = ~150-200µg Se.",
-      "Prix (€/100g)": 4.0,
+      "Prix (€/100g)": 4,
       "€/g prot.": 0.2797,
       "€/g leucine": 4.3011,
       "Repas recommandé": "Collation (1-2/jour)",
@@ -3137,7 +3617,12 @@
       "Val (mg/100g)": 680,
       "Met (mg/100g)": 1000,
       "Gly (mg/100g)": 720,
-      "Lys (mg/100g)": 500
+      "Lys (mg/100g)": 500,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "pistaches": {
       "id": "pistaches",
@@ -3171,7 +3656,7 @@
       "Vidange gastr. (min)": 100,
       "Fermentesc.": "Faible",
       "Notes digestives": "FODMAPs (fructanes) — sensibilité variable. Mastication importante.",
-      "Prix (€/100g)": 3.0,
+      "Prix (€/100g)": 3,
       "€/g prot.": 0.1485,
       "€/g leucine": 2.0633,
       "Repas recommandé": "Collation",
@@ -3182,7 +3667,12 @@
       "Val (mg/100g)": 1030,
       "Met (mg/100g)": 340,
       "Gly (mg/100g)": 1080,
-      "Lys (mg/100g)": 1140
+      "Lys (mg/100g)": 1140,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "cacahuetes_arachides": {
       "id": "cacahuetes_arachides",
@@ -3216,7 +3706,7 @@
       "Vidange gastr. (min)": 100,
       "Fermentesc.": "Faible",
       "Notes digestives": "Allergène majeur (top 8). Aflatoxines possibles si mal stockées. Mastication importante.",
-      "Prix (€/100g)": 1.0,
+      "Prix (€/100g)": 1,
       "€/g prot.": 0.0388,
       "€/g leucine": 0.5872,
       "Repas recommandé": "Collation",
@@ -3227,7 +3717,12 @@
       "Val (mg/100g)": 1080,
       "Met (mg/100g)": 320,
       "Gly (mg/100g)": 1540,
-      "Lys (mg/100g)": 930
+      "Lys (mg/100g)": 930,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "flavochino_cacao_polyphenols": {
       "id": "flavochino_cacao_polyphenols",
@@ -3240,7 +3735,7 @@
       "Glu (g/100g)": 35,
       "Fibres (g/100g)": 8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 1.2,
       "Prot /portion (g)": 3,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -3272,7 +3767,18 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 730,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "dose",
+        "p": "doses",
+        "g": 15
+      },
+      "Leucine estimée": true
     },
     "cacao_cru_fevesnibs": {
       "id": "cacao_cru_fevesnibs",
@@ -3317,7 +3823,12 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 1450,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "psyllium_blond": {
       "id": "psyllium_blond",
@@ -3330,7 +3841,7 @@
       "Glu (g/100g)": 0.5,
       "Fibres (g/100g)": 85,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.018,
       "Prot /portion (g)": 0.015,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -3361,7 +3872,18 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "c. à café",
+        "p": "c. à café",
+        "g": 5
+      },
+      "Leucine estimée": true
     },
     "creatine_creapure": {
       "id": "creatine_creapure",
@@ -3400,7 +3922,12 @@
       "Lip (g/100g)": 0,
       "Glu (g/100g)": 0,
       "Fibres (g/100g)": 0,
-      "Notes & source": "Creapure (Nutrimuscle). 5-6g/j. Élève créatinine sérique (biais bilan rénal). Demander cystatine C."
+      "Notes & source": "Creapure (Nutrimuscle). 5-6g/j. Élève créatinine sérique (biais bilan rénal). Demander cystatine C.",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "huile_dolive_extra_vierge_bio": {
       "id": "huile_dolive_extra_vierge_bio",
@@ -3444,7 +3971,18 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "c. à café",
+        "p": "c. à café",
+        "g": 4.6
+      },
+      "Repères": "1 c. à soupe (15 ml) ≈ 13,7 g"
     },
     "vinaigre_de_cidre_bio": {
       "id": "vinaigre_de_cidre_bio",
@@ -3484,7 +4022,19 @@
       "Lip (g/100g)": 0,
       "Glu (g/100g)": 0.9,
       "Fibres (g/100g)": 0,
-      "Notes & source": "USDA. Acide acétique ~5%. Pré-repas : ↓ glycémie postprandiale (Johnston et al. 2004)."
+      "Notes & source": "USDA. Acide acétique ~5%. Pré-repas : ↓ glycémie postprandiale (Johnston et al. 2004).",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "acide"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "c. à soupe",
+        "p": "c. à soupe",
+        "g": 15
+      }
     },
     "laitue_batavia_romaine": {
       "id": "laitue_batavia_romaine",
@@ -3501,7 +4051,7 @@
       "Notes & source": "CIQUAL. Romaine > batavia (vit A, K1, folates).",
       "Mg (mg/100g)": 14,
       "Zn (mg/100g)": 0.2,
-      "Fe (mg/100g)": 1.0,
+      "Fe (mg/100g)": 1,
       "K (mg/100g)": 247,
       "Vit K1 (µg/100g)": 126,
       "Choline (mg/100g)": 10,
@@ -3525,7 +4075,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.084,
+      "Leucine estimée": true
     },
     "mache": {
       "id": "mache",
@@ -3533,7 +4090,7 @@
       "Catégorie": "Crudités",
       "Portion type (g)": 60,
       "kcal/100g": 21,
-      "Prot (g/100g)": 2.0,
+      "Prot (g/100g)": 2,
       "Lip (g/100g)": 0.4,
       "Glu (g/100g)": 3.6,
       "Fibres (g/100g)": 1.5,
@@ -3542,7 +4099,7 @@
       "Notes & source": "CIQUAL. Fer, bêta-carotène et oméga-3 végétal (ALA) élevés pour une salade.",
       "Mg (mg/100g)": 13,
       "Zn (mg/100g)": 0.3,
-      "Fe (mg/100g)": 2.0,
+      "Fe (mg/100g)": 2,
       "K (mg/100g)": 459,
       "Vit K1 (µg/100g)": 166,
       "Choline (mg/100g)": 12,
@@ -3566,7 +4123,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.12,
+      "Leucine estimée": true
     },
     "roquette": {
       "id": "roquette",
@@ -3607,7 +4171,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.156,
+      "Leucine estimée": true
     },
     "tomate_crue": {
       "id": "tomate_crue",
@@ -3648,7 +4219,16 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "acide"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.054,
+      "Leucine estimée": true
     },
     "radis_rouge": {
       "id": "radis_rouge",
@@ -3689,7 +4269,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.042,
+      "Leucine estimée": true
     },
     "radis_noir": {
       "id": "radis_noir",
@@ -3697,9 +4284,9 @@
       "Catégorie": "Crudités",
       "Portion type (g)": 80,
       "kcal/100g": 20,
-      "Prot (g/100g)": 1.0,
+      "Prot (g/100g)": 1,
       "Lip (g/100g)": 0.1,
-      "Glu (g/100g)": 4.0,
+      "Glu (g/100g)": 4,
       "Fibres (g/100g)": 2.5,
       "Leucine (% prot)": "—",
       "Prot /portion (g)": 0.8,
@@ -3730,7 +4317,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.06,
+      "Leucine estimée": true
     },
     "chourave_cru": {
       "id": "chourave_cru",
@@ -3771,7 +4365,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.102,
+      "Leucine estimée": true
     },
     "poivron_rouge_cru": {
       "id": "poivron_rouge_cru",
@@ -3779,12 +4380,12 @@
       "Catégorie": "Crudités",
       "Portion type (g)": 100,
       "kcal/100g": 31,
-      "Prot (g/100g)": 1.0,
+      "Prot (g/100g)": 1,
       "Lip (g/100g)": 0.3,
-      "Glu (g/100g)": 6.0,
+      "Glu (g/100g)": 6,
       "Fibres (g/100g)": 2.1,
       "Leucine (% prot)": "—",
-      "Prot /portion (g)": 1.0,
+      "Prot /portion (g)": 1,
       "Notes & source": "CIQUAL. Vit C record légumes (~128mg/100g). Capsanthine (caroténoïde). Saison juin-oct. Aussi en jus midi rotation été.",
       "Mg (mg/100g)": 12,
       "Zn (mg/100g)": 0.3,
@@ -3812,7 +4413,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.06,
+      "Leucine estimée": true
     },
     "kale_cru": {
       "id": "kale_cru",
@@ -3853,7 +4461,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.258,
+      "Leucine estimée": true
     },
     "brocoli_cru": {
       "id": "brocoli_cru",
@@ -3894,7 +4509,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.168,
+      "Leucine estimée": true
     },
     "betterave_crue": {
       "id": "betterave_crue",
@@ -3907,7 +4529,7 @@
       "Glu (g/100g)": 10,
       "Fibres (g/100g)": 2.8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.096,
       "Prot /portion (g)": 1.6,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -3939,7 +4561,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "chou_rouge_cru": {
       "id": "chou_rouge_cru",
@@ -3952,7 +4580,7 @@
       "Glu (g/100g)": 7,
       "Fibres (g/100g)": 2.1,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.084,
       "Prot /portion (g)": 1.12,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -3984,7 +4612,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "celeri_branche": {
       "id": "celeri_branche",
@@ -3997,7 +4631,7 @@
       "Glu (g/100g)": 3,
       "Fibres (g/100g)": 1.6,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.042,
       "Prot /portion (g)": 0.56,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4029,7 +4663,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "concombre": {
       "id": "concombre",
@@ -4042,7 +4682,7 @@
       "Glu (g/100g)": 3.6,
       "Fibres (g/100g)": 0.5,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.042,
       "Prot /portion (g)": 0.7,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4074,7 +4714,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "gingembre_frais": {
       "id": "gingembre_frais",
@@ -4114,7 +4760,14 @@
       "Lip (g/100g)": 0.8,
       "Glu (g/100g)": 17.8,
       "Fibres (g/100g)": 2,
-      "Notes & source": "USDA. Gingérol → shogaol (cuit). Anti-inflammatoire (NF-κB). Anti-nauséeux. 2cm/jus."
+      "Notes & source": "USDA. Gingérol → shogaol (cuit). Anti-inflammatoire (NF-κB). Anti-nauséeux. 2cm/jus.",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.09,
+      "Leucine estimée": true
     },
     "carotte_crue": {
       "id": "carotte_crue",
@@ -4127,7 +4780,7 @@
       "Glu (g/100g)": 10,
       "Fibres (g/100g)": 2.8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.054,
       "Prot /portion (g)": 0.9,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4159,7 +4812,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "epinards_crus": {
       "id": "epinards_crus",
@@ -4172,7 +4831,7 @@
       "Glu (g/100g)": 3.6,
       "Fibres (g/100g)": 2.2,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.174,
       "Prot /portion (g)": 1.015,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4204,7 +4863,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "persil_frais": {
       "id": "persil_frais",
@@ -4244,7 +4909,14 @@
       "Lip (g/100g)": 0.8,
       "Glu (g/100g)": 6.3,
       "Fibres (g/100g)": 3.3,
-      "Notes & source": "USDA. Vit K1 record (~1640µg/100g). Vit C ~133mg/100g. Apigénine (flavone anti-inflammatoire). Myristicine."
+      "Notes & source": "USDA. Vit K1 record (~1640µg/100g). Vit C ~133mg/100g. Apigénine (flavone anti-inflammatoire). Myristicine.",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.18,
+      "Leucine estimée": true
     },
     "brocoli_cuit_vapeur": {
       "id": "brocoli_cuit_vapeur",
@@ -4257,7 +4929,7 @@
       "Glu (g/100g)": 7,
       "Fibres (g/100g)": 3.3,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.168,
       "Prot /portion (g)": 4.2,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4289,7 +4961,19 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "fleurette",
+        "p": "fleurettes",
+        "g": 12
+      },
+      "Repères": "1 fleurette moyenne ≈ 12 g · préférer les têtes aux tiges",
+      "Leucine estimée": true
     },
     "courgette_cuite": {
       "id": "courgette_cuite",
@@ -4302,7 +4986,7 @@
       "Glu (g/100g)": 3,
       "Fibres (g/100g)": 1,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.072,
       "Prot /portion (g)": 1.8,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4334,7 +5018,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "poireau_cuit": {
       "id": "poireau_cuit",
@@ -4347,7 +5037,7 @@
       "Glu (g/100g)": 6.1,
       "Fibres (g/100g)": 1.8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.09,
       "Prot /portion (g)": 1.5,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4379,7 +5069,15 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "allium"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "legumes_cuits_divers_estimation": {
       "id": "legumes_cuits_divers_estimation",
@@ -4392,7 +5090,7 @@
       "Glu (g/100g)": 5,
       "Fibres (g/100g)": 2.5,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.12,
       "Prot /portion (g)": 4,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4424,7 +5122,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Repères": "ton bol à ramen plein ≈ 500–700 g : à peser une fois",
+      "Leucine estimée": true
     },
     "choufleur_vapeur": {
       "id": "choufleur_vapeur",
@@ -4437,7 +5142,7 @@
       "Glu (g/100g)": 4.1,
       "Fibres (g/100g)": 2,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.114,
       "Prot /portion (g)": 2.85,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4468,7 +5173,19 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "fleurette",
+        "p": "fleurettes",
+        "g": 12
+      },
+      "Repères": "1 fleurette moyenne ≈ 12 g",
+      "Leucine estimée": true
     },
     "haricots_verts_vapeur": {
       "id": "haricots_verts_vapeur",
@@ -4481,7 +5198,7 @@
       "Glu (g/100g)": 5.6,
       "Fibres (g/100g)": 3.4,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.108,
       "Prot /portion (g)": 2.7,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4512,7 +5229,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "aubergine_cuite_vapeur": {
       "id": "aubergine_cuite_vapeur",
@@ -4525,7 +5248,7 @@
       "Glu (g/100g)": 5.5,
       "Fibres (g/100g)": 2.5,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.048,
       "Prot /portion (g)": 1.2,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4556,7 +5279,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "fenouil_cuit_vapeur": {
       "id": "fenouil_cuit_vapeur",
@@ -4569,7 +5298,7 @@
       "Glu (g/100g)": 5.7,
       "Fibres (g/100g)": 2.7,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.066,
       "Prot /portion (g)": 1.65,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4600,7 +5329,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "asperges_vapeur": {
       "id": "asperges_vapeur",
@@ -4613,7 +5348,7 @@
       "Glu (g/100g)": 3.4,
       "Fibres (g/100g)": 1.8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.132,
       "Prot /portion (g)": 3.3,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4644,7 +5379,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "epinards_cuits_vapeur": {
       "id": "epinards_cuits_vapeur",
@@ -4657,7 +5398,7 @@
       "Glu (g/100g)": 3.6,
       "Fibres (g/100g)": 2.4,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.18,
       "Prot /portion (g)": 3,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4688,7 +5429,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "carotte_cuite_vapeur": {
       "id": "carotte_cuite_vapeur",
@@ -4701,7 +5448,7 @@
       "Glu (g/100g)": 7.6,
       "Fibres (g/100g)": 2.8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.048,
       "Prot /portion (g)": 1.2,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4732,7 +5479,19 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "carotte moy.",
+        "p": "carottes moy.",
+        "g": 80
+      },
+      "Repères": "1 carotte moyenne ≈ 80 g",
+      "Leucine estimée": true
     },
     "celerirave_cuit_vapeur": {
       "id": "celerirave_cuit_vapeur",
@@ -4745,7 +5504,7 @@
       "Glu (g/100g)": 9.2,
       "Fibres (g/100g)": 1.8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.09,
       "Prot /portion (g)": 2.25,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4776,7 +5535,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "navet_cuit_vapeur": {
       "id": "navet_cuit_vapeur",
@@ -4789,7 +5554,7 @@
       "Glu (g/100g)": 6.2,
       "Fibres (g/100g)": 1.8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.054,
       "Prot /portion (g)": 1.35,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4820,7 +5585,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "chou_vert_kale_cuit": {
       "id": "chou_vert_kale_cuit",
@@ -4833,7 +5604,7 @@
       "Glu (g/100g)": 5.6,
       "Fibres (g/100g)": 2,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.114,
       "Prot /portion (g)": 1.9,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4864,7 +5635,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "petits_pois_vapeur": {
       "id": "petits_pois_vapeur",
@@ -4877,7 +5654,7 @@
       "Glu (g/100g)": 14.5,
       "Fibres (g/100g)": 5.1,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.324,
       "Prot /portion (g)": 5.4,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4908,7 +5685,13 @@
       "Val (mg/100g)": 350,
       "Met (mg/100g)": 80,
       "Gly (mg/100g)": 220,
-      "Lys (mg/100g)": 480
+      "Lys (mg/100g)": 480,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "choux_de_bruxelles_vapeur": {
       "id": "choux_de_bruxelles_vapeur",
@@ -4921,7 +5704,7 @@
       "Glu (g/100g)": 7.1,
       "Fibres (g/100g)": 3.8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.204,
       "Prot /portion (g)": 3.4,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4952,7 +5735,13 @@
       "Val (mg/100g)": 230,
       "Met (mg/100g)": 45,
       "Gly (mg/100g)": 130,
-      "Lys (mg/100g)": 230
+      "Lys (mg/100g)": 230,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "potimarron_vapeur": {
       "id": "potimarron_vapeur",
@@ -4965,7 +5754,7 @@
       "Glu (g/100g)": 9.7,
       "Fibres (g/100g)": 1.5,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.066,
       "Prot /portion (g)": 1.65,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -4996,7 +5785,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "butternut_vapeur": {
       "id": "butternut_vapeur",
@@ -5009,7 +5804,7 @@
       "Glu (g/100g)": 10.5,
       "Fibres (g/100g)": 2,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.06,
       "Prot /portion (g)": 1.5,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5040,7 +5835,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "chou_blancvert_cuit": {
       "id": "chou_blancvert_cuit",
@@ -5053,7 +5854,7 @@
       "Glu (g/100g)": 5.2,
       "Fibres (g/100g)": 2.5,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.078,
       "Prot /portion (g)": 1.95,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5084,7 +5885,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "avocat_cru": {
       "id": "avocat_cru",
@@ -5097,7 +5904,7 @@
       "Glu (g/100g)": 8.5,
       "Fibres (g/100g)": 6.7,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.12,
       "Prot /portion (g)": 1.6,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5128,7 +5935,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "blette_bette_cuite": {
       "id": "blette_bette_cuite",
@@ -5141,7 +5954,7 @@
       "Glu (g/100g)": 3.7,
       "Fibres (g/100g)": 1.6,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.108,
       "Prot /portion (g)": 2.7,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5172,7 +5985,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "champignons_de_paris_cuits": {
       "id": "champignons_de_paris_cuits",
@@ -5185,7 +6004,7 @@
       "Glu (g/100g)": 4.4,
       "Fibres (g/100g)": 2.2,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.132,
       "Prot /portion (g)": 2.2,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5216,7 +6035,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "shiitake_cuits": {
       "id": "shiitake_cuits",
@@ -5229,7 +6054,7 @@
       "Glu (g/100g)": 13.6,
       "Fibres (g/100g)": 2.1,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.096,
       "Prot /portion (g)": 1.28,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5260,7 +6085,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "poivron_rouge_cuit": {
       "id": "poivron_rouge_cuit",
@@ -5273,7 +6104,7 @@
       "Glu (g/100g)": 5.3,
       "Fibres (g/100g)": 1.2,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.054,
       "Prot /portion (g)": 1.08,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5304,7 +6135,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "tomate_cuite_coulis": {
       "id": "tomate_cuite_coulis",
@@ -5317,7 +6154,7 @@
       "Glu (g/100g)": 3.9,
       "Fibres (g/100g)": 1.2,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.054,
       "Prot /portion (g)": 1.35,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5348,7 +6185,15 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "acide"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "artichaut_cuit": {
       "id": "artichaut_cuit",
@@ -5361,7 +6206,7 @@
       "Glu (g/100g)": 10.5,
       "Fibres (g/100g)": 5.4,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.198,
       "Prot /portion (g)": 3.96,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5392,7 +6237,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "endive_chicoree_cuite": {
       "id": "endive_chicoree_cuite",
@@ -5405,7 +6256,7 @@
       "Glu (g/100g)": 2.7,
       "Fibres (g/100g)": 2.4,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.054,
       "Prot /portion (g)": 1.35,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5436,7 +6287,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "panais_cuit_vapeur": {
       "id": "panais_cuit_vapeur",
@@ -5449,7 +6306,7 @@
       "Glu (g/100g)": 17,
       "Fibres (g/100g)": 3.6,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.072,
       "Prot /portion (g)": 1.8,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5480,7 +6337,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "topinambour_cuit": {
       "id": "topinambour_cuit",
@@ -5493,7 +6356,7 @@
       "Glu (g/100g)": 17.4,
       "Fibres (g/100g)": 1.6,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.12,
       "Prot /portion (g)": 2,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5524,7 +6387,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "oignon_cuit": {
       "id": "oignon_cuit",
@@ -5537,7 +6406,7 @@
       "Glu (g/100g)": 10.2,
       "Fibres (g/100g)": 1.4,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.084,
       "Prot /portion (g)": 1.12,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5568,7 +6437,15 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "allium"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "ail_cuit_23_gousses": {
       "id": "ail_cuit_23_gousses",
@@ -5581,7 +6458,7 @@
       "Glu (g/100g)": 33.1,
       "Fibres (g/100g)": 2.1,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.32,
       "Prot /portion (g)": 0.64,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5612,7 +6489,15 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "allium"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "chou_romanesco_vapeur": {
       "id": "chou_romanesco_vapeur",
@@ -5622,8 +6507,8 @@
       "kcal/100g": 25,
       "Prot (g/100g)": 2.5,
       "Lip (g/100g)": 0.3,
-      "Glu (g/100g)": 5.0,
-      "Fibres (g/100g)": 2.0,
+      "Glu (g/100g)": 5,
+      "Fibres (g/100g)": 2,
       "Leucine (% prot)": "—",
       "Prot /portion (g)": 3.75,
       "Notes & source": "CIQUAL (estimé ~chou-fleur). Crucifère. Plus doux que brocoli.",
@@ -5653,7 +6538,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.15,
+      "Leucine estimée": true
     },
     "pak_choi_chou_chinois_cuit": {
       "id": "pak_choi_chou_chinois_cuit",
@@ -5664,7 +6556,7 @@
       "Prot (g/100g)": 1.6,
       "Lip (g/100g)": 0.2,
       "Glu (g/100g)": 1.8,
-      "Fibres (g/100g)": 1.0,
+      "Fibres (g/100g)": 1,
       "Leucine (% prot)": "—",
       "Prot /portion (g)": 2.4,
       "Notes & source": "USDA. Calcium biodisponible (faible en oxalates). Crucifère doux.",
@@ -5694,7 +6586,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.096,
+      "Leucine estimée": true
     },
     "rutabaga_cuit": {
       "id": "rutabaga_cuit",
@@ -5735,7 +6634,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.066,
+      "Leucine estimée": true
     },
     "pois_gourmands_mangetout_cuits": {
       "id": "pois_gourmands_mangetout_cuits",
@@ -5776,7 +6682,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.198,
+      "Leucine estimée": true
     },
     "courge_spaghetti_cuite": {
       "id": "courge_spaghetti_cuite",
@@ -5817,7 +6730,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.036,
+      "Leucine estimée": true
     },
     "basilic_frais": {
       "id": "basilic_frais",
@@ -5848,7 +6768,7 @@
       "Vidange gastr. (min)": "—",
       "Fermentesc.": "—",
       "Notes digestives": "Condiment. Quantité trop faible pour impact digestif significatif.",
-      "Prix (€/100g)": 2.0,
+      "Prix (€/100g)": 2,
       "€/g prot.": 0.625,
       "Repas recommandé": "R2 (condiment)",
       "Synergies": "Eugénol anti-inflammatoire. Acide rosmarinique. Vit K1 très élevée (par g).",
@@ -5858,7 +6778,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.192,
+      "Leucine estimée": true
     },
     "coriandre_fraiche": {
       "id": "coriandre_fraiche",
@@ -5899,7 +6826,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.126,
+      "Leucine estimée": true
     },
     "menthe_fraiche": {
       "id": "menthe_fraiche",
@@ -5940,7 +6874,16 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [
+        "menthe"
+      ],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.228,
+      "Leucine estimée": true
     },
     "curcuma_frais": {
       "id": "curcuma_frais",
@@ -5953,7 +6896,7 @@
       "Glu (g/100g)": 67.1,
       "Fibres (g/100g)": 21.1,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.39,
       "Prot /portion (g)": 0.39,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -5983,7 +6926,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "poivre_noir": {
       "id": "poivre_noir",
@@ -5996,7 +6945,7 @@
       "Glu (g/100g)": 63.9,
       "Fibres (g/100g)": 25.3,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.52,
       "Prot /portion (g)": 0.104,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6026,7 +6975,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "cannelle_de_ceylan": {
       "id": "cannelle_de_ceylan",
@@ -6039,7 +6994,7 @@
       "Glu (g/100g)": 80.6,
       "Fibres (g/100g)": 53.1,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.2,
       "Prot /portion (g)": 0.12,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6069,7 +7024,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "graines_de_lin_moulues": {
       "id": "graines_de_lin_moulues",
@@ -6082,7 +7043,7 @@
       "Glu (g/100g)": 28.9,
       "Fibres (g/100g)": 27.3,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 1.281,
       "Prot /portion (g)": 1.83,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6113,7 +7074,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "graines_de_chanvre_decortiquees": {
       "id": "graines_de_chanvre_decortiquees",
@@ -6156,7 +7123,12 @@
       "Val (mg/100g)": 1500,
       "Met (mg/100g)": 620,
       "Gly (mg/100g)": 1400,
-      "Lys (mg/100g)": 1200
+      "Lys (mg/100g)": 1200,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "noix": {
       "id": "noix",
@@ -6169,7 +7141,7 @@
       "Glu (g/100g)": 13.7,
       "Fibres (g/100g)": 6.7,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 1.064,
       "Prot /portion (g)": 3.04,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6199,7 +7171,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "lait_davoine_maison_flocons_fermentes": {
       "id": "lait_davoine_maison_flocons_fermentes",
@@ -6207,12 +7185,12 @@
       "Catégorie": "Boissons",
       "Portion type (g)": 200,
       "kcal/100g": 40,
-      "Prot (g/100g)": 1.0,
+      "Prot (g/100g)": 1,
       "Lip (g/100g)": 1.5,
       "Glu (g/100g)": 6.5,
       "Fibres (g/100g)": 0.8,
       "Leucine (% prot)": "—",
-      "Prot /portion (g)": 2.0,
+      "Prot /portion (g)": 2,
       "Notes & source": "Estimation maison : ~10g flocons fermentés / 100ml eau, mixé et filtré. Valeurs approximatives.",
       "Mg (mg/100g)": 10,
       "Zn (mg/100g)": 0.1,
@@ -6240,7 +7218,19 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "liquide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "verre de 100 ml",
+        "p": "verres de 100 ml",
+        "g": 100
+      },
+      "Leucine /100g (g)": 0.07,
+      "Leucine estimée": true
     },
     "spiruline_poudre": {
       "id": "spiruline_poudre",
@@ -6283,7 +7273,12 @@
       "Val (mg/100g)": 3800,
       "Met (mg/100g)": 1100,
       "Gly (mg/100g)": 2900,
-      "Lys (mg/100g)": 2600
+      "Lys (mg/100g)": 2600,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "chlorella_poudre": {
       "id": "chlorella_poudre",
@@ -6326,7 +7321,12 @@
       "Val (mg/100g)": 3600,
       "Met (mg/100g)": 1200,
       "Gly (mg/100g)": 3200,
-      "Lys (mg/100g)": 3700
+      "Lys (mg/100g)": 3700,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "poudre_de_germes_de_brocoli": {
       "id": "poudre_de_germes_de_brocoli",
@@ -6339,7 +7339,7 @@
       "Glu (g/100g)": 40,
       "Fibres (g/100g)": 15,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 2,
       "Prot /portion (g)": 1.25,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6370,7 +7370,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "pousses_de_brocoli_fraiches": {
       "id": "pousses_de_brocoli_fraiches",
@@ -6378,10 +7384,10 @@
       "Catégorie": "Superaliment",
       "Portion type (g)": 30,
       "kcal/100g": 31,
-      "Prot (g/100g)": 4.0,
+      "Prot (g/100g)": 4,
       "Lip (g/100g)": 0.6,
-      "Glu (g/100g)": 2.0,
-      "Fibres (g/100g)": 2.0,
+      "Glu (g/100g)": 2,
+      "Fibres (g/100g)": 2,
       "Leucine (% prot)": "—",
       "Prot /portion (g)": 1.2,
       "Notes & source": "Sulforaphane 10-100× supérieur au brocoli mature (Fahey et al. 1997). Production en bocaux Germline.",
@@ -6411,7 +7417,14 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.32,
+      "Leucine estimée": true
     },
     "omega3_epax_nutripure": {
       "id": "omega3_epax_nutripure",
@@ -6440,7 +7453,7 @@
       "Vidange gastr. (min)": "—",
       "Fermentesc.": "—",
       "Notes digestives": "Prendre avec un repas gras (absorption). Éructations possibles. Conserver au frais.",
-      "Prix (€/100g)": 17.0,
+      "Prix (€/100g)": 17,
       "Repas recommandé": "R1 (2 gél) + R2 (2 gél) + R4 (2 gél)",
       "Synergies": "EPA anti-inflammatoire (COX-2, résolvines). DHA cérébral + rétinien. Synergie vit D (immunité).",
       "Antagonismes / Contraintes": "Anticoagulant léger (>3g/j). Stocker au frais (oxydation PUFA).",
@@ -6449,7 +7462,17 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "gélule",
+        "p": "gélules",
+        "g": 1
+      }
     },
     "safran_extrait_gelules": {
       "id": "safran_extrait_gelules",
@@ -6487,7 +7510,12 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "ashwagandha_ksm66": {
       "id": "ashwagandha_ksm66",
@@ -6525,7 +7553,12 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "magnesium_bisglycinate": {
       "id": "magnesium_bisglycinate",
@@ -6563,7 +7596,12 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "vitamine_d3k2_nutripure": {
       "id": "vitamine_d3k2_nutripure",
@@ -6601,7 +7639,12 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "multivitamines_nutrimuscle_demidose": {
       "id": "multivitamines_nutrimuscle_demidose",
@@ -6639,7 +7682,12 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "carotte_crue_crudite": {
       "id": "carotte_crue_crudite",
@@ -6652,7 +7700,7 @@
       "Glu (g/100g)": 10,
       "Fibres (g/100g)": 2.8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.054,
       "Prot /portion (g)": 0.9,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6684,7 +7732,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "concombre_crudite": {
       "id": "concombre_crudite",
@@ -6697,7 +7751,7 @@
       "Glu (g/100g)": 3.6,
       "Fibres (g/100g)": 0.5,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.042,
       "Prot /portion (g)": 0.84,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6729,7 +7783,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "celeri_branche_crudite": {
       "id": "celeri_branche_crudite",
@@ -6742,7 +7802,7 @@
       "Glu (g/100g)": 3,
       "Fibres (g/100g)": 1.6,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.042,
       "Prot /portion (g)": 0.56,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6774,7 +7834,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "betterave_crue_crudite": {
       "id": "betterave_crue_crudite",
@@ -6787,7 +7853,7 @@
       "Glu (g/100g)": 10,
       "Fibres (g/100g)": 2.8,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.096,
       "Prot /portion (g)": 1.28,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6819,7 +7885,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "epinards_crus_crudite": {
       "id": "epinards_crus_crudite",
@@ -6832,7 +7904,7 @@
       "Glu (g/100g)": 3.6,
       "Fibres (g/100g)": 2.2,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.174,
       "Prot /portion (g)": 1.74,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6864,7 +7936,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "chou_rouge_cru_crudite": {
       "id": "chou_rouge_cru_crudite",
@@ -6877,7 +7955,7 @@
       "Glu (g/100g)": 7,
       "Fibres (g/100g)": 2.1,
       "Leucine (% prot)": "—",
-      "Leucine /100g (g)": "—",
+      "Leucine /100g (g)": 0.084,
       "Prot /portion (g)": 1.12,
       "Leucine /portion (g)": "—",
       "Seuil 2,5g ?": "—",
@@ -6909,7 +7987,13 @@
       "Val (mg/100g)": "—",
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
-      "Lys (mg/100g)": "—"
+      "Lys (mg/100g)": "—",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine estimée": true
     },
     "fenouil_cru": {
       "id": "fenouil_cru",
@@ -6950,7 +8034,14 @@
       "Lys (mg/100g)": "—",
       "Prot /portion (g)": 1.2,
       "€/g prot.": 0.25,
-      "Ch. osmot. rénale (mOsm/100g)": 19.72
+      "Ch. osmot. rénale (mOsm/100g)": 19.72,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.072,
+      "Leucine estimée": true
     },
     "endive_chicon": {
       "id": "endive_chicon",
@@ -6991,7 +8082,14 @@
       "Lys (mg/100g)": "—",
       "Prot /portion (g)": 0.88,
       "€/g prot.": 0.3636,
-      "Ch. osmot. rénale (mOsm/100g)": 11.77
+      "Ch. osmot. rénale (mOsm/100g)": 11.77,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.066,
+      "Leucine estimée": true
     },
     "chou_blanc_cru": {
       "id": "chou_blanc_cru",
@@ -7032,7 +8130,14 @@
       "Lys (mg/100g)": "—",
       "Prot /portion (g)": 1.04,
       "€/g prot.": 0.1154,
-      "Ch. osmot. rénale (mOsm/100g)": 12.55
+      "Ch. osmot. rénale (mOsm/100g)": 12.55,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.078,
+      "Leucine estimée": true
     },
     "chou_fleur_cru": {
       "id": "chou_fleur_cru",
@@ -7042,8 +8147,8 @@
       "kcal/100g": 25,
       "Prot (g/100g)": 1.9,
       "Lip (g/100g)": 0.3,
-      "Glu (g/100g)": 5.0,
-      "Fibres (g/100g)": 2.0,
+      "Glu (g/100g)": 5,
+      "Fibres (g/100g)": 2,
       "Leucine (% prot)": "—",
       "Notes & source": "CIQUAL. Crucifère. Sulforaphane cru (myrosinase intacte). Vit C ~48mg/100g.",
       "Mg (mg/100g)": 15,
@@ -7073,7 +8178,14 @@
       "Lys (mg/100g)": "—",
       "Prot /portion (g)": 1.52,
       "€/g prot.": 0.1579,
-      "Ch. osmot. rénale (mOsm/100g)": 19.8
+      "Ch. osmot. rénale (mOsm/100g)": 19.8,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.114,
+      "Leucine estimée": true
     },
     "avocat": {
       "id": "avocat",
@@ -7081,7 +8193,7 @@
       "Catégorie": "Crudités",
       "Portion type (g)": 80,
       "kcal/100g": 160,
-      "Prot (g/100g)": 2.0,
+      "Prot (g/100g)": 2,
       "Lip (g/100g)": 14.7,
       "Glu (g/100g)": 8.5,
       "Fibres (g/100g)": 6.7,
@@ -7114,7 +8226,14 @@
       "Lys (mg/100g)": "—",
       "Prot /portion (g)": 1.6,
       "€/g prot.": 0.4,
-      "Ch. osmot. rénale (mOsm/100g)": 24.14
+      "Ch. osmot. rénale (mOsm/100g)": 24.14,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.12,
+      "Leucine estimée": true
     },
     "cresson": {
       "id": "cresson",
@@ -7155,7 +8274,14 @@
       "Lys (mg/100g)": "—",
       "Prot /portion (g)": 0.92,
       "€/g prot.": 0.3478,
-      "Ch. osmot. rénale (mOsm/100g)": 23.35
+      "Ch. osmot. rénale (mOsm/100g)": 23.35,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.138,
+      "Leucine estimée": true
     },
     "pourpier": {
       "id": "pourpier",
@@ -7163,7 +8289,7 @@
       "Catégorie": "Crudités",
       "Portion type (g)": 50,
       "kcal/100g": 20,
-      "Prot (g/100g)": 2.0,
+      "Prot (g/100g)": 2,
       "Lip (g/100g)": 0.4,
       "Glu (g/100g)": 3.4,
       "Fibres (g/100g)": 0,
@@ -7171,7 +8297,7 @@
       "Notes & source": "USDA. ALA record pour un légume (~400mg/100g). Meilleure source végétale d'oméga-3 parmi les légumes-feuilles.",
       "Mg (mg/100g)": 68,
       "Zn (mg/100g)": 0.2,
-      "Fe (mg/100g)": 2.0,
+      "Fe (mg/100g)": 2,
       "K (mg/100g)": 494,
       "Vit K1 (µg/100g)": 0,
       "Choline (mg/100g)": 12,
@@ -7194,9 +8320,16 @@
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
       "Lys (mg/100g)": "—",
-      "Prot /portion (g)": 1.0,
+      "Prot /portion (g)": 1,
       "€/g prot.": 0.4,
-      "Ch. osmot. rénale (mOsm/100g)": 26.02
+      "Ch. osmot. rénale (mOsm/100g)": 26.02,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.12,
+      "Leucine estimée": true
     },
     "courgette_crue": {
       "id": "courgette_crue",
@@ -7207,7 +8340,7 @@
       "Prot (g/100g)": 1.2,
       "Lip (g/100g)": 0.3,
       "Glu (g/100g)": 3.1,
-      "Fibres (g/100g)": 1.0,
+      "Fibres (g/100g)": 1,
       "Leucine (% prot)": "—",
       "Notes & source": "CIQUAL. Cucurbitacée. Très peu calorique. ~95% eau. Saison juin-oct.",
       "Mg (mg/100g)": 18,
@@ -7237,7 +8370,14 @@
       "Lys (mg/100g)": "—",
       "Prot /portion (g)": 1.2,
       "€/g prot.": 0.2083,
-      "Ch. osmot. rénale (mOsm/100g)": 13.88
+      "Ch. osmot. rénale (mOsm/100g)": 13.88,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.072,
+      "Leucine estimée": true
     },
     "champignon_paris_cru": {
       "id": "champignon_paris_cru",
@@ -7248,7 +8388,7 @@
       "Prot (g/100g)": 3.1,
       "Lip (g/100g)": 0.3,
       "Glu (g/100g)": 3.3,
-      "Fibres (g/100g)": 1.0,
+      "Fibres (g/100g)": 1,
       "Leucine (% prot)": 0.072,
       "Notes & source": "USDA. Vit D si exposé aux UV (~1100 UI/100g post-exposition). Ergothionéine (antioxydant rare). Sélénium.",
       "Mg (mg/100g)": 9,
@@ -7281,7 +8421,12 @@
       "Leucine /portion (g)": 0.178,
       "Seuil 2,5g ?": "✗ NON",
       "€/g prot.": 0.1129,
-      "Ch. osmot. rénale (mOsm/100g)": 26.04
+      "Ch. osmot. rénale (mOsm/100g)": 26.04,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "poivron_vert_cru": {
       "id": "poivron_vert_cru",
@@ -7322,7 +8467,14 @@
       "Lys (mg/100g)": "—",
       "Prot /portion (g)": 0.9,
       "€/g prot.": 0.4444,
-      "Ch. osmot. rénale (mOsm/100g)": 9.75
+      "Ch. osmot. rénale (mOsm/100g)": 9.75,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.054,
+      "Leucine estimée": true
     },
     "poivron_jaune_cru": {
       "id": "poivron_jaune_cru",
@@ -7330,7 +8482,7 @@
       "Catégorie": "Crudités",
       "Portion type (g)": 100,
       "kcal/100g": 27,
-      "Prot (g/100g)": 1.0,
+      "Prot (g/100g)": 1,
       "Lip (g/100g)": 0.2,
       "Glu (g/100g)": 6.3,
       "Fibres (g/100g)": 0.9,
@@ -7361,9 +8513,16 @@
       "Met (mg/100g)": "—",
       "Gly (mg/100g)": "—",
       "Lys (mg/100g)": "—",
-      "Prot /portion (g)": 1.0,
+      "Prot /portion (g)": 1,
       "€/g prot.": 0.5,
-      "Ch. osmot. rénale (mOsm/100g)": 11.22
+      "Ch. osmot. rénale (mOsm/100g)": 11.22,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.06,
+      "Leucine estimée": true
     },
     "navet_nouveau_cru": {
       "id": "navet_nouveau_cru",
@@ -7404,7 +8563,14 @@
       "Lys (mg/100g)": "—",
       "Prot /portion (g)": 0.72,
       "€/g prot.": 0.2778,
-      "Ch. osmot. rénale (mOsm/100g)": 12.94
+      "Ch. osmot. rénale (mOsm/100g)": 12.94,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.054,
+      "Leucine estimée": true
     },
     "salade_frisee_scarole": {
       "id": "salade_frisee_scarole",
@@ -7445,7 +8611,14 @@
       "Lys (mg/100g)": "—",
       "Prot /portion (g)": 0.78,
       "€/g prot.": 0.2692,
-      "Ch. osmot. rénale (mOsm/100g)": 16.42
+      "Ch. osmot. rénale (mOsm/100g)": 16.42,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Leucine /100g (g)": 0.078,
+      "Leucine estimée": true
     },
     "ricotta_brebis_artisanale_marche": {
       "id": "ricotta_brebis_artisanale_marche",
@@ -7479,7 +8652,7 @@
       "Vidange gastr. (min)": 90,
       "Fermentesc.": "Faible",
       "Notes digestives": "Lipides modérés ralentissent vidange vs skyr écrémé. A2 = pas de BCM-7. Texture sèche = moins de lactose résiduel. CLA + butyrate (graisses brebis).",
-      "Prix (€/100g)": 1.0,
+      "Prix (€/100g)": 1,
       "€/g prot.": 0.0769,
       "€/g leucine": 0.8097,
       "Repas recommandé": "Collation (R3) — remplace le skyr depuis avril 2026.",
@@ -7490,7 +8663,12 @@
       "Val (mg/100g)": 850,
       "Met (mg/100g)": 320,
       "Gly (mg/100g)": 236,
-      "Lys (mg/100g)": 980
+      "Lys (mg/100g)": 980,
+      "État": "semi-liquide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     },
     "whey_isolate_native_nutripure": {
       "id": "whey_isolate_native_nutripure",
@@ -7535,7 +8713,17 @@
       "Val (mg/100g)": 5200,
       "Met (mg/100g)": 2200,
       "Gly (mg/100g)": 1800,
-      "Lys (mg/100g)": 9400
+      "Lys (mg/100g)": 9400,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.97,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "dose",
+        "p": "doses",
+        "g": 30
+      }
     },
     "steak_hache_boeuf_15mg": {
       "id": "steak_hache_boeuf_15mg",
@@ -7544,7 +8732,7 @@
       "Portion type (g)": 125,
       "kcal/100g": 215,
       "Prot (g/100g)": 18.6,
-      "Lip (g/100g)": 15.0,
+      "Lip (g/100g)": 15,
       "Glu (g/100g)": 0,
       "Fibres (g/100g)": 0,
       "Leucine (% prot)": 0.081,
@@ -7580,7 +8768,147 @@
       "Val (mg/100g)": 950,
       "Met (mg/100g)": 490,
       "Gly (mg/100g)": 1050,
-      "Lys (mg/100g)": 1600
+      "Lys (mg/100g)": 1600,
+      "État": "solide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
+    },
+    "betterave_cuite": {
+      "id": "betterave_cuite",
+      "Aliment": "Betterave cuite",
+      "Catégorie": "Légumes cuits",
+      "Portion type (g)": 50,
+      "kcal/100g": 44,
+      "Prot (g/100g)": 1.7,
+      "Lip (g/100g)": 0.2,
+      "Glu (g/100g)": 10,
+      "Fibres (g/100g)": 2,
+      "Fermentesc.": "Modérée",
+      "Notes & source": "USDA (beets, boiled). Ajouté v2.4.0 pour le bol du R2.",
+      "Notes digestives": "Fructanes + GOS : fermentescible en portion généreuse. Garder une petite part du bol.",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.8,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Repères": "1 betterave moyenne cuite ≈ 90 g · 1 c. à soupe de dés ≈ 15 g",
+      "Leucine /100g (g)": 0.102,
+      "Leucine estimée": true
+    },
+    "jus_legumes_matin": {
+      "id": "jus_legumes_matin",
+      "Aliment": "Jus de légumes matin (betterave, chou rouge, céleri…)",
+      "Catégorie": "Boissons",
+      "Portion type (g)": 300,
+      "kcal/100g": 18,
+      "Prot (g/100g)": 0.7,
+      "Lip (g/100g)": 0,
+      "Glu (g/100g)": 4,
+      "Fibres (g/100g)": 0,
+      "Fermentesc.": "Faible",
+      "Notes & source": "Valeurs pour 100 ml, estimées depuis routine_alimentaire.json (300 ml ≈ 55 kcal). Ajouté v2.4.0.",
+      "État": "liquide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "verre de 100 ml",
+        "p": "verres de 100 ml",
+        "g": 100
+      },
+      "Leucine /100g (g)": 0.049,
+      "Leucine estimée": true
+    },
+    "jus_legumes_midi": {
+      "id": "jus_legumes_midi",
+      "Aliment": "Jus de légumes midi (carotte, épinards…)",
+      "Catégorie": "Boissons",
+      "Portion type (g)": 200,
+      "kcal/100g": 20,
+      "Prot (g/100g)": 0.8,
+      "Lip (g/100g)": 0,
+      "Glu (g/100g)": 4,
+      "Fibres (g/100g)": 0,
+      "Fermentesc.": "Faible",
+      "Notes & source": "Valeurs pour 100 ml, estimées depuis routine_alimentaire.json (250 ml ≈ 50 kcal). Ajouté v2.4.0.",
+      "État": "liquide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "verre de 100 ml",
+        "p": "verres de 100 ml",
+        "g": 100
+      },
+      "Leucine /100g (g)": 0.056,
+      "Leucine estimée": true
+    },
+    "eau": {
+      "id": "eau",
+      "Aliment": "Eau (bue pendant le repas)",
+      "Catégorie": "Boissons",
+      "Portion type (g)": 200,
+      "kcal/100g": 0,
+      "Prot (g/100g)": 0,
+      "Lip (g/100g)": 0,
+      "Glu (g/100g)": 0,
+      "Fibres (g/100g)": 0,
+      "Fermentesc.": "Faible",
+      "Notes & source": "Pour compter le liquide bu à table dans la jauge de remplissage. Ajouté v2.4.0.",
+      "État": "liquide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "verre de 100 ml",
+        "p": "verres de 100 ml",
+        "g": 100
+      }
+    },
+    "flocons_fermentes_poids_sec": {
+      "id": "flocons_fermentes_poids_sec",
+      "Aliment": "Flocons fermentés avoine/épeautre (pesés secs)",
+      "Catégorie": "Céréales",
+      "Portion type (g)": 130,
+      "kcal/100g": 331,
+      "Prot (g/100g)": 12.3,
+      "Lip (g/100g)": 6.9,
+      "Glu (g/100g)": 57.7,
+      "Fibres (g/100g)": 9,
+      "Leucine /100g (g)": 0.92,
+      "Fermentesc.": "Modérée",
+      "Notes & source": "Valeurs de routine_alimentaire.json (130 g secs = 430 kcal). Saisir le poids SEC : la jauge de remplissage multiplie par 2,5 (eau absorbée pendant la fermentation). Ajouté v2.4.0.",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 2.5,
+      "Repères": "saisir le poids SEC avant fermentation"
+    },
+    "blanc_poulet_cuit": {
+      "id": "blanc_poulet_cuit",
+      "Aliment": "Blanc de poulet cuit (sans peau)",
+      "Catégorie": "Protéines",
+      "Portion type (g)": 80,
+      "kcal/100g": 165,
+      "Prot (g/100g)": 31,
+      "Lip (g/100g)": 3.6,
+      "Glu (g/100g)": 0,
+      "Fibres (g/100g)": 0,
+      "Leucine /100g (g)": 2.48,
+      "Leucine (% prot)": 0.08,
+      "Fermentesc.": "Très faible",
+      "Notes & source": "USDA (chicken breast, roasted, skinless). Option dîner léger. Ajouté v2.4.0.",
+      "État": "solide",
+      "Digest. prot. (coef)": 0.95,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1
     }
   }
 }

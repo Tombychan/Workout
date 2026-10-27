@@ -7,7 +7,7 @@
     {
       "id": "nutrition",
       "name": "Nutrition",
-      "description": "Suivi alimentaire, suppléments, interactions, calculateur leucine",
+      "description": "Suivi alimentaire, bol (charge gastrique + leucine), journal reflux, suppléments, interactions",
       "url": "nutrition.html",
       "icon": "🥬",
       "tags": ["nutrition", "leucine", "suppléments"]

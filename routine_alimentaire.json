@@ -1,14 +1,14 @@
 {
   "meta": {
-    "version": "1.2.0",
-    "date": "2026-03-30",
+    "version": "1.2.1",
+    "date": "2026-10-21",
     "eating_window": "8h00–18h30 (~10h30)",
     "target_kcal": 2900,
     "target_protein_g": 172,
     "target_carb_g": 340,
     "target_fat_g": 90,
-    "protein_per_kg": 2.0,
-    "carb_per_kg": 4.0,
+    "protein_per_kg": 2,
+    "carb_per_kg": 4,
     "fat_per_kg": 1.06,
     "weight_kg": 85,
     "leucine_thresholds_per_day": 3,
@@ -16,6 +16,15 @@
     "notes": "Cibles basées sur TDEE ~2700-2800 + surplus modeste 100-200 kcal pour recomposition. Protéines initialement à 1.6g/kg (136g) mais l'architecture actuelle fournit ~172g (2g/kg) — dans le corridor optimal 1.6-2.2g/kg (Stokes et al. 2018). Déficit calorique identifié principalement sur les glucides."
   },
   "changelog": [
+    {
+      "date": "2026-10-21",
+      "version": "1.2.1",
+      "changes": [
+        "Ajout des couloirs par repas (meal_corridors) pour l’onglet Bol de l’app : remplissage, graisses, énergie, leucine corrigée, protéines du dîner. Seuils provisoires, à recalibrer avec le journal reflux.",
+        "Ajout de modèles de repas (meal_templates) : R1 habituel, R2 bol allégé d’octobre 2026, ancien grand bol (référence), collation, dîners sardines et poulet.",
+        "Les repas de la routine elle-même ne changent pas dans cette version."
+      ]
+    },
     {
       "date": "2026-03-30",
       "version": "1.2.0",
@@ -179,7 +188,7 @@
       "totals": {
         "protein_g": 45.5,
         "carb_g": 112,
-        "fat_g": 18.0,
+        "fat_g": 18,
         "kcal": 775,
         "leucine_g": 3.3
       },
@@ -386,7 +395,7 @@
           "protein_g": 22,
           "carb_g": 8,
           "fat_g": 0.4,
-          "leucine_g": 2.0,
+          "leucine_g": 2,
           "kcal": 125,
           "cost_eur_per_day": 1.25,
           "notes": "Exploration A1 (Holstein, moins cher) vs A2 (jersiaise) vs brebis (A2 exclusif). Différence clinique probablement marginale à 200g/jour."
@@ -429,7 +438,7 @@
         }
       ],
       "totals": {
-        "protein_g": 35.0,
+        "protein_g": 35,
         "carb_g": 21.5,
         "fat_g": 4.3,
         "kcal": 264,
@@ -459,7 +468,7 @@
           "fat_g": 11,
           "leucine_g": 1.7,
           "kcal": 190,
-          "cost_eur_per_day": 3.0,
+          "cost_eur_per_day": 3,
           "notes": "Qualité : Portugal/Bretagne, huile olive EV, boîte sans BPA. Mercure très faible (0.01-0.04 ppm). 95g = poids net égoutté d'une boîte standard. Fer héminique dans la fenêtre sans inhibiteurs polyphénoliques."
         },
         {
@@ -485,7 +494,7 @@
           "fat_g": 10,
           "leucine_g": 1.4,
           "kcal": 200,
-          "cost_eur_per_day": 1.0,
+          "cost_eur_per_day": 1,
           "notes": "Alternative végétale. Apport spermidine additionnel."
         },
         {
@@ -696,7 +705,7 @@
       "brand": "Nutrimuscle (poudre, Solabia)",
       "dose": "~1.2-1.5g/jour fractionné (0.6-0.7g matin + 0.6-0.7g dîner)",
       "timing": "R1 + dîner (fractionné)",
-      "cost_eur_month": 5.0,
+      "cost_eur_month": 5,
       "notes": "~190-240mg Mg élémentaire (dose réduite vs posologie fabricant 2.5g car apport alimentaire élevé ~615-750mg Mg contenu/jour). Moduler à la hausse jours 4×4+sauna. Effet alcalinisant (citrate→bicarbonate, pertinent charge acide protéique). Cofacteur activation vitamine D (CYP2R1, CYP27B1). Si effet laxatif → réduire ou switcher bisglycinate."
     },
     {
@@ -720,7 +729,7 @@
       "brand": "Nutripure (marin sauvage, 2000 Daltons)",
       "dose": "10g/jour (en 2e intention)",
       "timing": "Non démarré",
-      "cost_eur_month": 19.0,
+      "cost_eur_month": 19,
       "status": "En attente bilan rénal",
       "notes": "Seau 4kg = ~13 mois. Dipeptides Pro-Hyp et Hyp-Gly = signal fibroblastes (synthèse collagène + acide hyaluronique + élastine). Supérieur à glycine seule pour signal peptidique. Charge azotée supplémentaire → séquençage post-bilan rénal. Poissons sauvages européens, Friend of the Sea."
     },
@@ -785,5 +794,307 @@
     "total": 714.96,
     "source": "budget_mensuel_alimentation.xlsx (19/02/2026) + ajustements v1.2.0. Ordre de grandeur, pas suivi comptable exact.",
     "note": "v1.2.0 : Mg bisglycinate (15€) remplacé par citrate Mg (5€) + taurine (1.50€) + glycine (2.50€) = 9€. Concentré tomate ajouté (~3€/mois). Collagène Naticol® (19€/mois) non comptabilisé (en attente bilan rénal)."
-  }
+  },
+  "meal_corridors": {
+    "version": "1.0",
+    "date": "2026-10-21",
+    "status": "Provisoire — règles pratiques, pas des seuils validés. À recalibrer avec le journal reflux (2-3 semaines).",
+    "liquid_mass_factor": 0.5,
+    "notes": [
+      "Remplissage = solides + liquides × 0,5 (les liquides quittent l’estomac bien plus vite que les solides).",
+      "Pour chaque jauge : vert ≤ max, orange entre max et red, rouge au-delà de red. min = plancher (« pas assez »).",
+      "Bases : distension gastrique → relaxations transitoires du sphincter (Holloway 1985) ; repas de 1 000 kcal → plus d’acide dans l’œsophage qu’un repas de 500 kcal, graisses → plus de symptômes (Fox 2007).",
+      "Leucine corrigée = leucine × coefficient de digestibilité de chaque aliment (base nutritionnelle v2.4.0)."
+    ],
+    "meals": {
+      "r1": {
+        "label": "R1",
+        "time": "8h",
+        "kcal": {
+          "min": 600,
+          "max": 850,
+          "red": 1000
+        },
+        "fat_g": {
+          "max": 22,
+          "red": 30
+        },
+        "mass_g": {
+          "max": 600,
+          "red": 800
+        },
+        "leucine_min_g": 2.5
+      },
+      "r2": {
+        "label": "R2",
+        "time": "12h30",
+        "kcal": {
+          "min": 650,
+          "max": 850,
+          "red": 1000
+        },
+        "fat_g": {
+          "max": 35,
+          "red": 45
+        },
+        "mass_g": {
+          "max": 850,
+          "red": 1050
+        },
+        "leucine_min_g": 2.5
+      },
+      "collation": {
+        "label": "Collation",
+        "time": "16h",
+        "kcal": {
+          "min": 300,
+          "max": 500,
+          "red": 650
+        },
+        "fat_g": {
+          "max": 10,
+          "red": 15
+        },
+        "mass_g": {
+          "max": 450,
+          "red": 600
+        },
+        "leucine_min_g": 2.5
+      },
+      "diner": {
+        "label": "Dîner",
+        "time": "18h30",
+        "kcal": {
+          "min": 450,
+          "max": 650,
+          "red": 800
+        },
+        "fat_g": {
+          "max": 20,
+          "red": 28
+        },
+        "mass_g": {
+          "max": 700,
+          "red": 900
+        },
+        "protein_g": {
+          "max": 30,
+          "red": 40
+        },
+        "leucine_min_g": null
+      }
+    }
+  },
+  "meal_templates": [
+    {
+      "id": "tpl_r1_type",
+      "meal": "r1",
+      "name": "R1 — bol habituel",
+      "items": [
+        {
+          "id": "greenwhey_poisfevescourge",
+          "g": 30
+        },
+        {
+          "id": "flocons_fermentes_poids_sec",
+          "g": 130
+        },
+        {
+          "id": "germe_de_ble",
+          "g": 15
+        },
+        {
+          "id": "myrtilles_sauvages_bio_surgelees",
+          "g": 75
+        },
+        {
+          "id": "flavochino_cacao_polyphenols",
+          "g": 15
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_r2_bol_oct26",
+      "meal": "r2",
+      "name": "R2 — bol allégé (oct. 2026)",
+      "items": [
+        {
+          "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+          "g": 195
+        },
+        {
+          "id": "skyr_vache_classique_holstein",
+          "g": 150
+        },
+        {
+          "id": "pommes_de_terre_cuites",
+          "g": 150
+        },
+        {
+          "id": "carotte_cuite_vapeur",
+          "g": 80
+        },
+        {
+          "id": "brocoli_cuit_vapeur",
+          "g": 60
+        },
+        {
+          "id": "choufleur_vapeur",
+          "g": 30
+        },
+        {
+          "id": "betterave_cuite",
+          "g": 30
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 9.2
+        },
+        {
+          "id": "pain_petit_epeautre_au_levain",
+          "g": 40
+        },
+        {
+          "id": "jus_legumes_midi",
+          "g": 200
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_r2_ancien",
+      "meal": "r2",
+      "name": "R2 — ancien grand bol (référence)",
+      "items": [
+        {
+          "id": "legumes_cuits_divers_estimation",
+          "g": 600
+        },
+        {
+          "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+          "g": 260
+        },
+        {
+          "id": "pain_petit_epeautre_au_levain",
+          "g": 80
+        },
+        {
+          "id": "skyr_vache_classique_holstein",
+          "g": 150
+        },
+        {
+          "id": "flavochino_cacao_polyphenols",
+          "g": 15
+        },
+        {
+          "id": "eau",
+          "g": 200
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 18.4
+        },
+        {
+          "id": "vinaigre_de_cidre_bio",
+          "g": 10
+        }
+      ]
+    },
+    {
+      "id": "tpl_collation_type",
+      "meal": "collation",
+      "name": "Collation — skyr + flocons",
+      "items": [
+        {
+          "id": "skyr_vache_classique_holstein",
+          "g": 200
+        },
+        {
+          "id": "greenwhey_poisfevescourge",
+          "g": 15
+        },
+        {
+          "id": "myrtilles_sauvages_bio_surgelees",
+          "g": 75
+        },
+        {
+          "id": "flocons_fermentes_poids_sec",
+          "g": 60
+        },
+        {
+          "id": "cannelle_de_ceylan",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_diner_sardines",
+      "meal": "diner",
+      "name": "Dîner — sardines",
+      "items": [
+        {
+          "id": "sardines_en_conserve_huile_dolive",
+          "g": 95
+        },
+        {
+          "id": "legumes_cuits_divers_estimation",
+          "g": 200
+        },
+        {
+          "id": "patate_douce_cuite",
+          "g": 200
+        },
+        {
+          "id": "pommes_de_terre_cuites",
+          "g": 150
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 4.6
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_diner_poulet",
+      "meal": "diner",
+      "name": "Dîner — poulet",
+      "items": [
+        {
+          "id": "blanc_poulet_cuit",
+          "g": 80
+        },
+        {
+          "id": "legumes_cuits_divers_estimation",
+          "g": 200
+        },
+        {
+          "id": "patate_douce_cuite",
+          "g": 200
+        },
+        {
+          "id": "pommes_de_terre_cuites",
+          "g": 150
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 4.6
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    }
+  ]
 }

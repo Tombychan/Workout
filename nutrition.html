@@ -104,9 +104,9 @@ body {
 }
 .nav-tab {
   flex: 1;
-  padding: 8px 4px;
+  padding: 8px 2px;
   text-align: center;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 600;
   border: none;
   background: transparent;
@@ -592,6 +592,99 @@ body {
 .leu-search-item-vals { text-align: right; white-space: nowrap; font-family: 'DM Mono', monospace; font-size: 0.75rem; }
 .leu-search-item-leu { color: var(--green); }
 .leu-search-item-leu.low { color: var(--text-muted); }
+
+/* ── Bol : charge gastrique ── */
+:root { --amber: #D9963A; --amber-light: #F7E7CF; --amber-text: #A86A18; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: 1px; background: var(--border); }
+.dot.v-ok { background: var(--green); } .dot.v-warn { background: var(--amber); }
+.dot.v-over { background: var(--red); } .dot.v-low { background: var(--blue); }
+.bol-meal-tabs { display: flex; gap: 4px; margin-bottom: 8px; }
+.bol-meal-tab { flex: 1; padding: 7px 2px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-card); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-weight: 600; color: var(--text-muted); cursor: pointer; line-height: 1.3; }
+.bol-meal-tab.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+.bol-kcal { display: block; font-family: 'DM Mono', monospace; font-weight: 400; font-size: 0.64rem; opacity: 0.85; }
+.bol-day { font-size: 0.74rem; color: var(--text-muted); margin: 0 2px 10px; }
+.bol-day b { color: var(--text); }
+.verdict { border-radius: var(--radius); padding: 12px 14px; margin-bottom: 10px; border: 1.5px solid var(--border); background: var(--bg-card); box-shadow: var(--shadow); }
+.verdict.v-ok { border-color: var(--green); background: linear-gradient(180deg, var(--green-light), var(--bg-card) 70px); }
+.verdict.v-warn { border-color: var(--amber); background: linear-gradient(180deg, var(--amber-light), var(--bg-card) 70px); }
+.verdict.v-over { border-color: var(--red); background: linear-gradient(180deg, var(--red-light), var(--bg-card) 70px); }
+.verdict.v-low { border-color: var(--blue); background: linear-gradient(180deg, var(--blue-light), var(--bg-card) 70px); }
+.verdict-title { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
+.verdict-sub { font-size: 0.76rem; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+.verdict-why { font-size: 0.76rem; margin-top: 8px; line-height: 1.45; display: flex; flex-direction: column; gap: 3px; }
+.g-row { margin-top: 11px; }
+.g-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.78rem; margin-bottom: 4px; }
+.g-name { font-weight: 600; }
+.g-val { font-family: 'DM Mono', monospace; font-weight: 600; font-size: 0.82rem; }
+.g-val.l-ok { color: var(--green); } .g-val.l-warn { color: var(--amber-text); }
+.g-val.l-over { color: var(--red); } .g-val.l-low { color: var(--blue); }
+.g-track { position: relative; height: 10px; }
+.g-zones { position: absolute; inset: 0; border-radius: 5px; overflow: hidden; background: var(--border); }
+.g-zone { position: absolute; top: 0; bottom: 0; }
+.z-low { background: var(--blue-light); } .z-ok { background: var(--green-bg); }
+.z-warn { background: #F1D5A8; } .z-over { background: #EBC2B8; }
+.g-marker { position: absolute; top: -3px; bottom: -3px; width: 4px; margin-left: -2px; background: var(--text); border-radius: 2px; box-shadow: 0 0 0 1.5px var(--bg-card); }
+.g-sub { font-size: 0.64rem; color: var(--text-muted); margin-top: 3px; font-family: 'DM Mono', monospace; }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.chip { font-size: 0.68rem; padding: 3px 8px; border-radius: 12px; background: var(--bg-card-alt); border: 1px solid var(--border); color: var(--text); line-height: 1.35; }
+.chip.c-warn { background: var(--amber-light); border-color: var(--amber); }
+.bol-card { background: var(--bg-card); border-radius: var(--radius); padding: 4px 12px 12px; margin-bottom: 10px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+.bol-item { display: flex; align-items: center; gap: 6px; padding: 9px 0; border-bottom: 1px solid var(--border); }
+.bol-item-info { flex: 1; min-width: 0; }
+.bol-item-name { font-size: 0.8rem; font-weight: 500; line-height: 1.25; }
+.bol-item-detail { font-size: 0.64rem; color: var(--text-muted); font-family: 'DM Mono', monospace; margin-top: 2px; }
+.bol-item-hint { font-size: 0.64rem; color: var(--accent-dark); margin-top: 2px; font-style: italic; line-height: 1.3; }
+.qty-col { flex-shrink: 0; }
+.qty { display: flex; align-items: center; gap: 3px; }
+.qty button { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-card-alt); font-size: 1rem; color: var(--text); cursor: pointer; line-height: 1; padding: 0; }
+.qty input { width: 56px; padding: 5px 4px; font-family: 'DM Mono', monospace; font-size: 0.8rem; text-align: right; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); }
+.qty-unit { font-size: 0.6rem; color: var(--text-muted); text-align: center; margin-top: 3px; max-width: 112px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bol-remove { background: none; border: none; color: var(--red); opacity: 0.55; font-size: 1.15rem; cursor: pointer; padding: 0 2px; }
+.scale-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; font-size: 0.72rem; color: var(--text-muted); margin: 10px 0 0; }
+.bol-tools { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+.bol-select { flex: 1; min-width: 0; padding: 8px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-card); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--text); }
+.mini-btn { padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-card); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-weight: 600; color: var(--text); cursor: pointer; }
+.mini-btn:active, .tag:active, .score-btn:active { transform: scale(0.96); }
+.eat-btn { width: 100%; padding: 13px; border: none; border-radius: var(--radius-sm); background: var(--green); color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+.eat-btn:active { transform: scale(0.98); }
+.bol-foot { font-size: 0.66rem; color: var(--text-light); margin: 8px 2px 0; line-height: 1.4; }
+.reflux-banner { display: flex; align-items: center; gap: 10px; background: var(--amber-light); border: 1px solid var(--amber); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 12px; font-size: 0.8rem; cursor: pointer; line-height: 1.35; }
+.reflux-banner-sub { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+
+/* ── Journal reflux ── */
+.j-note { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+.j-newform { margin-top: 6px; padding-top: 4px; border-top: 1px solid var(--border); }
+.j-day { font-size: 0.78rem; font-weight: 700; color: var(--accent-dark); margin: 14px 2px 6px; }
+.j-entry { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 8px; overflow: hidden; }
+.j-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; cursor: pointer; }
+.j-time { font-family: 'DM Mono', monospace; font-size: 0.76rem; color: var(--accent-dark); width: 38px; flex-shrink: 0; }
+.j-main { flex: 1; min-width: 0; }
+.j-title { font-size: 0.84rem; font-weight: 600; }
+.j-sub { font-size: 0.66rem; color: var(--text-muted); font-family: 'DM Mono', monospace; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.j-score { width: 36px; height: 36px; flex-shrink: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-weight: 700; font-size: 0.9rem; }
+.s-none { background: var(--bg-card-alt); color: var(--text-muted); border: 1px dashed var(--accent); font-size: 0.56rem; font-family: 'DM Sans', sans-serif; font-weight: 600; text-align: center; line-height: 1.1; }
+.s-0 { background: var(--green-light); color: var(--green); }
+.s-low { background: var(--amber-light); color: var(--amber-text); }
+.s-high { background: var(--red-light); color: var(--red); }
+.j-body { padding: 0 12px 12px; border-top: 1px solid var(--border); }
+.j-items { font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; margin-top: 8px; }
+.j-label { font-size: 0.66rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 12px; }
+.score-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; margin-top: 6px; }
+.score-btn { padding: 9px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-card); font-family: 'DM Mono', monospace; font-weight: 600; font-size: 0.85rem; cursor: pointer; color: var(--text); }
+.score-btn.sel { background: var(--text); color: var(--bg); border-color: var(--text); }
+.tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.tag { padding: 6px 10px; border-radius: 16px; border: 1px solid var(--border); background: var(--bg-card); font-size: 0.72rem; cursor: pointer; color: var(--text); font-family: 'DM Sans', sans-serif; }
+.tag.sel { background: var(--accent-light); border-color: var(--accent-dark); font-weight: 600; }
+.j-input { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; background: var(--bg); color: var(--text); margin-top: 6px; }
+.action-btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+.j-del { background: none; border: none; color: var(--red); font-size: 0.72rem; margin-top: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; padding: 0; }
+.j-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; margin-top: 4px; }
+.j-table th { text-align: left; font-size: 0.64rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; font-weight: 700; padding: 4px 2px; border-bottom: 1px solid var(--border); }
+.j-table td { padding: 6px 2px; border-bottom: 1px solid var(--border); font-family: 'DM Mono', monospace; }
+.j-table td:first-child { font-family: 'DM Sans', sans-serif; }
+.j-svg { width: 100%; height: auto; margin-top: 10px; display: block; }
+.j-legend { display: flex; gap: 12px; font-size: 0.68rem; color: var(--text-muted); justify-content: center; margin-top: 2px; }
+.j-legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
 </style>
 </head>
 <body>
@@ -611,10 +704,11 @@ body {
 
 <div class="nav-tabs" id="navTabs">
   <button class="nav-tab active" data-tab="meals">Repas</button>
-  <button class="nav-tab" data-tab="suppl">Suppléments</button>
+  <button class="nav-tab" data-tab="bol">Bol</button>
+  <button class="nav-tab" data-tab="journal">Journal</button>
+  <button class="nav-tab" data-tab="suppl">Suppl.</button>
   <button class="nav-tab" data-tab="info">Infos</button>
   <button class="nav-tab" data-tab="data">Données</button>
-  <button class="nav-tab" data-tab="leucine">Leucine</button>
 </div>
 
 <div id="dateNavContainer"></div>
@@ -633,25 +727,56 @@ let currentDate = todayStr();
 let currentTab = 'meals';
 let tracking = {};
 
-// ── Leucine calculator state ──
+// ── Bol : composition des repas et charge gastrique ──
+const MEAL_IDS = ['r1', 'r2', 'collation', 'diner'];
+// Valeurs de secours si routine_alimentaire.json (bloc meal_corridors) n'est pas chargé
+const DEFAULT_CORRIDORS = {
+  liquid_mass_factor: 0.5,
+  meals: {
+    r1: { label: 'R1', time: '8h', kcal: { min: 600, max: 850, red: 1000 }, fat_g: { max: 22, red: 30 }, mass_g: { max: 600, red: 800 }, leucine_min_g: 2.5 },
+    r2: { label: 'R2', time: '12h30', kcal: { min: 650, max: 850, red: 1000 }, fat_g: { max: 35, red: 45 }, mass_g: { max: 850, red: 1050 }, leucine_min_g: 2.5 },
+    collation: { label: 'Collation', time: '16h', kcal: { min: 300, max: 500, red: 650 }, fat_g: { max: 10, red: 15 }, mass_g: { max: 450, red: 600 }, leucine_min_g: 2.5 },
+    diner: { label: 'Dîner', time: '18h30', kcal: { min: 450, max: 650, red: 800 }, fat_g: { max: 20, red: 28 }, mass_g: { max: 700, red: 900 }, protein_g: { max: 30, red: 40 }, leucine_min_g: null },
+  },
+};
+const VEG_CATS = ['Légumes cuits', 'Crudités', 'Féculents', 'Légumes jus'];
+const TRIG_LABEL = { acide: 'Acide', menthe: 'Menthe', allium: 'Ail / oignon / poireau' };
+const LOC_TAGS = ['Derrière le sternum', 'Creux de l’estomac', 'Gorge / bouche', 'Remontées acides'];
+const CTX_TAGS = ['Chant', 'Sol / gainage', 'Flexion (hinge, rows)', 'Allongé', 'Sauna', 'Effort intense', 'Stress', 'Mangé vite'];
+const VERDICT_TXT = {
+  ok: ['Dans le couloir', 'Volume, graisses et énergie dans les clous.'],
+  warn: ['Limite', 'Un paramètre dépasse le vert : risque de brûlures accru.'],
+  over: ['Trop chargé', 'Au moins un paramètre est dans le rouge : allège avant de manger.'],
+  low: ['Pas assez', 'Rien de trop, mais il manque de quoi nourrir l’entraînement.'],
+  empty: ['Compose ton repas', 'Charge un modèle ou ajoute des aliments.'],
+};
+
 let baseNutritionelle = null;
-let leuFoods = [];
-let leuMeals = { r1: [], r2: [], collation: [], diner: [] };
-let leuActiveMeal = 'r1';
-const LEU_MEALS = [
-  { id: 'r1', label: 'R1', time: '8h' },
-  { id: 'r2', label: 'R2', time: '12h30' },
-  { id: 'collation', label: 'Collation', time: '16h' },
-  { id: 'diner', label: 'Dîner', time: '18h30' },
-];
-const LEU_THRESHOLD = 2.5;
+let foodsById = {};
+let foodList = [];
+let leuMeals = { r1: [], r2: [], collation: [], diner: [] }; // { id, grams }
+let leuActiveMeal = mealForNow();
+let userTemplates = [];
+let journal = { entries: [] };
+let jOpenId = null, jDraft = null;
+
+const num = v => { const x = typeof v === 'number' ? v : parseFloat(v); return Number.isFinite(x) ? x : 0; };
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = (v, d = 0) => num(v).toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+function mealForNow() {
+  const d = new Date(), h = d.getHours() + d.getMinutes() / 60;
+  return h < 10.5 ? 'r1' : h < 14.5 ? 'r2' : h < 17.25 ? 'collation' : 'diner';
+}
+function corridors() { return (routine && routine.meal_corridors && routine.meal_corridors.meals) ? routine.meal_corridors : DEFAULT_CORRIDORS; }
+function mealCfg(id) { return corridors().meals[id] || DEFAULT_CORRIDORS.meals[id]; }
 
 async function loadBaseNutritionelle() {
   try {
     const resp = await fetch('base_nutritionnelle.json?v=' + Date.now());
     if (resp.ok) {
       baseNutritionelle = await resp.json();
-      localStorage.setItem('nt-basenutri-cache', JSON.stringify(baseNutritionelle));
+      try { localStorage.setItem('nt-basenutri-cache', JSON.stringify(baseNutritionelle)); } catch(e) {}
     }
   } catch(e) {}
   if (!baseNutritionelle) {
@@ -660,20 +785,42 @@ async function loadBaseNutritionelle() {
       if (cached) baseNutritionelle = JSON.parse(cached);
     } catch(e) {}
   }
-  if (baseNutritionelle && baseNutritionelle.items) {
-    leuFoods = [];
-    for (const [, v] of Object.entries(baseNutritionelle.items)) {
-      const leu = parseFloat(v['Leucine /100g (g)']) || 0;
-      const pr = parseFloat(v['Prot (g/100g)']) || 0;
-      if (leu > 0 || pr > 0) {
-        leuFoods.push({ id: v.id || '', n: v.Aliment || '', p: parseFloat(v['Portion type (g)']) || 100, l: leu, pr: pr, c: v['Catégorie'] || '' });
-      }
+  buildFoods();
+  try {
+    const saved = localStorage.getItem('nt-leumeal-v1');
+    if (saved) {
+      const s = JSON.parse(saved);
+      MEAL_IDS.forEach(m => { leuMeals[m] = Array.isArray(s[m]) ? s[m].filter(i => i && i.id).map(i => ({ id: i.id, grams: num(i.grams) })) : []; });
     }
-    leuFoods.sort((a, b) => (a.l > 0 && b.l === 0) ? -1 : (a.l === 0 && b.l > 0) ? 1 : b.l - a.l);
-  }
-  try { const saved = localStorage.getItem('nt-leumeal-v1'); if (saved) leuMeals = JSON.parse(saved); } catch(e) {}
+  } catch(e) {}
+  try { const t = localStorage.getItem('nt-templates-v1'); if (t) userTemplates = JSON.parse(t) || []; } catch(e) { userTemplates = []; }
 }
-function saveLeuMeals() { localStorage.setItem('nt-leumeal-v1', JSON.stringify(leuMeals)); }
+
+function buildFoods() {
+  foodsById = {}; foodList = [];
+  if (!baseNutritionelle || !baseNutritionelle.items) return;
+  for (const v of Object.values(baseNutritionelle.items)) {
+    const f = {
+      id: v.id || '', n: v.Aliment || '', c: v['Catégorie'] || '', p: num(v['Portion type (g)']) || 100,
+      kcal: num(v['kcal/100g']), pr: num(v['Prot (g/100g)']), fat: num(v['Lip (g/100g)']), carb: num(v['Glu (g/100g)']),
+      l: num(v['Leucine /100g (g)']), lEst: !!v['Leucine estimée'], dig: num(v['Digest. prot. (coef)']) || 0.8,
+      state: v['État'] || 'solide', massCoef: num(v['Masse ingérée (coef)']) || 1,
+      mx: num(v['Méthylxanthines (mg/100g)']), trig: Array.isArray(v['Déclencheurs']) ? v['Déclencheurs'] : [],
+      ferm: v['Fermentesc.'] || '', unit: (v['Unité'] && num(v['Unité'].g) > 0) ? v['Unité'] : null, hint: v['Repères'] || '',
+    };
+    foodsById[f.id] = f;
+    if (f.kcal === 0 && f.state !== 'liquide') continue; // compléments sans énergie : inutiles ici
+    foodList.push(f);
+  }
+  foodList.sort((a, b) => a.n.localeCompare(b.n, 'fr'));
+}
+function saveLeuMeals() { try { localStorage.setItem('nt-leumeal-v1', JSON.stringify(leuMeals)); } catch(e) {} }
+function saveTemplates() { try { localStorage.setItem('nt-templates-v1', JSON.stringify(userTemplates)); } catch(e) {} }
+function loadJournal() {
+  try { const s = localStorage.getItem('nt-reflux-v1'); if (s) journal = JSON.parse(s); } catch(e) {}
+  if (!journal || !Array.isArray(journal.entries)) journal = { entries: [] };
+}
+function saveJournal() { try { localStorage.setItem('nt-reflux-v1', JSON.stringify(journal)); } catch(e) { showToast('Stockage plein : exporte une sauvegarde'); } }
 
 function todayStr() {
   const d = new Date();
@@ -781,14 +928,17 @@ function render() {
   
   document.getElementById('headerVersion').textContent = 'v' + routine.meta.version;
   renderHeaderMacros();
-  renderDateNav();
+  if (currentTab === 'bol' || currentTab === 'journal') document.getElementById('dateNavContainer').innerHTML = '';
+  else renderDateNav();
+  syncStickyOffset();
   
   switch(currentTab) {
     case 'meals': renderMeals(); break;
     case 'suppl': renderSupplements(); break;
     case 'info': renderInfo(); break;
     case 'data': renderData(); break;
-      case 'leucine': renderLeucine(); break;
+    case 'bol': renderBol(); break;
+    case 'journal': renderJournal(); break;
   }
 }
 
@@ -878,8 +1028,8 @@ function renderMeals() {
   const day = getDayData(currentDate);
   const container = document.getElementById('mainContent');
   
-  let html = '';
-  
+  let html = pendingBannerHtml();
+
   // Daily summary
   html += renderDailySummary(day);
   
@@ -1081,8 +1231,9 @@ function renderData() {
   let html = `<div class="daily-summary">
     <div class="summary-title">📊 Données de tracking</div>
     <div style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">
-      ${trackedDays.length} jour${trackedDays.length > 1 ? 's' : ''} enregistré${trackedDays.length > 1 ? 's' : ''}
+      ${trackedDays.length} jour${trackedDays.length > 1 ? 's' : ''} enregistré${trackedDays.length > 1 ? 's' : ''} · ${journal.entries.length} entrée${journal.entries.length > 1 ? 's' : ''} au journal reflux
     </div>
+    <div style="font-size:0.72rem;color:var(--text-muted);margin-top:6px;line-height:1.4">La sauvegarde contient aussi les repas composés (Bol), tes modèles et le journal. Ces données ne vivent que sur ce téléphone : exporte-la chaque semaine.</div>
     <div class="action-bar">
       <button class="action-btn" onclick="exportBackup()">📤 Exporter backup</button>
       <button class="action-btn" onclick="document.getElementById('importInput').click()">📥 Importer backup</button>
@@ -1115,85 +1266,270 @@ function renderData() {
   document.getElementById('mainContent').innerHTML = html;
 }
 
-// ── Leucine Calculator ──
-function leuCalc(food, grams) {
-  return { leu: (food.l / 100) * grams, prot: (food.pr / 100) * grams };
-}
-function leuMealTotals(mealId) {
-  const items = leuMeals[mealId] || [];
-  let leu = 0, prot = 0;
-  items.forEach(i => { const c = leuCalc(i, i.grams); leu += c.leu; prot += c.prot; });
-  return { leu, prot };
+// ── Bol : calculs ──
+function gaugeOf(key, label, v, cfg, unit) {
+  const g = { key, label, v, unit, min: cfg.min ?? null, max: cfg.max ?? null, red: cfg.red ?? null, level: 'ok' };
+  if (g.red != null && v > g.red) g.level = 'over';
+  else if (g.max != null && v > g.max) g.level = 'warn';
+  else if (g.min != null && v < g.min) g.level = 'low';
+  g.domain = Math.max(g.red != null ? g.red * 1.25 : (g.min || 1) * 2, v * 1.05, 1);
+  return g;
 }
 
-function renderLeucine() {
-  if (!leuFoods.length) {
-    document.getElementById('mainContent').innerHTML = `<div class="loading">Base nutritionnelle non chargée.<br><small>Vérifier que base_nutritionnelle.json est déployé.</small></div>`;
+function computeMeal(mealId, items) {
+  const cfg = mealCfg(mealId);
+  const lf = num(corridors().liquid_mass_factor) || 0.5;
+  const t = { n: 0, solids: 0, liquids: 0, massEff: 0, kcal: 0, fat: 0, prot: 0, carb: 0, leuRaw: 0, leu: 0, mx: 0,
+    fermHigh: 0, fermMod: 0, trig: {}, estLeu: false, unknown: 0, contrib: { mass: [], fat: [], kcal: [], prot: [] } };
+  for (const it of items || []) {
+    const f = foodsById[it.id], g = num(it.grams);
+    if (!f) { t.unknown++; continue; }
+    if (g <= 0) continue;
+    const k = g / 100;
+    const liquid = f.state === 'liquide';
+    const mass = liquid ? g * lf : g * f.massCoef;
+    if (liquid) t.liquids += g; else t.solids += g * f.massCoef;
+    t.massEff += mass;
+    const kc = f.kcal * k, ft = f.fat * k, pr = f.pr * k, lr = f.l * k;
+    t.n++; t.kcal += kc; t.fat += ft; t.prot += pr; t.carb += f.carb * k; t.leuRaw += lr; t.leu += lr * f.dig; t.mx += f.mx * k;
+    if (f.lEst && lr * f.dig >= 0.1) t.estLeu = true;
+    if (!liquid) { if (/élev/i.test(f.ferm)) t.fermHigh += g; else if (/mod/i.test(f.ferm)) t.fermMod += g; }
+    f.trig.forEach(tr => { (t.trig[tr] = t.trig[tr] || []).push(f.n); });
+    t.contrib.mass.push([f, mass]); t.contrib.fat.push([f, ft]); t.contrib.kcal.push([f, kc]); t.contrib.prot.push([f, pr]);
+  }
+  t.gauges = [
+    gaugeOf('mass', 'Remplissage', t.massEff, cfg.mass_g || {}, 'g'),
+    gaugeOf('fat', 'Graisses', t.fat, cfg.fat_g || {}, 'g'),
+    gaugeOf('kcal', 'Énergie', t.kcal, cfg.kcal || {}, 'kcal'),
+  ];
+  if (cfg.protein_g) t.gauges.push(gaugeOf('prot', 'Protéines', t.prot, cfg.protein_g, 'g'));
+  if (cfg.leucine_min_g) t.gauges.push(gaugeOf('leu', 'Leucine corrigée', t.leu, { min: cfg.leucine_min_g }, 'g'));
+  const lv = t.gauges.map(g => g.level);
+  t.verdict = !t.n ? 'empty' : lv.includes('over') ? 'over' : lv.includes('warn') ? 'warn' : lv.includes('low') ? 'low' : 'ok';
+  return t;
+}
+
+function shortName(n) { return String(n).replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+/g, ' ').trim(); }
+
+function whyLines(t) {
+  const out = [];
+  const upper = t.gauges.filter(g => g.level === 'over' || g.level === 'warn').sort((a, b) => b.v / b.max - a.v / a.max);
+  for (const g of upper) {
+    const list = (t.contrib[g.key] || []).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]).slice(0, 3)
+      .map(([f, v]) => `${esc(shortName(f.n))} ${fmt(v, g.key === 'fat' ? 1 : 0)} ${g.unit}`).join(' · ');
+    out.push(`<b>${g.label} ${fmt(g.v)} ${g.unit}</b> (vert ≤ ${fmt(g.max)}) — surtout : ${list}`);
+  }
+  for (const g of t.gauges.filter(g => g.level === 'low')) {
+    if (g.key === 'leu') {
+      const miss = g.min - g.v, sk = foodsById.skyr_vache_classique_holstein, egg = foodsById.oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec;
+      let hint = '';
+      if (sk && egg) {
+        const skG = Math.ceil(miss / (sk.l * sk.dig / 100) / 10) * 10;
+        const eggN = Math.ceil(miss / (egg.l * egg.dig * 0.65) * 2) / 2;
+        hint = ` ≈ ${fmt(skG)} g de skyr ou ${fmt(eggN, eggN % 1 ? 1 : 0)} œuf${eggN > 1 ? 's' : ''}`;
+      }
+      out.push(`<b>Leucine corrigée ${fmt(g.v, 2)} g</b> : il manque ${fmt(miss, 2)} g${hint}.`);
+    } else if (g.key === 'kcal') {
+      out.push(`<b>Énergie ${fmt(g.v)} kcal</b> : ${fmt(g.min - g.v)} kcal sous le plancher du repas.`);
+    }
+  }
+  return out;
+}
+
+// ── Bol : rendu ──
+function gaugeHtml(g) {
+  const pct = v => Math.max(0, Math.min(100, v / g.domain * 100));
+  let zones = '';
+  const seg = (a, b, cls) => { if (b > a) zones += `<div class="g-zone ${cls}" style="left:${pct(a)}%;width:${pct(b) - pct(a)}%"></div>`; };
+  if (g.min != null) seg(0, g.min, 'z-low');
+  const okStart = g.min != null ? g.min : 0;
+  if (g.max != null) { seg(okStart, g.max, 'z-ok'); seg(g.max, g.red ?? g.domain, 'z-warn'); if (g.red != null) seg(g.red, g.domain, 'z-over'); }
+  else seg(okStart, g.domain, 'z-ok');
+  const d = g.key === 'leu' ? 2 : 0;
+  let rule = '';
+  if (g.key === 'leu') rule = `seuil ≥ ${fmt(g.min, 1)} g`;
+  else if (g.min != null) rule = `vert ${fmt(g.min)}–${fmt(g.max)} ${g.unit}`;
+  else rule = `vert ≤ ${fmt(g.max)} ${g.unit} · rouge > ${fmt(g.red)}`;
+  return `<div class="g-row">
+    <div class="g-head"><span class="g-name">${g.label}</span><span class="g-val l-${g.level}">${fmt(g.v, d)} ${g.unit}</span></div>
+    <div class="g-track"><div class="g-zones">${zones}</div><div class="g-marker" style="left:${pct(g.v)}%"></div></div>
+    <div class="g-sub">${rule}</div>
+  </div>`;
+}
+
+function unitLabel(f, g) {
+  if (!f.unit) return f.state === 'liquide' ? 'ml' : 'g';
+  const c = g / num(f.unit.g);
+  if (c <= 0) return '0 ' + f.unit.s;
+  const r = Math.round(c);
+  if (Math.abs(c - r) < 0.08) return `${r} ${r > 1 ? f.unit.p : f.unit.s}`;
+  return `≈ ${fmt(c, 1)} ${c > 1 ? f.unit.p : f.unit.s}`;
+}
+const inputVal = g => String(Math.round(num(g) * 10) / 10);
+
+function pendingMealEntry() {
+  const now = Date.now();
+  return journal.entries.filter(e => e.type === 'meal' && !e.symptom && now - e.ts >= 30 * 60000 && now - e.ts <= 6 * 3600000)
+    .sort((a, b) => b.ts - a.ts)[0] || null;
+}
+function timeStr(ts) { const d = new Date(ts); return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`; }
+function dayStr(ts) { const d = new Date(ts); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
+function pendingBannerHtml() {
+  const e = pendingMealEntry();
+  if (!e) return '';
+  return `<div class="reflux-banner" onclick="openSymptomFor('${e.id}')">
+    <span style="font-size:1.3rem">🔥</span>
+    <div style="flex:1"><b>${esc(mealCfg(e.meal).label)} de ${timeStr(e.ts)}</b> — des brûlures depuis ?
+      <div class="reflux-banner-sub">Note de 0 à 10, même 0 : c’est ce qui calibrera tes seuils.</div></div>
+    <span style="font-size:1.2rem;color:var(--text-muted)">›</span>
+  </div>`;
+}
+
+function renderBol() {
+  const c = document.getElementById('mainContent');
+  if (!foodList.length) {
+    c.innerHTML = `<div class="loading">Base nutritionnelle non chargée.<br><small>Vérifier que base_nutritionnelle.json est déployé.</small></div>`;
     return;
   }
-  let dayLeu = 0, dayProt = 0, thresholds = 0;
-  const mealData = LEU_MEALS.map(m => {
-    const t = leuMealTotals(m.id);
-    dayLeu += t.leu; dayProt += t.prot;
-    if (t.leu >= LEU_THRESHOLD) thresholds++;
-    return { ...m, ...t };
-  });
+  const per = {};
+  MEAL_IDS.forEach(m => { per[m] = computeMeal(m, leuMeals[m]); });
+  let html = pendingBannerHtml();
 
-  let html = `<div class="leu-summary">
-    <div class="leu-summary-header">
-      <div class="leu-summary-stat"><div class="leu-label">PROTÉINES JOUR</div><div class="leu-val">${Math.round(dayProt)}g <span style="font-size:0.85rem;font-weight:400;color:var(--text-muted)">/ 136g</span></div></div>
-      <div class="leu-summary-stat" style="text-align:right"><div class="leu-label">STIMULATIONS</div><div class="leu-val">${thresholds} <span style="font-size:0.85rem;font-weight:400;color:var(--text-muted)">/ 3</span>${thresholds >= 3 ? ' <span style="color:var(--green)">✓</span>' : ''}</div></div>
-    </div>`;
-  mealData.forEach(m => {
-    const pct = Math.min((m.leu / LEU_THRESHOLD) * 100, 100);
-    const ok = m.leu >= LEU_THRESHOLD;
-    html += `<div class="leu-bar-row"><div class="leu-bar-label"><span>${m.label} — ${m.time}</span><span class="leu-bar-val ${ok?'ok':'low'}">${m.leu.toFixed(2)}g ${ok ? '✓' : '(−'+(LEU_THRESHOLD-m.leu).toFixed(2)+'g)'}</span></div><div class="leu-bar-track"><div class="leu-bar-fill ${ok?'ok':'low'}" style="width:${pct}%"></div></div></div>`;
-  });
-  html += `</div>`;
+  html += `<div class="bol-meal-tabs">` + MEAL_IDS.map(m => {
+    const cfg = mealCfg(m), t = per[m];
+    return `<button class="bol-meal-tab${m === leuActiveMeal ? ' active' : ''}" onclick="bolSetMeal('${m}')"><span class="dot v-${t.verdict}"></span>${esc(cfg.label)}<span class="bol-kcal">${t.n ? fmt(t.kcal) + ' kcal' : '—'}</span></button>`;
+  }).join('') + `</div>`;
 
-  html += `<div class="leu-meal-tabs">`;
-  LEU_MEALS.forEach(m => {
-    html += `<button class="leu-meal-tab${leuActiveMeal===m.id?' active':''}" onclick="leuSetMeal('${m.id}')">${m.label}<br><span style="font-size:0.65rem;opacity:0.7">${m.time}</span></button>`;
-  });
-  html += `</div>`;
+  const day = MEAL_IDS.reduce((a, m) => {
+    const t = per[m], cfg = mealCfg(m);
+    a.kcal += t.kcal; a.prot += t.prot; a.fat += t.fat;
+    if (cfg.leucine_min_g && t.leu >= cfg.leucine_min_g) a.thr++;
+    return a;
+  }, { kcal: 0, prot: 0, fat: 0, thr: 0 });
+  html += `<div class="bol-day">Journée composée : <b>${fmt(day.kcal)} kcal</b> · ${fmt(day.prot)} g prot · ${fmt(day.fat)} g lip · leucine <b>${day.thr}/3</b></div>`;
 
-  const active = LEU_MEALS.find(m => m.id === leuActiveMeal);
-  const activeT = leuMealTotals(leuActiveMeal);
-  const items = leuMeals[leuActiveMeal] || [];
-  html += `<div class="leu-meal-card"><div class="leu-meal-header"><span class="leu-meal-title">${active.label} — ${active.time}</span><span class="leu-meal-totals">${activeT.prot.toFixed(1)}g prot · ${activeT.leu.toFixed(2)}g leu</span></div>`;
-  if (!items.length) html += `<div class="leu-empty">Aucun aliment ajouté</div>`;
-  items.forEach((item, idx) => {
-    const c = leuCalc(item, item.grams);
-    html += `<div class="leu-item-row"><div class="leu-item-info"><div class="leu-item-name">${item.n}</div><div class="leu-item-detail">${c.prot.toFixed(1)}g prot · ${c.leu.toFixed(2)}g leu</div></div><div class="leu-item-qty"><input type="number" value="${item.grams}" onchange="leuUpdateGrams(${idx},this.value)"><span>g</span></div><button class="leu-item-remove" onclick="leuRemoveItem(${idx})">×</button></div>`;
-  });
-  html += `<button class="leu-add-btn" onclick="leuShowSearch()">+ Ajouter un aliment</button></div>`;
-  html += `<div style="margin-top:12px"><button class="action-btn" onclick="leuReset()">Réinitialiser</button></div>`;
-  document.getElementById('mainContent').innerHTML = html;
-}
-
-function leuSetMeal(id) { leuActiveMeal = id; renderLeucine(); }
-function leuAddItem(food) {
-  if (!leuMeals[leuActiveMeal]) leuMeals[leuActiveMeal] = [];
-  leuMeals[leuActiveMeal].push({ ...food, grams: food.p });
-  saveLeuMeals(); leuCloseSearch(); renderLeucine();
-}
-function leuUpdateGrams(idx, val) {
-  const g = parseFloat(val) || 0;
-  if (leuMeals[leuActiveMeal] && leuMeals[leuActiveMeal][idx]) {
-    leuMeals[leuActiveMeal][idx].grams = Math.max(0, g);
-    saveLeuMeals(); renderLeucine();
+  const t = per[leuActiveMeal], cfg = mealCfg(leuActiveMeal);
+  const [title, sub] = VERDICT_TXT[t.verdict];
+  html += `<div class="verdict v-${t.verdict}">
+    <div class="verdict-title">${title}</div><div class="verdict-sub">${sub}</div>`;
+  if (t.n) {
+    const why = whyLines(t);
+    if (why.length) html += `<div class="verdict-why">${why.map(w => `<div>→ ${w}</div>`).join('')}</div>`;
+    html += t.gauges.map(gaugeHtml).join('');
+    html += `<div class="g-sub" style="margin-top:6px">Remplissage = solides ${fmt(t.solids)} g + liquides ${fmt(t.liquids)} ml × ${fmt(num(corridors().liquid_mass_factor) || 0.5, 1)}</div>`;
+    const chips = [];
+    if (t.mx >= 5) chips.push(`<span class="chip${leuActiveMeal === 'collation' || leuActiveMeal === 'diner' ? ' c-warn' : ''}">☕ ${fmt(t.mx)} mg caféine + théobromine</span>`);
+    Object.entries(t.trig).forEach(([k, names]) => chips.push(`<span class="chip c-warn">${esc(TRIG_LABEL[k] || k)} : ${esc(names.map(shortName).join(', '))}</span>`));
+    if (t.fermHigh >= 30) chips.push(`<span class="chip">Fermentescibles « élevés » : ${fmt(t.fermHigh)} g (indicatif)</span>`);
+    if (t.estLeu) chips.push(`<span class="chip">Leucine en partie estimée</span>`);
+    if (t.unknown) chips.push(`<span class="chip c-warn">${t.unknown} aliment(s) absent(s) de la base</span>`);
+    if (chips.length) html += `<div class="chips">${chips.join('')}</div>`;
   }
+  html += `</div>`;
+
+  const items = leuMeals[leuActiveMeal] || [];
+  html += `<div class="bol-card">`;
+  if (!items.length) html += `<div class="leu-empty">Aucun aliment. Charge un modèle ou ajoute des aliments.</div>`;
+  items.forEach((it, idx) => {
+    const f = foodsById[it.id];
+    if (!f) {
+      html += `<div class="bol-item"><div class="bol-item-info"><div class="bol-item-name">${esc(it.id)}</div><div class="bol-item-detail">absent de la base</div></div><button class="bol-remove" onclick="bolRemove(${idx})">×</button></div>`;
+      return;
+    }
+    const g = num(it.grams), k = g / 100;
+    html += `<div class="bol-item">
+      <div class="bol-item-info">
+        <div class="bol-item-name">${esc(shortName(f.n))}</div>
+        <div class="bol-item-detail">${fmt(f.kcal * k)} kcal · L ${fmt(f.fat * k, 1)} · P ${fmt(f.pr * k, 1)} · leu ${fmt(f.l * k * f.dig, 2)}${f.massCoef !== 1 ? ' · volume ×' + fmt(f.massCoef, 1) : ''}</div>
+        ${f.hint ? `<div class="bol-item-hint">${esc(f.hint)}</div>` : ''}
+      </div>
+      <div class="qty-col">
+        <div class="qty"><button onclick="bolStep(${idx},-1)" aria-label="moins">−</button><input type="number" inputmode="decimal" value="${inputVal(g)}" onchange="bolSetGrams(${idx},this.value)"><button onclick="bolStep(${idx},1)" aria-label="plus">+</button></div>
+        <div class="qty-unit">${esc(unitLabel(f, g))}</div>
+      </div>
+      <button class="bol-remove" onclick="bolRemove(${idx})" aria-label="retirer">×</button>
+    </div>`;
+  });
+  html += `<div class="scale-row">Légumes &amp; féculents :
+      <button class="mini-btn" onclick="bolScale(0.5)">×½</button><button class="mini-btn" onclick="bolScale(0.75)">×¾</button><button class="mini-btn" onclick="bolScale(1.25)">×1¼</button></div>
+    <div class="bol-tools"><button class="mini-btn" onclick="leuShowSearch()">＋ Aliment</button><button class="mini-btn" onclick="bolClear()">Vider</button></div>`;
+
+  const rt = (routine && routine.meal_templates) || [];
+  const opt = (tp, prefix) => `<option value="${esc(tp.id)}">${prefix}${esc(tp.name)}</option>`;
+  const mine = userTemplates.filter(tp => tp.meal === leuActiveMeal), mineOther = userTemplates.filter(tp => tp.meal !== leuActiveMeal);
+  const rtHere = rt.filter(tp => tp.meal === leuActiveMeal), rtOther = rt.filter(tp => tp.meal !== leuActiveMeal);
+  html += `<div class="bol-tools">
+      <select id="tplSelect" class="bol-select">
+        <option value="">Modèles…</option>
+        ${mine.length ? `<optgroup label="Mes modèles">${mine.map(tp => opt(tp, '★ ')).join('')}</optgroup>` : ''}
+        ${rtHere.length ? `<optgroup label="Routine">${rtHere.map(tp => opt(tp, '')).join('')}</optgroup>` : ''}
+        ${(mineOther.length || rtOther.length) ? `<optgroup label="Autres repas">${mineOther.map(tp => opt(tp, '★ ')).join('')}${rtOther.map(tp => opt(tp, '')).join('')}</optgroup>` : ''}
+      </select>
+      <button class="mini-btn" onclick="bolLoadTemplate()">Charger</button>
+    </div>
+    <div class="bol-tools"><button class="mini-btn" onclick="bolSaveTemplate()">Enregistrer comme modèle</button><button class="mini-btn" onclick="bolDeleteTemplate()">Suppr. modèle ★</button></div>
+  </div>`;
+  html += `<button class="eat-btn" onclick="logMeal('${leuActiveMeal}')">✓ J’ai mangé ce repas</button>
+    <div class="bol-foot">Seuils provisoires (routine_alimentaire.json → meal_corridors) : le journal servira à les ajuster. Leucine corrigée = leucine × digestibilité de chaque aliment.</div>`;
+  c.innerHTML = html;
 }
-function leuRemoveItem(idx) {
-  if (leuMeals[leuActiveMeal]) { leuMeals[leuActiveMeal].splice(idx, 1); saveLeuMeals(); renderLeucine(); }
+
+// ── Bol : actions ──
+function bolSetMeal(id) { leuActiveMeal = id; renderBol(); }
+function bolSetGrams(idx, val) {
+  const arr = leuMeals[leuActiveMeal]; if (!arr || !arr[idx]) return;
+  arr[idx].grams = Math.max(0, Math.round(num(String(val).replace(',', '.')) * 10) / 10);
+  saveLeuMeals(); renderBol();
 }
-function leuReset() {
-  if (!confirm('Réinitialiser tous les repas du calculateur leucine ?')) return;
-  leuMeals = { r1: [], r2: [], collation: [], diner: [] };
-  saveLeuMeals(); renderLeucine(); showToast('Calculateur réinitialisé');
+function bolStep(idx, dir) {
+  const arr = leuMeals[leuActiveMeal]; if (!arr || !arr[idx]) return;
+  const f = foodsById[arr[idx].id]; if (!f) return;
+  const step = f.unit ? num(f.unit.g) : (f.p <= 30 ? 5 : 10);
+  const units = Math.round(num(arr[idx].grams) / step);
+  arr[idx].grams = Math.max(0, Math.round((units + dir) * step * 10) / 10);
+  saveLeuMeals(); renderBol();
 }
+function bolRemove(idx) { const arr = leuMeals[leuActiveMeal]; if (arr) { arr.splice(idx, 1); saveLeuMeals(); renderBol(); } }
+function bolClear() {
+  if (!(leuMeals[leuActiveMeal] || []).length) return;
+  if (!confirm('Vider ce repas ?')) return;
+  leuMeals[leuActiveMeal] = []; saveLeuMeals(); renderBol();
+}
+function bolScale(factor) {
+  const arr = leuMeals[leuActiveMeal] || []; let n = 0;
+  arr.forEach(it => { const f = foodsById[it.id]; if (f && VEG_CATS.includes(f.c)) { it.grams = Math.round(num(it.grams) * factor); n++; } });
+  if (!n) return showToast('Aucun légume ni féculent dans ce repas');
+  saveLeuMeals(); renderBol();
+}
+function findTemplate(id) {
+  return userTemplates.find(tp => tp.id === id) || ((routine && routine.meal_templates) || []).find(tp => tp.id === id) || null;
+}
+function bolLoadTemplate() {
+  const sel = document.getElementById('tplSelect'); const tp = sel && findTemplate(sel.value);
+  if (!tp) return showToast('Choisis un modèle');
+  if ((leuMeals[leuActiveMeal] || []).length && !confirm(`Remplacer le repas actuel par « ${tp.name} » ?`)) return;
+  leuMeals[leuActiveMeal] = tp.items.map(i => ({ id: i.id, grams: num(i.g) }));
+  saveLeuMeals(); renderBol(); showToast('Modèle chargé');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function bolSaveTemplate() {
+  const items = (leuMeals[leuActiveMeal] || []).filter(i => num(i.grams) > 0);
+  if (!items.length) return showToast('Repas vide');
+  const name = prompt('Nom du modèle :', `${mealCfg(leuActiveMeal).label} — mon bol`);
+  if (!name) return;
+  userTemplates.push({ id: 'u' + Date.now(), meal: leuActiveMeal, name: name.trim(), items: items.map(i => ({ id: i.id, g: num(i.grams) })) });
+  saveTemplates(); renderBol(); showToast('Modèle enregistré');
+}
+function bolDeleteTemplate() {
+  const sel = document.getElementById('tplSelect'); const id = sel && sel.value;
+  const i = userTemplates.findIndex(tp => tp.id === id);
+  if (i < 0) return showToast('Sélectionne d’abord un de tes modèles ★');
+  if (!confirm(`Supprimer « ${userTemplates[i].name} » ?`)) return;
+  userTemplates.splice(i, 1); saveTemplates(); renderBol();
+}
+
 function leuShowSearch() {
-  const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   const overlay = document.createElement('div');
   overlay.className = 'leu-search-overlay'; overlay.id = 'leuSearchOverlay';
   overlay.onclick = e => { if (e.target === overlay) leuCloseSearch(); };
@@ -1202,28 +1538,231 @@ function leuShowSearch() {
   const results = document.createElement('div'); results.className = 'leu-search-results';
   function renderResults(q) {
     const query = norm(q);
-    const filtered = query ? leuFoods.filter(f => norm(f.n).includes(query) || norm(f.c).includes(query)) : leuFoods;
-    results.innerHTML = filtered.map(f => {
-      const lp = (f.l*f.p/100).toFixed(2), pp = (f.pr*f.p/100).toFixed(1);
-      return `<button class="leu-search-item" data-fid="${f.id}"><div><div class="leu-search-item-name">${f.n}</div><div class="leu-search-item-cat">${f.c} · ${f.p}g</div></div><div class="leu-search-item-vals"><div class="leu-search-item-leu${f.l>1.5?'':' low'}">${lp}g leu</div><div style="color:var(--text-muted);font-size:0.7rem">${pp}g prot</div></div></button>`;
+    const filtered = query ? foodList.filter(f => norm(f.n).includes(query) || norm(f.c).includes(query)) : foodList;
+    results.innerHTML = filtered.slice(0, 120).map(f => {
+      const g = f.unit ? num(f.unit.g) : f.p, k = g / 100;
+      return `<button class="leu-search-item" data-fid="${esc(f.id)}"><div><div class="leu-search-item-name">${esc(f.n)}</div><div class="leu-search-item-cat">${esc(f.c)} · ${f.unit ? '1 ' + esc(f.unit.s) + ' = ' : ''}${fmt(g, g < 10 ? 1 : 0)} g</div></div><div class="leu-search-item-vals"><div>${fmt(f.kcal * k)} kcal</div><div style="color:var(--text-muted);font-size:0.7rem">L ${fmt(f.fat * k, 1)} g</div></div></button>`;
     }).join('') || '<div style="text-align:center;padding:20px;color:var(--text-muted)">Aucun résultat</div>';
   }
   input.oninput = () => renderResults(input.value);
-  results.onclick = e => { const btn = e.target.closest('.leu-search-item'); if (!btn) return; const food = leuFoods.find(f => f.id === btn.dataset.fid); if (food) leuAddItem(food); };
+  results.onclick = e => {
+    const btn = e.target.closest('.leu-search-item'); if (!btn) return;
+    const f = foodsById[btn.dataset.fid]; if (!f) return;
+    (leuMeals[leuActiveMeal] = leuMeals[leuActiveMeal] || []).push({ id: f.id, grams: f.unit ? num(f.unit.g) : f.p });
+    saveLeuMeals(); leuCloseSearch(); renderBol();
+  };
   panel.appendChild(input); panel.appendChild(results); overlay.appendChild(panel);
   document.body.appendChild(overlay); renderResults('');
   setTimeout(() => input.focus(), 100);
 }
 function leuCloseSearch() { const el = document.getElementById('leuSearchOverlay'); if (el) el.remove(); }
 
+// ── Journal reflux ──
+function logMeal(mealId) {
+  const items = (leuMeals[mealId] || []).filter(i => num(i.grams) > 0 && foodsById[i.id]);
+  if (!items.length) return showToast('Repas vide');
+  const t = computeMeal(mealId, items);
+  const now = Date.now();
+  journal.entries.push({
+    id: 'm' + now, type: 'meal', ts: now, meal: mealId,
+    items: items.map(i => ({ id: i.id, g: Math.round(num(i.grams) * 10) / 10 })),
+    totals: { massEff: Math.round(t.massEff), solids: Math.round(t.solids), liquids: Math.round(t.liquids), fat: Math.round(t.fat * 10) / 10,
+      kcal: Math.round(t.kcal), prot: Math.round(t.prot * 10) / 10, leu: Math.round(t.leu * 100) / 100, mx: Math.round(t.mx) },
+    verdict: t.verdict, symptom: null,
+  });
+  saveJournal();
+  showToast('Repas noté — je te demanderai comment il passe');
+}
+function draftFrom(sym) {
+  return sym ? { score: sym.score, loc: [...(sym.loc || [])], ctx: [...(sym.ctx || [])], note: sym.note || '' } : { score: null, loc: [], ctx: [], note: '' };
+}
+function openSymptomFor(id) {
+  const e = journal.entries.find(x => x.id === id); if (!e) return;
+  currentTab = 'journal'; setActiveTab('journal');
+  jOpenId = id; jDraft = draftFrom(e.symptom);
+  render(); window.scrollTo(0, 0);
+}
+function localDT(ts) { return `${dayStr(ts)}T${timeStr(ts)}`; }
+function jNewSymptom() { jOpenId = 'new'; jDraft = { ...draftFrom(null), when: localDT(Date.now()) }; renderJournal(); window.scrollTo(0, 0); }
+function jToggleOpen(id) {
+  if (jOpenId === id) { jOpenId = null; jDraft = null; }
+  else { const e = journal.entries.find(x => x.id === id); jOpenId = id; jDraft = draftFrom(e && e.symptom); }
+  renderJournal();
+}
+function jSet(key, val) { if (!jDraft) return; jDraft[key] = val; renderJournal(); }
+function jToggle(key, i) {
+  if (!jDraft) return;
+  const list = key === 'loc' ? LOC_TAGS : CTX_TAGS, v = list[i], arr = jDraft[key];
+  const at = arr.indexOf(v); if (at >= 0) arr.splice(at, 1); else arr.push(v);
+  renderJournal();
+}
+function jCancel() { jOpenId = null; jDraft = null; renderJournal(); }
+function jSave() {
+  if (!jDraft || jDraft.score == null) return showToast('Choisis une intensité (0 si rien)');
+  const sym = { score: jDraft.score, loc: [...jDraft.loc], ctx: [...jDraft.ctx], note: (jDraft.note || '').trim(), ts: Date.now() };
+  if (jOpenId === 'new') {
+    const ts = jDraft.when ? new Date(jDraft.when).getTime() : Date.now();
+    const prev = journal.entries.filter(e => e.type === 'meal' && e.ts <= ts && ts - e.ts <= 8 * 3600000).sort((a, b) => b.ts - a.ts)[0];
+    journal.entries.push({ id: 's' + Date.now(), type: 'symptom', ts: Number.isFinite(ts) ? ts : Date.now(), symptom: sym, mealRef: prev ? prev.id : null });
+  } else {
+    const e = journal.entries.find(x => x.id === jOpenId); if (e) e.symptom = sym;
+  }
+  saveJournal(); jOpenId = null; jDraft = null; showToast('Noté'); render();
+}
+function jSetTime(id, hhmm) {
+  const e = journal.entries.find(x => x.id === id); if (!e || !/^\d{1,2}:\d{2}$/.test(hhmm)) return;
+  const d = new Date(e.ts); const [h, m] = hhmm.split(':').map(Number); d.setHours(h, m, 0, 0);
+  e.ts = d.getTime(); saveJournal(); renderJournal();
+}
+function jDelete(id) {
+  if (!confirm('Supprimer cette entrée du journal ?')) return;
+  journal.entries = journal.entries.filter(x => x.id !== id);
+  if (jOpenId === id) { jOpenId = null; jDraft = null; }
+  saveJournal(); renderJournal();
+}
+
+function scoreBubble(sym) {
+  if (!sym) return `<div class="j-score s-none">à noter</div>`;
+  const cls = sym.score === 0 ? 's-0' : sym.score <= 3 ? 's-low' : 's-high';
+  return `<div class="j-score ${cls}">${sym.score}</div>`;
+}
+function symptomFormHtml(isNew) {
+  const d = jDraft;
+  let h = `<div class="j-label">Intensité <span style="text-transform:none;font-weight:500">— 0 = aucune · 10 = très forte</span></div>
+    <div class="score-grid">${Array.from({ length: 11 }, (_, s) => `<button class="score-btn${d.score === s ? ' sel' : ''}" onclick="jSet('score',${s})">${s}</button>`).join('')}</div>
+    <div class="j-label">Où</div><div class="tag-row">${LOC_TAGS.map((tg, i) => `<button class="tag${d.loc.includes(tg) ? ' sel' : ''}" onclick="jToggle('loc',${i})">${esc(tg)}</button>`).join('')}</div>
+    <div class="j-label">Contexte</div><div class="tag-row">${CTX_TAGS.map((tg, i) => `<button class="tag${d.ctx.includes(tg) ? ' sel' : ''}" onclick="jToggle('ctx',${i})">${esc(tg)}</button>`).join('')}</div>
+    <div class="j-label">Note</div><input class="j-input" value="${esc(d.note)}" placeholder="facultatif" oninput="jDraft.note=this.value">`;
+  if (isNew) h += `<div class="j-label">Quand</div><input class="j-input" type="datetime-local" value="${esc(d.when)}" onchange="jDraft.when=this.value">`;
+  h += `<div class="action-bar"><button class="action-btn primary" onclick="jSave()">Enregistrer</button><button class="action-btn" onclick="jCancel()">Annuler</button></div>`;
+  return h;
+}
+function entryHtml(e) {
+  const open = jOpenId === e.id;
+  let head, body = '';
+  if (e.type === 'meal') {
+    const cfg = mealCfg(e.meal), t = e.totals || {};
+    head = `<div class="j-time">${timeStr(e.ts)}</div>
+      <div class="j-main"><div class="j-title"><span class="dot v-${e.verdict}"></span>${esc(cfg.label)} · ${esc((VERDICT_TXT[e.verdict] || [''])[0])}</div>
+      <div class="j-sub">${fmt(t.massEff)} g · L ${fmt(t.fat)} g · ${fmt(t.kcal)} kcal · leu ${fmt(t.leu, 1)}</div></div>${scoreBubble(e.symptom)}`;
+    if (open) {
+      const names = (e.items || []).map(i => { const f = foodsById[i.id]; return `${esc(f ? shortName(f.n) : i.id)} ${fmt(i.g, i.g < 10 ? 1 : 0)} g`; }).join(' · ');
+      body = `<div class="j-items">${names}</div>
+        <div class="j-label">Heure du repas</div><input class="j-input" type="time" value="${timeStr(e.ts)}" onchange="jSetTime('${e.id}',this.value)">
+        ${symptomFormHtml(false)}
+        <button class="j-del" onclick="jDelete('${e.id}')">Supprimer ce repas du journal</button>`;
+    }
+  } else {
+    const ref = e.mealRef && journal.entries.find(x => x.id === e.mealRef);
+    const s = e.symptom || {};
+    head = `<div class="j-time">${timeStr(e.ts)}</div>
+      <div class="j-main"><div class="j-title">Brûlure${ref ? ' · après ' + esc(mealCfg(ref.meal).label) + ' de ' + timeStr(ref.ts) : ''}</div>
+      <div class="j-sub">${esc([...(s.loc || []), ...(s.ctx || [])].join(' · ') || '—')}</div></div>${scoreBubble(e.symptom)}`;
+    if (open) body = `${symptomFormHtml(false)}<button class="j-del" onclick="jDelete('${e.id}')">Supprimer cette entrée</button>`;
+  }
+  if (!open && e.symptom && e.symptom.note) body = `<div class="j-items" style="padding-bottom:2px">« ${esc(e.symptom.note)} »</div>`;
+  return `<div class="j-entry"><div class="j-head" onclick="jToggleOpen('${e.id}')">${head}</div>${body ? `<div class="j-body">${body}</div>` : ''}</div>`;
+}
+
+function analysisHtml() {
+  const rated = journal.entries.filter(e => e.type === 'meal' && e.symptom && e.totals);
+  const free = journal.entries.filter(e => e.type === 'symptom');
+  let h = `<div class="daily-summary"><div class="summary-title">📈 Analyse</div>`;
+  if (rated.length < 6) {
+    h += `<div class="j-note">Disponible à partir de 6 repas notés (${rated.length}/6). Chaque note compte, y compris les 0.</div>`;
+  } else {
+    const order = ['ok', 'low', 'warn', 'over'];
+    h += `<table class="j-table"><tr><th>Verdict du bol</th><th>Repas</th><th>Moy.</th><th>≥ 3</th></tr>`;
+    order.forEach(v => {
+      const g = rated.filter(e => e.verdict === v); if (!g.length) return;
+      const mean = g.reduce((a, e) => a + e.symptom.score, 0) / g.length;
+      const hi = g.filter(e => e.symptom.score >= 3).length / g.length * 100;
+      h += `<tr><td><span class="dot v-${v}"></span>${VERDICT_TXT[v][0]}</td><td>${g.length}</td><td>${fmt(mean, 1)}</td><td>${fmt(hi)} %</td></tr>`;
+    });
+    h += `</table>${scatterSvg(rated)}`;
+  }
+  if (free.length) {
+    const night = free.filter(e => { const hh = new Date(e.ts).getHours(); return hh >= 22 || hh < 7; }).length;
+    h += `<div class="j-note" style="margin-top:8px">Brûlures signalées hors repas : ${free.length} (dont ${night} entre 22 h et 7 h).</div>`;
+  }
+  return h + `</div>`;
+}
+function scatterSvg(rated) {
+  const W = 320, H = 210, L = 34, B = 26, T = 8, R = 8;
+  const xMax = Math.ceil(Math.max(1200, ...rated.map(e => e.totals.massEff * 1.05)) / 400) * 400;
+  const yMax = Math.ceil(Math.max(60, ...rated.map(e => e.totals.fat * 1.05)) / 20) * 20;
+  const X = v => L + v / xMax * (W - L - R), Y = v => H - B - v / yMax * (H - B - T);
+  const col = s => s === 0 ? '#7CAA6E' : s <= 3 ? '#D9963A' : '#C47A6A';
+  let s = `<svg class="j-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Repas selon remplissage et graisses">`;
+  for (let i = 0; i <= 4; i++) {
+    const xv = xMax * i / 4, yv = yMax * i / 4;
+    s += `<line x1="${X(xv)}" y1="${T}" x2="${X(xv)}" y2="${H - B}" stroke="#E8E0D4" stroke-width="1"/><text x="${X(xv)}" y="${H - B + 13}" font-size="9" text-anchor="middle" fill="#8C7E6A">${Math.round(xv)}</text>`;
+    s += `<line x1="${L}" y1="${Y(yv)}" x2="${W - R}" y2="${Y(yv)}" stroke="#E8E0D4" stroke-width="1"/><text x="${L - 4}" y="${Y(yv) + 3}" font-size="9" text-anchor="end" fill="#8C7E6A">${Math.round(yv)}</text>`;
+  }
+  const r2 = mealCfg('r2');
+  if (r2.mass_g && r2.fat_g) {
+    s += `<line x1="${X(r2.mass_g.max)}" y1="${T}" x2="${X(r2.mass_g.max)}" y2="${H - B}" stroke="#8C7E6A" stroke-dasharray="3 3"/>`;
+    s += `<line x1="${L}" y1="${Y(r2.fat_g.max)}" x2="${W - R}" y2="${Y(r2.fat_g.max)}" stroke="#8C7E6A" stroke-dasharray="3 3"/>`;
+    s += `<text x="${X(r2.mass_g.max) + 3}" y="${T + 9}" font-size="9" fill="#8C7E6A">vert R2</text>`;
+  }
+  rated.forEach(e => { s += `<circle cx="${X(e.totals.massEff)}" cy="${Y(e.totals.fat)}" r="5" fill="${col(e.symptom.score)}" fill-opacity="0.85" stroke="#fff" stroke-width="1"/>`; });
+  s += `<text x="${(W + L) / 2}" y="${H - 2}" font-size="9" text-anchor="middle" fill="#8C7E6A">Remplissage (g)</text>`;
+  s += `<text x="10" y="${(H - B) / 2}" font-size="9" text-anchor="middle" fill="#8C7E6A" transform="rotate(-90 10 ${(H - B) / 2})">Graisses (g)</text></svg>`;
+  s += `<div class="j-legend"><span><i style="background:#7CAA6E"></i>0</span><span><i style="background:#D9963A"></i>1–3</span><span><i style="background:#C47A6A"></i>≥ 4</span></div>`;
+  return s;
+}
+
+function renderJournal() {
+  const c = document.getElementById('mainContent');
+  let html = `<div class="daily-summary"><div class="summary-title">🔥 Journal reflux</div>
+    <div class="j-note">Note chaque repas depuis l’onglet Bol (« J’ai mangé »), puis la brûlure éventuelle une à deux heures après : un 0 compte autant qu’un 8. Les brûlures de la nuit ou du matin se signalent ici.</div>
+    <div class="action-bar"><button class="action-btn" onclick="jNewSymptom()">＋ Signaler une brûlure</button><button class="action-btn" onclick="exportJournalCsv()">📤 Export CSV</button></div>`;
+  if (jOpenId === 'new' && jDraft) html += `<div class="j-newform">${symptomFormHtml(true)}</div>`;
+  html += `</div>`;
+  html += analysisHtml();
+  const entries = [...journal.entries].sort((a, b) => b.ts - a.ts).slice(0, 150);
+  if (!entries.length) html += `<div class="leu-empty">Aucune entrée pour l’instant.</div>`;
+  let last = '';
+  for (const e of entries) {
+    const d = dayStr(e.ts);
+    if (d !== last) { html += `<div class="j-day">${esc(formatDateLabel(d))}</div>`; last = d; }
+    html += entryHtml(e);
+  }
+  c.innerHTML = html;
+}
+
+function downloadText(text, filename, type) {
+  const blob = new Blob([text], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = filename; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+function exportJournalCsv() {
+  if (!journal.entries.length) return showToast('Journal vide');
+  const rows = [['date', 'heure', 'type', 'repas', 'verdict', 'remplissage_g', 'solides_g', 'liquides_ml', 'lipides_g', 'kcal', 'proteines_g', 'leucine_corrigee_g', 'methylxanthines_mg', 'score', 'localisation', 'contexte', 'note', 'aliments']];
+  [...journal.entries].sort((a, b) => a.ts - b.ts).forEach(e => {
+    const t = e.totals || {}, s = e.symptom || {};
+    const items = (e.items || []).map(i => { const f = foodsById[i.id]; return `${f ? shortName(f.n) : i.id} ${i.g} g`; }).join(' | ');
+    const meal = e.type === 'meal' ? mealCfg(e.meal).label : (e.mealRef ? 'après ' + ((journal.entries.find(x => x.id === e.mealRef) || {}).meal || '') : '');
+    rows.push([dayStr(e.ts), timeStr(e.ts), e.type === 'meal' ? 'repas' : 'brûlure', meal, e.verdict || '', t.massEff ?? '', t.solids ?? '', t.liquids ?? '', t.fat ?? '', t.kcal ?? '', t.prot ?? '', t.leu ?? '', t.mx ?? '',
+      s.score ?? '', (s.loc || []).join(', '), (s.ctx || []).join(', '), s.note || '', items]);
+  });
+  const csv = rows.map(r => r.map(v => { const x = String(v); return /[";\n]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x; }).join(';')).join('\n');
+  downloadText('﻿' + csv, `journal-reflux-${todayStr()}.csv`, 'text/csv');
+  showToast('Journal exporté');
+}
+
 // ── Actions ──
 function exportBackup() {
   const data = {
     type: 'nutrition-tracker-backup',
-    version: '1.0',
+    version: '1.1',
     exportDate: new Date().toISOString(),
     routineVersion: routine?.meta?.version || '?',
-    tracking: tracking
+    tracking: tracking,
+    bol: leuMeals,
+    templates: userTemplates,
+    journal: journal
   };
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -1245,8 +1784,14 @@ function importBackup(event) {
       if (data.type !== 'nutrition-tracker-backup') throw new Error('Format invalide');
       tracking = data.tracking || {};
       saveTracking();
+      if (data.bol && typeof data.bol === 'object') {
+        MEAL_IDS.forEach(m => { leuMeals[m] = Array.isArray(data.bol[m]) ? data.bol[m].filter(i => i && i.id).map(i => ({ id: i.id, grams: num(i.grams) })) : []; });
+        saveLeuMeals();
+      }
+      if (Array.isArray(data.templates)) { userTemplates = data.templates; saveTemplates(); }
+      if (data.journal && Array.isArray(data.journal.entries)) { journal = data.journal; saveJournal(); }
       render();
-      showToast(`Backup importé (${Object.keys(tracking).length} jours)`);
+      showToast(`Backup importé (${Object.keys(tracking).length} jours, ${journal.entries.length} entrées journal)`);
     } catch(err) {
       showToast('Erreur: fichier invalide');
     }
@@ -1276,6 +1821,13 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
+// Les onglets restent collés juste sous l'en-tête, quelle que soit sa hauteur
+function syncStickyOffset() {
+  const h = document.querySelector('.header'), nav = document.getElementById('navTabs');
+  if (h && nav) nav.style.top = h.offsetHeight + 'px';
+}
+window.addEventListener('resize', syncStickyOffset);
+
 // ── Tabs ──
 function setActiveTab(tab) {
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
@@ -1292,6 +1844,7 @@ document.getElementById('navTabs').addEventListener('click', (e) => {
 // ── Init ──
 async function init() {
   loadTracking();
+  loadJournal();
   await Promise.all([loadRoutine(), loadBaseNutritionelle()]);
   render();
 }
