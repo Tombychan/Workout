@@ -59,6 +59,14 @@
       "url": "fermentation.html",
       "icon": "🧫",
       "tags": ["fermentation"]
+    },
+    {
+      "id": "solfege",
+      "name": "Atelier Solfège",
+      "description": "Lecture de notes, chanter juste (micro), gammes, intervalles, rythme, partitions Vaccai, glossaire",
+      "url": "solfege.html",
+      "icon": "🎼",
+      "tags": ["musique", "solfège", "chant"]
     }
   ]
 }
