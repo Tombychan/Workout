@@ -67,6 +67,14 @@
       "url": "solfege.html",
       "icon": "🎼",
       "tags": ["musique", "solfège", "chant"]
+    },
+    {
+      "id": "portugais",
+      "name": "Português",
+      "description": "Séance du jour : vocabulaire en révision espacée, grammaire A1-A2, conjugaison, production corrigée par Claude",
+      "url": "portugais.html",
+      "icon": "🇵🇹",
+      "tags": ["langues", "portugais", "quotidien"]
     }
   ]
 }
