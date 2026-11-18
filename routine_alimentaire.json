@@ -1,21 +1,53 @@
 {
   "meta": {
-    "version": "1.2.1",
-    "date": "2026-10-21",
+    "version": "1.4.0",
+    "date": "2026-11-18",
     "eating_window": "8h00–18h30 (~10h30)",
     "target_kcal": 2900,
-    "target_protein_g": 172,
+    "target_protein_g": 130,
+    "target_protein_range_g": [
+      119,
+      136
+    ],
     "target_carb_g": 340,
     "target_fat_g": 90,
-    "protein_per_kg": 2,
+    "protein_per_kg": 1.53,
+    "protein_per_kg_range": [
+      1.4,
+      1.6
+    ],
     "carb_per_kg": 4,
     "fat_per_kg": 1.06,
     "weight_kg": 85,
-    "leucine_thresholds_per_day": 3,
-    "leucine_threshold_g": 2.5,
-    "notes": "Cibles basées sur TDEE ~2700-2800 + surplus modeste 100-200 kcal pour recomposition. Protéines initialement à 1.6g/kg (136g) mais l'architecture actuelle fournit ~172g (2g/kg) — dans le corridor optimal 1.6-2.2g/kg (Stokes et al. 2018). Déficit calorique identifié principalement sur les glucides."
+    "leucine_thresholds_per_day": null,
+    "leucine_threshold_g": null,
+    "notes": "Cible protéique révisée le 17/11/2026 : 1,4-1,6 g/kg/jour, soit 119-136 g à 85 kg ; point de visée 130 g (haut de fourchette, part végétale importante). Comptage en protéines brutes. Objectif de seuil de leucine par repas abandonné (champs leucine conservés à titre informatif, seuils à null). Cibles kcal, glucides et lipides inchangées, à revoir avec le planificateur. L'architecture des repas ci-dessous fournit encore ~180 g de protéines : voir pending_adjustments."
   },
   "changelog": [
+    {
+      "date": "2026-11-18",
+      "version": "1.4.0",
+      "changes": [
+        "Nouveau bloc meal_scoring : seuils des quatre voyants de l'onglet Bol (Reflux, Muscle, Longévité, Sommeil), heures par défaut des repas et du coucher.",
+        "gastric_emptying_model : paramètres numériques (params) lus par l'app pour calculer la vidange et le contenu de l'estomac au coucher.",
+        "Couloirs de repas v1.2 : R1 élargi (≤ 950 kcal, ≤ 28 g de lipides, ≤ 650 g) puisqu'il devient le plus gros repas, pris après la séance à jeun ; nouveau créneau « Inter » pour le Flavochino de 12 h.",
+        "Modèles de repas de la journée anti-reflux (17/11/2026) : R1, Inter (Flavochino), R2, collation, dîner poulet, dîner sardines.",
+        "Les repas de la routine eux-mêmes ne changent pas dans cette version."
+      ]
+    },
+    {
+      "date": "2026-11-17",
+      "version": "1.3.0",
+      "changes": [
+        "Cible protéique : 1,4-1,6 g/kg/jour (119-136 g, visée 130 g) au lieu de 2 g/kg (172 g).",
+        "Objectif de seuil de leucine abandonné : leucine_threshold_g et leucine_thresholds_per_day à null, leucine_min_g à null dans tous les couloirs de repas, principe des 3 stimulations retiré.",
+        "Nouveau bloc gastric_emptying_model : vidange calculée au niveau du repas (latence, débit calorique croissant avec la taille du repas, frein lipidique, facteur horaire matin/soir d'après Goo et al. 1987).",
+        "Estimations de digestion (digestion_estimate) recalculées avec le modèle, avec fourchettes et points de contrôle (micro-sessions, dîner, coucher).",
+        "Couloirs de repas v1.1 : cible protéique journalière, règle dîner-coucher ≥ 3 h, jauge de fermentation par famille FODMAP (base nutritionnelle v2.5.0).",
+        "Contextes des repas débarrassés des mentions de seuil de leucine ; nouvelles interactions et points de vigilance (facteur horaire, FODMAP du jus du matin).",
+        "Les repas eux-mêmes ne changent pas dans cette version : recalibrage prévu avec le planificateur."
+      ]
+    },
     {
       "date": "2026-10-21",
       "version": "1.2.1",
@@ -78,8 +110,12 @@
     }
   ],
   "pending_adjustments": {
-    "status": "Aucun. Tous les ajustements ont été confirmés et intégrés en v1.1.0.",
-    "items": []
+    "status": "3 ajustements en attente (17/11/2026), à traiter avec le planificateur.",
+    "items": [
+      "Protéines : l'architecture fournit ~180 g/jour pour une cible de 119-136 g. Retirer ~45-60 g, en priorité au R2 et au dîner (volume et graisses), et redistribuer les calories vers le matin et le midi.",
+      "Collation : la routine indique encore skyr 200 g, alors que la base marque les skyrs inactifs (remplacés par la ricotta de brebis du marché depuis avril 2026). Confirmer la collation réelle.",
+      "Vidange : selon le modèle v1, le R2 (~1 040 kcal) est encore à moitié dans l'estomac à 17h30 et le dîner à ~55 % au coucher (22h30). Alléger R2 et dîner, et vérifier si le dîner est encore pris à 20-21 h certains soirs (variante extended_window)."
+    ]
   },
   "meals": [
     {
@@ -183,7 +219,8 @@
         "carb_g": 12,
         "fat_g": 0,
         "kcal": 55,
-        "rationale": "Nitrates (betterave → NO, vasodilatation + performance), anthocyanines (chou rouge → cyanidin + glucosinolates → Nrf2), hépatoprotection (gingembre via NF-κB), alcalinisation urinaire (concombre — réduit cristallisation ténofovir)."
+        "rationale": "Nitrates (betterave → NO, vasodilatation + performance), anthocyanines (chou rouge → cyanidin + glucosinolates → Nrf2), hépatoprotection (gingembre via NF-κB), alcalinisation urinaire (concombre — réduit cristallisation ténofovir).",
+        "fodmap_note": "Charge FODMAP élevée (base v2.5.0) : les FODMAP sont solubles et passent dans le jus. Betterave ~150 g ≈ 7 fois sa portion verte (GOS, fructanes), céleri ~100 g ≈ 11 fois (mannitol). Sans conséquence si aucun ballonnement ni brûlure tardive ; à réduire en priorité si la piste fermentation se confirme."
       },
       "totals": {
         "protein_g": 45.5,
@@ -194,10 +231,14 @@
       },
       "leucine_threshold": true,
       "digestion_estimate": {
-        "gastric_emptying_50pct": "1h30-1h40",
-        "gastric_emptying_90pct": "2h30-3h",
-        "full_absorption": "4h",
-        "profile": "Semi-liquide, faible en lipides (15g). Vidange rapide. Flocons 130g pré-digérés par fermentation. Volume du bol ~410g — confortable pour MS1 à 9h30."
+        "model": "gastric_emptying_model v1 — calculé le 17/11/2026, non calibré (valeur centrale, fourchette entre parenthèses)",
+        "gastric_emptying_50pct": "2h55 (2h27-3h32)",
+        "gastric_emptying_90pct": "4h57 (4h01-6h09)",
+        "full_absorption": "non modélisé",
+        "checkpoints": {
+          "MS1 9h30": "80 % du repas encore dans l'estomac (75-84 %)"
+        },
+        "profile": "~720 kcal hors jus, ~18 g de lipides, pris à 8 h (facteur horaire 1,0). Le bol est en réalité semi-solide (flocons hydratés) : la vidange réelle est probablement un peu plus rapide que ce calcul, qui le traite comme un solide."
       }
     },
     {
@@ -376,17 +417,22 @@
       },
       "leucine_threshold": true,
       "digestion_estimate": {
-        "gastric_emptying_50pct": "3h-3h30",
-        "gastric_emptying_90pct": "5h-6h",
-        "full_absorption": "6h-7h",
-        "profile": "Repas le plus lourd. Charge calorique élevée + 48g lipides + texture solide. Implications pour MS2 lundi (14h = 1h30 post-R2, positions verticales uniquement)."
+        "model": "gastric_emptying_model v1 — calculé le 17/11/2026, non calibré (valeur centrale, fourchette entre parenthèses)",
+        "gastric_emptying_50pct": "4h55 (4h05-6h00)",
+        "gastric_emptying_90pct": "8h31 (6h51-10h35)",
+        "full_absorption": "non modélisé",
+        "checkpoints": {
+          "MS2 lundi 14h": "92 % du repas encore dans l'estomac (90-94 %)",
+          "MS3 lundi 17h30": "49 % (36-59 %)"
+        },
+        "profile": "Repas le plus lourd : ~1 040 kcal hors jus, ~49 g de lipides (42 % des calories → frein lipidique), pris à 12h30 (facteur horaire 1,2 puis croissant). Le modèle contredit l'hypothèse « estomac vidé à 90 % à 17h30 » retenue pour la MS3 du lundi : à revoir en allégeant le R2. Les gros repas sont la zone où le modèle est le moins sûr."
       }
     },
     {
       "id": "collation",
       "name": "Collation",
       "time": "16h00",
-      "context": "~3h30 après R2. Profil digestif rapide (semi-liquide, faible en lipides). Seuil leucine atteint via combinaison skyr (caséine riche en leucine) + Greenwhey.",
+      "context": "~3h30 après R2. Profil digestif rapide (semi-liquide, faible en lipides). Apport protéique via skyr (ou ricotta de brebis, voir pending_adjustments) + Greenwhey.",
       "items": [
         {
           "name": "Skyr",
@@ -410,7 +456,7 @@
           "leucine_g": 0.9,
           "kcal": 59,
           "cost_eur_per_day": 0.42,
-          "notes": "Demi-dose suffisante pour compléter le seuil leucine avec le skyr."
+          "notes": "Demi-dose : complément protéique de la collation."
         },
         {
           "name": "Cacao cru",
@@ -446,17 +492,21 @@
       },
       "leucine_threshold": true,
       "digestion_estimate": {
-        "gastric_emptying_50pct": "45min-1h",
-        "gastric_emptying_90pct": "1h30-2h",
-        "full_absorption": "3h",
-        "profile": "Quasi-liquide, très faible en lipides (4g). Profil digestif le plus rapide de la journée."
+        "model": "gastric_emptying_model v1 — calculé le 17/11/2026, non calibré (valeur centrale, fourchette entre parenthèses)",
+        "gastric_emptying_50pct": "2h00 (1h41-2h23)",
+        "gastric_emptying_90pct": "3h15 (2h41-3h58)",
+        "full_absorption": "non modélisé",
+        "checkpoints": {
+          "Dîner 18h30": "33 % de la collation encore dans l'estomac (17-47 %)"
+        },
+        "profile": "~264 kcal, très peu de lipides, à moitié semi-liquide (skyr : demi-facteur horaire). Petit repas, mais pris à 16h (facteur horaire 1,36) : il n'est pas entièrement vidé au moment du dîner."
       }
     },
     {
       "id": "diner",
       "name": "Dîner",
       "time": "18h00-18h30",
-      "context": "Dernier repas. Pas d'exigence de seuil leucine (3 stimulations déjà atteintes). Contribution au total protéique. Glucides lents pour stabilité glycémique nocturne (voie tryptophane → sérotonine → mélatonine). Protéines limitées ~28-30g (charge osmotique rénale nocturne). Omega-3 : 2 gélules ici (fractionnement 2+2+2).",
+      "context": "Dernier repas. Contribution au total protéique. Glucides lents pour stabilité glycémique nocturne (voie tryptophane → sérotonine → mélatonine). Protéines limitées ~28-30g (charge osmotique rénale nocturne). Omega-3 : 2 gélules ici (fractionnement 2+2+2). Vidange ralentie le soir : repas le plus léger en volume et en graisses, au moins 3 h avant le coucher.",
       "protein_source_rotation": [
         {
           "name": "Sardines bio",
@@ -607,10 +657,16 @@
       },
       "leucine_threshold": false,
       "digestion_estimate": {
-        "gastric_emptying_50pct": "2h-2h30",
-        "gastric_emptying_90pct": "3h30-4h30",
-        "full_absorption": "5h-6h",
-        "profile": "Modéré en calories, lipides légèrement augmentés (+10ml huile olive). PdT cuites-refroidies : texture dense, vidange standard. Timing compatible coucher (dîner 18h30, coucher 22h-23h = 4-5h)."
+        "model": "gastric_emptying_model v1 — calculé le 17/11/2026, non calibré (valeur centrale, fourchette entre parenthèses)",
+        "gastric_emptying_50pct": "4h23 (3h42-5h14)",
+        "gastric_emptying_90pct": "7h08 (5h54-8h41)",
+        "full_absorption": "non modélisé",
+        "checkpoints": {
+          "Coucher 22h30 (dîner à 18h30)": "55 % du dîner encore dans l'estomac (44-64 %)",
+          "Coucher 23h00 (dîner à 18h30)": "48 % (35-59 %)",
+          "Coucher 22h30 (dîner tardif à 20h30)": "85 % (81-88 %)"
+        },
+        "profile": "~771 kcal en moyenne, ~26 g de lipides, pris à 18h30 (facteur horaire 1,47). L'ancienne estimation (90 % vidé en 3h30-4h30) ignorait le ralentissement du soir. Valeurs absolues incertaines (modèle non calibré), mais l'écart entre dîner à 18h30 et dîner à 20h30 est robuste."
       }
     }
   ],
@@ -621,7 +677,7 @@
       "fat_g": 99,
       "kcal": 2936,
       "leucine_stimulations": 3,
-      "note": "Totaux v1.1.1. Greenwhey corrigée selon étiquette réelle (117kcal/30g, 1.8g leucine). Sardines corrigées à 95g/boîte égouttée."
+      "note": "Totaux v1.1.1. Greenwhey corrigée selon étiquette réelle (117kcal/30g, 1.8g leucine). Sardines corrigées à 95g/boîte égouttée. Au-dessus de la cible protéique v1.3.0 (119-136 g) : voir pending_adjustments."
     }
   },
   "variants": {
@@ -656,7 +712,8 @@
           "action": "Dîner léger : protéines modérées + glucides lents + psyllium. Éviter charge lipidique élevée.",
           "rationale": "Limiter le reflux et la disruption glycémique nocturne avec un dîner tardif."
         }
-      ]
+      ],
+      "status": "À confirmer (17/11/2026) : toujours d'actualité ? Selon le modèle de vidange, un dîner de ~770 kcal à 20h30 est encore à ~85 % dans l'estomac à 22h30. Si cette variante est maintenue, viser un dîner tardif nettement plus petit (≤ 400-450 kcal) ou décaler le coucher."
     }
   },
   "supplements": [
@@ -755,20 +812,23 @@
     "Caroténoïdes liposolubles : jus #2 AVEC le R2 (lipides), pas à jeun.",
     "Œufs entiers > blancs pour MPS (Van Vliet et al. 2017, food matrix effect). Découplage jaune/blanc reste pertinent au dîner (digestion, sommeil).",
     "Polyphénols + Fe/Zn : charge élevée R1 et collation inhibe absorption. R2 optimisé (Flavochino décalé, chou rouge retiré jus midi, citron ajouté). Dîner = seule fenêtre sans inhibiteurs → sardines 2×/sem.",
-    "Repas 2 dense + MS2 lundi : R2 ~950 kcal, ~48g lip, vidange 5-6h. MS2 lundi (14h) = positions verticales/suspendues uniquement. Hinge/row en MS3 (17h30).",
+    "Repas 2 dense + MS2 lundi : R2 ~950 kcal, ~48g lip, vidange lente. MS2 lundi (14h) = positions verticales/suspendues uniquement. Hinge/row en MS3 (17h30) — mais selon le modèle de vidange v1, le R2 actuel y est encore à ~50 % : alléger le R2 ou garder la MS3 prudente.",
     "Germe de blé co-fermenté : la fermentation réduit les phytates du germe ET pourrait augmenter la teneur en spermidine (polyamine stable en conditions LAB, production par L. plantarum via décarboxylation ornithine).",
     "Pommes de terre cuites-refroidies (RS3) : cuire puis réfrigérer ≥4h. Le RS3 survit au réchauffage (Englyst & Cummings 1987). Prébiotique mieux toléré que l'inuline (fermentation lente, côlon distal). Batch cooking 2-3 jours.",
     "Banane exclue de tout repas contenant des flavanols (cacao, myrtilles, Flavochino). La polyphénol oxydase (PPO) détruit jusqu'à 84% des flavanols par conversion en quinones (Ottaviani et al. 2023, Food & Function, UC Davis).",
     "Pain petit épeautre et glycation : principal poste AGEs exogènes (cuisson sèche four ~230°C = réaction de Maillard). IG ~65-70 = glycation endogène. Flocons fermentés supérieurs sur les deux axes : zéro AGEs (25-30°C), meilleur profil glycémique (bêta-glucanes + acides organiques). Réduction du pain au profit des flocons = levier anti-glycation multi-axes (Uribarri et al. 2010).",
     "Lycopène et photoprotection : concentré de tomate double au R2 (~9mg lycopène/15g). Absorption optimisée par lipides du R2 (~49g). Complémentaire bêta-carotène (jus carotte) + flavanols (Flavochino) = 3 voies distinctes. Triade caroténoïdes (bêta-carotène + lycopène + astaxanthine) = SPF endogène ~2-4. Astaxanthine = 3e priorité non urgente.",
-    "Composés organosoufrés (alliums) et Nrf2 : ail cru/échalote = activation Nrf2 complémentaire au sulforaphane (résidus cystéine distincts sur Keap1). Vasodilatation via H₂S (voie distincte NO/nitrates et eNOS/flavanols). Échalote crue vinaigrette R2 = intégration naturelle (quercétine liposoluble + lipides). Flag RGO : ail cru peut relaxer sphincter œsophagien inférieur."
+    "Composés organosoufrés (alliums) et Nrf2 : ail cru/échalote = activation Nrf2 complémentaire au sulforaphane (résidus cystéine distincts sur Keap1). Vasodilatation via H₂S (voie distincte NO/nitrates et eNOS/flavanols). Échalote crue vinaigrette R2 = intégration naturelle (quercétine liposoluble + lipides). Flag RGO : ail cru peut relaxer sphincter œsophagien inférieur.",
+    "Vidange et heure du repas : la demi-vidange des solides est ~54 % plus longue à 20 h qu'à 8 h (Goo et al. 1987). Concentrer volume, graisses et calories le matin et le midi ; dîner le plus léger, au moins 3 h avant le coucher (ACG 2022).",
+    "Jus du matin et FODMAP : betterave (~150 g) et céleri (~100 g) dépassent largement leurs portions vertes, et les FODMAP solubles passent dans le jus. Premier levier à actionner si des brûlures tardives (3-8 h après un repas) s'accompagnent de ballonnements."
   ],
   "principles": {
     "stable": [
       "Fenêtre alimentaire ~10h30, alignée chronobiologie (Rhonda Patrick)",
-      "3 stimulations seuil leucine (≥2,5g) par jour (R1, R2, collation)",
+      "Protéines 1,4-1,6 g/kg/jour (119-136 g), sans seuil de leucine par repas",
       "Glucides lents au dîner (tryptophane → sérotonine → mélatonine)",
       "Protéines dîner ≤28-30g (charge osmotique rénale nocturne)",
+      "Dîner : repas le plus léger en volume et en graisses, au moins 3 h avant le coucher (vidange ralentie le soir)",
       "Flavochino : 1ère prise dans le bol R1, 2ème à 11h30 inter-repas. Toujours avant 14h30",
       "Citron systématique au R2 (enhancer Fe non-héminique)",
       "Jus midi sans chou rouge (inhibiteur Fe/Zn, couvert au matin)",
@@ -783,7 +843,8 @@
       "B12 : 2,5µg/jour (multivitamines) + sources alimentaires = probablement suffisant mais vérifier au bilan (B12 sérique + homocystéine)",
       "Protéine blanc d'œuf poudre au dîner : en évaluation (découplage lipides/protéines pour reflux/chant)",
       "Banane : ne jamais combiner avec aliments riches en flavanols (PPO — Ottaviani et al. 2023)",
-      "Pain petit épeautre : principal poste AGEs exogènes + IG élevé. Réduction progressive au profit des flocons fermentés = levier anti-glycation + budget + glycémie. Ne pas éliminer (véhicule repas, plaisir) mais réduire."
+      "Pain petit épeautre : principal poste AGEs exogènes + IG élevé. Réduction progressive au profit des flocons fermentés = levier anti-glycation + budget + glycémie. Ne pas éliminer (véhicule repas, plaisir) mais réduire.",
+      "Jus du matin : charge FODMAP élevée (betterave, céleri). À surveiller si brûlures tardives ou ballonnements."
     ]
   },
   "monthly_cost_estimate": {
@@ -796,38 +857,53 @@
     "note": "v1.2.0 : Mg bisglycinate (15€) remplacé par citrate Mg (5€) + taurine (1.50€) + glycine (2.50€) = 9€. Concentré tomate ajouté (~3€/mois). Collagène Naticol® (19€/mois) non comptabilisé (en attente bilan rénal)."
   },
   "meal_corridors": {
-    "version": "1.0",
-    "date": "2026-10-21",
-    "status": "Provisoire — règles pratiques, pas des seuils validés. À recalibrer avec le journal reflux (2-3 semaines).",
+    "version": "1.2",
+    "date": "2026-11-18",
+    "status": "Provisoire — règles pratiques, pas des seuils validés. À recalibrer avec le journal (Journal réel, 3-4 semaines).",
     "liquid_mass_factor": 0.5,
     "notes": [
       "Remplissage = solides + liquides × 0,5 (les liquides quittent l’estomac bien plus vite que les solides).",
       "Pour chaque jauge : vert ≤ max, orange entre max et red, rouge au-delà de red. min = plancher (« pas assez »).",
       "Bases : distension gastrique → relaxations transitoires du sphincter (Holloway 1985) ; repas de 1 000 kcal → plus d’acide dans l’œsophage qu’un repas de 500 kcal, graisses → plus de symptômes (Fox 2007).",
-      "Leucine corrigée = leucine × coefficient de digestibilité de chaque aliment (base nutritionnelle v2.4.0)."
+      "Plancher de leucine abandonné le 17/11/2026 (leucine_min_g = null) ; remplacé par la cible protéique journalière (daily.protein_g).",
+      "Jauge de fermentation (base v2.5.0) : pour chaque famille FODMAP, somme des portions / « FODMAP portion verte max (g) » des aliments du repas. < 1 vert, 1-2 orange, ≥ 2 rouge (provisoire). Aliments « élevé » : alerte directe. Effet différé de 3 à 8 h.",
+      "Le soir : appliquer en plus le champ « Soir » de la base (ok / limiter / éviter) et la règle dîner-coucher.",
+      "v1.2 (18/11/2026) : R1 placé après la séance à jeun et devenu le plus gros repas (vidange la plus rapide le matin, jaunes d'œuf le matin) : couloirs du R1 élargis (kcal ≤ 950, lipides ≤ 28 g, remplissage ≤ 650 g). Nouveau créneau « Inter » (Flavochino de 12 h). Plancher de la collation abaissé à 250 kcal (cible protéique plus basse, collation plus légère)."
     ],
+    "daily": {
+      "protein_g": {
+        "min": 119,
+        "target": 130,
+        "max": 136
+      }
+    },
+    "bedtime_rule": {
+      "dinner_to_bed_min_h": 3,
+      "bedtime_residual_max_pct": null,
+      "notes": "Délai minimal dîner-coucher : 3 h (ACG 2022 ; Fujiwara et al. 2005). Seuil personnel de reste gastrique au coucher (en % du dîner, selon gastric_emptying_model) à fixer après 3-4 semaines de journal."
+    },
     "meals": {
       "r1": {
         "label": "R1",
-        "time": "8h",
+        "time": "10h15",
         "kcal": {
           "min": 600,
-          "max": 850,
-          "red": 1000
+          "max": 950,
+          "red": 1100
         },
         "fat_g": {
-          "max": 22,
-          "red": 30
+          "max": 28,
+          "red": 35
         },
         "mass_g": {
-          "max": 600,
-          "red": 800
+          "max": 650,
+          "red": 850
         },
-        "leucine_min_g": 2.5
+        "leucine_min_g": null
       },
       "r2": {
         "label": "R2",
-        "time": "12h30",
+        "time": "13h30",
         "kcal": {
           "min": 650,
           "max": 850,
@@ -841,13 +917,13 @@
           "max": 850,
           "red": 1050
         },
-        "leucine_min_g": 2.5
+        "leucine_min_g": null
       },
       "collation": {
         "label": "Collation",
-        "time": "16h",
+        "time": "16h30",
         "kcal": {
-          "min": 300,
+          "min": 250,
           "max": 500,
           "red": 650
         },
@@ -859,7 +935,7 @@
           "max": 450,
           "red": 600
         },
-        "leucine_min_g": 2.5
+        "leucine_min_g": null
       },
       "diner": {
         "label": "Dîner",
@@ -882,10 +958,306 @@
           "red": 40
         },
         "leucine_min_g": null
+      },
+      "inter": {
+        "label": "Inter",
+        "time": "12h",
+        "kcal": {
+          "max": 250,
+          "red": 400
+        },
+        "fat_g": {
+          "max": 10,
+          "red": 15
+        },
+        "mass_g": {
+          "max": 300,
+          "red": 450
+        },
+        "leucine_min_g": null
       }
     }
   },
+  "gastric_emptying_model": {
+    "version": "1.0",
+    "date": "2026-11-17",
+    "status": "Non calibré. Erreur absolue attendue 30-50 % ; fiable surtout pour comparer deux repas ou deux horaires. À calibrer sur le Journal réel (entrées Nuit).",
+    "inputs_per_food": "kcal, lipides, « État » (solide / semi-liquide / liquide) et masse — base_nutritionnelle.json v2.5.0. Le champ « Vidange gastr. (min) » par aliment a été supprimé : les durées par aliment ne s'additionnent pas.",
+    "liquids": {
+      "description": "Liquides peu caloriques (eau, jus) : sortie rapide, exponentielle, non soumise au facteur horaire.",
+      "half_life_min": 20
+    },
+    "lag_phase": {
+      "formula": "latence (min) = min(60, max(20, 15 + 0,03 × kcal solides)) × facteur horaire au début du repas",
+      "notes": "Le broyage des solides retarde le début de la vidange ; la latence s'allonge avec les calories (J Nucl Med Technol, 1990)."
+    },
+    "caloric_rate": {
+      "formula": "débit du matin (kcal/min) = 0,2417 × kcal^0,372 × frein lipidique ; fourchette basse × 0,8, haute × 1,25",
+      "examples_kcal_per_min": {
+        "255": 1.9,
+        "500": 2.4,
+        "770": 2.9,
+        "1040": 3.2
+      },
+      "fat_brake": {
+        "fat_energy_share_gt_0.40": 0.9,
+        "fat_energy_share_gt_0.55": 0.8
+      },
+      "anchors": "Repas test de scintigraphie de 255 kcal pauvre en graisses : demi-vidange ~90 min, compatible avec les normes (≤ 60 % restant à 2 h, ≤ 10 % à 4 h ; Tougas et al. 2000). Repas mixte de ~1 000 kcal : 90 % vidés en ~5 h 30 le matin (ordre de grandeur). Le débit absolu augmente avec la taille du repas (Moore et al., Dig Dis Sci). Repas liquides caloriques : ~200 kcal/h.",
+      "revision_note": "La version constante (2,5 kcal/min) prévue dans la spécification donnait des durées absurdes pour les gros repas (R2 vidé à 90 % en ~11 h) : remplacée par un débit croissant avec la taille du repas."
+    },
+    "circadian_factor": {
+      "source": "Goo et al. 1987, Gastroenterology 93:515 — demi-vidange des solides +53,6 % à 20 h vs 8 h (16 hommes sains) ; liquides inchangés.",
+      "f_8h": 1.0,
+      "f_20h": 1.536,
+      "interpolation": "linéaire entre 8 h et 20 h (hypothèse : seuls deux points mesurés) ; constant avant 8 h et après 20 h",
+      "application": "en continu selon l'heure d'horloge pendant toute la vidange ; le débit est divisé par le facteur, la latence multipliée",
+      "weighting_by_state": {
+        "solide": 1.0,
+        "semi-liquide": 0.5,
+        "liquide": 0.0
+      },
+      "values_at_meal_times": {
+        "8h00": 1.0,
+        "12h30": 1.2,
+        "16h00": 1.36,
+        "18h30": 1.47,
+        "20h30": 1.54
+      },
+      "adjustable": true,
+      "calibration_range": [
+        1.3,
+        1.8
+      ]
+    },
+    "known_biases": [
+      "Gros repas : zone la moins sûre (ancrage haut faible).",
+      "Après 20 h, facteur plafonné alors que le sommeil ralentit probablement encore la vidange (ampleur inconnue) : sous-estimation possible la nuit.",
+      "Variabilité individuelle et d'un jour à l'autre importante ; posture, effort et stress non modélisés."
+    ],
+    "outputs": "Part du repas encore dans l'estomac minute par minute (fourchette basse/haute), demi-vidange, 90 % vidé, reste aux points de contrôle (micro-sessions avec flexion de hanche, cours de chant, coucher).",
+    "calibration": "Pour chaque nuit, calculer le reste estimé au coucher et le comparer aux entrées Nuit du Journal réel ; après 3-4 semaines, fixer meal_corridors.bedtime_rule.bedtime_residual_max_pct.",
+    "params": {
+      "rate_a": 0.2417,
+      "rate_b": 0.372,
+      "range_low": 0.8,
+      "range_high": 1.25,
+      "lag_base_min": 15,
+      "lag_per_kcal": 0.03,
+      "lag_min": 20,
+      "lag_max": 60,
+      "fat_brake": [
+        [
+          0.55,
+          0.8
+        ],
+        [
+          0.4,
+          0.9
+        ]
+      ],
+      "f_8h": 1.0,
+      "f_20h": 1.536,
+      "w_solid": 1.0,
+      "w_semi": 0.5,
+      "w_liquid": 0.0
+    }
+  },
   "meal_templates": [
+    {
+      "id": "tpl_r1_antireflux",
+      "meal": "r1",
+      "name": "R1 — journée anti-reflux (après la séance à jeun)",
+      "items": [
+        {
+          "id": "flocons_fermentes_poids_sec",
+          "g": 120
+        },
+        {
+          "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+          "g": 130
+        },
+        {
+          "id": "germe_de_ble",
+          "g": 15
+        },
+        {
+          "id": "myrtilles_sauvages_bio_surgelees",
+          "g": 75
+        },
+        {
+          "id": "flavochino_cacao_polyphenols",
+          "g": 15
+        },
+        {
+          "id": "pain_petit_epeautre_au_levain",
+          "g": 40
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_inter_flavochino",
+      "meal": "inter",
+      "name": "Inter — Flavochino au lait d'avoine (12 h)",
+      "items": [
+        {
+          "id": "flavochino_cacao_polyphenols",
+          "g": 15
+        },
+        {
+          "id": "lait_davoine_maison_flocons_fermentes",
+          "g": 200
+        }
+      ]
+    },
+    {
+      "id": "tpl_r2_antireflux",
+      "meal": "r2",
+      "name": "R2 — journée anti-reflux",
+      "items": [
+        {
+          "id": "tempeh_soja_maison",
+          "g": 90
+        },
+        {
+          "id": "tenebrions_poudre",
+          "g": 10
+        },
+        {
+          "id": "quinoa_cuit",
+          "g": 200
+        },
+        {
+          "id": "pommes_de_terre_cuites",
+          "g": 100
+        },
+        {
+          "id": "carotte_cuite_vapeur",
+          "g": 180
+        },
+        {
+          "id": "haricots_verts_vapeur",
+          "g": 70
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 10
+        },
+        {
+          "id": "citron_jus_30ml",
+          "g": 15
+        },
+        {
+          "id": "concentre_tomate_double",
+          "g": 15
+        },
+        {
+          "id": "jus_legumes_midi",
+          "g": 200
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_collation_antireflux",
+      "meal": "collation",
+      "name": "Collation — journée anti-reflux",
+      "items": [
+        {
+          "id": "skyr_vache_classique_holstein",
+          "g": 100
+        },
+        {
+          "id": "flocons_fermentes_poids_sec",
+          "g": 50
+        },
+        {
+          "id": "myrtilles_sauvages_bio_surgelees",
+          "g": 75
+        },
+        {
+          "id": "cannelle_de_ceylan",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_diner_antireflux_poulet",
+      "meal": "diner",
+      "name": "Dîner — anti-reflux, poulet",
+      "items": [
+        {
+          "id": "blanc_poulet_cuit",
+          "g": 60
+        },
+        {
+          "id": "riz_basmati_cuit",
+          "g": 200
+        },
+        {
+          "id": "carotte_cuite_vapeur",
+          "g": 120
+        },
+        {
+          "id": "courgette_cuite",
+          "g": 40
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 4.6
+        },
+        {
+          "id": "psyllium_blond",
+          "g": 5
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_diner_antireflux_sardines",
+      "meal": "diner",
+      "name": "Dîner — anti-reflux, sardines (2×/sem.)",
+      "items": [
+        {
+          "id": "sardines_en_conserve_huile_dolive",
+          "g": 95
+        },
+        {
+          "id": "riz_basmati_cuit",
+          "g": 200
+        },
+        {
+          "id": "carotte_cuite_vapeur",
+          "g": 120
+        },
+        {
+          "id": "courgette_cuite",
+          "g": 40
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 4.6
+        },
+        {
+          "id": "psyllium_blond",
+          "g": 5
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
     {
       "id": "tpl_r1_type",
       "meal": "r1",
@@ -1096,5 +1468,115 @@
         }
       ]
     }
-  ]
+  ],
+  "meal_scoring": {
+    "version": "1.0",
+    "date": "2026-11-18",
+    "status": "Provisoire — règles pratiques, à recalibrer avec le journal (3-4 semaines).",
+    "slot_default_times": {
+      "r1": "10:15",
+      "inter": "12:00",
+      "r2": "13:30",
+      "collation": "16:30",
+      "diner": "18:30"
+    },
+    "bedtime_default": "22:30",
+    "levels": "ok (vert) < warn (orange) < over (rouge). Le voyant d'un axe prend le niveau du critère le plus mauvais.",
+    "reflux": {
+      "uses": "Couloirs de meal_corridors (remplissage, graisses, énergie) + critères ci-dessous.",
+      "fodmap_family_load": {
+        "max": 1.0,
+        "red": 2.0,
+        "note": "Par famille : somme des portions / portion verte max. Seuils établis sur le côlon irritable, preuves faibles pour le reflux : ce critère est plafonné à « limite » (orange), sauf aliment riche en FODMAP le soir."
+      },
+      "evening_from_h": 17,
+      "evening_triggers": [
+        "acide",
+        "menthe",
+        "piquant",
+        "gazeux",
+        "alcool",
+        "friture"
+      ],
+      "bedtime_residual_kcal": {
+        "max": 200,
+        "red": 350,
+        "note": "Contenu de l'estomac estimé au coucher (modèle de vidange, tous les repas du jour). Repère : journée anti-reflux ~160 kcal, routine actuelle ~430 kcal."
+      },
+      "dinner_to_bed_h": {
+        "warn_below": 3,
+        "red_below": 2,
+        "note": "ACG 2022 ; Fujiwara et al. 2005."
+      }
+    },
+    "muscle": {
+      "protein_day_g": {
+        "min": 119,
+        "target": 130,
+        "max": 136,
+        "high": 165
+      },
+      "protein_slot_min_g": {
+        "r1": 30,
+        "r2": 30,
+        "collation": 15,
+        "diner": 20
+      },
+      "kcal_day": {
+        "min": 2450,
+        "target": 2700,
+        "note": "À ajuster selon l'évolution du poids (pesée hebdomadaire)."
+      },
+      "note": "Le total quotidien prime ; les minima par repas sont indicatifs (seuil de leucine abandonné le 17/11/2026)."
+    },
+    "longevity": {
+      "fiber_day_g": {
+        "min": 30,
+        "target": 35
+      },
+      "cg_meal": {
+        "max": 60,
+        "red": 80,
+        "note": "Charge glycémique calculée sur les seuls aliments dont l'IG est connu."
+      },
+      "sodium_meal_mg": {
+        "max": 1000,
+        "red": 1500
+      },
+      "sodium_day_mg": {
+        "max": 2300
+      },
+      "red_meat_week_g": {
+        "max": 350
+      },
+      "plants_week_target": 30,
+      "iron": {
+        "fe_rich_meal_mg": 4,
+        "vitc_enhancer_mg": 25,
+        "strong_inhibitor_labels": [
+          "🔴 Fort",
+          "⚠ Élevé"
+        ],
+        "polyphenols_mg": 300,
+        "windows": [
+          "r2",
+          "diner"
+        ]
+      },
+      "note": "Surtout des critères de journée et de semaine : le repas indique sa contribution."
+    },
+    "sleep": {
+      "methylxanthine_cutoff_h": 14.5,
+      "methylxanthine_late_mg": {
+        "max": 10,
+        "red": 60
+      },
+      "dinner_protein_g": {
+        "max": 30,
+        "red": 40,
+        "note": "Charge osmotique rénale nocturne (réveils de 3 h)."
+      },
+      "dinner_carb_min_g": 40
+    }
+  }
 }

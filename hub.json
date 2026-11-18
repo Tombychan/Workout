@@ -13,6 +13,14 @@
       "tags": ["nutrition", "leucine", "suppléments"]
     },
     {
+      "id": "nutrition_v2",
+      "name": "Nutrition v2 (test)",
+      "description": "Bol : composer ses repas et voir 4 voyants (reflux, muscle, longévité, sommeil) avec la correction la plus simple ; journée, coucher, contenu de l'estomac",
+      "url": "nutrition_v2.html",
+      "icon": "🥗",
+      "tags": ["nutrition", "reflux", "test"]
+    },
+    {
       "id": "workout",
       "name": "Workout Tracker",
       "description": "Log de séances, charges, séries, RPE",
