@@ -690,8 +690,8 @@ body {
 .time-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 0.74rem; color: var(--text-muted); margin: 0 2px 8px; }
 .time-row label { display: flex; align-items: center; gap: 5px; }
 .time-row input { font-family: 'DM Mono', monospace; font-size: 0.8rem; padding: 4px 6px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); color: var(--text); }
-.axes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-bottom: 8px; }
-.axis-btn { border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-card); padding: 8px 2px 6px; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 700; color: var(--text); cursor: pointer; text-align: center; line-height: 1.2; }
+.axes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 8px; }
+.axis-btn { border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-card); padding: 8px 1px 6px; font-family: 'DM Sans', sans-serif; font-size: 0.64rem; font-weight: 700; color: var(--text); cursor: pointer; text-align: center; line-height: 1.2; }
 .axis-btn .ax-dot { display: block; width: 14px; height: 14px; border-radius: 50%; margin: 0 auto 4px; background: var(--border); }
 .axis-btn.a-ok .ax-dot { background: var(--green); }
 .axis-btn.a-warn .ax-dot { background: var(--amber); }
@@ -763,6 +763,8 @@ const VEG_CATS = ['Légumes cuits', 'Crudités', 'Féculents', 'Légumes jus'];
 const TRIG_LABEL = { acide: 'Acide', menthe: 'Menthe', allium: 'Ail / oignon / poireau' };
 const LOC_TAGS = ['Derrière le sternum', 'Creux de l’estomac', 'Gorge / bouche', 'Remontées acides'];
 const CTX_TAGS = ['Chant', 'Sol / gainage', 'Flexion (hinge, rows)', 'Allongé', 'Sauna', 'Effort intense', 'Stress', 'Mangé vite'];
+const ENERGY_TAGS = ['Coup de fatigue', 'Faim', 'Concentration en baisse', 'Faiblesse / vertige', 'Irritabilité'];
+const ENERGY_CTX = ['À jeun', 'Pendant l’entraînement', 'En cours', 'Chant', 'Après un repas', 'Fin de journée'];
 const VERDICT_TXT = {
   ok: ['Dans le couloir', 'Volume, graisses et énergie dans les clous.'],
   warn: ['Limite', 'Un paramètre dépasse le vert : risque de brûlures accru.'],
@@ -781,6 +783,7 @@ let journal = { entries: [] };
 let jOpenId = null, jDraft = null;
 let bolTimes = {};        // heure prévue par repas, 'HH:MM'
 let bedtime = null;       // heure de coucher prévue, 'HH:MM'
+let wake = null;          // heure de réveil, 'HH:MM'
 let activeAxis = 'reflux';
 
 const num = v => { const x = typeof v === 'number' ? v : parseFloat(v); return Number.isFinite(x) ? x : 0; };
@@ -818,9 +821,9 @@ async function loadBaseNutritionelle() {
   } catch(e) {}
   try { const t = localStorage.getItem('nt-templates-v1'); if (t) userTemplates = JSON.parse(t) || []; } catch(e) { userTemplates = []; }
   try { const s = localStorage.getItem('nt-bol-times-v1'); if (s) bolTimes = JSON.parse(s) || {}; } catch(e) { bolTimes = {}; }
-  try { bedtime = localStorage.getItem('nt-bedtime-v1') || null; } catch(e) {}
+  try { bedtime = localStorage.getItem('nt-bedtime-v1') || null; wake = localStorage.getItem('nt-wake-v1') || null; } catch(e) {}
 }
-function saveTimes() { try { localStorage.setItem('nt-bol-times-v1', JSON.stringify(bolTimes)); if (bedtime) localStorage.setItem('nt-bedtime-v1', bedtime); } catch(e) {} }
+function saveTimes() { try { localStorage.setItem('nt-bol-times-v1', JSON.stringify(bolTimes)); if (bedtime) localStorage.setItem('nt-bedtime-v1', bedtime); if (wake) localStorage.setItem('nt-wake-v1', wake); } catch(e) {} }
 
 function buildFoods() {
   foodsById = {}; foodList = [];
@@ -839,8 +842,8 @@ function buildFoods() {
       o3: num(v['Ω3 EPA+DHA (mg/100g)']), ig: (v['IG'] == null ? null : num(v['IG'])), inhib: v['Inhib. Fe/Zn'] || '',
       fodSt: v['FODMAP statut'] || 'inconnu', fodFams: Array.isArray(v['FODMAP familles']) ? v['FODMAP familles'] : [],
       fodGreen: (v['FODMAP portion verte max (g)'] == null ? null : num(v['FODMAP portion verte max (g)'])),
-      slots: Array.isArray(v['Créneaux']) ? v['Créneaux'] : [], soir: v['Soir'] || 'ok', soirMotif: v['Soir (motif)'] || '',
-      viande: v['Viande'] || null, plantes: Array.isArray(v['Plantes']) ? v['Plantes'] : [],
+      slots: Array.isArray(v['Créneaux']) ? v['Créneaux'].map(x => { const k = String(x).toLowerCase(); return k === 'inter-repas' ? 'inter' : k; }) : [], soir: v['Soir'] || 'ok', soirMotif: v['Soir (motif)'] || '',
+      viande: v['Viande'] || null, plantes: Array.isArray(v['Plantes']) ? v['Plantes'] : [], st: v['Statut'] || '',
       pStep: num(v['Pas (g)']) || 0, pMin: num(v['Portion min (g)']) || 0, pMax: num(v['Portion max (g)']) || 0,
     };
     foodsById[f.id] = f;
@@ -1395,10 +1398,13 @@ const DEFAULT_SCORING = {
     sodium_day_mg: { max: 2300 }, red_meat_week_g: { max: 350 }, plants_week_target: 30,
     iron: { fe_rich_meal_mg: 4, vitc_enhancer_mg: 25, strong_inhibitor_labels: ['🔴 Fort', '⚠ Élevé'], polyphenols_mg: 300, windows: ['r2', 'diner'] } },
   sleep: { methylxanthine_cutoff_h: 14.5, methylxanthine_late_mg: { max: 10, red: 60 }, dinner_protein_g: { max: 30, red: 40 }, dinner_carb_min_g: 40 },
+  energy: { wake_default: '07:15', kcal_day: { min: 2450, target: 2700 }, coverage_ratio_min: 0.6, max_gap_h: 5,
+    morning_fast_h: { info: 2.5, warn: 3.5 }, carb_day_g_per_kg_min: 3, glycemic_dip: { carb_min_g: 30, protein_max_g: 10, fiber_max_g: 4 },
+    evening_hunger: { dinner_kcal_below: 350, gap_to_bed_h_above: 4 } },
 };
 const DEFAULT_GM = { rate_a: 0.2417, rate_b: 0.372, range_low: 0.8, range_high: 1.25, lag_base_min: 15, lag_per_kcal: 0.03, lag_min: 20, lag_max: 60,
   fat_brake: [[0.55, 0.8], [0.40, 0.9]], f_8h: 1.0, f_20h: 1.536, w_solid: 1, w_semi: 0.5, w_liquid: 0 };
-const AXES = [['reflux', 'Reflux'], ['muscle', 'Muscle'], ['longevity', 'Longévité'], ['sleep', 'Sommeil']];
+const AXES = [['reflux', 'Reflux'], ['energy', 'Énergie'], ['muscle', 'Muscle'], ['longevity', 'Longévité'], ['sleep', 'Sommeil']];
 const LVL_WORD = { ok: 'bon', warn: 'limite', over: 'à revoir' };
 const LVL_RANK = { ok: 0, warn: 1, over: 2 };
 const worst = arr => arr.reduce((a, b) => (LVL_RANK[b] > LVL_RANK[a] ? b : a), 'ok');
@@ -1420,6 +1426,8 @@ function slotTimeStr(m) { return bolTimes[m] || scoring().slot_default_times[m] 
 function slotH(m) { return hhmmToH(slotTimeStr(m)) ?? 12; }
 function bedtimeStr() { return bedtime || scoring().bedtime_default || '22:30'; }
 function bedtimeH() { const h = hhmmToH(bedtimeStr()) ?? 22.5; return h < 12 ? h + 24 : h; }
+function wakeStr() { return wake || scoring().energy.wake_default || '07:15'; }
+function wakeH() { return hhmmToH(wakeStr()) ?? 7.25; }
 
 // ── Modèle de vidange (routine → gastric_emptying_model) ──
 function gmClock(h) {
@@ -1515,12 +1523,21 @@ function weekStats(todayMeals) {
 }
 
 // suggestion d'un aliment pour combler un manque (protéines, fibres…) dans ce créneau
+const SUG_CATS = {
+  pr: ['Protéines', 'Poudres prot.', 'Légumineuses'],
+  carb: ['Céréales', 'Féculents', 'Fruits', 'Légumineuses'],
+  fib: ['Légumes cuits', 'Crudités', 'Légumineuses', 'Céréales', 'Féculents', 'Fruits'],
+};
+// aliments denses d'abord : moins de volume dans l'estomac pour le même apport
 function suggestFood(slot, key, amount, opts = {}) {
-  const evening = slotH(slot) >= scoring().reflux.evening_from_h;
+  const evening = slotH(slot) >= scoring().reflux.evening_from_h, cats = SUG_CATS[key];
   const cand = foodList.filter(f => f.slots.includes(slot) && f[key] > 0 && f.fodSt !== 'élevé' && !(evening && f.soir === 'éviter')
-    && (!opts.lean || f.fat <= f.pr * 0.35) && (!opts.minDensity || f[key] >= opts.minDensity));
-  cand.sort((a, b) => (b[key] / Math.max(b.kcal, 1)) - (a[key] / Math.max(a.kcal, 1)));
-  return cand.slice(0, 2).map(f => { const g = roundStep(f, amount / (f[key] / 100)); return `${qtyTxt(f, g)} de ${nm(f)}`; });
+    && (!cats || cats.includes(f.c)) && !/^Inactif/i.test(f.st || '')
+    && (!opts.lean || f.fat <= f.pr * 0.35) && (!opts.minDensity || f[key] >= opts.minDensity))
+    .map(f => ({ f, g: roundStep(f, amount / (f[key] / 100)) }))
+    .filter(x => !x.f.pMax || x.g <= x.f.pMax * 1.5);
+  cand.sort((a, b) => b.f[key] - a.f[key]);
+  return cand.slice(0, 2).map(x => `${qtyTxt(x.f, x.g)} de ${nm(x.f)}`);
 }
 
 // ── Évaluation d'un repas ──
@@ -1603,8 +1620,6 @@ function evaluateSlot(slot) {
     const sug = suggestFood(slot, 'pr', pmin - n.prot, { lean: true, minDensity: 8 });
     add('muscle', 'warn', `Protéines ${fmt(n.prot)} g (repère ≥ ${pmin} g pour ce repas)`, sug.length ? `ajouter ${sug.join(' ou ')}` : '');
   } else info('muscle', `Protéines ${fmt(n.prot)} g`);
-  const kg = t.gauges.find(g => g.key === 'kcal');
-  if (kg && kg.level === 'low') add('muscle', 'warn', `Énergie ${fmt(kg.v)} kcal, sous le plancher du repas (${fmt(kg.min)})`, 'ajouter un féculent');
   const dayP = day.reduce((a, d) => a + d.n.prot, 0), dayK = day.reduce((a, d) => a + d.n.kcal, 0);
   const complete = MAIN_IDS.every(m => day.some(d => d.m === m));
   const PD = M.protein_day_g, KD = M.kcal_day;
@@ -1612,9 +1627,51 @@ function evaluateSlot(slot) {
     if (dayP < PD.min) add('muscle', 'warn', `Journée : ${fmt(dayP)} g de protéines (cible ${PD.min}-${PD.max})`, `ajouter ~${fmt(PD.target - dayP)} g de protéines sur la journée`);
     else if (dayP > PD.high) add('muscle', 'warn', `Journée : ${fmt(dayP)} g de protéines, bien au-delà de la cible (${PD.min}-${PD.max})`, 'réduire une source protéique');
     else info('muscle', `Journée : ${fmt(dayP)} g de protéines (cible ${PD.min}-${PD.max})${dayP > PD.max ? ', un peu au-dessus' : ''}`);
-    if (dayK < KD.min) add('muscle', 'warn', `Journée : ${fmt(dayK)} kcal (repère ≥ ${fmt(KD.min)} pour la prise de muscle)`, 'ajouter des glucides au R1 ou au R2');
-    else info('muscle', `Journée : ${fmt(dayK)} kcal`);
+    info('muscle', `Énergie de la journée : voir le voyant Énergie (${fmt(dayK)} kcal)`);
   } else info('muscle', `Journée en cours : ${fmt(dayP)} g de protéines sur ${PD.target} visés, ${fmt(dayK)} kcal`);
+
+  // ─ Énergie : confort de la journée ─
+  const E = S.energy;
+  const kD = (E.kcal_day && E.kcal_day.target) || KD.target;
+  const wk0 = wakeH(), awake = Math.max(8, bed - wk0), perH = kD / awake;
+  const mains = day.filter(d => MAIN_IDS.includes(d.m)).sort((a, b) => a.h - b.h);
+  if (slot === 'inter') info('energy', `En-cas : ${fmt(n.kcal)} kcal, compté dans l'autonomie du repas précédent`);
+  else {
+    const next = mains.find(d => d.h > h + 1e-6);
+    const endH = next ? next.h : bed;
+    const interK = day.filter(d => d.m === 'inter' && d.h >= h && d.h < endH).reduce((a, d) => a + d.n.kcal, 0);
+    const windowK = n.kcal + interK, cover = windowK / perH, gap = endH - h;
+    if (next) {
+      if (cover < E.coverage_ratio_min * gap) {
+        const need = E.coverage_ratio_min * gap * perH - windowK;
+        const sug = suggestFood(slot, 'carb', need / 4, { minDensity: 15 });
+        add('energy', 'warn', `Ce repas${interK ? ' (+ en-cas)' : ''} couvre ~${fmt(cover, 1)} h d'activité ; le suivant est dans ${fmt(gap, 1)} h : risque de faim ou de baisse d'énergie`, `ajouter ~${fmt(Math.ceil(need / 25) * 25)} kcal${sug.length ? ', par ex. ' + sug[0] : ''}`);
+      } else info('energy', `Autonomie ~${fmt(cover, 1)} h pour ${fmt(gap, 1)} h jusqu'au repas suivant`);
+      if (gap > E.max_gap_h) add('energy', 'warn', `${fmt(gap, 1)} h sans repas jusqu'au suivant (repère ≤ ${E.max_gap_h} h)`, 'ajouter une collation au milieu');
+    } else {
+      const EH = E.evening_hunger;
+      if (n.kcal < EH.dinner_kcal_below && gap > EH.gap_to_bed_h_above) add('energy', 'warn', `Dernier repas léger (${fmt(n.kcal)} kcal) et ${fmt(gap, 1)} h avant le coucher : faim possible en soirée`, 'ajouter un féculent ou avancer le coucher');
+      else info('energy', `Dernier repas : ${fmt(gap, 1)} h avant le coucher`);
+    }
+    if (mains.length && mains[0].m === slot) {
+      const firstAny = Math.min(...day.map(d => d.h));
+      const fast = firstAny - wk0;
+      if (fast >= E.morning_fast_h.warn) add('energy', 'warn', `${fmt(fast, 1)} h à jeun depuis le réveil (${hLabel(wk0)})`, 'si vous manquez d\'énergie à l\'entraînement : un en-cas liquide avant (Greenwhey 15 g dans l\'eau ou 150 ml de lait d\'avoine), qui quitte vite l\'estomac');
+      else if (fast >= E.morning_fast_h.info) info('energy', `${fmt(fast, 1)} h à jeun depuis le réveil : notez dans le journal tout coup de fatigue à l'entraînement`);
+    }
+  }
+  const GD = E.glycemic_dip;
+  if (n.carb >= GD.carb_min_g && n.prot < GD.protein_max_g && n.fib < GD.fiber_max_g)
+    add('energy', 'warn', `${fmt(n.carb)} g de glucides avec peu de protéines (${fmt(n.prot)} g) et de fibres (${fmt(n.fib)} g) : pic puis baisse d'énergie probables`, 'ajouter une source de protéines ou de fibres');
+  if (complete) {
+    const KDm = (E.kcal_day && E.kcal_day.min) || KD.min;
+    const carbMin = E.carb_day_g_per_kg_min * (num(routine?.meta?.weight_kg) || 85);
+    const dayC = day.reduce((a, d) => a + d.n.carb, 0);
+    if (dayK < KDm) add('energy', 'warn', `Journée : ${fmt(dayK)} kcal (repère ≥ ${fmt(KDm)})`, 'ajouter des glucides au R1 ou au R2, jamais au dîner');
+    else info('energy', `Journée : ${fmt(dayK)} kcal`);
+    if (dayC < carbMin) add('energy', 'warn', `Journée : ${fmt(dayC)} g de glucides (repère ≥ ${fmt(carbMin)} g, soit ${E.carb_day_g_per_kg_min} g/kg les jours d'entraînement)`, 'ajouter un féculent au R1 ou au R2');
+    else info('energy', `Journée : ${fmt(dayC)} g de glucides`);
+  } else info('energy', `Journée en cours : ${fmt(dayK)} kcal sur ~${fmt(kD)} visées`);
 
   // ─ Longévité ─
   const L = S.longevity;
@@ -1662,6 +1719,7 @@ function overallLevel(ev) { return ev.empty ? 'empty' : worst(AXES.map(([k]) => 
 // ── v2 : actions ──
 function bolSetTime(slot, v) { if (hhmmToH(v) == null) return; bolTimes[slot] = v; saveTimes(); renderBol(); }
 function bolSetBedtime(v) { if (hhmmToH(v) == null) return; bedtime = v; saveTimes(); renderBol(); }
+function bolSetWake(v) { if (hhmmToH(v) == null) return; wake = v; saveTimes(); renderBol(); }
 function bolSetAxis(k) { activeAxis = k; renderBol(); }
 function copyForClaude() {
   const ev = evaluateSlot(leuActiveMeal); if (ev.empty) return showToast('Repas vide');
@@ -1755,6 +1813,7 @@ function renderBol() {
   const nMain = MAIN_IDS.filter(m => ev.day.some(d => d.m === m)).length;
   html += `<div class="bol-day">Journée : <b>${fmt(dayK)} kcal</b> · <b>${fmt(dayP)}</b> g prot (cible ${S.muscle.protein_day_g.min}-${S.muscle.protein_day_g.max}) · ${fmt(dayF)} g fibres · ${nMain}/4 repas</div>`;
   html += `<div class="time-row"><label>Heure du repas <input type="time" value="${esc(slotTimeStr(leuActiveMeal))}" onchange="bolSetTime('${leuActiveMeal}',this.value)"></label>
+    <label>Réveil <input type="time" value="${esc(wakeStr())}" onchange="bolSetWake(this.value)"></label>
     <label>Coucher <input type="time" value="${esc(bedtimeStr())}" onchange="bolSetBedtime(this.value)"></label></div>`;
 
   if (ev.empty) {
@@ -1945,16 +2004,18 @@ function openSymptomFor(id) {
   render(); window.scrollTo(0, 0);
 }
 function localDT(ts) { return `${dayStr(ts)}T${timeStr(ts)}`; }
-function jNewSymptom() { jOpenId = 'new'; jDraft = { ...draftFrom(null), when: localDT(Date.now()) }; renderJournal(); window.scrollTo(0, 0); }
+function jNewSymptom() { jOpenId = 'new'; jDraft = { ...draftFrom(null), when: localDT(Date.now()), kind: 'burn' }; renderJournal(); window.scrollTo(0, 0); }
+function jNewEnergy() { jOpenId = 'new'; jDraft = { ...draftFrom(null), when: localDT(Date.now()), kind: 'energy' }; renderJournal(); window.scrollTo(0, 0); }
 function jToggleOpen(id) {
   if (jOpenId === id) { jOpenId = null; jDraft = null; }
-  else { const e = journal.entries.find(x => x.id === id); jOpenId = id; jDraft = draftFrom(e && e.symptom); }
+  else { const e = journal.entries.find(x => x.id === id); jOpenId = id; jDraft = { ...draftFrom(e && e.symptom), kind: e && e.type === 'energy' ? 'energy' : 'burn' }; }
   renderJournal();
 }
 function jSet(key, val) { if (!jDraft) return; jDraft[key] = val; renderJournal(); }
 function jToggle(key, i) {
   if (!jDraft) return;
-  const list = key === 'loc' ? LOC_TAGS : CTX_TAGS, v = list[i], arr = jDraft[key];
+  const en = jDraft.kind === 'energy';
+  const list = key === 'loc' ? (en ? ENERGY_TAGS : LOC_TAGS) : (en ? ENERGY_CTX : CTX_TAGS), v = list[i], arr = jDraft[key];
   const at = arr.indexOf(v); if (at >= 0) arr.splice(at, 1); else arr.push(v);
   renderJournal();
 }
@@ -1965,7 +2026,7 @@ function jSave() {
   if (jOpenId === 'new') {
     const ts = jDraft.when ? new Date(jDraft.when).getTime() : Date.now();
     const prev = journal.entries.filter(e => e.type === 'meal' && e.ts <= ts && ts - e.ts <= 8 * 3600000).sort((a, b) => b.ts - a.ts)[0];
-    journal.entries.push({ id: 's' + Date.now(), type: 'symptom', ts: Number.isFinite(ts) ? ts : Date.now(), symptom: sym, mealRef: prev ? prev.id : null });
+    journal.entries.push({ id: (jDraft.kind === 'energy' ? 'e' : 's') + Date.now(), type: jDraft.kind === 'energy' ? 'energy' : 'symptom', ts: Number.isFinite(ts) ? ts : Date.now(), symptom: sym, mealRef: prev ? prev.id : null });
   } else {
     const e = journal.entries.find(x => x.id === jOpenId); if (e) e.symptom = sym;
   }
@@ -1989,11 +2050,12 @@ function scoreBubble(sym) {
   return `<div class="j-score ${cls}">${sym.score}</div>`;
 }
 function symptomFormHtml(isNew) {
-  const d = jDraft;
-  let h = `<div class="j-label">Intensité <span style="text-transform:none;font-weight:500">— 0 = aucune · 10 = très forte</span></div>
+  const d = jDraft, en = d.kind === 'energy';
+  const LT = en ? ENERGY_TAGS : LOC_TAGS, CT = en ? ENERGY_CTX : CTX_TAGS;
+  let h = `<div class="j-label">${en ? 'Fatigue ou faim' : 'Intensité'} <span style="text-transform:none;font-weight:500">— 0 = ${en ? 'en pleine forme' : 'aucune'} · 10 = ${en ? 'épuisé ou affamé' : 'très forte'}</span></div>
     <div class="score-grid">${Array.from({ length: 11 }, (_, s) => `<button class="score-btn${d.score === s ? ' sel' : ''}" onclick="jSet('score',${s})">${s}</button>`).join('')}</div>
-    <div class="j-label">Où</div><div class="tag-row">${LOC_TAGS.map((tg, i) => `<button class="tag${d.loc.includes(tg) ? ' sel' : ''}" onclick="jToggle('loc',${i})">${esc(tg)}</button>`).join('')}</div>
-    <div class="j-label">Contexte</div><div class="tag-row">${CTX_TAGS.map((tg, i) => `<button class="tag${d.ctx.includes(tg) ? ' sel' : ''}" onclick="jToggle('ctx',${i})">${esc(tg)}</button>`).join('')}</div>
+    <div class="j-label">${en ? 'Quoi' : 'Où'}</div><div class="tag-row">${LT.map((tg, i) => `<button class="tag${d.loc.includes(tg) ? ' sel' : ''}" onclick="jToggle('loc',${i})">${esc(tg)}</button>`).join('')}</div>
+    <div class="j-label">Contexte</div><div class="tag-row">${CT.map((tg, i) => `<button class="tag${d.ctx.includes(tg) ? ' sel' : ''}" onclick="jToggle('ctx',${i})">${esc(tg)}</button>`).join('')}</div>
     <div class="j-label">Note</div><input class="j-input" value="${esc(d.note)}" placeholder="facultatif" oninput="jDraft.note=this.value">`;
   if (isNew) h += `<div class="j-label">Quand</div><input class="j-input" type="datetime-local" value="${esc(d.when)}" onchange="jDraft.when=this.value">`;
   h += `<div class="action-bar"><button class="action-btn primary" onclick="jSave()">Enregistrer</button><button class="action-btn" onclick="jCancel()">Annuler</button></div>`;
@@ -2018,7 +2080,7 @@ function entryHtml(e) {
     const ref = e.mealRef && journal.entries.find(x => x.id === e.mealRef);
     const s = e.symptom || {};
     head = `<div class="j-time">${timeStr(e.ts)}</div>
-      <div class="j-main"><div class="j-title">Brûlure${ref ? ' · après ' + esc(mealCfg(ref.meal).label) + ' de ' + timeStr(ref.ts) : ''}</div>
+      <div class="j-main"><div class="j-title">${e.type === 'energy' ? 'Énergie / faim' : 'Brûlure'}${ref ? ' · après ' + esc(mealCfg(ref.meal).label) + ' de ' + timeStr(ref.ts) : ''}</div>
       <div class="j-sub">${esc([...(s.loc || []), ...(s.ctx || [])].join(' · ') || '—')}</div></div>${scoreBubble(e.symptom)}`;
     if (open) body = `${symptomFormHtml(false)}<button class="j-del" onclick="jDelete('${e.id}')">Supprimer cette entrée</button>`;
   }
@@ -2078,7 +2140,7 @@ function renderJournal() {
   const c = document.getElementById('mainContent');
   let html = `<div class="daily-summary"><div class="summary-title">🔥 Journal reflux</div>
     <div class="j-note">Note chaque repas depuis l’onglet Bol (« J’ai mangé »), puis la brûlure éventuelle une à deux heures après : un 0 compte autant qu’un 8. Les brûlures de la nuit ou du matin se signalent ici.</div>
-    <div class="action-bar"><button class="action-btn" onclick="jNewSymptom()">＋ Signaler une brûlure</button><button class="action-btn" onclick="exportJournalCsv()">📤 Export CSV</button></div>`;
+    <div class="action-bar"><button class="action-btn" onclick="jNewSymptom()">＋ Brûlure</button><button class="action-btn" onclick="jNewEnergy()">＋ Fatigue / faim</button><button class="action-btn" onclick="exportJournalCsv()">📤 Export CSV</button></div>`;
   if (jOpenId === 'new' && jDraft) html += `<div class="j-newform">${symptomFormHtml(true)}</div>`;
   html += `</div>`;
   html += analysisHtml();
@@ -2106,7 +2168,7 @@ function exportJournalCsv() {
     const t = e.totals || {}, s = e.symptom || {};
     const items = (e.items || []).map(i => { const f = foodsById[i.id]; return `${f ? shortName(f.n) : i.id} ${i.g} g`; }).join(' | ');
     const meal = e.type === 'meal' ? mealCfg(e.meal).label : (e.mealRef ? 'après ' + ((journal.entries.find(x => x.id === e.mealRef) || {}).meal || '') : '');
-    rows.push([dayStr(e.ts), timeStr(e.ts), e.type === 'meal' ? 'repas' : 'brûlure', meal, e.verdict || '', t.massEff ?? '', t.solids ?? '', t.liquids ?? '', t.fat ?? '', t.kcal ?? '', t.prot ?? '', t.leu ?? '', t.mx ?? '',
+    rows.push([dayStr(e.ts), timeStr(e.ts), e.type === 'meal' ? 'repas' : e.type === 'energy' ? 'énergie' : 'brûlure', meal, e.verdict || '', t.massEff ?? '', t.solids ?? '', t.liquids ?? '', t.fat ?? '', t.kcal ?? '', t.prot ?? '', t.leu ?? '', t.mx ?? '',
       s.score ?? '', (s.loc || []).join(', '), (s.ctx || []).join(', '), s.note || '', items]);
   });
   const csv = rows.map(r => r.map(v => { const x = String(v); return /[";\n]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x; }).join(';')).join('\n');

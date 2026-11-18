@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.4.0",
+    "version": "1.5.0",
     "date": "2026-11-18",
     "eating_window": "8h00–18h30 (~10h30)",
     "target_kcal": 2900,
@@ -24,6 +24,16 @@
     "notes": "Cible protéique révisée le 17/11/2026 : 1,4-1,6 g/kg/jour, soit 119-136 g à 85 kg ; point de visée 130 g (haut de fourchette, part végétale importante). Comptage en protéines brutes. Objectif de seuil de leucine par repas abandonné (champs leucine conservés à titre informatif, seuils à null). Cibles kcal, glucides et lipides inchangées, à revoir avec le planificateur. L'architecture des repas ci-dessous fournit encore ~180 g de protéines : voir pending_adjustments."
   },
   "changelog": [
+    {
+      "date": "2026-11-18",
+      "version": "1.5.0",
+      "changes": [
+        "Nouvel objectif explicite : les repas doivent fournir assez d'énergie pour une journée confortable (demande de Sébastien, 18/11/2026).",
+        "meal_scoring v1.1 : cinquième voyant « Énergie » (autonomie de chaque repas jusqu'au suivant, écart maximal entre repas, jeûne du matin, risque de pic puis baisse glycémique, énergie et glucides de la journée). L'énergie de la journée quitte le voyant Muscle.",
+        "Heure de réveil par défaut (07:15) pour estimer le besoin horaire.",
+        "Journal de l'app : nouvelle entrée « Fatigue / faim » pour calibrer ces seuils."
+      ]
+    },
     {
       "date": "2026-11-18",
       "version": "1.4.0",
@@ -1470,7 +1480,7 @@
     }
   ],
   "meal_scoring": {
-    "version": "1.0",
+    "version": "1.1",
     "date": "2026-11-18",
     "status": "Provisoire — règles pratiques, à recalibrer avec le journal (3-4 semaines).",
     "slot_default_times": {
@@ -1481,7 +1491,7 @@
       "diner": "18:30"
     },
     "bedtime_default": "22:30",
-    "levels": "ok (vert) < warn (orange) < over (rouge). Le voyant d'un axe prend le niveau du critère le plus mauvais.",
+    "levels": "ok (vert) < warn (orange) < over (rouge). Cinq voyants : Reflux, Énergie, Muscle, Longévité, Sommeil. Le voyant d'un axe prend le niveau du critère le plus mauvais.",
     "reflux": {
       "uses": "Couloirs de meal_corridors (remplissage, graisses, énergie) + critères ci-dessous.",
       "fodmap_family_load": {
@@ -1525,7 +1535,7 @@
       "kcal_day": {
         "min": 2450,
         "target": 2700,
-        "note": "À ajuster selon l'évolution du poids (pesée hebdomadaire)."
+        "note": "Conservé pour compatibilité : l'énergie de la journée est évaluée par le voyant Énergie (meal_scoring.energy.kcal_day)."
       },
       "note": "Le total quotidien prime ; les minima par repas sont indicatifs (seuil de leucine abandonné le 17/11/2026)."
     },
@@ -1577,6 +1587,34 @@
         "note": "Charge osmotique rénale nocturne (réveils de 3 h)."
       },
       "dinner_carb_min_g": 40
+    },
+    "energy": {
+      "goal": "Assez d'énergie pour faire la journée confortablement (entraînement, cours, chant), sans surcharger l'estomac.",
+      "wake_default": "07:15",
+      "kcal_day": {
+        "min": 2450,
+        "target": 2700,
+        "note": "À ajuster selon le poids et le journal (fatigue / faim)."
+      },
+      "coverage_ratio_min": 0.6,
+      "coverage_note": "Besoin horaire = kcal_day.target / heures d'éveil (réveil → coucher). Autonomie d'un repas = (kcal du repas + en-cas avant le repas suivant) / besoin horaire. Orange si l'autonomie couvre moins de 60 % de l'intervalle jusqu'au repas suivant (les réserves de glycogène et de graisse couvrent le reste).",
+      "max_gap_h": 5,
+      "morning_fast_h": {
+        "info": 2.5,
+        "warn": 3.5
+      },
+      "carb_day_g_per_kg_min": 3,
+      "carb_note": "3 g/kg/jour : bas de la fourchette recommandée pour un entraînement modéré (3-5 g/kg/j, ACSM / ISSN).",
+      "glycemic_dip": {
+        "carb_min_g": 30,
+        "protein_max_g": 10,
+        "fiber_max_g": 4,
+        "note": "Repas riche en glucides sans protéines ni fibres : pic puis baisse d'énergie probables (preuves modérées chez le sujet sain)."
+      },
+      "evening_hunger": {
+        "dinner_kcal_below": 350,
+        "gap_to_bed_h_above": 4
+      }
     }
   }
 }

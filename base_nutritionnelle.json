@@ -1,11 +1,11 @@
 {
   "meta": {
-    "version": "2.6.0",
+    "version": "2.6.1",
     "date": "2026-11-18",
     "total_items": 187,
     "sources": "USDA FoodData Central, CIQUAL (ANSES), données fabricant, conversations projet ; Guide FODMAP Diet vs Disease v1.8 (2024) ; tables IG internationales (Atkinson et al.)",
     "notes": "Valeurs pour 100g sauf indication. Base de référence pour routine_alimentaire.json et app nutrition.",
-    "changelog": "v2.6.0 (2026-11-18) : ajout de « Vit C (mg/100g) », « Viande » et « Plantes » pour les voyants longévité de l'app nutrition (absorption du fer, viande rouge, diversité végétale). v2.5.0 (2026-11-17) : chantier reflux. Supprimés : « Vidange gastr. (min) » (la vidange se calcule au niveau du repas, voir routine_alimentaire.json → gastric_emptying_model), « Fermentesc. » (remplacé par les champs FODMAP), « Leucine /portion (g) » et « Seuil 2,5g ? » (objectif de seuil de leucine abandonné). Ajoutés : FODMAP (statut, familles, portion verte max, source, note), IG et CG, pH approximatif, texture, créneaux, règle « soir », portions min/max/pas, fréquence max/semaine, saison, tolérance personnelle (vide). Déclencheurs audités (poivre noir : piquant). Masse ingérée (coef) étendue aux aliments qui gonflent (psyllium, lin, flocons secs, germe de blé). Nouveaux aliments : magnésium citrate, taurine, glycine, choucroute, concentré de tomate double. Magnésium bisglycinate marqué inactif. v2.4.0 (2026-10-21) : champs pour l’onglet Bol de l’app nutrition — État (solide/semi-liquide/liquide), Unité (pas de saisie), Repères visuels, Digest. prot. (coef, leucine corrigée), Méthylxanthines (mg/100g), Déclencheurs (acide, menthe, allium), Masse ingérée (coef). Leucine estimée par catégorie quand elle manquait (119 aliments, champ « Leucine estimée »). Ajouts : betterave cuite, jus de légumes matin et midi, eau, flocons fermentés (pesés secs), blanc de poulet cuit. Greenwhey aligné sur l’étiquette. v2.3.0 (2026-04-13) : Ajout œuf entier bio calibre M (60-63g avec coquille, ~54g comestible). Mêmes valeurs /100g que XL, portion ajustée. v2.2.0 (2026-04-12) : Ajout steak haché de bœuf 15% MG (USDA/CIQUAL).",
+    "changelog": "v2.6.1 (2026-11-18) : « Créneaux » harmonisés avec les identifiants de l'app (minuscules, « inter ») ; pain au levain autorisé au R1. v2.6.0 (2026-11-18) : ajout de « Vit C (mg/100g) », « Viande » et « Plantes » pour les voyants longévité de l'app nutrition (absorption du fer, viande rouge, diversité végétale). v2.5.0 (2026-11-17) : chantier reflux. Supprimés : « Vidange gastr. (min) » (la vidange se calcule au niveau du repas, voir routine_alimentaire.json → gastric_emptying_model), « Fermentesc. » (remplacé par les champs FODMAP), « Leucine /portion (g) » et « Seuil 2,5g ? » (objectif de seuil de leucine abandonné). Ajoutés : FODMAP (statut, familles, portion verte max, source, note), IG et CG, pH approximatif, texture, créneaux, règle « soir », portions min/max/pas, fréquence max/semaine, saison, tolérance personnelle (vide). Déclencheurs audités (poivre noir : piquant). Masse ingérée (coef) étendue aux aliments qui gonflent (psyllium, lin, flocons secs, germe de blé). Nouveaux aliments : magnésium citrate, taurine, glycine, choucroute, concentré de tomate double. Magnésium bisglycinate marqué inactif. v2.4.0 (2026-10-21) : champs pour l’onglet Bol de l’app nutrition — État (solide/semi-liquide/liquide), Unité (pas de saisie), Repères visuels, Digest. prot. (coef, leucine corrigée), Méthylxanthines (mg/100g), Déclencheurs (acide, menthe, allium), Masse ingérée (coef). Leucine estimée par catégorie quand elle manquait (119 aliments, champ « Leucine estimée »). Ajouts : betterave cuite, jus de légumes matin et midi, eau, flocons fermentés (pesés secs), blanc de poulet cuit. Greenwhey aligné sur l’étiquette. v2.3.0 (2026-04-13) : Ajout œuf entier bio calibre M (60-63g avec coquille, ~54g comestible). Mêmes valeurs /100g que XL, portion ajustée. v2.2.0 (2026-04-12) : Ajout steak haché de bœuf 15% MG (USDA/CIQUAL).",
     "item_count": 187,
     "field_definitions": {
       "FODMAP statut": "aucun | limité | élevé | selon tolérance | variable | faible | inconnu.",
@@ -17,7 +17,7 @@
       "pH (approx.)": "pH approximatif (tables publiées, de mémoire). Utile pour le reflux laryngé (pepsine réactivée en milieu acide, Koufman 2011, preuves faibles).",
       "Texture": "liquide | purée/crémeux | gel | poudre | tendre | ferme | fibreux | gélule/poudre. Influe sur la phase de latence de la vidange.",
       "Masse ingérée (coef)": "Multiplicateur de masse pour la jauge de remplissage (gonflement des aliments pesés secs).",
-      "Créneaux": "Repas où l'aliment a sa place : R1, inter-repas, R2, collation, diner, coucher. Liste vide = ingrédient, pas un aliment à planifier.",
+      "Créneaux": "Repas où l'aliment a sa place, avec les identifiants de l'app : r1, inter, r2, collation, diner, coucher. Liste vide = ingrédient, pas un aliment à planifier.",
       "Soir": "ok | limiter | éviter, avec motif. Règles : éviter si méthylxanthines, déclencheur (acide, menthe, piquant, gazeux, alcool, friture) ou FODMAP élevé ; limiter si allium, lipides ≥ 20 g/100 g, portion type > portion verte FODMAP, crudité fibreuse ou fruit acide. Règles provisoires, à recalibrer avec le journal.",
       "Portion min (g) / Portion max (g) / Pas (g)": "Bornes et pas de quantité par prise, pour le planificateur.",
       "Fréquence max / semaine": "Limite hebdomadaire décidée (null = aucune).",
@@ -89,8 +89,8 @@
       "pH (approx.)": 7.4,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
-        "R2",
+        "r1",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 65,
@@ -170,8 +170,8 @@
       "pH (approx.)": 7.4,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
-        "R2",
+        "r1",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 54,
@@ -251,7 +251,7 @@
       "pH (approx.)": 8.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 43,
@@ -330,7 +330,7 @@
       "pH (approx.)": 6.5,
       "Texture": "ferme",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 50,
@@ -412,7 +412,7 @@
       "pH (approx.)": 6.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 95,
@@ -487,7 +487,7 @@
       "pH (approx.)": 6.5,
       "Texture": "poudre",
       "Créneaux": [
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 10,
       "Portion max (g)": 25,
@@ -566,7 +566,7 @@
       "Texture": "purée/crémeux",
       "Créneaux": [
         "collation",
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 100,
       "Portion max (g)": 250,
@@ -645,7 +645,7 @@
       "Texture": "purée/crémeux",
       "Créneaux": [
         "collation",
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 100,
       "Portion max (g)": 250,
@@ -723,8 +723,8 @@
       "Texture": "purée/crémeux",
       "Créneaux": [
         "collation",
-        "R1",
-        "R2"
+        "r1",
+        "r2"
       ],
       "Portion min (g)": 100,
       "Portion max (g)": 250,
@@ -800,7 +800,7 @@
       "pH (approx.)": 7.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 100,
@@ -958,8 +958,8 @@
       "pH (approx.)": 7.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
-        "R2"
+        "r1",
+        "r2"
       ],
       "Portion min (g)": 25,
       "Portion max (g)": 50,
@@ -1038,7 +1038,7 @@
       "Texture": "purée/crémeux",
       "Créneaux": [
         "collation",
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 100,
       "Portion max (g)": 250,
@@ -1117,7 +1117,7 @@
       "pH (approx.)": 6.8,
       "Texture": "poudre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 15,
@@ -1270,7 +1270,7 @@
       "Texture": "purée/crémeux",
       "Masse ingérée (note)": "Pesés secs, mangés hydratés (bouillie ou fermentation).",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 40,
@@ -1350,7 +1350,7 @@
       "Texture": "purée/crémeux",
       "Masse ingérée (note)": "Pesés secs, mangés hydratés (bouillie ou fermentation).",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 40,
@@ -1435,7 +1435,8 @@
       "pH (approx.)": 4.5,
       "Texture": "ferme",
       "Créneaux": [
-        "R2",
+        "r1",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 40,
@@ -1515,7 +1516,7 @@
       "pH (approx.)": 5.6,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 75,
@@ -1592,7 +1593,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 75,
@@ -1675,7 +1676,7 @@
       "pH (approx.)": 5.8,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 75,
@@ -1831,7 +1832,7 @@
       "Texture": "poudre",
       "Masse ingérée (note)": "Co-fermenté avec les flocons, pesé sec (estimation).",
       "Créneaux": [
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 20,
@@ -1907,7 +1908,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 75,
@@ -1984,7 +1985,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 75,
@@ -2061,7 +2062,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 75,
@@ -2138,7 +2139,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 75,
@@ -2217,7 +2218,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 75,
@@ -2296,7 +2297,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 75,
@@ -2375,7 +2376,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 75,
@@ -2453,7 +2454,7 @@
       "pH (approx.)": 6.4,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 25,
@@ -2531,7 +2532,7 @@
       "pH (approx.)": 6.4,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 25,
@@ -2609,7 +2610,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 25,
@@ -2687,7 +2688,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 25,
@@ -2765,7 +2766,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 25,
@@ -2849,7 +2850,7 @@
       "pH (approx.)": 5.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -2929,7 +2930,7 @@
       "pH (approx.)": 3.5,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -3024,8 +3025,8 @@
       "pH (approx.)": 3.3,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
-        "R2",
+        "r1",
+        "r2",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -3111,7 +3112,7 @@
       "pH (approx.)": 3.3,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -3195,7 +3196,7 @@
       "pH (approx.)": 3.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -3280,7 +3281,7 @@
       "pH (approx.)": 3.7,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -3365,7 +3366,7 @@
       "pH (approx.)": 3.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -3456,7 +3457,7 @@
       "pH (approx.)": 2.3,
       "Texture": "liquide",
       "Créneaux": [
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 15,
       "Portion max (g)": 30,
@@ -3610,7 +3611,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 25,
@@ -3689,7 +3690,7 @@
       "pH (approx.)": 6.4,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 25,
@@ -3769,7 +3770,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 25,
@@ -3852,7 +3853,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 25,
@@ -3933,7 +3934,7 @@
       "pH (approx.)": 3.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4012,7 +4013,7 @@
       "pH (approx.)": 3.4,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4096,7 +4097,7 @@
       "pH (approx.)": 3.7,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4179,7 +4180,7 @@
       "pH (approx.)": 3.6,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4262,7 +4263,7 @@
       "pH (approx.)": 3.8,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4346,7 +4347,7 @@
       "pH (approx.)": 3.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4430,7 +4431,7 @@
       "pH (approx.)": 3.9,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4517,7 +4518,7 @@
       "pH (approx.)": 5.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4600,7 +4601,7 @@
       "pH (approx.)": 3.4,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4684,7 +4685,7 @@
       "pH (approx.)": 2.9,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4766,7 +4767,7 @@
       "pH (approx.)": 2.9,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4849,7 +4850,7 @@
       "pH (approx.)": 6.3,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -4935,7 +4936,7 @@
       "pH (approx.)": 5.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -5018,7 +5019,7 @@
       "pH (approx.)": 4.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -5099,7 +5100,7 @@
       "pH (approx.)": 3.6,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -5180,7 +5181,7 @@
       "pH (approx.)": 3.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -5267,7 +5268,7 @@
       "pH (approx.)": 3.3,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 25,
@@ -5349,9 +5350,9 @@
       "pH (approx.)": 6.0,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 30,
@@ -5429,7 +5430,7 @@
       "pH (approx.)": 6.2,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
         "diner"
       ],
@@ -5507,9 +5508,9 @@
       "pH (approx.)": 6.2,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 30,
@@ -5585,9 +5586,9 @@
       "pH (approx.)": 6.0,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 30,
@@ -5665,9 +5666,9 @@
       "pH (approx.)": 6.0,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 30,
@@ -5746,9 +5747,9 @@
       "pH (approx.)": 6.0,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 30,
@@ -5826,9 +5827,9 @@
       "pH (approx.)": 6.0,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 10,
@@ -5907,9 +5908,9 @@
       "pH (approx.)": 6.0,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 30,
@@ -5985,9 +5986,9 @@
       "pH (approx.)": 6.3,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 30,
@@ -6072,8 +6073,8 @@
       "pH (approx.)": 5.5,
       "Texture": "poudre",
       "Créneaux": [
-        "R1",
-        "inter-repas"
+        "r1",
+        "inter"
       ],
       "Portion min (g)": 15,
       "Portion max (g)": 15,
@@ -6152,7 +6153,7 @@
       "pH (approx.)": 5.5,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 5,
@@ -6309,8 +6310,8 @@
       "pH (approx.)": null,
       "Texture": "poudre",
       "Créneaux": [
-        "R1",
-        "R2",
+        "r1",
+        "r2",
         "collation",
         "diner"
       ],
@@ -6392,7 +6393,7 @@
       "pH (approx.)": null,
       "Texture": "liquide",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 4.6,
@@ -6473,7 +6474,7 @@
       "pH (approx.)": 3.0,
       "Texture": "liquide",
       "Créneaux": [
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 15,
@@ -6547,7 +6548,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -6632,7 +6633,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -6716,7 +6717,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -6805,7 +6806,7 @@
       "pH (approx.)": 4.4,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -6887,7 +6888,7 @@
       "pH (approx.)": 5.9,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -6972,7 +6973,7 @@
       "pH (approx.)": 5.9,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -7058,7 +7059,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -7144,7 +7145,7 @@
       "pH (approx.)": 5.0,
       "Texture": "ferme",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -7226,7 +7227,7 @@
       "pH (approx.)": 6.4,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -7312,7 +7313,7 @@
       "pH (approx.)": 6.5,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -7400,7 +7401,7 @@
       "pH (approx.)": 5.6,
       "Texture": "fibreux",
       "Créneaux": [
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 10,
       "Portion max (g)": 200,
@@ -7480,7 +7481,7 @@
       "pH (approx.)": 5.6,
       "Texture": "fibreux",
       "Créneaux": [
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 10,
       "Portion max (g)": 200,
@@ -7567,7 +7568,7 @@
       "pH (approx.)": 5.8,
       "Texture": "fibreux",
       "Créneaux": [
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 10,
       "Portion max (g)": 200,
@@ -7652,7 +7653,7 @@
       "pH (approx.)": 5.6,
       "Texture": "tendre",
       "Créneaux": [
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 10,
       "Portion max (g)": 200,
@@ -7733,8 +7734,8 @@
       "pH (approx.)": 5.9,
       "Texture": "fibreux",
       "Créneaux": [
-        "R1",
-        "R2"
+        "r1",
+        "r2"
       ],
       "Portion min (g)": 2,
       "Portion max (g)": 10,
@@ -7811,7 +7812,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 10,
       "Portion max (g)": 200,
@@ -7890,7 +7891,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 10,
       "Portion max (g)": 200,
@@ -7972,7 +7973,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 1,
@@ -8058,7 +8059,7 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -8145,7 +8146,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -8232,7 +8233,7 @@
       "pH (approx.)": 5.8,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -8320,7 +8321,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -8405,7 +8406,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -8493,7 +8494,7 @@
       "pH (approx.)": 5.8,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -8577,7 +8578,7 @@
       "pH (approx.)": 5.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -8662,7 +8663,7 @@
       "pH (approx.)": 5.9,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -8748,7 +8749,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -8831,7 +8832,7 @@
       "pH (approx.)": 6.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -8921,7 +8922,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9000,7 +9001,7 @@
       "pH (approx.)": 5.9,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9086,7 +9087,7 @@
       "pH (approx.)": 5.6,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9172,7 +9173,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9260,7 +9261,7 @@
       "pH (approx.)": 6.3,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9343,7 +9344,7 @@
       "pH (approx.)": 6.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9428,7 +9429,7 @@
       "pH (approx.)": 5.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9515,7 +9516,7 @@
       "pH (approx.)": 5.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9601,7 +9602,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9689,7 +9690,7 @@
       "pH (approx.)": 6.5,
       "Texture": "purée/crémeux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 40,
@@ -9766,7 +9767,7 @@
       "pH (approx.)": 6.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9853,7 +9854,7 @@
       "pH (approx.)": 6.4,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -9932,7 +9933,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10011,7 +10012,7 @@
       "pH (approx.)": 5.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10097,7 +10098,7 @@
       "pH (approx.)": 4.3,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10181,7 +10182,7 @@
       "pH (approx.)": 5.8,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10266,7 +10267,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10351,7 +10352,7 @@
       "pH (approx.)": 5.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10437,7 +10438,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10526,7 +10527,7 @@
       "pH (approx.)": 5.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10607,7 +10608,7 @@
       "pH (approx.)": 5.8,
       "Texture": "tendre",
       "Créneaux": [
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 3,
       "Portion max (g)": 10,
@@ -10686,7 +10687,7 @@
       "pH (approx.)": 6.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10770,7 +10771,7 @@
       "pH (approx.)": 6.3,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10857,7 +10858,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -10944,7 +10945,7 @@
       "pH (approx.)": 6.2,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -11025,7 +11026,7 @@
       "pH (approx.)": 6.0,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -11107,7 +11108,7 @@
       "pH (approx.)": null,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 1,
@@ -11189,7 +11190,7 @@
       "pH (approx.)": null,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 1,
@@ -11268,7 +11269,7 @@
       "pH (approx.)": null,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 1,
@@ -11351,8 +11352,8 @@
       "pH (approx.)": null,
       "Texture": "fibreux",
       "Créneaux": [
-        "R1",
-        "R2"
+        "r1",
+        "r2"
       ],
       "Portion min (g)": 2,
       "Portion max (g)": 10,
@@ -11430,8 +11431,8 @@
       "pH (approx.)": null,
       "Texture": "poudre",
       "Créneaux": [
-        "R1",
-        "R2"
+        "r1",
+        "r2"
       ],
       "Portion min (g)": 0.5,
       "Portion max (g)": 2,
@@ -11507,7 +11508,7 @@
       "pH (approx.)": null,
       "Texture": "poudre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 1,
@@ -11589,9 +11590,9 @@
       "Texture": "poudre",
       "Masse ingérée (note)": "Mucilage : absorbe ~3 fois son poids d'eau (estimation).",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 30,
@@ -11668,9 +11669,9 @@
       "pH (approx.)": 6.0,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 30,
@@ -11749,9 +11750,9 @@
       "pH (approx.)": 6.0,
       "Texture": "ferme",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation",
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 5,
       "Portion max (g)": 30,
@@ -11835,8 +11836,8 @@
       "pH (approx.)": 4.2,
       "Texture": "liquide",
       "Créneaux": [
-        "inter-repas",
-        "R1"
+        "inter",
+        "r1"
       ],
       "Portion min (g)": 100,
       "Portion max (g)": 250,
@@ -11911,8 +11912,8 @@
       "pH (approx.)": 7.0,
       "Texture": "poudre",
       "Créneaux": [
-        "R1",
-        "R2"
+        "r1",
+        "r2"
       ],
       "Portion min (g)": 1,
       "Portion max (g)": 5,
@@ -11987,8 +11988,8 @@
       "pH (approx.)": 7.0,
       "Texture": "poudre",
       "Créneaux": [
-        "R1",
-        "R2"
+        "r1",
+        "r2"
       ],
       "Portion min (g)": 1,
       "Portion max (g)": 5,
@@ -12065,8 +12066,8 @@
       "pH (approx.)": 6.0,
       "Texture": "poudre",
       "Créneaux": [
-        "R1",
-        "R2"
+        "r1",
+        "r2"
       ],
       "Portion min (g)": 1,
       "Portion max (g)": 5,
@@ -12142,8 +12143,8 @@
       "pH (approx.)": 6.5,
       "Texture": "tendre",
       "Créneaux": [
-        "R1",
-        "R2"
+        "r1",
+        "r2"
       ],
       "Portion min (g)": 10,
       "Portion max (g)": 50,
@@ -12219,8 +12220,8 @@
       "pH (approx.)": null,
       "Texture": "gélule/poudre",
       "Créneaux": [
-        "R1",
-        "R2",
+        "r1",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 2,
@@ -12290,7 +12291,7 @@
       "pH (approx.)": null,
       "Texture": "gélule/poudre",
       "Créneaux": [
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 0.03,
       "Portion max (g)": 0.03,
@@ -12498,7 +12499,7 @@
       "pH (approx.)": null,
       "Texture": "gélule/poudre",
       "Créneaux": [
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 0.1,
       "Portion max (g)": 0.1,
@@ -12567,7 +12568,7 @@
       "pH (approx.)": null,
       "Texture": "gélule/poudre",
       "Créneaux": [
-        "R1",
+        "r1",
         "diner"
       ],
       "Portion min (g)": 0.5,
@@ -12643,7 +12644,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -12723,7 +12724,7 @@
       "pH (approx.)": 5.6,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -12809,7 +12810,7 @@
       "pH (approx.)": 5.8,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -12896,7 +12897,7 @@
       "pH (approx.)": 5.6,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -12976,7 +12977,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13064,7 +13065,7 @@
       "pH (approx.)": 5.6,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13152,7 +13153,7 @@
       "pH (approx.)": 5.9,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13237,7 +13238,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13324,7 +13325,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13412,7 +13413,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13499,7 +13500,7 @@
       "pH (approx.)": 6.5,
       "Texture": "purée/crémeux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 40,
@@ -13576,7 +13577,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13660,7 +13661,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13744,7 +13745,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13827,7 +13828,7 @@
       "pH (approx.)": 6.4,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13906,7 +13907,7 @@
       "pH (approx.)": 5.2,
       "Texture": "ferme",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -13990,7 +13991,7 @@
       "pH (approx.)": 5.2,
       "Texture": "ferme",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -14074,7 +14075,7 @@
       "pH (approx.)": 5.6,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -14157,7 +14158,7 @@
       "pH (approx.)": 6.0,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 20,
@@ -14242,8 +14243,8 @@
       "Texture": "purée/crémeux",
       "Créneaux": [
         "collation",
-        "R1",
-        "R2"
+        "r1",
+        "r2"
       ],
       "Portion min (g)": 100,
       "Portion max (g)": 250,
@@ -14322,7 +14323,7 @@
       "pH (approx.)": 6.5,
       "Texture": "poudre",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 15,
@@ -14397,7 +14398,7 @@
       "pH (approx.)": 5.6,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 100,
@@ -14450,7 +14451,7 @@
       "pH (approx.)": 5.6,
       "Texture": "tendre",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 30,
@@ -14510,7 +14511,7 @@
       "pH (approx.)": 5.6,
       "Texture": "liquide",
       "Créneaux": [
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 200,
       "Portion max (g)": 400,
@@ -14570,7 +14571,7 @@
       "pH (approx.)": 6.0,
       "Texture": "liquide",
       "Créneaux": [
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 150,
       "Portion max (g)": 300,
@@ -14625,8 +14626,8 @@
       "pH (approx.)": 7.0,
       "Texture": "liquide",
       "Créneaux": [
-        "R1",
-        "R2",
+        "r1",
+        "r2",
         "collation",
         "diner"
       ],
@@ -14679,7 +14680,7 @@
       "Texture": "purée/crémeux",
       "Masse ingérée (note)": "Pesés secs ; masse au bol ≈ 2,5 fois le poids sec après hydratation.",
       "Créneaux": [
-        "R1",
+        "r1",
         "collation"
       ],
       "Portion min (g)": 40,
@@ -14731,7 +14732,7 @@
       "pH (approx.)": 6.0,
       "Texture": "ferme",
       "Créneaux": [
-        "R2",
+        "r2",
         "diner"
       ],
       "Portion min (g)": 100,
@@ -14806,7 +14807,7 @@
       "pH (approx.)": null,
       "Texture": "gélule/poudre",
       "Créneaux": [
-        "R1",
+        "r1",
         "diner"
       ],
       "Portion min (g)": 0.6,
@@ -14882,7 +14883,7 @@
       "Texture": "gélule/poudre",
       "Créneaux": [
         "diner",
-        "R1"
+        "r1"
       ],
       "Portion min (g)": 1,
       "Portion max (g)": 1.5,
@@ -15034,7 +15035,7 @@
       "pH (approx.)": 3.5,
       "Texture": "fibreux",
       "Créneaux": [
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 50,
       "Portion max (g)": 150,
@@ -15115,7 +15116,7 @@
       "pH (approx.)": 4.3,
       "Texture": "purée/crémeux",
       "Créneaux": [
-        "R2"
+        "r2"
       ],
       "Portion min (g)": 15,
       "Portion max (g)": 30,
