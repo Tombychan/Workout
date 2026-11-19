@@ -819,6 +819,7 @@ async function loadBaseNutritionelle() {
       MEAL_IDS.forEach(m => { leuMeals[m] = Array.isArray(s[m]) ? s[m].filter(i => i && i.id).map(i => ({ id: i.id, grams: num(i.grams) })) : []; });
     }
   } catch(e) {}
+  bolRolledOver = bolRollover();
   try { const t = localStorage.getItem('nt-templates-v1'); if (t) userTemplates = JSON.parse(t) || []; } catch(e) { userTemplates = []; }
   try { const s = localStorage.getItem('nt-bol-times-v1'); if (s) bolTimes = JSON.parse(s) || {}; } catch(e) { bolTimes = {}; }
   try { bedtime = localStorage.getItem('nt-bedtime-v1') || null; wake = localStorage.getItem('nt-wake-v1') || null; } catch(e) {}
@@ -852,7 +853,28 @@ function buildFoods() {
   }
   foodList.sort((a, b) => a.n.localeCompare(b.n, 'fr'));
 }
-function saveLeuMeals() { try { localStorage.setItem('nt-leumeal-v1', JSON.stringify(leuMeals)); } catch(e) {} }
+function saveLeuMeals() { try { localStorage.setItem('nt-leumeal-v1', JSON.stringify(leuMeals)); localStorage.setItem('nt-leumeal-date-v1', todayStr()); } catch(e) {} }
+// Le bol est celui du jour : au premier lancement d'une nouvelle journée, il est archivé
+// (récupérable dans « Modèles… ») puis vidé. Les heures, le réveil et le coucher sont conservés.
+let bolRolledOver = false;
+function bolPrev() { try { return JSON.parse(localStorage.getItem('nt-leumeal-prev-v1') || 'null'); } catch(e) { return null; } }
+function bolRollover() {
+  const t = todayStr(); let d = null;
+  try { d = localStorage.getItem('nt-leumeal-date-v1'); } catch(e) {}
+  if (d === t) return false;
+  const full = MEAL_IDS.some(m => (leuMeals[m] || []).some(i => num(i.grams) > 0));
+  if (full) try { localStorage.setItem('nt-leumeal-prev-v1', JSON.stringify({ date: d, meals: leuMeals })); } catch(e) {}
+  leuMeals = Object.fromEntries(MEAL_IDS.map(m => [m, []]));
+  saveLeuMeals();
+  if (full) leuActiveMeal = mealForNow();
+  return full;
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'visible' || !foodList.length) return;
+  if (bolRollover()) { render(); showToast('Nouvelle journée : bol vidé (celui d’hier est dans « Modèles… »)'); }
+  else if (todayStr() !== bolDayShown) render();
+});
+let bolDayShown = null;
 function saveTemplates() { try { localStorage.setItem('nt-templates-v1', JSON.stringify(userTemplates)); } catch(e) {} }
 function loadJournal() {
   try { const s = localStorage.getItem('nt-reflux-v1'); if (s) journal = JSON.parse(s); } catch(e) {}
@@ -1871,12 +1893,15 @@ function renderBol() {
     <div class="bol-tools"><button class="mini-btn" onclick="leuShowSearch()">＋ Aliment</button><button class="mini-btn" onclick="bolClear()">Vider</button></div>`;
 
   const rt = (routine && routine.meal_templates) || [];
+  const prev = bolPrev(), prevItems = prev && prev.meals && (prev.meals[leuActiveMeal] || []).filter(i => num(i.grams) > 0);
+  const prevLbl = prev && prev.date ? `du ${prev.date.slice(8, 10)}/${prev.date.slice(5, 7)}` : 'précédent';
   const opt = (tp, prefix) => `<option value="${esc(tp.id)}">${prefix}${esc(tp.name)}</option>`;
   const mine = userTemplates.filter(tp => tp.meal === leuActiveMeal), mineOther = userTemplates.filter(tp => tp.meal !== leuActiveMeal);
   const rtHere = rt.filter(tp => tp.meal === leuActiveMeal), rtOther = rt.filter(tp => tp.meal !== leuActiveMeal);
   html += `<div class="bol-tools">
       <select id="tplSelect" class="bol-select">
         <option value="">Modèles…</option>
+        ${prevItems && prevItems.length ? `<optgroup label="Bol précédent"><option value="__prev">↺ ${esc(mealCfg(leuActiveMeal).label)} ${prevLbl} (${prevItems.length} aliment${prevItems.length > 1 ? 's' : ''})</option></optgroup>` : ''}
         ${mine.length ? `<optgroup label="Mes modèles">${mine.map(tp => opt(tp, '★ ')).join('')}</optgroup>` : ''}
         ${rtHere.length ? `<optgroup label="Routine">${rtHere.map(tp => opt(tp, '')).join('')}</optgroup>` : ''}
         ${(mineOther.length || rtOther.length) ? `<optgroup label="Autres repas">${mineOther.map(tp => opt(tp, '★ ')).join('')}${rtOther.map(tp => opt(tp, '')).join('')}</optgroup>` : ''}
@@ -1889,6 +1914,7 @@ function renderBol() {
     <button class="copy-btn" onclick="copyForClaude()">📋 Copier pour Claude</button>
     <div class="bol-foot">Voyants calculés dans l'app à partir de la base (v${esc(baseNutritionelle?.meta?.version || '?')}) et des seuils de routine_alimentaire.json (meal_scoring, v${esc(routine?.meta?.version || '?')}) : provisoires, recalibrés avec le journal. Contenu de l'estomac : modèle de vidange v1, non calibré (marge 30-50 %). La journée réunit les repas notés aujourd'hui et, à défaut, les repas composés.</div>`;
   c.innerHTML = html;
+  bolDayShown = todayStr();
   if (routine) renderHeaderMacros();
 }
 
@@ -1920,6 +1946,10 @@ function bolScale(factor) {
   saveLeuMeals(); renderBol();
 }
 function findTemplate(id) {
+  if (id === '__prev') {
+    const prev = bolPrev(), items = prev && prev.meals && prev.meals[leuActiveMeal];
+    return items && items.length ? { id, name: 'bol précédent', items: items.map(i => ({ id: i.id, g: i.grams })) } : null;
+  }
   return userTemplates.find(tp => tp.id === id) || ((routine && routine.meal_templates) || []).find(tp => tp.id === id) || null;
 }
 function bolLoadTemplate() {
@@ -2271,6 +2301,7 @@ async function init() {
   loadJournal();
   await Promise.all([loadRoutine(), loadBaseNutritionelle()]);
   render();
+  if (bolRolledOver) showToast('Nouvelle journée : bol vidé (celui d’hier est dans « Modèles… »)');
 }
 
 init();
