@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.6.0",
+    "version": "1.6.1",
     "date": "2026-11-19",
     "eating_window": "8h00–18h30 (~10h30)",
     "target_kcal": 2900,
@@ -24,6 +24,13 @@
     "notes": "Cible protéique révisée le 17/11/2026 : 1,4-1,6 g/kg/jour, soit 119-136 g à 85 kg ; point de visée 130 g (haut de fourchette, part végétale importante). Comptage en protéines brutes. Objectif de seuil de leucine par repas abandonné (champs leucine conservés à titre informatif, seuils à null). Cibles kcal, glucides et lipides inchangées, à revoir avec le planificateur. L'architecture des repas ci-dessous fournit encore ~180 g de protéines : voir pending_adjustments."
   },
   "changelog": [
+    {
+      "date": "2026-11-19",
+      "version": "1.6.1",
+      "changes": [
+        "Modèle « Nov. — R1 : bol Vivo Life + 2 œufs » (base 2.6.4 : Vivo Life Perform ajoutée)."
+      ]
+    },
     {
       "date": "2026-11-19",
       "version": "1.6.0",
@@ -1084,6 +1091,49 @@
   },
   "meal_templates": [
     {
+      "id": "tpl_nov_r1_vivo",
+      "meal": "r1",
+      "name": "Nov. — R1 : bol Vivo Life (flocons, Flavochino, myrtilles) + 2 œufs",
+      "items": [
+        {
+          "id": "jus_legumes_matin_hiver",
+          "g": 180
+        },
+        {
+          "id": "vivo_life_perform",
+          "g": 20
+        },
+        {
+          "id": "flocons_fermentes_poids_sec",
+          "g": 50
+        },
+        {
+          "id": "germe_de_ble",
+          "g": 10
+        },
+        {
+          "id": "myrtilles_sauvages_bio_surgelees",
+          "g": 75
+        },
+        {
+          "id": "flavochino_cacao_polyphenols",
+          "g": 15
+        },
+        {
+          "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+          "g": 130
+        },
+        {
+          "id": "pommes_de_terre_cuites",
+          "g": 100
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
       "id": "tpl_nov_r1",
       "meal": "r1",
       "name": "Nov. — R1 : jus d'hiver, bol fermenté, 2 œufs, pommes de terre",
@@ -1994,7 +2044,8 @@
         "Dîners en rotation : poulet, sardines (2×/sem.), œufs, tofu — tous au vert.",
         "Jours de salle + sauna (lun/mer) : collation à 16h, séance 17h-18h15, dîner 18h45, coucher 22h45 — testé, tout au vert.",
         "Jour de dîner tardif (20h30) : collation renforcée à 17h30 + dîner léger, coucher ≥ 23h30 — testé, tout au vert.",
-        "Énergie ~2 530 kcal (cible 2 700 ± 300) : suivre le poids ; si baisse, +20-30 g de flocons au R1 ou boisson avant la séance les jours de cardio."
+        "Énergie ~2 530 kcal (cible 2 700 ± 300) : suivre le poids ; si baisse, +20-30 g de flocons au R1 ou boisson avant la séance les jours de cardio.",
+        "Variante du R1 (habitude réelle) : bol Vivo Life 20 g + flocons 50 g + germe de blé + myrtilles + Flavochino, complété par 2 œufs et 100 g de pommes de terre (modèle tpl_nov_r1_vivo) — tout au vert, ~720 kcal ; protéines de la journée ~143 g. Le bol seul (~460 kcal) laisse la journée sous 2 450 kcal et retire les œufs, principale source d'iode, de B12 et de choline de la journée."
       ]
     }
   ]
