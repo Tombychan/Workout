@@ -1,12 +1,12 @@
 {
   "meta": {
-    "version": "2.6.2",
-    "date": "2026-11-18",
-    "total_items": 188,
+    "version": "2.6.3",
+    "date": "2026-11-19",
+    "total_items": 189,
     "sources": "USDA FoodData Central, CIQUAL (ANSES), données fabricant, conversations projet ; Guide FODMAP Diet vs Disease v1.8 (2024) ; tables IG internationales (Atkinson et al.)",
     "notes": "Valeurs pour 100g sauf indication. Base de référence pour routine_alimentaire.json et app nutrition.",
-    "changelog": "v2.6.2 (2026-11-18) : ajout du xylitol (188 aliments) ; nouvelle famille FODMAP « xylitol ». v2.6.1 (2026-11-18) : « Créneaux » harmonisés avec les identifiants de l'app (minuscules, « inter ») ; pain au levain autorisé au R1. v2.6.0 (2026-11-18) : ajout de « Vit C (mg/100g) », « Viande » et « Plantes » pour les voyants longévité de l'app nutrition (absorption du fer, viande rouge, diversité végétale). v2.5.0 (2026-11-17) : chantier reflux. Supprimés : « Vidange gastr. (min) » (la vidange se calcule au niveau du repas, voir routine_alimentaire.json → gastric_emptying_model), « Fermentesc. » (remplacé par les champs FODMAP), « Leucine /portion (g) » et « Seuil 2,5g ? » (objectif de seuil de leucine abandonné). Ajoutés : FODMAP (statut, familles, portion verte max, source, note), IG et CG, pH approximatif, texture, créneaux, règle « soir », portions min/max/pas, fréquence max/semaine, saison, tolérance personnelle (vide). Déclencheurs audités (poivre noir : piquant). Masse ingérée (coef) étendue aux aliments qui gonflent (psyllium, lin, flocons secs, germe de blé). Nouveaux aliments : magnésium citrate, taurine, glycine, choucroute, concentré de tomate double. Magnésium bisglycinate marqué inactif. v2.4.0 (2026-10-21) : champs pour l’onglet Bol de l’app nutrition — État (solide/semi-liquide/liquide), Unité (pas de saisie), Repères visuels, Digest. prot. (coef, leucine corrigée), Méthylxanthines (mg/100g), Déclencheurs (acide, menthe, allium), Masse ingérée (coef). Leucine estimée par catégorie quand elle manquait (119 aliments, champ « Leucine estimée »). Ajouts : betterave cuite, jus de légumes matin et midi, eau, flocons fermentés (pesés secs), blanc de poulet cuit. Greenwhey aligné sur l’étiquette. v2.3.0 (2026-04-13) : Ajout œuf entier bio calibre M (60-63g avec coquille, ~54g comestible). Mêmes valeurs /100g que XL, portion ajustée. v2.2.0 (2026-04-12) : Ajout steak haché de bœuf 15% MG (USDA/CIQUAL).",
-    "item_count": 188,
+    "changelog": "v2.6.3 (2026-11-19) : ajout du jus du matin d'hiver pauvre en FODMAP (189 aliments). v2.6.2 (2026-11-18) : ajout du xylitol (188 aliments) ; nouvelle famille FODMAP « xylitol ». v2.6.1 (2026-11-18) : « Créneaux » harmonisés avec les identifiants de l'app (minuscules, « inter ») ; pain au levain autorisé au R1. v2.6.0 (2026-11-18) : ajout de « Vit C (mg/100g) », « Viande » et « Plantes » pour les voyants longévité de l'app nutrition (absorption du fer, viande rouge, diversité végétale). v2.5.0 (2026-11-17) : chantier reflux. Supprimés : « Vidange gastr. (min) » (la vidange se calcule au niveau du repas, voir routine_alimentaire.json → gastric_emptying_model), « Fermentesc. » (remplacé par les champs FODMAP), « Leucine /portion (g) » et « Seuil 2,5g ? » (objectif de seuil de leucine abandonné). Ajoutés : FODMAP (statut, familles, portion verte max, source, note), IG et CG, pH approximatif, texture, créneaux, règle « soir », portions min/max/pas, fréquence max/semaine, saison, tolérance personnelle (vide). Déclencheurs audités (poivre noir : piquant). Masse ingérée (coef) étendue aux aliments qui gonflent (psyllium, lin, flocons secs, germe de blé). Nouveaux aliments : magnésium citrate, taurine, glycine, choucroute, concentré de tomate double. Magnésium bisglycinate marqué inactif. v2.4.0 (2026-10-21) : champs pour l’onglet Bol de l’app nutrition — État (solide/semi-liquide/liquide), Unité (pas de saisie), Repères visuels, Digest. prot. (coef, leucine corrigée), Méthylxanthines (mg/100g), Déclencheurs (acide, menthe, allium), Masse ingérée (coef). Leucine estimée par catégorie quand elle manquait (119 aliments, champ « Leucine estimée »). Ajouts : betterave cuite, jus de légumes matin et midi, eau, flocons fermentés (pesés secs), blanc de poulet cuit. Greenwhey aligné sur l’étiquette. v2.3.0 (2026-04-13) : Ajout œuf entier bio calibre M (60-63g avec coquille, ~54g comestible). Mêmes valeurs /100g que XL, portion ajustée. v2.2.0 (2026-04-12) : Ajout steak haché de bœuf 15% MG (USDA/CIQUAL).",
+    "item_count": 189,
     "field_definitions": {
       "FODMAP statut": "aucun | limité | élevé | selon tolérance | variable | faible | inconnu.",
       "FODMAP familles": "Familles présentes : fructanes, GOS, lactose, fructose (en excès), sorbitol, mannitol, xylitol (polyol ajouté, non mesuré par Monash). Des aliments d'une même famille s'additionnent (« stacking ») au sein d'un repas et sur 24 h.",
@@ -15222,6 +15222,80 @@
       "Vit C (mg/100g)": 0,
       "Viande": null,
       "Plantes": []
+    },
+    "jus_legumes_matin_hiver": {
+      "id": "jus_legumes_matin_hiver",
+      "Aliment": "Jus du matin d'hiver (carotte, mâche, kale, betterave)",
+      "Catégorie": "Boissons",
+      "Portion type (g)": 180,
+      "kcal/100g": 38,
+      "Prot (g/100g)": 0.9,
+      "Lip (g/100g)": 0.1,
+      "Glu (g/100g)": 8.5,
+      "Fibres (g/100g)": 0,
+      "Notes & source": "Recette pour ~180 ml : carotte 150 g, mâche 40 g, kale 40 g, betterave crue 20 g, gingembre 2 cm (curcuma + poivre en option). Valeurs estimées par Claude à partir des légumes crus (rendement ~65 %, ~75 % des sucres et ~80 % de la vitamine C passent dans le jus). Ajouté v2.6.3 (19/11/2026) pour remplacer en hiver le jus du matin riche en FODMAP.",
+      "État": "liquide",
+      "Digest. prot. (coef)": 0.85,
+      "Méthylxanthines (mg/100g)": 0,
+      "Déclencheurs": [],
+      "Masse ingérée (coef)": 1,
+      "Unité": {
+        "s": "verre de 100 ml",
+        "p": "verres de 100 ml",
+        "g": 100
+      },
+      "Leucine /100g (g)": 0.05,
+      "Leucine estimée": true,
+      "FODMAP statut": "faible",
+      "FODMAP familles": [
+        "GOS",
+        "fructanes"
+      ],
+      "FODMAP portion verte max (g)": null,
+      "FODMAP source": "Estimation Claude : betterave limitée à sa portion verte (20 g), chou rouge et céleri retirés (mêmes familles que la betterave ou mannitol), carotte, mâche et kale sans FODMAP.",
+      "FODMAP note": "Pauvre en FODMAP par construction (chaque ingrédient à sa portion verte au plus, sans cumul de familles). Nitrates plus modestes que l'ancienne recette (~150 g de betterave) : la mâche et le kale en apportent une partie.",
+      "IG": 43,
+      "CG / portion type": 6.6,
+      "pH (approx.)": 6.0,
+      "Texture": "liquide",
+      "Créneaux": [
+        "r1"
+      ],
+      "Portion min (g)": 150,
+      "Portion max (g)": 300,
+      "Pas (g)": 50,
+      "Fréquence max / semaine": null,
+      "Saison (mois)": [
+        10,
+        11,
+        12,
+        1,
+        2,
+        3
+      ],
+      "Tolérance perso": {
+        "statut": null,
+        "seuil_g": null,
+        "observations": 0,
+        "notes": ""
+      },
+      "Soir": "ok",
+      "Soir (motif)": "",
+      "Vit C (mg/100g)": 31,
+      "Viande": null,
+      "Plantes": [
+        "carotte",
+        "mâche",
+        "kale",
+        "betterave",
+        "gingembre"
+      ],
+      "K (mg/100g)": 280,
+      "Na (mg/100g)": 50,
+      "Fe (mg/100g)": 0.5,
+      "Mg (mg/100g)": 14,
+      "Polyphén. totaux (mg/100g)": 40,
+      "Inhib. Fe/Zn": "—"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "1.5.0",
-    "date": "2026-11-18",
+    "version": "1.6.0",
+    "date": "2026-11-19",
     "eating_window": "8h00–18h30 (~10h30)",
     "target_kcal": 2900,
     "target_protein_g": 130,
@@ -24,6 +24,15 @@
     "notes": "Cible protéique révisée le 17/11/2026 : 1,4-1,6 g/kg/jour, soit 119-136 g à 85 kg ; point de visée 130 g (haut de fourchette, part végétale importante). Comptage en protéines brutes. Objectif de seuil de leucine par repas abandonné (champs leucine conservés à titre informatif, seuils à null). Cibles kcal, glucides et lipides inchangées, à revoir avec le planificateur. L'architecture des repas ci-dessous fournit encore ~180 g de protéines : voir pending_adjustments."
   },
   "changelog": [
+    {
+      "date": "2026-11-19",
+      "version": "1.6.0",
+      "changes": [
+        "Journée type de novembre (day_plans) : aliments de saison, tous les voyants au vert dans l'app.",
+        "Modèles « Nov. — … » : R1, R2, collation, quatre dîners (poulet, sardines, œufs, tofu), collation renforcée et dîner léger pour les jours de dîner tardif.",
+        "Jus du matin d'hiver pauvre en FODMAP (base 2.6.3) : carotte, mâche, kale, betterave 20 g, gingembre."
+      ]
+    },
     {
       "date": "2026-11-18",
       "version": "1.5.0",
@@ -1075,6 +1084,329 @@
   },
   "meal_templates": [
     {
+      "id": "tpl_nov_r1",
+      "meal": "r1",
+      "name": "Nov. — R1 : jus d'hiver, bol fermenté, 2 œufs, pommes de terre",
+      "items": [
+        {
+          "id": "jus_legumes_matin_hiver",
+          "g": 180
+        },
+        {
+          "id": "flocons_fermentes_poids_sec",
+          "g": 50
+        },
+        {
+          "id": "germe_de_ble",
+          "g": 15
+        },
+        {
+          "id": "myrtilles_sauvages_bio_surgelees",
+          "g": 75
+        },
+        {
+          "id": "flavochino_cacao_polyphenols",
+          "g": 15
+        },
+        {
+          "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+          "g": 130
+        },
+        {
+          "id": "pommes_de_terre_cuites",
+          "g": 150
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 5
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_nov_r2",
+      "meal": "r2",
+      "name": "Nov. — R2 : tempeh, quinoa, légumes d'hiver, citron",
+      "items": [
+        {
+          "id": "tempeh_soja_maison",
+          "g": 90
+        },
+        {
+          "id": "tenebrions_poudre",
+          "g": 10
+        },
+        {
+          "id": "quinoa_cuit",
+          "g": 200
+        },
+        {
+          "id": "pommes_de_terre_cuites",
+          "g": 100
+        },
+        {
+          "id": "carotte_cuite_vapeur",
+          "g": 100
+        },
+        {
+          "id": "panais_cuit_vapeur",
+          "g": 80
+        },
+        {
+          "id": "blette_bette_cuite",
+          "g": 60
+        },
+        {
+          "id": "mache",
+          "g": 30
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 12
+        },
+        {
+          "id": "citron_jus_30ml",
+          "g": 15
+        },
+        {
+          "id": "concentre_tomate_double",
+          "g": 15
+        },
+        {
+          "id": "persil_frais",
+          "g": 10
+        },
+        {
+          "id": "jus_legumes_midi",
+          "g": 200
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_nov_collation",
+      "meal": "collation",
+      "name": "Nov. — Collation : flocons, ricotta-Greenwhey, myrtilles",
+      "items": [
+        {
+          "id": "ricotta_brebis_artisanale_marche",
+          "g": 30
+        },
+        {
+          "id": "greenwhey_poisfevescourge",
+          "g": 20
+        },
+        {
+          "id": "flocons_fermentes_poids_sec",
+          "g": 45
+        },
+        {
+          "id": "myrtilles_sauvages_bio_surgelees",
+          "g": 75
+        },
+        {
+          "id": "cannelle_de_ceylan",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_nov_diner_poulet",
+      "meal": "diner",
+      "name": "Nov. — Dîner poulet",
+      "items": [
+        {
+          "id": "blanc_poulet_cuit",
+          "g": 70
+        },
+        {
+          "id": "riz_basmati_cuit",
+          "g": 180
+        },
+        {
+          "id": "carotte_cuite_vapeur",
+          "g": 100
+        },
+        {
+          "id": "panais_cuit_vapeur",
+          "g": 60
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 5
+        },
+        {
+          "id": "psyllium_blond",
+          "g": 5
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_nov_diner_sardines",
+      "meal": "diner",
+      "name": "Nov. — Dîner sardines (2×/sem.)",
+      "items": [
+        {
+          "id": "sardines_en_conserve_huile_dolive",
+          "g": 95
+        },
+        {
+          "id": "riz_basmati_cuit",
+          "g": 150
+        },
+        {
+          "id": "carotte_cuite_vapeur",
+          "g": 100
+        },
+        {
+          "id": "panais_cuit_vapeur",
+          "g": 60
+        },
+        {
+          "id": "psyllium_blond",
+          "g": 5
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_nov_diner_oeufs",
+      "meal": "diner",
+      "name": "Nov. — Dîner œufs",
+      "items": [
+        {
+          "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+          "g": 130
+        },
+        {
+          "id": "riz_basmati_cuit",
+          "g": 150
+        },
+        {
+          "id": "carotte_cuite_vapeur",
+          "g": 100
+        },
+        {
+          "id": "panais_cuit_vapeur",
+          "g": 60
+        },
+        {
+          "id": "psyllium_blond",
+          "g": 5
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_nov_diner_tofu",
+      "meal": "diner",
+      "name": "Nov. — Dîner tofu",
+      "items": [
+        {
+          "id": "tofu_ferme",
+          "g": 120
+        },
+        {
+          "id": "riz_basmati_cuit",
+          "g": 130
+        },
+        {
+          "id": "carotte_cuite_vapeur",
+          "g": 100
+        },
+        {
+          "id": "panais_cuit_vapeur",
+          "g": 60
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 3
+        },
+        {
+          "id": "psyllium_blond",
+          "g": 5
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_nov_collation_tardive",
+      "meal": "collation",
+      "name": "Nov. — Collation renforcée (jour de dîner tardif, 17h30)",
+      "items": [
+        {
+          "id": "greenwhey_poisfevescourge",
+          "g": 30
+        },
+        {
+          "id": "flocons_fermentes_poids_sec",
+          "g": 45
+        },
+        {
+          "id": "myrtilles_sauvages_bio_surgelees",
+          "g": 75
+        },
+        {
+          "id": "lait_davoine_maison_flocons_fermentes",
+          "g": 200
+        },
+        {
+          "id": "cannelle_de_ceylan",
+          "g": 2
+        }
+      ]
+    },
+    {
+      "id": "tpl_nov_diner_tardif",
+      "meal": "diner",
+      "name": "Nov. — Dîner tardif léger (20h30, coucher ≥ 23h30)",
+      "items": [
+        {
+          "id": "blanc_poulet_cuit",
+          "g": 60
+        },
+        {
+          "id": "riz_basmati_cuit",
+          "g": 150
+        },
+        {
+          "id": "carotte_cuite_vapeur",
+          "g": 100
+        },
+        {
+          "id": "huile_dolive_extra_vierge_bio",
+          "g": 3
+        },
+        {
+          "id": "psyllium_blond",
+          "g": 5
+        },
+        {
+          "id": "omega3_epax_nutripure",
+          "g": 2
+        }
+      ]
+    },
+    {
       "id": "tpl_r1_antireflux",
       "meal": "r1",
       "name": "R1 — journée anti-reflux (après la séance à jeun)",
@@ -1616,5 +1948,54 @@
         "gap_to_bed_h_above": 4
       }
     }
-  }
+  },
+  "day_plans": [
+    {
+      "id": "journee_type_novembre_2026",
+      "date": "2026-11-19",
+      "name": "Journée type de novembre (aliments de saison, anti-reflux)",
+      "status": "Proposée le 19/11/2026. Tous les voyants de l'app au vert (25/25) avec meal_scoring v1.1. À tester avec le journal.",
+      "wake": "07:15",
+      "bedtime": "22:30",
+      "slots": {
+        "r1": [
+          "10:15",
+          "tpl_nov_r1"
+        ],
+        "inter": [
+          "12:00",
+          "tpl_inter_flavochino"
+        ],
+        "r2": [
+          "13:30",
+          "tpl_nov_r2"
+        ],
+        "collation": [
+          "16:30",
+          "tpl_nov_collation"
+        ],
+        "diner": [
+          "18:30",
+          "tpl_nov_diner_poulet"
+        ]
+      },
+      "totals": {
+        "kcal": 2533,
+        "protein_g": 132,
+        "carb_g": 326,
+        "fat_g": 82,
+        "fiber_g": 49,
+        "stomach_at_bedtime_kcal": 179
+      },
+      "notes": [
+        "Jus du matin d'hiver bu au réveil (~7h30), noté avec le R1 dans l'app.",
+        "R1 : flocons limités à 50 g (portion verte FODMAP prudente de l'avoine crue) ; pommes de terre pour l'énergie. Si les flocons sont bien tolérés, 70 g possibles (voyant FODMAP orange).",
+        "R2 avec tempeh 90 g : fructanes et GOS déjà au plafond. Légumes libres : carotte, panais, blette, courge spaghetti, mâche, cresson, radis noir. En plus, au choix : un légume « mannitol » ≤ 70 g (céleri-rave, patate douce, endive) et un légume « sorbitol » ≤ 70 g (navet, rutabaga, kale cuit). Potimarron, choux de Bruxelles, poireau : plutôt les jours sans tempeh.",
+        "Dîners en rotation : poulet, sardines (2×/sem.), œufs, tofu — tous au vert.",
+        "Jours de salle + sauna (lun/mer) : collation à 16h, séance 17h-18h15, dîner 18h45, coucher 22h45 — testé, tout au vert.",
+        "Jour de dîner tardif (20h30) : collation renforcée à 17h30 + dîner léger, coucher ≥ 23h30 — testé, tout au vert.",
+        "Énergie ~2 530 kcal (cible 2 700 ± 300) : suivre le poids ; si baisse, +20-30 g de flocons au R1 ou boisson avant la séance les jours de cardio."
+      ]
+    }
+  ]
 }
