@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.7.0",
+    "version": "1.7.1",
     "date": "2026-11-24",
     "eating_window": "8h00–18h30 (~10h30)",
     "target_kcal": 2900,
@@ -24,6 +24,13 @@
     "notes": "Cible protéique révisée le 17/11/2026 : 1,4-1,6 g/kg/jour, soit 119-136 g à 85 kg ; point de visée 130 g (haut de fourchette, part végétale importante). Comptage en protéines brutes. Objectif de seuil de leucine par repas abandonné (champs leucine conservés à titre informatif, seuils à null). Cibles kcal, glucides et lipides inchangées, à revoir avec le planificateur. L'architecture des repas ci-dessous fournit encore ~180 g de protéines : voir pending_adjustments."
   },
   "changelog": [
+    {
+      "date": "2026-11-24",
+      "version": "1.7.1",
+      "changes": [
+        "Semaine type v2 : féculents simplifiés (quinoa au déjeuner, riz basmati au dîner, pommes de terre en appoint) ; légumes achetés entiers (1 potimarron, 1 céleri-rave, 1 rutabaga) utilisés en portions de 60-70 g dans presque tous les repas ; liste de courses en unités d'achat ; plan de cuisine adapté. Tous les voyants au vert."
+      ]
+    },
     {
       "date": "2026-11-24",
       "version": "1.7.0",
@@ -2064,7 +2071,7 @@
       "id": "semaine_hiver_2026",
       "name": "Semaine type — hiver 2026",
       "date": "2026-11-24",
-      "status": "Proposée le 24/11/2026. Lundi-vendredi et dimanche : tous les voyants au vert (meal_scoring v1.1). Samedi soir libre.",
+      "status": "Version du 24/11/2026 (féculents simplifiés, légumes achetés entiers). Lundi-vendredi et dimanche : tous les voyants au vert. Samedi soir libre.",
       "summary": {
         "kcal": "≈ 2 450-2 510 / jour",
         "protein_g": "135-145",
@@ -2140,19 +2147,27 @@
               },
               {
                 "id": "quinoa_cuit",
-                "g": 230
+                "g": 190
               },
               {
                 "id": "carotte_cuite_vapeur",
-                "g": 100
+                "g": 80
               },
               {
                 "id": "panais_cuit_vapeur",
-                "g": 100
+                "g": 80
+              },
+              {
+                "id": "celerirave_cuit_vapeur",
+                "g": 70
+              },
+              {
+                "id": "rutabaga_cuit",
+                "g": 70
               },
               {
                 "id": "blette_bette_cuite",
-                "g": 60
+                "g": 80
               },
               {
                 "id": "mache",
@@ -2219,8 +2234,8 @@
                 "g": 120
               },
               {
-                "id": "carotte_cuite_vapeur",
-                "g": 80
+                "id": "potimarron_vapeur",
+                "g": 70
               },
               {
                 "id": "huile_dolive_extra_vierge_bio",
@@ -2237,7 +2252,7 @@
             ]
           },
           "notes": {
-            "r2": "Tempeh grillé à la poêle, arrosé de citron ; ténébrions en poudre mélangés à la vinaigrette.",
+            "r2": "Tempeh grillé, arrosé de citron ; ténébrions en poudre dans la vinaigrette. Céleri-rave et rutabaga : portions de 70 g du lot du dimanche.",
             "diner": "Œufs au plat ou brouillés (feu doux, peu d'huile)."
           },
           "free": {}
@@ -2305,24 +2320,28 @@
                 "g": 150
               },
               {
-                "id": "riz_complet_cuit",
+                "id": "quinoa_cuit",
                 "g": 250
+              },
+              {
+                "id": "potimarron_vapeur",
+                "g": 60
               },
               {
                 "id": "celerirave_cuit_vapeur",
                 "g": 70
               },
               {
-                "id": "carotte_cuite_vapeur",
-                "g": 100
-              },
-              {
-                "id": "chou_vert_kale_cuit",
+                "id": "rutabaga_cuit",
                 "g": 70
               },
               {
+                "id": "carotte_cuite_vapeur",
+                "g": 60
+              },
+              {
                 "id": "courge_spaghetti_cuite",
-                "g": 80
+                "g": 60
               },
               {
                 "id": "huile_dolive_extra_vierge_bio",
@@ -2378,11 +2397,15 @@
               },
               {
                 "id": "pommes_de_terre_cuites",
-                "g": 110
+                "g": 90
+              },
+              {
+                "id": "celerirave_cuit_vapeur",
+                "g": 70
               },
               {
                 "id": "carotte_cuite_vapeur",
-                "g": 100
+                "g": 60
               },
               {
                 "id": "persil_frais",
@@ -2399,7 +2422,7 @@
             ]
           },
           "notes": {
-            "r2": "Tofu doré à la poêle ; légumes et riz complet du lot du dimanche.",
+            "r2": "Tofu doré à la poêle, quinoa du lot du dimanche.",
             "diner": "Tartines de pain maison aux sardines, pommes de terre vapeur, persil."
           },
           "free": {}
@@ -2471,24 +2494,28 @@
                 "g": 130
               },
               {
-                "id": "sarrasin_kasha_cuit",
-                "g": 250
+                "id": "quinoa_cuit",
+                "g": 200
               },
               {
-                "id": "navet_cuit_vapeur",
+                "id": "celerirave_cuit_vapeur",
+                "g": 70
+              },
+              {
+                "id": "rutabaga_cuit",
                 "g": 70
               },
               {
                 "id": "carotte_cuite_vapeur",
-                "g": 100
+                "g": 80
               },
               {
                 "id": "blette_bette_cuite",
-                "g": 60
+                "g": 80
               },
               {
                 "id": "huile_dolive_extra_vierge_bio",
-                "g": 8
+                "g": 6
               },
               {
                 "id": "citron_jus_30ml",
@@ -2536,15 +2563,19 @@
               },
               {
                 "id": "riz_basmati_cuit",
-                "g": 150
+                "g": 130
+              },
+              {
+                "id": "potimarron_vapeur",
+                "g": 70
               },
               {
                 "id": "panais_cuit_vapeur",
                 "g": 80
               },
               {
-                "id": "carotte_cuite_vapeur",
-                "g": 80
+                "id": "courge_spaghetti_cuite",
+                "g": 60
               },
               {
                 "id": "huile_dolive_extra_vierge_bio",
@@ -2561,8 +2592,8 @@
             ]
           },
           "notes": {
-            "r2": "Tempeh + 2 œufs mollets ; kasha de sarrasin du lot du dimanche.",
-            "diner": "Poulet à la poêle ou en papillote."
+            "r2": "Tempeh + 2 œufs mollets.",
+            "diner": "Poulet à la poêle ou en papillote. Ce soir : lot n° 2."
           },
           "free": {}
         },
@@ -2629,8 +2660,8 @@
                 "g": 100
               },
               {
-                "id": "millet_cuit",
-                "g": 150
+                "id": "quinoa_cuit",
+                "g": 140
               },
               {
                 "id": "pommes_de_terre_cuites",
@@ -2641,16 +2672,20 @@
                 "g": 75
               },
               {
-                "id": "courge_spaghetti_cuite",
-                "g": 100
+                "id": "celerirave_cuit_vapeur",
+                "g": 70
               },
               {
-                "id": "chou_vert_kale_cuit",
+                "id": "rutabaga_cuit",
                 "g": 70
               },
               {
                 "id": "carotte_cuite_vapeur",
-                "g": 100
+                "g": 80
+              },
+              {
+                "id": "courge_spaghetti_cuite",
+                "g": 80
               },
               {
                 "id": "huile_dolive_extra_vierge_bio",
@@ -2714,7 +2749,7 @@
               },
               {
                 "id": "blette_bette_cuite",
-                "g": 80
+                "g": 100
               },
               {
                 "id": "huile_dolive_extra_vierge_bio",
@@ -2731,8 +2766,8 @@
             ]
           },
           "notes": {
-            "r2": "Poulet, millet, 1 tranche de pain maison.",
-            "diner": "Œufs brouillés, potimarron vapeur."
+            "r2": "Poulet, quinoa, 1 tranche de pain maison.",
+            "diner": "Œufs brouillés, potimarron, blettes."
           },
           "free": {}
         },
@@ -2803,20 +2838,20 @@
                 "g": 260
               },
               {
-                "id": "endive_chicoree_cuite",
+                "id": "potimarron_vapeur",
+                "g": 60
+              },
+              {
+                "id": "celerirave_cuit_vapeur",
                 "g": 70
               },
               {
                 "id": "carotte_cuite_vapeur",
-                "g": 100
+                "g": 80
               },
               {
                 "id": "blette_bette_cuite",
-                "g": 60
-              },
-              {
-                "id": "courge_spaghetti_cuite",
-                "g": 50
+                "g": 80
               },
               {
                 "id": "mache",
@@ -2872,15 +2907,19 @@
               },
               {
                 "id": "riz_basmati_cuit",
-                "g": 125
+                "g": 110
               },
               {
                 "id": "courge_spaghetti_cuite",
-                "g": 120
+                "g": 100
               },
               {
-                "id": "carotte_cuite_vapeur",
-                "g": 80
+                "id": "potimarron_vapeur",
+                "g": 70
+              },
+              {
+                "id": "rutabaga_cuit",
+                "g": 70
               },
               {
                 "id": "psyllium_blond",
@@ -2893,8 +2932,8 @@
             ]
           },
           "notes": {
-            "r2": "Tofu doré, quinoa, légumes du marché du matin.",
-            "diner": "Sardines, riz, courge spaghetti."
+            "r2": "Tofu doré, quinoa, légumes (et mâche du marché du matin).",
+            "diner": "Sardines, riz, courge spaghetti, potimarron."
           },
           "free": {}
         },
@@ -3053,15 +3092,19 @@
               },
               {
                 "id": "pommes_de_terre_cuites",
-                "g": 220
+                "g": 190
               },
               {
                 "id": "rutabaga_cuit",
                 "g": 70
               },
               {
+                "id": "celerirave_cuit_vapeur",
+                "g": 70
+              },
+              {
                 "id": "carotte_cuite_vapeur",
-                "g": 100
+                "g": 80
               },
               {
                 "id": "panais_cuit_vapeur",
@@ -3124,8 +3167,8 @@
                 "g": 130
               },
               {
-                "id": "carotte_cuite_vapeur",
-                "g": 100
+                "id": "potimarron_vapeur",
+                "g": 70
               },
               {
                 "id": "courge_spaghetti_cuite",
@@ -3147,7 +3190,7 @@
           },
           "notes": {
             "r2": "Tempeh + 2 œufs, pommes de terre et légumes racines au four ou à la vapeur.",
-            "diner": "Tofu doré, riz, courge spaghetti."
+            "diner": "Tofu doré, riz, potimarron, courge spaghetti."
           },
           "free": {}
         }
@@ -3221,7 +3264,7 @@
             "Dîner léger (~370 kcal, 8 g de lipides).",
             "Coucher vers 23h30 au plus tôt : 3 h après le dîner. Si vous devez vous coucher plus tôt, réduisez encore le riz."
           ],
-          "tested": "Journée testée au vert (lundi + variante)."
+          "tested": "Testé au vert (lundi + variante)."
         },
         {
           "id": "faim",
@@ -3265,77 +3308,67 @@
           "items": [
             [
               "Carottes",
-              "2,5 kg",
+              "2 kg (un sac)",
               "jus (2 par jour) + légumes"
             ],
             [
               "Mâche",
-              "700 g",
-              "moitié vendredi, moitié mardi (se garde 3-4 jours)"
+              "≈ 700 g",
+              "en deux fois : vendredi et mardi (se garde 3-4 jours)"
             ],
             [
               "Kale (chou frisé)",
-              "850 g",
-              "jus + kale cuit"
+              "3 bottes (≈ 650 g)",
+              "pour les jus"
             ],
             [
               "Betterave crue",
-              "140 g",
-              "jus du matin"
+              "1 betterave moyenne",
+              "à 20 g par jour ; plus si vous augmentez la dose"
             ],
             [
-              "Panais",
-              "300 g",
+              "Potimarron",
+              "1 petit (≈ 600 g)",
+              "7 portions de 60-70 g"
+            ],
+            [
+              "Céleri-rave",
+              "1 petit (≈ 600 g)",
+              "7 portions de 70 g"
+            ],
+            [
+              "Rutabaga",
+              "1 (≈ 500 g)",
+              "6 portions de 70 g"
+            ],
+            [
+              "Courge spaghetti",
+              "1 (≈ 1 kg)",
               ""
             ],
             [
               "Blettes",
-              "300 g",
+              "1 botte (≈ 500 g)",
               "à cuire dans les 2-3 jours"
             ],
             [
-              "Courge spaghetti",
-              "700 g",
-              "≈ 1 petite"
-            ],
-            [
-              "Céleri-rave",
-              "100 g",
+              "Panais",
+              "3 (≈ 300 g)",
               ""
-            ],
-            [
-              "Navet",
-              "100 g",
-              ""
-            ],
-            [
-              "Rutabaga",
-              "100 g",
-              ""
-            ],
-            [
-              "Endive",
-              "100 g",
-              "1 endive"
-            ],
-            [
-              "Potimarron",
-              "100 g",
-              "un quartier"
             ],
             [
               "Pommes de terre",
-              "0,5 kg",
-              ""
+              "1 kg",
+              "se gardent ; le reste pour la semaine suivante"
             ],
             [
               "Persil",
-              "1 grosse botte",
+              "1 botte",
               ""
             ],
             [
               "Gingembre frais",
-              "100 g",
+              "1 morceau (≈ 100 g)",
               ""
             ],
             [
@@ -3350,13 +3383,13 @@
           "items": [
             [
               "Skyr",
-              "1,40 kg",
-              "≈ 7 pots de 190-200 g"
+              "7 pots de 200 g",
+              "ou 3 pots de 450 g"
             ],
             [
               "Tofu ferme",
-              "450 g",
-              ""
+              "2 blocs de 250 g",
+              "≈ 420 g utilisés"
             ],
             [
               "Sardines à l'huile d'olive",
@@ -3365,43 +3398,28 @@
             ],
             [
               "Œufs bio",
-              "10 (+ réserve)",
-              "calibre XL"
+              "1 boîte de 12",
+              "10 utilisés"
             ],
             [
               "Filet de poulet",
-              "250 g (cru)",
+              "2 petits filets (≈ 250 g)",
               "ou chez le boucher"
             ],
             [
+              "Quinoa",
+              "1 paquet de 500 g",
+              "≈ 340 g utilisés"
+            ],
+            [
+              "Riz basmati",
+              "1 paquet de 500 g",
+              "≈ 230 g utilisés"
+            ],
+            [
               "Flocons de sarrasin",
-              "450 g",
+              "1 paquet de 500 g",
               "nouveau"
-            ],
-            [
-              "Quinoa (sec)",
-              "200 g",
-              ""
-            ],
-            [
-              "Riz basmati (sec)",
-              "250 g",
-              ""
-            ],
-            [
-              "Riz complet (sec)",
-              "100 g",
-              ""
-            ],
-            [
-              "Sarrasin décortiqué (sec)",
-              "100 g",
-              ""
-            ],
-            [
-              "Millet (sec)",
-              "50 g",
-              ""
             ],
             [
               "Concentré de tomate double",
@@ -3415,8 +3433,8 @@
           "items": [
             [
               "Myrtilles sauvages surgelées",
-              "1200 g",
-              "≈ 3 boîtes de 450 g"
+              "3 boîtes de 450 g",
+              "≈ 1,15 kg utilisés"
             ]
           ]
         },
@@ -3425,7 +3443,7 @@
           "items": [
             [
               "Flocons fermentés",
-              "900 g secs",
+              "≈ 900 g secs",
               "bol, collation, lait d'avoine"
             ],
             [
@@ -3436,12 +3454,12 @@
             [
               "Tempeh",
               "250 g",
-              "un lot toutes les 2 semaines, congeler"
+              "un lot toutes les 2-3 semaines, congeler"
             ],
             [
               "Pain maison aux flocons",
-              "150 g",
-              "≈ 2 tranches ; sinon pain au petit épeautre ou au sarrasin"
+              "2 tranches",
+              "sinon pain au petit épeautre ou au sarrasin"
             ]
           ]
         },
@@ -3450,17 +3468,17 @@
           "items": [
             [
               "Vivo Life Perform",
-              "180 g",
+              "≈ 180 g",
               ""
             ],
             [
               "Flavochino",
-              "210 g",
+              "≈ 210 g",
               ""
             ],
             [
               "Germe de blé (stabilisé)",
-              "110 g",
+              "≈ 110 g",
               ""
             ],
             [
@@ -3475,7 +3493,7 @@
             ],
             [
               "Huile d'olive",
-              "85 ml",
+              "≈ 85 ml",
               ""
             ],
             [
@@ -3490,24 +3508,26 @@
         {
           "when": "Vendredi (après le marché) ou samedi",
           "tasks": [
-            "Lancer les flocons fermentés de la semaine (24-48 h) : ~1 kg sec.",
-            "Tous les 15 jours : lancer un lot de tempeh, portionner et congeler.",
+            "Lancer les flocons fermentés de la semaine (24-48 h) : ~900 g secs.",
+            "Toutes les 2-3 semaines : un lot de tempeh, portionner et congeler.",
             "Pain maison : cuire quand la fermentation est prête, trancher, congeler."
           ]
         },
         {
-          "when": "Dimanche (≈ 1 h 30) — lot n° 1, pour lundi à mercredi",
+          "when": "Dimanche (≈ 1 h 15) — lot n° 1",
           "tasks": [
-            "Cuire : quinoa (lundi), riz complet (mardi), sarrasin (mercredi), riz basmati (dîners de lundi et mercredi).",
-            "Vapeur : carottes, panais, céleri-rave, navet, courge spaghetti pour 3 jours ; pommes de terre pour mardi, refroidies (amidon résistant).",
-            "Refroidir vite (moins d'1 h), boîtes au réfrigérateur, 3-4 jours maximum (le riz cuit gardé tiède est à risque)."
+            "Cuire : quinoa (≈ 200 g sec, déjeuners de lundi à mercredi) et riz basmati (≈ 130 g sec, dîners de dimanche à mercredi). Riz : beaucoup d'eau, égoutté (moins d'arsenic).",
+            "Four ou vapeur, en entier : le potimarron (en quartiers, avec la peau), le céleri-rave et le rutabaga (en cubes). Portions de 70 g : la moitié au réfrigérateur (lundi-mercredi), la moitié au congélateur (jeudi-dimanche).",
+            "Vapeur : carottes, panais, la moitié de la courge spaghetti ; pommes de terre pour mardi, refroidies (amidon résistant).",
+            "Refroidir vite (moins d'1 h), boîtes au réfrigérateur, 3-4 jours maximum."
           ]
         },
         {
-          "when": "Mercredi soir (≈ 1 h) — lot n° 2, pour jeudi et vendredi",
+          "when": "Mercredi soir (≈ 45 min) — lot n° 2",
           "tasks": [
-            "Cuire : millet (jeudi), quinoa (vendredi), riz basmati (dîners de jeudi et vendredi).",
-            "Vapeur : kale, courge spaghetti, potimarron, endive, pommes de terre ; carottes et panais."
+            "Cuire : quinoa (≈ 150 g sec, jeudi-vendredi) et riz basmati (≈ 100 g sec, dîners de jeudi et vendredi).",
+            "Sortir du congélateur les portions de potimarron, céleri-rave et rutabaga.",
+            "Vapeur : l'autre moitié de la courge spaghetti, carottes, blettes."
           ]
         },
         {
@@ -3520,7 +3540,7 @@
         {
           "when": "Au repas (≈ 10 min)",
           "tasks": [
-            "Cuire à la minute : œufs, tofu, poulet, tempeh. Blettes : les cuire la veille ou le jour même.",
+            "Cuire à la minute : œufs, tofu, poulet, tempeh. Blettes : la veille ou le jour même.",
             "Assaisonner : huile d'olive, citron, persil."
           ]
         },
@@ -3528,7 +3548,7 @@
           "when": "Week-end",
           "tasks": [
             "Samedi : brunch, puis repas libre le soir.",
-            "Dimanche : lot n° 1 + courses de complément si besoin (mâche, skyr)."
+            "Dimanche : lot n° 1 (et riz du dîner)."
           ]
         }
       ],
@@ -3536,7 +3556,9 @@
         "Ordre de la journée : jus au réveil · bol vers 9h30 (ou dans l'heure après la séance du matin) · Flavochino + lait d'avoine à 12h · déjeuner vers 13h · collation vers 16h30 · dîner vers 19h · coucher vers 22h30.",
         "Le bol du matin reste fixe, mais il est complété par 45 g de flocons de sarrasin : seul, il ne faisait que ~460 kcal et la journée manquait d'énergie.",
         "Les œufs ont quitté le bol : ils sont au déjeuner ou au dîner 5 jours sur 7 (iode, B12, choline) ; les 2 autres jours, ce sont les sardines.",
-        "Déjeuner = fenêtre du fer : citron + persil + jus du midi, sans cacao. Les jours de tempeh, les légumes « libres » sont carotte, panais, blette, courge spaghetti, mâche.",
+        "Féculents simplifiés : quinoa au déjeuner, riz basmati au dîner, pommes de terre en appoint ; flocons de sarrasin au bol et à la collation.",
+        "Légumes vendus entiers (potimarron, céleri-rave, rutabaga) : un de chaque par semaine, en portions de 60-70 g dans presque tous les repas — c'est la limite FODMAP par repas. Carotte, panais, blette, courge spaghetti, mâche : sans limite.",
+        "Déjeuner = fenêtre du fer : citron + persil + jus du midi, sans cacao.",
         "Dîner : le plus léger (≈ 450 kcal, ≤ 20 g de lipides), au moins 3 h 30 avant le coucher. Si vous dînez plus tard : variante « Dîner tardif ».",
         "Week-end plus souple : lever vers 8h30, brunch samedi, repas libre samedi soir, dimanche = jour de cuisine en lots.",
         "Iode : sardines 2 fois par semaine + œufs + skyr couvrent mieux qu'avant, mais restent probablement sous les 150 µg/jour : à revoir avec le bilan (TSH)."
