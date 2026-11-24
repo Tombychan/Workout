@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "1.6.1",
-    "date": "2026-11-19",
+    "version": "1.7.0",
+    "date": "2026-11-24",
     "eating_window": "8h00–18h30 (~10h30)",
     "target_kcal": 2900,
     "target_protein_g": 130,
@@ -24,6 +24,16 @@
     "notes": "Cible protéique révisée le 17/11/2026 : 1,4-1,6 g/kg/jour, soit 119-136 g à 85 kg ; point de visée 130 g (haut de fourchette, part végétale importante). Comptage en protéines brutes. Objectif de seuil de leucine par repas abandonné (champs leucine conservés à titre informatif, seuils à null). Cibles kcal, glucides et lipides inchangées, à revoir avec le planificateur. L'architecture des repas ci-dessous fournit encore ~180 g de protéines : voir pending_adjustments."
   },
   "changelog": [
+    {
+      "date": "2026-11-24",
+      "version": "1.7.0",
+      "changes": [
+        "Nouveau bloc week_plans : semaine type d'hiver (7 jours) affichée dans le nouvel onglet « Semaine » de l'app.",
+        "Bol du matin Vivo Life fixe, complété par 45 g de flocons de sarrasin ; collation skyr fixe ; déjeuner et dîner différents chaque jour ; œufs 5 jours sur 7 hors du bol, sardines 2 fois par semaine ; samedi brunch et repas libre ; dîner vers 19h.",
+        "Variantes de secours (dîner tardif, jour très actif, séance l'après-midi ou le matin), liste de courses par lieu, plan de cuisine en lots, repères.",
+        "Jus : recettes d'hiver v2 (moins de carotte ; jus du midi sans épinards). Base 2.7.1."
+      ]
+    },
     {
       "date": "2026-11-19",
       "version": "1.6.1",
@@ -2046,6 +2056,1490 @@
         "Jour de dîner tardif (20h30) : collation renforcée à 17h30 + dîner léger, coucher ≥ 23h30 — testé, tout au vert.",
         "Énergie ~2 530 kcal (cible 2 700 ± 300) : suivre le poids ; si baisse, +20-30 g de flocons au R1 ou boisson avant la séance les jours de cardio.",
         "Variante du R1 (habitude réelle) : bol Vivo Life 20 g + flocons 50 g + germe de blé + myrtilles + Flavochino, complété par 2 œufs et 100 g de pommes de terre (modèle tpl_nov_r1_vivo) — tout au vert, ~720 kcal ; protéines de la journée ~143 g. Le bol seul (~460 kcal) laisse la journée sous 2 450 kcal et retire les œufs, principale source d'iode, de B12 et de choline de la journée."
+      ]
+    }
+  ],
+  "week_plans": [
+    {
+      "id": "semaine_hiver_2026",
+      "name": "Semaine type — hiver 2026",
+      "date": "2026-11-24",
+      "status": "Proposée le 24/11/2026. Lundi-vendredi et dimanche : tous les voyants au vert (meal_scoring v1.1). Samedi soir libre.",
+      "summary": {
+        "kcal": "≈ 2 450-2 510 / jour",
+        "protein_g": "135-145",
+        "fiber_g": "45-55",
+        "note": "Samedi hors repas libre."
+      },
+      "days": [
+        {
+          "id": "lun",
+          "label": "Lundi",
+          "wake": "07:15",
+          "bed": "22:30",
+          "times": {
+            "r1": "09:30",
+            "inter": "12:00",
+            "r2": "13:00",
+            "collation": "16:30",
+            "diner": "19:00"
+          },
+          "meals": {
+            "r1": [
+              {
+                "id": "jus_legumes_matin_hiver",
+                "g": 160
+              },
+              {
+                "id": "vivo_life_perform",
+                "g": 25
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 50
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 45
+              },
+              {
+                "id": "germe_de_ble",
+                "g": 15
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 90
+              },
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "inter": [
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "lait_davoine_maison_flocons_fermentes",
+                "g": 300
+              }
+            ],
+            "r2": [
+              {
+                "id": "tempeh_soja_maison",
+                "g": 90
+              },
+              {
+                "id": "tenebrions_poudre",
+                "g": 10
+              },
+              {
+                "id": "quinoa_cuit",
+                "g": 230
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 100
+              },
+              {
+                "id": "panais_cuit_vapeur",
+                "g": 100
+              },
+              {
+                "id": "blette_bette_cuite",
+                "g": 60
+              },
+              {
+                "id": "mache",
+                "g": 30
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 12
+              },
+              {
+                "id": "citron_jus_30ml",
+                "g": 15
+              },
+              {
+                "id": "concentre_tomate_double",
+                "g": 15
+              },
+              {
+                "id": "persil_frais",
+                "g": 10
+              },
+              {
+                "id": "jus_legumes_midi_hiver",
+                "g": 180
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "collation": [
+              {
+                "id": "skyr_vache_classique_holstein",
+                "g": 190
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 45
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 25
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 75
+              },
+              {
+                "id": "cannelle_de_ceylan",
+                "g": 2
+              }
+            ],
+            "diner": [
+              {
+                "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+                "g": 130
+              },
+              {
+                "id": "riz_basmati_cuit",
+                "g": 120
+              },
+              {
+                "id": "courge_spaghetti_cuite",
+                "g": 120
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 80
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 3
+              },
+              {
+                "id": "psyllium_blond",
+                "g": 5
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ]
+          },
+          "notes": {
+            "r2": "Tempeh grillé à la poêle, arrosé de citron ; ténébrions en poudre mélangés à la vinaigrette.",
+            "diner": "Œufs au plat ou brouillés (feu doux, peu d'huile)."
+          },
+          "free": {}
+        },
+        {
+          "id": "mar",
+          "label": "Mardi",
+          "wake": "07:15",
+          "bed": "22:30",
+          "times": {
+            "r1": "09:30",
+            "inter": "12:00",
+            "r2": "13:00",
+            "collation": "16:30",
+            "diner": "19:00"
+          },
+          "meals": {
+            "r1": [
+              {
+                "id": "jus_legumes_matin_hiver",
+                "g": 160
+              },
+              {
+                "id": "vivo_life_perform",
+                "g": 25
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 50
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 45
+              },
+              {
+                "id": "germe_de_ble",
+                "g": 15
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 90
+              },
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "inter": [
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "lait_davoine_maison_flocons_fermentes",
+                "g": 300
+              }
+            ],
+            "r2": [
+              {
+                "id": "tofu_ferme",
+                "g": 150
+              },
+              {
+                "id": "riz_complet_cuit",
+                "g": 250
+              },
+              {
+                "id": "celerirave_cuit_vapeur",
+                "g": 70
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 100
+              },
+              {
+                "id": "chou_vert_kale_cuit",
+                "g": 70
+              },
+              {
+                "id": "courge_spaghetti_cuite",
+                "g": 80
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 10
+              },
+              {
+                "id": "citron_jus_30ml",
+                "g": 15
+              },
+              {
+                "id": "persil_frais",
+                "g": 10
+              },
+              {
+                "id": "jus_legumes_midi_hiver",
+                "g": 180
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "collation": [
+              {
+                "id": "skyr_vache_classique_holstein",
+                "g": 190
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 45
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 25
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 75
+              },
+              {
+                "id": "cannelle_de_ceylan",
+                "g": 2
+              }
+            ],
+            "diner": [
+              {
+                "id": "sardines_en_conserve_huile_dolive",
+                "g": 95
+              },
+              {
+                "id": "pain_maison_flocons_fermentes",
+                "g": 75
+              },
+              {
+                "id": "pommes_de_terre_cuites",
+                "g": 110
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 100
+              },
+              {
+                "id": "persil_frais",
+                "g": 5
+              },
+              {
+                "id": "psyllium_blond",
+                "g": 5
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ]
+          },
+          "notes": {
+            "r2": "Tofu doré à la poêle ; légumes et riz complet du lot du dimanche.",
+            "diner": "Tartines de pain maison aux sardines, pommes de terre vapeur, persil."
+          },
+          "free": {}
+        },
+        {
+          "id": "mer",
+          "label": "Mercredi",
+          "wake": "07:15",
+          "bed": "22:30",
+          "times": {
+            "r1": "09:30",
+            "inter": "12:00",
+            "r2": "13:00",
+            "collation": "16:30",
+            "diner": "19:00"
+          },
+          "meals": {
+            "r1": [
+              {
+                "id": "jus_legumes_matin_hiver",
+                "g": 160
+              },
+              {
+                "id": "vivo_life_perform",
+                "g": 25
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 50
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 45
+              },
+              {
+                "id": "germe_de_ble",
+                "g": 15
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 90
+              },
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "inter": [
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "lait_davoine_maison_flocons_fermentes",
+                "g": 300
+              }
+            ],
+            "r2": [
+              {
+                "id": "tempeh_soja_maison",
+                "g": 70
+              },
+              {
+                "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+                "g": 130
+              },
+              {
+                "id": "sarrasin_kasha_cuit",
+                "g": 250
+              },
+              {
+                "id": "navet_cuit_vapeur",
+                "g": 70
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 100
+              },
+              {
+                "id": "blette_bette_cuite",
+                "g": 60
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 8
+              },
+              {
+                "id": "citron_jus_30ml",
+                "g": 15
+              },
+              {
+                "id": "persil_frais",
+                "g": 10
+              },
+              {
+                "id": "jus_legumes_midi_hiver",
+                "g": 180
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "collation": [
+              {
+                "id": "skyr_vache_classique_holstein",
+                "g": 190
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 45
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 25
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 75
+              },
+              {
+                "id": "cannelle_de_ceylan",
+                "g": 2
+              }
+            ],
+            "diner": [
+              {
+                "id": "blanc_poulet_cuit",
+                "g": 70
+              },
+              {
+                "id": "riz_basmati_cuit",
+                "g": 150
+              },
+              {
+                "id": "panais_cuit_vapeur",
+                "g": 80
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 80
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 5
+              },
+              {
+                "id": "psyllium_blond",
+                "g": 5
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ]
+          },
+          "notes": {
+            "r2": "Tempeh + 2 œufs mollets ; kasha de sarrasin du lot du dimanche.",
+            "diner": "Poulet à la poêle ou en papillote."
+          },
+          "free": {}
+        },
+        {
+          "id": "jeu",
+          "label": "Jeudi",
+          "wake": "07:15",
+          "bed": "22:30",
+          "times": {
+            "r1": "09:30",
+            "inter": "12:00",
+            "r2": "13:00",
+            "collation": "16:30",
+            "diner": "19:00"
+          },
+          "meals": {
+            "r1": [
+              {
+                "id": "jus_legumes_matin_hiver",
+                "g": 160
+              },
+              {
+                "id": "vivo_life_perform",
+                "g": 25
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 50
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 45
+              },
+              {
+                "id": "germe_de_ble",
+                "g": 15
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 90
+              },
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "inter": [
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "lait_davoine_maison_flocons_fermentes",
+                "g": 300
+              }
+            ],
+            "r2": [
+              {
+                "id": "blanc_poulet_cuit",
+                "g": 100
+              },
+              {
+                "id": "millet_cuit",
+                "g": 150
+              },
+              {
+                "id": "pommes_de_terre_cuites",
+                "g": 60
+              },
+              {
+                "id": "pain_maison_flocons_fermentes",
+                "g": 75
+              },
+              {
+                "id": "courge_spaghetti_cuite",
+                "g": 100
+              },
+              {
+                "id": "chou_vert_kale_cuit",
+                "g": 70
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 100
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 16
+              },
+              {
+                "id": "citron_jus_30ml",
+                "g": 15
+              },
+              {
+                "id": "persil_frais",
+                "g": 10
+              },
+              {
+                "id": "concentre_tomate_double",
+                "g": 15
+              },
+              {
+                "id": "jus_legumes_midi_hiver",
+                "g": 180
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "collation": [
+              {
+                "id": "skyr_vache_classique_holstein",
+                "g": 190
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 45
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 25
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 75
+              },
+              {
+                "id": "cannelle_de_ceylan",
+                "g": 2
+              }
+            ],
+            "diner": [
+              {
+                "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+                "g": 130
+              },
+              {
+                "id": "riz_basmati_cuit",
+                "g": 130
+              },
+              {
+                "id": "potimarron_vapeur",
+                "g": 70
+              },
+              {
+                "id": "blette_bette_cuite",
+                "g": 80
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 3
+              },
+              {
+                "id": "psyllium_blond",
+                "g": 5
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ]
+          },
+          "notes": {
+            "r2": "Poulet, millet, 1 tranche de pain maison.",
+            "diner": "Œufs brouillés, potimarron vapeur."
+          },
+          "free": {}
+        },
+        {
+          "id": "ven",
+          "label": "Vendredi",
+          "wake": "07:15",
+          "bed": "22:30",
+          "times": {
+            "r1": "09:30",
+            "inter": "12:00",
+            "r2": "13:00",
+            "collation": "16:30",
+            "diner": "19:00"
+          },
+          "meals": {
+            "r1": [
+              {
+                "id": "jus_legumes_matin_hiver",
+                "g": 160
+              },
+              {
+                "id": "vivo_life_perform",
+                "g": 25
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 50
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 45
+              },
+              {
+                "id": "germe_de_ble",
+                "g": 15
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 90
+              },
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "inter": [
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "lait_davoine_maison_flocons_fermentes",
+                "g": 300
+              }
+            ],
+            "r2": [
+              {
+                "id": "tofu_ferme",
+                "g": 150
+              },
+              {
+                "id": "quinoa_cuit",
+                "g": 260
+              },
+              {
+                "id": "endive_chicoree_cuite",
+                "g": 70
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 100
+              },
+              {
+                "id": "blette_bette_cuite",
+                "g": 60
+              },
+              {
+                "id": "courge_spaghetti_cuite",
+                "g": 50
+              },
+              {
+                "id": "mache",
+                "g": 20
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 10
+              },
+              {
+                "id": "citron_jus_30ml",
+                "g": 15
+              },
+              {
+                "id": "persil_frais",
+                "g": 10
+              },
+              {
+                "id": "jus_legumes_midi_hiver",
+                "g": 180
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "collation": [
+              {
+                "id": "skyr_vache_classique_holstein",
+                "g": 190
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 45
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 25
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 75
+              },
+              {
+                "id": "cannelle_de_ceylan",
+                "g": 2
+              }
+            ],
+            "diner": [
+              {
+                "id": "sardines_en_conserve_huile_dolive",
+                "g": 95
+              },
+              {
+                "id": "riz_basmati_cuit",
+                "g": 125
+              },
+              {
+                "id": "courge_spaghetti_cuite",
+                "g": 120
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 80
+              },
+              {
+                "id": "psyllium_blond",
+                "g": 5
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ]
+          },
+          "notes": {
+            "r2": "Tofu doré, quinoa, légumes du marché du matin.",
+            "diner": "Sardines, riz, courge spaghetti."
+          },
+          "free": {}
+        },
+        {
+          "id": "sam",
+          "label": "Samedi",
+          "wake": "08:30",
+          "bed": "23:00",
+          "times": {
+            "r1": "10:30",
+            "inter": "13:00",
+            "collation": "15:30",
+            "diner": "19:30"
+          },
+          "meals": {
+            "r1": [
+              {
+                "id": "jus_legumes_matin_hiver",
+                "g": 160
+              },
+              {
+                "id": "vivo_life_perform",
+                "g": 30
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 50
+              },
+              {
+                "id": "germe_de_ble",
+                "g": 15
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 90
+              },
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+                "g": 130
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "inter": [
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "lait_davoine_maison_flocons_fermentes",
+                "g": 300
+              }
+            ],
+            "collation": [
+              {
+                "id": "skyr_vache_classique_holstein",
+                "g": 190
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 45
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 25
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 75
+              },
+              {
+                "id": "cannelle_de_ceylan",
+                "g": 2
+              }
+            ]
+          },
+          "notes": {
+            "r1": "Brunch : le bol + 2 œufs.",
+            "diner": "Repas libre (voir les règles)."
+          },
+          "free": {
+            "diner": "Repas libre, 3 règles : finir au moins 3 h avant le coucher ; une assiette, sans fritures ni plat très gras ou très épicé ; pas d'alcool ou un verre au plus."
+          }
+        },
+        {
+          "id": "dim",
+          "label": "Dimanche",
+          "wake": "08:30",
+          "bed": "22:30",
+          "times": {
+            "r1": "09:45",
+            "inter": "12:15",
+            "r2": "13:30",
+            "collation": "16:30",
+            "diner": "19:00"
+          },
+          "meals": {
+            "r1": [
+              {
+                "id": "jus_legumes_matin_hiver",
+                "g": 160
+              },
+              {
+                "id": "vivo_life_perform",
+                "g": 25
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 50
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 45
+              },
+              {
+                "id": "germe_de_ble",
+                "g": 15
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 90
+              },
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "inter": [
+              {
+                "id": "flavochino_cacao_polyphenols",
+                "g": 15
+              },
+              {
+                "id": "lait_davoine_maison_flocons_fermentes",
+                "g": 300
+              }
+            ],
+            "r2": [
+              {
+                "id": "tempeh_soja_maison",
+                "g": 90
+              },
+              {
+                "id": "oeuf_entier_bio_1_oeuf_65g_sans_coquille_75g_avec",
+                "g": 130
+              },
+              {
+                "id": "pommes_de_terre_cuites",
+                "g": 220
+              },
+              {
+                "id": "rutabaga_cuit",
+                "g": 70
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 100
+              },
+              {
+                "id": "panais_cuit_vapeur",
+                "g": 80
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 8
+              },
+              {
+                "id": "citron_jus_30ml",
+                "g": 15
+              },
+              {
+                "id": "persil_frais",
+                "g": 10
+              },
+              {
+                "id": "concentre_tomate_double",
+                "g": 15
+              },
+              {
+                "id": "jus_legumes_midi_hiver",
+                "g": 180
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ],
+            "collation": [
+              {
+                "id": "skyr_vache_classique_holstein",
+                "g": 190
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 45
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 25
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 75
+              },
+              {
+                "id": "cannelle_de_ceylan",
+                "g": 2
+              }
+            ],
+            "diner": [
+              {
+                "id": "tofu_ferme",
+                "g": 120
+              },
+              {
+                "id": "riz_basmati_cuit",
+                "g": 130
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 100
+              },
+              {
+                "id": "courge_spaghetti_cuite",
+                "g": 100
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 3
+              },
+              {
+                "id": "psyllium_blond",
+                "g": 5
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ]
+          },
+          "notes": {
+            "r2": "Tempeh + 2 œufs, pommes de terre et légumes racines au four ou à la vapeur.",
+            "diner": "Tofu doré, riz, courge spaghetti."
+          },
+          "free": {}
+        }
+      ],
+      "variants": [
+        {
+          "id": "tardif",
+          "name": "Dîner tardif (~20h30)",
+          "when": "Les soirs où vous ne pouvez pas dîner vers 19h.",
+          "times": {
+            "collation": "17:30",
+            "diner": "20:30"
+          },
+          "bed": "23:30",
+          "meals": {
+            "collation": [
+              {
+                "id": "skyr_vache_classique_holstein",
+                "g": 170
+              },
+              {
+                "id": "flocons_fermentes_poids_sec",
+                "g": 45
+              },
+              {
+                "id": "flocons_sarrasin_sec",
+                "g": 45
+              },
+              {
+                "id": "myrtilles_sauvages_bio_surgelees",
+                "g": 50
+              },
+              {
+                "id": "cannelle_de_ceylan",
+                "g": 2
+              }
+            ],
+            "diner": [
+              {
+                "id": "blanc_poulet_cuit",
+                "g": 60
+              },
+              {
+                "id": "riz_basmati_cuit",
+                "g": 130
+              },
+              {
+                "id": "carotte_cuite_vapeur",
+                "g": 100
+              },
+              {
+                "id": "courge_spaghetti_cuite",
+                "g": 80
+              },
+              {
+                "id": "huile_dolive_extra_vierge_bio",
+                "g": 3
+              },
+              {
+                "id": "psyllium_blond",
+                "g": 5
+              },
+              {
+                "id": "omega3_epax_nutripure",
+                "g": 2
+              }
+            ]
+          },
+          "notes": [
+            "Collation renforcée vers 17h30 (plus de sarrasin, moins de skyr et de myrtilles pour le volume).",
+            "Dîner léger (~370 kcal, 8 g de lipides).",
+            "Coucher vers 23h30 au plus tôt : 3 h après le dîner. Si vous devez vous coucher plus tôt, réduisez encore le riz."
+          ],
+          "tested": "Journée testée au vert (lundi + variante)."
+        },
+        {
+          "id": "faim",
+          "name": "Jour très actif ou grosse faim",
+          "when": "Séance longue ou intense, faim avant le repas suivant.",
+          "add": [
+            {
+              "slot": "r1",
+              "id": "flocons_sarrasin_sec",
+              "g": 20
+            }
+          ],
+          "notes": [
+            "+20 g de flocons de sarrasin dans le bol du matin ou dans la collation (+70 kcal, sans FODMAP).",
+            "Si ça ne suffit pas : +100 g de pommes de terre ou de riz au déjeuner."
+          ],
+          "tested": "Testé au vert (mardi + 20 g)."
+        },
+        {
+          "id": "seance_aprem",
+          "name": "Séance l'après-midi",
+          "when": "Quand la séance tombe entre le déjeuner et le dîner.",
+          "notes": [
+            "Laissez au moins 2 h 30 après le déjeuner, et faites les exercices penchés ou au sol de préférence le matin (estomac plein l'après-midi).",
+            "Prenez la collation dans l'heure qui suit la séance : elle devient votre repas d'après-séance (protéines du skyr, glucides des flocons)."
+          ]
+        },
+        {
+          "id": "seance_matin",
+          "name": "Séance le matin",
+          "when": "Quand vous vous entraînez avant le premier repas.",
+          "notes": [
+            "Jus au réveil, séance, puis le bol dans l'heure qui suit.",
+            "Si vous avez faim ou manquez d'énergie pendant la séance : la moitié du lait d'avoine de midi (150 ml) avant la séance."
+          ]
+        }
+      ],
+      "shopping": [
+        {
+          "place": "Marché du vendredi (légumes)",
+          "items": [
+            [
+              "Carottes",
+              "2,5 kg",
+              "jus (2 par jour) + légumes"
+            ],
+            [
+              "Mâche",
+              "700 g",
+              "moitié vendredi, moitié mardi (se garde 3-4 jours)"
+            ],
+            [
+              "Kale (chou frisé)",
+              "850 g",
+              "jus + kale cuit"
+            ],
+            [
+              "Betterave crue",
+              "140 g",
+              "jus du matin"
+            ],
+            [
+              "Panais",
+              "300 g",
+              ""
+            ],
+            [
+              "Blettes",
+              "300 g",
+              "à cuire dans les 2-3 jours"
+            ],
+            [
+              "Courge spaghetti",
+              "700 g",
+              "≈ 1 petite"
+            ],
+            [
+              "Céleri-rave",
+              "100 g",
+              ""
+            ],
+            [
+              "Navet",
+              "100 g",
+              ""
+            ],
+            [
+              "Rutabaga",
+              "100 g",
+              ""
+            ],
+            [
+              "Endive",
+              "100 g",
+              "1 endive"
+            ],
+            [
+              "Potimarron",
+              "100 g",
+              "un quartier"
+            ],
+            [
+              "Pommes de terre",
+              "0,5 kg",
+              ""
+            ],
+            [
+              "Persil",
+              "1 grosse botte",
+              ""
+            ],
+            [
+              "Gingembre frais",
+              "100 g",
+              ""
+            ],
+            [
+              "Citrons",
+              "6",
+              ""
+            ]
+          ]
+        },
+        {
+          "place": "Magasin bio",
+          "items": [
+            [
+              "Skyr",
+              "1,40 kg",
+              "≈ 7 pots de 190-200 g"
+            ],
+            [
+              "Tofu ferme",
+              "450 g",
+              ""
+            ],
+            [
+              "Sardines à l'huile d'olive",
+              "2 boîtes",
+              ""
+            ],
+            [
+              "Œufs bio",
+              "10 (+ réserve)",
+              "calibre XL"
+            ],
+            [
+              "Filet de poulet",
+              "250 g (cru)",
+              "ou chez le boucher"
+            ],
+            [
+              "Flocons de sarrasin",
+              "450 g",
+              "nouveau"
+            ],
+            [
+              "Quinoa (sec)",
+              "200 g",
+              ""
+            ],
+            [
+              "Riz basmati (sec)",
+              "250 g",
+              ""
+            ],
+            [
+              "Riz complet (sec)",
+              "100 g",
+              ""
+            ],
+            [
+              "Sarrasin décortiqué (sec)",
+              "100 g",
+              ""
+            ],
+            [
+              "Millet (sec)",
+              "50 g",
+              ""
+            ],
+            [
+              "Concentré de tomate double",
+              "1 tube",
+              ""
+            ]
+          ]
+        },
+        {
+          "place": "Picard",
+          "items": [
+            [
+              "Myrtilles sauvages surgelées",
+              "1200 g",
+              "≈ 3 boîtes de 450 g"
+            ]
+          ]
+        },
+        {
+          "place": "Fait maison",
+          "items": [
+            [
+              "Flocons fermentés",
+              "900 g secs",
+              "bol, collation, lait d'avoine"
+            ],
+            [
+              "Lait d'avoine maison",
+              "2,1 L",
+              "300 ml par jour"
+            ],
+            [
+              "Tempeh",
+              "250 g",
+              "un lot toutes les 2 semaines, congeler"
+            ],
+            [
+              "Pain maison aux flocons",
+              "150 g",
+              "≈ 2 tranches ; sinon pain au petit épeautre ou au sarrasin"
+            ]
+          ]
+        },
+        {
+          "place": "Placard (à vérifier)",
+          "items": [
+            [
+              "Vivo Life Perform",
+              "180 g",
+              ""
+            ],
+            [
+              "Flavochino",
+              "210 g",
+              ""
+            ],
+            [
+              "Germe de blé (stabilisé)",
+              "110 g",
+              ""
+            ],
+            [
+              "Ténébrions en poudre",
+              "10 g",
+              ""
+            ],
+            [
+              "Psyllium blond",
+              "30 g",
+              ""
+            ],
+            [
+              "Huile d'olive",
+              "85 ml",
+              ""
+            ],
+            [
+              "Cannelle de Ceylan",
+              "",
+              ""
+            ]
+          ]
+        }
+      ],
+      "batch": [
+        {
+          "when": "Vendredi (après le marché) ou samedi",
+          "tasks": [
+            "Lancer les flocons fermentés de la semaine (24-48 h) : ~1 kg sec.",
+            "Tous les 15 jours : lancer un lot de tempeh, portionner et congeler.",
+            "Pain maison : cuire quand la fermentation est prête, trancher, congeler."
+          ]
+        },
+        {
+          "when": "Dimanche (≈ 1 h 30) — lot n° 1, pour lundi à mercredi",
+          "tasks": [
+            "Cuire : quinoa (lundi), riz complet (mardi), sarrasin (mercredi), riz basmati (dîners de lundi et mercredi).",
+            "Vapeur : carottes, panais, céleri-rave, navet, courge spaghetti pour 3 jours ; pommes de terre pour mardi, refroidies (amidon résistant).",
+            "Refroidir vite (moins d'1 h), boîtes au réfrigérateur, 3-4 jours maximum (le riz cuit gardé tiède est à risque)."
+          ]
+        },
+        {
+          "when": "Mercredi soir (≈ 1 h) — lot n° 2, pour jeudi et vendredi",
+          "tasks": [
+            "Cuire : millet (jeudi), quinoa (vendredi), riz basmati (dîners de jeudi et vendredi).",
+            "Vapeur : kale, courge spaghetti, potimarron, endive, pommes de terre ; carottes et panais."
+          ]
+        },
+        {
+          "when": "Chaque matin (≈ 15 min)",
+          "tasks": [
+            "Extraire les deux jus en une fois ; garder celui de midi au réfrigérateur (moins de 20 % de perte de vitamine C).",
+            "Préparer le bol : flocons fermentés + flocons de sarrasin + germe de blé + myrtilles + Vivo + Flavochino."
+          ]
+        },
+        {
+          "when": "Au repas (≈ 10 min)",
+          "tasks": [
+            "Cuire à la minute : œufs, tofu, poulet, tempeh. Blettes : les cuire la veille ou le jour même.",
+            "Assaisonner : huile d'olive, citron, persil."
+          ]
+        },
+        {
+          "when": "Week-end",
+          "tasks": [
+            "Samedi : brunch, puis repas libre le soir.",
+            "Dimanche : lot n° 1 + courses de complément si besoin (mâche, skyr)."
+          ]
+        }
+      ],
+      "rules": [
+        "Ordre de la journée : jus au réveil · bol vers 9h30 (ou dans l'heure après la séance du matin) · Flavochino + lait d'avoine à 12h · déjeuner vers 13h · collation vers 16h30 · dîner vers 19h · coucher vers 22h30.",
+        "Le bol du matin reste fixe, mais il est complété par 45 g de flocons de sarrasin : seul, il ne faisait que ~460 kcal et la journée manquait d'énergie.",
+        "Les œufs ont quitté le bol : ils sont au déjeuner ou au dîner 5 jours sur 7 (iode, B12, choline) ; les 2 autres jours, ce sont les sardines.",
+        "Déjeuner = fenêtre du fer : citron + persil + jus du midi, sans cacao. Les jours de tempeh, les légumes « libres » sont carotte, panais, blette, courge spaghetti, mâche.",
+        "Dîner : le plus léger (≈ 450 kcal, ≤ 20 g de lipides), au moins 3 h 30 avant le coucher. Si vous dînez plus tard : variante « Dîner tardif ».",
+        "Week-end plus souple : lever vers 8h30, brunch samedi, repas libre samedi soir, dimanche = jour de cuisine en lots.",
+        "Iode : sardines 2 fois par semaine + œufs + skyr couvrent mieux qu'avant, mais restent probablement sous les 150 µg/jour : à revoir avec le bilan (TSH)."
       ]
     }
   ]
